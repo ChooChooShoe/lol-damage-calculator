@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mana Barrier.png',
+        icon: '/wiki/images/Mana_Barrier.png',
         description:
           'Innate: Periodically, when damaged to  30% maximum health, Blitzcrank generates a  shield equal to  15% − 45% (based on level) of maximum mana, lasting up to 10 seconds.',
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Periodically, when damaged to  30% maximum health, Blitzcrank generates a  shield equal to  15% − 45% (based on level) of maximum mana, lasting up to 10 seconds.',
+            raw: 'Periodically, when damaged to  30% maximum health, Blitzcrank generates a  shield equal to  15% − 45% (based on level) of maximum mana, lasting up to 10 seconds.',
             healType: 'BonusHealth',
             values: [],
             valuesIsPercent: true,
@@ -84,7 +84,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rocket Grab.png',
+        icon: '/wiki/images/Rocket_Grab.png',
         description:
           'Active: Blitzcrank fires their right hand in the target direction that catches the first enemy hit, dealing them magic damage,  stunning them for 0.65 seconds, and  pulling them towards Blitzcrank, during which they are  revealed.',
         descriptionHTML:
@@ -122,6 +122,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Blitzcrank is  unable to move or attack while Rocket Grab is in flight.',
         descriptionHTML:
@@ -175,7 +176,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Blitzcrank shifts into overdrive, gaining  bonus attack speed for 5 seconds and  bonus movement speed that decays to 10% over the first 2.9 seconds',
+            raw: 'Blitzcrank shifts into overdrive, gaining  bonus attack speed for 5 seconds and  bonus movement speed that decays to 10% over the first 2.9 seconds',
             increasedStat: 'bonus_ad',
             values: 5,
             valuesIsPercent: true,
@@ -241,6 +242,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'When Overdrive ends, Blitzcrank is  slowed by 30% for 1.5 seconds.',
         descriptionHTML:
@@ -296,7 +298,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Power Fist.png',
+        icon: '/wiki/images/Power_Fist.png',
         description:
           'Active: Blitzcrank empowers their next basic attack within 5 seconds to have an  uncancellable windup, deal 75% AD (+ 25% AP) bonus physical damage, increased to 250% AD (+ 150% AP) against non-champions, and  knock up the target for 1 second. This damage is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -305,7 +307,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Blitzcrank empowers their next basic attack within 5 seconds to have an  uncancellable windup, deal 75% AD (+ 25% AP) bonus physical damage, increased to 250% AD (+ 150% AP) against non-champions, and  knock up the target for 1 second',
+            raw: 'Blitzcrank empowers their next basic attack within 5 seconds to have an  uncancellable windup, deal 75% AD (+ 25% AP) bonus physical damage, increased to 250% AD (+ 150% AP) against non-champions, and  knock up the target for 1 second',
             increasedStat: 'bonus_ad',
             values: 5,
             valuesIsPercent: true,
@@ -335,6 +337,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Power Fist  resets Blitzcrank's basic attack timer.",
         descriptionHTML:
           '<i>Power Fist <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Blitzcrank\'s</b> basic attack timer.</i>',
@@ -394,7 +397,7 @@ export default {
             description:
               'After every 1 second, one stack is consumed to deal them magic damage.',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'every 1 second, one stack is consumed to deal them magic damage.',
             pre: 'After every 1 second, one stack is consumed to deal them magic damage.',
@@ -432,7 +435,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Static Field.png',
+        icon: '/wiki/images/Static_Field.png',
         description:
           'Active: Blitzcrank detonates a static field, completely destroying damage-mitigating  shields of nearby enemies before dealing them magic damage and  silencing them for 0.5 seconds.',
         descriptionHTML:

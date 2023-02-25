@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Assassin's Mark.png",
+        icon: "/wiki/images/Assassin's_Mark.png",
         description:
           'Innate: When Akali damages an enemy  champion with an ability, she creates a ring around them for 4 seconds, refreshing on subsequent damaging abilities against champions. For 2 seconds, she gains 30 / 40 / 50 / 60% (based on level)  bonus movement speed while moving away from the center of the ring. Only one ring may be active at a time.',
         descriptionHTML:
@@ -34,9 +34,9 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' When Akali damages an enemy  champion with an ability, she creates a ring around them for 4 seconds, refreshing on subsequent damaging abilities against champions',
-            increasedStat: 'total_ap',
+            raw: 'When Akali damages an enemy  champion with an ability, she creates a ring around them for 4 seconds, refreshing on subsequent damaging abilities against champions',
             values: 4,
+            user: 'none',
             units: '',
             unitsText:
               'Akali damages an enemy  champion with an ability, she creates a ring around them for 4 seconds, refreshing on subsequent damaging abilities against champions',
@@ -61,6 +61,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'When Akali exits the ring, for 2 seconds, she regains the bonus movement speed while facing nearby enemy champions and becomes empowered with Swinging Kama for 4 seconds, during which she cannot create another ring.',
         descriptionHTML:
@@ -82,6 +83,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Swinging Kama: Akali's next basic attack is empowered to have its  range doubled and deal 35 − 182 (based on level) (+ 60% bonus AD) (+ 55% AP) bonus magic damage.",
         descriptionHTML:
@@ -90,7 +92,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Swinging Kama:',
-            raw: " Akali's next basic attack is empowered to have its  range doubled and deal 35 − 182 (based on level) (+ 60% bonus AD) (+ 55% AP) bonus magic damage.",
+            raw: "Akali's next basic attack is empowered to have its  range doubled and deal 35 − 182 (based on level) (+ 60% bonus AD) (+ 55% AP) bonus magic damage.",
             damagetype: 'Magic',
             values: [
               35, 43.65, 52.29, 60.94, 69.59, 78.24, 86.88, 95.53, 104.18,
@@ -162,7 +164,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Five Point Strike.png',
+        icon: '/wiki/images/Five_Point_Strike.png',
         description:
           'Active: Akali unleashes kunais in a cone in the target direction, dealing magic damage to enemies hit. Targets at maximum range are also  slowed by 50% for 0.5 seconds.',
         descriptionHTML:
@@ -220,7 +222,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Five Point Strike 2.png',
+        icon: '/wiki/images/Five_Point_Strike_2.png',
         description: '',
         descriptionHTML: '',
         descriptionRatios: [],
@@ -265,7 +267,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Twilight Shroud.png',
+        icon: '/wiki/images/Twilight_Shroud.png',
         description:
           "Active: Akali restores  100 energy over 0.4 seconds and gains  bonus movement speed that decays over 2 seconds. She also detonates a smoke bomb a fixed distance away in the target direction, creating a circular shroud that expands over the next 5 seconds into a ring. The shroud does not permeate terrain, and will expand toward nearby enemy champions. While the shroud is active, Akali's maximum energy is increased by 100.",
         descriptionHTML:
@@ -274,7 +276,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Akali restores  100 energy over 0.4 seconds and gains  bonus movement speed that decays over 2 seconds',
+            raw: 'Akali restores  100 energy over 0.4 seconds and gains  bonus movement speed that decays over 2 seconds',
             values: 1,
             user: 'none',
             units: '',
@@ -342,6 +344,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Entering the shroud renders Akali  invisible, unless she is  dashing.',
         descriptionHTML:
@@ -351,6 +354,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Declaring a basic attack or casting an ability will break the invisibility and prevent Akali from entering it for 1 − 0.625 (based on minutes) seconds, refreshing on subsequent attacks and casts.',
         descriptionHTML:
@@ -372,6 +376,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The  marked section of Twilight Shroud will linger for the mark's duration, even after the shroud ends.",
         descriptionHTML:
@@ -422,7 +427,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shuriken Flip.png',
+        icon: '/wiki/images/Shuriken_Flip.png',
         description:
           'Active: Akali  flips backward and, after the cast time, throws a shuriken in the target direction that deals magic damage to the first enemy hit.',
         descriptionHTML:
@@ -467,6 +472,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The shuriken marks and  reveals the enemy or the last  smoke section hit for 3 seconds, during which Shuriken Flip can be recast to consume the mark.',
         descriptionHTML:
@@ -487,7 +493,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Shuriken Flip 2.png',
+        icon: '/wiki/images/Shuriken_Flip_2.png',
         description:
           'Recast: Akali  dashes towards the marked target or smoke section, regardless of distance. Against enemies she deals magic damage upon arrival.',
         descriptionHTML:
@@ -533,6 +539,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Akali will not flip backwards if she is  immobilized or  grounded during the cast time.  Twilight Shroud and  Perfect Execution can be cast during the recast's dash.",
         descriptionHTML:
@@ -584,7 +591,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Perfect Execution.png',
+        icon: '/wiki/images/Perfect_Execution.png',
         description:
           'Active: Akali  dashes 750 units in the direction of the target enemy  champion, dealing magic damage to enemies she passes through. If this hits an enemy, she flips over them to continue the dash up to the normal range but for at least another 150 units.',
         descriptionHTML:
@@ -593,7 +600,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Akali  dashes 750 units in the direction of the target enemy  champion, dealing magic damage to enemies she passes through',
+            raw: 'Akali  dashes 750 units in the direction of the target enemy  champion, dealing magic damage to enemies she passes through',
             damagetype: 'Magic',
             values: 7,
             user: 'none',
@@ -653,6 +660,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Perfect Execution can be recast after a 2.5-second static cooldown within 10 seconds of the first activation.',
         descriptionHTML:
@@ -674,7 +682,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Perfect Execution 2.png',
+        icon: '/wiki/images/Perfect_Execution_2.png',
         description:
           "Recast: Akali  dashes 800 units in the target direction, dealing magic damage to enemies she passes through, increased by 0% − 200% (based on target's missing health).",
         descriptionHTML:
@@ -683,7 +691,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Recast:',
-            raw: " Akali  dashes 800 units in the target direction, dealing magic damage to enemies she passes through, increased by 0% − 200% (based on target's missing health).",
+            raw: "Akali  dashes 800 units in the target direction, dealing magic damage to enemies she passes through, increased by 0% − 200% (based on target's missing health).",
             healType: 'OutgoingHeals',
             values: 8,
             valuesIsPercent: true,

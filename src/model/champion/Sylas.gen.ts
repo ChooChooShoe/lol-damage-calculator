@@ -32,25 +32,28 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Whenever Sylas casts an ability, he generate a stack of Unshackled for 4 seconds, refreshing on subsequent casts and stacking up to 3 times',
+            raw: 'Whenever Sylas casts an ability, he generate a stack of Unshackled for 4 seconds, refreshing on subsequent casts and stacking up to 3 times',
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              ' Whenever Sylas casts an ability, he generate a stack of Unshackled for 4 seconds, refreshing on subsequent casts and stacking up to 3 times',
+              'Whenever Sylas casts an ability, he generate a stack of Unshackled for 4 seconds, refreshing on subsequent casts and stacking up to 3 times',
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'Sylas casts an ability, he generate a stack of Unshackled for 4 seconds, refreshing on subsequent casts and stacking up to 3 times',
             pre: 'Whenever Sylas casts an ability, he generate a stack of Unshackled for 4 seconds, refreshing on subsequent casts and stacking up to 3 times',
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'While Sylas has stacks, he gains  125% bonus attack speed.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'While Sylas has stacks, he gains  125% bonus attack speed.',
             values: 1,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText: 'bonus attack speed.Sylas has stacks, he gains  125',
             pre: 'While Sylas has stacks, he gains  125% bonus attack speed.',
           },
@@ -59,7 +62,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Petricite Burst.png',
+        icon: '/wiki/images/Petricite_Burst.png',
         description:
           "Unshackled: Sylas' next basic attack is empowered to consume a stack to whirl his chains around him, which has an  uncancellable windup and deals 130% AD (+ 25% AP) magic damage to the primary target and 40% AD (+ 20% AP) magic damage to nearby enemies.",
         descriptionHTML:
@@ -68,11 +71,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Unshackled:',
-            raw: " Sylas' next basic attack is empowered to consume a stack to whirl his chains around him, which has an  uncancellable windup and deals 130% AD (+ 25% AP) magic damage to the primary target and 40% AD (+ 20% AP) magic damage to nearby enemies.",
+            raw: "Sylas' next basic attack is empowered to consume a stack to whirl his chains around him, which has an  uncancellable windup and deals 130% AD (+ 25% AP) magic damage to the primary target and 40% AD (+ 20% AP) magic damage to nearby enemies.",
             min: 0,
             max: 10,
             description:
-              " Sylas' next basic attack is empowered to consume a stack to whirl his chains around him, which has an  uncancellable windup and deals 130% AD (+ 25% AP) magic damage to the primary target and 40% AD (+ 20% AP) magic damage to nearby enemies.",
+              "Sylas' next basic attack is empowered to consume a stack to whirl his chains around him, which has an  uncancellable windup and deals 130% AD (+ 25% AP) magic damage to the primary target and 40% AD (+ 20% AP) magic damage to nearby enemies.",
             values: 1,
             valuesIsPercent: true,
             user: 'target',
@@ -102,6 +105,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Damage to secondary targets executes  minions that would be left below  25 health.',
         descriptionHTML:
@@ -114,7 +118,7 @@ export default {
             healType: 'OutgoingHeals',
             values: 2,
             user: 'target',
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'to secondary targets executes  minions that would be left below  25 health.',
             pre: 'Damage to secondary targets executes  minions that would be left below  25 health.',
@@ -124,6 +128,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The empowered attack applies on-hit effects only to the primary target but disables the bonus damage from  critical strikes. Ability effects only apply to secondary targets.',
         descriptionHTML:
@@ -170,7 +175,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Chain Lash.png',
+        icon: '/wiki/images/Chain_Lash.png',
         description:
           'Active: Sylas lashes out two chains that converge to the target location and extend beyond it up to a maximum range, dealing magic damage to enemies hit and  slowing them for 1.5 seconds.',
         descriptionHTML:
@@ -179,7 +184,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Sylas lashes out two chains that converge to the target location and extend beyond it up to a maximum range, dealing magic damage to enemies hit and  slowing them for 1.5 seconds.',
+            raw: 'Sylas lashes out two chains that converge to the target location and extend beyond it up to a maximum range, dealing magic damage to enemies hit and  slowing them for 1.5 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -237,6 +242,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "After a 0.6-second delay, the chains' intersection explodes to deal magic damage to enemies within, reduced by 60% against  minions and  monsters.",
         descriptionHTML:
@@ -300,6 +306,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Chain Lash will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Chain Lash will cast at max range if cast beyond that.</i>',
@@ -382,6 +389,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If this damages a  champion, Sylas is also  healed, increased by 0% − 100% (based on his missing health).',
         descriptionHTML:
@@ -479,6 +487,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Kingslayer can be cast during the dash. Abscond will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -555,6 +564,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Sylas is  unable to cast  Chain Lash while the chains are in flight.',
         descriptionHTML:
@@ -629,6 +639,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Recast: Sylas casts his hijacked ultimate ability at no cost, scaling based on Hijack's rank and his own statistics.",
         descriptionHTML:
@@ -638,6 +649,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Hijacked ultimates and abilities that do not scale with  ability power have their  attack damage ratios converted to ability power ratios, scaling with 0.6% AP per 1% total AD, and 0.4% AP per 1% bonus AD respectively.',
         descriptionHTML:

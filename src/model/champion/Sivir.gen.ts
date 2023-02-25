@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Fleet of Foot.png',
+        icon: '/wiki/images/Fleet_of_Foot.png',
         description:
           "Innate: Sivir's basic attacks and ability hits against enemy  champions grant her  55 − 75 (based on level) bonus movement speed decaying over 1.5 seconds, refreshing on subsequent hits.",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Sivir's basic attacks and ability hits against enemy  champions grant her  55 − 75 (based on level) bonus movement speed decaying over 1.5 seconds, refreshing on subsequent hits.",
+            raw: "Sivir's basic attacks and ability hits against enemy  champions grant her  55 − 75 (based on level) bonus movement speed decaying over 1.5 seconds, refreshing on subsequent hits.",
             values: [
               55, 56.18, 57.35, 58.53, 59.71, 60.88, 62.06, 63.24, 64.41, 65.59,
               66.76, 67.94, 69.12, 70.29, 71.47, 72.65, 73.82, 75,
@@ -83,7 +83,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Boomerang Blade.png',
+        icon: '/wiki/images/Boomerang_Blade.png',
         description:
           'Active: Sivir hurls her crossblade in the target direction, dealing physical damage to enemies within its path, increased by 0% − 50% (based on critical strike chance).',
         descriptionHTML:
@@ -129,6 +129,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Boomerang Blade's damage is reduced by 0% − 60% (based on non-champions hit). Upon reaching maximum range, the crossblade returns to her, resetting the damage modifier and dealing the same damage to enemies on its way back.",
         descriptionHTML:
@@ -208,6 +209,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be hit only once per pass.',
         descriptionHTML: '<i>Enemies can be hit only once per pass.</i>',
         descriptionRatios: [],
@@ -264,7 +266,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Sivir empowers her crossblade for the next 4 seconds, gaining  bonus attack speed and causing her basic attacks to bounce to additional surrounding enemies, dealing them physical damage',
+            raw: 'Sivir empowers her crossblade for the next 4 seconds, gaining  bonus attack speed and causing her basic attacks to bounce to additional surrounding enemies, dealing them physical damage',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -279,7 +281,7 @@ export default {
             healType: 'BonusHealth',
             values: 6,
             valuesIsPercent: true,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'damage against  minions and executes them if they would be left below  15 health.deals 65',
             pre: 'Ricochet deals 65% damage against  minions and executes them if they would be left below  15 health.',
@@ -341,6 +343,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Bounces occur only up to 8 times and can target each enemy up to one additional time per empowered attack. They prioritize the nearest new target, then the nearest target if no new targets are available.',
         descriptionHTML:
@@ -363,6 +366,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Ricochet  resets Sivir's basic attack timer. The target does not have to be  visible to be bounced to.",
         descriptionHTML:
@@ -404,7 +408,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spell Shield.png',
+        icon: '/wiki/images/Spell_Shield.png',
         description:
           'Active: Sivir gains a  spell shield for 1.5 seconds. Upon successfully blocking a hostile effect, she  heals herself and activates  Fleet of Foot after 0.25 seconds.',
         descriptionHTML:
@@ -413,7 +417,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Sivir gains a  spell shield for 1.5 seconds',
+            raw: 'Sivir gains a  spell shield for 1.5 seconds',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 1,
@@ -489,7 +493,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/On the Hunt.png',
+        icon: '/wiki/images/On_the_Hunt.png',
         description:
           'Active: Sivir gains On the Hunt for a duration and grants it to nearby allied champions for the remaining duration.',
         descriptionHTML:
@@ -516,6 +520,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'On the Hunt: Gain  bonus movement speed.',
         descriptionHTML:
           '<span class="template_sbc"><b>On the Hunt:</b></span> Gain <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal"><b>bonus</b> movement speed</span></span>.',
@@ -543,6 +548,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While active, Sivir's basic attacks on-attack reduce her basic abilities'  current cooldowns by 0.5 seconds each.",
         descriptionHTML:
@@ -552,6 +558,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "On the Hunt's duration is refreshed whenever Sivir scores a  takedown against an enemy  champion within 3 seconds of damaging them.",
         descriptionHTML:

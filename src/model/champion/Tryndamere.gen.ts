@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Battle Fury.png',
+        icon: '/wiki/images/Battle_Fury.png',
         description:
           'Innate: Tryndamere generates  5 Fury on his basic attacks, and 10 Fury on  critical strikes and each time he kills an enemy. After 8 seconds without dealing or taking damage, Tryndamere loses 5 Fury per second.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Tryndamere generates  5 Fury on his basic attacks, and 10 Fury on  critical strikes and each time he kills an enemy',
+            raw: 'Tryndamere generates  5 Fury on his basic attacks, and 10 Fury on  critical strikes and each time he kills an enemy',
             values: 5,
             units: 'total_ad',
             unitsText:
@@ -56,6 +56,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Tryndamere gains  0% − 40% (based on Fury) critical strike chance.',
         descriptionHTML:
@@ -206,7 +207,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mocking Shout.png',
+        icon: '/wiki/images/Mocking_Shout.png',
         description:
           'Active: Tryndamere reduces the  attack damage of nearby enemy champions for 4 seconds.',
         descriptionHTML:
@@ -215,7 +216,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Tryndamere reduces the  attack damage of nearby enemy champions for 4 seconds.',
+            raw: 'Tryndamere reduces the  attack damage of nearby enemy champions for 4 seconds.',
             damagetype: 'None',
             values: 4,
             units: 'total_ad',
@@ -246,6 +247,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Targets facing in the opposite direction of Tryndamere are also  slowed for the duration.',
         descriptionHTML:
@@ -274,6 +276,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A nearby enemy champion is required to cast this ability. The target does not have to be  visible to be targeted by this ability.',
         descriptionHTML:
@@ -315,7 +318,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spinning Slash.png',
+        icon: '/wiki/images/Spinning_Slash.png',
         description:
           'Active: Tryndamere  dashes to the target location, dealing physical damage to enemies hit and generating  2 Fury per enemy hit.',
         descriptionHTML:
@@ -324,7 +327,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Tryndamere  dashes to the target location, dealing physical damage to enemies hit and generating  2 Fury per enemy hit.',
+            raw: 'Tryndamere  dashes to the target location, dealing physical damage to enemies hit and generating  2 Fury per enemy hit.',
             damagetype: 'Physical',
             values: 2,
             user: 'none',
@@ -373,6 +376,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Critical strikes reduce Spinning Slash's  current cooldown by 0.75 seconds, doubled to 1.5 seconds against  champions.",
         descriptionHTML:
@@ -382,6 +386,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Bloodlust and  Undying Rage can be cast during the dash. Spinning Slash will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -422,7 +427,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Undying Rage.png',
+        icon: '/wiki/images/Undying_Rage.png',
         description:
           'Active: Tryndamere becomes enraged, instantly gaining  Fury and a  minimum health threshold for 5 seconds.',
         descriptionHTML:
@@ -431,10 +436,10 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Tryndamere becomes enraged, instantly gaining  Fury and a  minimum health threshold for 5 seconds.',
+            raw: 'Tryndamere becomes enraged, instantly gaining  Fury and a  minimum health threshold for 5 seconds.',
             healType: 'BonusHealth',
             values: 5,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'becomes enraged, instantly gaining  Fury and a  minimum health threshold for 5 seconds.',
             pre: 'Tryndamere becomes enraged, instantly gaining  Fury and a  minimum health threshold for 5 seconds.',
@@ -478,6 +483,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Undying Rage can be used while affected by  cast-inhibiting crowd control.',
         descriptionHTML:

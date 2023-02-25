@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Colossal Smash.png',
+        icon: '/wiki/images/Colossal_Smash.png',
         description:
           "Innate: Periodically, Galio's next basic attack is empowered to have an  uncancellable windup and deal 15 − 200 (based on level) (+ 100% AD) (+ 50% AP) (+ 60% bonus magic resistance) modified magic damage to the target and all enemies near them.",
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Periodically, Galio's next basic attack is empowered to have an  uncancellable windup and deal 15 − 200 (based on level) (+ 100% AD) (+ 50% AP) (+ 60% bonus magic resistance) modified magic damage to the target and all enemies near them.",
+            raw: "Periodically, Galio's next basic attack is empowered to have an  uncancellable windup and deal 15 − 200 (based on level) (+ 100% AD) (+ 50% AP) (+ 60% bonus magic resistance) modified magic damage to the target and all enemies near them.",
             damagetype: 'Magic',
             values: [
               15, 25.88, 36.76, 47.65, 58.53, 69.41, 80.29, 91.18, 102.06,
@@ -78,6 +78,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Colossal Smash can  critically strike for (75% +  35%) AD bonus magic damage to all targets hit.',
         descriptionHTML:
@@ -152,7 +153,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Winds of War.png',
+        icon: '/wiki/images/Winds_of_War.png',
         description:
           'Active: Galio creates two windblasts 250 units to either side of him that arc out before converging to the target location, dealing magic damage to all enemies they pass through.',
         descriptionHTML:
@@ -161,7 +162,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Galio creates two windblasts 250 units to either side of him that arc out before converging to the target location, dealing magic damage to all enemies they pass through.',
+            raw: 'Galio creates two windblasts 250 units to either side of him that arc out before converging to the target location, dealing magic damage to all enemies they pass through.',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -203,6 +204,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "When the blasts meet, the gusts form a tornado that persists for 2 seconds, slowly moving forward and dealing magic damage every 0.5 seconds to enemies within the area. The damage based on the target's health ratio is capped at 150 against  monsters.",
         descriptionHTML:
@@ -265,6 +267,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Winds of War will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Winds of War will cast at max range if cast beyond that.</i>',
@@ -312,7 +315,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shield of Durand 2.png',
+        icon: '/wiki/images/Shield_of_Durand_2.png',
         description:
           'Passive: Galio gains Anti-Magic Bulwark, and restores it after 12 seconds without taking damage.Anti-Magic Bulwark: Gain a  shield that absorbs magic damage.',
         descriptionHTML:
@@ -321,7 +324,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Passive:',
-            raw: ' Galio gains Anti-Magic Bulwark, and restores it after 12 seconds without taking damage.Anti-Magic Bulwark: Gain a  shield that absorbs magic damage.',
+            raw: 'Galio gains Anti-Magic Bulwark, and restores it after 12 seconds without taking damage.Anti-Magic Bulwark: Gain a  shield that absorbs magic damage.',
             damagetype: 'Magic',
             shieldType: 'SelfShield',
             values: 1,
@@ -355,7 +358,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Shield of Durand.png',
+        icon: '/wiki/images/Shield_of_Durand.png',
         description:
           "Active: Galio  charges for up to 2 seconds,  slowing himself by 15%, and gaining magic damage reduction and half of that amount as physical damage reduction; charging increases Shield of Durand's radius, damage and  taunt duration over the first 1.5 seconds of the channel.",
         descriptionHTML:
@@ -364,7 +367,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: " Galio  charges for up to 2 seconds,  slowing himself by 15%, and gaining magic damage reduction and half of that amount as physical damage reduction; charging increases Shield of Durand's radius, damage and  taunt duration over the first 1.5 seconds of the channel.",
+            raw: "Galio  charges for up to 2 seconds,  slowing himself by 15%, and gaining magic damage reduction and half of that amount as physical damage reduction; charging increases Shield of Durand's radius, damage and  taunt duration over the first 1.5 seconds of the channel.",
             damagetype: 'Physical',
             shieldType: 'SelfShield',
             values: 2,
@@ -416,6 +419,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Shield of Durand can be recast within the duration and does so automatically afterwards or if it is  interrupted.',
         descriptionHTML:
@@ -425,6 +429,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Galio refreshes the damage reduction for 2 seconds and deals magic damage to nearby enemy champions, increased by 0% − 200% (based on channel time), as well as  taunts them for 0.5 − 1.5 (based on channel time) seconds during which their  movement speed is set to a static 60 for the same duration.',
         descriptionHTML:
@@ -433,7 +438,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Galio refreshes the damage reduction for 2 seconds and deals magic damage to nearby enemy champions, increased by 0% − 200% (based on channel time), as well as  taunts them for 0.5 − 1.5 (based on channel time) seconds during which their  movement speed is set to a static 60 for the same duration.',
+            raw: 'Galio refreshes the damage reduction for 2 seconds and deals magic damage to nearby enemy champions, increased by 0% − 200% (based on channel time), as well as  taunts them for 0.5 − 1.5 (based on channel time) seconds during which their  movement speed is set to a static 60 for the same duration.',
             damagetype: 'Magic',
             values: 2,
             valuesIsPercent: true,
@@ -515,7 +520,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Justice Punch.png',
+        icon: '/wiki/images/Justice_Punch.png',
         description:
           'Active: During the cast time, Galio  steps backwards in the opposite direction. He then  dashes to the target location until he hits an enemy  champion or terrain.',
         descriptionHTML:
@@ -525,6 +530,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Galio deals magic damage to enemies he passes through, reduced by 50% against non-champions, and  knocks them up for 0.75 seconds as well as  reveals them for the same duration.',
         descriptionHTML:
@@ -575,6 +581,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Justice Punch will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -622,7 +629,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Hero's Entrance.png",
+        icon: "/wiki/images/Hero's_Entrance.png",
         description:
           "Active: Galio prepares to make an entrance,  channeling for 2.75 seconds and designating the target allied  champion's location at the time of cast as his landing spot. Additionally, he resets  Shield of Durand's passive shield for himself and grants it to all allied champions within the area for 5 seconds.",
         descriptionHTML:
@@ -631,7 +638,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: " Galio prepares to make an entrance,  channeling for 2.75 seconds and designating the target allied  champion's location at the time of cast as his landing spot",
+            raw: "Galio prepares to make an entrance,  channeling for 2.75 seconds and designating the target allied  champion's location at the time of cast as his landing spot",
             values: 2,
             user: 'none',
             units: '',
@@ -657,6 +664,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After channeling for 1.25 seconds, he gains  crowd control immunity for the remaining duration, becomes  untargetable, and leaps into the air for 0.85 seconds before  dashing to his destination over 0.25 seconds. Afterwards, he lands and becomes targetable again, dealing magic damage to all nearby enemies upon impact,  knocking them back 100 units over 0.75 seconds, and remaining in place for 0.4 seconds.',
         descriptionHTML:

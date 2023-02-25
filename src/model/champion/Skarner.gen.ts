@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crystal Spires.png',
+        icon: '/wiki/images/Crystal_Spires.png',
         description:
           "Innate: Skarner's presence spawns  6 Crystal Spires at set points across the battlefield:\nOne beside  Baron Nashor's pit\nOne beside  Dragon's pit\nOne near each of the camps for  Blue Sentinel and  Red Brambleback",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Skarner's presence spawns  6 Crystal Spires at set points across the battlefield:\nOne beside  Baron Nashor's pit\nOne beside  Dragon's pit\nOne near each of the camps for  Blue Sentinel and  Red Brambleback",
+            raw: "Skarner's presence spawns  6 Crystal Spires at set points across the battlefield:\nOne beside  Baron Nashor's pit\nOne beside  Dragon's pit\nOne near each of the camps for  Blue Sentinel and  Red Brambleback",
             values: 6,
             user: 'none',
             units: '',
@@ -46,6 +46,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After  minions have spawned, a Crystal Spire can be captured by  champions by standing on it for 2 seconds, Once captured, the Crystal Spire is owned by the team until contested, and the defending team can stand on the spire to prevent the opposing team from capturing it.',
         descriptionHTML:
@@ -67,6 +68,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Capturing a Crystal Spire grants  sight of its radius for 1.5 seconds and locks it out from capture for 15 seconds. Crystal Spires grant  30 split among its captors, or  15 for a single captor.',
         descriptionHTML:
@@ -99,6 +101,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Skarner gains Crystal Charge while within range of a Crystal Spire controlled by his team, for 1.25 seconds after triggering  Crystal Venom, and for 1.75 seconds after stinging an enemy champion with  Impale.',
         descriptionHTML:
@@ -120,6 +123,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Crystal Charge: Skarner gains  70 − 120 (based on level) bonus movement speed and  43% − 160% (based on level) bonus attack speed and restores  1% maximum mana every 0.5 seconds.',
         descriptionHTML:
@@ -128,7 +132,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Crystal Charge:',
-            raw: ' Skarner gains  70 − 120 (based on level) bonus movement speed and  43% − 160% (based on level) bonus attack speed and restores  1% maximum mana every 0.5 seconds.',
+            raw: 'Skarner gains  70 − 120 (based on level) bonus movement speed and  43% − 160% (based on level) bonus attack speed and restores  1% maximum mana every 0.5 seconds.',
             values: [
               70, 72.94, 75.88, 78.82, 81.76, 84.71, 87.65, 90.59, 93.53, 96.47,
               99.41, 102.35, 105.29, 108.24, 111.18, 114.12, 117.06, 120,
@@ -179,7 +183,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crystal Slash.png',
+        icon: '/wiki/images/Crystal_Slash.png',
         description:
           'Active: Skarner slashes around himself, dealing physical damage to nearby enemies. If at least one enemy is hit, he becomes charged for 5 seconds, empowering subsequent casts of Crystal Slash to deal bonus magic damage.',
         descriptionHTML:
@@ -267,6 +271,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Each instance of damage is capped at 200 against epic  monsters.',
         descriptionHTML:
@@ -288,6 +293,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Basic attacks reduce Crystal Slash's  current cooldown by 0.25 seconds, increased to 1 second against  champions.",
         descriptionHTML:
@@ -331,7 +337,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crystalline Exoskeleton.png',
+        icon: '/wiki/images/Crystalline_Exoskeleton.png',
         description:
           'Active: Skarner grants himself a  shield for up to 6 seconds, and while it holds, he gains  bonus movement speed that doubles over the first 3 seconds.',
         descriptionHTML:
@@ -340,7 +346,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Skarner grants himself a  shield for up to 6 seconds, and while it holds, he gains  bonus movement speed that doubles over the first 3 seconds.',
+            raw: 'Skarner grants himself a  shield for up to 6 seconds, and while it holds, he gains  bonus movement speed that doubles over the first 3 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 6,
@@ -452,7 +458,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Skarner launches a blast of crystalline energy in the target direction that deals magic damage to enemies hit,  slows them for 2.5 seconds, and marks them with Crystal Venom for 5 seconds.',
+            raw: 'Skarner launches a blast of crystalline energy in the target direction that deals magic damage to enemies hit,  slows them for 2.5 seconds, and marks them with Crystal Venom for 5 seconds.',
             damagetype: 'Magic',
             values: 2,
             units: 'kindredMarks',
@@ -509,7 +515,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Crystal Venom.png',
+        icon: '/wiki/images/Crystal_Venom.png',
         description:
           "Crystal Venom: Skarner's next basic attack against a marked target is empowered to consume the mark to deal bonus physical damage and  stun them for 1.25 seconds.",
         descriptionHTML:
@@ -518,7 +524,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Crystal Venom:',
-            raw: " Skarner's next basic attack against a marked target is empowered to consume the mark to deal bonus physical damage and  stun them for 1.25 seconds.",
+            raw: "Skarner's next basic attack against a marked target is empowered to consume the mark to deal bonus physical damage and  stun them for 1.25 seconds.",
             increasedStat: 'kindredMarks',
             values: 1,
             units: '',
@@ -639,6 +645,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Impale's drag ignores  displacement immunity. Skarner is unable to basic attack, cast  Fracture, or use  Flash during Impale.",
         descriptionHTML:

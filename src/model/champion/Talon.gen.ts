@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Blade's End.png",
+        icon: "/wiki/images/Blade's_End.png",
         description:
           "Innate: Talon's abilities apply a stack of Wound to enemy  champions and large  monsters hit for 6 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
         descriptionHTML:
@@ -32,11 +32,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Talon's abilities apply a stack of Wound to enemy  champions and large  monsters hit for 6 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
+            raw: "Talon's abilities apply a stack of Wound to enemy  champions and large  monsters hit for 6 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Talon's abilities apply a stack of Wound to enemy  champions and large  monsters hit for 6 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
+              "Talon's abilities apply a stack of Wound to enemy  champions and large  monsters hit for 6 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
             values: 6,
             units: 'total_ap',
             unitsText:
@@ -48,15 +48,20 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Talon's next basic attack against an enemy with 3 Wound stacks is empowered to consume them all to cause the target to bleed, dealing「 75 − 255 (based on level) (+ 200% bonus AD) total physical damage over 2 seconds, 」「 4.69 − 15.94 (based on level) (+ 12.5% bonus AD) physical damage every 0.125 seconds over 2 seconds, 」increased to 120% damage against  monsters. The target cannot gain Wound stacks during this time.",
         descriptionHTML:
           '<b>Talon\'s</b> next <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> against an enemy with 3 <i>Wound</i> stacks is empowered to consume them all to cause the target to bleed, dealing<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="75;" data-finish="255;" data-bot_values="75;85.59;96.18;106.76;117.35;127.94;138.53;149.12;159.71;170.29;180.88;191.47;202.06;212.65;223.24;233.82;244.41;255" data-top_values="">75 − 255 (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;200% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal"><b>total</b> physical damage</span> over 2 seconds,&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="4.6875;" data-finish="15.9375;" data-bot_values="4.69;5.35;6.01;6.67;7.33;8;8.66;9.32;9.98;10.64;11.31;11.97;12.63;13.29;13.95;14.61;15.28;15.94" data-top_values="">4.<small>69</small> − 15.<small>94</small> (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;12.<small>5</small>% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> every 0.<small>125</small> seconds over 2 seconds,&nbsp;」</span></span>increased to 120% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>. The target cannot gain <i>Wound</i> stacks during this time.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: "Talon's next basic attack against an enemy with 3 Wound stacks is empowered to consume them all to cause the target to bleed, dealing「 75 − 255 (based on level) (+ 200% bonus AD) total physical damage over 2 seconds, 」「 4.69 − 15.94 (based on level) (+ 12.5% bonus AD) physical damage every 0.125 seconds over 2 seconds, 」increased to 120% damage against  monsters",
+            min: 0,
+            max: 10,
+            description:
+              "Talon's next basic attack against an enemy with 3 Wound stacks is empowered to consume them all to cause the target to bleed, dealing「 75 − 255 (based on level) (+ 200% bonus AD) total physical damage over 2 seconds, 」「 4.69 − 15.94 (based on level) (+ 12.5% bonus AD) physical damage every 0.125 seconds over 2 seconds, 」increased to 120% damage against  monsters",
             values: [
               75, 85.59, 96.18, 106.76, 117.35, 127.94, 138.53, 149.12, 159.71,
               170.29, 180.88, 191.47, 202.06, 212.65, 223.24, 233.82, 244.41,
@@ -128,7 +133,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Noxian Diplomacy.png',
+        icon: '/wiki/images/Noxian_Diplomacy.png',
         description:
           'Active: Talon  dashes towards the target enemy, dealing physical damage upon arrival. If Noxian Diplomacy is cast within close range, Talon instead stabs the target to  critically strike for (50% +  35%) bonus physical damage, as well as gain  75 bonus attack range on his next basic attack within 1 second.',
         descriptionHTML:
@@ -189,6 +194,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Noxian Diplomacy kills the target, Talon  heals for 9 − 55 (based on level) and the ability's  cooldown is reduced by 50%.",
         descriptionHTML:
@@ -204,7 +210,8 @@ export default {
               36.06, 38.76, 41.47, 44.18, 46.88, 49.59, 52.29, 55,
             ],
             basedOn: 'level',
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText: "and the ability's  cooldown is reduced by 50%.",
             pre: 'If Noxian Diplomacy kills the target, Talon  heals for 9 − 55',
             post: "and the ability's  cooldown is reduced by 50%.",
@@ -214,6 +221,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Noxian Diplomacy's stab  resets Talon's basic attack timer.  Shadow Assault can be cast during the dash.",
         descriptionHTML:
@@ -297,6 +305,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'At maximum range, the daggers linger for 0.75 seconds before homing back to Talon, dealing physical damage to enemies hit and  slowing them for 1 second.',
         descriptionHTML:
@@ -350,6 +359,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Rake deals 105% damage against  monsters.',
         descriptionHTML:
           '<i>Rake</i> deals 105% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
@@ -370,6 +380,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be hit only once per pass.',
         descriptionHTML: '<i>Enemies can be hit only once per pass.</i>',
         descriptionRatios: [],
@@ -415,7 +426,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Assassin's Path.png",
+        icon: "/wiki/images/Assassin's_Path.png",
         description:
           'Active: Talon  dashes up to 800 units over the target area of terrain, during which he gains  unobstructed vision.',
         descriptionHTML:
@@ -424,7 +435,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Talon  dashes up to 800 units over the target area of terrain, during which he gains  unobstructed vision.',
+            raw: 'Talon  dashes up to 800 units over the target area of terrain, during which he gains  unobstructed vision.',
             values: 8,
             user: 'none',
             units: '',
@@ -437,6 +448,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Talon cannot cast Assassin's Path on the same area of terrain for a set duration.",
         descriptionHTML:
@@ -446,6 +458,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Shadow Assault can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Talon" data-ability="Shadow Assault" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Talon/LoL#Shadow_Assault" title="Shadow Assault"><img alt="Shadow Assault" src="/wiki/images/Talon_Shadow_Assault.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Talon/LoL#Shadow_Assault" title="Talon/LoL">Shadow Assault</a></span></span> can be cast during the dash.</i>',
@@ -487,7 +500,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shadow Assault.png',
+        icon: '/wiki/images/Shadow_Assault.png',
         description:
           'Active: Talon disperses a ring of blades around him that deals physical damage to nearby enemies, and gains  invisibility and  bonus movement speed for up to 2.5 seconds.',
         descriptionHTML:
@@ -496,7 +509,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Talon disperses a ring of blades around him that deals physical damage to nearby enemies, and gains  invisibility and  bonus movement speed for up to 2.5 seconds.',
+            raw: 'Talon disperses a ring of blades around him that deals physical damage to nearby enemies, and gains  invisibility and  bonus movement speed for up to 2.5 seconds.',
             increasedStat: 'bonus_ad',
             values: 2,
             units: '',
@@ -554,6 +567,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Shadow Assault can be recast after 1 second within the duration, and does so automatically after the duration or if Talon emerges from invisibility.',
         descriptionHTML:
@@ -576,6 +590,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Talon ends Shadow Assault, breaking the invisibility and causing the blades to converge to him, dealing the same damage to enemies hit. Breaking invisibility with a basic attack or  Noxian Diplomacy causes the blades to converge to the target instead.',
         descriptionHTML:

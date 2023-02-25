@@ -11,6 +11,8 @@ import { mutateWikiChampionData } from './WikiChampListFetch';
 
 console.log('Live Wiki Fetching for all data. VERSION 1.0');
 
+const champWhitelist = ['Annie'];
+
 main();
 async function main() {
   const realms = await fetchAndSaveRealms();
@@ -28,6 +30,7 @@ async function main() {
   // const ChampionModule = await fetch_mod_data();
   for (const [name, raw_data] of Object.entries(ModuleChampionDataFile)) {
     if (raw_data.date === 'Upcoming') continue;
+    if (champWhitelist && !champWhitelist.includes(name)) continue;
 
     // To keep the order consistant.
     ChampionList[name] = null;

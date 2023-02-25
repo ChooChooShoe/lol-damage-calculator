@@ -14,7 +14,7 @@ export default {
     blurb: [],
     description: [
       {
-        icon: '/wiki/images/Basic Attack.png',
+        icon: '/wiki/images/Basic_Attack.png',
         description:
           'Basic Attack: Senna blasts the target with her relic cannon that uses a  non-projectile beam, dealing 100% AD physical damage and applying  on-hit and on-attack effects.',
         descriptionHTML:
@@ -23,7 +23,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Basic Attack:',
-            raw: ' Senna blasts the target with her relic cannon that uses a  non-projectile beam, dealing 100% AD physical damage and applying  on-hit and on-attack effects.',
+            raw: 'Senna blasts the target with her relic cannon that uses a  non-projectile beam, dealing 100% AD physical damage and applying  on-hit and on-attack effects.',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -37,6 +37,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Senna's basic attacks can  critically strike, but they deal only 「 (160.125% +  32.025%) AD physical damage. 」「 91.5% of the  critical damage champions usually have. 」",
         descriptionHTML:
@@ -69,15 +70,17 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
-          'Senna has an attack ratio of 0.3, meaning she only gains「 + 0.3 attack speed per  100% bonus attack speed. 」「 48% of the attack speed she would gain if her attack speed ratio was the same as her base attack speed. 」',
+          'Senna has an attack ratio of 0.4, meaning she only gains「 + 0.4 attack speed per  100% bonus attack speed. 」「 64% of the attack speed she would gain if her attack speed ratio was the same as her base attack speed. 」',
         descriptionHTML:
-          '<b>Senna</b> has an <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Attack ratio"><a href="/wiki/Attack_speed" title="Attack speed">attack ratio</a></span> of 0.<small>3</small>, meaning she only gains<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;+ 0.<small>3</small> <span style="color:orangered; white-space:normal">attack speed</span> per <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orangered; white-space:normal">100% <b>bonus</b> attack speed</span></span>.&nbsp;」</span><span class="flipText2">「&nbsp;48% of the <span style="color:orangered; white-space:normal">attack speed</span> she would gain if her attack speed ratio was the same as her base attack speed.&nbsp;」</span></span>',
+          '<b>Senna</b> has an <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Attack ratio"><a href="/wiki/Attack_speed" title="Attack speed">attack ratio</a></span> of 0.<small>4</small>, meaning she only gains<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;+ 0.<small>4</small> <span style="color:orangered; white-space:normal">attack speed</span> per <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orangered; white-space:normal">100% <b>bonus</b> attack speed</span></span>.&nbsp;」</span><span class="flipText2">「&nbsp;64% of the <span style="color:orangered; white-space:normal">attack speed</span> she would gain if her attack speed ratio was the same as her base attack speed.&nbsp;」</span></span>',
         descriptionRatios: [],
         leveling: [],
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Additionally, Senna's base attack windup is reduced「 to 31.25% − 21.875% (based on level), 」「 by 0% − 30% (based on level), 」but is only reduced by 60% of the expected value given attack speed bonuses.",
         descriptionHTML:
@@ -108,7 +111,7 @@ export default {
     spelleffects: 'Attack',
     projectile: 'False',
     notes:
-      '* At level 18, only with the per level <b>bonus</b> attack speed, <b>Senna</b> will have <span style="color:orangered; white-space:normal">0.<small>829</small> attack speed</span>, and will take <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="0.29832327456271 seconds, but rounded up to the next game tick.">0.<small>33</small> seconds</span> to perform an attack compared to <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="0.5 seconds, but rounded up to the next game tick.">0.<small>528</small> seconds</span> at level 1.',
+      '* At level 18, only with the per level <b>bonus</b> attack speed, <b>Senna</b> will have <span style="color:orangered; white-space:normal">0.<small>897</small> attack speed</span>, and will take <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="0.28632106343723 seconds, but rounded up to the next game tick.">0.<small>297</small> seconds</span> to perform an attack compared to <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="0.5 seconds, but rounded up to the next game tick.">0.<small>528</small> seconds</span> at level 1.',
   },
   Absolution: {
     name: 'Absolution',
@@ -145,11 +148,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate - Weakened Soul:',
-            raw: " Senna's basic attacks  on-hit and damaging abilities on enemy champions apply a stack of Mist for 4 seconds, modified to 0.75 seconds if Senna starts winding up a basic attack on them",
+            raw: "Senna's basic attacks  on-hit and damaging abilities on enemy champions apply a stack of Mist for 4 seconds, modified to 0.75 seconds if Senna starts winding up a basic attack on them",
             min: 0,
             max: 10,
             description:
-              " Senna's basic attacks  on-hit and damaging abilities on enemy champions apply a stack of Mist for 4 seconds, modified to 0.75 seconds if Senna starts winding up a basic attack on them",
+              "Senna's basic attacks  on-hit and damaging abilities on enemy champions apply a stack of Mist for 4 seconds, modified to 0.75 seconds if Senna starts winding up a basic attack on them",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -209,19 +212,23 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Mist: For each stack of Mist, Senna gains  0.75 bonus attack damage. For every 20 stacks, she also gains  20 bonus attack range and  10% critical strike chance, capped at 100% critical strike chance. Additionally, 35% of the generated excess critical strike chance is converted into  life steal.',
         descriptionHTML:
           '<span class="template_sbc"><b>Mist</b></span>: For each stack of <span style="color: #26DFB0; white-space:normal">Mist</span>, <b>Senna</b> gains <span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orange; white-space:normal">0.<small>75</small> <b>bonus</b> attack damage</span></span>. For every 20 stacks, she also gains <span style="white-space:nowrap"><a href="/wiki/Range" title="Range"><img alt="Range icon.png" src="/wiki/images/Range_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;20 <b>bonus</b> attack range</span> and <span style="white-space:nowrap"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike chance icon.png" src="/wiki/images/Critical_strike_chance_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #E56013; white-space:normal">10% critical strike chance</span></span>, capped at <span style="color: #E56013; white-space:normal">100% critical strike chance</span>. Additionally, 35% of the generated excess <span style="color: #E56013; white-space:normal">critical strike chance</span> is converted into <span style="white-space:nowrap"><a href="/wiki/Life_steal" title="Life steal"><img alt="Life steal icon.png" src="/wiki/images/Life_steal_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Life_steal" title="Life steal">life steal</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'For every 20 stacks, she also gains  20 bonus attack range and  10% critical strike chance, capped at 100% critical strike chance',
-            increasedStat: 'total_ap',
+            min: 0,
+            max: 10,
+            description:
+              'For every 20 stacks, she also gains  20 bonus attack range and  10% critical strike chance, capped at 100% critical strike chance',
             values: 2,
             valuesIsPercent: true,
-            units: '',
+            units: 'total_ap',
             unitsText:
               'critical strike chance, capped at 100every 20 stacks, she also gains  20 bonus attack range and  10',
             pre: 'For every 20 stacks, she also gains  20 bonus attack range and  10% critical strike chance, capped at 100% critical strike chance',
@@ -243,7 +250,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Absolution 2.png',
+        icon: '/wiki/images/Absolution_2.png',
         description:
           "Innate - Relic Cannon: Senna's basic attacks  on-hit deal 20% AD bonus physical damage and grant her 10 / 15 / 20% (based on level) of the target's movement speed as  bonus movement speed for 0.5 seconds. This damage applies  life steal at 100% effectiveness.",
         descriptionHTML:
@@ -252,7 +259,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Relic Cannon:',
-            raw: " Senna's basic attacks  on-hit deal 20% AD bonus physical damage and grant her 10 / 15 / 20% (based on level) of the target's movement speed as  bonus movement speed for 0.5 seconds",
+            raw: "Senna's basic attacks  on-hit deal 20% AD bonus physical damage and grant her 10 / 15 / 20% (based on level) of the target's movement speed as  bonus movement speed for 0.5 seconds",
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -317,7 +324,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Piercing Darkness.png',
+        icon: '/wiki/images/Piercing_Darkness.png',
         description:
           'Active: Senna fires a spectral laser in the direction of the target unit,  healing herself and allied  champions hit, and dealing physical damage to enemies hit in a thinner line. Enemies hit are  slowed by 15% (+ 10% per 100 bonus AD) (+ 6% per 100 AP) for a duration. The damage against champions applies  life steal at 100% effectiveness.',
         descriptionHTML:
@@ -454,6 +461,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon being hit, enemy  turrets,  wards, jungle plants,  Mist Wraiths and any other attack-interactive units are considered basic attacked once, while  champions and  turrets* are applied  on-hit effects at 100% effectiveness.',
         descriptionHTML:
@@ -476,6 +484,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Piercing Darkness'   current cooldown is reduced by 1 second  on-hit.",
         descriptionHTML:
@@ -539,7 +548,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Last Embrace.png',
+        icon: '/wiki/images/Last_Embrace.png',
         description:
           'Active: Senna throws a globule of Black Mist in the target direction that deals physical damage to the first enemy hit and attaches to them for 1 second.',
         descriptionHTML:
@@ -548,7 +557,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Senna throws a globule of Black Mist in the target direction that deals physical damage to the first enemy hit and attaches to them for 1 second.',
+            raw: 'Senna throws a globule of Black Mist in the target direction that deals physical damage to the first enemy hit and attaches to them for 1 second.',
             damagetype: 'Physical',
             values: 1,
             user: 'none',
@@ -590,6 +599,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After the duration or when the target dies, the Black Mist spreads out of the target,  rooting them and surrounding enemies for a few seconds.',
         descriptionHTML:
@@ -657,7 +667,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Curse of the Black Mist.png',
+        icon: '/wiki/images/Curse_of_the_Black_Mist.png',
         description:
           'Active: Senna surrounds herself with an aura of mist and gains  camouflage for a duration. If Senna breaks the camouflage, she regains it after 1.75 seconds without performing actions that break stealth.',
         descriptionHTML:
@@ -696,6 +706,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Allied champions who enter the mist gain Wraith Form for a duration equal to the remaining duration.',
         descriptionHTML:
@@ -705,7 +716,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Curse of the Black Mist 2.png',
+        icon: '/wiki/images/Curse_of_the_Black_Mist_2.png',
         description:
           "Wraith Form: Gain  camouflage. Enemies will have  obscured vision of camouflaged Wraiths moving outside of the mist. Wraith Form can be regained if lost by breaking the camouflage after 1.75 seconds without performing actions that break stealth. Wraith Form ends immediately upon Senna's  death.",
         descriptionHTML:
@@ -727,6 +738,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Senna and allies camouflaged by Curse of the Black Mist also gain  20% (+ 5% per 100 AP) bonus movement speed.',
         descriptionHTML:
@@ -788,14 +800,14 @@ export default {
     cast_time: '1',
     cost: '100',
     costtype: 'Mana',
-    cooldown: '160 / 150 / 140 / 130 / 120',
+    cooldown: '140 / 130 / 120 / 110 / 100',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Senna" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Senna/LoL" title="Senna"><img alt="Senna" src="/wiki/images/Senna_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Senna/LoL" title="Senna/LoL">Senna</a></span></span> fires two waves of spectral light in the target direction. The center wave deals <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemy champions hit and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Standard sight"><a href="/wiki/Sight" title="Sight"><img alt="Reveal icon.png" src="/wiki/images/Reveal_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">reveals</a></span> them for a short time.',
       'The broad wave <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shields"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shields</a></span> <b>Senna</b> and allied champions hit for a short time.',
     ],
     description: [
       {
-        icon: '/wiki/images/Dawning Shadow.png',
+        icon: '/wiki/images/Dawning_Shadow.png',
         description:
           'Active: Senna fires two waves of spectral light in the target direction, granting  sight of the area briefly along the path. The center wave deals physical damage to enemy  champions hit and  reveals them for 3 seconds. It also collects  Mist Wraiths it hits.',
         descriptionHTML:
@@ -817,30 +829,29 @@ export default {
         leveling: [
           {
             name: 'Physical Damage:',
-            values:
-              '250 / 312.5 / 375 / 437.5 / 500 (+ 100% bonus AD) (+ 70% AP)',
+            values: '250 / 325 / 400 / 475 / 550 (+ 115% bonus AD) (+ 70% AP)',
             valuesHTML:
-              '250 / 312.<small>5</small> / 375 / 437.<small>5</small> / 500 <span style="color:orange; white-space:normal">(+&nbsp;100% <b>bonus</b> AD)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;70% AP)</span>',
+              '250 / 325 / 400 / 475 / 550 <span style="color:orange; white-space:normal">(+&nbsp;115% <b>bonus</b> AD)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;70% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Physical Damage:',
-            raw: '250 / 312.5 / 375 / 437.5 / 500 (+ 100% bonus AD) (+ 70% AP)',
+            raw: '250 / 325 / 400 / 475 / 550 (+ 115% bonus AD) (+ 70% AP)',
             damagetype: 'Physical',
-            values: [250, 312.5, 375, 437.5, 500],
+            values: [250, 325, 400, 475, 550],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '250 / 312.5 / 375 / 437.5 / 500',
+            pre: '250 / 325 / 400 / 475 / 550',
             children: [
               {
-                values: 100,
+                values: 115,
                 valuesIsPercent: true,
                 units: 'bonus_ad',
                 unitsText: 'bonus AD',
-                pre: '+ 100% bonus AD',
+                pre: '+ 115% bonus AD',
               },
               {
                 values: 70,
@@ -854,7 +865,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Dawning Shadow 2.png',
+        icon: '/wiki/images/Dawning_Shadow_2.png',
         description:
           'The broad wave grants a  shield to Senna and allied champions hit for 3 seconds.',
         descriptionHTML:

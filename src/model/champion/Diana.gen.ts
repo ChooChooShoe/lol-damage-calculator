@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Diana gains  15% − 40% (based on level) bonus attack speed',
+            raw: 'Diana gains  15% − 40% (based on level) bonus attack speed',
             increasedStat: 'bonus_ad',
             values: [],
             valuesIsPercent: true,
@@ -60,7 +60,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Moonsilver Blade.png',
+        icon: '/wiki/images/Moonsilver_Blade.png',
         description:
           "Innate: Diana's basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times. At 2 stacks, Diana empowers her next basic attack to consume the stacks  on-hit to additionally cleave nearby enemies, dealing them 20 − 220 (based on level) (+ 50% AP) magic damage. Moonsilver Blade deals 300% damage against  monsters.",
         descriptionHTML:
@@ -69,13 +69,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Diana's basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times",
+            raw: "Diana's basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times",
             min: 0,
-            max: 10,
+            max: 2,
             description:
-              " Diana's basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times",
+              "Diana's basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times",
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times',
             pre: "Diana's basic attacks generate a stack of Moonsilver Blade for 3.5 seconds, refreshing on subsequent attacks and stacking up to 2 times",
@@ -162,7 +162,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crescent Strike.png',
+        icon: '/wiki/images/Crescent_Strike.png',
         description:
           'Active: Diana unleashes a bolt of lunar energy that travels in a counter-clockwise arc before exploding at the target location, granting  sight of the area for 0.5 seconds and dealing magic damage to enemies hit and afflicting them with Moonlight for 3 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -200,6 +200,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Lunar Rush interacts with Moonlight.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Diana" data-ability="Lunar Rush" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Diana/LoL#Lunar_Rush" title="Lunar Rush"><img alt="Lunar Rush" src="/wiki/images/Diana_Lunar_Rush.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Diana/LoL#Lunar_Rush" title="Diana/LoL">Lunar Rush</a></span></span></i> interacts with <i>Moonlight</i>.',
@@ -208,6 +209,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Crescent Strike will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -255,7 +257,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pale Cascade.png',
+        icon: '/wiki/images/Pale_Cascade.png',
         description:
           'Active: Diana grants herself a  shield for up to 5 seconds and creates three spheres that orbit her for the same duration, detonating upon contact with an enemy to deal magic damage to nearby enemies.',
         descriptionHTML:
@@ -264,7 +266,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Diana grants herself a  shield for up to 5 seconds and creates three spheres that orbit her for the same duration, detonating upon contact with an enemy to deal magic damage to nearby enemies.',
+            raw: 'Diana grants herself a  shield for up to 5 seconds and creates three spheres that orbit her for the same duration, detonating upon contact with an enemy to deal magic damage to nearby enemies.',
             damagetype: 'Magic',
             shieldType: 'SelfShield',
             values: 5,
@@ -340,6 +342,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If all three spheres detonate, Pale Cascade's shield is reapplied, stacking with its original shield and refreshing the duration.",
         descriptionHTML:
@@ -385,7 +388,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Lunar Rush.png',
+        icon: '/wiki/images/Lunar_Rush.png',
         description:
           "Active: Diana  dashes to the target enemy's location, and upon completion, she deals them magic damage and consumes  Moonlight from all enemies. If the target is within 400 range, Diana will dash through their location.",
         descriptionHTML:
@@ -435,6 +438,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Moonlight is consumed from the target, Lunar Rush's  current cooldown is reduced to 0.5 seconds.",
         descriptionHTML:
@@ -444,6 +448,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Diana can cast any of her abilities during the dash.',
         descriptionHTML:
           '<i><b>Diana</b> can cast any of her abilities during the dash.</i>',
@@ -498,7 +503,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Diana  pulls in all nearby enemies, during which they are  revealed, then  slows them for 2 seconds.',
+            raw: 'Diana  pulls in all nearby enemies, during which they are  revealed, then  slows them for 2 seconds.',
             values: 2,
             user: 'none',
             units: '',
@@ -529,6 +534,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If an enemy  champion is pulled in, she calls down a beam of moonlight to strike upon the area around her after 1 second, dealing magic damage to all nearby enemies, increased for each champion pulled beyond the first.',
         descriptionHTML:

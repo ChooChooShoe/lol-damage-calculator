@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Divine Ascent.png',
+        icon: '/wiki/images/Divine_Ascent.png',
         description:
           'Innate: Kayle ascends through four forms that each grant additional bonuses. She ascends upon spending a skill point at levels 1, 6, 11, and 16.',
         descriptionHTML:
@@ -53,25 +53,28 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Level 1 - Zealous:',
-            raw: " Kayle's basic attacks on-attack generate a stack of Zeal for 5 seconds, refreshing on subsequent hits and stacking up to 5 times",
+            raw: "Kayle's basic attacks on-attack generate a stack of Zeal for 5 seconds, refreshing on subsequent hits and stacking up to 5 times",
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              " Kayle's basic attacks on-attack generate a stack of Zeal for 5 seconds, refreshing on subsequent hits and stacking up to 5 times",
+              "Kayle's basic attacks on-attack generate a stack of Zeal for 5 seconds, refreshing on subsequent hits and stacking up to 5 times",
             values: 5,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks on-attack generate a stack of Zeal for 5 seconds, refreshing on subsequent hits and stacking up to 5 times',
             pre: "Kayle's basic attacks on-attack generate a stack of Zeal for 5 seconds, refreshing on subsequent hits and stacking up to 5 times",
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'For each stack, she gains  6% (+ 1% per 100 AP) bonus attack speed, up to a maximum  30% (+ 5% per 100 AP)',
-            increasedStat: 'bonus_ad',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, she gains  6% (+ 1% per 100 AP) bonus attack speed, up to a maximum  30% (+ 5% per 100 AP)',
             values: 6,
             valuesIsPercent: true,
-            units: '',
+            units: 'bonus_ad',
             unitsText: 'bonus attack speed, up to a maximum  30%',
             pre: 'For each stack, she gains  6%',
             post: 'bonus attack speed, up to a maximum  30%',
@@ -93,13 +96,16 @@ export default {
             ],
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 3:',
             raw: 'At max stacks, she becomes Exalted, gaining  10% bonus movement speed.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'At max stacks, she becomes Exalted, gaining  10% bonus movement speed.',
             values: 1,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'bonus movement speed.max stacks, she becomes Exalted, gaining  10',
             pre: 'At max stacks, she becomes Exalted, gaining  10% bonus movement speed.',
@@ -109,6 +115,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Level 6 - Arisen: Kayle becomes  ranged and gains  350 bonus attack range for a total of  525.',
         descriptionHTML:
@@ -117,7 +124,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Level 6 - Arisen:',
-            raw: ' Kayle becomes  ranged and gains  350 bonus attack range for a total of  525.',
+            raw: 'Kayle becomes  ranged and gains  350 bonus attack range for a total of  525.',
             increasedStat: 'total_ad',
             values: 3,
             units: '',
@@ -130,6 +137,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Level 11 - Aflame: Kayle gains 10% bonus size. While Kayle is Exalted, her basic attacks on-attack also launch a wave of fire forward that deals 15 − 35 (based on  Starfire Spellblade's Rank) (+ 10% bonus AD) (+ 25% AP) magic damage to all enemies it passes through. The wave is affected by  critical strike modifiers.",
         descriptionHTML:
@@ -138,7 +146,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Level 11 - Aflame:',
-            raw: ' Kayle gains 10% bonus size',
+            raw: 'Kayle gains 10% bonus size',
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -180,6 +188,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Level 16 - Transcendent: Kayle gains an additional  100 bonus attack range for a total of  625, and permanently gains the full effects of Zealous.',
         descriptionHTML:
@@ -188,7 +197,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Level 16 - Transcendent:',
-            raw: ' Kayle gains an additional  100 bonus attack range for a total of  625, and permanently gains the full effects of Zealous.',
+            raw: 'Kayle gains an additional  100 bonus attack range for a total of  625, and permanently gains the full effects of Zealous.',
             increasedStat: 'total_ad',
             values: 1,
             units: '',
@@ -241,7 +250,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Radiant Blast.png',
+        icon: '/wiki/images/Radiant_Blast.png',
         description:
           'Active: Kayle conjures a portal in front of her that faces the target direction, from which a celestial sword launches forward. The sword expands upon hitting an enemy, targets struck in the area are dealt magic damage,  slowed for 2 seconds, and inflicted with 15% reduced  armor and  magic resistance for 4 seconds.',
         descriptionHTML:
@@ -351,7 +360,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Celestial Blessing.png',
+        icon: '/wiki/images/Celestial_Blessing.png',
         description:
           'Active: Kayle and the target allied champion are  healed and gain bonus movement speed for 2 seconds.',
         descriptionHTML:
@@ -360,7 +369,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Kayle and the target allied champion are  healed and gain bonus movement speed for 2 seconds.',
+            raw: 'Kayle and the target allied champion are  healed and gain bonus movement speed for 2 seconds.',
             healType: 'OutgoingHeals',
             values: 2,
             user: 'none',
@@ -429,6 +438,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If cast without a valid target, or self-cast, Celestial Blessing will automatically target the closest allied champion in range, prioritizing the one with the lowest  health.',
         descriptionHTML:
@@ -517,7 +527,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Starfire Spellblade.png',
+        icon: '/wiki/images/Starfire_Spellblade.png',
         description:
           'Active: Kayle kindles her blade, empowering her next basic attack within 6 seconds to have an  uncancellable windup and deal additional bonus magic damage  on-hit that is capped at 400 against  monsters. If Kayle is not yet  Arisen, this attack becomes  ranged with  525 range.',
         descriptionHTML:
@@ -526,7 +536,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Kayle kindles her blade, empowering her next basic attack within 6 seconds to have an  uncancellable windup and deal additional bonus magic damage  on-hit that is capped at 400 against  monsters',
+            raw: 'Kayle kindles her blade, empowering her next basic attack within 6 seconds to have an  uncancellable windup and deal additional bonus magic damage  on-hit that is capped at 400 against  monsters',
             increasedStat: 'total_ap',
             values: 6,
             units: '',
@@ -580,7 +590,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Starfire Spellblade 2.png',
+        icon: '/wiki/images/Starfire_Spellblade_2.png',
         description:
           'Aflame Bonus: The attack explodes upon the target, dealing its damage to surrounding enemies and applying  on-hit effects. This is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -590,6 +600,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Starfire Spellblade  resets Kayle's basic attack timer.",
         descriptionHTML:
           '<i>Starfire Spellblade <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Kayle\'s</b> basic attack timer.</i>',
@@ -638,7 +649,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Divine Judgment.png',
+        icon: '/wiki/images/Divine_Judgment.png',
         description:
           'Active: Kayle grants herself or a target allied champion  invulnerability for a few seconds and conjures swords of fire.',
         descriptionHTML:
@@ -666,6 +677,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'When she finishes the cast, she rains the swords down around the target, dealing magic damage to nearby enemies.',
         descriptionHTML:

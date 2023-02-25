@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/A Harmless Scarecrow.png',
+        icon: '/wiki/images/A_Harmless_Scarecrow.png',
         description:
           'Innate - Scarecrow Effigy: Fiddlesticks begins the game with an exclusive  Scarecrow Effigy, which permanently occupies the trinket slot. Fiddlesticks can pretend to be an Effigy by standing still and not acting nor being acted upon for 2 seconds, during which it adjusts its body into a scarecrow and extends its arm out to expose its lantern.',
         descriptionHTML:
@@ -47,7 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/A Harmless Scarecrow 2.png',
+        icon: '/wiki/images/A_Harmless_Scarecrow_2.png',
         description:
           'Innate - A Harmless Scarecrow: From level 6 onward, placing an  Effigy also summons a  Sweeper Drone at the location for 6 seconds.',
         descriptionHTML:
@@ -56,7 +56,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - A Harmless Scarecrow:',
-            raw: ' From level 6 onward, placing an  Effigy also summons a  Sweeper Drone at the location for 6 seconds.',
+            raw: 'From level 6 onward, placing an  Effigy also summons a  Sweeper Drone at the location for 6 seconds.',
             values: 6,
             user: 'none',
             units: '',
@@ -110,7 +110,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: ' While Fiddlesticks has been out of combat for at least 2.5 seconds and is not  visible to the enemy team, or is pretending to be an  Effigy, its next damaging ability will additionally  fear targets hit for a duration.',
+            raw: 'While Fiddlesticks has been out of combat for at least 2.5 seconds and is not  visible to the enemy team, or is pretending to be an  Effigy, its next damaging ability will additionally  fear targets hit for a duration.',
             damagetype: 'None',
             values: 2,
             user: 'target',
@@ -227,6 +227,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Targets feared by Fiddlesticks by any means cannot be affected by it again for a duration equal to Terrify's cooldown. Against these targets, Terrify's  damage and minimum threshold are doubled.",
         descriptionHTML:
@@ -283,6 +284,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Terrify  slows affected targets by 90%.',
         descriptionHTML:
           '<i>Terrify</i> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> affected targets by 90%.',
@@ -343,7 +345,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bountiful Harvest.png',
+        icon: '/wiki/images/Bountiful_Harvest.png',
         description:
           'Active: Fiddlesticks forms a  tether between itself and each nearby enemy over the cast time, then  channels for up to 2 seconds to harvest their souls,  revealing them in the process.',
         descriptionHTML:
@@ -352,7 +354,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Fiddlesticks forms a  tether between itself and each nearby enemy over the cast time, then  channels for up to 2 seconds to harvest their souls,  revealing them in the process.',
+            raw: 'Fiddlesticks forms a  tether between itself and each nearby enemy over the cast time, then  channels for up to 2 seconds to harvest their souls,  revealing them in the process.',
             values: 2,
             units: 'darkHarvestStacks',
             unitsText:
@@ -364,6 +366,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While Fiddlesticks is channeling, the tethered enemies are dealt magic damage every 0.25 seconds, with the final tick at the end of the channel dealing additional magic damage. Bountiful Harvest deals 135% damage against  monsters and 50% damage against  minions.',
         descriptionHTML:
@@ -413,6 +416,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Fiddlesticks  heals itself for a percentage of the pre-mitigation damage dealt, modified to 45% against monsters and 15% against minions.',
         descriptionHTML:
@@ -425,7 +429,8 @@ export default {
             healType: 'SelfHeal',
             values: 4,
             valuesIsPercent: true,
-            units: 'total_percent',
+            user: 'none',
+            units: '',
             unitsText:
               'against monsters and 15 heals itself for a percentage of the pre-mitigation damage dealt, modified to 45',
             pre: 'Fiddlesticks  heals itself for a percentage of the pre-mitigation damage dealt, modified to 45% against monsters and 15% against minions.',
@@ -455,6 +460,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Bountiful Harvest ends if all targets have died or broken their tethers. If the channel was not interrupted, 60% of the  current cooldown is refunded.',
         descriptionHTML:
@@ -477,6 +483,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A nearby enemy is required to cast this ability. The target does not have to be  visible to be tethered by this ability.',
         descriptionHTML:
@@ -529,7 +536,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Fiddlesticks slashes the target location with its scythe, dealing magic damage to enemies within the area and  slowing them for 1.25 seconds.',
+            raw: 'Fiddlesticks slashes the target location with its scythe, dealing magic damage to enemies within the area and  slowing them for 1.25 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -587,6 +594,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies hit in the center of the area are also  silenced for 1.25 seconds.',
         descriptionHTML:
@@ -655,7 +663,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Fiddlesticks  channels for 1.5 seconds, then  blinks to the target location upon completion with a murder of crows flying wildly around it for 5 seconds, dealing magic damage every 0.25 seconds to nearby enemies.',
+            raw: 'Fiddlesticks  channels for 1.5 seconds, then  blinks to the target location upon completion with a murder of crows flying wildly around it for 5 seconds, dealing magic damage every 0.25 seconds to nearby enemies.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -697,6 +705,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Crowstorm will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Crowstorm will cast at max range if cast beyond that.</i>',

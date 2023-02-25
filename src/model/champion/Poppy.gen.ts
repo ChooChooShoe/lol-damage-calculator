@@ -27,7 +27,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Iron Ambassador.png',
+        icon: '/wiki/images/Iron_Ambassador.png',
         description:
           "Innate: Periodically, Poppy's next basic attack is empowered to throw her buckler, gaining  350 bonus range and dealing 20 − 180 (based on level) bonus magic damage. After it hits, the buckler then falls to a location near the target over 1 second, landing and remaining there for up to 4 seconds.",
         descriptionHTML:
@@ -36,7 +36,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Periodically, Poppy's next basic attack is empowered to throw her buckler, gaining  350 bonus range and dealing 20 − 180 (based on level) bonus magic damage",
+            raw: "Periodically, Poppy's next basic attack is empowered to throw her buckler, gaining  350 bonus range and dealing 20 − 180 (based on level) bonus magic damage",
             values: [
               20, 29.41, 38.82, 48.24, 57.65, 67.06, 76.47, 85.88, 95.29,
               104.71, 114.12, 123.53, 132.94, 142.35, 151.76, 161.18, 170.59,
@@ -65,7 +65,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Iron Ambassador 2.png',
+        icon: '/wiki/images/Iron_Ambassador_2.png',
         description:
           'Poppy can move over the buckler to retrieve it, gaining a  shield for  13 / 15.5 / 18% (based on level) of her maximum health for 3 seconds. If the buckler kills the target, it bounces back to Poppy instead of falling. Enemy  champions can move over the buckler to destroy it.',
         descriptionHTML:
@@ -127,7 +127,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hammer Shock.png',
+        icon: '/wiki/images/Hammer_Shock.png',
         description:
           'Active: Poppy smashes the area in the target direction, dealing physical damage to enemies hit. Against  monsters, the damage based on their health ratio is capped.',
         descriptionHTML:
@@ -190,6 +190,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The impact creates a field for 1 second that  slows enemies within, which then ruptures to deal the same physical damage.',
         descriptionHTML:
@@ -300,7 +301,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Stubborn to a Fault.png',
+        icon: '/wiki/images/Stubborn_to_a_Fault.png',
         description:
           'Passive: Poppy increases her  total armor and  total magic resistance by 10%, doubled to 20% while she is below 40% maximum health.',
         descriptionHTML:
@@ -309,7 +310,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Poppy increases her  total armor and  total magic resistance by 10%, doubled to 20% while she is below 40% maximum health.',
+            raw: 'Poppy increases her  total armor and  total magic resistance by 10%, doubled to 20% while she is below 40% maximum health.',
             healType: 'BonusHealth',
             values: 1,
             valuesIsPercent: true,
@@ -323,7 +324,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Steadfast Presence.png',
+        icon: '/wiki/images/Steadfast_Presence.png',
         description:
           'Active: Poppy gains  40% bonus movement speed and creates an aura around herself for 2 seconds, causing all enemies who attempt to  dash into or within it to be dealt magic damage and  knocked up for 0.5 seconds. If a target was successfully interrupted, they become  grounded and  slowed by 25% for 2 seconds.',
         descriptionHTML:
@@ -332,7 +333,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Poppy gains  40% bonus movement speed and creates an aura around herself for 2 seconds, causing all enemies who attempt to  dash into or within it to be dealt magic damage and  knocked up for 0.5 seconds',
+            raw: 'Poppy gains  40% bonus movement speed and creates an aura around herself for 2 seconds, causing all enemies who attempt to  dash into or within it to be dealt magic damage and  knocked up for 0.5 seconds',
             values: 4,
             valuesIsPercent: true,
             user: 'none',
@@ -386,6 +387,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Steadfast Presence can only block a single dash per enemy per cast.',
         descriptionHTML:
@@ -430,7 +432,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Heroic Charge.png',
+        icon: '/wiki/images/Heroic_Charge.png',
         description:
           "Active: Poppy  dashes to the target enemy's location. If they are in range upon arrival, she deals physical damage and  carries them along with her for up to 400 units.",
         descriptionHTML:
@@ -481,6 +483,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target hits terrain, she stops to deal the same physical damage again and  stuns them for a duration.',
         descriptionHTML:
@@ -578,7 +581,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Keeper's Verdict.png",
+        icon: "/wiki/images/Keeper's_Verdict.png",
         description:
           "Active: Poppy  charges while being  slowed by 15% for up to 4 seconds to increase Keeper's Verdict's  range and  knock back distance over 0.5 seconds after the first 0.5 seconds of the channel. Keeper's Verdict can be recast within the duration.",
         descriptionHTML:
@@ -587,7 +590,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: " Poppy  charges while being  slowed by 15% for up to 4 seconds to increase Keeper's Verdict's  range and  knock back distance over 0.5 seconds after the first 0.5 seconds of the channel",
+            raw: "Poppy  charges while being  slowed by 15% for up to 4 seconds to increase Keeper's Verdict's  range and  knock back distance over 0.5 seconds after the first 0.5 seconds of the channel",
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -601,6 +604,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Poppy releases the charge to launch her hammer upwards, dealing physical damage to enemies nearby and in an area in front of her and  knocking them up for 1 second.',
         descriptionHTML:
@@ -609,7 +613,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Poppy releases the charge to launch her hammer upwards, dealing physical damage to enemies nearby and in an area in front of her and  knocking them up for 1 second.',
+            raw: 'Poppy releases the charge to launch her hammer upwards, dealing physical damage to enemies nearby and in an area in front of her and  knocking them up for 1 second.',
             damagetype: 'Physical',
             values: 1,
             user: 'none',
@@ -651,6 +655,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Keeper's Verdict was charged for at least 0.5 seconds, it deals 100% increased damage and enemies hit are  knocked back up-to 3400 units toward the enemy team's fountain. Additionally, if no enemies are hit in front of Poppy, she sends a shockwave that travels in the target direction until it collides with an enemy champion, which causes a hammer to erupt. Targets hit by the shockwave or the eruption receive the charged effects.",
         descriptionHTML:
@@ -688,6 +693,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the charge is  interrupted or completes without reactivation, Keeper's Verdict is cancelled and the ability is put on a  15-second cooldown.",
         descriptionHTML:
@@ -698,7 +704,8 @@ export default {
             name: 'Line 1:',
             raw: "If the charge is  interrupted or completes without reactivation, Keeper's Verdict is cancelled and the ability is put on a  15-second cooldown.",
             values: 1,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               "the charge is  interrupted or completes without reactivation, Keeper's Verdict is cancelled and the ability is put on a  15-second cooldown.",
             pre: "If the charge is  interrupted or completes without reactivation, Keeper's Verdict is cancelled and the ability is put on a  15-second cooldown.",
@@ -708,6 +715,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies knocked  airborne are  revealed and are rendered  untargetable while being displaced if Keeper's Verdict was charged for more than 0.5 seconds.",
         descriptionHTML:

@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Guerrilla Warfare.png',
+        icon: '/wiki/images/Guerrilla_Warfare.png',
         description:
           'Innate: Teemo gains  invisibility after 1.5 seconds without moving, taking damage, performing actions that break stealth,  channeling, or being in  stasis. Teemo will maintain stealth so long as he remains idle and is not  displaced. While in  brush, Teemo gains the stealth even while moving and can move without breaking stealth.',
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Teemo gains  invisibility after 1.5 seconds without moving, taking damage, performing actions that break stealth,  channeling, or being in  stasis',
+            raw: 'Teemo gains  invisibility after 1.5 seconds without moving, taking damage, performing actions that break stealth,  channeling, or being in  stasis',
             values: 1,
             user: 'none',
             units: '',
@@ -46,7 +46,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Element of Surprise.png',
+        icon: '/wiki/images/Element_of_Surprise.png',
         description:
           'Innate - Element of Surprise: When Teemo breaks the stealth, he gains  20 / 40 / 60 / 80% (based on level) bonus attack speed for 5 seconds.',
         descriptionHTML:
@@ -55,7 +55,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Element of Surprise:',
-            raw: ' When Teemo breaks the stealth, he gains  20 / 40 / 60 / 80% (based on level) bonus attack speed for 5 seconds.',
+            raw: 'When Teemo breaks the stealth, he gains  20 / 40 / 60 / 80% (based on level) bonus attack speed for 5 seconds.',
             increasedStat: 'bonus_ad',
             values: [],
             valuesIsPercent: true,
@@ -101,7 +101,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blinding Dart.png',
+        icon: '/wiki/images/Blinding_Dart.png',
         description:
           'Active: Teemo shoots a dart at the target enemy that deals magic damage and  blinds them for a duration.',
         descriptionHTML:
@@ -155,6 +155,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The duration of the  blind is doubled against  minions and  monsters.',
         descriptionHTML:
@@ -225,7 +226,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' Teemo gains  bonus movement speed after 5 seconds without taking damage from enemy  champions or  turrets.',
+            raw: 'Teemo gains  bonus movement speed after 5 seconds without taking damage from enemy  champions or  turrets.',
             values: 5,
             user: 'none',
             units: '',
@@ -256,7 +257,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Move Quick.png',
+        icon: '/wiki/images/Move_Quick.png',
         description:
           'Active: Teemo gains bonus movement speed for 3 seconds. This overrides the passive bonus, but prevents the passive effect from being removed.',
         descriptionHTML:
@@ -265,7 +266,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Teemo gains bonus movement speed for 3 seconds',
+            raw: 'Teemo gains bonus movement speed for 3 seconds',
             values: 3,
             user: 'none',
             units: '',
@@ -295,6 +296,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Casting Move Quick does not interrupt  Guerrilla Warfare.',
         descriptionHTML:
@@ -330,7 +332,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Toxic Shot.png',
+        icon: '/wiki/images/Toxic_Shot.png',
         description:
           "Passive: Teemo's basic attacks are empowered to deal bonus magic damage  on-hit and inflict  poison.\n poison: The target takes magic damage every second over 4 seconds. Subsequent inflictions refresh the duration.",
         descriptionHTML:
@@ -339,7 +341,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: " Teemo's basic attacks are empowered to deal bonus magic damage  on-hit and inflict  poison.\n poison: The target takes magic damage every second over 4 seconds",
+            raw: "Teemo's basic attacks are empowered to deal bonus magic damage  on-hit and inflict  poison.\n poison: The target takes magic damage every second over 4 seconds",
             damagetype: 'Magic',
             values: 4,
             units: 'bonus_ad',
@@ -406,6 +408,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Toxic Shot deals 150% damage against  monsters.',
         descriptionHTML:
           '<i>Toxic Shot</i> deals 150% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
@@ -521,7 +524,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Noxious Trap.png',
+        icon: '/wiki/images/Noxious_Trap.png',
         description:
           'Active: Teemo tosses a poisonous mushroom to the target location that becomes  stealthed after arming over 1 second, lasting for up to 5 minutes and granting  sight of its surroundings. If the mushroom lands on an already-placed one, it will bounce forward again for its cast distance, up to a cap, which can happen repeatedly.',
         descriptionHTML:
@@ -530,7 +533,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Teemo tosses a poisonous mushroom to the target location that becomes  stealthed after arming over 1 second, lasting for up to 5 minutes and granting  sight of its surroundings',
+            raw: 'Teemo tosses a poisonous mushroom to the target location that becomes  stealthed after arming over 1 second, lasting for up to 5 minutes and granting  sight of its surroundings',
             values: 1,
             user: 'none',
             units: '',
@@ -561,6 +564,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Teemo periodically stocks a Noxious Trap charge, up to a maximum amount.',
         descriptionHTML:
@@ -587,6 +591,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The mushroom will explode upon enemy contact, inflicting  poison to nearby enemies and  slowing them for 4 seconds, as well as  revealing them.',
         descriptionHTML:
@@ -626,6 +631,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'poison: The target takes magic damage every second over 4 seconds. Subsequent inflictions refresh the duration.',
         descriptionHTML:
@@ -634,7 +640,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'poison:',
-            raw: ' The target takes magic damage every second over 4 seconds',
+            raw: 'The target takes magic damage every second over 4 seconds',
             damagetype: 'Magic',
             values: 4,
             user: 'none',
@@ -675,6 +681,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A mushroom has  6 maximum health and can be damaged only by  champions basic attacks (2 damage from  ranged and 3 from  melee).',
         descriptionHTML:

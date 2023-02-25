@@ -6,6 +6,6 @@ export const name: ChampionName = 'Annie';
 
 import Annie from './Annie.gen';
 
-clearDescRatios(Annie, 'Pyromania', 'Incinerate');
+// clearDescRatios(Annie, 'Pyromania', 'Incinerate');
 
 export { Annie };

@@ -31,13 +31,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Whenever Wukong or his  clone damage an enemy  champion or  monster, he generates a stack of Strength of Stone for 5 seconds, refreshing on subsequent hits and stacking up to 10 times.',
+            raw: 'Whenever Wukong or his  clone damage an enemy  champion or  monster, he generates a stack of Strength of Stone for 5 seconds, refreshing on subsequent hits and stacking up to 10 times.',
             min: 0,
             max: 10,
             description:
-              ' Whenever Wukong or his  clone damage an enemy  champion or  monster, he generates a stack of Strength of Stone for 5 seconds, refreshing on subsequent hits and stacking up to 10 times.',
+              'Whenever Wukong or his  clone damage an enemy  champion or  monster, he generates a stack of Strength of Stone for 5 seconds, refreshing on subsequent hits and stacking up to 10 times.',
             values: 5,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'Wukong or his  clone damage an enemy  champion or  monster, he generates a stack of Strength of Stone for 5 seconds, refreshing on subsequent hits and stacking up to 10 times.',
             pre: 'Whenever Wukong or his  clone damage an enemy  champion or  monster, he generates a stack of Strength of Stone for 5 seconds, refreshing on subsequent hits and stacking up to 10 times.',
@@ -47,7 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Stone Skin.png',
+        icon: '/wiki/images/Stone_Skin.png',
         description:
           'Strength of Stone: Wukong gains  5 − 9 (based on level) bonus armor and  bonus health regeneration equal to 0.35% of his maximum health, increased by 50% for each stack up to a maximum of 30 − 54 (based on level) bonus armor and 2.1% maximum health regeneration.',
         descriptionHTML:
@@ -56,14 +56,14 @@ export default {
           {
             effectType: 'Heal',
             name: 'Strength of Stone:',
-            raw: ' Wukong gains  5 − 9 (based on level) bonus armor and  bonus health regeneration equal to 0.35% of his maximum health, increased by 50% for each stack up to a maximum of 30 − 54 (based on level) bonus armor and 2.1% maximum health regeneration.',
+            raw: 'Wukong gains  5 − 9 (based on level) bonus armor and  bonus health regeneration equal to 0.35% of his maximum health, increased by 50% for each stack up to a maximum of 30 − 54 (based on level) bonus armor and 2.1% maximum health regeneration.',
             healType: 'HealthRegen',
             values: [
               5, 5.24, 5.47, 5.71, 5.94, 6.18, 6.41, 6.65, 6.88, 7.12, 7.35,
               7.59, 7.82, 8.06, 8.29, 8.53, 8.76, 9,
             ],
             basedOn: 'level',
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'bonus armor and  bonus health regeneration equal to 0.35% of his maximum health, increased by 50% for each stack up to a maximum of 30 − 54',
             pre: 'Wukong gains  5 − 9',
@@ -104,7 +104,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crushing Blow.png',
+        icon: '/wiki/images/Crushing_Blow.png',
         description:
           'Active: Wukong empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  bonus range, deal bonus physical damage, and inflict  armor reduction for 3 seconds.',
         descriptionHTML:
@@ -113,7 +113,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Wukong empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  bonus range, deal bonus physical damage, and inflict  armor reduction for 3 seconds.',
+            raw: 'Wukong empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  bonus range, deal bonus physical damage, and inflict  armor reduction for 3 seconds.',
             increasedStat: 'bonus_ad',
             values: 5,
             units: '',
@@ -186,6 +186,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Crushing Blow's  cooldown is reduced by 0.5 seconds whenever Wukong or his  clone damage an enemy.",
         descriptionHTML:
@@ -195,6 +196,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Crushing Blow  resets Wukong's and his  clone's basic attack timer. Other abilities can be used during the attack's animation.",
         descriptionHTML:
@@ -244,7 +246,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Warrior Trickster.png',
+        icon: '/wiki/images/Warrior_Trickster.png',
         description:
           'Active: Wukong enters  invisibility for 1 second and  dashes to the target location, leaving behind a  clone of himself at his casting position for 3.25 seconds.',
         descriptionHTML:
@@ -253,7 +255,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Wukong enters  invisibility for 1 second and  dashes to the target location, leaving behind a  clone of himself at his casting position for 3.25 seconds.',
+            raw: 'Wukong enters  invisibility for 1 second and  dashes to the target location, leaving behind a  clone of himself at his casting position for 3.25 seconds.',
             values: 1,
             user: 'none',
             units: '',
@@ -266,6 +268,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The clone is  untargetable to allies and can basic attack autonomously, prioritizing the last enemy Wukong damaged. It can also gain the effects of  Crushing Blow and  Nimbus Strike's bonus attack speed, and casts  Cyclone whenever Wukong does.",
         descriptionHTML:
@@ -275,6 +278,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'The clone deals reduced outgoing damage.',
         descriptionHTML: 'The clone deals reduced outgoing damage.',
         descriptionRatios: [],
@@ -301,6 +305,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "See Pets for more details about Wukong's clone. Wukong can cast any of his abilities during the dash. Warrior Trickster will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -346,7 +351,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Nimbus Strike.png',
+        icon: '/wiki/images/Nimbus_Strike.png',
         description:
           "Active: Wukong  dashes to the target enemy's location and sends out  untargetable clones to strike up to two additional enemies near the target's location, dealing magic damage. Nimbus Strike deals 120% damage to  monsters.",
         descriptionHTML:
@@ -397,6 +402,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon arrival, Wukong gains  bonus attack speed for 5 seconds.',
         descriptionHTML:
@@ -436,6 +442,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Crushing Blow can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Wukong" data-ability="Crushing Blow" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Wukong/LoL#Crushing_Blow" title="Crushing Blow"><img alt="Crushing Blow" src="/wiki/images/Wukong_Crushing_Blow.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Wukong/LoL#Crushing_Blow" title="Wukong/LoL">Crushing Blow</a></span></span> can be cast during the dash.</i>',
@@ -492,7 +499,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Wukong spins his staff around for up to 2 seconds, becoming  ghosted and gaining  20% bonus movement speed',
+            raw: 'Wukong spins his staff around for up to 2 seconds, becoming  ghosted and gaining  20% bonus movement speed',
             values: 2,
             valuesIsPercent: true,
             user: 'none',
@@ -536,6 +543,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Cyclone can be recast after 0.5 seconds within the duration, and does so automatically afterwards or by casting another ability.',
         descriptionHTML:
@@ -545,7 +553,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Cyclone 2.png',
+        icon: '/wiki/images/Cyclone_2.png',
         description:
           'Recast: Wukong ends Cyclone. After 1 second, he can cast Cyclone a second time within 8 seconds of the first cast.',
         descriptionHTML:
@@ -597,6 +605,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Nimbus Strike's bonus attack speed duration is continuously refreshed while spinning.",
         descriptionHTML:
@@ -606,6 +615,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Cyclone's damage is capped at 200 / 400 / 600 (based on level) per second against  monsters.",
         descriptionHTML:

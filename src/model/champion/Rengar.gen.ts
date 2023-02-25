@@ -36,7 +36,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Rengar generates 1 Ferocity upon casting a basic ability or using  Savagery's first attack",
+            raw: "Rengar generates 1 Ferocity upon casting a basic ability or using  Savagery's first attack",
             values: 1,
             units: 'total_ad',
             unitsText:
@@ -83,6 +83,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Innate: While in  brush, Rengar gains Unseen Predator.',
         descriptionHTML:
           '<span class="template_sbc"><b>Innate:</b></span> While in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Brush"><a href="/wiki/Brush" title="Brush"><img alt="Brushmaker.png" src="/wiki/images/Ivern_Brushmaker.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Brush" title="Brush">brush</a></span>, <b>Rengar</b> gains <i>Unseen Predator</i>.',
@@ -91,7 +92,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Unseen Predator.png',
+        icon: '/wiki/images/Unseen_Predator.png',
         description:
           "Unseen Predator: Rengar's basic attacks have massively increased range and cause him to  leap to the target's location, attacking the target upon arrival and landing closer than his normal  melee range. This generates 1 Ferocity if Rengar had 0 Ferocity at one point. Unseen Predator lingers for 0.35 seconds upon exiting brush but is lost immediately if Rengar casts  Flash or  Hexflash to do so.Rengar can cast any of his abilities during the dash.",
         descriptionHTML:
@@ -113,7 +114,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Bonetooth Necklace.png',
+        icon: '/wiki/images/Bonetooth_Necklace.png',
         description:
           "Innate - Bonetooth Necklace: Scoring a  takedown against an enemy  champion within 3 seconds of damaging them grants Rengar a Trophy, once per unique champion and up to 5. An additional Trophy is made available through the event The Hunt is On! with the  Head of Kha'Zix. Trophies grant  bonus attack damage equal to 1% − 36% (based on  Trophies) bonus AD.",
         descriptionHTML:
@@ -122,7 +123,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Bonetooth Necklace:',
-            raw: ' Scoring a  takedown against an enemy  champion within 3 seconds of damaging them grants Rengar a Trophy, once per unique champion and up to 5',
+            raw: 'Scoring a  takedown against an enemy  champion within 3 seconds of damaging them grants Rengar a Trophy, once per unique champion and up to 5',
             values: 3,
             user: 'none',
             units: '',
@@ -188,7 +189,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Rengar empowers his next two basic attacks within 3 seconds to gain  40% bonus attack speed',
+            raw: 'Rengar empowers his next two basic attacks within 3 seconds to gain  40% bonus attack speed',
             increasedStat: 'bonus_ad',
             values: 3,
             valuesIsPercent: true,
@@ -242,7 +243,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Savagery 2.png',
+        icon: '/wiki/images/Savagery_2.png',
         description:
           "Ferocity Bonus: Savagery's damage is modified. Rengar gains 50% − 101% (based on level) bonus attack speed for 5 seconds.",
         descriptionHTML:
@@ -299,6 +300,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Savagery  resets Rengar's basic attack timer.",
         descriptionHTML:
           '<i>Savagery <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Rengar\'s</b> basic attack timer.</i>',
@@ -349,11 +351,11 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Rengar stores 50% of the post-mitigation damage he has taken in the last 1.5 seconds as grey health on his health bar, increased to 100% of damage taken from  monsters.',
+            raw: 'Rengar stores 50% of the post-mitigation damage he has taken in the last 1.5 seconds as grey health on his health bar, increased to 100% of damage taken from  monsters.',
             healType: 'BonusHealth',
             values: 5,
             valuesIsPercent: true,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'of the post-mitigation damage he has taken in the last 1.5 seconds as grey health on his health bar, increased to 100stores 50',
             pre: 'Rengar stores 50% of the post-mitigation damage he has taken in the last 1.5 seconds as grey health on his health bar, increased to 100% of damage taken from  monsters.',
@@ -363,7 +365,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Battle Roar.png',
+        icon: '/wiki/images/Battle_Roar.png',
         description:
           'Active: Rengar roars, dealing magic damage to nearby enemies and 65 − 130 (based on level) bonus magic damage to  monsters, and consuming his grey health to  heal for the same amount.',
         descriptionHTML:
@@ -372,7 +374,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Rengar roars, dealing magic damage to nearby enemies and 65 − 130 (based on level) bonus magic damage to  monsters, and consuming his grey health to  heal for the same amount.',
+            raw: 'Rengar roars, dealing magic damage to nearby enemies and 65 − 130 (based on level) bonus magic damage to  monsters, and consuming his grey health to  heal for the same amount.',
             healType: 'BonusHealth',
             values: [
               65, 68.82, 72.65, 76.47, 80.29, 84.12, 87.94, 91.76, 95.59, 99.41,
@@ -418,7 +420,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Battle Roar 2.png',
+        icon: '/wiki/images/Battle_Roar_2.png',
         description:
           "Ferocity Bonus: Battle Roar's damage is modified. Rengar  cleanses himself from all  crowd control.",
         descriptionHTML:
@@ -496,7 +498,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bola Strike.png',
+        icon: '/wiki/images/Bola_Strike.png',
         description:
           'Active: Rengar throws a bola in the target direction that deals physical damage to the first enemy hit and  slows them for 1.75 seconds, as well as  revealing them for 2 seconds and granting  sight of a 150-unit radius around them for the same duration.',
         descriptionHTML:
@@ -505,7 +507,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Rengar throws a bola in the target direction that deals physical damage to the first enemy hit and  slows them for 1.75 seconds, as well as  revealing them for 2 seconds and granting  sight of a 150-unit radius around them for the same duration.',
+            raw: 'Rengar throws a bola in the target direction that deals physical damage to the first enemy hit and  slows them for 1.75 seconds, as well as  revealing them for 2 seconds and granting  sight of a 150-unit radius around them for the same duration.',
             increasedStat: 'total_ad',
             values: 1,
             user: 'target',
@@ -563,7 +565,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Bola Strike 2.png',
+        icon: '/wiki/images/Bola_Strike_2.png',
         description:
           "Ferocity Bonus: Bola Strike's damage is modified. The target is  rooted instead of  slowed.",
         descriptionHTML:
@@ -654,7 +656,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Thrill of the Hunt.png',
+        icon: '/wiki/images/Thrill_of_the_Hunt.png',
         description:
           'Active: Rengar prowls for a duration, gaining  bonus movement speed. After a 2-second delay, he also becomes  camouflaged.',
         descriptionHTML:
@@ -708,7 +710,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Thrill of the Hunt 3.png',
+        icon: '/wiki/images/Thrill_of_the_Hunt_3.png',
         description:
           'During this time, Rengar will detect the nearest enemy champion in range,  revealing and gaining  sight of a 100-unit radius around them. Enemies detected are  revealed for the remaining full duration.',
         descriptionHTML:
@@ -730,7 +732,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Thrill of the Hunt 2.png',
+        icon: '/wiki/images/Thrill_of_the_Hunt_2.png',
         description:
           "The nearest detected enemy within 1600 range is also marked, alerting all of their allies within 1200 range about Rengar's presence.",
         descriptionHTML:
@@ -751,6 +753,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Rengar's next basic attack within normal attack range against any enemy or with Unseen Predator to the marked enemy deals 50% AD bonus physical damage and inflicts  armor reduction for 4 seconds.",
         descriptionHTML:

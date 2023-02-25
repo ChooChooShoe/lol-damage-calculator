@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Whenever Nilah kills a  minion, she and the nearest allied  champion gain an additional  50% of the experience they would have lost from sharing.',
+            raw: 'Whenever Nilah kills a  minion, she and the nearest allied  champion gain an additional  50% of the experience they would have lost from sharing.',
             increasedStat: 'total_ad',
             values: 5,
             valuesIsPercent: true,
@@ -47,7 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Nilah Joy Unending.png',
+        icon: '/wiki/images/Nilah_Joy_Unending.png',
         description:
           'Innate: Whenever a nearby allied champion uses an ability to  heal or  shield either Nilah or themselves, both they and Nilah receive a bonus amount equal to 7.5% of the healing or 15% of the shielding after a 0.5-second delay. Bonus shielding lasts as long as the shield that triggered the effect, up to a maximum duration of 4 seconds.',
         descriptionHTML:
@@ -56,11 +56,12 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Whenever a nearby allied champion uses an ability to  heal or  shield either Nilah or themselves, both they and Nilah receive a bonus amount equal to 7.5% of the healing or 15% of the shielding after a 0.5-second delay',
+            raw: 'Whenever a nearby allied champion uses an ability to  heal or  shield either Nilah or themselves, both they and Nilah receive a bonus amount equal to 7.5% of the healing or 15% of the shielding after a 0.5-second delay',
             healType: 'BonusHealth',
             values: 7,
             valuesIsPercent: true,
-            units: 'bonus_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'of the healing or 15a nearby allied champion uses an ability to  heal or  shield either Nilah or themselves, both they and Nilah receive a bonus amount equal to 7.5',
             pre: 'Whenever a nearby allied champion uses an ability to  heal or  shield either Nilah or themselves, both they and Nilah receive a bonus amount equal to 7.5% of the healing or 15% of the shielding after a 0.5-second delay',
@@ -127,7 +128,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Nilah Formless Blade.png',
+        icon: '/wiki/images/Nilah_Formless_Blade.png',
         description:
           'Active: Nilah cracks her whip-blade in a line in the target direction that deals physical damage to enemies hit, increased by 0% − 120% (based on critical strike chance). Formless Blade can hit structures and applies  life steal at 100% effectiveness.',
         descriptionHTML:
@@ -179,6 +180,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Formless Blade is cast during  Slipstream, Nilah leaves behind a wave that is sent towards her location at the end of the dash, dealing the same damage to enemies hit.',
         descriptionHTML:
@@ -188,6 +190,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Formless Blade hits an enemy, Nilah empowers herself for 4 seconds: gaining  125 bonus attack range and  10% − 60% (based on level) bonus attack speed, and causing her basic attacks to strike in a cone that deals 100% AD physical damage to enemies hit. Against secondary non-champion targets, this is reduced to 33% AD for  minions and 10% AD for  monsters, and additionally executes minions left below  20 health.  On-hit effects are applied only to the primary target.',
         descriptionHTML:
@@ -196,7 +199,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'If Formless Blade hits an enemy, Nilah empowers herself for 4 seconds:',
-            raw: ' gaining  125 bonus attack range and  10% − 60% (based on level) bonus attack speed, and causing her basic attacks to strike in a cone that deals 100% AD physical damage to enemies hit',
+            raw: 'gaining  125 bonus attack range and  10% − 60% (based on level) bonus attack speed, and causing her basic attacks to strike in a cone that deals 100% AD physical damage to enemies hit',
             increasedStat: 'bonus_ad',
             values: [],
             valuesIsPercent: true,
@@ -263,7 +266,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Nilah Jubilant Veil.png',
+        icon: '/wiki/images/Nilah_Jubilant_Veil.png',
         description:
           'Active: Nilah envelops herself in mist for 2.25 seconds, during which she becomes  ghosted, gains  bonus movement speed, reduces all incoming magic damage taken by 25%, and  dodges all non- turret basic attacks.',
         descriptionHTML:
@@ -272,7 +275,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Nilah envelops herself in mist for 2.25 seconds, during which she becomes  ghosted, gains  bonus movement speed, reduces all incoming magic damage taken by 25%, and  dodges all non- turret basic attacks.',
+            raw: 'Nilah envelops herself in mist for 2.25 seconds, during which she becomes  ghosted, gains  bonus movement speed, reduces all incoming magic damage taken by 25%, and  dodges all non- turret basic attacks.',
             increasedStat: 'bonus_ad',
             values: 2,
             valuesIsPercent: true,
@@ -305,6 +308,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Allied champions she touches will also be enveloped for 1.5 seconds, gaining the same effects.',
         descriptionHTML:
@@ -363,7 +367,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Nilah Slipstream.png',
+        icon: '/wiki/images/Nilah_Slipstream.png',
         description:
           'Active: Nilah  dashes a fixed distance in the direction of the target unit, dealing physical damage to enemies she passes through.',
         descriptionHTML:
@@ -401,6 +405,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Nilah periodically stocks a Slipstream charge, up to a maximum of 2.',
         descriptionHTML:
@@ -422,6 +427,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Slipstream  resets Nilah's basic attack timer.  Formless Blade and  Apotheosis can be cast during the dash.",
         descriptionHTML:
@@ -468,7 +474,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Nilah Apotheosis.png',
+        icon: '/wiki/images/Nilah_Apotheosis.png',
         description:
           'Active: Nilah whirls her whip-blade over 1 second, dealing physical damage to nearby enemies every 0.25 seconds. She then unleashes a burst that deals physical damage and  pulls them 250 units towards her. Each hit also  slows targets by 10% for 3 seconds, refreshing on subsequent hits.',
         descriptionHTML:
@@ -477,7 +483,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Nilah whirls her whip-blade over 1 second, dealing physical damage to nearby enemies every 0.25 seconds',
+            raw: 'Nilah whirls her whip-blade over 1 second, dealing physical damage to nearby enemies every 0.25 seconds',
             damagetype: 'Physical',
             values: 1,
             units: 'total_ad',
@@ -594,6 +600,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Nilah  heals herself and nearby allied champions for 20% − 50% (based on critical strike chance) of the post-mitigation damage dealt to  champions, reduced to 10% against non-champions, converting each heal instance beyond maximum health into a  shield that last 6 seconds.',
         descriptionHTML:
@@ -618,6 +625,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Nilah is unable to basic attack and cast her other abilities during Apotheosis, but she is able to move.',
         descriptionHTML:

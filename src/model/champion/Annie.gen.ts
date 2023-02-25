@@ -29,12 +29,15 @@ export default {
           '<span class="template_sbc"><b>Innate - Pyromania:</b></span> <b>Annie</b> generates a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Pyromania</i> whenever she hits an enemy with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Annie" data-ability="Disintegrate" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Annie/LoL#Disintegrate" title="Disintegrate"><img alt="Disintegrate" src="/wiki/images/Annie_Disintegrate.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Annie/LoL#Disintegrate" title="Annie/LoL">Disintegrate</a></span></span></i> or casts her other <a href="/wiki/Champion_ability" title="Champion ability">abilities</a>, stacking up to 4 times, at which she gains <i>Energized</i>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Innate - Pyromania:',
-            raw: ' Annie generates a stack of Pyromania whenever she hits an enemy with  Disintegrate or casts her other abilities, stacking up to 4 times, at which she gains Energized.',
-            increasedStat: 'feastStacks',
+            raw: 'Annie generates a stack of Pyromania whenever she hits an enemy with  Disintegrate or casts her other abilities, stacking up to 4 times, at which she gains Energized.',
+            min: 0,
+            max: 4,
+            description:
+              'Annie generates a stack of Pyromania whenever she hits an enemy with  Disintegrate or casts her other abilities, stacking up to 4 times, at which she gains Energized.',
             values: 4,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'generates a stack of Pyromania whenever she hits an enemy with  Disintegrate or casts her other abilities, stacking up to 4 times, at which she gains Energized.',
             pre: 'Annie generates a stack of Pyromania whenever she hits an enemy with  Disintegrate or casts her other abilities, stacking up to 4 times, at which she gains Energized.',
@@ -52,11 +55,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Energized:',
-            raw: ' Annie empowers her next cast of  Disintegrate,  Incinerate, or  Summon: Tibbers to consume all Pyromania stacks to  stun enemies hit for 1.25 / 1.5 / 1.75 (based on level) seconds.',
+            raw: 'Annie empowers her next cast of  Disintegrate,  Incinerate, or  Summon: Tibbers to consume all Pyromania stacks to  stun enemies hit for 1.25 / 1.5 / 1.75 (based on level) seconds.',
             min: 0,
             max: 10,
             description:
-              ' Annie empowers her next cast of  Disintegrate,  Incinerate, or  Summon: Tibbers to consume all Pyromania stacks to  stun enemies hit for 1.25 / 1.5 / 1.75 (based on level) seconds.',
+              'Annie empowers her next cast of  Disintegrate,  Incinerate, or  Summon: Tibbers to consume all Pyromania stacks to  stun enemies hit for 1.25 / 1.5 / 1.75 (based on level) seconds.',
             values: [],
             basedOn: 'level',
             user: 'none',
@@ -285,7 +288,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Molten Shield.png',
+        icon: '/wiki/images/Molten_Shield.png',
         description:
           'Active: Annie grants herself or the target allied  champion and  Tibbers a  shield for 3 seconds and 20% − 50% (based on level)  bonus movement speed that decays over 1.5 seconds.',
         descriptionHTML:
@@ -294,7 +297,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Annie grants herself or the target allied  champion and  Tibbers a  shield for 3 seconds and 20% − 50% (based on level)  bonus movement speed that decays over 1.5 seconds.',
+            raw: 'Annie grants herself or the target allied  champion and  Tibbers a  shield for 3 seconds and 20% − 50% (based on level)  bonus movement speed that decays over 1.5 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: [],
@@ -348,22 +351,22 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '30 / 45 / 60 / 75 / 90 (+ 40% AP)',
+            values: '25 / 35 / 45 / 55 / 65 (+ 40% AP)',
             valuesHTML:
-              '30 / 45 / 60 / 75 / 90 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;40% AP)</span>',
+              '25 / 35 / 45 / 55 / 65 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;40% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '30 / 45 / 60 / 75 / 90 (+ 40% AP)',
+            raw: '25 / 35 / 45 / 55 / 65 (+ 40% AP)',
             damagetype: 'Magic',
-            values: [30, 45, 60, 75, 90],
+            values: [25, 35, 45, 55, 65],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '30 / 45 / 60 / 75 / 90',
+            pre: '25 / 35 / 45 / 55 / 65',
             children: [
               {
                 values: 40,
@@ -408,14 +411,14 @@ export default {
     cost: '100',
     costtype: 'Mana',
     cooldown:
-      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts on cast">120 / 100 / 80</span>',
+      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts on cast">130 / 122.<small>5</small> / 115 / 107.<small>5</small> / 100</span>',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Annie" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Annie/LoL" title="Annie"><img alt="Annie" src="/wiki/images/Annie_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Annie/LoL" title="Annie/LoL">Annie</a></span></span> summons her bear <span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Tibbers" title="Tibbers"><img alt="Tibbers" src="/wiki/images/TibbersSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Tibbers" class="mw-redirect" title="Tibbers">Tibbers</a></span></span>, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemies in the area.',
       '<span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Tibbers" title="Tibbers"><img alt="Tibbers" src="/wiki/images/TibbersSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Tibbers" class="mw-redirect" title="Tibbers">Tibbers</a></span></span> deals <span style="color: #00B0F0; white-space:normal">magic damage</span> with his attacks and also burns nearby enemies. Re-cast to direct him.',
     ],
     description: [
       {
-        icon: '/wiki/images/Summon Tibbers.png',
+        icon: '/wiki/images/Summon_Tibbers.png',
         description:
           'Active: Annie summons  Tibbers to the target location in a burst of flame, dealing magic damage to enemies near him. Summon: Tibbers can be recast at any time while  Tibbers is alive.',
         descriptionHTML:
@@ -474,7 +477,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Command- Tibbers.png',
+        icon: '/wiki/images/Command-_Tibbers.png',
         description: 'Recast: Annie directs  Tibbers to the target location.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Annie</b> directs <span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Tibbers" title="Tibbers"><img alt="Tibbers" src="/wiki/images/TibbersSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Tibbers" class="mw-redirect" title="Tibbers">Tibbers</a></span></span> to the target location.',

@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sona Power Chord.png',
+        icon: '/wiki/images/Sona_Power_Chord.png',
         description:
           'Innate - Accelerando: Sona generates a stack of Accelerando each time she hits an enemy  champion with  Hymn of Valor and each time she mitigates sufficient damage or heals damaged allies with  Aria of Perseverance, stacking up to 120 times. At maximum stacks, she instead reduces the  current cooldown of  Crescendo by 1.5 seconds each time.\n Accelerando: For each stack, Sona gains  0.5 basic ability haste, up to 60 at maximum stacks.',
         descriptionHTML:
@@ -34,10 +34,10 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate - Accelerando:',
-            raw: ' Sona generates a stack of Accelerando each time she hits an enemy  champion with  Hymn of Valor and each time she mitigates sufficient damage or heals damaged allies with  Aria of Perseverance, stacking up to 120 times',
+            raw: 'Sona generates a stack of Accelerando each time she hits an enemy  champion with  Hymn of Valor and each time she mitigates sufficient damage or heals damaged allies with  Aria of Perseverance, stacking up to 120 times',
             healType: 'DrainEffect',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates a stack of Accelerando each time she hits an enemy  champion with  Hymn of Valor and each time she mitigates sufficient damage or heals damaged allies with  Aria of Perseverance, stacking up to 120 times',
             pre: 'Sona generates a stack of Accelerando each time she hits an enemy  champion with  Hymn of Valor and each time she mitigates sufficient damage or heals damaged allies with  Aria of Perseverance, stacking up to 120 times',
@@ -47,7 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sona Power Chord 3.gif',
+        icon: '/wiki/images/Sona_Power_Chord_3.gif',
         description:
           'Innate - Melody: Whenever Sona casts a basic ability, her other basic abilities incur a  0.5-second global cooldown and she generates a unique aura for 3 seconds that empowers herself and nearby allied champions.',
         descriptionHTML:
@@ -57,7 +57,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sona Power Chord 2.png',
+        icon: '/wiki/images/Sona_Power_Chord_2.png',
         description:
           "Innate - Power Chord: Sona's basic abilities generate a stack of Power Chord, stacking up to 3 times. At 3 stacks, her next basic attack is empowered to consume them all to have an  uncancellable windup, deal 20 − 240 (based on level) (+ 20% AP) bonus magic damage, and apply an additional effect based on the last basic ability she casted:\n Hymn of Valor - Staccato: Deals 28 − 336 (based on level) (+ 28% AP) modified magic damage.\n Aria of Perseverance - Diminuendo: Reduces the target's size by 8% and damage dealt by 25% (+ 4% per 100 AP) for 3 seconds.\n Song of Celerity - Tempo:  Slows the target by 50% (+ 4% per 100 AP) for 2 seconds, capped at a maximum of 99%.",
         descriptionHTML:
@@ -66,21 +66,21 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate - Power Chord:',
-            raw: " Sona's basic abilities generate a stack of Power Chord, stacking up to 3 times",
+            raw: "Sona's basic abilities generate a stack of Power Chord, stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Sona's basic abilities generate a stack of Power Chord, stacking up to 3 times",
+              "Sona's basic abilities generate a stack of Power Chord, stacking up to 3 times",
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic abilities generate a stack of Power Chord, stacking up to 3 times',
             pre: "Sona's basic abilities generate a stack of Power Chord, stacking up to 3 times",
           },
           {
             effectType: 'Damage',
-            name: 'At 3 stacks, her next basic attack is empowered to consume them all to have an  uncancellable windup, deal 20 − 240 (based on level) (+ 20% AP) bonus magic damage, and apply an additional effect based on the last basic ability she casted:',
-            raw: "\n Hymn of Valor - Staccato: Deals 28 − 336 (based on level) (+ 28% AP) modified magic damage.\n Aria of Perseverance - Diminuendo: Reduces the target's size by 8% and damage dealt by 25% (+ 4% per 100 AP) for 3 seconds.\n Song of Celerity - Tempo:  Slows the target by 50% (+ 4% per 100 AP) for 2 seconds, capped at a maximum of 99%.",
+            name: 'At 3 stacks, her next basic attack is empowered to consume them all to have an  uncancellable windup, deal 20 − 240 (based on level) (+ 20% AP) bonus magic damage, and apply an additional effect based on the last basic ability she casted:\n Hymn of Valor - Staccato:',
+            raw: "Deals 28 − 336 (based on level) (+ 28% AP) modified magic damage.\n Aria of Perseverance - Diminuendo: Reduces the target's size by 8% and damage dealt by 25% (+ 4% per 100 AP) for 3 seconds.\n Song of Celerity - Tempo:  Slows the target by 50% (+ 4% per 100 AP) for 2 seconds, capped at a maximum of 99%.",
             damagetype: 'Magic',
             values: [
               28, 46.12, 64.24, 82.35, 100.47, 118.59, 136.71, 154.82, 172.94,
@@ -92,7 +92,7 @@ export default {
             units: '',
             unitsText:
               "modified magic damage.\n Aria of Perseverance - Diminuendo: Reduces the target's size by 8% and damage dealt by 25%",
-            pre: 'Hymn of Valor - Staccato: Deals 28 − 336',
+            pre: 'Deals 28 − 336',
             post: "modified magic damage.\n Aria of Perseverance - Diminuendo: Reduces the target's size by 8% and damage dealt by 25%",
             children: [
               {
@@ -123,6 +123,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gaining Power Chord's empowered attack  resets Sona's basic attack timer.",
         descriptionHTML:
@@ -170,19 +171,22 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hymn of Valor.png',
+        icon: '/wiki/images/Hymn_of_Valor.png',
         description:
           'Active: Sona sends out bolts of sound to the two nearest  visible enemies, prioritizing champions. Each bolt deals magic damage and grants  sight of the area around the target for 1 second.Sona gains a stack of  Accelerando for each bolt that hits an enemy  champion.',
         descriptionHTML:
           '<span class="template_sbc"><b>Active:</b></span> <b>Sona</b> sends out bolts of sound to the two nearest <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> enemies, prioritizing champions. Each bolt deals <span style="color: #00B0F0; white-space:normal">magic damage</span> and grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the area around the target for 1 second.<br><br><b>Sona</b> gains a stack of <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Sona" data-ability="Power Chord" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Sona/LoL#Power_Chord" title="Accelerando"><img alt="Accelerando" src="/wiki/images/Sona_Power_Chord.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Sona/LoL#Power_Chord" title="Sona/LoL">Accelerando</a></span></span></i> for each bolt that hits an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'Each bolt deals magic damage and grants  sight of the area around the target for 1 second.Sona gains a stack of  Accelerando for each bolt that hits an enemy  champion.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'Each bolt deals magic damage and grants  sight of the area around the target for 1 second.Sona gains a stack of  Accelerando for each bolt that hits an enemy  champion.',
             values: 1,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'bolt deals magic damage and grants  sight of the area around the target for 1 second.Sona gains a stack of  Accelerando for each bolt that hits an enemy  champion.',
             pre: 'Each bolt deals magic damage and grants  sight of the area around the target for 1 second.Sona gains a stack of  Accelerando for each bolt that hits an enemy  champion.',
@@ -220,7 +224,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Sona Hymn of Valor 2.png',
+        icon: '/wiki/images/Sona_Hymn_of_Valor_2.png',
         description:
           'Melody Bonus: Sona and tagged allied champions deal bonus magic damage on their next basic attack within 5 seconds.',
         descriptionHTML:
@@ -229,7 +233,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Melody Bonus:',
-            raw: ' Sona and tagged allied champions deal bonus magic damage on their next basic attack within 5 seconds.',
+            raw: 'Sona and tagged allied champions deal bonus magic damage on their next basic attack within 5 seconds.',
             damagetype: 'Magic',
             values: 5,
             units: 'bonus_ad',
@@ -310,7 +314,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Aria of Perseverance.png',
+        icon: '/wiki/images/Aria_of_Perseverance.png',
         description:
           'Active: Sona  heals herself and sends out a tone to heal the most wounded allied champion nearby.',
         descriptionHTML:
@@ -348,7 +352,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Sona Aria of Perseverance 2.png',
+        icon: '/wiki/images/Sona_Aria_of_Perseverance_2.png',
         description:
           'Melody Bonus: Sona and tagged allied champions are granted a  shield for 1.5 seconds.',
         descriptionHTML:
@@ -357,7 +361,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Melody Bonus:',
-            raw: ' Sona and tagged allied champions are granted a  shield for 1.5 seconds.',
+            raw: 'Sona and tagged allied champions are granted a  shield for 1.5 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 1,
@@ -401,6 +405,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Sona gains a stack of  Accelerando whenever she  heals a wounded ally or  shields a minimum amount of damage for an ally with Aria of Perseverance.',
         descriptionHTML:
@@ -463,7 +468,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Song of Celerity.png',
+        icon: '/wiki/images/Song_of_Celerity.png',
         description:
           'Active: Sona gains  20% (+ 2% per 100 AP) bonus movement speed for 7 seconds. If she takes damage during this time, the duration ends prematurely once or if 3 seconds have elapsed.',
         descriptionHTML:
@@ -472,7 +477,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Sona gains  20% (+ 2% per 100 AP) bonus movement speed for 7 seconds',
+            raw: 'Sona gains  20% (+ 2% per 100 AP) bonus movement speed for 7 seconds',
             values: 2,
             valuesIsPercent: true,
             user: 'none',
@@ -506,7 +511,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sona Song of Celerity 2.png',
+        icon: '/wiki/images/Sona_Song_of_Celerity_2.png',
         description:
           'Melody Bonus: Tagged allied champions gain bonus movement speed for 3 seconds.',
         descriptionHTML:
@@ -515,7 +520,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Melody Bonus:',
-            raw: ' Tagged allied champions gain bonus movement speed for 3 seconds.',
+            raw: 'Tagged allied champions gain bonus movement speed for 3 seconds.',
             values: 3,
             user: 'none',
             units: '',
@@ -599,7 +604,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Sona strikes an irresistible chord in the target direction that deals magic damage to enemies hit and  stuns them for 1.5 seconds.',
+            raw: 'Sona strikes an irresistible chord in the target direction that deals magic damage to enemies hit and  stuns them for 1.5 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',

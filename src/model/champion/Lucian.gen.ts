@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " After casting an ability, Lucian's next basic attack within 3.5 seconds fires an additional shot on-attack after 0.25 seconds, which deals 50 / 55 / 60% (based on level) AD physical damage, increased to 100% AD against  minions.",
+            raw: "After casting an ability, Lucian's next basic attack within 3.5 seconds fires an additional shot on-attack after 0.25 seconds, which deals 50 / 55 / 60% (based on level) AD physical damage, increased to 100% AD against  minions.",
             increasedStat: 'total_ad',
             values: [],
             valuesIsPercent: true,
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The second shot applies  on-hit and on-attack effects at 100% effectiveness and is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -70,6 +71,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Lucian's primary target is killed before the second shot can go off, he automatically shoots another enemy in range.",
         descriptionHTML:
@@ -79,6 +81,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - Vigilance: Whenever Lucian is  healed,  shielded or granted a buff by an ally, his next two shots within 6 seconds are empowered to deal 14 (+ 20% AD) bonus magic damage  on-hit. The empowered shots can stack up to 4 times.',
         descriptionHTML:
@@ -87,7 +90,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate - Vigilance:',
-            raw: ' Whenever Lucian is  healed,  shielded or granted a buff by an ally, his next two shots within 6 seconds are empowered to deal 14 (+ 20% AD) bonus magic damage  on-hit',
+            raw: 'Whenever Lucian is  healed,  shielded or granted a buff by an ally, his next two shots within 6 seconds are empowered to deal 14 (+ 20% AD) bonus magic damage  on-hit',
             healType: 'BonusHealth',
             values: 6,
             user: 'none',
@@ -113,7 +116,7 @@ export default {
             max: 10,
             description: 'The empowered shots can stack up to 4 times.',
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText: 'empowered shots can stack up to 4 times.',
             pre: 'The empowered shots can stack up to 4 times.',
           },
@@ -160,7 +163,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Piercing Light.png',
+        icon: '/wiki/images/Piercing_Light.png',
         description:
           'Active: Lucian fires a laser in a line in the direction of the target enemy that deals physical damage to enemies hit.',
         descriptionHTML:
@@ -237,7 +240,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ardent Blaze.png',
+        icon: '/wiki/images/Ardent_Blaze.png',
         description:
           'Active: Lucian fires a missile in the target direction that explodes in a cross pattern upon hitting an enemy or reaching maximum range, dealing magic damage to enemies hit and granting  sight of the area for 1 second.',
         descriptionHTML:
@@ -246,7 +249,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Lucian fires a missile in the target direction that explodes in a cross pattern upon hitting an enemy or reaching maximum range, dealing magic damage to enemies hit and granting  sight of the area for 1 second.',
+            raw: 'Lucian fires a missile in the target direction that explodes in a cross pattern upon hitting an enemy or reaching maximum range, dealing magic damage to enemies hit and granting  sight of the area for 1 second.',
             values: 1,
             user: 'none',
             units: '',
@@ -287,7 +290,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Ardent Blaze 2.png',
+        icon: '/wiki/images/Ardent_Blaze_2.png',
         description: 'Enemies hit are marked for 6 seconds.',
         descriptionHTML: 'Enemies hit are marked for 6 seconds.',
         descriptionRatios: [
@@ -305,7 +308,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Ardent Blaze 3.png',
+        icon: '/wiki/images/Ardent_Blaze_3.png',
         description:
           'Lucian gains  bonus movement speed for 1 second when he or allied champions damage a marked target. Allied champions triggering this effect grant Lucian  Vigilance.',
         descriptionHTML:
@@ -388,7 +391,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: " Relentless Pursuit's  current cooldown is reduced by 1 second for each  Lightslinger shot hit, doubled to 2 seconds against enemy  champions.",
+            raw: "Relentless Pursuit's  current cooldown is reduced by 1 second for each  Lightslinger shot hit, doubled to 2 seconds against enemy  champions.",
             values: 1,
             user: 'none',
             units: '',
@@ -401,7 +404,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Relentless Pursuit.png',
+        icon: '/wiki/images/Relentless_Pursuit.png',
         description: 'Active: Lucian  dashes in the target direction.',
         descriptionHTML:
           '<span class="template_sbc"><b>Active:</b></span> <b>Lucian</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash.png" src="/wiki/images/Dash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Dash" title="Dash">dashes</a></span> in the target direction.',
@@ -410,6 +413,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Relentless Pursuit  resets Lucian's basic attack timer. Lucian can cast any of his abilities during the dash. Relentless Pursuit will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -454,7 +458,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Culling.png',
+        icon: '/wiki/images/The_Culling.png',
         description:
           'Active: Lucian  channels for up to 3 seconds, rapidly firing up to 22 (+ 1 per 4% critical strike chance) shots in the target direction. Each shot deals physical damage to the first enemy hit, doubled against  minions. The Culling can be recast after 0.75 seconds during the channel, and does so automatically when the channel ends.',
         descriptionHTML:
@@ -463,7 +467,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lucian  channels for up to 3 seconds, rapidly firing up to 22 (+ 1 per 4% critical strike chance) shots in the target direction',
+            raw: 'Lucian  channels for up to 3 seconds, rapidly firing up to 22 (+ 1 per 4% critical strike chance) shots in the target direction',
             damagetype: 'None',
             values: 3,
             user: 'none',
@@ -554,6 +558,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While channeling, Lucian is  ghosted and may still move and cast  Relentless Pursuit.',
         descriptionHTML:
@@ -563,6 +568,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Recast: Lucian ends The Culling.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Lucian</b> ends <i>The Culling</i>.',

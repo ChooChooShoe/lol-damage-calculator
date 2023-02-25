@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spiked Shell.png',
+        icon: '/wiki/images/Spiked_Shell.png',
         description:
           "Innate: Rammus'  basic attacks deal 10 (+ 10% armor) bonus magic damage  on-hit, increased to 15 (+ 15% armor) during  Defensive Ball Curl.",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Rammus'  basic attacks deal 10 (+ 10% armor) bonus magic damage  on-hit, increased to 15 (+ 15% armor) during  Defensive Ball Curl.",
+            raw: "Rammus'  basic attacks deal 10 (+ 10% armor) bonus magic damage  on-hit, increased to 15 (+ 15% armor) during  Defensive Ball Curl.",
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -108,7 +108,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Rammus  channels for up to 6 seconds to roll into a ball, gaining  25% − 39.17% (based on level) bonus total movement speed per second over the duration, up to a maximum of 150% − 235% (based on level)',
+            raw: 'Rammus  channels for up to 6 seconds to roll into a ball, gaining  25% − 39.17% (based on level) bonus total movement speed per second over the duration, up to a maximum of 150% − 235% (based on level)',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -135,6 +135,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Rammus stops rolling upon colliding with an enemy, dealing magic damage to all nearby enemies and  knocking them back 125 units, though not through terrain. Enemies hit are then  stunned and  revealed for 0.4 seconds, as well as  slowed for 1 second.',
         descriptionHTML:
@@ -201,6 +202,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Recast: Rammus ends Powerball.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Rammus</b> ends <i>Powerball</i>.',
@@ -244,7 +246,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Defensive Ball Curl.png',
+        icon: '/wiki/images/Defensive_Ball_Curl.png',
         description:
           "Active: Rammus enters a defensive stance for 6 seconds, gaining  bonus armor and  bonus magic resistance. While active, enemies that use a basic attack  on-hit against Rammus are dealt magic damage equal to  Spiked Shell's bonus damage.",
         descriptionHTML:
@@ -253,7 +255,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Rammus enters a defensive stance for 6 seconds, gaining  bonus armor and  bonus magic resistance',
+            raw: 'Rammus enters a defensive stance for 6 seconds, gaining  bonus armor and  bonus magic resistance',
             increasedStat: 'bonus_armor',
             values: 6,
             units: '',
@@ -319,6 +321,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Rammus'  basic attacks extend the remaining duration of Defensive Ball Curl by 0.4 seconds, up to a maximum of 4 additional seconds.",
         descriptionHTML:
@@ -328,6 +331,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Defensive Ball Curl can be recast after 1 second within the duration, and does so automatically upon casting  Powerball.',
         descriptionHTML:
@@ -349,6 +353,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Recast: Rammus ends Defensive Ball Curl.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Rammus</b> ends <i>Defensive Ball Curl</i>.',
@@ -390,7 +395,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Frenzying Taunt.png',
+        icon: '/wiki/images/Frenzying_Taunt.png',
         description:
           'Active: Rammus  taunts the target enemy  champion or  monster for a duration and gains  bonus attack speed for the same duration.',
         descriptionHTML:
@@ -450,6 +455,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The duration of the bonus attack speed continuously refreshes during  Powerball,  Defensive Ball Curl and  Soaring Slam.',
         descriptionHTML:
@@ -498,7 +504,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Soaring Slam.png',
+        icon: '/wiki/images/Soaring_Slam.png',
         description:
           'Active: Rammus  leaps to the target location with  immunity to crowd control. Upon arrival, he creates an impact that deals magic damage to nearby enemies and  slows them for 1.5 seconds. The impact deals increased damage at the epicenter if Soaring Slam was cast further than 800 units, capped at 1700 units with 50% increased damage.',
         descriptionHTML:
@@ -578,6 +584,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Soaring Slam was cast during  Powerball, enemies within the epicenter are also  knocked up for 0.75 seconds and are dealt  Powerball's damage.  Powerball will not collide with enemies during the dash, and its channel will be maintained for the dash and end afterwards.",
         descriptionHTML:
@@ -632,6 +639,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The impact causes 3 aftershocks to burst from the area over 3.5 seconds, each one dealing magic damage to enemies within and applying the initial  slow, which stacks up to 4 times.',
         descriptionHTML:
@@ -700,6 +708,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Soaring Slam's damage affects structures and is doubled against  turrets.",
         descriptionHTML:
@@ -709,6 +718,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Soaring Slam will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Soaring Slam will cast at max range if cast beyond that.</i>',

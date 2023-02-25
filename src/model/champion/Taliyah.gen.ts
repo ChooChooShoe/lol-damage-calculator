@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rock Surfing.png',
+        icon: '/wiki/images/Rock_Surfing.png',
         description:
           'Innate: While near terrain, Taliyah gains  10 / 15 / 25 / 40% (based on level) bonus movement speed, which builds up over 1 second while in range for at least 0.4 seconds, and decays at the same rate once out of range for at least 3 seconds.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' While near terrain, Taliyah gains  10 / 15 / 25 / 40% (based on level) bonus movement speed, which builds up over 1 second while in range for at least 0.4 seconds, and decays at the same rate once out of range for at least 3 seconds.',
+            raw: 'While near terrain, Taliyah gains  10 / 15 / 25 / 40% (based on level) bonus movement speed, which builds up over 1 second while in range for at least 0.4 seconds, and decays at the same rate once out of range for at least 3 seconds.',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Taliyah is casting an ability or enters champion combat, Rock Surfing cannot occur again for a few seconds.',
         descriptionHTML:
@@ -96,7 +97,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Threaded Volley.png',
+        icon: '/wiki/images/Threaded_Volley.png',
         description:
           'Active: Taliyah throws a volley of 5 Stone Shards in the target direction over 1.5 seconds that each shatter upon the first enemy hit, dealing magic damage to nearby enemies and  revealing them for 0.5 seconds. Subsequent hits deal 40% damage.',
         descriptionHTML:
@@ -105,7 +106,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Taliyah throws a volley of 5 Stone Shards in the target direction over 1.5 seconds that each shatter upon the first enemy hit, dealing magic damage to nearby enemies and  revealing them for 0.5 seconds',
+            raw: 'Taliyah throws a volley of 5 Stone Shards in the target direction over 1.5 seconds that each shatter upon the first enemy hit, dealing magic damage to nearby enemies and  revealing them for 0.5 seconds',
             damagetype: 'Magic',
             values: 5,
             user: 'none',
@@ -159,6 +160,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Taliyah can move and cast other abilities while launching Stone Shards, and is unable to basic attack until she launches the third Stone Shard.',
         descriptionHTML:
@@ -168,6 +170,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Casting Threaded Volley creates a 400-unit area of Worked Ground at Taliyah's cast location that lasts 30 seconds. While on Worked Ground, Threaded Volley's cast consumes the area to become empowered with a new effect, costing  20 mana and having 50% reduced  cooldown, though not below 0.75 seconds.",
         descriptionHTML:
@@ -201,7 +204,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Threaded Volley 2.png',
+        icon: '/wiki/images/Threaded_Volley_2.png',
         description:
           'Empowered Active: Taliyah hurls a Boulder that explodes upon the first enemy hit, dealing  190% damage to them and normal damage to nearby enemies,  slowing all targets hit for 1.5 seconds, and  revealing them for 0.5 seconds.  Monsters hit are also  stunned for 3 seconds.',
         descriptionHTML:
@@ -210,7 +213,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Empowered Active:',
-            raw: ' Taliyah hurls a Boulder that explodes upon the first enemy hit, dealing  190% damage to them and normal damage to nearby enemies,  slowing all targets hit for 1.5 seconds, and  revealing them for 0.5 seconds',
+            raw: 'Taliyah hurls a Boulder that explodes upon the first enemy hit, dealing  190% damage to them and normal damage to nearby enemies,  slowing all targets hit for 1.5 seconds, and  revealing them for 0.5 seconds',
             damagetype: 'None',
             values: 1,
             valuesIsPercent: true,
@@ -279,6 +282,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Against  monsters, Threaded Volley deals 25 (+ 10% AP) bonus magic damage per Stone Shard, and the Boulder deals 47.5 (+ 19% AP) bonus magic damage against the primary target. This bonus damage is unaffected by the damage modifier from subsequent hits.',
         descriptionHTML:
@@ -353,7 +357,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Seismic Shove.png',
+        icon: '/wiki/images/Seismic_Shove.png',
         description:
           'Active: Taliyah marks the target location and selects a direction. After 0.792 seconds, a ledge erupts from the area that  knocks enemies hit 400 units in the target direction over 1 second.',
         descriptionHTML:
@@ -399,7 +403,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Unraveled Earth.png',
+        icon: '/wiki/images/Unraveled_Earth.png',
         description:
           'Active: Taliyah scatters a field of 22 stones across the ground in the target direction that deals magic damage to enemies hit while they erupt. The stones then remain for 4 seconds and  slow enemies within the area by 20%.',
         descriptionHTML:
@@ -408,7 +412,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Taliyah scatters a field of 22 stones across the ground in the target direction that deals magic damage to enemies hit while they erupt',
+            raw: 'Taliyah scatters a field of 22 stones across the ground in the target direction that deals magic damage to enemies hit while they erupt',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -462,6 +466,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies that  dash or are  knocked into a stone will detonate it, dealing magic damage and  stunning them for 2 seconds, which is set to 0.75 seconds for non- monsters after the movement ends.',
         descriptionHTML:
@@ -512,6 +517,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An enemy can detonate up to 4 stones, but the damage is reduced by 0% − 75% (based on stones detonated). Unraveled Earth can affect targets only once per cast; the stones will still detonate but not apply their effects.',
         descriptionHTML:
@@ -564,6 +570,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Unraveled Earth deals 150% damage against  monsters.',
         descriptionHTML:
           '<i>Unraveled Earth</i> deals 150% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
@@ -624,7 +631,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Weaver's Wall.png",
+        icon: "/wiki/images/Weaver's_Wall.png",
         description:
           'Active: Taliyah summons a torrent of spiraling rocks that cascades in the target direction,  knocking aside champions hit and erecting a wall of terrain in its wake. The wall lasts for 4 seconds after completion, then slowly disintegrates from its starting point.',
         descriptionHTML:
@@ -646,6 +653,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Taliyah also  channels for 1 second, during which Weaver's Wall can be recast and she  reveals herself.",
         descriptionHTML:
@@ -667,7 +675,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Weaver's Wall 2.png",
+        icon: "/wiki/images/Weaver's_Wall_2.png",
         description:
           'Recast: Upon completing the  channel, Taliyah  surfs on the wall as it emerges,  revealing herself in the process. After 0.75 seconds, she may input a movement command to  jump off the wall to the target location, and automatically does so upon being  immobilized or  polymorphed or reaching maximum range.Once the wall has fully formed, Taliyah can recast to destroy the wall instantly.',
         descriptionHTML:
@@ -677,6 +685,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Weaver's Wall is placed on a  3-second static cooldown upon dealing  basic or ability damage, or upon taking  champion or  turret damage.",
         descriptionHTML:
@@ -688,7 +697,8 @@ export default {
             raw: "Weaver's Wall is placed on a  3-second static cooldown upon dealing  basic or ability damage, or upon taking  champion or  turret damage.",
             damagetype: 'None',
             values: 3,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'Wall is placed on a  3-second static cooldown upon dealing  basic or ability damage, or upon taking  champion or  turret damage.',
             pre: "Weaver's Wall is placed on a  3-second static cooldown upon dealing  basic or ability damage, or upon taking  champion or  turret damage.",

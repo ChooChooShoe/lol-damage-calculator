@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Cosmic Creator.png',
+        icon: '/wiki/images/Cosmic_Creator.png',
         description:
           "Innate: Aurelion Sol's damaging abilities against enemies grant him stacks of Stardust, which improve each of his abilities. The amount of Stardust collected by each ability may vary by target.\n Breath of Light: Bursts deal bonus magic damage equal to (0.031% Stardust stacks) of the target's maximum health.\n Astral Flight: Range is increased by 62.5% Stardust stacks.\n Singularity: Outer and inner radius increased by 15% Stardust stacks, and execution threshold increased by 2.6% Stardust stacks.\n Falling Star and  The Skies Descend: Effect radius increased by 15% Stardust stacks.",
         descriptionHTML:
@@ -31,10 +31,10 @@ export default {
           {
             effectType: 'Heal',
             name: 'The amount of Stardust collected by each ability may vary by target.\n Breath of Light:',
-            raw: " Bursts deal bonus magic damage equal to (0.031% Stardust stacks) of the target's maximum health.\n Astral Flight: Range is increased by 62.5% Stardust stacks.\n Singularity: Outer and inner radius increased by 15% Stardust stacks, and execution threshold increased by 2.6% Stardust stacks.\n Falling Star and  The Skies Descend: Effect radius increased by 15% Stardust stacks.",
+            raw: "Bursts deal bonus magic damage equal to (0.031% Stardust stacks) of the target's maximum health.\n Astral Flight: Range is increased by 62.5% Stardust stacks.\n Singularity: Outer and inner radius increased by 15% Stardust stacks, and execution threshold increased by 2.6% Stardust stacks.\n Falling Star and  The Skies Descend: Effect radius increased by 15% Stardust stacks.",
             healType: 'OutgoingHeals',
             values: 0,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "of the target's maximum health.\n Astral Flight: Range is increased by 62.5% Stardust stacks.\n Singularity: Outer and inner radius increased by 15% Stardust stacks, and execution threshold increased by 2.6% Stardust stacks.\n Falling Star and  The Skies Descend: Effect radius increased by 15% Stardust stacks.",
             pre: 'Bursts deal bonus magic damage equal to',
@@ -43,7 +43,7 @@ export default {
               {
                 values: 0.031,
                 valuesIsPercent: true,
-                units: 'feastStacks',
+                units: 'genericStacks',
                 unitsText: 'Stardust stacks',
                 pre: '0.031% Stardust stacks',
               },
@@ -87,7 +87,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Breath of Light.png',
+        icon: '/wiki/images/Breath_of_Light.png',
         description:
           'Active: Aurelion Sol  charges for up to 3.25 seconds to exhale a beam of starfire, during which he can steer the beam in the target direction. The beam collides with the first enemy hit,  reveals them, and deals them magic damage every 0.125 seconds, reduced to 50% for other surrounding enemies hit by the beam.',
         descriptionHTML:
@@ -96,7 +96,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Aurelion Sol  charges for up to 3.25 seconds to exhale a beam of starfire, during which he can steer the beam in the target direction',
+            raw: 'Aurelion Sol  charges for up to 3.25 seconds to exhale a beam of starfire, during which he can steer the beam in the target direction',
             values: 3,
             user: 'none',
             units: '',
@@ -149,6 +149,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Breath of Light can be recast within the duration, and does so automatically afterwards.',
         descriptionHTML:
@@ -158,6 +159,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "For each second that the beam continuously damages the same enemy, it bursts to deal  bonus magic damage and grants 1 Stardust if the target is a  champion. The damage based on the target's health ratio is capped at 300 against  monsters.",
         descriptionHTML:
@@ -229,7 +231,7 @@ export default {
               {
                 values: 0.031,
                 valuesIsPercent: true,
-                units: 'feastStacks',
+                units: 'genericStacks',
                 unitsText: 'Stardust stacks',
                 pre: '0.031% Stardust stacks',
               },
@@ -238,6 +240,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Recast: Aurelion Sol ends Breath of Light early.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Aurelion Sol</b> ends <i>Breath of Light</i> early.',
@@ -246,6 +249,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "At rank 5, Breath of Light's channel duration lasts for as long as Aurelion Sol can pay its mana cost.",
         descriptionHTML:
@@ -274,7 +278,7 @@ export default {
     projectile: 'false',
     callforhelp: 'special',
     notes:
-      '* Applies <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell damage"><a href="/wiki/Damage" title="Damage"><img alt="Disintegrate.png" src="/wiki/images/Annie_Disintegrate.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">spell damage</a></span> on the burst and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Persistent area damage"><a href="/wiki/Damage" title="Damage"><img alt="Poison Trail.png" src="/wiki/images/Singed_Poison_Trail.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">persistent area damage</a></span> on the beam.\n<ul><li><i>Breath of Light\'s</i> bursts against an enemy champion will aggro nearby enemy minions.</li>\n<li><i>Breath of Light</i> places a timer on each target, which ticks in 0.<small>2</small> second intervals. Thus, at <span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;5 completed intervals&nbsp;」</span><span class="flipText2">「&nbsp;1 full second&nbsp;」</span></span>, the burst damage is procced.\n<ul><li>The timer\'s visuals themselves otherwise serve no other purpose than gameplay clarity.</li>\n<li>The timer falls off and resets to zero immediately upon no longer damaging affected targets.</li></ul></li>\n<li><i>Breath of Light</i> does not go on cooldown if it was charged for less than 0.<small>25</small> seconds.</li>\n<li>The listed \'indefinite duration\' at <i>Breath of Light\'s</i> rank 5, is functionally 9999 seconds of game time.</li>\n<li><i>Breath of Light\'s</i> rank 5 duration is determined based on his current mana and static mana regeneration.</li>\n<li><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell shield"><a href="/wiki/Spell_shield" title="Spell shield"><img alt="Spell Shield.png" src="/wiki/images/Sivir_Spell_Shield.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Spell_shield" title="Spell shield">Spell shield</a></span> will only block the burst damage.</li>\n<li>The following table refers to interactions while <b>Aurelion Sol</b> is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">charging</a></span>.</li></ul>\n<table class="article-table" style="font-size:small; width:475px; padding: 1em; box-shadow: #0a1827 0px 0px 25px 15px;">\n<tbody><tr>\n<th colspan="2">Type\n</th>\n<td style="width:275px;">Channel\n</td></tr>\n<tr>\n<th colspan="2">Attacking\n</th>\n<td>Interrupts\n</td></tr>\n<tr>\n<th colspan="2">Abilities\n</th>\n<td>Interrupts\n</td></tr>\n<tr>\n<th colspan="2">Movement\n</th>\n<td>Interrupts\n</td></tr>\n<tr>\n<th rowspan="3">Items\n</th>\n<th>Usable\n</th>\n<td><span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Shurelya\'s Battlesong" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Shurelya%27s_Battlesong" title="Shurelya\'s Battlesong"><img alt="Shurelya\'s Battlesong" src="/wiki/images/Shurelya%27s_Battlesong_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Shurelya%27s_Battlesong" title="Shurelya\'s Battlesong">Shurelya\'s Battlesong</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Turbo Chemtank" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Turbo_Chemtank" title="Turbo Chemtank"><img alt="Turbo Chemtank" src="/wiki/images/Turbo_Chemtank_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Turbo_Chemtank" title="Turbo Chemtank">Turbo Chemtank</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Youmuu\'s Ghostblade" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Youmuu%27s_Ghostblade" title="Youmuu\'s Ghostblade"><img alt="Youmuu\'s Ghostblade" src="/wiki/images/Youmuu%27s_Ghostblade_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Youmuu%27s_Ghostblade" title="Youmuu\'s Ghostblade">Youmuu\'s Ghostblade</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Gargoyle Stoneplate" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gargoyle_Stoneplate" title="Gargoyle Stoneplate"><img alt="Gargoyle Stoneplate" src="/wiki/images/Gargoyle_Stoneplate_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Gargoyle_Stoneplate" title="Gargoyle Stoneplate">Gargoyle Stoneplate</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Randuin\'s Omen" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Randuin%27s_Omen" title="Randuin\'s Omen"><img alt="Randuin\'s Omen" src="/wiki/images/Randuin%27s_Omen_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Randuin%27s_Omen" title="Randuin\'s Omen">Randuin\'s Omen</a></span></span>\n</td></tr>\n<tr>\n<th>Disabled\n</th>\n<td><span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Hextech Rocketbelt" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Hextech_Rocketbelt" title="Hextech Rocketbelt"><img alt="Hextech Rocketbelt" src="/wiki/images/Hextech_Rocketbelt_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Hextech_Rocketbelt" title="Hextech Rocketbelt">Hextech Rocketbelt</a></span></span>\n</td></tr>\n<tr>\n<th>Interrupted by\n</th>\n<td>All item-actives not specified above interrupt\n</td></tr>\n\n<tr>\n<th colspan="2">Consumables\n</th>\n<td>Usable\n</td></tr>\n<tr>\n<th rowspan="3">Spells\n</th>\n<th>Usable\n</th>\n<td><span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Barrier" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Barrier" title="Barrier"><img alt="Barrier" src="/wiki/images/Barrier.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Barrier" title="Barrier">Barrier</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Clarity" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Clarity" title="Clarity"><img alt="Clarity" src="/wiki/images/Clarity.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Clarity" title="Clarity">Clarity</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Cleanse" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Cleanse" title="Cleanse"><img alt="Cleanse" src="/wiki/images/Cleanse.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Cleanse" title="Cleanse">Cleanse</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Exhaust" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Exhaust" title="Exhaust"><img alt="Exhaust" src="/wiki/images/Exhaust.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Exhaust" title="Exhaust">Exhaust</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Ghost" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ghost" title="Ghost"><img alt="Ghost" src="/wiki/images/Ghost.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ghost" title="Ghost">Ghost</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Heal" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Heal" title="Heal"><img alt="Heal" src="/wiki/images/Heal.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Heal" title="Heal">Heal</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Ignite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ignite" title="Ignite"><img alt="Ignite" src="/wiki/images/Ignite.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ignite" title="Ignite">Ignite</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Smite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Smite" title="Smite"><img alt="Smite" src="/wiki/images/Smite.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Smite" title="Smite">Smite</a></span></span>\n</td></tr>\n<tr>\n<th>Disabled\n</th>\n<td><span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Teleport" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Teleport" title="Teleport"><img alt="Teleport" src="/wiki/images/Teleport.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Teleport" title="Teleport">Teleport</a></span></span>\n</td></tr>\n<tr>\n<th>Interrupted by\n</th>\n<td><span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Flash" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Flash" title="Flash"><img alt="Flash" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Flash" title="Flash">Flash</a></span></span>  <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Recall" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Recall" title="Recall"><img alt="Recall" src="/wiki/images/Recall.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Recall" title="Recall">Recall</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Hexflash" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Hextech_Flashtraption#Hexflash" title="Hexflash"><img alt="Hexflash" src="/wiki/images/Hexflash.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Hextech_Flashtraption#Hexflash" title="Hextech Flashtraption">Hexflash</a></span></span>\n</td></tr>\n\n<tr>\n<th colspan="2">Interrupted by\n</th>\n<td><li>Death</li><li><a href="https://static.wikia.nocookie.net/leagueoflegends/images/4/49/Silence_icon.png/revision/latest?cb=20171201223938" class="image"><img alt="Silence icon.png" src="/wiki/images/Silence_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> Cast-inhibiting effects\n</li></td></tr></tbody></table>',
+      '* Applies <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell damage"><a href="/wiki/Damage" title="Damage"><img alt="Disintegrate.png" src="/wiki/images/Annie_Disintegrate.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">spell damage</a></span> on the burst and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Persistent area damage"><a href="/wiki/Damage" title="Damage"><img alt="Poison Trail.png" src="/wiki/images/Singed_Poison_Trail.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">persistent area damage</a></span> on the beam.\n<ul><li><i>Breath of Light\'s</i> bursts against an enemy champion will aggro nearby enemy minions.</li>\n<li><i>Breath of Light</i> places a timer on each target, which ticks in 0.<small>2</small> second intervals. Thus, at <span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;5 completed intervals&nbsp;」</span><span class="flipText2">「&nbsp;1 full second&nbsp;」</span></span>, the burst damage is procced.\n<ul><li>The timer\'s visuals themselves otherwise serve no other purpose than gameplay clarity.</li>\n<li>The timer falls off and resets to zero immediately upon no longer damaging affected targets.</li></ul></li>\n<li>The listed \'indefinite duration\' at <i>Breath of Light\'s</i> rank 5, is functionally 9999 seconds of game time.</li>\n<li><i>Breath of Light\'s</i> rank 5 duration is determined based on his current mana and static mana regeneration.</li>\n<li><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell shield"><a href="/wiki/Spell_shield" title="Spell shield"><img alt="Spell Shield.png" src="/wiki/images/Sivir_Spell_Shield.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Spell_shield" title="Spell shield">Spell shield</a></span> will only block the burst damage.</li>\n<li>The following table refers to interactions while <b>Aurelion Sol</b> is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon.png" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">charging</a></span>.</li></ul>\n<table class="article-table" style="font-size:small; width:475px; padding: 1em; box-shadow: #0a1827 0px 0px 25px 15px;">\n<tbody><tr>\n<th colspan="2">Type\n</th>\n<td style="width:275px;">Channel\n</td></tr>\n<tr>\n<th colspan="2">Attacking\n</th>\n<td>Interrupts\n</td></tr>\n<tr>\n<th colspan="2">Abilities\n</th>\n<td>Interrupts\n</td></tr>\n<tr>\n<th colspan="2">Movement\n</th>\n<td>Interrupts\n</td></tr>\n<tr>\n<th rowspan="3">Items\n</th>\n<th>Usable\n</th>\n<td><span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Shurelya\'s Battlesong" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Shurelya%27s_Battlesong" title="Shurelya\'s Battlesong"><img alt="Shurelya\'s Battlesong" src="/wiki/images/Shurelya%27s_Battlesong_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Shurelya%27s_Battlesong" title="Shurelya\'s Battlesong">Shurelya\'s Battlesong</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Turbo Chemtank" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Turbo_Chemtank" title="Turbo Chemtank"><img alt="Turbo Chemtank" src="/wiki/images/Turbo_Chemtank_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Turbo_Chemtank" title="Turbo Chemtank">Turbo Chemtank</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Youmuu\'s Ghostblade" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Youmuu%27s_Ghostblade" title="Youmuu\'s Ghostblade"><img alt="Youmuu\'s Ghostblade" src="/wiki/images/Youmuu%27s_Ghostblade_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Youmuu%27s_Ghostblade" title="Youmuu\'s Ghostblade">Youmuu\'s Ghostblade</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Gargoyle Stoneplate" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gargoyle_Stoneplate" title="Gargoyle Stoneplate"><img alt="Gargoyle Stoneplate" src="/wiki/images/Gargoyle_Stoneplate_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Gargoyle_Stoneplate" title="Gargoyle Stoneplate">Gargoyle Stoneplate</a></span></span> <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Randuin\'s Omen" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Randuin%27s_Omen" title="Randuin\'s Omen"><img alt="Randuin\'s Omen" src="/wiki/images/Randuin%27s_Omen_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Randuin%27s_Omen" title="Randuin\'s Omen">Randuin\'s Omen</a></span></span>\n</td></tr>\n<tr>\n<th>Disabled\n</th>\n<td><span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Hextech Rocketbelt" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Hextech_Rocketbelt" title="Hextech Rocketbelt"><img alt="Hextech Rocketbelt" src="/wiki/images/Hextech_Rocketbelt_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Hextech_Rocketbelt" title="Hextech Rocketbelt">Hextech Rocketbelt</a></span></span>\n</td></tr>\n<tr>\n<th>Interrupted by\n</th>\n<td>All item-actives not specified above interrupt\n</td></tr>\n\n<tr>\n<th colspan="2">Consumables\n</th>\n<td>Usable\n</td></tr>\n<tr>\n<th rowspan="3">Spells\n</th>\n<th>Usable\n</th>\n<td><span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Barrier" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Barrier" title="Barrier"><img alt="Barrier" src="/wiki/images/Barrier.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Barrier" title="Barrier">Barrier</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Clarity" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Clarity" title="Clarity"><img alt="Clarity" src="/wiki/images/Clarity.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Clarity" title="Clarity">Clarity</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Cleanse" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Cleanse" title="Cleanse"><img alt="Cleanse" src="/wiki/images/Cleanse.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Cleanse" title="Cleanse">Cleanse</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Exhaust" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Exhaust" title="Exhaust"><img alt="Exhaust" src="/wiki/images/Exhaust.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Exhaust" title="Exhaust">Exhaust</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Ghost" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ghost" title="Ghost"><img alt="Ghost" src="/wiki/images/Ghost.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ghost" title="Ghost">Ghost</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Heal" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Heal" title="Heal"><img alt="Heal" src="/wiki/images/Heal.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Heal" title="Heal">Heal</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Ignite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ignite" title="Ignite"><img alt="Ignite" src="/wiki/images/Ignite.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ignite" title="Ignite">Ignite</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Smite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Smite" title="Smite"><img alt="Smite" src="/wiki/images/Smite.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Smite" title="Smite">Smite</a></span></span>\n</td></tr>\n<tr>\n<th>Disabled\n</th>\n<td><span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Teleport" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Teleport" title="Teleport"><img alt="Teleport" src="/wiki/images/Teleport.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Teleport" title="Teleport">Teleport</a></span></span>\n</td></tr>\n<tr>\n<th>Interrupted by\n</th>\n<td><span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Flash" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Flash" title="Flash"><img alt="Flash" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Flash" title="Flash">Flash</a></span></span>  <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Recall" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Recall" title="Recall"><img alt="Recall" src="/wiki/images/Recall.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Recall" title="Recall">Recall</a></span></span> <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Hexflash" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Hextech_Flashtraption#Hexflash" title="Hexflash"><img alt="Hexflash" src="/wiki/images/Hexflash.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Hextech_Flashtraption#Hexflash" title="Hextech Flashtraption">Hexflash</a></span></span>\n</td></tr>\n\n<tr>\n<th colspan="2">Interrupted by\n</th>\n<td><li>Death</li><li><a href="https://static.wikia.nocookie.net/leagueoflegends/images/4/49/Silence_icon.png/revision/latest?cb=20171201223938" class="image"><img alt="Silence icon.png" src="/wiki/images/Silence_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> Cast-inhibiting effects\n</li></td></tr></tbody></table>',
   },
   'Astral Flight': {
     name: 'Astral Flight',
@@ -307,7 +311,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Astral Flight.png',
+        icon: '/wiki/images/Astral_Flight.png',
         description:
           "Active: Aurelion Sol  dashes in the target direction and resets  Breath of Light's  cooldown. While in flight, he has  unobstructed vision and  Breath of Light has no cooldown and maximum channel duration and its flat damage is increased, but Astral Flight's dash speed is reduced by 50% during its channel.",
         descriptionHTML:
@@ -351,6 +355,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Aurelion Sol will be  knocked down by any  immobilizing crowd control during the dash.',
         descriptionHTML:
@@ -360,6 +365,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Astral Flight can be recast after 0.5 seconds during the dash, and does so automatically after reaching the destination.',
         descriptionHTML:
@@ -369,7 +375,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Astral Flight 2.png',
+        icon: '/wiki/images/Astral_Flight_2.png',
         description: 'Recast: Aurelion Sol ends Astral Flight early.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Aurelion Sol</b> ends <i>Astral Flight</i> early.',
@@ -378,6 +384,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Scoring a champion  takedown within 3 seconds of damaging them reduces Astral Flight's  current cooldown by 90% of its total cooldown.",
         descriptionHTML:
@@ -472,6 +479,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies in the black hole are  dragged toward its center over the duration. Non-epic monster targets within the center that are below 5% (+ 2.6% Stardust stacks) of their maximum health are also  executed. Additionally, non-champions affected have their movement speed reduced to 0.',
         descriptionHTML:
@@ -492,7 +500,7 @@ export default {
               {
                 values: 2.6,
                 valuesIsPercent: true,
-                units: 'feastStacks',
+                units: 'genericStacks',
                 unitsText: 'Stardust stacks',
                 pre: '+ 2.6% Stardust stacks',
               },
@@ -503,6 +511,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After Singularity ends, Aurelion Sol is granted 1 Stardust for each continuous second that enemy champions were inside it, and a varying amount of Stardust for enemies that died while within the area:\nChampions and epic monsters grant 5 Stardust.\nLarge minions and monsters grant 3 Stardust.\nSmall minions and monsters grant 1 Stardust.',
         descriptionHTML:
@@ -510,13 +519,36 @@ export default {
         descriptionRatios: [
           {
             effectType: 'Gain',
-            name: 'After Singularity ends, Aurelion Sol is granted 1 Stardust for each continuous second that enemy champions were inside it, and a varying amount of Stardust for enemies that died while within the area:',
-            raw: '\nChampions and epic monsters grant 5 Stardust.\nLarge minions and monsters grant 3 Stardust.\nSmall minions and monsters grant 1 Stardust.',
-            values: 5,
+            name: 'Line 1:',
+            raw: 'After Singularity ends, Aurelion Sol is granted 1 Stardust for each continuous second that enemy champions were inside it, and a varying amount of Stardust for enemies that died while within the area:\nChampions and epic monsters grant 5 Stardust.\nLarge minions and monsters grant 3 Stardust.\nSmall minions and monsters grant 1 Stardust.',
+            values: 1,
             user: 'none',
             units: '',
-            unitsText: 'and epic monsters grant 5 Stardust.',
-            pre: 'Champions and epic monsters grant 5 Stardust.\nLarge minions and monsters grant 3 Stardust.\nSmall minions and monsters grant 1 Stardust.',
+            unitsText:
+              'Singularity ends, Aurelion Sol is granted 1 Stardust for each continuous second that enemy champions were inside it, and a varying amount of Stardust for enemies that died while within the area:',
+            pre: 'After Singularity ends, Aurelion Sol is granted 1 Stardust for each continuous second that enemy champions were inside it, and a varying amount of Stardust for enemies that died while within the area:\nChampions and epic monsters grant 5 Stardust.\nLarge minions and monsters grant 3 Stardust.\nSmall minions and monsters grant 1 Stardust.',
+          },
+        ],
+        leveling: [],
+        levelingRatios: [],
+      },
+      {
+        icon: '/wiki/images/undefined',
+        description:
+          'Singularity will cast at max range if cast within 200 units beyond that. During  Astral Flight, it will do so at any range beyond the max.',
+        descriptionHTML:
+          '<i>Singularity will cast at max range if cast within 200 units beyond that. During <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Aurelion Sol" data-ability="Astral Flight" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Aurelion_Sol/LoL#Astral_Flight" title="Astral Flight"><img alt="Astral Flight" src="/wiki/images/Aurelion_Sol_Astral_Flight.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Aurelion_Sol/LoL#Astral_Flight" title="Aurelion Sol/LoL">Astral Flight</a></span></span>, it will do so at any range beyond the max.</i>',
+        descriptionRatios: [
+          {
+            effectType: 'Unique',
+            name: 'Line 1:',
+            raw: 'Singularity will cast at max range if cast within 200 units beyond that',
+            values: 2,
+            user: 'none',
+            units: '',
+            unitsText:
+              'will cast at max range if cast within 200 units beyond that',
+            pre: 'Singularity will cast at max range if cast within 200 units beyond that',
           },
         ],
         leveling: [],
@@ -530,7 +562,7 @@ export default {
     spellshield: 'Special',
     callforhelp: 'special',
     notes:
-      '* <i>Singularity</i> grants <span style="color: #5C58C9; white-space:normal">Stardust</span> only after the blast disappears.\n<ul><li><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell shield"><a href="/wiki/Spell_shield" title="Spell shield"><img alt="Spell Shield.png" src="/wiki/images/Sivir_Spell_Shield.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Spell_shield" title="Spell shield">Spell shield</a></span> will block a single instance of damage.</li>\n<li><i>Singularity\'s</i> execute against an enemy champion will aggro nearby enemy minions.</li>\n<li>If the black hole expires while <b>Aurelion Sol</b> is inside <span class="champion-ability-icon"><span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Mordekaiser" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Mordekaiser/LoL" title="Mordekaiser\'s"><img alt="Mordekaiser\'s" src="/wiki/images/Mordekaiser_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Mordekaiser/LoL" title="Mordekaiser/LoL">Mordekaiser\'s</a></span></span> <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Mordekaiser" data-ability="Realm of Death" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Mordekaiser/LoL#Realm_of_Death" title="Realm of Death"><img alt="Realm of Death" src="/wiki/images/Mordekaiser_Realm_of_Death.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Mordekaiser/LoL#Realm_of_Death" title="Mordekaiser/LoL">Realm of Death</a></span></span></span>, the damage over time will last for 1000 seconds.<sup><span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="This is not intended.">(bug)</span></sup></li>\n<li><i>Singularity\'s</i> execute will trigger <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Draven" data-ability="League of Draven" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Draven/LoL#League_of_Draven" title="League of Draven"><img alt="League of Draven" src="/wiki/images/Draven_League_of_Draven.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Draven/LoL#League_of_Draven" title="Draven/LoL">League of Draven</a></span></span> if <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Draven" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Draven/LoL" title="Draven"><img alt="Draven" src="/wiki/images/Draven_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Draven/LoL" title="Draven/LoL">Draven</a></span></span> gets an assist.<sup><span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="This is not intended.">(bug)</span></sup></li></ul>',
+      '* <i>Singularity</i> grants <span style="color: #5C58C9; white-space:normal">Stardust</span> only after the blast disappears.\n<ul><li><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell shield"><a href="/wiki/Spell_shield" title="Spell shield"><img alt="Spell Shield.png" src="/wiki/images/Sivir_Spell_Shield.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Spell_shield" title="Spell shield">Spell shield</a></span> will block a single instance of damage.</li>\n<li><i>Singularity\'s</i> execute against an enemy champion will aggro nearby enemy minions.</li>\n<li><i>Singularity\'s</i> execute will trigger <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Draven" data-ability="League of Draven" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Draven/LoL#League_of_Draven" title="League of Draven"><img alt="League of Draven" src="/wiki/images/Draven_League_of_Draven.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Draven/LoL#League_of_Draven" title="Draven/LoL">League of Draven</a></span></span> if <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Draven" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Draven/LoL" title="Draven"><img alt="Draven" src="/wiki/images/Draven_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Draven/LoL" title="Draven/LoL">Draven</a></span></span> gets an assist.<sup><span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="This is not intended.">(bug)</span></sup></li></ul>',
   },
   'Falling Star': {
     name: 'Falling Star',
@@ -560,7 +592,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Falling Star.png',
+        icon: '/wiki/images/Falling_Star.png',
         description:
           'Active: Aurelion Sol calls down a star to impact the target location after 1.25 seconds, dealing magic damage to enemies hit and  stunning them for 1.25 seconds. Falling Star grants 5 Stardust for each enemy champion hit.',
         descriptionHTML:
@@ -569,7 +601,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Aurelion Sol calls down a star to impact the target location after 1.25 seconds, dealing magic damage to enemies hit and  stunning them for 1.25 seconds',
+            raw: 'Aurelion Sol calls down a star to impact the target location after 1.25 seconds, dealing magic damage to enemies hit and  stunning them for 1.25 seconds',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -621,6 +653,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once Falling Star has been learned, gathering 75 Stardust causes the next cast of Falling Star to transform into  The Skies Descend instead, empowering the impact with new effects.',
         descriptionHTML:
@@ -636,6 +669,28 @@ export default {
             unitsText:
               'Falling Star has been learned, gathering 75 Stardust causes the next cast of Falling Star to transform into  The Skies Descend instead, empowering the impact with new effects.',
             pre: 'Once Falling Star has been learned, gathering 75 Stardust causes the next cast of Falling Star to transform into  The Skies Descend instead, empowering the impact with new effects.',
+          },
+        ],
+        leveling: [],
+        levelingRatios: [],
+      },
+      {
+        icon: '/wiki/images/undefined',
+        description:
+          'Falling Star will cast at max range if cast within 200 units beyond that. During  Astral Flight, it will do so at any range beyond the max.',
+        descriptionHTML:
+          '<i>Falling Star will cast at max range if cast within 200 units beyond that. During <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Aurelion Sol" data-ability="Astral Flight" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Aurelion_Sol/LoL#Astral_Flight" title="Astral Flight"><img alt="Astral Flight" src="/wiki/images/Aurelion_Sol_Astral_Flight.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Aurelion_Sol/LoL#Astral_Flight" title="Aurelion Sol/LoL">Astral Flight</a></span></span>, it will do so at any range beyond the max.</i>',
+        descriptionRatios: [
+          {
+            effectType: 'Unique',
+            name: 'Line 1:',
+            raw: 'Falling Star will cast at max range if cast within 200 units beyond that',
+            values: 2,
+            user: 'none',
+            units: '',
+            unitsText:
+              'Star will cast at max range if cast within 200 units beyond that',
+            pre: 'Falling Star will cast at max range if cast within 200 units beyond that',
           },
         ],
         leveling: [],

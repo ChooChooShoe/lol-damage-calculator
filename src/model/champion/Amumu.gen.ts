@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Cursed Touch.png',
+        icon: '/wiki/images/Cursed_Touch.png',
         description:
           "Innate: Amumu's basic attacks and  Curse of the Sad Mummy are empowered to mark enemies with Curse for 3 seconds, refreshing on subsequent applications and  Despair's per-tick damage.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Amumu's basic attacks and  Curse of the Sad Mummy are empowered to mark enemies with Curse for 3 seconds, refreshing on subsequent applications and  Despair's per-tick damage.",
+            raw: "Amumu's basic attacks and  Curse of the Sad Mummy are empowered to mark enemies with Curse for 3 seconds, refreshing on subsequent applications and  Despair's per-tick damage.",
             damagetype: 'None',
             values: 3,
             units: 'total_ap',
@@ -45,6 +45,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Cursed targets receive  10% bonus true damage from all incoming pre-mitigation magic damage.',
         descriptionHTML:
@@ -108,7 +109,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bandage Toss.png',
+        icon: '/wiki/images/Bandage_Toss.png',
         description:
           'Active: Amumu throws a bandage in the target direction that deals magic damage to the first enemy hit,  stunning them for 1 second and  pulling him to them, during which they are  revealed.',
         descriptionHTML:
@@ -117,7 +118,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Amumu throws a bandage in the target direction that deals magic damage to the first enemy hit,  stunning them for 1 second and  pulling him to them, during which they are  revealed.',
+            raw: 'Amumu throws a bandage in the target direction that deals magic damage to the first enemy hit,  stunning them for 1 second and  pulling him to them, during which they are  revealed.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -159,6 +160,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Amumu periodically stocks a Bandage Toss charge, up to a maximum of 2.',
         descriptionHTML:
@@ -180,6 +182,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Despair can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Amumu" data-ability="Despair" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Amumu/LoL#Despair" title="Despair"><img alt="Despair" src="/wiki/images/Amumu_Despair.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Amumu/LoL#Despair" title="Amumu/LoL">Despair</a></span></span> can be cast during the dash.</i>',
@@ -234,16 +237,16 @@ export default {
           {
             name: 'Magic Damage Per Tick:',
             values:
-              "6 / 8 / 10 / 12 / 14 (+ 1 / 1.25 / 1.5 / 1.75 / 2% (+ 0.25% per 100 AP) of target's maximum health)",
+              "6 / 8 / 10 / 12 / 14 (+ 1 / 1.15 / 1.3 / 1.45 / 1.6% (+ 0.25% per 100 AP) of target's maximum health)",
             valuesHTML:
-              '6 / 8 / 10 / 12 / 14 <span style="color: #1F995C; white-space:normal">(+&nbsp;1 / 1.<small>25</small> / 1.<small>5</small> / 1.<small>75</small> / 2% <span style="color: #7A6DFF; white-space:normal">(+&nbsp;0.<small>25</small>% per 100 AP)</span> of target\'s <b>maximum</b> health)</span>',
+              '6 / 8 / 10 / 12 / 14 <span style="color: #1F995C; white-space:normal">(+&nbsp;1 / 1.<small>15</small> / 1.<small>3</small> / 1.<small>45</small> / 1.<small>6</small>% <span style="color: #7A6DFF; white-space:normal">(+&nbsp;0.<small>25</small>% per 100 AP)</span> of target\'s <b>maximum</b> health)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Heal',
             name: 'Magic Damage Per Tick:',
-            raw: "6 / 8 / 10 / 12 / 14 (+ 1 / 1.25 / 1.5 / 1.75 / 2% (+ 0.25% per 100 AP) of target's maximum health)",
+            raw: "6 / 8 / 10 / 12 / 14 (+ 1 / 1.15 / 1.3 / 1.45 / 1.6% (+ 0.25% per 100 AP) of target's maximum health)",
             healType: 'OutgoingHeals',
             values: [6, 8, 10, 12, 14],
             user: 'none',
@@ -252,12 +255,12 @@ export default {
             pre: '6 / 8 / 10 / 12 / 14',
             children: [
               {
-                values: [1, 1.25, 1.5, 1.75, 2],
+                values: [1, 1.15, 1.3, 1.45, 1.6],
                 valuesIsPercent: true,
                 user: 'target',
                 units: 'maximum_hp',
                 unitsText: "of target's maximum health",
-                pre: '+ 1 / 1.25 / 1.5 / 1.75 / 2%',
+                pre: '+ 1 / 1.15 / 1.3 / 1.45 / 1.6%',
                 post: "of target's maximum health",
                 children: [
                   {
@@ -318,7 +321,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: ' Amumu reduces every instance of post-mitigation physical damage taken, capped at 50% of the damage instance.',
+            raw: 'Amumu reduces every instance of post-mitigation physical damage taken, capped at 50% of the damage instance.',
             damagetype: 'Physical',
             values: 5,
             valuesIsPercent: true,
@@ -406,6 +409,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Tantrum's  current cooldown is reduced by 0.75 seconds whenever Amumu is hit by a basic attack.",
         descriptionHTML:
@@ -450,7 +454,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Curse of the Sad Mummy.png',
+        icon: '/wiki/images/Curse_of_the_Sad_Mummy.png',
         description:
           'Active: Amumu entangles nearby enemies in bandages, dealing magic damage as well as  knocking down and  stunning them for 1.5 seconds.',
         descriptionHTML:
@@ -459,7 +463,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Amumu entangles nearby enemies in bandages, dealing magic damage as well as  knocking down and  stunning them for 1.5 seconds.',
+            raw: 'Amumu entangles nearby enemies in bandages, dealing magic damage as well as  knocking down and  stunning them for 1.5 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',

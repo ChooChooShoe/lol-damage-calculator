@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Icathian Surprise.png',
+        icon: '/wiki/images/Icathian_Surprise.png',
         description:
           "Innate: Upon taking  fatal damage, Kog'Maw enters a  zombie state for 4 seconds, gaining up to  40% bonus movement speed over the duration. At the end of the duration, he explodes to deal  125 − 550 (based on level) true damage to nearby enemies.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Upon taking  fatal damage, Kog'Maw enters a  zombie state for 4 seconds, gaining up to  40% bonus movement speed over the duration",
+            raw: "Upon taking  fatal damage, Kog'Maw enters a  zombie state for 4 seconds, gaining up to  40% bonus movement speed over the duration",
             values: 4,
             valuesIsPercent: true,
             user: 'none',
@@ -63,6 +63,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While under this state, Kog'Maw becomes  invulnerable,  untargetable, and  immune to crowd control, but is also rendered unable to declare basic attacks, cast abilities, use summoner spells, and activate items.",
         descriptionHTML:
@@ -135,7 +136,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Caustic Spittle.png',
+        icon: '/wiki/images/Caustic_Spittle.png',
         description:
           "Active: Kog'Maw ejects a wad of spittle in the target direction that deals magic damage to the first enemy hit and reduces their  armor and  magic resistance for 4 seconds.",
         descriptionHTML:
@@ -144,7 +145,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Kog'Maw ejects a wad of spittle in the target direction that deals magic damage to the first enemy hit and reduces their  armor and  magic resistance for 4 seconds.",
+            raw: "Kog'Maw ejects a wad of spittle in the target direction that deals magic damage to the first enemy hit and reduces their  armor and  magic resistance for 4 seconds.",
             damagetype: 'Magic',
             values: 4,
             user: 'target',
@@ -236,7 +237,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bio-Arcane Barrage.png',
+        icon: '/wiki/images/Bio-Arcane_Barrage.png',
         description:
           "Active: Kog'Maw empowers his basic attacks for the next 8 seconds to gain  bonus attack range and deal bonus magic damage  on-hit, capped at 100 against  minions and  monsters.",
         descriptionHTML:
@@ -245,7 +246,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Kog'Maw empowers his basic attacks for the next 8 seconds to gain  bonus attack range and deal bonus magic damage  on-hit, capped at 100 against  minions and  monsters.",
+            raw: "Kog'Maw empowers his basic attacks for the next 8 seconds to gain  bonus attack range and deal bonus magic damage  on-hit, capped at 100 against  minions and  monsters.",
             increasedStat: 'total_ap',
             values: 8,
             units: '',
@@ -340,7 +341,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Void Ooze.png',
+        icon: '/wiki/images/Void_Ooze.png',
         description:
           "Active: Kog'Maw spews a gob of ooze in the target direction that deals magic damage to enemies hit.",
         descriptionHTML:
@@ -378,6 +379,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A field of ooze is created in its wake for 4 seconds,  slowing enemies every 0.25 seconds.',
         descriptionHTML:
@@ -456,7 +458,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Living Artillery.png',
+        icon: '/wiki/images/Living_Artillery.png',
         description:
           "Active: Kog'Maw spits a globule of acid into the air that drops to the target location after 0.6 seconds, granting  sight of the area before dealing magic damage to enemies hit and  revealing them for 2 seconds. Living Artillery's damage is increased by 0% − 50% (based on target's missing health), or instead by  100% if the target is below 40% maximum health.",
         descriptionHTML:
@@ -501,18 +503,22 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Kog'Maw then gains a stack of Living Artillery for 8 seconds, refreshing on subsequent casts and stacking up to 9 times.",
         descriptionHTML:
           '<b>Kog\'Maw</b> then gains a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Living Artillery</i> for 8 seconds, refreshing on subsequent casts and stacking up to 9 times.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: "Kog'Maw then gains a stack of Living Artillery for 8 seconds, refreshing on subsequent casts and stacking up to 9 times.",
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 9,
+            description:
+              "Kog'Maw then gains a stack of Living Artillery for 8 seconds, refreshing on subsequent casts and stacking up to 9 times.",
             values: 8,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'then gains a stack of Living Artillery for 8 seconds, refreshing on subsequent casts and stacking up to 9 times.',
             pre: "Kog'Maw then gains a stack of Living Artillery for 8 seconds, refreshing on subsequent casts and stacking up to 9 times.",
@@ -522,6 +528,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Living Artillery: For each stack, Living Artillery's  mana cost is increased by 40.",
         descriptionHTML:
@@ -530,13 +537,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Living Artillery:',
-            raw: " For each stack, Living Artillery's  mana cost is increased by 40.",
+            raw: "For each stack, Living Artillery's  mana cost is increased by 40.",
             min: 0,
             max: 10,
             description:
-              " For each stack, Living Artillery's  mana cost is increased by 40.",
+              "For each stack, Living Artillery's  mana cost is increased by 40.",
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "each stack, Living Artillery's  mana cost is increased by 40.",
             pre: "For each stack, Living Artillery's  mana cost is increased by 40.",

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Essence Theft.png',
+        icon: '/wiki/images/Essence_Theft.png',
         description:
           'Innate: Ahri generates a stack of Essence Fragment whenever she kills a  minion or  monster. At 9 stacks, she consumes them to  heal herself for 35 − 95 (based on level) (+ 20% AP).',
         descriptionHTML:
@@ -59,6 +59,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, whenever Ahri scores a champion  takedown within 3 seconds of damaging them, she consumes their essence to heal herself for 75 − 165 (based on level) (+ 30% AP).',
         descriptionHTML:
@@ -131,7 +132,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Orb of Deception.png',
+        icon: '/wiki/images/Orb_of_Deception.png',
         description:
           'Active: Ahri sends her orb in the target direction that deals magic damage to enemies hit. At maximum range, the orb homes back to her to deal the same in  true damage to enemies hit.',
         descriptionHTML:
@@ -169,6 +170,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be hit only once per pass.',
         descriptionHTML: '<i>Enemies can be hit only once per pass.</i>',
         descriptionRatios: [],
@@ -225,7 +227,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ahri gains  40% bonus movement speed that decays over 2 seconds and conjures three flames which orbit her clockwise for up to 2.5 seconds.',
+            raw: 'Ahri gains  40% bonus movement speed that decays over 2 seconds and conjures three flames which orbit her clockwise for up to 2.5 seconds.',
             values: 4,
             valuesIsPercent: true,
             user: 'none',
@@ -239,6 +241,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 0.25 seconds, each flame targets a  visible enemy, or after 0.4 seconds targets the closest visible enemy in range, dealing magic damage. The damage is doubled against  minions below  20% maximum health.',
         descriptionHTML:
@@ -289,6 +292,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Subsequent flames on a single target deal 30% damage.',
         descriptionHTML:
           'Subsequent flames on a single target deal 30% damage.',
@@ -338,6 +342,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Flames prioritize enemy champions hit by  Charm, then enemy  champions, then minions that would die to Fox-Fire's damage, and then the target of Ahri's last basic attack within 3 seconds.",
         descriptionHTML:
@@ -407,7 +412,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ahri blows forth a kiss in the target direction that deals magic damage to the first enemy hit,  knocking them down and  charming and  slowing them by 65% for a duration.',
+            raw: 'Ahri blows forth a kiss in the target direction that deals magic damage to the first enemy hit,  knocking them down and  charming and  slowing them by 65% for a duration.',
             damagetype: 'Magic',
             values: 6,
             valuesIsPercent: true,
@@ -495,19 +500,19 @@ export default {
     effect_radius:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center.png" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Energy bolts target search radius, from Ahri\'s location on dash end/interrupt">600</span>',
     speed:
-      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Dash speed">1200 + <span style="color: #F5EE99; white-space:normal">100% MS</span></span> / <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Energy bolt missile speed">1400</span>',
+      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Dash speed">1200 + <span style="color: #F5EE99; white-space:normal">100% movement speed</span></span> / <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Energy bolt missile speed">1400</span>',
     cast_time: 'none',
     cost: '100',
     costtype: 'mana',
     cooldown:
-      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts after first cast, and refreshes upon gaining recasts">140 / 127.<small>5</small> / 115 / 102.<small>5</small> / 90</span>',
+      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts after first cast, and refreshes upon gaining recasts">130 / 117.<small>5</small> / 105 / 92.<small>5</small> / 80</span>',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Ahri" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ahri/LoL" title="Ahri"><img alt="Ahri" src="/wiki/images/Ahri_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ahri/LoL" title="Ahri/LoL">Ahri</a></span></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash.png" src="/wiki/images/Dash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Dash" title="Dash">dashes</a></span> forward and fires essence bolts to nearby enemies, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span>.',
       '<b>Ahri</b> can cast this ability up to three times in quick succession. During this time, additional casts are gained whenever a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion\'s</a></span> essence is consumed via <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Ahri" data-ability="Essence Theft 2" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ahri/LoL#Essence_Theft_2" title="Essence Theft"><img alt="Essence Theft" src="/wiki/images/Ahri_Essence_Theft_old2.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ahri/LoL#Essence_Theft_2" title="Ahri/LoL">Essence Theft</a></span></span></i>.',
     ],
     description: [
       {
-        icon: '/wiki/images/Spirit Rush.png',
+        icon: '/wiki/images/Spirit_Rush.png',
         description:
           "Active: Ahri  dashes to the target location and then fires essence bolts to up to 3 nearby  visible enemies, each dealing magic damage. Spirit Rush can be recast twice more within 15 seconds of the activation at no additional cost, with a 1 second static cooldown between casts. Consuming a champion's essence with  Essence Theft while Spirit Rush is active extends the recast duration by and up to 10 seconds, and grants an additional recast, storing up to 3 recasts at a time.",
         descriptionHTML:
@@ -516,7 +521,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ahri  dashes to the target location and then fires essence bolts to up to 3 nearby  visible enemies, each dealing magic damage',
+            raw: 'Ahri  dashes to the target location and then fires essence bolts to up to 3 nearby  visible enemies, each dealing magic damage',
             damagetype: 'Magic',
             values: 3,
             user: 'none',
@@ -580,6 +585,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Recast: Ahri mimics the first cast's effects.",
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Ahri</b> mimics the first cast\'s effects.',
@@ -588,6 +594,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Spirit Rush's recast duration will persist even after having used all recasts.  Fox-Fire can be cast during the dash. Spirit Rush will cast at max range if cast beyond that.",
         descriptionHTML:

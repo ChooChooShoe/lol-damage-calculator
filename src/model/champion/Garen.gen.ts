@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Garen  regenerates「 1.5% − 10.1% (based on level) of his  maximum health every 5 seconds. 」「 0.15% − 1.01% (based on level) of his  maximum health every 0.5 seconds. 」',
+            raw: 'Garen  regenerates「 1.5% − 10.1% (based on level) of his  maximum health every 5 seconds. 」「 0.15% − 1.01% (based on level) of his  maximum health every 0.5 seconds. 」',
             healType: 'HealthRegen',
             values: [],
             valuesIsPercent: true,
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Perseverance is lost for 8 seconds if Garen takes damage from epic  monsters,  turrets, or  champions, or if he is hit by an enemy ability or affected by an enemy summoner spell, refreshing on subsequent damage and hits taken from them.',
         descriptionHTML:
@@ -59,7 +60,8 @@ export default {
             raw: 'Perseverance is lost for 8 seconds if Garen takes damage from epic  monsters,  turrets, or  champions, or if he is hit by an enemy ability or affected by an enemy summoner spell, refreshing on subsequent damage and hits taken from them.',
             damagetype: 'None',
             values: 8,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'is lost for 8 seconds if Garen takes damage from epic  monsters,  turrets, or  champions, or if he is hit by an enemy ability or affected by an enemy summoner spell, refreshing on subsequent damage and hits taken from them.',
             pre: 'Perseverance is lost for 8 seconds if Garen takes damage from epic  monsters,  turrets, or  champions, or if he is hit by an enemy ability or affected by an enemy summoner spell, refreshing on subsequent damage and hits taken from them.',
@@ -100,7 +102,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Decisive Strike.png',
+        icon: '/wiki/images/Decisive_Strike.png',
         description:
           'Active: Garen  cleanses himself of all  slows and gains  35% bonus movement speed for a few seconds.',
         descriptionHTML:
@@ -109,7 +111,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Garen  cleanses himself of all  slows and gains  35% bonus movement speed for a few seconds.',
+            raw: 'Garen  cleanses himself of all  slows and gains  35% bonus movement speed for a few seconds.',
             values: 3,
             valuesIsPercent: true,
             user: 'none',
@@ -141,6 +143,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, Garen empowers his next basic attack within 4.5 seconds to have an  uncancellable windup,  lunge at the target, deal bonus physical damage, and  silence the target for 1.5 seconds.',
         descriptionHTML:
@@ -191,6 +194,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Decisive Strike  resets Garen's basic attack timer.",
         descriptionHTML:
           '<i>Decisive Strike <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Garen\'s</b> basic attack timer.</i>',
@@ -240,13 +244,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: ' Whenever Garen kills an enemy, he generates a stack of Courage, stacking up to 150 times.',
+            raw: 'Whenever Garen kills an enemy, he generates a stack of Courage, stacking up to 150 times.',
             min: 0,
-            max: 10,
+            max: 150,
             description:
-              ' Whenever Garen kills an enemy, he generates a stack of Courage, stacking up to 150 times.',
+              'Whenever Garen kills an enemy, he generates a stack of Courage, stacking up to 150 times.',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'Garen kills an enemy, he generates a stack of Courage, stacking up to 150 times.',
             pre: 'Whenever Garen kills an enemy, he generates a stack of Courage, stacking up to 150 times.',
@@ -256,19 +260,23 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Courage: For each stack, Garen gains  0.2 bonus armor and  0.2 bonus magic resistance, up to a maximum of 30 bonus resistances. After reaching maximum stacks, Garen gains 10% bonus armor and 10% bonus magic resistance.',
         descriptionHTML:
           '<span class="template_sbc"><b>Courage:</b></span> For each stack, <b>Garen</b> gains <span style="white-space:nowrap"><a href="/wiki/Armor" title="Armor"><img alt="Armor icon.png" src="/wiki/images/Armor_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal">0.<small>2</small> <b>bonus</b> armor</span></span> and <span style="white-space:nowrap"><a href="/wiki/Magic_resistance" title="Magic resistance"><img alt="Magic resistance icon.png" src="/wiki/images/Magic_resistance_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #00FFFF; white-space:normal">0.<small>2</small> <b>bonus</b> magic resistance</span></span>, up to a maximum of 30 <b>bonus</b> resistances. After reaching maximum stacks, <b>Garen</b> gains <span style="color:yellow; white-space:normal">10% <b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal">10% <b>bonus</b> magic resistance</span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'After reaching maximum stacks, Garen gains 10% bonus armor and 10% bonus magic resistance.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'After reaching maximum stacks, Garen gains 10% bonus armor and 10% bonus magic resistance.',
             values: 1,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'bonus armor and 10reaching maximum stacks, Garen gains 10',
             pre: 'After reaching maximum stacks, Garen gains 10% bonus armor and 10% bonus magic resistance.',
@@ -287,7 +295,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Garen reduces incoming damage by 30% for a few seconds',
+            raw: 'Garen reduces incoming damage by 30% for a few seconds',
             damagetype: 'None',
             values: 3,
             valuesIsPercent: true,
@@ -386,7 +394,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Garen rapidly spins his sword around himself 7 (+ 1 per 25% bonus attack speed) times over 3 seconds, becoming  ghosted and unable to basic attack and dealing physical damage to nearby enemies periodically',
+            raw: 'Garen rapidly spins his sword around himself 7 (+ 1 per 25% bonus attack speed) times over 3 seconds, becoming  ghosted and unable to basic attack and dealing physical damage to nearby enemies periodically',
             damagetype: 'Physical',
             values: 7,
             units: 'total_ad',
@@ -460,6 +468,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy champions hit 6 times by Judgment are inflicted with  25% armor reduction for 6 seconds, with the duration refreshing upon the 7th hit and every 6th hit thereafter.',
         descriptionHTML:
@@ -481,7 +490,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Judgment 3.png',
+        icon: '/wiki/images/Judgment_3.png',
         description:
           'Judgment deals 25% increased damage against the nearest enemy hit.',
         descriptionHTML:
@@ -544,7 +553,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Judgment 2.png',
+        icon: '/wiki/images/Judgment_2.png',
         description:
           'Recast: Garen ends Judgment prematurely, reducing its  cooldown by its remaining duration.',
         descriptionHTML:
@@ -554,6 +563,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Judgment can  critically strike for  (75% +  35%) bonus physical damage. Additionally, Judgment deals 150% damage against  monsters.',
         descriptionHTML:
@@ -628,7 +638,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Demacian Justice.png',
+        icon: '/wiki/images/Demacian_Justice.png',
         description:
           'Active: Garen calls upon the might of Demacia onto the target enemy  champion, dealing them  true damage as well as  revealing them for 1 second at the start of the cast time.',
         descriptionHTML:
@@ -637,7 +647,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Garen calls upon the might of Demacia onto the target enemy  champion, dealing them  true damage as well as  revealing them for 1 second at the start of the cast time.',
+            raw: 'Garen calls upon the might of Demacia onto the target enemy  champion, dealing them  true damage as well as  revealing them for 1 second at the start of the cast time.',
             damagetype: 'True',
             values: 1,
             user: 'none',

@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hextech Capacitor.png',
+        icon: '/wiki/images/Hextech_Capacitor.png',
         description:
           'Innate: Whenever Jayce switches between either  Hammer Stance or  Cannon Stance, he gains  ghosting and  40 bonus movement speed for 0.75 seconds.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Whenever Jayce switches between either  Hammer Stance or  Cannon Stance, he gains  ghosting and  40 bonus movement speed for 0.75 seconds.',
+            raw: 'Whenever Jayce switches between either  Hammer Stance or  Cannon Stance, he gains  ghosting and  40 bonus movement speed for 0.75 seconds.',
             values: 4,
             user: 'none',
             units: '',
@@ -75,7 +75,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/To the Skies!.png',
+        icon: '/wiki/images/To_the_Skies!.png',
         description:
           "Active: Jayce  leaps to the target enemy's location. Upon arrival, he deals physical damage to all enemies within an area and  slows them for 2 seconds.",
         descriptionHTML:
@@ -142,6 +142,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Lightning Field can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Jayce" data-ability="Lightning Field" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Jayce/LoL#Lightning_Field" title="Lightning Field"><img alt="Lightning Field" src="/wiki/images/Jayce_Lightning_Field.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Jayce/LoL#Lightning_Field" title="Jayce/LoL">Lightning Field</a></span></span> can be cast during the dash.</i>',
@@ -193,7 +194,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shock Blast.png',
+        icon: '/wiki/images/Shock_Blast.png',
         description:
           'Active: Jayce fires an electric bolt in the target direction that detonates upon hitting an enemy or reaching maximum range, dealing physical damage to nearby enemies and granting  sight of the area for 1.25 seconds.',
         descriptionHTML:
@@ -202,7 +203,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jayce fires an electric bolt in the target direction that detonates upon hitting an enemy or reaching maximum range, dealing physical damage to nearby enemies and granting  sight of the area for 1.25 seconds.',
+            raw: 'Jayce fires an electric bolt in the target direction that detonates upon hitting an enemy or reaching maximum range, dealing physical damage to nearby enemies and granting  sight of the area for 1.25 seconds.',
             values: 1,
             user: 'none',
             units: '',
@@ -243,6 +244,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the bolt passes through  Acceleration Gate, it becomes supercharged: increasing its damage by 40% as well as its speed, range and explosion radius.',
         descriptionHTML:
@@ -251,7 +253,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'If the bolt passes through  Acceleration Gate, it becomes supercharged:',
-            raw: ' increasing its damage by 40% as well as its speed, range and explosion radius.',
+            raw: 'increasing its damage by 40% as well as its speed, range and explosion radius.',
             damagetype: 'None',
             values: 4,
             valuesIsPercent: true,
@@ -358,7 +360,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Lightning Field.png',
+        icon: '/wiki/images/Lightning_Field.png',
         description:
           'Active: Jayce surrounds himself with an electric field for 4 seconds that deals magic damage every second to nearby enemies.',
         descriptionHTML:
@@ -367,7 +369,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Jayce surrounds himself with an electric field for 4 seconds that deals magic damage every second to nearby enemies.',
+            raw: 'Jayce surrounds himself with an electric field for 4 seconds that deals magic damage every second to nearby enemies.',
             damagetype: 'Magic',
             values: 4,
             user: 'none',
@@ -441,7 +443,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hyper Charge.png',
+        icon: '/wiki/images/Hyper_Charge.png',
         description:
           "Active: Jayce empowers his next 3 basic attacks within 4 seconds to deal modified physical damage and gain  300% bonus attack speed.Hyper Charge's total damage is affected by  critical strike modifiers.",
         descriptionHTML:
@@ -450,7 +452,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Jayce empowers his next 3 basic attacks within 4 seconds to deal modified physical damage and gain  300% bonus attack speed.Hyper Charge's total damage is affected by  critical strike modifiers.",
+            raw: "Jayce empowers his next 3 basic attacks within 4 seconds to deal modified physical damage and gain  300% bonus attack speed.Hyper Charge's total damage is affected by  critical strike modifiers.",
             increasedStat: 'total_ad',
             values: 3,
             valuesIsPercent: true,
@@ -483,6 +485,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Hyper Charge  resets Jayce's basic attack timer.",
         descriptionHTML:
           '<i>Hyper Charge <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Jayce\'s</b> basic attack timer.</i>',
@@ -524,7 +527,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Thundering Blow.png',
+        icon: '/wiki/images/Thundering_Blow.png',
         description:
           'Active: Jayce swings his hammer at the target enemy, dealing magic damage, capped against  monsters, while also  displacing them to a location 500 units in front of him.',
         descriptionHTML:
@@ -533,7 +536,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jayce swings his hammer at the target enemy, dealing magic damage, capped against  monsters, while also  displacing them to a location 500 units in front of him.',
+            raw: 'Jayce swings his hammer at the target enemy, dealing magic damage, capped against  monsters, while also  displacing them to a location 500 units in front of him.',
             increasedStat: 'total_ap',
             values: 5,
             units: '',
@@ -612,7 +615,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Acceleration Gate.png',
+        icon: '/wiki/images/Acceleration_Gate.png',
         description:
           'Active: Jayce deploys an energy gate centered at the target location, lasting for 4 seconds and granting  sight of its surroundings. Jayce and all allied champions can move through it to gain  bonus movement speed that decays over 3 seconds.',
         descriptionHTML:
@@ -621,7 +624,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jayce deploys an energy gate centered at the target location, lasting for 4 seconds and granting  sight of its surroundings',
+            raw: 'Jayce deploys an energy gate centered at the target location, lasting for 4 seconds and granting  sight of its surroundings',
             values: 4,
             user: 'none',
             units: '',
@@ -663,6 +666,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The buff is continuously refreshed while inside the gate. Acceleration Gate will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -701,7 +705,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Transform Mercury Cannon.png',
+        icon: '/wiki/images/Transform_Mercury_Cannon.png',
         description:
           "Active: Jayce transforms into  Cannon Stance, receiving access to its abilities, becoming  ranged with  500 attack range, and empowering his next basic attack to reduce the target's  armor and  magic resistance by 10 / 15 / 20 / 25% (based on level) for 5 seconds.",
         descriptionHTML:
@@ -710,7 +714,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Jayce transforms into  Cannon Stance, receiving access to its abilities, becoming  ranged with  500 attack range, and empowering his next basic attack to reduce the target's  armor and  magic resistance by 10 / 15 / 20 / 25% (based on level) for 5 seconds.",
+            raw: "Jayce transforms into  Cannon Stance, receiving access to its abilities, becoming  ranged with  500 attack range, and empowering his next basic attack to reduce the target's  armor and  magic resistance by 10 / 15 / 20 / 25% (based on level) for 5 seconds.",
             damagetype: 'Magic',
             values: [],
             valuesIsPercent: true,
@@ -726,6 +730,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Jayce begins the game with Transform but cannot increase its rank. Instead, his basic abilities each have 6 ranks.',
         descriptionHTML:
@@ -778,7 +783,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Transform Mercury Hammer.png',
+        icon: '/wiki/images/Transform_Mercury_Hammer.png',
         description:
           'Active: Jayce transforms into  Hammer Stance, receiving access to its abilities, becoming  melee with  125 attack range, gaining 5 / 15 / 25 / 35 (based on level) (+ 7.5% bonus AD)  bonus armor and  bonus magic resistance, and empowering his next basic attack to deal 25 / 65 / 105 / 145 (based on level) (+ 25% bonus AD) bonus magic damage.',
         descriptionHTML:
@@ -787,7 +792,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jayce transforms into  Hammer Stance, receiving access to its abilities, becoming  melee with  125 attack range, gaining 5 / 15 / 25 / 35 (based on level) (+ 7.5% bonus AD)  bonus armor and  bonus magic resistance, and empowering his next basic attack to deal 25 / 65 / 105 / 145 (based on level) (+ 25% bonus AD) bonus magic damage.',
+            raw: 'Jayce transforms into  Hammer Stance, receiving access to its abilities, becoming  melee with  125 attack range, gaining 5 / 15 / 25 / 35 (based on level) (+ 7.5% bonus AD)  bonus armor and  bonus magic resistance, and empowering his next basic attack to deal 25 / 65 / 105 / 145 (based on level) (+ 25% bonus AD) bonus magic damage.',
             increasedStat: 'bonus_ad',
             values: [],
             basedOn: 'level',
@@ -818,6 +823,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Jayce begins the game with Transform but cannot increase its rank. Instead, his basic abilities each have 6 ranks.',
         descriptionHTML:

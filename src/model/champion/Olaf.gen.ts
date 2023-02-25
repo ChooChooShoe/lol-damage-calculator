@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Berserker Rage.png',
+        icon: '/wiki/images/Berserker_Rage.png',
         description:
           'Innate: Olaf gains  bonus attack speed and  life steal based on his missing health, up to 60% − 100% (based on level) bonus attack speed and 8% − 25% (based on level) life steal at 70% missing health.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Olaf gains  bonus attack speed and  life steal based on his missing health, up to 60% − 100% (based on level) bonus attack speed and 8% − 25% (based on level) life steal at 70% missing health.',
+            raw: 'Olaf gains  bonus attack speed and  life steal based on his missing health, up to 60% − 100% (based on level) bonus attack speed and 8% − 25% (based on level) life steal at 70% missing health.',
             healType: 'BonusHealth',
             values: [],
             valuesIsPercent: true,
@@ -91,7 +91,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Olaf throws an axe to the target location that deals physical damage to enemies it passes through and  slows them for 1.5 − 2.5 (based on distance traveled) seconds',
+            raw: 'Olaf throws an axe to the target location that deals physical damage to enemies it passes through and  slows them for 1.5 − 2.5 (based on distance traveled) seconds',
             damagetype: 'Physical',
             values: [1, 2.5],
             basedOn: 'distance traveled',
@@ -161,6 +161,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The axe remains in place for a duration equal to Undertow's cooldown, briefly granting  sight of its surroundings. Olaf can pick up the axe to reduce Undertow's  current cooldown to 2.5 seconds, which resets the cooldown if that has already elapsed.",
         descriptionHTML:
@@ -182,6 +183,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Undertow will cast at max range if cast beyond that. Nearby  monsters are granted  ghosting upon Undertow's cast.",
         descriptionHTML:
@@ -224,7 +226,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Olaf Tough It Out.png',
+        icon: '/wiki/images/Olaf_Tough_It_Out.png',
         description:
           'Active: Olaf gains  bonus attack speed for 4 seconds and grants himself a  shield for 2.5 seconds with an amount that is capped at 70% missing health.',
         descriptionHTML:
@@ -233,7 +235,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Olaf gains  bonus attack speed for 4 seconds and grants himself a  shield for 2.5 seconds with an amount that is capped at 70% missing health.',
+            raw: 'Olaf gains  bonus attack speed for 4 seconds and grants himself a  shield for 2.5 seconds with an amount that is capped at 70% missing health.',
             healType: 'BonusHealth',
             values: 4,
             valuesIsPercent: true,
@@ -291,6 +293,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Tough It Out  resets Olaf's basic attack timer.",
         descriptionHTML:
           '<i>Tough It Out <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Olaf\'s</b> basic attack timer.</i>',
@@ -329,7 +332,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Reckless Swing.png',
+        icon: '/wiki/images/Reckless_Swing.png',
         description:
           'Active: Olaf strikes thunder onto the target enemy, dealing  true damage.',
         descriptionHTML:
@@ -367,6 +370,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Reckless Swing kills the target, Olaf  heals himself equal to the  health cost.',
         descriptionHTML:
@@ -376,6 +380,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Basic attacks reduce Reckless Swing's  cooldown by 1 second.",
         descriptionHTML:
@@ -465,7 +470,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Olaf becomes enraged for 3 seconds,  cleansing himself of all  crowd control and becoming  immune to them, as well as gaining  bonus attack damage and 10% increased size',
+            raw: 'Olaf becomes enraged for 3 seconds,  cleansing himself of all  crowd control and becoming  immune to them, as well as gaining  bonus attack damage and 10% increased size',
             increasedStat: 'bonus_ad',
             values: 3,
             valuesIsPercent: true,
@@ -534,6 +539,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Ragnarok's duration is increased by and up to 2.5 seconds for each basic attack  on-hit or cast of  Reckless Swing against an enemy  champion.",
         descriptionHTML:

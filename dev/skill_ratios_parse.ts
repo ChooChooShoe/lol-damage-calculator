@@ -12,52 +12,22 @@ import {
   ShieldType,
   OptionalStat,
 } from '../src/api/DataTypes';
-import { Stat } from '../src/api/ChampObjStats';
+import {
+  BBT_Perfix,
+  BBT_Perfix_Ex,
+  BBT_Stat,
+  BBT_Units,
+  Stat,
+} from '../src/api/ChampObjStats';
 
 const DEBUG = false;
 
-const keyword_to_basic_stat: Dictionary<Stat> = {
-  tenacity: 'tenacity',
-  spellvamp: 'spellvamp',
-  'spell vamp': 'spellvamp',
-  lifesteal: 'lifesteal',
-  'life steal': 'lifesteal',
-  omnivamp: 'omnivamp',
-  pysicalvamp: 'pysicalvamp',
-  'pysical vamp': 'pysicalvamp',
-  'legend stack': 'legendStacks',
-  'bounty hunter stack': 'bountyHunterStacks',
-  soul: 'darkHarvestStacks',
-  'slow resist': 'slow_resist',
-  ap: 'total_ap',
-  gold: 'gold',
-  mark: 'kindredMarks',
-  'siphoning strike': 'siphoningStrikeStacks',
-  feast: 'feastStacks',
-  stack: 'genericStacks',
-};
-export const keyword_to_player_stat = {
-  ap: 'ap',
-  ad: 'ad',
-  attack: 'ad',
-  armor: 'armor',
-  mr: 'mr',
-  'magic res': 'mr',
-  'critical strike chance': 'critchance',
-  'life steal': 'life_steal',
-  health: 'hp',
-  hp: 'hp',
-  mana: 'mana',
-  ability: 'ap',
-  nasus_stack: 'stack',
-  percent: 'percent',
-};
-const keyword_to_type = {
+const keyword_to_type: Dictionary<BBT_Perfix> = {
   total: 'total',
   bonus: 'bonus',
   base: 'base',
 };
-const keyword_to_type_ext = {
+const keyword_to_type_ext: Dictionary<BBT_Perfix_Ex> = {
   maximum: 'maximum',
   missing: 'missing',
   lost: 'missing',
@@ -74,23 +44,27 @@ function convertUnitsToUserAndUnits(unit: string | undefined | null): {
   if (!unit) return { user: 'none', unitsParsed: '' };
   unit = unit.toLowerCase().trim();
 
-  const basic_stat = matchKeyword(unit, keyword_to_basic_stat);
-  if (basic_stat) {
-    return { user: 'player', unitsParsed: basic_stat };
+  const basicStat = matchKeyword(unit, validBasicStats, null);
+  if (basicStat) {
+    return { user: 'player', unitsParsed: basicStat };
   }
 
-  const player_stat = table_check(unit, keyword_to_player_stat, '');
-  if (player_stat === '') return { user: 'none', unitsParsed: '' };
-  let bbt: string;
-  if (player_stat === 'hp')
-    bbt = table_check(unit, keyword_to_type_ext, 'total');
-  else bbt = table_check(unit, keyword_to_type, 'total');
-  const unitsParsed = `${bbt}_${player_stat}`;
+  const player_stat = matchKeyword(unit, validBaseBonusTotalStats, null);
+  if (!player_stat) return { user: 'none', unitsParsed: '' };
 
   const user: 'player' | 'target' = unit.includes('target')
     ? 'target'
     : 'player';
-  return { user, unitsParsed: unitsParsed as Stat };
+
+  if (player_stat === 'hp') {
+    const bbt = matchKeyword(unit, keyword_to_type_ext, 'maximum');
+    const unitsParsed: `${BBT_Perfix_Ex}_hp` = `${bbt}_${player_stat}`;
+    return { user, unitsParsed: unitsParsed };
+  } else {
+    const bbt = matchKeyword(unit, keyword_to_type, 'total');
+    const unitsParsed: BBT_Stat = `${bbt}_${player_stat}`;
+    return { user, unitsParsed: unitsParsed };
+  }
 }
 
 if (DEBUG) {
@@ -118,9 +92,9 @@ export function spellEffectFromDescription(
 ): RootRatio {
   const nameSplit = descTextLine.split(/: (.*)/s);
   const betterName = nameSplit[1] ? nameSplit[0] + ':' : lineNumber;
-  descTextLine = nameSplit[1].trim() || nameSplit[0];
+  descTextLine = nameSplit[1] || nameSplit[0];
 
-  return spellEffectFromStrings(betterName, descTextLine, descTextLine);
+  return spellEffectFromStrings(betterName, descTextLine.trim(), descTextLine);
 }
 export function spellEffectFromStrings(
   name: string,
@@ -128,7 +102,7 @@ export function spellEffectFromStrings(
   raw: string
 ): RootRatio {
   const target: Partial<RootRatio> = {
-    effectType: matchKeyword(keywords, validEffectTypes) || 'Unique',
+    effectType: matchKeyword(keywords, validEffectTypes, 'Unique'),
     name,
     raw,
   };
@@ -143,13 +117,12 @@ export function spellEffectFromStrings(
     ratio.units = '';
   }
   if (target.effectType === 'Damage') {
-    target.damagetype = matchKeyword(keywords, validDamageTypes) || 'None';
+    target.damagetype = matchKeyword(keywords, validDamageTypes, 'None');
   } else if (target.effectType === 'Shield') {
-    target.damagetype = matchKeyword(keywords, validDamageTypes) || 'None';
-    target.shieldType =
-      matchKeyword(keywords, validShieldTypes) || 'SelfShield';
+    target.damagetype = matchKeyword(keywords, validDamageTypes, 'None');
+    target.shieldType = matchKeyword(keywords, validShieldTypes, 'SelfShield');
   } else if (target.effectType === 'Heal') {
-    target.healType = matchKeyword(keywords, validHealTypes) || 'SelfHeal';
+    target.healType = matchKeyword(keywords, validHealTypes, 'SelfHeal');
   } else if (target.effectType === 'Stacks') {
     target.min = 0;
     const matchedMax = keywords.match(/stacking up to ([0-9]+) times/);
@@ -237,6 +210,9 @@ function level_to_ratio(fullText: string): {
   apply: '%' | undefined;
   units: string;
 } {
+  console.log(`[TRACE] level_to_ratio("${fullText}")`);
+  // Trim leading + sign and split at percent sign if possialbe.
+  // '+ 80% AP' => [' 80', ' AP']
   const s = fullText.trim().replace(/^\+/, '').split('%', 2);
   const leveling = s[0];
   let apply: '%' | undefined = undefined;
@@ -336,4 +312,43 @@ const validShieldTypes: Dictionary<ShieldType> = {
   incoming: 'IncomingShields',
   outgoing: 'OutgoingShields',
   target: 'OutgoingShields',
+};
+
+export const validBaseBonusTotalStats: Dictionary<BBT_Units> = {
+  ad: 'ad',
+  attack: 'ad',
+  mana: 'mana',
+  movespeed: 'movespeed',
+  armor: 'armor',
+  mr: 'mr',
+  'magic res': 'mr',
+  attackrange: 'attackrange',
+  'attack range': 'attackrange',
+  'health regen': 'hpregen',
+  'mana regen': 'manaregen',
+  'energy regen': 'manaregen',
+  'critical strike chance': 'critchance',
+  'critical strike damage': 'critdamage',
+  health: 'hp',
+  hp: 'hp',
+};
+const validBasicStats: Dictionary<Stat> = {
+  tenacity: 'tenacity',
+  spellvamp: 'spellvamp',
+  'spell vamp': 'spellvamp',
+  lifesteal: 'lifesteal',
+  'life steal': 'lifesteal',
+  omnivamp: 'omnivamp',
+  pysicalvamp: 'pysicalvamp',
+  'pysical vamp': 'pysicalvamp',
+  'legend stack': 'legendStacks',
+  'bounty hunter stack': 'bountyHunterStacks',
+  soul: 'darkHarvestStacks',
+  'slow resist': 'slow_resist',
+  ap: 'total_ap',
+  gold: 'gold',
+  mark: 'kindredMarks',
+  'siphoning strike': 'siphoningStrikeStacks',
+  feast: 'feastStacks',
+  stack: 'genericStacks',
 };

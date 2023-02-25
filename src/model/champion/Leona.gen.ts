@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Leona's abilities mark enemies hit for 1.5 seconds, refreshing on subsequent hits",
+            raw: "Leona's abilities mark enemies hit for 1.5 seconds, refreshing on subsequent hits",
             values: 1,
             units: 'kindredMarks',
             unitsText:
@@ -92,7 +92,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shield of Daybreak.png',
+        icon: '/wiki/images/Shield_of_Daybreak.png',
         description:
           'Active: Leona illuminates her shield, empowering her next basic attack within 6 seconds to have a 0.25-second cast time, gain  50 bonus range, deal bonus magic damage and  stun the target for 1 second.',
         descriptionHTML:
@@ -101,7 +101,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Leona illuminates her shield, empowering her next basic attack within 6 seconds to have a 0.25-second cast time, gain  50 bonus range, deal bonus magic damage and  stun the target for 1 second.',
+            raw: 'Leona illuminates her shield, empowering her next basic attack within 6 seconds to have a 0.25-second cast time, gain  50 bonus range, deal bonus magic damage and  stun the target for 1 second.',
             damagetype: 'Magic',
             shieldType: 'OutgoingShields',
             values: 6,
@@ -144,6 +144,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Shield of Daybreak  resets Leona's basic attack timer.",
         descriptionHTML:
           '<i>Shield of Daybreak <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Leona\'s</b> basic attack timer.</i>',
@@ -197,7 +198,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Leona raises her guard for 3 seconds, gaining flat damage reduction of up to 50% of the damage instance and  bonus armor and  bonus magic resistance.',
+            raw: 'Leona raises her guard for 3 seconds, gaining flat damage reduction of up to 50% of the damage instance and  bonus armor and  bonus magic resistance.',
             increasedStat: 'bonus_armor',
             values: 3,
             valuesIsPercent: true,
@@ -280,6 +281,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Her shield detonates after the duration, dealing magic damage to nearby enemies. If this hits an enemy, Leona's guard is extended for an additional 3 seconds.",
         descriptionHTML:
@@ -366,7 +368,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zenith Blade.png',
+        icon: '/wiki/images/Zenith_Blade.png',
         description:
           'Active: Leona projects her sword in the target direction that deals magic damage to enemies hit.',
         descriptionHTML:
@@ -404,6 +406,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If she hits at least one enemy  champion, she will  dash 225 units behind the last one struck within 3000 range and  root them for 0.5 seconds.',
         descriptionHTML:
@@ -425,6 +428,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Leona is  unable to move or attack while Zenith Blade is in flight. She can cast any of her abilities during the dash.',
         descriptionHTML:
@@ -472,7 +476,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Solar Flare.png',
+        icon: '/wiki/images/Solar_Flare.png',
         description:
           'Active: Leona calls down a solar flare that strikes upon the target location after 0.625 seconds, granting  sight of the area before impact and for another 3 seconds afterwards. Enemies hit are dealt magic damage.',
         descriptionHTML:
@@ -510,6 +514,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Targets are also  slowed by 80% for 1.75 seconds, or  stunned for the same duration if they are hit by the epicenter.',
         descriptionHTML:

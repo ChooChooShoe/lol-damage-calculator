@@ -34,11 +34,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Brand's abilities apply a stack of Ablaze to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
+            raw: "Brand's abilities apply a stack of Ablaze to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Brand's abilities apply a stack of Ablaze to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
+              "Brand's abilities apply a stack of Ablaze to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -73,7 +73,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Ablaze:',
-            raw: ' While afflicted with Ablaze, the target is dealt magic damage equal to「 2.5% of their maximum health over 3.25 seconds. 」「 0.83% of their maximum health every 1.083 seconds over 3.25 seconds. 」Ablaze deals 120% damage per tick to  monsters, capped at 80.',
+            raw: 'While afflicted with Ablaze, the target is dealt magic damage equal to「 2.5% of their maximum health over 3.25 seconds. 」「 0.83% of their maximum health every 1.083 seconds over 3.25 seconds. 」Ablaze deals 120% damage per tick to  monsters, capped at 80.',
             healType: 'OutgoingHeals',
             values: 2,
             valuesIsPercent: true,
@@ -88,19 +88,22 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Blaze 2.png',
+        icon: '/wiki/images/Blaze_2.png',
         description:
           'Upon applying 3 stacks of Ablaze to a large  monster or enemy  champion, the fire becomes unstable, forming an area around the target that grants  sight and explodes after 2 seconds, consuming all stacks. All enemies within the detonation are dealt magic damage equal to 9% − 13% (based on level) of their maximum health (+ 2% per 100 AP) and applied a stack of Ablaze. The explosion will still occur if the target dies to the ability applying the third stack or during the delay.',
         descriptionHTML:
           'Upon applying 3 stacks of <i>Ablaze</i> to a large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span> or enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span>, the fire becomes unstable, forming an area around the target that grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> and explodes after 2 seconds, consuming all stacks. All enemies within the detonation are dealt <span style="color: #00B0F0; white-space:normal">magic damage</span> equal to <span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="9;1" data-finish="13;17" data-bot_values="9;9.25;9.5;9.75;10;10.25;10.5;10.75;11;11.25;11.5;11.75;12;12.25;12.5;12.75;13" data-top_values="1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17" data-bot_key="%">9% − 13% (based on level)</span> of their <b>maximum</b> health</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;2% per 100 AP)</span> and applied a stack of <i>Ablaze</i>. <i>The explosion will still occur if the target dies to the ability applying the third stack or during the delay.</i>',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'Upon applying 3 stacks of Ablaze to a large  monster or enemy  champion, the fire becomes unstable, forming an area around the target that grants  sight and explodes after 2 seconds, consuming all stacks',
-            increasedStat: 'total_ap',
+            min: 0,
+            max: 10,
+            description:
+              'Upon applying 3 stacks of Ablaze to a large  monster or enemy  champion, the fire becomes unstable, forming an area around the target that grants  sight and explodes after 2 seconds, consuming all stacks',
             values: 3,
-            units: '',
+            units: 'total_ap',
             unitsText:
               'applying 3 stacks of Ablaze to a large  monster or enemy  champion, the fire becomes unstable, forming an area around the target that grants  sight and explodes after 2 seconds, consuming all stacks',
             pre: 'Upon applying 3 stacks of Ablaze to a large  monster or enemy  champion, the fire becomes unstable, forming an area around the target that grants  sight and explodes after 2 seconds, consuming all stacks',
@@ -132,6 +135,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Brand cannot stack Ablaze more than once on enemies who have exploded in the last 4 seconds.',
         descriptionHTML:
@@ -146,7 +150,7 @@ export default {
             description:
               'Brand cannot stack Ablaze more than once on enemies who have exploded in the last 4 seconds.',
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'cannot stack Ablaze more than once on enemies who have exploded in the last 4 seconds.',
             pre: 'Brand cannot stack Ablaze more than once on enemies who have exploded in the last 4 seconds.',
@@ -232,6 +236,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Ablaze Bonus: The target is  stunned for 1.5 seconds.',
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Brand" data-ability="Blaze" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Brand/LoL#Blaze" title="Ablaze"><img alt="Ablaze" src="/wiki/images/Brand_Blaze.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Brand/LoL#Blaze" title="Brand/LoL">Ablaze</a></span></span> Bonus:</b></span> The target is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stunned</a></span> for 1.<small>5</small> seconds.',
@@ -239,7 +244,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Ablaze Bonus:',
-            raw: ' The target is  stunned for 1.5 seconds.',
+            raw: 'The target is  stunned for 1.5 seconds.',
             values: 1,
             user: 'none',
             units: '',
@@ -289,7 +294,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pillar of Flame.png',
+        icon: '/wiki/images/Pillar_of_Flame.png',
         description:
           'Active: After a 0.627 seconds delay, Brand erupts a pillar of flame at the target location that deals magic damage to enemies hit.',
         descriptionHTML:
@@ -327,6 +332,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Ablaze Bonus: The target takes 25% increased damage.',
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Brand" data-ability="Blaze" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Brand/LoL#Blaze" title="Ablaze"><img alt="Ablaze" src="/wiki/images/Brand_Blaze.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Brand/LoL#Blaze" title="Brand/LoL">Ablaze</a></span></span> Bonus:</b></span> The target takes 25% increased damage.',
@@ -334,7 +340,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Ablaze Bonus:',
-            raw: ' The target takes 25% increased damage.',
+            raw: 'The target takes 25% increased damage.',
             damagetype: 'None',
             values: 2,
             valuesIsPercent: true,
@@ -451,6 +457,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Ablaze Bonus: Conflagration's spread range is doubled.",
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Brand" data-ability="Blaze" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Brand/LoL#Blaze" title="Ablaze"><img alt="Ablaze" src="/wiki/images/Brand_Blaze.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Brand/LoL#Blaze" title="Brand/LoL">Ablaze</a></span></span> Bonus:</b></span> <i>Conflagration\'s</i> spread range is doubled.',
@@ -538,6 +545,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Pyroclasm prioritizes  ablazed enemy champions, then other enemy champions, then any valid bounce target, then Brand.',
         descriptionHTML:
@@ -547,6 +555,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The target does not have to be  visible for the fireball to bounce to them.',
         descriptionHTML:
@@ -556,6 +565,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ablaze Bonus: The target is  slowed for 0.25 seconds. This can affect the same enemy more than once.',
         descriptionHTML:
@@ -565,6 +575,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: '',
         descriptionHTML: '',
         descriptionRatios: [],

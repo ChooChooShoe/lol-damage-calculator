@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Gathering Fire.png',
+        icon: '/wiki/images/Gathering_Fire.png',
         description:
           "Innate:  Mantra's  current cooldown is reduced by 5 seconds for each enemy champion hit by Karma's damaging abilities.",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: "  Mantra's  current cooldown is reduced by 5 seconds for each enemy champion hit by Karma's damaging abilities.",
+            raw: " Mantra's  current cooldown is reduced by 5 seconds for each enemy champion hit by Karma's damaging abilities.",
             values: 5,
             user: 'none',
             units: '',
@@ -80,7 +80,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Inner Flame.png',
+        icon: '/wiki/images/Inner_Flame.png',
         description:
           'Active: Karma fires a bolt in the target direction that explodes on the first enemy hit, dealing magic damage to nearby enemies and  slowing them by 35% for 1.5 seconds.',
         descriptionHTML:
@@ -89,7 +89,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Karma fires a bolt in the target direction that explodes on the first enemy hit, dealing magic damage to nearby enemies and  slowing them by 35% for 1.5 seconds.',
+            raw: 'Karma fires a bolt in the target direction that explodes on the first enemy hit, dealing magic damage to nearby enemies and  slowing them by 35% for 1.5 seconds.',
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -204,6 +204,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The explosion creates a field for 1.5 seconds that  slows enemies within by 50%, which then ruptures to deal magic damage.',
         descriptionHTML:
@@ -255,6 +256,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Soulflare scales with  Mantra's rank.",
         descriptionHTML:
           '<i>Soulflare</i> scales with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Karma" data-ability="Mantra" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Karma/LoL#Mantra" title="Mantra\'s"><img alt="Mantra\'s" src="/wiki/images/Karma_Mantra.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Karma/LoL#Mantra" title="Karma/LoL">Mantra\'s</a></span></span></i> rank.',
@@ -300,7 +302,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Focused Resolve.png',
+        icon: '/wiki/images/Focused_Resolve.png',
         description:
           'Active: Karma deals magic damage to the target enemy  champion or  monster and forms a  tether between her and them for 2 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -309,7 +311,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Karma deals magic damage to the target enemy  champion or  monster and forms a  tether between her and them for 2 seconds, during which they are  revealed.',
+            raw: 'Karma deals magic damage to the target enemy  champion or  monster and forms a  tether between her and them for 2 seconds, during which they are  revealed.',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -351,6 +353,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the tether is not broken by the end of its duration, the target is dealt the same magic damage again and is  rooted for a duration, during which they are  revealed.',
         descriptionHTML:
@@ -487,6 +490,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Renewal scales with  Mantra's rank.",
         descriptionHTML:
           '<i>Renewal</i> scales with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Karma" data-ability="Mantra" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Karma/LoL#Mantra" title="Mantra\'s"><img alt="Mantra\'s" src="/wiki/images/Karma_Mantra.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Karma/LoL#Mantra" title="Karma/LoL">Mantra\'s</a></span></span></i> rank.',
@@ -539,7 +543,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Karma grants a  shield to herself or the target allied champion for 2.5 seconds as well as  40% bonus movement speed for 1.5 seconds.',
+            raw: 'Karma grants a  shield to herself or the target allied champion for 2.5 seconds as well as  40% bonus movement speed for 1.5 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -693,6 +697,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Defiance scales with  Mantra's rank.",
         descriptionHTML:
           '<i>Defiance</i> scales with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Karma" data-ability="Mantra" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Karma/LoL#Mantra" title="Mantra\'s"><img alt="Mantra\'s" src="/wiki/images/Karma_Mantra.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Karma/LoL#Mantra" title="Karma/LoL">Mantra\'s</a></span></span></i> rank.',
@@ -739,7 +744,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Karma empowers her next basic ability within 8 seconds for an additional effect',
+            raw: 'Karma empowers her next basic ability within 8 seconds for an additional effect',
             damagetype: 'None',
             values: 8,
             units: 'total_ad',
@@ -752,6 +757,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Karma begins the game with one rank in Mantra. Her empowered abilities scale based on Mantra's rank.",
         descriptionHTML:

@@ -31,7 +31,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pix, Faerie Companion.png',
+        icon: '/wiki/images/Pix,_Faerie_Companion.png',
         description:
           'Innate: Lulu is assisted by Pix, an  untargetable faerie, who follows her around and fires a barrage of 3 bolts towards her target whenever she uses a basic attack on-attack. Each bolt deals 5 − 39 (based on level) (+ 5% AP) magic damage to the first enemy it collides with, for a total of 15 − 117 (based on level) (+ 15% AP) on hitting a single target with all three bolts.',
         descriptionHTML:
@@ -40,7 +40,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Lulu is assisted by Pix, an  untargetable faerie, who follows her around and fires a barrage of 3 bolts towards her target whenever she uses a basic attack on-attack',
+            raw: 'Lulu is assisted by Pix, an  untargetable faerie, who follows her around and fires a barrage of 3 bolts towards her target whenever she uses a basic attack on-attack',
             values: 3,
             user: 'target',
             units: 'total_ad',
@@ -86,6 +86,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Casting  Help, Pix! on an ally champion transfers Pix's help to them, causing him to fire the bolts dependent on their basic attacks.",
         descriptionHTML:
@@ -95,6 +96,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Pix snaps back to Lulu if she is too far away.',
         descriptionHTML:
           '<i>Pix snaps back to <b>Lulu</b> if she is too far away.</i>',
@@ -148,7 +150,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Lulu and  Pix each fire a magic bolt towards the target point, each one dealing magic damage to enemies hit, reduced to 70% against  minions, and  slowing them by 80% decaying over 2 seconds.',
+            raw: 'Lulu and  Pix each fire a magic bolt towards the target point, each one dealing magic damage to enemies hit, reduced to 70% against  minions, and  slowing them by 80% decaying over 2 seconds.',
             values: 7,
             valuesIsPercent: true,
             user: 'none',
@@ -190,6 +192,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies take  25% damage from a second bolt.',
         descriptionHTML:
           'Enemies take <a href="/wiki/Critical_strike#Cosmetic_critical_strikes" title="Critical strike#Cosmetic critical strikes"><img alt="Critical strike magic icon.png" src="/wiki/images/Critical_strike_magic_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Cosmetic critical strike">25% damage</span> from a second bolt.',
@@ -314,6 +317,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy Cast: Lulu launches a spell onto the target enemy champion that  polymorphs them into a harmless critter for a duration, during which their base movement speed is reduced by 60, and  disarming them for the same duration.',
         descriptionHTML:
@@ -322,7 +326,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Enemy Cast:',
-            raw: ' Lulu launches a spell onto the target enemy champion that  polymorphs them into a harmless critter for a duration, during which their base movement speed is reduced by 60, and  disarming them for the same duration.',
+            raw: 'Lulu launches a spell onto the target enemy champion that  polymorphs them into a harmless critter for a duration, during which their base movement speed is reduced by 60, and  disarming them for the same duration.',
             values: 6,
             user: 'none',
             units: '',
@@ -353,6 +357,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Self / Ally Cast: Lulu instantly casts erratic magic upon the target allied champion or herself, granting the target  bonus attack speed and  25% (+ 5% per 100 AP) bonus movement speed for the duration.',
         descriptionHTML:
@@ -361,7 +366,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Self / Ally Cast:',
-            raw: ' Lulu instantly casts erratic magic upon the target allied champion or herself, granting the target  bonus attack speed and  25% (+ 5% per 100 AP) bonus movement speed for the duration.',
+            raw: 'Lulu instantly casts erratic magic upon the target allied champion or herself, granting the target  bonus attack speed and  25% (+ 5% per 100 AP) bonus movement speed for the duration.',
             values: 2,
             valuesIsPercent: true,
             user: 'none',
@@ -454,7 +459,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Help, Pix!.png',
+        icon: '/wiki/images/Help,_Pix!.png',
         description:
           'Active: Lulu can cast Help, Pix! on herself or the target unit.',
         descriptionHTML:
@@ -464,6 +469,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy Cast: Lulu sends  Pix to the far side of the target enemy for 4 seconds, dealing magic damage and  revealing them for the same duration.',
         descriptionHTML:
@@ -472,7 +478,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Enemy Cast:',
-            raw: ' Lulu sends  Pix to the far side of the target enemy for 4 seconds, dealing magic damage and  revealing them for the same duration.',
+            raw: 'Lulu sends  Pix to the far side of the target enemy for 4 seconds, dealing magic damage and  revealing them for the same duration.',
             damagetype: 'Magic',
             values: 4,
             user: 'none',
@@ -514,6 +520,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Self / Ally Cast: Lulu sends  Pix to the target ally for 6.25 seconds. If the target is a  champion, they are granted a  shield for 2.5 seconds.',
         descriptionHTML:
@@ -522,7 +529,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Self / Ally Cast:',
-            raw: ' Lulu sends  Pix to the target ally for 6.25 seconds',
+            raw: 'Lulu sends  Pix to the target ally for 6.25 seconds',
             values: 6,
             user: 'none',
             units: '',
@@ -614,7 +621,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wild Growth.png',
+        icon: '/wiki/images/Wild_Growth.png',
         description:
           'Active: Lulu enlarges herself or the target allied champion,  knocking up nearby enemies for 0.75 seconds. For the next 7 seconds, the target gains  bonus health and 40% increased size and  slows nearby enemies, which lingers for 0.25 seconds.',
         descriptionHTML:

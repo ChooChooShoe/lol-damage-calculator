@@ -3,7 +3,6 @@ import type {
   Spellshield,
   SkillLevelingData,
   SkillDesciptionData,
-  WikiChampionData,
   RootRatio,
 } from '@/api/DataTypes';
 import fetch, { type RequestInfo } from 'node-fetch';
@@ -14,7 +13,6 @@ import { BaseStatsObj } from '@/api/ChampObjStats';
 import { fix_wiki_img } from './live_wiki_fetch';
 import { ChampionComplex } from './datadragon';
 import _ from 'lodash';
-import { test, mutateStats } from './WikiChampListFetch';
 import {
   spellEffectFromDescription,
   spellEffectFromStrings,
@@ -327,9 +325,12 @@ export function toSkillData(
 
       descObj.push({
         icon:
-          icon === 'false' || icon === '' || icon === 'undefined'
+          icon === 'false' ||
+          icon === '' ||
+          icon === 'undefined' ||
+          icon === undefined
             ? undefined
-            : `/wiki/images/${icon?.replaceAll(/ /, '_')}`,
+            : `/wiki/images/${icon?.trim().replaceAll(/ /g, '_')}`,
         description,
         descriptionHTML,
         descriptionRatios: descgArr,

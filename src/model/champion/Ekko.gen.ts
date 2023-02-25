@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Z-Drive Resonance.png',
+        icon: '/wiki/images/Z-Drive_Resonance.png',
         description:
           "Innate - Resonance: Ekko's basic attacks  on-hit and damaging abilities apply a stack of Resonance to enemies hit for 4 seconds, refreshing on subsequent hits and stacking up to 3 times. The third stack consumes them all to deal 30 − 140 (based on level) (+ 90% AP) bonus magic damage. Z-Drive Resonance deals 300% damage against  monsters.",
         descriptionHTML:
@@ -33,11 +33,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate - Resonance:',
-            raw: " Ekko's basic attacks  on-hit and damaging abilities apply a stack of Resonance to enemies hit for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
+            raw: "Ekko's basic attacks  on-hit and damaging abilities apply a stack of Resonance to enemies hit for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Ekko's basic attacks  on-hit and damaging abilities apply a stack of Resonance to enemies hit for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
+              "Ekko's basic attacks  on-hit and damaging abilities apply a stack of Resonance to enemies hit for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -88,6 +88,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Resonance cannot affect the same target more than once every few seconds.',
         descriptionHTML:
@@ -97,7 +98,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Z-Drive Resonance 2.png',
+        icon: '/wiki/images/Z-Drive_Resonance_2.png',
         description:
           'Innate - Stolen Time: Triggering Resonance against a  champion grants Ekko 50 / 60 / 70 / 80% (based on level)  bonus movement speed for 2 / 2.5 / 3 (based on level) seconds.',
         descriptionHTML:
@@ -106,7 +107,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Stolen Time:',
-            raw: ' Triggering Resonance against a  champion grants Ekko 50 / 60 / 70 / 80% (based on level)  bonus movement speed for 2 / 2.5 / 3 (based on level) seconds.',
+            raw: 'Triggering Resonance against a  champion grants Ekko 50 / 60 / 70 / 80% (based on level)  bonus movement speed for 2 / 2.5 / 3 (based on level) seconds.',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -201,6 +202,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'At 700 units or upon hitting an enemy  champion, the grenade slows down for 1.75 seconds to gradually expand into a Temporal Sickness field that  slows nearby enemies, travelling for another 190 units.',
         descriptionHTML:
@@ -240,6 +242,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Afterwards, the grenade contracts and homes back to Ekko at an increased speed, dealing magic damage to enemies hit.',
         descriptionHTML:
@@ -277,6 +280,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be hit only once per pass.',
         descriptionHTML: '<i>Enemies can be hit only once per pass.</i>',
         descriptionRatios: [],
@@ -331,7 +335,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: " Ekko's basic attacks deal bonus magic damage equal to 3% (+ 3% per 100 AP) of the target's missing health against enemies below  30% of their maximum health",
+            raw: "Ekko's basic attacks deal bonus magic damage equal to 3% (+ 3% per 100 AP) of the target's missing health against enemies below  30% of their maximum health",
             healType: 'OutgoingHeals',
             values: 3,
             valuesIsPercent: true,
@@ -367,7 +371,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Parallel Convergence.png',
+        icon: '/wiki/images/Parallel_Convergence.png',
         description:
           'Active: Ekko creates an afterimage of himself that, after 2 seconds, bats a device to the target location and grants  sight of the area for 2.5 seconds. After travelling over 1.25 seconds, the device expands into a chronosphere for 1.5 seconds that  slows enemies within by 40%.',
         descriptionHTML:
@@ -376,7 +380,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ekko creates an afterimage of himself that, after 2 seconds, bats a device to the target location and grants  sight of the area for 2.5 seconds',
+            raw: 'Ekko creates an afterimage of himself that, after 2 seconds, bats a device to the target location and grants  sight of the area for 2.5 seconds',
             values: 2,
             user: 'none',
             units: '',
@@ -401,6 +405,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Ekko enters the sphere, it detonates to grant him a  shield for 2 seconds and  stun enemies within for 2.25 seconds.',
         descriptionHTML:
@@ -453,6 +458,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies can see the indicator for Parallel Convergence after 2 seconds.',
         descriptionHTML:
@@ -510,7 +516,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Phase Dive.png',
+        icon: '/wiki/images/Phase_Dive.png',
         description:
           'Active: Ekko  dashes in the target direction, then empowers his next basic attack within 3 seconds to have a 0.25-second cast time, gain  300 bonus range, cause him to  blink within 125 range of the target, and deal bonus magic damage.',
         descriptionHTML:
@@ -519,7 +525,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ekko  dashes in the target direction, then empowers his next basic attack within 3 seconds to have a 0.25-second cast time, gain  300 bonus range, cause him to  blink within 125 range of the target, and deal bonus magic damage.',
+            raw: 'Ekko  dashes in the target direction, then empowers his next basic attack within 3 seconds to have a 0.25-second cast time, gain  300 bonus range, cause him to  blink within 125 range of the target, and deal bonus magic damage.',
             increasedStat: 'bonus_ad',
             values: 3,
             user: 'target',
@@ -561,6 +567,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Phase Dive  resets Ekko's basic attack timer. Ekko can cast any of his abilities during the dash.",
         descriptionHTML:
@@ -615,7 +622,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive:',
-            raw: ' Upon learning Chronobreak or if its current cooldown is lower than 4 seconds, Ekko reveals a time-delayed afterimage of himself that constantly tracks where he was 4 seconds ago.',
+            raw: 'Upon learning Chronobreak or if its current cooldown is lower than 4 seconds, Ekko reveals a time-delayed afterimage of himself that constantly tracks where he was 4 seconds ago.',
             values: 4,
             user: 'none',
             units: '',
@@ -701,6 +708,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Ekko is immune to all  displacements during Chronobreak.',
         descriptionHTML:
           '<i><b>Ekko</b> is immune to all <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon.png" src="/wiki/images/Airborne_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">displacements</a></span> during Chronobreak</i>.',

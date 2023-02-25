@@ -22,22 +22,22 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Runic Blade.png',
+        icon: '/wiki/images/Runic_Blade.png',
         description:
-          "Innate: Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times. Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60% (based on level) AD.",
+          "Innate: Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times. Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60% (based on level) AD, reduced to「 50% 」「 15% − 30% (based on level) AD. 」against structures.",
         descriptionHTML:
-          '<span class="template_sbc"><b>Innate:</b></span> <b>Riven\'s</b> <a href="/wiki/Champion_ability" title="Champion ability">ability</a> casts generate a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Charge</i> for 6 seconds, refreshing on subsequent casts and stacking up to 3 times. <b>Riven\'s</b> <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> are empowered to each consume a stack to deal <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> equal to <span style="color:orange; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="30% +&nbsp;6% at level 6, then +&nbsp;6% every 3 levels" data-bot_values="30;36;42;48;54;60" data-top_values="1;6;9;12;15;18" data-bot_key="%">30% − 60% (based on level)</span> AD</span>.',
+          '<span class="template_sbc"><b>Innate:</b></span> <b>Riven\'s</b> <a href="/wiki/Champion_ability" title="Champion ability">ability</a> casts generate a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Charge</i> for 6 seconds, refreshing on subsequent casts and stacking up to 3 times. <b>Riven\'s</b> <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> are empowered to each consume a stack to deal <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> equal to <span style="color:orange; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="30% +&nbsp;1.75% per level, then +&nbsp;2% at level 17" data-bot_values="30;31.75;33.5;35.25;37;38.75;40.5;42.25;44;45.75;47.5;49.25;51;52.75;54.5;56.25;58;60" data-top_values="" data-bot_key="%">30% − 60% (based on level)</span> AD</span>, reduced to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;50%&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color:orange; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="15% +&nbsp;0.875% per level, then +&nbsp;1% at level 17" data-bot_values="15;15.88;16.75;17.63;18.5;19.38;20.25;21.13;22;22.88;23.75;24.63;25.5;26.38;27.25;28.13;29;30" data-top_values="" data-bot_key="%">15% − 30% (based on level)</span> AD</span>.&nbsp;」</span></span>against <a href="/wiki/Structure" class="mw-redirect" title="Structure">structures</a>.',
         descriptionRatios: [
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times",
+            raw: "Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times",
+              "Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times",
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times',
             pre: "Riven's ability casts generate a stack of Charge for 6 seconds, refreshing on subsequent casts and stacking up to 3 times",
@@ -45,24 +45,25 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Line 2:',
-            raw: "Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60% (based on level) AD.",
+            raw: "Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60% (based on level) AD, reduced to「 50% 」「 15% − 30% (based on level) AD. 」against structures.",
             min: 0,
             max: 10,
             description:
-              "Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60% (based on level) AD.",
+              "Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60% (based on level) AD, reduced to「 50% 」「 15% − 30% (based on level) AD. 」against structures.",
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
             units: 'total_ad',
-            unitsText: 'AD.',
+            unitsText: 'AD, reduced to「 50% 」「 15% − 30%',
             pre: "Riven's basic attacks are empowered to each consume a stack to deal bonus physical damage equal to 30% − 60%",
-            post: 'AD.',
+            post: 'AD, reduced to「 50% 」「 15% − 30%',
           },
         ],
         leveling: [],
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The bonus damage is affected by  critical strike modifiers and applies  life steal at 100% effectiveness.',
         descriptionHTML:
@@ -117,7 +118,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Broken Wings.png',
+        icon: '/wiki/images/Broken_Wings.png',
         description:
           'Active: Riven can activate Broken Wings three times before the ability goes on cooldown, with a 0.3125-second static cooldown between casts. If Riven does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
         descriptionHTML:
@@ -128,7 +129,8 @@ export default {
             name: 'Line 2:',
             raw: 'If Riven does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
             values: 4,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'Riven does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
             pre: 'If Riven does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
@@ -138,6 +140,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Riven slashes with her sword for each of the three casts, dealing physical damage to enemies struck within an area,  resetting her basic attack timer, and ordering her to basic attack the target of Broken Wings if there are any.',
         descriptionHTML:
@@ -175,6 +178,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'First Cast: Riven  dashes up to 225 units towards the target enemy or in the direction she is currently facing, striking enemies in the target area 100 units away. This cast cannot cross terrain.',
         descriptionHTML:
@@ -183,7 +187,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'First Cast:',
-            raw: ' Riven  dashes up to 225 units towards the target enemy or in the direction she is currently facing, striking enemies in the target area 100 units away',
+            raw: 'Riven  dashes up to 225 units towards the target enemy or in the direction she is currently facing, striking enemies in the target area 100 units away',
             values: 2,
             user: 'none',
             units: '',
@@ -196,6 +200,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Second Cast: Riven mimics the first cast's effects.",
         descriptionHTML:
           '<span class="template_sbc"><b>Second Cast:</b></span> <b>Riven</b> mimics the first cast\'s effects.',
@@ -204,6 +209,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Third Cast: Riven mimics the first cast's effects in a larger area while also  knocking back enemies hit 75 units over 0.5 seconds. This cast can cross terrain.",
         descriptionHTML:
@@ -212,7 +218,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Third Cast:',
-            raw: " Riven mimics the first cast's effects in a larger area while also  knocking back enemies hit 75 units over 0.5 seconds",
+            raw: "Riven mimics the first cast's effects in a larger area while also  knocking back enemies hit 75 units over 0.5 seconds",
             values: 7,
             user: 'none',
             units: '',
@@ -258,7 +264,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ki Burst.png',
+        icon: '/wiki/images/Ki_Burst.png',
         description:
           'Active: Riven emits a flash of runic energy before the cast time, dealing physical damage to nearby enemies and  stunning them for 0.75 seconds.',
         descriptionHTML:
@@ -336,7 +342,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Riven  dashes to the target location, though not through terrain, while granting herself a  shield for 1.5 seconds.',
+            raw: 'Riven  dashes to the target location, though not through terrain, while granting herself a  shield for 1.5 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 1,
@@ -380,6 +386,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Riven can cast any of her abilities during the dash. Valor will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -418,7 +425,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blade of the Exile.png',
+        icon: '/wiki/images/Blade_of_the_Exile.png',
         description:
           'Active: Riven empowers her blade for 15 seconds, gaining 20% AD  bonus attack damage,  75 bonus attack range, and increased range on  Broken Wings and  Ki Burst. After 0.5 seconds, she can cast  Wind Slash within the duration.',
         descriptionHTML:
@@ -427,7 +434,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Riven empowers her blade for 15 seconds, gaining 20% AD  bonus attack damage,  75 bonus attack range, and increased range on  Broken Wings and  Ki Burst',
+            raw: 'Riven empowers her blade for 15 seconds, gaining 20% AD  bonus attack damage,  75 bonus attack range, and increased range on  Broken Wings and  Ki Burst',
             increasedStat: 'bonus_ad',
             values: 1,
             valuesIsPercent: true,
@@ -475,7 +482,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wind Slash.png',
+        icon: '/wiki/images/Wind_Slash.png',
         description:
           'Active: Riven unleashes a wave of energy in a cone in the target direction that deals physical damage to enemies hit, increased by 0% − 200% (based on missing health).',
         descriptionHTML:

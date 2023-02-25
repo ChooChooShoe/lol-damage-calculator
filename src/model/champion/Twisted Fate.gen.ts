@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Loaded Dice.png',
+        icon: '/wiki/images/Loaded_Dice.png',
         description:
           'Innate: Whenever Twisted Fate kills an enemy, he generates 1 − 6 (based on probability).',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Whenever Twisted Fate kills an enemy, he generates 1 − 6 (based on probability).',
+            raw: 'Whenever Twisted Fate kills an enemy, he generates 1 − 6 (based on probability).',
             values: [1, 6],
             basedOn: 'probability',
             user: 'none',
@@ -46,6 +46,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Since his dice are loaded, Twisted Fate has an increased chance of gaining  6.',
         descriptionHTML:
@@ -100,7 +101,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wild Cards.png',
+        icon: '/wiki/images/Wild_Cards.png',
         description:
           'Active: Twisted Fate throws a fan of three cards in a cone in the target direction that each deal magic damage to enemies hit.',
         descriptionHTML:
@@ -138,6 +139,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be damaged only once per pass.',
         descriptionHTML: '<i>Enemies can be damaged only once per pass.</i>',
         descriptionRatios: [],
@@ -183,7 +185,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pick a Card.png',
+        icon: '/wiki/images/Pick_a_Card.png',
         description:
           'Active: Twisted Fate cycles through three cards for 6 seconds, hovering each for 0.5 seconds at a time. Pick a Card can be recast within the duration, which selects the current card hovered.',
         descriptionHTML:
@@ -192,7 +194,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Twisted Fate cycles through three cards for 6 seconds, hovering each for 0.5 seconds at a time',
+            raw: 'Twisted Fate cycles through three cards for 6 seconds, hovering each for 0.5 seconds at a time',
             values: 6,
             user: 'none',
             units: '',
@@ -205,7 +207,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Twisted Fate Pick a Card.gif',
+        icon: '/wiki/images/Twisted_Fate_Pick_a_Card.gif',
         description:
           'Recast: Twisted Fate empowers his next basic attack within 6 seconds to have a 0.25-second cast time, deal modified magic damage, and apply an additional effect based on the card selected, though not being able to  critically strike.',
         descriptionHTML:
@@ -214,7 +216,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Twisted Fate empowers his next basic attack within 6 seconds to have a 0.25-second cast time, deal modified magic damage, and apply an additional effect based on the card selected, though not being able to  critically strike.',
+            raw: 'Twisted Fate empowers his next basic attack within 6 seconds to have a 0.25-second cast time, deal modified magic damage, and apply an additional effect based on the card selected, though not being able to  critically strike.',
             damagetype: 'Magic',
             values: 6,
             units: 'total_ap',
@@ -227,7 +229,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Blue Card.png',
+        icon: '/wiki/images/Blue_Card.png',
         description: 'Blue Card Bonus: Restores  mana.',
         descriptionHTML:
           '<span class="template_sbc"><b>Blue Card Bonus:</b></span> Restores <span style="white-space:nowrap"><a href="/wiki/Mana" title="Mana"><img alt="Mana icon.png" src="/wiki/images/Mana_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #0099CC; white-space:normal">mana</span></span>.',
@@ -287,7 +289,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Red Card.png',
+        icon: '/wiki/images/Red_Card.png',
         description:
           'Red Card Bonus: Deals magic damage to the target and surrounding enemies,  slowing them for 2.5 seconds.',
         descriptionHTML:
@@ -296,7 +298,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Red Card Bonus:',
-            raw: ' Deals magic damage to the target and surrounding enemies,  slowing them for 2.5 seconds.',
+            raw: 'Deals magic damage to the target and surrounding enemies,  slowing them for 2.5 seconds.',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -361,7 +363,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Gold Card.png',
+        icon: '/wiki/images/Gold_Card.png',
         description: 'Gold Card Bonus:  Stuns the target for a duration.',
         descriptionHTML:
           '<span class="template_sbc"><b>Gold Card Bonus:</b></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">Stuns</a></span> the target for a duration.',
@@ -451,7 +453,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Stacked Deck.png',
+        icon: '/wiki/images/Stacked_Deck.png',
         description:
           'Passive: Twisted Fate gains  bonus attack speed. His basic attacks generate a stack of Stacked Deck, stacking up to 3 times. At 3 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage.',
         descriptionHTML:
@@ -462,11 +464,11 @@ export default {
             name: 'Line 2:',
             raw: 'His basic attacks generate a stack of Stacked Deck, stacking up to 3 times',
             min: 0,
-            max: 10,
+            max: 3,
             description:
               'His basic attacks generate a stack of Stacked Deck, stacking up to 3 times',
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks generate a stack of Stacked Deck, stacking up to 3 times',
             pre: 'His basic attacks generate a stack of Stacked Deck, stacking up to 3 times',
@@ -480,7 +482,7 @@ export default {
             description:
               'At 3 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage.',
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               '3 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage.',
             pre: 'At 3 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage.',
@@ -608,7 +610,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Recast - Gate:',
-            raw: ' Twisted Fate  channels for 1.5 seconds before  blinking to the target location,  destroying all  projectiles targeting him in the process.',
+            raw: 'Twisted Fate  channels for 1.5 seconds before  blinking to the target location,  destroying all  projectiles targeting him in the process.',
             values: 1,
             user: 'none',
             units: '',

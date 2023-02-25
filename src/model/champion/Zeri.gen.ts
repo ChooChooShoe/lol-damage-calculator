@@ -26,7 +26,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Zeri generates 1 charge for every 40 units she travels by any means and 10 charge every time she casts  Burst Fire, up to a maximum of 100 charge',
+            raw: 'Zeri generates 1 charge for every 40 units she travels by any means and 10 charge every time she casts  Burst Fire, up to a maximum of 100 charge',
             values: 1,
             user: 'none',
             units: '',
@@ -39,7 +39,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Basic Attack.png',
+        icon: '/wiki/images/Basic_Attack.png',
         description:
           'Basic Attack: Zeri zaps the target, applying spell effects as  spell damage, and triggering on-cast effects. This cannot  critically strike nor trigger  on-hit and on-attack effects.',
         descriptionHTML:
@@ -49,7 +49,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Zeri Basic Attack.png',
+        icon: '/wiki/images/Zeri_Basic_Attack.png',
         description:
           "While not at full charge, Zeri's attacks deal 10 − 25 (based on level) (+ 3% AP) magic damage, and  execute targets below 60 − 150 (based on level) (+ 18% AP) health. Each attack consumes 10 charge if she has enough already.",
         descriptionHTML:
@@ -102,7 +102,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Zeri Basic Attack 2.png',
+        icon: '/wiki/images/Zeri_Basic_Attack_2.png',
         description:
           "At full charge, Zeri's next attack is empowered to consume all charge to deal 90 − 200 (based on level) (+ 110% AP) (+ 1% − 15% (based on level) of target's maximum health) magic damage. The damage based on the target's health ratio is capped at 300 against  monsters.",
         descriptionHTML:
@@ -191,7 +191,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zeri Living Battery.png',
+        icon: '/wiki/images/Zeri_Living_Battery.png',
         description:
           'Innate: Zeri absorbs the energy of  shields she damages, granting herself a shield equal to 60% of the post-mitigation damage dealt to the shield. Each instance of shield gained by Living Battery lasts for 3 seconds.',
         descriptionHTML:
@@ -200,7 +200,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Innate:',
-            raw: ' Zeri absorbs the energy of  shields she damages, granting herself a shield equal to 60% of the post-mitigation damage dealt to the shield',
+            raw: 'Zeri absorbs the energy of  shields she damages, granting herself a shield equal to 60% of the post-mitigation damage dealt to the shield',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 6,
@@ -229,7 +229,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Zeri Living Battery 2.png',
+        icon: '/wiki/images/Zeri_Living_Battery_2.png',
         description:
           'Innate - Gotta Zip!: Whenever Zeri gains a shield, she gains  10% bonus movement speed for 2 seconds.',
         descriptionHTML:
@@ -238,7 +238,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Innate - Gotta Zip!:',
-            raw: ' Whenever Zeri gains a shield, she gains  10% bonus movement speed for 2 seconds.',
+            raw: 'Whenever Zeri gains a shield, she gains  10% bonus movement speed for 2 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 1,
@@ -290,7 +290,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zeri Burst Fire.png',
+        icon: '/wiki/images/Zeri_Burst_Fire.png',
         description:
           'Active: Zeri fires a burst of 7 rounds in the target direction that each deal physical damage to the first enemy hit.',
         descriptionHTML:
@@ -299,7 +299,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Zeri fires a burst of 7 rounds in the target direction that each deal physical damage to the first enemy hit.',
+            raw: 'Zeri fires a burst of 7 rounds in the target direction that each deal physical damage to the first enemy hit.',
             damagetype: 'Physical',
             values: 7,
             user: 'none',
@@ -342,6 +342,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Burst Fire's projectile is treated as a basic attack: it hits any enemy unit a typical basic attack can; deals  basic damage; can  critically strike for (75% +  35%) bonus damage; and applies  on-hit and on-attack effects at 100% effectiveness to the first enemy hit. Burst Fire's  cooldown and cast time are reduced with  attack speed, with the maximum of 1.5 attacks per second. 70% of attack speed in excess of the cap is converted into  bonus attack damage.",
         descriptionHTML:
@@ -350,7 +351,7 @@ export default {
           {
             effectType: 'Damage',
             name: "Burst Fire's projectile is treated as a basic attack:",
-            raw: ' it hits any enemy unit a typical basic attack can; deals  basic damage; can  critically strike for (75% +  35%) bonus damage; and applies  on-hit and on-attack effects at 100% effectiveness to the first enemy hit',
+            raw: 'it hits any enemy unit a typical basic attack can; deals  basic damage; can  critically strike for (75% +  35%) bonus damage; and applies  on-hit and on-attack effects at 100% effectiveness to the first enemy hit',
             damagetype: 'None',
             values: 0,
             units: 'total_ap',
@@ -437,7 +438,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zeri Ultrashock Laser.png',
+        icon: '/wiki/images/Zeri_Ultrashock_Laser.png',
         description:
           'Active: Zeri fires an electric pulse in the target direction that deals physical damage to the first enemy hit and  slows them for 2 seconds.If the pulse hits terrain, it transforms into a laser in a line that grants  sight of the area for 1.75 seconds and fires after 0.85 seconds, applying the same effects to enemies hit and  critically striking for (75% +  35%) bonus damage against  champions and  monsters.',
         descriptionHTML:
@@ -446,7 +447,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Zeri fires an electric pulse in the target direction that deals physical damage to the first enemy hit and  slows them for 2 seconds.If the pulse hits terrain, it transforms into a laser in a line that grants  sight of the area for 1.75 seconds and fires after 0.85 seconds, applying the same effects to enemies hit and  critically striking for (75% +  35%) bonus damage against  champions and  monsters.',
+            raw: 'Zeri fires an electric pulse in the target direction that deals physical damage to the first enemy hit and  slows them for 2 seconds.If the pulse hits terrain, it transforms into a laser in a line that grants  sight of the area for 1.75 seconds and fires after 0.85 seconds, applying the same effects to enemies hit and  critically striking for (75% +  35%) bonus damage against  champions and  monsters.',
             values: 2,
             user: 'none',
             units: '',
@@ -559,7 +560,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zeri Spark Surge.png',
+        icon: '/wiki/images/Zeri_Spark_Surge.png',
         description:
           'Active: Zeri  dashes in the target direction. She will dash farther across terrain if Spark Surge was cast within 50 units of any, gaining  unobstructed vision of the surrounding 800 units and  revealing herself while there are enemy champions within 1500 units of her.',
         descriptionHTML:
@@ -581,6 +582,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Afterwards, she gains Lightning Rounds for 5 seconds, empowering  Burst Fire to deal bonus magic damage to the first enemy hit, increased by 0% − 65% (based on critical strike chance), and pierce through enemies, though dealing modified damage after the first and not applying attack effects nor  life steal to secondary targets. This damage is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -657,6 +659,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Spark Surge's  current cooldown is reduced by 0.5 seconds for every  champion Zeri hits with  charged basic attacks or abilities, increased to 1.5 seconds if she does so with a cast of  Burst Fire or  Ultrashock Laser that  critically strikes.",
         descriptionHTML:
@@ -666,6 +669,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Spark Surge  resets Zeri's basic attack timer and  Burst Fire's cooldown.  Ultrashock Laser and  Lightning Crash can be cast during the dash.",
         descriptionHTML:
@@ -709,7 +713,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zeri Lightning Crash.png',
+        icon: '/wiki/images/Zeri_Lightning_Crash.png',
         description:
           'Active: Zeri discharges an electric nova that deals magic damage to nearby enemies. If this hits at least one enemy champion, she enters Overcharged for 5 seconds. Hitting an enemy champion with an ability or  charged basic attack will extend the duration by 1.5 seconds, up to its original duration.',
         descriptionHTML:
@@ -776,6 +780,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Overcharged: Zeri gains  30% bonus attack speed and  10% bonus movement speed.  Burst Fire is empowered to have a 20% shorter cast time and instead fire 3 rounds that travel with increased speed and chain to the nearest  visible enemy within 650 units of the target, up to 4 subsequent targets, to deal 25% AD physical damage. This damage can  critically strike for (18.75% +  8.75%) AD bonus physical damage.',
         descriptionHTML:
@@ -784,7 +789,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Overcharged:',
-            raw: ' Zeri gains  30% bonus attack speed and  10% bonus movement speed',
+            raw: 'Zeri gains  30% bonus attack speed and  10% bonus movement speed',
             increasedStat: 'bonus_ad',
             values: 3,
             valuesIsPercent: true,
@@ -831,6 +836,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'During Overcharged, Zeri can generate stacks of Hypercharged from enemy champions that last 1.5 seconds. She generates 1 stack for each one she hits with an ability or  charged basic attack, increased to 3 on abilities that  critically strike. Subsequent hits refresh the duration of Hypercharged.  Burst Fire grants stacks only against the first target hit.',
         descriptionHTML:
@@ -845,7 +851,7 @@ export default {
             description:
               'During Overcharged, Zeri can generate stacks of Hypercharged from enemy champions that last 1.5 seconds',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'Overcharged, Zeri can generate stacks of Hypercharged from enemy champions that last 1.5 seconds',
             pre: 'During Overcharged, Zeri can generate stacks of Hypercharged from enemy champions that last 1.5 seconds',
@@ -859,7 +865,7 @@ export default {
             description:
               'She generates 1 stack for each one she hits with an ability or  charged basic attack, increased to 3 on abilities that  critically strike',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates 1 stack for each one she hits with an ability or  charged basic attack, increased to 3 on abilities that  critically strike',
             pre: 'She generates 1 stack for each one she hits with an ability or  charged basic attack, increased to 3 on abilities that  critically strike',
@@ -869,6 +875,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Hypercharged: For each stack, Zeri gains  0.5% bonus movement speed.',
         descriptionHTML:

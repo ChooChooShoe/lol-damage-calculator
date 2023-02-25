@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Short Fuse.png',
+        icon: '/wiki/images/Short_Fuse.png',
         description:
           'Innate: Periodically, Ziggs empowers his next basic attack to deal 20 − 160 (based on level) (+ 50% AP) bonus magic damage,「 increased by 150% against structures. 」「 increased to 50 − 400 (based on level) (+ 125% AP) against structures. 」',
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Periodically, Ziggs empowers his next basic attack to deal 20 − 160 (based on level) (+ 50% AP) bonus magic damage,「 increased by 150% against structures. 」「 increased to 50 − 400 (based on level) (+ 125% AP) against structures. 」',
+            raw: 'Periodically, Ziggs empowers his next basic attack to deal 20 − 160 (based on level) (+ 50% AP) bonus magic damage,「 increased by 150% against structures. 」「 increased to 50 − 400 (based on level) (+ 125% AP) against structures. 」',
             values: [
               20, 28.24, 36.47, 44.71, 52.94, 61.18, 69.41, 77.65, 85.88, 94.12,
               102.35, 110.59, 118.82, 127.06, 135.29, 143.53, 151.76, 160,
@@ -69,6 +69,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Short Fuse's  cooldown is reduced by 4 / 5 / 6 (based on level) seconds whenever Ziggs casts an ability.",
         descriptionHTML:
@@ -80,7 +81,8 @@ export default {
             raw: "Short Fuse's  cooldown is reduced by 4 / 5 / 6 (based on level) seconds whenever Ziggs casts an ability.",
             values: [],
             basedOn: 'level',
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText: 'seconds whenever Ziggs casts an ability.',
             pre: "Short Fuse's  cooldown is reduced by 4 / 5 / 6",
             post: 'seconds whenever Ziggs casts an ability.',
@@ -130,7 +132,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bouncing Bomb.png',
+        icon: '/wiki/images/Bouncing_Bomb.png',
         description:
           'Active: Ziggs throws a bomb to the target location that bounces forward up to two times, the distance traveled each time being based on how far it was originally thrown.',
         descriptionHTML:
@@ -140,6 +142,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The bomb explodes upon landing near an enemy, within terrain, or the final bounce, dealing magic damage to nearby enemies.',
         descriptionHTML:
@@ -177,6 +180,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Bouncing Bomb will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -227,7 +231,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Satchel Charge.png',
+        icon: '/wiki/images/Satchel_Charge.png',
         description:
           'Active: Ziggs hurls a charge to the target location, remaining there for 4 seconds and granting  sight of the area. Satchel Charge can be recast within the duration, and does so automatically afterwards. If recast while in flight, the charge will explode immediately upon landing.',
         descriptionHTML:
@@ -236,7 +240,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ziggs hurls a charge to the target location, remaining there for 4 seconds and granting  sight of the area',
+            raw: 'Ziggs hurls a charge to the target location, remaining there for 4 seconds and granting  sight of the area',
             values: 4,
             user: 'none',
             units: '',
@@ -249,6 +253,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Ziggs detonates the charge, causing it to explode to deal magic damage to nearby enemies and  knock them back up to 500 units away from the center of the explosion, though not through terrain. If this hits Ziggs, he will  dash up to 825 units away from the center.',
         descriptionHTML:
@@ -257,7 +262,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Ziggs detonates the charge, causing it to explode to deal magic damage to nearby enemies and  knock them back up to 500 units away from the center of the explosion, though not through terrain',
+            raw: 'Ziggs detonates the charge, causing it to explode to deal magic damage to nearby enemies and  knock them back up to 500 units away from the center of the explosion, though not through terrain',
             damagetype: 'Magic',
             values: 5,
             user: 'none',
@@ -310,6 +315,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Turret Explosion: The explosion also   executes enemy  turrets within that are below a maximum health threshold.',
         descriptionHTML:
@@ -338,6 +344,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ziggs does not  dash if he is  immobilized or  grounded. He can cast any of his abilities during the dash.',
         descriptionHTML:
@@ -386,7 +393,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hexplosive Minefield.png',
+        icon: '/wiki/images/Hexplosive_Minefield.png',
         description:
           'Active: Ziggs scatters a cluster of 11 proximity mines over the target location that grant  sight of the area for 2 seconds, arming after 0.5 seconds and lasting for up to 10 seconds.',
         descriptionHTML:
@@ -395,7 +402,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ziggs scatters a cluster of 11 proximity mines over the target location that grant  sight of the area for 2 seconds, arming after 0.5 seconds and lasting for up to 10 seconds.',
+            raw: 'Ziggs scatters a cluster of 11 proximity mines over the target location that grant  sight of the area for 2 seconds, arming after 0.5 seconds and lasting for up to 10 seconds.',
             values: 1,
             user: 'none',
             units: '',
@@ -408,6 +415,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Each mine within the area explodes upon contact with terrain or an enemy, dealing magic damage and  slowing them for 1.5 seconds, as well as granting  sight of the area around the explosion for 2 seconds. An enemy takes 40% damage from subsequent mines.',
         descriptionHTML:
@@ -524,7 +532,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mega Inferno Bomb.png',
+        icon: '/wiki/images/Mega_Inferno_Bomb.png',
         description:
           'Active: Ziggs catapults the Mega Inferno Bomb to the target location, granting  sight within a 600 radius around its destination for 4 seconds.',
         descriptionHTML:
@@ -533,7 +541,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ziggs catapults the Mega Inferno Bomb to the target location, granting  sight within a 600 radius around its destination for 4 seconds.',
+            raw: 'Ziggs catapults the Mega Inferno Bomb to the target location, granting  sight within a 600 radius around its destination for 4 seconds.',
             increasedStat: 'total_ap',
             values: 6,
             units: '',
@@ -546,7 +554,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Mega Inferno Bomb Minimap.png',
+        icon: '/wiki/images/Mega_Inferno_Bomb_Minimap.png',
         description:
           'The bomb explodes upon arrival to deal magic damage to enemies hit, increased by 50% against those in the epicenter.',
         descriptionHTML:

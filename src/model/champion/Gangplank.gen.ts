@@ -24,25 +24,27 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Gangplank Trial by Fire.png',
+        icon: '/wiki/images/Gangplank_Trial_by_Fire.png',
         description:
-          'Innate: Periodically, Gangplank empowers his next basic attack to set the target on fire, dealing them「 55 − 310 (based on level) (+ 100% bonus AD)  bonus true damage over 2.5 seconds, increased by 0 − 200 (based on critical strike chance). 」「 5.5 − 31 (based on level) (+ 10% bonus AD)  bonus true damage every 0.25 seconds over 2.5 seconds, increased by 0 − 20 (based on critical strike chance). 」 Turrets are dealt 50% damage.',
+          'Innate: Periodically, Gangplank empowers his next basic attack to set the target on fire, dealing them「 55 − 310 (based on level) (+ 100% bonus AD) (+ 2 per 1% critical strike chance)  bonus true damage over 2.5 seconds. 」「 5.5 − 31 (based on level) (+ 10% bonus AD) (+ 0.2 per 1% critical strike chance)  bonus true damage every 0.25 seconds over 2.5 seconds. 」 Turrets are dealt 50% damage.',
         descriptionHTML:
-          '<span class="template_sbc"><b>Innate:</b></span> Periodically, <b>Gangplank</b> empowers his next <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> to set the target on fire, dealing them<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#F9966B;" data-start="55;" data-finish="310;" data-bot_values="55;70;85;100;115;130;145;160;175;190;205;220;235;250;265;280;295;310" data-top_values="">55 − 310 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;100% <b>bonus</b> AD)</span> <span style="white-space:nowrap"><a href="/wiki/True_damage" title="True damage"><img alt="Hybrid penetration icon.png" src="/wiki/images/Hybrid_penetration_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F9966B; white-space:normal"><b>bonus</b> true damage</span></span> over 2.<small>5</small> seconds, increased by <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#E56013;" data-top_label="critical strike chance" data-displayformula="2 per 1% critical strike chance" data-bot_values="0;20;40;60;80;100;120;140;160;180;200" data-top_values="0;10;20;30;40;50;60;70;80;90;100" data-top_key="%">0 − 200 (based on critical strike chance)</span>.&nbsp;」</span><span class="flipText2">「&nbsp;<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#F9966B;" data-start="5.5;" data-finish="31;" data-bot_values="5.5;7;8.5;10;11.5;13;14.5;16;17.5;19;20.5;22;23.5;25;26.5;28;29.5;31" data-top_values="">5.<small>5</small> − 31 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;10% <b>bonus</b> AD)</span> <span style="white-space:nowrap"><a href="/wiki/True_damage" title="True damage"><img alt="Hybrid penetration icon.png" src="/wiki/images/Hybrid_penetration_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F9966B; white-space:normal"><b>bonus</b> true damage</span></span> every 0.<small>25</small> seconds over 2.<small>5</small> seconds, increased by <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#E56013;" data-top_label="critical strike chance" data-displayformula="0.2 per 1% critical strike chance" data-bot_values="0;2;4;6;8;10;12;14;16;18;20" data-top_values="0;10;20;30;40;50;60;70;80;90;100" data-top_key="%">0 − 20 (based on critical strike chance)</span>.&nbsp;」</span></span><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">Turrets</a></span> are dealt 50% damage.',
+          '<span class="template_sbc"><b>Innate:</b></span> Periodically, <b>Gangplank</b> empowers his next <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> to set the target on fire, dealing them<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#F9966B;" data-start="55;" data-finish="310;" data-bot_values="55;70;85;100;115;130;145;160;175;190;205;220;235;250;265;280;295;310" data-top_values="">55 − 310 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;100% <b>bonus</b> AD)</span> <span style="color: #E56013; white-space:normal">(+&nbsp;2 per 1% critical strike chance)</span> <span style="white-space:nowrap"><a href="/wiki/True_damage" title="True damage"><img alt="Hybrid penetration icon.png" src="/wiki/images/Hybrid_penetration_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F9966B; white-space:normal"><b>bonus</b> true damage</span></span> over 2.<small>5</small> seconds.&nbsp;」</span><span class="flipText2">「&nbsp;<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#F9966B;" data-start="5.5;" data-finish="31;" data-bot_values="5.5;7;8.5;10;11.5;13;14.5;16;17.5;19;20.5;22;23.5;25;26.5;28;29.5;31" data-top_values="">5.<small>5</small> − 31 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;10% <b>bonus</b> AD)</span> <span style="color: #E56013; white-space:normal">(+&nbsp;0.<small>2</small> per 1% critical strike chance)</span> <span style="white-space:nowrap"><a href="/wiki/True_damage" title="True damage"><img alt="Hybrid penetration icon.png" src="/wiki/images/Hybrid_penetration_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F9966B; white-space:normal"><b>bonus</b> true damage</span></span> every 0.<small>25</small> seconds over 2.<small>5</small> seconds.&nbsp;」</span></span><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">Turrets</a></span> are dealt 50% damage.',
         descriptionRatios: [
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' Periodically, Gangplank empowers his next basic attack to set the target on fire, dealing them「 55 − 310 (based on level) (+ 100% bonus AD)  bonus true damage over 2.5 seconds, increased by 0 − 200 (based on critical strike chance). 」「 5.5 − 31 (based on level) (+ 10% bonus AD)  bonus true damage every 0.25 seconds over 2.5 seconds, increased by 0 − 20 (based on critical strike chance). 」 Turrets are dealt 50% damage.',
+            raw: 'Periodically, Gangplank empowers his next basic attack to set the target on fire, dealing them「 55 − 310 (based on level) (+ 100% bonus AD) (+ 2 per 1% critical strike chance)  bonus true damage over 2.5 seconds. 」「 5.5 − 31 (based on level) (+ 10% bonus AD) (+ 0.2 per 1% critical strike chance)  bonus true damage every 0.25 seconds over 2.5 seconds. 」 Turrets are dealt 50% damage.',
             damagetype: 'True',
-            values: [5, 310],
-            basedOn: 'critical strike chance',
+            values: [
+              55, 70, 85, 100, 115, 130, 145, 160, 175, 190, 205, 220, 235, 250,
+              265, 280, 295, 310,
+            ],
+            basedOn: 'level',
             user: 'none',
             units: '',
-            unitsText:
-              'bonus true damage over 2.5 seconds, increased by 0 − 200',
+            unitsText: 'bonus true damage over 2.5 seconds. 」「 5.5 − 31',
             pre: 'Periodically, Gangplank empowers his next basic attack to set the target on fire, dealing them「 55 − 310',
-            post: 'bonus true damage over 2.5 seconds, increased by 0 − 200',
+            post: 'bonus true damage over 2.5 seconds. 」「 5.5 − 31',
             children: [
               {
                 values: 100,
@@ -52,11 +54,25 @@ export default {
                 pre: '+ 100% bonus AD',
               },
               {
+                values: 2,
+                valuesIsPercent: true,
+                units: 'total_critchance',
+                unitsText: 'critical strike chanceper 1',
+                pre: '+ 2 per 1% critical strike chance',
+              },
+              {
                 values: 10,
                 valuesIsPercent: true,
                 units: 'bonus_ad',
                 unitsText: 'bonus AD',
                 pre: '+ 10% bonus AD',
+              },
+              {
+                values: 0.2,
+                valuesIsPercent: true,
+                units: 'total_critchance',
+                unitsText: 'critical strike chanceper 1',
+                pre: '+ 0.2 per 1% critical strike chance',
               },
             ],
           },
@@ -65,7 +81,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Gangplank Trial by Fire 2.png',
+        icon: '/wiki/images/Gangplank_Trial_by_Fire_2.png',
         description:
           'If Gangplank successfully hits a target with Trial by Fire, he gains  15% − 30% (based on level) bonus movement speed for 2 seconds. Every time a  Powder Keg explodes, the  cooldown for Trial by Fire resets and Gangplank gains its bonus movement speed.',
         descriptionHTML:
@@ -89,6 +105,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Trial by Fire cannot be applied with  Parrrley nor  Powder Keg.',
         descriptionHTML:
@@ -104,7 +121,7 @@ export default {
     spelleffects: 'default',
     spellshield: false,
     notes:
-      '* Reapplying <i>Trial by Fire</i> before a previous application has run out will stack the full damage, instead of refreshing the duration.\n<ul><li>If the attack is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dodge"><a href="/wiki/Attack_effects#Parrying" title="Attack effects#Parrying"><img alt="Jax Counter Strike old.png" src="/wiki/images/Jax_Counter_Strike_old.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#Parrying" title="Attack effects">dodged</a></span> or if <b>Gangplank</b> is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blind"><a href="/wiki/Blind" title="Blind"><img alt="Blind icon.png" src="/wiki/images/Blind_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blind" class="mw-redirect" title="Blind">blinded</a></span>, the effect is not applied nor does <i>Trial by Fire</i> go on cooldown. If the attack is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Block"><a href="/wiki/Attack_effects#Parrying" title="Attack effects#Parrying"><img alt="Spirit\'s Refuge.png" src="/wiki/images/Shen_Spirit%27s_Refuge.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#Parrying" title="Attack effects">blocked</a></span>, the effect is not applied, but <i>Trial by Fire</i> will go on cooldown.</li>\n<li>The empowered attack will not trigger against <a href="/wiki/Buildings" class="mw-redirect" title="Buildings">buildings</a> nor <a href="/wiki/Ward" title="Ward">wards</a>.</li></ul>',
+      '* Reapplying <i>Trial by Fire</i> before a previous application has run out will stack the full damage, instead of refreshing the duration.\n<ul><li>The bonus true damage scaling based on critical strike chance is capped at 100% of the stat.</li>\n<li>If the attack is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dodge"><a href="/wiki/Attack_effects#Parrying" title="Attack effects#Parrying"><img alt="Jax Counter Strike old.png" src="/wiki/images/Jax_Counter_Strike_old.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#Parrying" title="Attack effects">dodged</a></span> or if <b>Gangplank</b> is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blind"><a href="/wiki/Blind" title="Blind"><img alt="Blind icon.png" src="/wiki/images/Blind_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blind" class="mw-redirect" title="Blind">blinded</a></span>, the effect is not applied nor does <i>Trial by Fire</i> go on cooldown. If the attack is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Block"><a href="/wiki/Attack_effects#Parrying" title="Attack effects#Parrying"><img alt="Spirit\'s Refuge.png" src="/wiki/images/Shen_Spirit%27s_Refuge.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#Parrying" title="Attack effects">blocked</a></span>, the effect is not applied, but <i>Trial by Fire</i> will go on cooldown.</li>\n<li>The empowered attack will not trigger against <a href="/wiki/Buildings" class="mw-redirect" title="Buildings">buildings</a> nor <a href="/wiki/Ward" title="Ward">wards</a>.</li></ul>',
   },
   Parrrley: {
     name: 'Parrrley',
@@ -143,7 +160,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gangplank fires a shot at the target enemy that deals physical damage and applies  on-hit and on-attack effects at 100% effectiveness as a  ranged attack',
+            raw: 'Gangplank fires a shot at the target enemy that deals physical damage and applies  on-hit and on-attack effects at 100% effectiveness as a  ranged attack',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -207,7 +224,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Silver Serpents.png',
+        icon: '/wiki/images/Silver_Serpents.png',
         description:
           'If Parrrley kills the target, Gangplank plunders  gold and  Silver Serpents. Each enemy killed by a  Powder Keg explosion that was originally set off by Parrrley also counts for the plunder.',
         descriptionHTML:
@@ -251,6 +268,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Silver Serpents can be spent in the shop to upgrade  Cannon Barrage.',
         descriptionHTML:
@@ -295,7 +313,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Remove Scurvy.png',
+        icon: '/wiki/images/Remove_Scurvy.png',
         description:
           'Active: Gangplank consumes a large quantity of citrus fruit,  cleansing himself from all  crowd control and  healing himself.',
         descriptionHTML:
@@ -371,13 +389,13 @@ export default {
     static: '0.<small>5</small>',
     recharge: '18 / 17 / 16 / 15 / 14',
     blurb: [
-      '<span class="template_sbc"><b>Passive:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Gangplank" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gangplank/LoL" title="Gangplank"><img alt="Gangplank" src="/wiki/images/Gangplank_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Gangplank/LoL" title="Gangplank/LoL">Gangplank</a></span></span> stocks a <i>Powder Keg</i> every few seconds, up to a maximum.',
       '<span class="template_sbc"><b>Active:</b></span> <b>Gangplank</b> places a <i>Powder Keg</i> at the target location, which can be basic attacked or <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Gangplank" data-ability="Parrrley" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gangplank/LoL#Parrrley" title="shot"><img alt="shot" src="/wiki/images/Gangplank_Parrrley.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Gangplank/LoL#Parrrley" title="Gangplank/LoL">shot</a></span></span> to damage it. If an enemy destroys a <i>Powder Keg</i>, it is safely dismantled.',
       'If <b>Gangplank</b> destroys a <i>Powder Keg</i>, it will explode to deal the <span style="color: #FF8C34; white-space:normal">attack\'s damage</span> to nearby enemies and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slow</a></span> them. Against an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span>, the explosion additionally deals <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> and ignores a <span style="white-space:nowrap"><a href="/wiki/Armor_penetration" title="Armor penetration"><img alt="Armor penetration icon.png" src="/wiki/images/Armor_penetration_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal">portion of their armor</span></span>.<br><br>\n<p>The explosion will cause nearby <i>Powder Kegs</i> to also explode.\n</p>',
+      '<span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Gangplank" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gangplank/LoL" title="Gangplank"><img alt="Gangplank" src="/wiki/images/Gangplank_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Gangplank/LoL" title="Gangplank/LoL">Gangplank</a></span></span> stocks a <i>Powder Keg</i> every few seconds, up to a maximum.',
     ],
     description: [
       {
-        icon: '/wiki/images/Powder Keg.png',
+        icon: '/wiki/images/Powder_Keg.png',
         description:
           'Active: Gangplank consumes a charge to place a powder keg at the target location that lasts for 25 seconds and will connect to other kegs with overlapping connection radius through a trail of black powder. The keg starts with 3 health and loses 1 every 2 / 1 / 0.5 (based on level) seconds until it is left with 1 health. Gangplank periodically stocks a Powder Keg charge, up to a maximum amount.',
         descriptionHTML:
@@ -386,7 +404,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gangplank consumes a charge to place a powder keg at the target location that lasts for 25 seconds and will connect to other kegs with overlapping connection radius through a trail of black powder',
+            raw: 'Gangplank consumes a charge to place a powder keg at the target location that lasts for 25 seconds and will connect to other kegs with overlapping connection radius through a trail of black powder',
             damagetype: 'None',
             values: 2,
             units: 'total_ap',
@@ -401,7 +419,7 @@ export default {
             healType: 'BonusHealth',
             values: [],
             basedOn: 'level',
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText: 'seconds until it is left with 1 health',
             pre: 'The keg starts with 3 health and loses 1 every 2 / 1 / 0.5',
             post: 'seconds until it is left with 1 health',
@@ -428,6 +446,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Kegs can be basic attacked by enemies or Gangplank (including his  Parrrley), dealing 1 damage to it. When an enemy destroys it, it is safely defused. When Gangplank destroys it, it explodes and also triggers a chain reaction that explodes other nearby connected kegs with a 0.33 seconds-delay between explosions. The explosions also grant  sight of their radiuses for 2 seconds.',
         descriptionHTML:
@@ -470,6 +489,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies caught in an explosion are  slowed for 2 seconds, and are dealt the triggering attack's damage, dealing bonus physical damage against  champions. Each enemy can only be hit once per chain and the damage dealt ignores  40% of the target's armor.",
         descriptionHTML:
@@ -541,6 +561,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the triggering attack was a  critical strike, the explosions deal 5% more damage on top of the critical damage.',
         descriptionHTML:
@@ -602,7 +623,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Cannon Barrage.png',
+        icon: '/wiki/images/Cannon_Barrage.png',
         description:
           'Active: Gangplank shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting  sight of the area for the duration. Each wave deals magic damage to all enemies within the area and  slows them by 30% for 0.5 seconds.',
         descriptionHTML:
@@ -611,7 +632,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Gangplank shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting  sight of the area for the duration',
+            raw: 'Gangplank shoots a flare into the air, signaling his ship off-shore to fire upon the target location for 8 seconds, calling down 12 waves of cannonballs in clusters of 3 every 2 seconds, and granting  sight of the area for the duration',
             values: 8,
             user: 'none',
             units: '',
@@ -691,6 +712,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Gangplank can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage:',
         descriptionHTML:
@@ -699,20 +721,20 @@ export default {
           {
             effectType: 'Damage',
             name: 'Line 1:',
-            raw: 'Gangplank can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage',
+            raw: 'Gangplank can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage:',
             damagetype: 'None',
             values: 5,
             units: 'total_ad',
             unitsText:
-              'can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage',
-            pre: 'Gangplank can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage',
+              'can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage:',
+            pre: 'Gangplank can purchase upgrades for his ship in the store at the cost of 500  Silver Serpents each, which improve Cannon Barrage:',
           },
         ],
         leveling: [],
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Death's Daughter item.png",
+        icon: "/wiki/images/Death's_Daughter_item.png",
         description:
           "Death's Daughter: A large cannonball lands in the center of the barrage after the first cluster of waves occur, dealing a cluster's worth of true damage to enemies within the impact and  slowing them by 60% for 1.5 seconds.",
         descriptionHTML:
@@ -721,7 +743,7 @@ export default {
           {
             effectType: 'Damage',
             name: "Death's Daughter:",
-            raw: " A large cannonball lands in the center of the barrage after the first cluster of waves occur, dealing a cluster's worth of true damage to enemies within the impact and  slowing them by 60% for 1.5 seconds.",
+            raw: "A large cannonball lands in the center of the barrage after the first cluster of waves occur, dealing a cluster's worth of true damage to enemies within the impact and  slowing them by 60% for 1.5 seconds.",
             damagetype: 'True',
             values: 6,
             valuesIsPercent: true,
@@ -790,7 +812,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Fire at Will item.png',
+        icon: '/wiki/images/Fire_at_Will_item.png',
         description:
           'Fire at Will: Cannon Barrage fires「 6 additional waves 」「 2 additional clusters 」 over its duration; 18 waves of cannonballs are called down in clusters of 3 every 1.33 seconds.',
         descriptionHTML:
@@ -799,7 +821,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Fire at Will:',
-            raw: ' Cannon Barrage fires「 6 additional waves 」「 2 additional clusters 」 over its duration; 18 waves of cannonballs are called down in clusters of 3 every 1.33 seconds.',
+            raw: 'Cannon Barrage fires「 6 additional waves 」「 2 additional clusters 」 over its duration; 18 waves of cannonballs are called down in clusters of 3 every 1.33 seconds.',
             damagetype: 'None',
             values: 6,
             units: 'total_ad',
@@ -866,7 +888,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Raise Morale item.png',
+        icon: '/wiki/images/Raise_Morale_item.png',
         description:
           'Raise Morale: Cannon Barrage grants Gangplank and all allies within the area  30% bonus movement speed, lingering for 2 seconds.',
         descriptionHTML:
@@ -875,7 +897,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Raise Morale:',
-            raw: ' Cannon Barrage grants Gangplank and all allies within the area  30% bonus movement speed, lingering for 2 seconds.',
+            raw: 'Cannon Barrage grants Gangplank and all allies within the area  30% bonus movement speed, lingering for 2 seconds.',
             values: 3,
             valuesIsPercent: true,
             user: 'none',

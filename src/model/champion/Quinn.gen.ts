@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Quinn's  Blinding Assault against the primary target,  Vault, and  Skystrike mark enemies hit with Vulnerable for 4 seconds, during which they are  revealed",
+            raw: "Quinn's  Blinding Assault against the primary target,  Vault, and  Skystrike mark enemies hit with Vulnerable for 4 seconds, during which they are  revealed",
             increasedStat: 'kindredMarks',
             values: 4,
             units: '',
@@ -69,6 +69,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Quinn's basic attacks against Vulnerable targets are empowered to consume the mark to deal 10 − 95 (based on level) (+ 16% − 50% (based on level) AD) bonus physical damage.",
         descriptionHTML:
@@ -105,6 +106,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While  Behind Enemy Lines is active, Harrier is disabled and all Vulnerable marks are removed.',
         descriptionHTML:
@@ -157,7 +159,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blinding Assault.png',
+        icon: '/wiki/images/Blinding_Assault.png',
         description:
           'Active: Quinn sends  Valor in the target direction who stops upon hitting an enemy, marking them as  Vulnerable and dealing physical damage to all nearby enemies.',
         descriptionHTML:
@@ -203,6 +205,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the primary target was a  champion, they become  nearsighted for 1.75 seconds, otherwise they are  disarmed instead.',
         descriptionHTML:
@@ -269,7 +272,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' Whenever Quinn uses a basic attack on-attack against a  Vulnerable target or consumes their mark, she gains  bonus attack speed and  bonus movement speed for 2 seconds.',
+            raw: 'Whenever Quinn uses a basic attack on-attack against a  Vulnerable target or consumes their mark, she gains  bonus attack speed and  bonus movement speed for 2 seconds.',
             increasedStat: 'kindredMarks',
             values: 2,
             units: '',
@@ -316,7 +319,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Heightened Senses.png',
+        icon: '/wiki/images/Heightened_Senses.png',
         description:
           'Active:  Valor grants  sight of the surrounding area for 2 seconds and  reveals enemy champions within for the same duration.',
         descriptionHTML:
@@ -325,7 +328,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: '  Valor grants  sight of the surrounding area for 2 seconds and  reveals enemy champions within for the same duration.',
+            raw: ' Valor grants  sight of the surrounding area for 2 seconds and  reveals enemy champions within for the same duration.',
             values: 2,
             user: 'none',
             units: '',
@@ -382,7 +385,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Quinn  dashes to the target enemy, marking them as  Vulnerable, dealing physical damage,  knocking them back, though not through terrain, and  slowing them by 50% decaying over 1.5 seconds',
+            raw: 'Quinn  dashes to the target enemy, marking them as  Vulnerable, dealing physical damage,  knocking them back, though not through terrain, and  slowing them by 50% decaying over 1.5 seconds',
             damagetype: 'Physical',
             values: 5,
             valuesIsPercent: true,
@@ -434,6 +437,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Heightened Senses can be cast during either of the dashes.',
         descriptionHTML:
@@ -480,7 +484,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Behind Enemy Lines.png',
+        icon: '/wiki/images/Behind_Enemy_Lines.png',
         description:
           'Active: Quinn  channels for 2 seconds, signaling  Valor to pair up. Upon completion, he picks her up and they unite, increasing her  total movement speed, granting her  ghosting, and allowing her to cast  Skystrike. Behind Enemy Lines can be recast after 0.5 seconds during the channel.',
         descriptionHTML:
@@ -489,7 +493,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Quinn  channels for 2 seconds, signaling  Valor to pair up',
+            raw: 'Quinn  channels for 2 seconds, signaling  Valor to pair up',
             values: 2,
             user: 'none',
             units: '',
@@ -519,6 +523,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Taking damage from non- minions while Behind Enemy Lines is active or while Quinn is  channeling the ability causes her to lose the bonus total movement speed for 3 seconds. Becoming  immobilized,  grounded, or  silenced ends Behind Enemy Lines immediately and puts it on  cooldown without performing  Skystrike.',
         descriptionHTML:
@@ -530,7 +535,8 @@ export default {
             raw: 'Taking damage from non- minions while Behind Enemy Lines is active or while Quinn is  channeling the ability causes her to lose the bonus total movement speed for 3 seconds',
             damagetype: 'None',
             values: 3,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'damage from non- minions while Behind Enemy Lines is active or while Quinn is  channeling the ability causes her to lose the bonus total movement speed for 3 seconds',
             pre: 'Taking damage from non- minions while Behind Enemy Lines is active or while Quinn is  channeling the ability causes her to lose the bonus total movement speed for 3 seconds',
@@ -540,6 +546,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once Behind Enemy Lines has been learned, respawning or returning to the allied summoning platform will spawn  Valor instantly.',
         descriptionHTML:
@@ -549,6 +556,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Quinn cancels the channel, placing Behind Enemy Lines on cooldown.',
         descriptionHTML:
@@ -598,7 +606,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Quinn detaches from Valor, ending  Behind Enemy Lines' effects and raining arrows down around her, dealing 70% AD physical damage to nearby enemies and marking them as  Vulnerable.",
+            raw: "Quinn detaches from Valor, ending  Behind Enemy Lines' effects and raining arrows down around her, dealing 70% AD physical damage to nearby enemies and marking them as  Vulnerable.",
             damagetype: 'Physical',
             values: 7,
             valuesIsPercent: true,
@@ -612,6 +620,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Declaring a basic attack or casting  Blinding Assault or  Vault during  Behind Enemy Lines automatically activates Skystrike.',
         descriptionHTML:

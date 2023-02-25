@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Love Tap.png',
+        icon: '/wiki/images/Love_Tap.png',
         description:
           "Innate: Miss Fortune's basic attacks are empowered to apply a mark that expires upon attacking a new enemy. If the enemy was unmarked, this also deals 50% − 100% (based on level) AD bonus physical damage, halved to 25% − 50% (based on level) AD against  minions.",
         descriptionHTML:
@@ -82,7 +82,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Double Up.png',
+        icon: '/wiki/images/Double_Up.png',
         description:
           'Active: Miss Fortune fires a shot at the target enemy that deals physical damage, which then bounces to hit another enemy behind them. This applies on-attack effects to the first enemy hit, and  on-hit effects to both enemies hit.',
         descriptionHTML:
@@ -127,6 +127,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Double Up's bounce is affected by  critical strike modifiers. If Double Up kills the primary target, the bounce will  critically strike.",
         descriptionHTML:
@@ -136,6 +137,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The bounce prioritizes units directly behind the primary target. A target does not have to be  visible be hit by the bounce.',
         descriptionHTML:
@@ -191,7 +193,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' Miss Fortune gains  25 bonus movement speed after 5 seconds without taking non- persistent damage',
+            raw: 'Miss Fortune gains  25 bonus movement speed after 5 seconds without taking non- persistent damage',
             values: 2,
             user: 'none',
             units: '',
@@ -232,7 +234,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Guns Blazing.png',
+        icon: '/wiki/images/Guns_Blazing.png',
         description:
           'Active: Miss Fortune gains  bonus attack speed for 4 seconds.',
         descriptionHTML:
@@ -241,7 +243,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Miss Fortune gains  bonus attack speed for 4 seconds.',
+            raw: 'Miss Fortune gains  bonus attack speed for 4 seconds.',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -271,6 +273,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Marking a new target with  Love Tap reduces Strut's  current cooldown by 2 seconds.",
         descriptionHTML:
@@ -322,7 +325,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Make It Rain.png',
+        icon: '/wiki/images/Make_It_Rain.png',
         description:
           'Active: Miss Fortune casts a storm of bullets at the target location for 2 seconds, granting  sight of the area, dealing magic damage every 0.25 seconds to enemies within, and  slowing them by 40% (+ 6% per 100 AP).',
         descriptionHTML:
@@ -331,7 +334,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Miss Fortune casts a storm of bullets at the target location for 2 seconds, granting  sight of the area, dealing magic damage every 0.25 seconds to enemies within, and  slowing them by 40% (+ 6% per 100 AP).',
+            raw: 'Miss Fortune casts a storm of bullets at the target location for 2 seconds, granting  sight of the area, dealing magic damage every 0.25 seconds to enemies within, and  slowing them by 40% (+ 6% per 100 AP).',
             values: 2,
             valuesIsPercent: true,
             user: 'none',
@@ -382,6 +385,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Make It Rain will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Make It Rain will cast at max range if cast beyond that.</i>',
@@ -430,7 +434,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bullet Time.png',
+        icon: '/wiki/images/Bullet_Time.png',
         description:
           'Active: Miss Fortune  channels for up to 3 seconds, firing a number of waves of bullets in the target direction. Each wave is in a spread of 6 projectiles that deals 75% AD (+ 25% AP) physical damage to enemies hit.',
         descriptionHTML:
@@ -439,7 +443,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Miss Fortune  channels for up to 3 seconds, firing a number of waves of bullets in the target direction',
+            raw: 'Miss Fortune  channels for up to 3 seconds, firing a number of waves of bullets in the target direction',
             values: 3,
             user: 'none',
             units: '',
@@ -507,6 +511,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Each of the waves can  critically strike for (20% +  7%) bonus physical damage.',
         descriptionHTML:

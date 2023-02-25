@@ -14,7 +14,7 @@ export default {
     blurb: [],
     description: [
       {
-        icon: '/wiki/images/Basic Attack.png',
+        icon: '/wiki/images/Basic_Attack.png',
         description:
           'Basic Attack: Jhin fires at the target with  Whisper, dealing 100% AD physical damage and applying  on-hit and on-attack effects.',
         descriptionHTML:
@@ -23,7 +23,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Basic Attack:',
-            raw: ' Jhin fires at the target with  Whisper, dealing 100% AD physical damage and applying  on-hit and on-attack effects.',
+            raw: 'Jhin fires at the target with  Whisper, dealing 100% AD physical damage and applying  on-hit and on-attack effects.',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -37,6 +37,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Jhin's basic attacks can  critically strike. These attacks have slightly increased missile speed, but deal only「 (150.5% +  30.1%) AD physical damage. 」「 86% of the  critical damage champions usually have. 」",
         descriptionHTML:
@@ -69,6 +70,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Jhin's attack speed cannot be improved at all except through growth.",
         descriptionHTML:
@@ -116,7 +118,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - Death In 4 Acts:',
-            raw: " Jhin's basic attacks consume ammunition within 4 rounds",
+            raw: "Jhin's basic attacks consume ammunition within 4 rounds",
             values: 4,
             units: 'total_ad',
             unitsText: 'basic attacks consume ammunition within 4 rounds',
@@ -138,6 +140,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Jhin's final round attack has an  uncancellable windup versus champions, always  critically strikes, including against  structures, and deals bonus physical damage equal to 15 / 20 / 25% (based on level) of the target's  missing health.",
         descriptionHTML:
@@ -162,6 +165,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - Every Moment Matters: Jhin gains  bonus attack damage equal to 4% − 44% (based on level)「 (+ 0.3% per 1% critical strike chance) (+ 0.25% per 1% bonus attack speed) 」「 (+ 30% critical strike chance) (+ 25% bonus attack speed) 」AD.',
         descriptionHTML:
@@ -170,7 +174,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Every Moment Matters:',
-            raw: ' Jhin gains  bonus attack damage equal to 4% − 44% (based on level)「 (+ 0.3% per 1% critical strike chance) (+ 0.25% per 1% bonus attack speed) 」「 (+ 30% critical strike chance) (+ 25% bonus attack speed) 」AD.',
+            raw: 'Jhin gains  bonus attack damage equal to 4% − 44% (based on level)「 (+ 0.3% per 1% critical strike chance) (+ 0.25% per 1% bonus attack speed) 」「 (+ 30% critical strike chance) (+ 25% bonus attack speed) 」AD.',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -217,6 +221,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally,  critical strikes grant Jhin 10% (+ 0.4% per 1% bonus attack speed)  bonus movement speed for 2 seconds.',
         descriptionHTML:
@@ -288,7 +293,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dancing Grenade.png',
+        icon: '/wiki/images/Dancing_Grenade.png',
         description:
           'Active: Jhin throws a grenade at the target enemy that deals physical damage and can bounce to up to three additional nearby enemies.',
         descriptionHTML:
@@ -334,6 +339,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The damage is increased by 35% of the base damage if the enemy the grenade last bounced off of dies.',
         descriptionHTML:
@@ -403,7 +409,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: ' Enemy  champions that trigger a  Lotus Trap to bloom or are damaged by Jhin or allied champions are marked for 4 seconds.',
+            raw: 'Enemy  champions that trigger a  Lotus Trap to bloom or are damaged by Jhin or allied champions are marked for 4 seconds.',
             damagetype: 'None',
             values: 4,
             units: 'total_ap',
@@ -416,7 +422,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Deadly Flourish.png',
+        icon: '/wiki/images/Deadly_Flourish.png',
         description:
           'Active: Jhin fires a shot in the target direction that deals physical damage to all enemies in a line until colliding with an enemy champion, reduced by 25% against  minions.',
         descriptionHTML:
@@ -425,7 +431,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jhin fires a shot in the target direction that deals physical damage to all enemies in a line until colliding with an enemy champion, reduced by 25% against  minions.',
+            raw: 'Jhin fires a shot in the target direction that deals physical damage to all enemies in a line until colliding with an enemy champion, reduced by 25% against  minions.',
             values: 2,
             valuesIsPercent: true,
             user: 'none',
@@ -467,6 +473,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Hitting a marked champion  roots them for a duration and grants Jhin  Every Moment Matters'  bonus movement speed.",
         descriptionHTML:
@@ -544,7 +551,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Captive Audience.png',
+        icon: '/wiki/images/Captive_Audience.png',
         description:
           'Active: Jhin places a Lotus Trap at the target location which, upon landing, becomes  stealthed after arming over 1 second, lasting for up to 180 seconds and granting  sight within its radius. The Lotus Trap blooms upon enemy contact, with enemies in the area at the time of its trigger becoming  revealed for 4 seconds.',
         descriptionHTML:
@@ -553,7 +560,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jhin places a Lotus Trap at the target location which, upon landing, becomes  stealthed after arming over 1 second, lasting for up to 180 seconds and granting  sight within its radius',
+            raw: 'Jhin places a Lotus Trap at the target location which, upon landing, becomes  stealthed after arming over 1 second, lasting for up to 180 seconds and granting  sight within its radius',
             increasedStat: 'total_ap',
             values: 1,
             units: '',
@@ -577,6 +584,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Jhin periodically stocks a Lotus Trap charge, up to a maximum of 2.',
         descriptionHTML:
@@ -598,6 +606,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Blooming Lotus Traps  slow enemies within the area by 35% for 2 seconds before exploding, dealing magic damage to enemies. Lotus Traps deal 65% damage against  minions as well as  champions who have been struck by another Lotus Trap in the last 1 second.',
         descriptionHTML:
@@ -667,6 +676,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about Lotus Traps.',
         descriptionHTML:
           '<i>See <a href="/wiki/Jhin/LoL#Pets" title="Jhin/LoL">Pets</a> for more details about Lotus Traps.</i>',
@@ -718,7 +728,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Curtain Call.png',
+        icon: '/wiki/images/Curtain_Call.png',
         description:
           'Active: Jhin  channels for up to 10 seconds, transforming his weapon into a cannon and gaining the ability to recast Curtain Call 4 times within the duration.',
         descriptionHTML:
@@ -727,7 +737,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jhin  channels for up to 10 seconds, transforming his weapon into a cannon and gaining the ability to recast Curtain Call 4 times within the duration.',
+            raw: 'Jhin  channels for up to 10 seconds, transforming his weapon into a cannon and gaining the ability to recast Curtain Call 4 times within the duration.',
             increasedStat: 'total_ap',
             values: 1,
             units: '',
@@ -740,7 +750,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Curtain Call 2.png',
+        icon: '/wiki/images/Curtain_Call_2.png',
         description:
           "Recast: After 0.25 seconds, Jhin fires a round in the target direction that grants  sight around its trajectory for 0.5 seconds and deals physical damage to enemies hit, increased by 0% − 300% (based on target's missing health). The bullet stops upon hitting an enemy champion,  slowing them by 80% for 0.5 seconds and  revealing them for 2 seconds. Each cast has a static cooldown of 1 second.",
         descriptionHTML:
@@ -801,7 +811,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Curtain Call 3.png',
+        icon: '/wiki/images/Curtain_Call_3.png',
         description:
           'The fourth shot  critically strikes for (100% +  35%) bonus physical damage.',
         descriptionHTML:

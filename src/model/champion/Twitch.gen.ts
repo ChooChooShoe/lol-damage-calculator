@@ -31,11 +31,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Twitch's basic attacks  on-hit apply a stack of Deadly Venom for 6 seconds, refreshing on subsequent applications and stacking up to 6 times.",
+            raw: "Twitch's basic attacks  on-hit apply a stack of Deadly Venom for 6 seconds, refreshing on subsequent applications and stacking up to 6 times.",
             min: 0,
-            max: 10,
+            max: 6,
             description:
-              " Twitch's basic attacks  on-hit apply a stack of Deadly Venom for 6 seconds, refreshing on subsequent applications and stacking up to 6 times.",
+              "Twitch's basic attacks  on-hit apply a stack of Deadly Venom for 6 seconds, refreshing on subsequent applications and stacking up to 6 times.",
             values: 6,
             units: 'total_ap',
             unitsText:
@@ -47,7 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Deadly Venom.png',
+        icon: '/wiki/images/Deadly_Venom.png',
         description:
           'Deadly Venom: For each stack, the target is dealt「  1 / 2 / 3 / 4 / 5 (based on level) (+ 3% AP) true damage per second over the duration, 」「  6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) total true damage over the duration, 」for a maximum of「 6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) true damage with each tick. 」「 36 / 72 / 108 / 144 / 180 (based on level) (+ 108% AP) total true damage over the duration. 」This effect is considered a  poison.',
         descriptionHTML:
@@ -56,11 +56,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Deadly Venom:',
-            raw: ' For each stack, the target is dealt「  1 / 2 / 3 / 4 / 5 (based on level) (+ 3% AP) true damage per second over the duration, 」「  6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) total true damage over the duration, 」for a maximum of「 6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) true damage with each tick. 」「 36 / 72 / 108 / 144 / 180 (based on level) (+ 108% AP) total true damage over the duration. 」This effect is considered a  poison.',
+            raw: 'For each stack, the target is dealt「  1 / 2 / 3 / 4 / 5 (based on level) (+ 3% AP) true damage per second over the duration, 」「  6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) total true damage over the duration, 」for a maximum of「 6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) true damage with each tick. 」「 36 / 72 / 108 / 144 / 180 (based on level) (+ 108% AP) total true damage over the duration. 」This effect is considered a  poison.',
             min: 0,
             max: 10,
             description:
-              ' For each stack, the target is dealt「  1 / 2 / 3 / 4 / 5 (based on level) (+ 3% AP) true damage per second over the duration, 」「  6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) total true damage over the duration, 」for a maximum of「 6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) true damage with each tick. 」「 36 / 72 / 108 / 144 / 180 (based on level) (+ 108% AP) total true damage over the duration. 」This effect is considered a  poison.',
+              'For each stack, the target is dealt「  1 / 2 / 3 / 4 / 5 (based on level) (+ 3% AP) true damage per second over the duration, 」「  6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) total true damage over the duration, 」for a maximum of「 6 / 12 / 18 / 24 / 30 (based on level) (+ 18% AP) true damage with each tick. 」「 36 / 72 / 108 / 144 / 180 (based on level) (+ 108% AP) total true damage over the duration. 」This effect is considered a  poison.',
             values: [],
             basedOn: 'level',
             user: 'none',
@@ -151,7 +151,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' After a 1-second delay, Twitch becomes  camouflaged for a duration',
+            raw: 'After a 1-second delay, Twitch becomes  camouflaged for a duration',
             values: 1,
             user: 'none',
             units: '',
@@ -181,7 +181,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Ambush 2.png',
+        icon: '/wiki/images/Ambush_2.png',
         description:
           'During this time, Twitch gains  10% bonus movement speed, increased to 30% while facing enemy  champions within a 1000-unit radius who cannot see him.',
         descriptionHTML:
@@ -204,7 +204,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Ambush 3.png',
+        icon: '/wiki/images/Ambush_3.png',
         description:
           'Upon breaking stealth, Twitch gains  bonus attack speed for 5 seconds.',
         descriptionHTML:
@@ -244,6 +244,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "When an enemy  champion dies while afflicted with  Deadly Venom, Ambush's  cooldown is reset.",
         descriptionHTML:
@@ -287,7 +288,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Venom Cask.png',
+        icon: '/wiki/images/Venom_Cask.png',
         description:
           'Active: Twitch hurls a cask of venom that explodes at the target location, applying  Deadly Venom to enemies hit and granting  sight of the area.',
         descriptionHTML:
@@ -297,6 +298,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The area then becomes contaminated for 3 seconds, applying a  Deadly Venom stack each second to enemies within and  slowing them.',
         descriptionHTML:
@@ -412,6 +414,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Contaminate deals additional physical damage and 35% AP magic damage for each stack of  Deadly Venom on the target.',
         descriptionHTML:
@@ -467,6 +470,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A nearby enemy with  Deadly Venom is required to cast this ability. The target does not have to be  visible to be targeted by this ability.',
         descriptionHTML:
@@ -515,7 +519,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spray and Pray.png',
+        icon: '/wiki/images/Spray_and_Pray.png',
         description:
           'Active: Twitch gains  bonus attack damage and  300 bonus attack range for 6 seconds, during which his basic attacks are replaced by bolts that travel slightly further than his attack range in a straight line, dealing damage to every enemy unit hit.',
         descriptionHTML:
@@ -524,7 +528,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Twitch gains  bonus attack damage and  300 bonus attack range for 6 seconds, during which his basic attacks are replaced by bolts that travel slightly further than his attack range in a straight line, dealing damage to every enemy unit hit.',
+            raw: 'Twitch gains  bonus attack damage and  300 bonus attack range for 6 seconds, during which his basic attacks are replaced by bolts that travel slightly further than his attack range in a straight line, dealing damage to every enemy unit hit.',
             increasedStat: 'bonus_ad',
             values: 3,
             units: '',
@@ -556,6 +560,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The bolts deal 100% − 60% (based on enemies hit) of the attack's damage, apply  on-hit effects at 100% effectiveness, and can  critically strike.",
         descriptionHTML:

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mark of the Storm.png',
+        icon: '/wiki/images/Mark_of_the_Storm.png',
         description:
           "Innate: Kennen's abilities apply a stack of Mark of the Storm to enemies hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times.",
         descriptionHTML:
@@ -32,11 +32,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Kennen's abilities apply a stack of Mark of the Storm to enemies hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times.",
+            raw: "Kennen's abilities apply a stack of Mark of the Storm to enemies hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times.",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Kennen's abilities apply a stack of Mark of the Storm to enemies hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times.",
+              "Kennen's abilities apply a stack of Mark of the Storm to enemies hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times.",
             values: 6,
             units: 'total_ap',
             unitsText:
@@ -48,18 +48,22 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The third stack against a target consumes them all to  stun them for 1.25 seconds and restore  25 energy. The stun duration is reduced to 0.5 seconds if this occurs on the same target again within 6 seconds.',
         descriptionHTML:
           'The third stack against a target consumes them all to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stun</a></span> them for 1.<small>25</small> seconds and restore <span style="white-space:nowrap"><a href="/wiki/Energy" title="Energy"><img alt="Energy icon.png" src="/wiki/images/Energy_icon.png" decoding="async" loading="lazy" width="15" height="16" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal">25 energy</span></span>. The stun duration is reduced to 0.<small>5</small> seconds if this occurs on the same target again within 6 seconds.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'The third stack against a target consumes them all to  stun them for 1.25 seconds and restore  25 energy',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'The third stack against a target consumes them all to  stun them for 1.25 seconds and restore  25 energy',
             values: 1,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'third stack against a target consumes them all to  stun them for 1.25 seconds and restore  25 energy',
             pre: 'The third stack against a target consumes them all to  stun them for 1.25 seconds and restore  25 energy',
@@ -69,6 +73,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Slicing Maelstrom can apply only up to 3 stacks on a target.',
         descriptionHTML:
@@ -125,7 +130,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Thundering Shuriken.png',
+        icon: '/wiki/images/Thundering_Shuriken.png',
         description:
           'Active: Kennen throws a shuriken in the target direction that deals magic damage to the first enemy hit.',
         descriptionHTML:
@@ -208,13 +213,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Kennen's basic attacks on-attack generate a stack of Electrical Surge, stacking up to 4 times",
+            raw: "Kennen's basic attacks on-attack generate a stack of Electrical Surge, stacking up to 4 times",
             min: 0,
-            max: 10,
+            max: 4,
             description:
-              " Kennen's basic attacks on-attack generate a stack of Electrical Surge, stacking up to 4 times",
+              "Kennen's basic attacks on-attack generate a stack of Electrical Surge, stacking up to 4 times",
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks on-attack generate a stack of Electrical Surge, stacking up to 4 times',
             pre: "Kennen's basic attacks on-attack generate a stack of Electrical Surge, stacking up to 4 times",
@@ -274,7 +279,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Electrical Surge.png',
+        icon: '/wiki/images/Electrical_Surge.png',
         description:
           'Active: Kennen sends out a surge of electricity that deals magic damage to all nearby enemies afflicted by  Mark of the Storm or within  Slicing Maelstrom.',
         descriptionHTML:
@@ -312,6 +317,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An enemy within  775 units with  Mark of the Storm or inside  Slicing Maelstrom is required to cast this ability. The target does not have to be  visible to be targeted by this ability.',
         descriptionHTML:
@@ -367,7 +373,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Lightning Rush.png',
+        icon: '/wiki/images/Lightning_Rush.png',
         description:
           'Active: Kennen turns into lightning for 2 seconds, becoming unable to declare basic attacks but gaining  ghosting and  100% bonus movement speed. He deals magic damage to enemies he passes through, halved against non-champions, and restores  40 energy upon damaging at least one enemy.',
         descriptionHTML:
@@ -376,7 +382,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Kennen turns into lightning for 2 seconds, becoming unable to declare basic attacks but gaining  ghosting and  100% bonus movement speed',
+            raw: 'Kennen turns into lightning for 2 seconds, becoming unable to declare basic attacks but gaining  ghosting and  100% bonus movement speed',
             increasedStat: 'bonus_ad',
             values: 2,
             valuesIsPercent: true,
@@ -429,6 +435,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Lightning Rush can be recast after 0.5 seconds, and does so automatically after the duration.',
         descriptionHTML:
@@ -438,6 +445,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Kennen ends Lightning Rush to gain  bonus attack speed and be allowed to exceed the attack speed cap for 4 seconds.',
         descriptionHTML:
@@ -446,7 +454,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Recast:',
-            raw: ' Kennen ends Lightning Rush to gain  bonus attack speed and be allowed to exceed the attack speed cap for 4 seconds.',
+            raw: 'Kennen ends Lightning Rush to gain  bonus attack speed and be allowed to exceed the attack speed cap for 4 seconds.',
             increasedStat: 'total_ap',
             values: 4,
             units: '',
@@ -477,6 +485,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Lightning Rush's recast can be used while affected by  cast-inhibiting crowd control.",
         descriptionHTML:
@@ -517,7 +526,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Slicing Maelstrom.png',
+        icon: '/wiki/images/Slicing_Maelstrom.png',
         description:
           'Active: Kennen summons a storm around himself for 3 seconds, gaining  bonus armor and  bonus magic resistance for the duration.',
         descriptionHTML:
@@ -526,7 +535,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Kennen summons a storm around himself for 3 seconds, gaining  bonus armor and  bonus magic resistance for the duration.',
+            raw: 'Kennen summons a storm around himself for 3 seconds, gaining  bonus armor and  bonus magic resistance for the duration.',
             increasedStat: 'bonus_armor',
             values: 3,
             units: '',
@@ -556,6 +565,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The storm strikes lightning bolts down on nearby enemies every 0.5 seconds, each one dealing magic damage.',
         descriptionHTML:
@@ -593,6 +603,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Slicing Maelstrom deals 10% increased damage against a target with each successive strike, up to a maximum of 150% damage with one strike.',
         descriptionHTML:

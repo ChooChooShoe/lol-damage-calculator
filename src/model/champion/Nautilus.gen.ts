@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Staggering Blow.png',
+        icon: '/wiki/images/Staggering_Blow.png',
         description:
           "Innate: Nautilus'  basic attacks are empowered to deal 14 − 116 (based on level) bonus physical damage and  root the target for 0.75 − 1.5 (based on level) seconds.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Nautilus'  basic attacks are empowered to deal 14 − 116 (based on level) bonus physical damage and  root the target for 0.75 − 1.5 (based on level) seconds.",
+            raw: "Nautilus'  basic attacks are empowered to deal 14 − 116 (based on level) bonus physical damage and  root the target for 0.75 − 1.5 (based on level) seconds.",
             damagetype: 'Physical',
             values: [
               14, 20, 26, 32, 38, 44, 50, 56, 62, 68, 74, 80, 86, 92, 98, 104,
@@ -52,6 +52,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'This effect cannot occur on the same target more than once every few seconds.',
         descriptionHTML:
@@ -99,7 +100,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dredge Line.png',
+        icon: '/wiki/images/Dredge_Line.png',
         description:
           'Active: Nautilus hurls his anchor in the target direction that stops on the first enemy or terrain hit.If the anchor hits an enemy, it deals magic damage and  reveals them,  dragging them toward Nautilus while he also  dashes toward them within 0.9 seconds. Afterwards, the target is  rooted for 0.1 seconds.',
         descriptionHTML:
@@ -137,6 +138,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the anchor hits terrain, Nautilus  dashes to that location and 50% of Dredge Line's  cooldown and  mana cost are refunded.",
         descriptionHTML:
@@ -158,6 +160,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Nautilus is  unable to move or attack while Dredge Line is in flight. He can cast  Titan's Wrath and  Riptide during the dash.",
         descriptionHTML:
@@ -205,7 +208,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Titan's Wrath.png",
+        icon: "/wiki/images/Titan's_Wrath.png",
         description:
           'Active: Nautilus grants himself a  shield for 6 seconds, and while it holds, his basic attacks are empowered to apply Pain of Wrath to the target and surrounding enemies.',
         descriptionHTML:
@@ -214,7 +217,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Nautilus grants himself a  shield for 6 seconds, and while it holds, his basic attacks are empowered to apply Pain of Wrath to the target and surrounding enemies.',
+            raw: 'Nautilus grants himself a  shield for 6 seconds, and while it holds, his basic attacks are empowered to apply Pain of Wrath to the target and surrounding enemies.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 6,
@@ -257,6 +260,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Pain of Wrath: The target takes magic damage over time, half dealt immediately and the other half dealt after 1.25 seconds.',
         descriptionHTML:
@@ -265,7 +269,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Pain of Wrath:',
-            raw: ' The target takes magic damage over time, half dealt immediately and the other half dealt after 1.25 seconds.',
+            raw: 'The target takes magic damage over time, half dealt immediately and the other half dealt after 1.25 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -307,6 +311,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Titan's Wrath  resets Nautilus'  basic attack timer.",
         descriptionHTML:
           '<i>Titan\'s Wrath <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Nautilus\' </b> basic attack timer.</i>',
@@ -416,6 +421,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Riptide deals 150% damage against  monsters.',
         descriptionHTML:
           '<i>Riptide</i> deals 150% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
@@ -501,7 +507,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Depth Charge.png',
+        icon: '/wiki/images/Depth_Charge.png',
         description:
           'Active: Nautilus sends out a  Depth Charge that chases the target enemy  champion, accelerating over time and creating eruptions every 0.264 seconds in its wake that also briefly grant  sight of the area. Enemies hit by the eruptions are dealt magic damage,  knocked up for 1 second, and  stunned for a duration.',
         descriptionHTML:
@@ -568,7 +574,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Depth Charge 2.png',
+        icon: '/wiki/images/Depth_Charge_2.png',
         description:
           'Upon reaching the primary target or when it moves too far away, the Depth Charge erupts a final time. The primary target takes increased damage, is  stunned for the same duration, and  knocked up for a modified duration.',
         descriptionHTML:

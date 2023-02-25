@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Shaco's basic attacks are empowered to deal 20 − 35 (based on level) (+ 25% bonus AD) bonus physical damage when hitting an enemy from behind",
+            raw: "Shaco's basic attacks are empowered to deal 20 − 35 (based on level) (+ 25% bonus AD) bonus physical damage when hitting an enemy from behind",
             damagetype: 'Physical',
             values: [
               20, 20.88, 21.76, 22.65, 23.53, 24.41, 25.29, 26.18, 27.06, 27.94,
@@ -60,6 +60,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Deceive and  Two-Shiv Poison have additional effects when they hit an enemy from behind.',
         descriptionHTML:
@@ -133,6 +134,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Deceive's  invisibility breaks when Shaco uses a basic attack or casts  Two-Shiv Poison, but not from casting  Jack in the Box or  Hallucinate.",
         descriptionHTML:
@@ -142,6 +144,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After breaking the invisibility, Shaco empowers his next basic attack within 0.25 seconds to deal bonus physical damage, which is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -179,6 +182,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Backstab Bonus: The attack will  critically strike for (40% +  35%) bonus physical damage.',
         descriptionHTML:
@@ -187,7 +191,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Backstab Bonus:',
-            raw: ' The attack will  critically strike for (40% +  35%) bonus physical damage.',
+            raw: 'The attack will  critically strike for (40% +  35%) bonus physical damage.',
             damagetype: 'Physical',
             values: 0,
             user: 'none',
@@ -211,6 +215,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Deceive will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Deceive will cast at max range if cast beyond that.</i>',
@@ -255,7 +260,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Jack in the Box.png',
+        icon: '/wiki/images/Jack_in_the_Box.png',
         description:
           'Active: Shaco summons a box at the target location that becomes  stealthed after arming over 2 seconds, lasting for up to 40 (+ 10% AP) seconds. The box is  invulnerable and  untargetable to enemies while stealthed.',
         descriptionHTML:
@@ -264,7 +269,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Shaco summons a box at the target location that becomes  stealthed after arming over 2 seconds, lasting for up to 40 (+ 10% AP) seconds',
+            raw: 'Shaco summons a box at the target location that becomes  stealthed after arming over 2 seconds, lasting for up to 40 (+ 10% AP) seconds',
             damagetype: 'None',
             values: 2,
             user: 'none',
@@ -287,6 +292,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The box will spring out upon enemy contact,  fearing nearby enemies and reducing their  movement speed for 2 seconds, modified against  champions, who are also  rooted for 0.5 seconds. Enemy champions have their movement speed set to a static 100, reduced to a static 60 for non-champions.',
         descriptionHTML:
@@ -337,6 +343,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once sprung, the box will remain for 5 seconds, during which it will automatically fire at nearby  visible enemies every 0.5 seconds, dealing magic damage with each attack. If the box attacks only one target, it deals increased damage. Boxes deal bonus magic damage to  monsters and 50% reduced damage to  structures.',
         descriptionHTML:
@@ -415,6 +422,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about boxes.',
         descriptionHTML:
           '<i>See <a href="/wiki/Shaco/LoL#Pets" title="Shaco/LoL">Pets</a> for more details about boxes.</i>',
@@ -466,7 +474,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive:',
-            raw: " Shaco's basic attacks  slow enemies for 2 seconds while Two-Shiv Poison is not on cooldown.",
+            raw: "Shaco's basic attacks  slow enemies for 2 seconds while Two-Shiv Poison is not on cooldown.",
             values: 2,
             units: 'total_ad',
             unitsText:
@@ -497,7 +505,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Two-Shiv Poison.png',
+        icon: '/wiki/images/Two-Shiv_Poison.png',
         description:
           'Active: Shaco throws a dagger at the target enemy that deals magic damage,  increased by 50% if they are below 30% of their maximum health, and  slows them for 3 seconds.',
         descriptionHTML:
@@ -506,7 +514,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Shaco throws a dagger at the target enemy that deals magic damage,  increased by 50% if they are below 30% of their maximum health, and  slows them for 3 seconds.',
+            raw: 'Shaco throws a dagger at the target enemy that deals magic damage,  increased by 50% if they are below 30% of their maximum health, and  slows them for 3 seconds.',
             healType: 'OutgoingHeals',
             values: 5,
             valuesIsPercent: true,
@@ -573,6 +581,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Backstab Bonus: The dagger deals an additional 15 − 50 (based on level) (+ 10% AP) bonus magic damage, increased to 22.5 − 75 (based on level) (+ 15% AP) if the target is below 30% of their maximum health.',
         descriptionHTML:
@@ -581,7 +590,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Backstab Bonus:',
-            raw: ' The dagger deals an additional 15 − 50 (based on level) (+ 10% AP) bonus magic damage, increased to 22.5 − 75 (based on level) (+ 15% AP) if the target is below 30% of their maximum health.',
+            raw: 'The dagger deals an additional 15 − 50 (based on level) (+ 10% AP) bonus magic damage, increased to 22.5 − 75 (based on level) (+ 15% AP) if the target is below 30% of their maximum health.',
             healType: 'OutgoingHeals',
             values: [
               15, 17.06, 19.12, 21.18, 23.24, 25.29, 27.35, 29.41, 31.47, 33.53,
@@ -663,7 +672,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Command Hallucinate.png',
+        icon: '/wiki/images/Command_Hallucinate.png',
         description:
           'Recast: Shaco commands the  clone to move to the target location.',
         descriptionHTML:
@@ -673,6 +682,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The clone will explode upon dying or expiring to deal magic damage to nearby enemies and deploy three  mini-boxes that activate instantly,  fearing nearby enemies for 1 second.',
         descriptionHTML:
@@ -723,6 +733,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The boxes possess  Jack in the Box's effects, except they have a doubled, but shared  health, and deal modified magic damage with each attack, increased when attacking a single unit.",
         descriptionHTML:
@@ -760,6 +771,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "See Pets for more details about Shaco's clone.",
         descriptionHTML:
           '<i>See <a href="/wiki/Shaco/LoL#Pets" title="Shaco/LoL">Pets</a> for more details about <b>Shaco\'s</b> clone.</i>',

@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate - Heart of the Half-Beast:',
-            raw: ' Sett  regenerates「 an additional 0.15 / 0.5 / 1 / 2 (based on level) health per second for every  5% of his missing health. 」「 up-to 2.85 / 9.5 / 19 / 38 (based on level) health per second (maximum reached at  95% missing health). 」',
+            raw: 'Sett  regenerates「 an additional 0.15 / 0.5 / 1 / 2 (based on level) health per second for every  5% of his missing health. 」「 up-to 2.85 / 9.5 / 19 / 38 (based on level) health per second (maximum reached at  95% missing health). 」',
             healType: 'HealthRegen',
             values: [],
             basedOn: 'level',
@@ -55,7 +55,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Pit Grit.png',
+        icon: '/wiki/images/Pit_Grit.png',
         description:
           "Innate - Heavy Hands: Sett's basic attacks alternate between his Left Punch and a Right Punch on-attack. Sett begins attacking with his Left Punch, and will reset back to it after 2 seconds of not performing a Right Punch.",
         descriptionHTML:
@@ -76,6 +76,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Sett's Right Punch is empowered to gain  50 bonus range (unless  Knuckle Down is active), attack at 8 times the Left Punch's attack speed, and deal 5 − 90 (based on level) (+ 55% bonus AD) bonus physical damage.",
         descriptionHTML:
@@ -145,7 +146,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Knuckle Down.png',
+        icon: '/wiki/images/Knuckle_Down.png',
         description:
           'Active: Sett empowers his next two basic attacks within 5 seconds to gain  50 bonus range and deal bonus physical damage, capped at 400 total damage of each attack against  monsters.(bug)',
         descriptionHTML:
@@ -154,7 +155,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Sett empowers his next two basic attacks within 5 seconds to gain  50 bonus range and deal bonus physical damage, capped at 400 total damage of each attack against  monsters.(bug)',
+            raw: 'Sett empowers his next two basic attacks within 5 seconds to gain  50 bonus range and deal bonus physical damage, capped at 400 total damage of each attack against  monsters.(bug)',
             increasedStat: 'total_ap',
             values: 5,
             units: '',
@@ -216,7 +217,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Looking for a Fight.png',
+        icon: '/wiki/images/Looking_for_a_Fight.png',
         description:
           'For 1.5 seconds, Sett also gains  30% bonus movement speed while facing  visible enemy  champions within 2000 units.',
         descriptionHTML:
@@ -239,6 +240,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Knuckle Down  resets Sett's basic attack timer. The empowered attacks are guaranteed to be a Left Punch followed by a Right Punch, resetting Sett's current  Pit Grit state (if applicable) and ignoring the usual time-out period for a follow-up Right Punch.",
         descriptionHTML:
@@ -315,7 +317,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Sett stores 100% of post-mitigation damage taken as Grit on his resource bar, up to 50% of his maximum health',
+            raw: 'Sett stores 100% of post-mitigation damage taken as Grit on his resource bar, up to 50% of his maximum health',
             healType: 'BonusHealth',
             values: 1,
             valuesIsPercent: true,
@@ -351,7 +353,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Sett immediately grants himself a  shield equal to his expended Grit for 3 seconds, decaying after 0.75 seconds, and charges up a strike over the cast time.',
+            raw: 'Sett immediately grants himself a  shield equal to his expended Grit for 3 seconds, decaying after 0.75 seconds, and charges up a strike over the cast time.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 3,
@@ -366,6 +368,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After the cast time, he unleashes a blast in a cone in the target direction that deals physical damage to enemies hit; those hit in a center line are dealt   true damage instead.',
         descriptionHTML:
@@ -460,7 +463,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Sett  pulls in enemies at his front and back along the target direction, dealing physical damage and  slowing them by 70% for 0.5 seconds.',
+            raw: 'Sett  pulls in enemies at his front and back along the target direction, dealing physical damage and  slowing them by 70% for 0.5 seconds.',
             damagetype: 'Physical',
             values: 7,
             valuesIsPercent: true,
@@ -503,6 +506,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Facebreaker affects at least one enemy on each side, all enemies are  stunned for 1 second upon landing.',
         descriptionHTML:
@@ -524,6 +528,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Sett is unable to move or attack for 0.25 seconds after Facebreaker's cast time.",
         descriptionHTML:
@@ -570,7 +575,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Show Stopper.png',
+        icon: '/wiki/images/The_Show_Stopper.png',
         description:
           'Active: Sett  suppresses and  reveals the target enemy  champion while  dashing with  displacement immunity to their location and  attaching them to himself upon arrival. He leaps another 600 units in the same direction to slam the target into the ground, creating a massive shockwave and quickly  sliding forward 250 units beyond the impact.',
         descriptionHTML:
@@ -592,6 +597,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies within the epicenter take  physical damage, and other enemies hit by the shockwave take physical damage that is reduced by up to 75% based on proximity. All targets hit are  slowed by 99% for 1 second.',
         descriptionHTML:
@@ -663,6 +669,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The dash will end and create the impact prematurely upon encountering terrain that cannot be dashed through, whether by distance or invalid space.',
         descriptionHTML:

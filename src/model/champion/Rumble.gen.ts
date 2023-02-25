@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Junkyard Titan.png',
+        icon: '/wiki/images/Junkyard_Titan.png',
         description:
           "Innate: Rumble's basic ability casts generate  Heat, which refreshes on subsequent casts and decays by  10 Heat per second after not using any basic ability within 4 seconds or  The Equalizer within 2 seconds. Rumble's mech enters the Danger Zone when at or above  50 Heat, and becomes Overheated while at  100 Heat.",
         descriptionHTML:
@@ -33,9 +33,10 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Rumble's basic ability casts generate  Heat, which refreshes on subsequent casts and decays by  10 Heat per second after not using any basic ability within 4 seconds or  The Equalizer within 2 seconds",
+            raw: "Rumble's basic ability casts generate  Heat, which refreshes on subsequent casts and decays by  10 Heat per second after not using any basic ability within 4 seconds or  The Equalizer within 2 seconds",
             values: 1,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'basic ability casts generate  Heat, which refreshes on subsequent casts and decays by  10 Heat per second after not using any basic ability within 4 seconds or  The Equalizer within 2 seconds',
             pre: "Rumble's basic ability casts generate  Heat, which refreshes on subsequent casts and decays by  10 Heat per second after not using any basic ability within 4 seconds or  The Equalizer within 2 seconds",
@@ -56,7 +57,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Junkyard Titan 2.png',
+        icon: '/wiki/images/Junkyard_Titan_2.png',
         description:
           "Danger Zone: Rumble's mech enters the Danger Zone, empowering his basic abilities.",
         descriptionHTML:
@@ -66,7 +67,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Junkyard Titan 3.png',
+        icon: '/wiki/images/Junkyard_Titan_3.png',
         description:
           "Overheated: Rumble's mech becomes Overheated, disabling his abilities as his  Heat decays back down to 0 over 5.25 seconds. During this time, he gains  20% − 80% (based on level) bonus attack speed and empowers his basic attacks to deal 5 − 40 (based on level) (+ 25% AP) (+ 6% of the target's maximum health) bonus magic damage  on-hit. The damage based on the target's health ratio is capped at 80 against  monsters.",
         descriptionHTML:
@@ -162,7 +163,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Rumble generates  20 Heat to activate his flamethrower for 3 seconds, dealing magic damage every 0.25 seconds to enemies hit in a frontal cone, reduced against  minions.',
+            raw: 'Rumble generates  20 Heat to activate his flamethrower for 3 seconds, dealing magic damage every 0.25 seconds to enemies hit in a frontal cone, reduced against  minions.',
             values: 2,
             user: 'none',
             units: '',
@@ -220,6 +221,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Danger Zone Bonus: Flamespitter's damage is increased by 50%.",
         descriptionHTML:
@@ -228,7 +230,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Danger Zone Bonus:',
-            raw: " Flamespitter's damage is increased by 50%.",
+            raw: "Flamespitter's damage is increased by 50%.",
             damagetype: 'None',
             values: 5,
             valuesIsPercent: true,
@@ -329,7 +331,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Scrap Shield.png',
+        icon: '/wiki/images/Scrap_Shield.png',
         description:
           'Active: Rumble generates  20 Heat to grant himself a  shield for 1.5 seconds.',
         descriptionHTML:
@@ -338,7 +340,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Rumble generates  20 Heat to grant himself a  shield for 1.5 seconds.',
+            raw: 'Rumble generates  20 Heat to grant himself a  shield for 1.5 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -382,7 +384,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Scrap Shield 2.png',
+        icon: '/wiki/images/Scrap_Shield_2.png',
         description:
           'Rumble also gains  bonus movement speed for 1 to 1.32 seconds.',
         descriptionHTML:
@@ -422,6 +424,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Danger Zone Bonus: Scrap Shield's shield strength and bonus movement speed are increased in effectiveness by 50%.",
         descriptionHTML:
@@ -430,7 +433,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Danger Zone Bonus:',
-            raw: " Scrap Shield's shield strength and bonus movement speed are increased in effectiveness by 50%.",
+            raw: "Scrap Shield's shield strength and bonus movement speed are increased in effectiveness by 50%.",
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 5,
@@ -527,7 +530,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Electro Harpoon.png',
+        icon: '/wiki/images/Electro_Harpoon.png',
         description:
           'Active: Rumble generates  10 Heat to shoot a harpoon in the target direction that deals magic damage to the first enemy hit, inflicting them with  10% magic resistance reduction for 4 seconds and  slowing them for 2 seconds. These effects stack additively with multiple harpoons, refreshing their duration and stacking up to 2 times.',
         descriptionHTML:
@@ -536,7 +539,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Rumble generates  10 Heat to shoot a harpoon in the target direction that deals magic damage to the first enemy hit, inflicting them with  10% magic resistance reduction for 4 seconds and  slowing them for 2 seconds',
+            raw: 'Rumble generates  10 Heat to shoot a harpoon in the target direction that deals magic damage to the first enemy hit, inflicting them with  10% magic resistance reduction for 4 seconds and  slowing them for 2 seconds',
             damagetype: 'Magic',
             values: 1,
             valuesIsPercent: true,
@@ -551,11 +554,11 @@ export default {
             name: 'Line 2:',
             raw: 'These effects stack additively with multiple harpoons, refreshing their duration and stacking up to 2 times.',
             min: 0,
-            max: 10,
+            max: 2,
             description:
               'These effects stack additively with multiple harpoons, refreshing their duration and stacking up to 2 times.',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'effects stack additively with multiple harpoons, refreshing their duration and stacking up to 2 times.',
             pre: 'These effects stack additively with multiple harpoons, refreshing their duration and stacking up to 2 times.',
@@ -609,6 +612,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Rumble periodically stocks an Electro Harpoon charge, up to a maximum of 2.',
         descriptionHTML:
@@ -630,6 +634,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Danger Zone Bonus: Electro Harpoon's effects are increased by 50%. The magic resistance reduction is increased to 15%.",
         descriptionHTML:
@@ -638,7 +643,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Danger Zone Bonus:',
-            raw: " Electro Harpoon's effects are increased by 50%",
+            raw: "Electro Harpoon's effects are increased by 50%",
             values: 5,
             valuesIsPercent: true,
             user: 'none',
@@ -707,6 +712,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Rumble casts Electro Harpoon before his mech becomes  Overheated, he may still use another charge within 3 seconds of the initial cast.',
         descriptionHTML:
@@ -767,7 +773,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Equalizer.png',
+        icon: '/wiki/images/The_Equalizer.png',
         description:
           'Active: Rumble deploys a barrage of rockets along the target path that land in a line over 0.75 seconds, creating a field of fire for 4.5 seconds after the last rocket lands.',
         descriptionHTML:
@@ -777,6 +783,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies struck by the impact or within the field are marked as Burning for 1 second, which deals magic damage every 0.5 seconds,  slows by 35%, and refreshes continuously while in the area.',
         descriptionHTML:

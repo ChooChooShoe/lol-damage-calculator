@@ -31,7 +31,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/New Destiny.png',
+        icon: '/wiki/images/New_Destiny.png',
         description:
           "Innate - Double Barrel: Graves' basic attacks consume ammunition within 2 shells. He will reload over a few seconds immediately after expending all shells or withholding leftover shells for a while. The reload time is reduced by Graves' level and  bonus attack speed, and can be interrupted by declaring an attack or casting an ability.",
         descriptionHTML:
@@ -40,7 +40,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - Double Barrel:',
-            raw: " Graves' basic attacks consume ammunition within 2 shells",
+            raw: "Graves' basic attacks consume ammunition within 2 shells",
             values: 2,
             units: 'total_ad',
             unitsText: 'basic attacks consume ammunition within 2 shells',
@@ -51,6 +51,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - 12-Gauge: Graves' basic attack sprays 4 pellets in a cone, each colliding with the first enemy unit or structure in their path, dealing 70% − 100.01% (based on level) AD physical damage plus「 23.31% − 33.3% (based on level) AD damage 」「 about one-third of the damage 」for each subsequent pellet hitting the same target, up to 139.93% − 199.92% (based on level) AD physical damage against a single target. Pellets deal 25% reduced damage against structures.",
         descriptionHTML:
@@ -59,7 +60,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - 12-Gauge:',
-            raw: " Graves' basic attack sprays 4 pellets in a cone, each colliding with the first enemy unit or structure in their path, dealing 70% − 100.01% (based on level) AD physical damage plus「 23.31% − 33.3% (based on level) AD damage 」「 about one-third of the damage 」for each subsequent pellet hitting the same target, up to 139.93% − 199.92% (based on level) AD physical damage against a single target",
+            raw: "Graves' basic attack sprays 4 pellets in a cone, each colliding with the first enemy unit or structure in their path, dealing 70% − 100.01% (based on level) AD physical damage plus「 23.31% − 33.3% (based on level) AD damage 」「 about one-third of the damage 」for each subsequent pellet hitting the same target, up to 139.93% − 199.92% (based on level) AD physical damage against a single target",
             increasedStat: 'total_ad',
             values: [],
             valuesIsPercent: true,
@@ -85,6 +86,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Critical strikes spray 6 pellets over a 25% wider cone, with each pellet dealing (20% +  9.33345%) bonus physical damage, resulting in「  59.98% (+ 12.44%) bonus damage to attacks where all pellets hit. 」「 223.97% − 319.98% (based on level) (+17.42% − 24.88% (based on level)) AD physical damage if all pellets hit. 」',
         descriptionHTML:
@@ -136,6 +138,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Pellets apply  life steal at 100% effectiveness. Only the first pellet to hit each enemy applies on-hit effects.',
         descriptionHTML:
@@ -157,6 +160,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - Buckshot: Non-champion units hit by more than one pellet are  knocked back, though not through terrain.',
         descriptionHTML:
@@ -206,7 +210,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/End of the Line.png',
+        icon: '/wiki/images/End_of_the_Line.png',
         description:
           'Active: Graves fires a round in the target direction that deals physical damage to enemies it passes through and leaves behind a powder trail.',
         descriptionHTML:
@@ -244,6 +248,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 2 seconds, or 0.231 seconds upon colliding with terrain, the round detonates to deal physical damage to enemies within a wide perpendicular area and in a reverse wave along the powder trail.',
         descriptionHTML:
@@ -337,7 +342,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Smoke Screen.png',
+        icon: '/wiki/images/Smoke_Screen.png',
         description:
           'Active: Graves fires a smoke canister at the target location that upon impact deals magic damage to enemies within the area and  slows them by 50% for 0.5 seconds.',
         descriptionHTML:
@@ -346,7 +351,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Graves fires a smoke canister at the target location that upon impact deals magic damage to enemies within the area and  slows them by 50% for 0.5 seconds.',
+            raw: 'Graves fires a smoke canister at the target location that upon impact deals magic damage to enemies within the area and  slows them by 50% for 0.5 seconds.',
             damagetype: 'Magic',
             values: 5,
             valuesIsPercent: true,
@@ -389,7 +394,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Smoke Screen 2.png',
+        icon: '/wiki/images/Smoke_Screen_2.png',
         description:
           'The canister creates a cloud of smoke for 4 seconds that applies  nearsight of outside the area to all enemies within every 0.25 seconds, reducing their  sight radius relative to the center.',
         descriptionHTML:
@@ -456,13 +461,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Active:',
-            raw: ' Graves  dashes to the target location, reloading one shell while generating a stack of True Grit for 4 seconds, stacking up to 8 times',
+            raw: 'Graves  dashes to the target location, reloading one shell while generating a stack of True Grit for 4 seconds, stacking up to 8 times',
             min: 0,
-            max: 10,
+            max: 8,
             description:
-              ' Graves  dashes to the target location, reloading one shell while generating a stack of True Grit for 4 seconds, stacking up to 8 times',
+              'Graves  dashes to the target location, reloading one shell while generating a stack of True Grit for 4 seconds, stacking up to 8 times',
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'dashes to the target location, reloading one shell while generating a stack of True Grit for 4 seconds, stacking up to 8 times',
             pre: 'Graves  dashes to the target location, reloading one shell while generating a stack of True Grit for 4 seconds, stacking up to 8 times',
@@ -476,7 +481,7 @@ export default {
             description:
               'Dashing towards an enemy  champion generates 2 stacks of True Grit.',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'towards an enemy  champion generates 2 stacks of True Grit.',
             pre: 'Dashing towards an enemy  champion generates 2 stacks of True Grit.',
@@ -486,6 +491,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Quickdraw's  current cooldown is reduced by 0.5 seconds for every pellet impacting an enemy.",
         descriptionHTML:
@@ -495,6 +501,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'True Grit: For each stack, Graves gains  bonus armor. Subsequent casts of Quickdraw and attacks versus non- minions will refresh the duration of True Grit.',
         descriptionHTML:
@@ -521,6 +528,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Quickdraw  resets Graves' basic attack timer. If Graves dashes while reloading, he can cast any of his abilities during the dash.(bug) Quickdraw will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -591,7 +599,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Collateral Damage.png',
+        icon: '/wiki/images/Collateral_Damage.png',
         description:
           'Active: Graves fires an explosive shell in the target direction that deals physical damage to enemies hit and causes him to  recoil 300 units in the opposite direction.',
         descriptionHTML:
@@ -600,7 +608,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Graves fires an explosive shell in the target direction that deals physical damage to enemies hit and causes him to  recoil 300 units in the opposite direction.',
+            raw: 'Graves fires an explosive shell in the target direction that deals physical damage to enemies hit and causes him to  recoil 300 units in the opposite direction.',
             damagetype: 'Physical',
             values: 3,
             user: 'none',
@@ -642,6 +650,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon hitting an enemy  champion or reaching the end of its range, the shell explodes in a cone to deal 80% damage to additional enemies.',
         descriptionHTML:

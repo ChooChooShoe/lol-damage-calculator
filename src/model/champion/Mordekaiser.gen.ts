@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Mordekaiser's basic attacks are empowered to deal 40% AP bonus magic damage  on-hit.",
+            raw: "Mordekaiser's basic attacks are empowered to deal 40% AP bonus magic damage  on-hit.",
             damagetype: 'Magic',
             values: 4,
             valuesIsPercent: true,
@@ -47,6 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Morderkaiser generates a stack for each enemy  champion or large  monster hit by his damaging basic attacks or basic abilities, lasting for 4 seconds, refreshing on subsequent hits, and stacking up to 3 times. At 3 stacks, he gains Darkness Rise.',
         descriptionHTML:
@@ -57,22 +58,24 @@ export default {
             name: 'Line 1:',
             raw: 'Morderkaiser generates a stack for each enemy  champion or large  monster hit by his damaging basic attacks or basic abilities, lasting for 4 seconds, refreshing on subsequent hits, and stacking up to 3 times',
             min: 0,
-            max: 10,
+            max: 3,
             description:
               'Morderkaiser generates a stack for each enemy  champion or large  monster hit by his damaging basic attacks or basic abilities, lasting for 4 seconds, refreshing on subsequent hits, and stacking up to 3 times',
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates a stack for each enemy  champion or large  monster hit by his damaging basic attacks or basic abilities, lasting for 4 seconds, refreshing on subsequent hits, and stacking up to 3 times',
             pre: 'Morderkaiser generates a stack for each enemy  champion or large  monster hit by his damaging basic attacks or basic abilities, lasting for 4 seconds, refreshing on subsequent hits, and stacking up to 3 times',
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'At 3 stacks, he gains Darkness Rise.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description: 'At 3 stacks, he gains Darkness Rise.',
             values: 3,
-            units: '',
+            units: 'genericStacks',
             unitsText: '3 stacks, he gains Darkness Rise.',
             pre: 'At 3 stacks, he gains Darkness Rise.',
           },
@@ -81,7 +84,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Darkness Rise.png',
+        icon: '/wiki/images/Darkness_Rise.png',
         description:
           "Darkness Rise: Mordekaiser gains  3 / 6 / 9% (based on level) bonus movement speed and deals「 5 − 15.2 (based on level) (+ 30% AP) (+ 1% − 5% (based on level) of target's maximum health) magic damage every second 」「 0.63 − 1.9 (based on level) (+ 3.75% AP) (+ 0.13% − 0.63% (based on level) of target's maximum health) magic damage every 0.125 seconds 」to nearby enemies. Against monsters, the damage is capped at「 28 − 164 (based on level) per second. 」「 3.5 − 20.5 (based on level) per 0.125 seconds. 」",
         descriptionHTML:
@@ -90,7 +93,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Darkness Rise:',
-            raw: " Mordekaiser gains  3 / 6 / 9% (based on level) bonus movement speed and deals「 5 − 15.2 (based on level) (+ 30% AP) (+ 1% − 5% (based on level) of target's maximum health) magic damage every second 」「 0.63 − 1.9 (based on level) (+ 3.75% AP) (+ 0.13% − 0.63% (based on level) of target's maximum health) magic damage every 0.125 seconds 」to nearby enemies",
+            raw: "Mordekaiser gains  3 / 6 / 9% (based on level) bonus movement speed and deals「 5 − 15.2 (based on level) (+ 30% AP) (+ 1% − 5% (based on level) of target's maximum health) magic damage every second 」「 0.63 − 1.9 (based on level) (+ 3.75% AP) (+ 0.13% − 0.63% (based on level) of target's maximum health) magic damage every 0.125 seconds 」to nearby enemies",
             healType: 'OutgoingHeals',
             values: [],
             valuesIsPercent: true,
@@ -300,7 +303,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Mordekaiser stores 45% of the post-mitigation damage he deals and 15% of the pre-mitigation damage he takes,「 reduced by 75% for non-champion sources, 」「 reduced to 11.25% of damage dealt and 3.75% of damage taken for non-champion sources, 」as Potential Shield on his secondary resource bar, up to  30% of his maximum health',
+            raw: 'Mordekaiser stores 45% of the post-mitigation damage he deals and 15% of the pre-mitigation damage he takes,「 reduced by 75% for non-champion sources, 」「 reduced to 11.25% of damage dealt and 3.75% of damage taken for non-champion sources, 」as Potential Shield on his secondary resource bar, up to  30% of his maximum health',
             healType: 'BonusHealth',
             values: 4,
             valuesIsPercent: true,
@@ -353,7 +356,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Mordekaiser consumes his Potential Shield to grant himself a  shield for the same amount for 4 seconds',
+            raw: 'Mordekaiser consumes his Potential Shield to grant himself a  shield for the same amount for 4 seconds',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 4,
@@ -368,7 +371,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Indestructible 2.png',
+        icon: '/wiki/images/Indestructible_2.png',
         description:
           'Recast: Mordekaiser consumes the remaining shield,  healing for a portion of the amount.',
         descriptionHTML:
@@ -459,7 +462,7 @@ export default {
         ],
       },
       {
-        icon: "/wiki/images/Death's Grasp.png",
+        icon: "/wiki/images/Death's_Grasp.png",
         description:
           'Active: Mordekaiser summons a claw in the target direction that grants  sight of the area. After 0.5 seconds, it deals magic damage to enemies within and  pulls them 250 units.',
         descriptionHTML:
@@ -535,7 +538,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Realm of Death.png',
+        icon: '/wiki/images/Realm_of_Death.png',
         description:
           "Active: Mordekaiser  slows the target enemy champion by 75% over the cast time, then banishes them with him to the Death Realm for 7 seconds. Mordekaiser also consumes the target's soul for 7 seconds,  healing himself for 10% of their maximum health and reducing their current  attack damage,  ability power,  total attack speed,  maximum health,  armor,  magic resist, and size by 10%, in addition to gaining them for himself. If the target dies while inside the Death Realm, Mordekaiser keeps their partial stats until they respawn.",
         descriptionHTML:
@@ -544,7 +547,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Mordekaiser  slows the target enemy champion by 75% over the cast time, then banishes them with him to the Death Realm for 7 seconds',
+            raw: 'Mordekaiser  slows the target enemy champion by 75% over the cast time, then banishes them with him to the Death Realm for 7 seconds',
             values: 7,
             valuesIsPercent: true,
             user: 'none',
@@ -570,6 +573,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Units between realms see each other as spirits, considering each other dead and negating any interactions between each other. Only Mordekaiser and the target will enter the realm; other champions cannot follow them. Everything that occurs inside the Death Realm is hidden to units outside of it, and vice versa. All  pets still inside the realm are killed at its end.',
         descriptionHTML:
@@ -579,6 +583,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If one of the two affected champions leave the Death Realm, because of having died or having it dispelled, the other will do so as well.',
         descriptionHTML:

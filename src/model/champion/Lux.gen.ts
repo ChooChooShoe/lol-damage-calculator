@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Lux's abilities apply a mark to enemies hit for 6 seconds, refeshing on subsequent hits",
+            raw: "Lux's abilities apply a mark to enemies hit for 6 seconds, refeshing on subsequent hits",
             damagetype: 'None',
             values: 6,
             units: 'total_ap',
@@ -106,7 +106,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Light Binding.png',
+        icon: '/wiki/images/Light_Binding.png',
         description:
           'Active: Lux shoots a sphere of light in the target direction that deals magic damage to the first two enemies hit and  roots them for 2 seconds.',
         descriptionHTML:
@@ -115,7 +115,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lux shoots a sphere of light in the target direction that deals magic damage to the first two enemies hit and  roots them for 2 seconds.',
+            raw: 'Lux shoots a sphere of light in the target direction that deals magic damage to the first two enemies hit and  roots them for 2 seconds.',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -200,7 +200,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Prismatic Barrier.png',
+        icon: '/wiki/images/Prismatic_Barrier.png',
         description:
           'Active: Lux throws her wand in the target direction that homes back to her after reaching maximum range. Allied champions hit by the wand gain a  shield for 2.5 seconds, which can stack up to 2 times, stacking with the previous shield and refreshing its duration.',
         descriptionHTML:
@@ -213,7 +213,7 @@ export default {
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'champions hit by the wand gain a  shield for 2.5 seconds, which can stack up to 2 times, stacking with the previous shield and refreshing its duration.',
             pre: 'Allied champions hit by the wand gain a  shield for 2.5 seconds, which can stack up to 2 times, stacking with the previous shield and refreshing its duration.',
@@ -252,6 +252,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Lux receives the shield upon throwing the wand and upon its return.',
         descriptionHTML:
@@ -300,7 +301,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Lucent Singularity.png',
+        icon: '/wiki/images/Lucent_Singularity.png',
         description:
           'Active: Lux sends a lucent singularity to the target location, remaining there for 5 seconds to grant  sight of the area and  slow nearby enemies.',
         descriptionHTML:
@@ -309,7 +310,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Lux sends a lucent singularity to the target location, remaining there for 5 seconds to grant  sight of the area and  slow nearby enemies.',
+            raw: 'Lux sends a lucent singularity to the target location, remaining there for 5 seconds to grant  sight of the area and  slow nearby enemies.',
             values: 5,
             user: 'none',
             units: '',
@@ -340,6 +341,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Lucent Singularity can be recast at any time while it is in flight or within the duration, and does so automatically after the duration.',
         descriptionHTML:
@@ -349,6 +351,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Lux detonates the singularity, dealing magic damage to enemies within. If Lucent Singularity was recast while in flight, it will detonate upon arrival.',
         descriptionHTML:
@@ -386,6 +389,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The slow lingers for 1 second after leaving the area. Enemies hit by Lucent Singularity's detonation are also slowed by the same amount for 1 second.",
         descriptionHTML:
@@ -455,7 +459,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Final Spark.png',
+        icon: '/wiki/images/Final_Spark.png',
         description:
           'Active: Lux fires a massive laser in a line in the target direction that deals magic damage to enemies hit and  reveals them for 1.5 seconds, as well as granting  sight of the surrounding area.',
         descriptionHTML:
@@ -464,7 +468,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Lux fires a massive laser in a line in the target direction that deals magic damage to enemies hit and  reveals them for 1.5 seconds, as well as granting  sight of the surrounding area.',
+            raw: 'Lux fires a massive laser in a line in the target direction that deals magic damage to enemies hit and  reveals them for 1.5 seconds, as well as granting  sight of the surrounding area.',
             values: 1,
             user: 'none',
             units: '',

@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Concussive Blows.png',
+        icon: '/wiki/images/Concussive_Blows.png',
         description:
           "Innate: Braum's basic attacks and  Winter's Bite each apply a stack of Concussive Blows to their target for 4 seconds, refreshing on subsequent applications and stacking up to 4 times. Once the first stack has been applied, any allied  champion's basic attack applies an additional stack to the target  on-hit.",
         descriptionHTML:
@@ -34,11 +34,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Braum's basic attacks and  Winter's Bite each apply a stack of Concussive Blows to their target for 4 seconds, refreshing on subsequent applications and stacking up to 4 times",
+            raw: "Braum's basic attacks and  Winter's Bite each apply a stack of Concussive Blows to their target for 4 seconds, refreshing on subsequent applications and stacking up to 4 times",
             min: 0,
-            max: 10,
+            max: 4,
             description:
-              " Braum's basic attacks and  Winter's Bite each apply a stack of Concussive Blows to their target for 4 seconds, refreshing on subsequent applications and stacking up to 4 times",
+              "Braum's basic attacks and  Winter's Bite each apply a stack of Concussive Blows to their target for 4 seconds, refreshing on subsequent applications and stacking up to 4 times",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -50,15 +50,20 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The fourth stack against a target consumes them all to deal 26 − 196 (based on level) magic damage and  stun them for 1.25 − 1.75 (based on level) seconds.',
         descriptionHTML:
           'The fourth stack against a target consumes them all to deal <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="26;" data-finish="196;" data-bot_values="26;36;46;56;66;76;86;96;106;116;126;136;146;156;166;176;186;196" data-top_values="">26 − 196 (based on level)</span></span> <span style="color: #00B0F0; white-space:normal">magic damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stun</a></span> them for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="1.25;1" data-finish="1.75;13" data-bot_values="1.25;1.5;1.75" data-top_values="1;7;13">1.<small>25</small> − 1.<small>75</small> (based on level)</span> seconds.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'The fourth stack against a target consumes them all to deal 26 − 196 (based on level) magic damage and  stun them for 1.25 − 1.75 (based on level) seconds.',
+            min: 0,
+            max: 10,
+            description:
+              'The fourth stack against a target consumes them all to deal 26 − 196 (based on level) magic damage and  stun them for 1.25 − 1.75 (based on level) seconds.',
             values: [
               26, 36, 46, 56, 66, 76, 86, 96, 106, 116, 126, 136, 146, 156, 166,
               176, 186, 196,
@@ -75,6 +80,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "This effect cannot apply to the same target more than once every few seconds. During this immunity period, affected targets take「 bonus magic damage equal to 20% of the trigger damage 」「 5.2 − 39.2 (based on level) bonus magic damage 」from Braum's basic attacks.",
         descriptionHTML:
@@ -138,7 +144,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Winter's Bite.png",
+        icon: "/wiki/images/Winter's_Bite.png",
         description:
           'Active: Braum propels ice from his shield in the target direction, dealing magic damage to the first enemy hit and  slowing them by 70% decaying over 2 seconds.',
         descriptionHTML:
@@ -147,7 +153,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Braum propels ice from his shield in the target direction, dealing magic damage to the first enemy hit and  slowing them by 70% decaying over 2 seconds.',
+            raw: 'Braum propels ice from his shield in the target direction, dealing magic damage to the first enemy hit and  slowing them by 70% decaying over 2 seconds.',
             damagetype: 'Magic',
             shieldType: 'OutgoingShields',
             values: 7,
@@ -227,7 +233,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Stand Behind Me.png',
+        icon: '/wiki/images/Stand_Behind_Me.png',
         description:
           'Active: Braum  dashes to put himself between the target ally and the closest  visible enemy  champion within 1500 units, and upon arrival grants himself and the ally  bonus armor and  bonus magic resistance for 3 seconds.',
         descriptionHTML:
@@ -236,7 +242,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Braum  dashes to put himself between the target ally and the closest  visible enemy  champion within 1500 units, and upon arrival grants himself and the ally  bonus armor and  bonus magic resistance for 3 seconds.',
+            raw: 'Braum  dashes to put himself between the target ally and the closest  visible enemy  champion within 1500 units, and upon arrival grants himself and the ally  bonus armor and  bonus magic resistance for 3 seconds.',
             increasedStat: 'bonus_armor',
             values: 1,
             user: 'target',
@@ -303,6 +309,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Stand Behind Me can be self cast to instantly grant Braum the bonus resistances.',
         descriptionHTML:
@@ -365,6 +372,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Unbreakable can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Braum" data-ability="Unbreakable" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Braum/LoL#Unbreakable" title="Unbreakable"><img alt="Unbreakable" src="/wiki/images/Braum_Unbreakable.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Braum/LoL#Unbreakable" title="Braum/LoL">Unbreakable</a></span></span> can be cast during the dash.</i>',
@@ -468,6 +476,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While his shield is raised, Braum also gains  10% bonus movement speed and  ghosting.',
         descriptionHTML:
@@ -531,7 +540,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Glacial Fissure.png',
+        icon: '/wiki/images/Glacial_Fissure.png',
         description:
           'Active: Braum leaps into the air and slams his shield into the ground, creating a fissure that travels forth in the target direction, dealing magic damage to enemies within its path as well as those around Braum.',
         descriptionHTML:
@@ -569,6 +578,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The first target hit is  knocked up for at least 0.3 seconds, increased if they are further away from Braum. All other enemies hit are  knocked up for 0.3 seconds.',
         descriptionHTML:
@@ -596,6 +606,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "A field of ice is created along the fissure's path, lasting for 4 seconds and  slowing enemies within the area every 0.25 seconds. The field disappears after the duration ends in the same order and speed it was created with.",
         descriptionHTML:

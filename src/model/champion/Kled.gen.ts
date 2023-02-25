@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Skaarl the Cowardly Lizard.png',
+        icon: '/wiki/images/Skaarl_the_Cowardly_Lizard.png',
         description:
           "Innate: Kled rides his semi-trusty mount, Skaarl. While Mounted, all damage dealt to the duo is suffered by Skaarl, who has 810 − 3258 (based on level) (+ 100% bonus health) base health. Effects based on percentage health consider Kled and Skaarl's combined maximum health.",
         descriptionHTML:
@@ -59,7 +59,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Dismounted Skaarl the Cowardly Lizard.png',
+        icon: '/wiki/images/Dismounted_Skaarl_the_Cowardly_Lizard.png',
         description:
           "Being reduced to  0 health causes Skaarl to flee, forcing Kled to be Dismounted, with all damage in excess of Skaarl's health being ignored. Upon dismounting, Kled  dashes in the direction of the allied Nexus, though not through terrain,  cleanses himself of all  crowd control and becomes  unable to act,  untargetable, and  immune to crowd control for 0.5 seconds, during which he also reduces all incoming damage received by 100%.",
         descriptionHTML:
@@ -69,6 +69,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While Kled is Dismounted, his base health and base movement speed are reduced, his  base attack range is increased,  Bear Trap on a Rope is replaced with  Pocket Pistol, and  Jousting and  Chaaaaaaaarge!!! become unusable.',
         descriptionHTML:
@@ -101,7 +102,7 @@ export default {
     blurb: [],
     description: [
       {
-        icon: '/wiki/images/Dismounted Skaarl the Cowardly Lizard.png',
+        icon: '/wiki/images/Dismounted_Skaarl_the_Cowardly_Lizard.png',
         description:
           "Innate: Kled is only vulnerable to  death while Dismounted. Kled has  410 − 1838 (based on level) base health, which is not improved by sources of bonus health, as well as reduced base movement speed and increased  attack range. Effects based on percentage health consider Kled and Skaarl's combined maximum health, meaning that a Dismounted Kled is always considered to be low health.",
         descriptionHTML:
@@ -128,6 +129,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Kled gains 100 − 185 (based on level)  bonus movement speed while moving towards  visible enemy  champions within 1000 units, but his basic attacks against them are reduced to 80% AD physical damage. Additionally, he gains the ability to restore Skaarl's  Courage to  reunite again.",
         descriptionHTML:
@@ -154,7 +156,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Skaarl the Cowardly Lizard 3.png',
+        icon: '/wiki/images/Skaarl_the_Cowardly_Lizard_3.png',
         description:
           "Innate - Courage: Kled gains 15 Courage when basic attacking an enemy champion, 20 Courage whenever he scores a  takedown against an enemy  champion within 3 seconds of damaging them, 4 Courage for  minion kills, and 5 Courage when basic attacking a structure or epic  monster. At 100 Courage, Skaarl returns with 45 / 55 / 65 / 75% (based on level) of Skaarl's maximum health and Kled becomes Mounted after 0.7 seconds.  Mounting up resets the  cooldowns of  Bear Trap on a Rope and  Jousting.",
         descriptionHTML:
@@ -163,7 +165,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Courage:',
-            raw: ' Kled gains 15 Courage when basic attacking an enemy champion, 20 Courage whenever he scores a  takedown against an enemy  champion within 3 seconds of damaging them, 4 Courage for  minion kills, and 5 Courage when basic attacking a structure or epic  monster',
+            raw: 'Kled gains 15 Courage when basic attacking an enemy champion, 20 Courage whenever he scores a  takedown against an enemy  champion within 3 seconds of damaging them, 4 Courage for  minion kills, and 5 Courage when basic attacking a structure or epic  monster',
             increasedStat: 'total_ad',
             values: 1,
             units: '',
@@ -190,6 +192,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While at the allied fountain, 25 Courage is generated every 0.25 seconds. If reuniting outside of base, Skaarl gets Frayed Nerves, which prevents him from gaining Courage for 30 seconds.',
         descriptionHTML:
@@ -222,6 +225,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The current status of Kled's own health is preserved between subsequent dismounts. While Mounted,  healing and  health regeneration will first replenish Skaarl's health and will only apply to Kled's health while Skaarl is at full health.",
         descriptionHTML:
@@ -263,7 +267,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bear Trap on a Rope.png',
+        icon: '/wiki/images/Bear_Trap_on_a_Rope.png',
         description:
           'Active: Kled throws a bear trap in the target direction that deals physical damage to enemies hit, increased by 50% against  minions and small  monsters. The bear trap collides against the first enemy  champion or large  monster hit, forming a  tether between Kled and the target for 1.75 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -272,7 +276,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Kled throws a bear trap in the target direction that deals physical damage to enemies hit, increased by 50% against  minions and small  monsters',
+            raw: 'Kled throws a bear trap in the target direction that deals physical damage to enemies hit, increased by 50% against  minions and small  monsters',
             increasedStat: 'total_ap',
             values: 5,
             valuesIsPercent: true,
@@ -325,6 +329,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The tether's radius shrinks over its duration, and if it is not broken before then, Kled  pulls the target 100 units toward him, deals physical damage, inflicts  Grievous Wounds for 5 seconds, and  slows them for 1.5 seconds.",
         descriptionHTML:
@@ -391,6 +396,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Bear Trap on a Rope can be cast while  Jousting.',
         descriptionHTML:
           '<i>Bear Trap on a Rope can be cast while <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Kled" data-ability="Jousting" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Kled/LoL#Jousting" title="Jousting"><img alt="Jousting" src="/wiki/images/Kled_Jousting.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Kled/LoL#Jousting" title="Kled/LoL">Jousting</a></span></span>.</i>',
@@ -440,7 +446,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pocket Pistol.png',
+        icon: '/wiki/images/Pocket_Pistol.png',
         description:
           'Active: Kled sprays a cone of five pellets in the target direction while  recoiling 300 units in the opposite direction, dealing physical damage to enemies hit.',
         descriptionHTML:
@@ -449,7 +455,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Kled sprays a cone of five pellets in the target direction while  recoiling 300 units in the opposite direction, dealing physical damage to enemies hit.',
+            raw: 'Kled sprays a cone of five pellets in the target direction while  recoiling 300 units in the opposite direction, dealing physical damage to enemies hit.',
             damagetype: 'Physical',
             values: 3,
             user: 'none',
@@ -491,6 +497,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Kled periodically stocks a Pocket Pistol charge, up to a maximum of 2. He will store charges even while  mounted.',
         descriptionHTML:
@@ -512,6 +519,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Pellets collide with the first enemy champion they hit, and deal 20% damage per pellet beyond the first. Each pellet that hits an enemy  champion or epic  monster restores  Courage, by 5 and 2.5 respectively.',
         descriptionHTML:
@@ -616,7 +624,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Violent Tendencies.png',
+        icon: '/wiki/images/Violent_Tendencies.png',
         description:
           'Violent Tendencies: Kled gains  150% bonus attack speed on his next 4 basic attacks within 4 seconds. The fourth attack deals bonus physical damage, capped against  monsters.',
         descriptionHTML:
@@ -625,7 +633,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Violent Tendencies:',
-            raw: ' Kled gains  150% bonus attack speed on his next 4 basic attacks within 4 seconds',
+            raw: 'Kled gains  150% bonus attack speed on his next 4 basic attacks within 4 seconds',
             increasedStat: 'bonus_ad',
             values: 1,
             valuesIsPercent: true,
@@ -679,6 +687,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Turrets are only affected by the base damage.',
         descriptionHTML:
           '<i><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turrets"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">Turrets</a></span> are only affected by the base damage.</i>',
@@ -759,6 +768,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon hitting an enemy  champion or large  monster, Skaarl  dashes a fixed 200-units through them, marking them for 3 seconds, during which they are  revealed. After the dash ends, the duo gain  50% bonus movement speed for 1 second. Jousting can be recast after 0.5 seconds of the first dash ending while the target is marked.',
         descriptionHTML:
@@ -791,7 +801,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Jousting 2.png',
+        icon: '/wiki/images/Jousting_2.png',
         description:
           'Recast: Skaarl consumes the mark to  dash through the marked target, applying the same effects as the first cast.',
         descriptionHTML:
@@ -829,6 +839,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The mark will remain even if the target dies, and ends prematurely if the duo are too far away or Kled  dismounts.',
         descriptionHTML:
@@ -838,6 +849,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Bear Trap on a Rope and  Chaaaaaaaarge!!! can be cast during either of the dashes.',
         descriptionHTML:
@@ -875,7 +887,7 @@ export default {
     blurb: [],
     description: [
       {
-        icon: '/wiki/images/Unmounted Jousting.png',
+        icon: '/wiki/images/Unmounted_Jousting.png',
         description: 'This ability is unusable while  unmounted.',
         descriptionHTML:
           'This ability is unusable while <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Kled" data-ability="Dismounted Skaarl the Cowardly Lizard" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Kled/LoL#Dismounted_Skaarl_the_Cowardly_Lizard" title="unmounted"><img alt="unmounted" src="/wiki/images/Kled_Dismounted_Skaarl_the_Cowardly_Lizard.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Kled/LoL#Dismounted_Skaarl_the_Cowardly_Lizard" title="Kled/LoL">unmounted</a></span></span></i>.',
@@ -940,7 +952,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Chaaaaaaaarge!!! 2.png',
+        icon: '/wiki/images/Chaaaaaaaarge!!!_2.png',
         description:
           "While charging, the duo gain  bonus movement speed and a  shield for every 0.25 seconds of traveling, up to 950 total movement speed over 3 seconds and 10% − 100% (based on time traveling) of the maximum shield amount over 2.25 seconds respectively. The shield lasts for 2 seconds upon finishing the charge. The duo trails a directional draft in their wake, lasting 9 seconds. Allied champions following the draft gain Mr. Kled's Wild Ride.",
         descriptionHTML:
@@ -1003,6 +1015,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Mr. Kled's Wild Ride: Gain 650 total movement speed.",
         descriptionHTML:
           '<span class="template_sbc"><b>Mr. Kled\'s Wild Ride:</b></span> Gain <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="after movement speed soft caps"><span style="color: #F5EE99; white-space:normal">650 <b>total</b> movement speed</span></span>.',
@@ -1010,7 +1023,7 @@ export default {
           {
             effectType: 'Gain',
             name: "Kled's Wild Ride:",
-            raw: ' Gain 650 total movement speed.',
+            raw: 'Gain 650 total movement speed.',
             values: 6,
             user: 'none',
             units: '',
@@ -1022,6 +1035,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Skaarl  dashes toward the first enemy champion in range, colliding with the first  visible enemy champion in his path to deal physical damage, increased by 0% − 200% (based on time traveling), and  knock them back 100 units, though not through terrain.',
         descriptionHTML:
@@ -1091,7 +1105,7 @@ export default {
     blurb: [],
     description: [
       {
-        icon: '/wiki/images/Unmounted Chaaaaaaaarge!!!.png',
+        icon: '/wiki/images/Unmounted_Chaaaaaaaarge!!!.png',
         description: 'This ability is unusable while  unmounted.',
         descriptionHTML:
           'This ability is unusable while <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Kled" data-ability="Dismounted Skaarl the Cowardly Lizard" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Kled/LoL#Dismounted_Skaarl_the_Cowardly_Lizard" title="unmounted"><img alt="unmounted" src="/wiki/images/Kled_Dismounted_Skaarl_the_Cowardly_Lizard.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Kled/LoL#Dismounted_Skaarl_the_Cowardly_Lizard" title="Kled/LoL">unmounted</a></span></span></i>.',

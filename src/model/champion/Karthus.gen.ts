@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Death Defied.png',
+        icon: '/wiki/images/Death_Defied.png',
         description:
           "Innate: Upon taking  fatal damage, Karthus enters a  zombie state for 7 seconds, during which he can cast his abilities at no cost. If  Defile has been learned, it will remain toggled on for Death Defied's entire duration.  Requiem becomes disabled after Death Defied has lasted 4 seconds.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' Upon taking  fatal damage, Karthus enters a  zombie state for 7 seconds, during which he can cast his abilities at no cost',
+            raw: 'Upon taking  fatal damage, Karthus enters a  zombie state for 7 seconds, during which he can cast his abilities at no cost',
             damagetype: 'None',
             values: 7,
             user: 'none',
@@ -57,6 +57,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While under this state, Karthus becomes  untargetable and  immune to crowd control as well as prevents all incoming damage, but is also rendered unable to move, declare basic attacks, use summoner spells, and activate items.',
         descriptionHTML:
@@ -100,7 +101,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Lay Waste.png',
+        icon: '/wiki/images/Lay_Waste.png',
         description:
           'Active: Karthus conjures a blast at the target location that detonates after 0.528 seconds to 0.759 seconds, granting  sight of the area and dealing magic damage to all enemies within,  doubled when only one target is struck.',
         descriptionHTML:
@@ -138,6 +139,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Lay Waste deals 95% damage to  monsters.',
         descriptionHTML:
           '<i>Lay Waste</i> deals 95% damage to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
@@ -187,6 +189,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'During  Death Defied, Lay Waste will cast at maximum range if cast beyond that.',
         descriptionHTML:
@@ -229,7 +232,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wall of Pain.png',
+        icon: '/wiki/images/Wall_of_Pain.png',
         description:
           'Active: Karthus erects a wall of pain at the target location perpendicular to his facing that lasts 5 seconds, granting  sight around its pillars and center.',
         descriptionHTML:
@@ -238,7 +241,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Karthus erects a wall of pain at the target location perpendicular to his facing that lasts 5 seconds, granting  sight around its pillars and center.',
+            raw: 'Karthus erects a wall of pain at the target location perpendicular to his facing that lasts 5 seconds, granting  sight around its pillars and center.',
             values: 5,
             user: 'none',
             units: '',
@@ -268,6 +271,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies that touch the wall are inflicted with  15% magic resistance reduction and become  slowed for 4 seconds, decaying over the duration. Enemies can be affected by Wall of Pain only once per cast.',
         descriptionHTML:
@@ -405,6 +409,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Defile cannot be toggled off during  Death Defied.',
         descriptionHTML:
           '<i>Defile cannot be toggled off during <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Karthus" data-ability="Death Defied" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Karthus/LoL#Death_Defied" title="Death Defied"><img alt="Death Defied" src="/wiki/images/Karthus_Death_Defied.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Karthus/LoL#Death_Defied" title="Karthus/LoL">Death Defied</a></span></span>.</i>',
@@ -456,7 +461,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Karthus  channels for 3 seconds, then deals magic damage to all targetable enemy champions upon completion.',
+            raw: 'Karthus  channels for 3 seconds, then deals magic damage to all targetable enemy champions upon completion.',
             damagetype: 'Magic',
             values: 3,
             user: 'none',

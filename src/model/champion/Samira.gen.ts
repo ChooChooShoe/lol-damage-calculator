@@ -33,12 +33,15 @@ export default {
           '<span class="template_sbc"><b>Innate:</b></span> <b>Samira\'s</b> damaging <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> and <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> against at least one enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> different from the previous damaging hit made against champions generate a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Style</i> for 6 seconds, refreshing on <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Does not have to be unique">subsequent</span> hits and stacking up to 6 times.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Samira's damaging basic attacks and abilities against at least one enemy  champion different from the previous damaging hit made against champions generate a stack of Style for 6 seconds, refreshing on subsequent hits and stacking up to 6 times.",
-            increasedStat: 'feastStacks',
+            raw: "Samira's damaging basic attacks and abilities against at least one enemy  champion different from the previous damaging hit made against champions generate a stack of Style for 6 seconds, refreshing on subsequent hits and stacking up to 6 times.",
+            min: 0,
+            max: 6,
+            description:
+              "Samira's damaging basic attacks and abilities against at least one enemy  champion different from the previous damaging hit made against champions generate a stack of Style for 6 seconds, refreshing on subsequent hits and stacking up to 6 times.",
             values: 6,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'damaging basic attacks and abilities against at least one enemy  champion different from the previous damaging hit made against champions generate a stack of Style for 6 seconds, refreshing on subsequent hits and stacking up to 6 times.',
             pre: "Samira's damaging basic attacks and abilities against at least one enemy  champion different from the previous damaging hit made against champions generate a stack of Style for 6 seconds, refreshing on subsequent hits and stacking up to 6 times.",
@@ -48,30 +51,36 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Samira Style.gif',
+        icon: '/wiki/images/Samira_Style.gif',
         description:
-          'Style: For each stack, Samira gains  3.5% bonus movement speed, up to a maximum of 21%. At maximum stacks, Samira can cast  Inferno Trigger.',
+          'Style: For each stack, Samira gains  1 / 2 / 3 / 4% (based on level) bonus movement speed, up to a maximum of 6 / 12 / 18 / 24% (based on level). At maximum stacks, Samira can cast  Inferno Trigger.',
         descriptionHTML:
-          '<span class="template_sbc"><b>Style:</b></span> For each stack, <b>Samira</b> gains <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal">3.<small>5</small>% <b>bonus</b> movement speed</span></span>, up to a maximum of <span style="color: #F5EE99; white-space:normal">21%</span>. At maximum stacks, <b>Samira</b> can cast <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Samira" data-ability="Inferno Trigger" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Samira/LoL#Inferno_Trigger" title="Inferno Trigger"><img alt="Inferno Trigger" src="/wiki/images/Samira_Rank_S.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Samira/LoL#Inferno_Trigger" title="Samira/LoL">Inferno Trigger</a></span></span>.',
+          '<span class="template_sbc"><b>Style:</b></span> For each stack, <b>Samira</b> gains <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="1;1" data-finish="4;16" data-bot_values="1;2;3;4" data-top_values="1;6;11;16" data-bot_key="%">1 / 2 / 3 / 4% (based on level)</span> <b>bonus</b> movement speed</span></span>, up to a maximum of <span style="color: #F5EE99; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="6;1" data-finish="24;16" data-bot_values="6;12;18;24" data-top_values="1;6;11;16" data-bot_key="%">6 / 12 / 18 / 24% (based on level)</span></span>. At maximum stacks, <b>Samira</b> can cast <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Samira" data-ability="Inferno Trigger" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Samira/LoL#Inferno_Trigger" title="Inferno Trigger"><img alt="Inferno Trigger" src="/wiki/images/Samira_Rank_S.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Samira/LoL#Inferno_Trigger" title="Samira/LoL">Inferno Trigger</a></span></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Style:',
-            raw: ' For each stack, Samira gains  3.5% bonus movement speed, up to a maximum of 21%',
-            increasedStat: 'feastStacks',
-            values: 3,
+            raw: 'For each stack, Samira gains  1 / 2 / 3 / 4% (based on level) bonus movement speed, up to a maximum of 6 / 12 / 18 / 24% (based on level)',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Samira gains  1 / 2 / 3 / 4% (based on level) bonus movement speed, up to a maximum of 6 / 12 / 18 / 24% (based on level)',
+            values: [],
             valuesIsPercent: true,
+            basedOn: 'level',
+            user: 'none',
             units: '',
             unitsText:
-              'bonus movement speed, up to a maximum of 21each stack, Samira gains  3.5',
-            pre: 'For each stack, Samira gains  3.5% bonus movement speed, up to a maximum of 21%',
+              'bonus movement speed, up to a maximum of 6 / 12 / 18 / 24%',
+            pre: 'For each stack, Samira gains  1 / 2 / 3 / 4%',
+            post: 'bonus movement speed, up to a maximum of 6 / 12 / 18 / 24%',
           },
         ],
         leveling: [],
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Daredevil Impulse.png',
+        icon: '/wiki/images/Daredevil_Impulse.png',
         description:
           "Innate: Samira's basic attacks against targets in  200 range use her blade, becoming  non-projectile. Blade attacks  on-hit,  Blade Whirl,  Wild Rush, and the slash and explosives of  Flair deal 2 − 19 (based on level) (+ 3.5% − 10.5% (based on level) AD) bonus magic damage, increased by 0% − 100% (based on target's missing health).",
         descriptionHTML:
@@ -80,7 +89,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Samira's basic attacks against targets in  200 range use her blade, becoming  non-projectile",
+            raw: "Samira's basic attacks against targets in  200 range use her blade, becoming  non-projectile",
             increasedStat: 'total_ad',
             values: 2,
             user: 'target',
@@ -118,6 +127,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Samira's basic attack against an  immobilized target is empowered to have an  uncancellable windup and deal the attack's damage over 6 strikes in 0.5 seconds. If the target is a  monster or is  airborne, the attack also  knocks them up for 0.5 seconds. Samira will  dash into her  attack range of the target if they are nearby, though not through terrain.",
         descriptionHTML:
@@ -140,6 +150,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The empowered attack  resets Samira's basic attack timer, is affected by  critical strike modifiers, applies  on-hit effects only once, and cannot occur on the same target more than once every few seconds.",
         descriptionHTML:
@@ -229,6 +240,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If a targetable enemy is in front of Samira at the time of cast, she will instead slash with her blade in a cone, dealing the same damage to enemies hit.',
         descriptionHTML:
@@ -238,6 +250,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Flair is cast during  Wild Rush, Samira deploys explosives in her wake that detonate upon the end of the dash, dealing the same damage to enemies hit.',
         descriptionHTML:
@@ -247,6 +260,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Flair can  critically strike for (25% +  35%) bonus physical damage and will apply  life steal at 66.6% effectiveness.',
         descriptionHTML:
@@ -317,7 +331,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blade Whirl.png',
+        icon: '/wiki/images/Blade_Whirl.png',
         description:
           'Active: Samira spins her blade over 0.75 seconds, destroying all hostile non- turret  projectiles within the area for the duration.',
         descriptionHTML:
@@ -327,6 +341,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Samira slashes twice during Blade Whirl, each one dealing physical damage to all nearby enemies. The first slash occurs immediately and the second one occurs after the duration.',
         descriptionHTML:
@@ -364,6 +379,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Samira cannot attack nor cast  Flair during Blade Whirl. Casting  Inferno Trigger will end Blade Whirl early.',
         descriptionHTML:
@@ -413,7 +429,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wild Rush.png',
+        icon: '/wiki/images/Wild_Rush.png',
         description:
           'Active: Samira  dashes a fixed distance in the direction of the target enemy or enemy  structure, dealing magic damage to enemies she passes through. She also gains  bonus attack speed for 3 seconds.',
         descriptionHTML:
@@ -478,6 +494,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Scoring a  takedown against an enemy  champion within 3 seconds of damaging them resets Wild Rush's  cooldown.",
         descriptionHTML:
@@ -499,6 +516,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Flair and  Inferno Trigger can be cast during the dash. Casting  Blade Whirl will buffer it to cast at the end of the dash.',
         descriptionHTML:
@@ -545,7 +563,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Samira Rank S.png',
+        icon: '/wiki/images/Samira_Rank_S.png',
         description:
           'Active: Samira unleashes a torrent of shots for 2.277 seconds, reducing her movement speed by 30% and rapidly shooting at  nearby enemies over 2.013 seconds at sporadic times in 0.2-second intervals each, dealing physical damage with each shot, reduced by 75% against  minions.',
         descriptionHTML:
@@ -554,7 +572,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Samira unleashes a torrent of shots for 2.277 seconds, reducing her movement speed by 30% and rapidly shooting at  nearby enemies over 2.013 seconds at sporadic times in 0.2-second intervals each, dealing physical damage with each shot, reduced by 75% against  minions.',
+            raw: 'Samira unleashes a torrent of shots for 2.277 seconds, reducing her movement speed by 30% and rapidly shooting at  nearby enemies over 2.013 seconds at sporadic times in 0.2-second intervals each, dealing physical damage with each shot, reduced by 75% against  minions.',
             increasedStat: 'total_ap',
             values: 2,
             valuesIsPercent: true,
@@ -622,22 +640,23 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
-          'Each shot can  critically strike for (75% +  35%) bonus physical damage and applies  life steal at 66.6% effectiveness.',
+          'Each shot can  critically strike for (75% +  35%) bonus physical damage and applies  life steal at 50% effectiveness.',
         descriptionHTML:
-          'Each shot can <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critically strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon.png" src="/wiki/images/Critical_strike_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Critical_strike" title="Critical strike">critically strike</a></span> for <span style="color: #FF8C34; white-space:normal">(75%&nbsp;+&nbsp;<span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Infinity Edge" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Infinity_Edge" title="35%"><img alt="35%" src="/wiki/images/Infinity_Edge_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Infinity_Edge" title="Infinity Edge">35%</a></span></span>) <b>bonus</b> physical damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Applies lifesteal"><a href="/wiki/Life_steal" title="Life steal">applies</a></span> <span style="white-space:nowrap"><a href="/wiki/Life_steal" title="Life steal"><img alt="Life steal icon.png" src="/wiki/images/Life_steal_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Life_steal" title="Life steal">life steal</a></span> at 66.<small>6</small>% effectiveness.',
+          'Each shot can <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critically strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon.png" src="/wiki/images/Critical_strike_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Critical_strike" title="Critical strike">critically strike</a></span> for <span style="color: #FF8C34; white-space:normal">(75%&nbsp;+&nbsp;<span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Infinity Edge" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Infinity_Edge" title="35%"><img alt="35%" src="/wiki/images/Infinity_Edge_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Infinity_Edge" title="Infinity Edge">35%</a></span></span>) <b>bonus</b> physical damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Applies lifesteal"><a href="/wiki/Life_steal" title="Life steal">applies</a></span> <span style="white-space:nowrap"><a href="/wiki/Life_steal" title="Life steal"><img alt="Life steal icon.png" src="/wiki/images/Life_steal_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Life_steal" title="Life steal">life steal</a></span> at 50% effectiveness.',
         descriptionRatios: [
           {
             effectType: 'Damage',
             name: 'Line 1:',
-            raw: 'Each shot can  critically strike for (75% +  35%) bonus physical damage and applies  life steal at 66.6% effectiveness.',
+            raw: 'Each shot can  critically strike for (75% +  35%) bonus physical damage and applies  life steal at 50% effectiveness.',
             damagetype: 'Physical',
             values: 0,
             units: 'lifesteal',
             unitsText:
-              'bonus physical damage and applies  life steal at 66.6% effectiveness.',
+              'bonus physical damage and applies  life steal at 50% effectiveness.',
             pre: 'Each shot can  critically strike for',
-            post: 'bonus physical damage and applies  life steal at 66.6% effectiveness.',
+            post: 'bonus physical damage and applies  life steal at 50% effectiveness.',
             children: [
               {
                 values: 75,
@@ -654,7 +673,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Inferno Trigger 2.png',
+        icon: '/wiki/images/Inferno_Trigger_2.png',
         description:
           'A nearby  visible enemy is required to cast this ability, and targets do not have to be visible to be shot at.  Style stacks are consumed at the end of the effect.',
         descriptionHTML:
@@ -664,6 +683,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Samira cannot attack nor cast  Flair and  Blade Whirl during Inferno Trigger, but she can still move. Inferno Trigger will end prematurely by all forms of  cast-inhibiting crowd control as well as  disarm.',
         descriptionHTML:
@@ -719,6 +739,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If she has at least  1, the coin deals   1 true damage to the first enemy champion hit and granting them  1 of Samira's gold.",
         descriptionHTML:
@@ -740,6 +761,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If cast within 1200 units of a  visible enemy champion, Samira will turn to face towards the closest one to perform the animation.',
         descriptionHTML:
@@ -761,6 +783,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Samira's Taunt can target and hit dead enemy champions, granting them  1 but not triggering other effects.",
         descriptionHTML:

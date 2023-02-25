@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Friend of the Forest.png',
+        icon: '/wiki/images/Friend_of_the_Forest.png',
         description:
           'Innate: Ivern cannot attack nor damage non-epic  monsters. Instead, targeting a jungle camp initiates a 2.5 second  channel that will plant a grove upon the camp. Placing a grove costs  98.25 − 0.14 (based on level) health and  90 − 0.37 (based on level) mana. The channel cannot be cancelled in the first 0.15 seconds and in the last 0.5 seconds.',
         descriptionHTML:
@@ -52,7 +52,7 @@ export default {
               46.31, 40.54, 34.77, 29, 23.22, 17.45, 11.68, 5.91, 0.14,
             ],
             basedOn: 'level',
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText: 'health and  90 − 0.37',
             pre: 'Placing a grove costs  98.25 − 0.14',
             post: 'health and  90 − 0.37',
@@ -62,6 +62,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ivern cannot place a grove while he is unable to cast abilities.',
         descriptionHTML:
@@ -71,6 +72,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The grove matures over 40 − 1 (based on level) seconds. When fully matured, Ivern can target the camp again to free it after a 0.5-second cast time, clearing the camp and receiving the  full gold and  full experience bounties. Using  Smite on a monster within the grove will instantly free the camp regardless of maturity.',
         descriptionHTML:
@@ -96,6 +98,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the camp's large monster has already been slain prior to planting a grove, Ivern will free the camp upon completing the channel at no cost. Similarly, the grove will instantly mature if the large monster is slain.",
         descriptionHTML:
@@ -105,6 +108,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Starting at level 5, freeing the  Red Brambleback or the  Blue Sentinel leaves behind a sapling for 60 seconds that can be gathered by one allied  champion to gain the camp's respective buff, either the  Crest of Cinders or the  Crest of Insight. If an ally kills either monster, they also leave behind a sapling that only Ivern can consume.",
         descriptionHTML:
@@ -217,6 +221,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ivern and allied champions can select the target  rooted by Rootcaller to  dash to their location, with allies stopping at  their attack range and Ivern stopping within 125 units from the target.',
         descriptionHTML:
@@ -238,6 +243,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Recast: Ivern  dashes to the target.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Ivern</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash.png" src="/wiki/images/Dash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Dash" title="Dash">dashes</a></span> to the target.',
@@ -341,7 +347,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ivern grows a patch of  brush at the target location for 30 seconds, granting  sight of the area within and around it for 3 seconds',
+            raw: 'Ivern grows a patch of  brush at the target location for 30 seconds, granting  sight of the area within and around it for 3 seconds',
             values: 3,
             user: 'none',
             units: '',
@@ -354,6 +360,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ivern periodically stocks a Brushmaker charge, up to a maximum of 3.',
         descriptionHTML:
@@ -421,7 +428,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Ivern places a seed on the target allied champion,  Daisy, or himself, granting the target a  shield for 2 seconds.',
+            raw: 'Ivern places a seed on the target allied champion,  Daisy, or himself, granting the target a  shield for 2 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -465,6 +472,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 2 seconds, the seed explodes to deal magic damage to nearby enemies and  slow them for 2 seconds.',
         descriptionHTML:
@@ -577,7 +585,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Ivern summons his sentinel friend  Daisy to his side, who lands 350 units away from him in the target direction and remains on the field for up to 60 seconds as a controllable  pet.',
+            raw: 'Ivern summons his sentinel friend  Daisy to his side, who lands 350 units away from him in the target direction and remains on the field for up to 60 seconds as a controllable  pet.',
             values: 3,
             user: 'none',
             units: '',
@@ -590,6 +598,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Daisy! can be recast at any time while  Daisy is alive.',
         descriptionHTML:
           '<i>Daisy!</i> can be recast at any time while <span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Daisy" title="Daisy"><img alt="Daisy" src="/wiki/images/DaisySquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Daisy" title="Daisy">Daisy</a></span></span> is alive.',
@@ -598,7 +607,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Daisy, wait!.png',
+        icon: '/wiki/images/Daisy,_wait!.png',
         description:
           'Recast: Ivern commands  Daisy to move to the target location. If cast on Ivern,  Daisy will follow him.',
         descriptionHTML:
@@ -608,6 +617,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The recast of Daisy! can be used while affected by  cast-inhibiting crowd control. See Pets for more details about  Daisy.',
         descriptionHTML:

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rage Gene.png',
+        icon: '/wiki/images/Rage_Gene.png',
         description:
           "Innate - Rage Gene:  Mini Gnar generates 4 / 7 / 11 (based on level)  Rage over 2 seconds upon dealing or receiving damage. Against non-champions, basic attacks and  Boomerang Throw instantly generate「 0.5 / 0.875 / 1.375 (based on level) Rage. 」「 12.5% of the amount. 」 Against champions,  Boomerang Throw instantly generates「 1 / 1.75 / 2.75 (based on level) Rage, 」「 25% of the amount, 」and basic attacks instantly generate「 2 / 3.5 / 5.5 (based on level). 」「 50% of the amount. 」 Boomerang Throw can only generate Rage once per cast, and grants Rage based on the first enemy hit. Gnar's Rage decays after being out of combat for 13 seconds.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Rage Gene:',
-            raw: '  Mini Gnar generates 4 / 7 / 11 (based on level)  Rage over 2 seconds upon dealing or receiving damage',
+            raw: ' Mini Gnar generates 4 / 7 / 11 (based on level)  Rage over 2 seconds upon dealing or receiving damage',
             damagetype: 'None',
             values: [],
             basedOn: 'level',
@@ -70,7 +70,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Rage Gene 2.png',
+        icon: '/wiki/images/Rage_Gene_2.png',
         description:
           "At maximum Rage, Gnar's abilities are switched to  Mega Gnar's abilities for 4 seconds. Casting one of Mega Gnar's abilities will cause him to transform into  Mega Gnar, else he will transform automatically after the 4 seconds have elapsed.",
         descriptionHTML:
@@ -103,6 +103,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gnar's  Mega form lasts for 15 seconds, with his Rage bar depleting as an indication of remaining time. Rage cannot be generated while in this form. Afterwards, Gnar returns to  Mini Gnar, retaining his  current percentage health and becoming too  tired to generate Rage for 15 seconds.",
         descriptionHTML:
@@ -135,6 +136,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gnar gains different stat bonuses based on whether he is in  Mini or  Mega form. Both of Gnar's forms share their ability cooldowns.",
         descriptionHTML:
@@ -179,7 +181,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Boomerang Throw.png',
+        icon: '/wiki/images/Boomerang_Throw.png',
         description:
           'Active: Gnar throws a boomerang in a line in the target direction that deals physical damage to enemies in its path and  slows them for 2 seconds. After reaching its maximum range or hitting an enemy, the boomerang flies back toward Gnar based on his current movement, dealing 50% damage to subsequent targets.',
         descriptionHTML:
@@ -188,7 +190,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gnar throws a boomerang in a line in the target direction that deals physical damage to enemies in its path and  slows them for 2 seconds',
+            raw: 'Gnar throws a boomerang in a line in the target direction that deals physical damage to enemies in its path and  slows them for 2 seconds',
             damagetype: 'Physical',
             values: 2,
             user: 'none',
@@ -259,6 +261,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Catching the boomerang while it is returning back refunds 40% of the ability's  total cooldown.",
         descriptionHTML:
@@ -270,7 +273,8 @@ export default {
             raw: "Catching the boomerang while it is returning back refunds 40% of the ability's  total cooldown.",
             values: 4,
             valuesIsPercent: true,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               "of the ability's  total cooldown.the boomerang while it is returning back refunds 40",
             pre: "Catching the boomerang while it is returning back refunds 40% of the ability's  total cooldown.",
@@ -280,6 +284,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be hit only once per pass.',
         descriptionHTML: '<i>Enemies can be hit only once per pass.</i>',
         descriptionRatios: [],
@@ -325,7 +330,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Boulder Toss.png',
+        icon: '/wiki/images/Boulder_Toss.png',
         description:
           'Active: Gnar throws a boulder in the target direction that stops upon hitting an enemy, dealing physical damage to nearby enemies upon impact and  slowing them for 2 seconds. The boulder then remains on the ground for 6 seconds.',
         descriptionHTML:
@@ -334,7 +339,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gnar throws a boulder in the target direction that stops upon hitting an enemy, dealing physical damage to nearby enemies upon impact and  slowing them for 2 seconds',
+            raw: 'Gnar throws a boulder in the target direction that stops upon hitting an enemy, dealing physical damage to nearby enemies upon impact and  slowing them for 2 seconds',
             damagetype: 'Physical',
             values: 2,
             user: 'none',
@@ -402,6 +407,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "After 0.3 seconds, Gnar can pick up the boulder by moving within 90 units of it, refunding 70% of the ability's  total cooldown.",
         descriptionHTML:
@@ -441,7 +447,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hyper 2.png',
+        icon: '/wiki/images/Hyper_2.png',
         description:
           "Passive: Gnar's basic attacks  on-hit and ability hits apply a stack of Hyper to enemies for 3.5 seconds, refreshing on subsequent applications and stacking up to 3 times.",
         descriptionHTML:
@@ -450,11 +456,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Gnar's basic attacks  on-hit and ability hits apply a stack of Hyper to enemies for 3.5 seconds, refreshing on subsequent applications and stacking up to 3 times.",
+            raw: "Gnar's basic attacks  on-hit and ability hits apply a stack of Hyper to enemies for 3.5 seconds, refreshing on subsequent applications and stacking up to 3 times.",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Gnar's basic attacks  on-hit and ability hits apply a stack of Hyper to enemies for 3.5 seconds, refreshing on subsequent applications and stacking up to 3 times.",
+              "Gnar's basic attacks  on-hit and ability hits apply a stack of Hyper to enemies for 3.5 seconds, refreshing on subsequent applications and stacking up to 3 times.",
             values: 3,
             units: 'total_ap',
             unitsText:
@@ -473,9 +479,13 @@ export default {
           'The third stack against a target consumes them all to deal <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span>, capped at 300 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>, and grant <b>Gnar</b> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#F5EE99;" data-top_label="[[File:GNAR!.png|20px|border]] GNAR!\'s rank" data-displayformula="20% + 20% per GNAR!\'s rank" data-bot_values="20;40;60;80" data-top_values="0;1;2;3" data-bot_key="%">20 / 40 / 60 / 80% (based on <a href="https://static.wikia.nocookie.net/leagueoflegends/images/3/31/Gnar_GNAR%21.png/revision/latest?cb=20170818002800" class="image"><img alt="GNAR!.png" src="/wiki/images/Gnar_GNAR%21.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a> <i>GNAR!\'s</i> rank)</span> <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal"><b>bonus</b> movement speed</span></span> that decays over 3 seconds.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: "The third stack against a target consumes them all to deal bonus magic damage, capped at 300 against  monsters, and grant Gnar 20 / 40 / 60 / 80% (based on  GNAR!'s rank)  bonus movement speed that decays over 3 seconds.",
+            min: 0,
+            max: 10,
+            description:
+              "The third stack against a target consumes them all to deal bonus magic damage, capped at 300 against  monsters, and grant Gnar 20 / 40 / 60 / 80% (based on  GNAR!'s rank)  bonus movement speed that decays over 3 seconds.",
             values: [3, 40, 60, 80],
             valuesIsPercent: true,
             basedOn: " GNAR!'s rank",
@@ -527,6 +537,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gnar gains Hyper's  bonus movement speed when he leaves  Mega form.",
         descriptionHTML:
@@ -577,7 +588,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gnar slams his arm down in the target direction, dealing physical damage to all enemies struck within the area and  stunning them for 1.25 seconds.',
+            raw: 'Gnar slams his arm down in the target direction, dealing physical damage to all enemies struck within the area and  stunning them for 1.25 seconds.',
             damagetype: 'Physical',
             values: 1,
             user: 'none',
@@ -662,7 +673,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Gnar  leaps to the target location, then gains  bonus attack speed for 6 seconds.',
+            raw: 'Gnar  leaps to the target location, then gains  bonus attack speed for 6 seconds.',
             increasedStat: 'total_ap',
             values: 6,
             units: '',
@@ -693,6 +704,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Gnar lands on a unit he will  bounce 500 units further in the same direction.',
         descriptionHTML:
@@ -714,6 +726,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Landing on an enemy deals them physical damage and  slows them by 80% for 0.5 seconds.',
         descriptionHTML:
@@ -765,6 +778,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Gnar will not bounce if he is  immobilized, excluding from  sleep(bug), during the first leap.',
         descriptionHTML:
@@ -795,6 +809,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Boomerang Throw can be cast during the dash. Hop will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -878,7 +893,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Hop and Crunch.png',
+        icon: '/wiki/images/Hop_and_Crunch.png',
         description:
           "If Crunch is used to transform, Gnar will still be able to  bounce as per  Hop. Crunch's area of effect occurs in both areas, though enemies can only be damaged once.",
         descriptionHTML:
@@ -888,6 +903,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies Gnar lands directly on top of are affected by Hop's  slow.",
         descriptionHTML:
@@ -897,6 +913,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Crunch will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Crunch will cast at max range if cast beyond that.</i>',
@@ -975,7 +992,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Mega Gnar - Active:',
-            raw: ' Gnar thrusts in the target direction,  knocking away nearby enemies up to 590 units in that direction, though not through terrain, and afterwards dealing them physical damage, as well as  slowing them by 45% after a 0.4-second delay for a duration.',
+            raw: 'Gnar thrusts in the target direction,  knocking away nearby enemies up to 590 units in that direction, though not through terrain, and afterwards dealing them physical damage, as well as  slowing them by 45% after a 0.4-second delay for a duration.',
             damagetype: 'Physical',
             values: 5,
             valuesIsPercent: true,
@@ -1041,6 +1058,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies that collide with terrain take  50% increased damage instantly and are  stunned instead of  slowed.',
         descriptionHTML:

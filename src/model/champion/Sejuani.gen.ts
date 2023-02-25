@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Fury of the North.png',
+        icon: '/wiki/images/Fury_of_the_North.png',
         description:
           "Innate - Icebreaker: Enemies  stunned by Sejuani are marked Frozen for the disable's duration. Sejuani's next basic attack or ability against a Frozen enemy will consume the mark to deal bonus magic damage equal to 10% of their maximum health, capped at 300 against epic monsters.",
         descriptionHTML:
@@ -47,6 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - Frost Armor: Sejuani gains Frost Armor, which lingers for 3 seconds after taking damage from enemy  champions or  monsters. She restores it after 12 − 6 (based on level) seconds without taking damage from them.',
         descriptionHTML:
@@ -55,7 +56,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Frost Armor:',
-            raw: ' Sejuani gains Frost Armor, which lingers for 3 seconds after taking damage from enemy  champions or  monsters',
+            raw: 'Sejuani gains Frost Armor, which lingers for 3 seconds after taking damage from enemy  champions or  monsters',
             increasedStat: 'total_armor',
             values: 3,
             units: '',
@@ -84,7 +85,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sejuani Frost Armor.png',
+        icon: '/wiki/images/Sejuani_Frost_Armor.png',
         description:
           'Frost Armor: Sejuani gains  slow immunity,  cripple immunity,  10 (+ 50% bonus armor) bonus armor, and  10 (+ 50% bonus magic resistance) bonus magic resistance.',
         descriptionHTML:
@@ -93,7 +94,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Frost Armor:',
-            raw: ' Sejuani gains  slow immunity,  cripple immunity,  10 (+ 50% bonus armor) bonus armor, and  10 (+ 50% bonus magic resistance) bonus magic resistance.',
+            raw: 'Sejuani gains  slow immunity,  cripple immunity,  10 (+ 50% bonus armor) bonus armor, and  10 (+ 50% bonus magic resistance) bonus magic resistance.',
             increasedStat: 'bonus_armor',
             values: 1,
             units: '',
@@ -156,7 +157,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Arctic Assault.png',
+        icon: '/wiki/images/Arctic_Assault.png',
         description:
           'Active:  Bristle  dashes to the target location until he collides with an enemy  champion, dealing magic damage to enemies he passes through and  knocking them up for 0.5 seconds.',
         descriptionHTML:
@@ -194,6 +195,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Sejuani can cast any of her abilities during the dash. Arctic Assault will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -240,7 +242,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Winter's Wrath.png",
+        icon: "/wiki/images/Winter's_Wrath.png",
         description:
           'Active: After 0.25 seconds into the cast time, Sejuani swings her flail in a cone in the target direction that deals physical damage to enemies hit and  knocks back  minions and  monsters hit.',
         descriptionHTML:
@@ -286,6 +288,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After the cast time, Sejuani lashes out with her flail in a line in the same direction, dealing physical damage to enemies hit and  slowing them by 75% for 0.25 seconds.',
         descriptionHTML:
@@ -345,6 +348,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Sejuani can move during Winter's Wrath's cast time.",
         descriptionHTML:
           "<i><b>Sejuani</b> can move during Winter's Wrath's cast time.</i>",
@@ -391,7 +395,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sejuani Frost Stack.png',
+        icon: '/wiki/images/Sejuani_Frost_Stack.png',
         description:
           "Passive:  Winter's Wrath and both Sejuani's and nearby allied  melee champions' attacks  on-hit apply stacks of Frost to enemy  champions, medium or large  monsters, and large  minions for 5 seconds, refreshing on subsequent applications and stacking up to 4 times, though not applying if the target is  Frozen. Enemies hit by Permafrost or  Glacial Prison's bola have all of their Frost stacks consumed. Enemy champions cannot be affected by Frost for 10 seconds after having it consumed. Sejuani can cast Permafrost against an enemy with 4 stacks.",
         descriptionHTML:
@@ -400,11 +404,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: "  Winter's Wrath and both Sejuani's and nearby allied  melee champions' attacks  on-hit apply stacks of Frost to enemy  champions, medium or large  monsters, and large  minions for 5 seconds, refreshing on subsequent applications and stacking up to 4 times, though not applying if the target is  Frozen",
+            raw: " Winter's Wrath and both Sejuani's and nearby allied  melee champions' attacks  on-hit apply stacks of Frost to enemy  champions, medium or large  monsters, and large  minions for 5 seconds, refreshing on subsequent applications and stacking up to 4 times, though not applying if the target is  Frozen",
             min: 0,
-            max: 10,
+            max: 4,
             description:
-              "  Winter's Wrath and both Sejuani's and nearby allied  melee champions' attacks  on-hit apply stacks of Frost to enemy  champions, medium or large  monsters, and large  minions for 5 seconds, refreshing on subsequent applications and stacking up to 4 times, though not applying if the target is  Frozen",
+              " Winter's Wrath and both Sejuani's and nearby allied  melee champions' attacks  on-hit apply stacks of Frost to enemy  champions, medium or large  monsters, and large  minions for 5 seconds, refreshing on subsequent applications and stacking up to 4 times, though not applying if the target is  Frozen",
             values: 5,
             units: 'total_ap',
             unitsText:
@@ -423,12 +427,15 @@ export default {
             pre: 'Enemy champions cannot be affected by Frost for 10 seconds after having it consumed',
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 4:',
             raw: 'Sejuani can cast Permafrost against an enemy with 4 stacks.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'Sejuani can cast Permafrost against an enemy with 4 stacks.',
             values: 4,
-            units: '',
+            units: 'genericStacks',
             unitsText: 'can cast Permafrost against an enemy with 4 stacks.',
             pre: 'Sejuani can cast Permafrost against an enemy with 4 stacks.',
           },
@@ -446,11 +453,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Active:',
-            raw: ' Sejuani hurls a trap at the  visible enemy with 4 stacks of Frost closest to the cursor, which deals magic damage,  knocks them down, and  stuns them for 1 second.',
+            raw: 'Sejuani hurls a trap at the  visible enemy with 4 stacks of Frost closest to the cursor, which deals magic damage,  knocks them down, and  stuns them for 1 second.',
             min: 0,
             max: 10,
             description:
-              ' Sejuani hurls a trap at the  visible enemy with 4 stacks of Frost closest to the cursor, which deals magic damage,  knocks them down, and  stuns them for 1 second.',
+              'Sejuani hurls a trap at the  visible enemy with 4 stacks of Frost closest to the cursor, which deals magic damage,  knocks them down, and  stuns them for 1 second.',
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -490,6 +497,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Permafrost  resets Sejuani's basic attack timer.",
         descriptionHTML:
           '<i>Permafrost <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Sejuani\'s</b> basic attack timer.</i>',
@@ -538,7 +546,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Glacial Prison.png',
+        icon: '/wiki/images/Glacial_Prison.png',
         description:
           'Active: Sejuani throws an ice bola in the target direction that stops upon hitting an enemy champion, dealing magic damage and  stunning them for 1 second.',
         descriptionHTML:
@@ -547,7 +555,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Sejuani throws an ice bola in the target direction that stops upon hitting an enemy champion, dealing magic damage and  stunning them for 1 second.',
+            raw: 'Sejuani throws an ice bola in the target direction that stops upon hitting an enemy champion, dealing magic damage and  stunning them for 1 second.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -589,6 +597,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the bola travels over 400 units, it becomes empowered to detonate upon reaching maximum range or hitting an enemy champion, dealing increased damage and  stunning for 1.5 seconds instead. For the same duration, a frost storm is created that  slows enemies within by 30% and grants  sight of the area in a smaller radius.',
         descriptionHTML:
@@ -650,6 +659,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Afterwards, the storm shatters to deal magic damage to enemies hit and  slow them by 80% for 1 second, as well as  revealing them and granting  sight of the area for 0.5 seconds.',
         descriptionHTML:
@@ -700,6 +710,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The enemy hit by the bola is not affected by the storm's effects.",
         descriptionHTML:

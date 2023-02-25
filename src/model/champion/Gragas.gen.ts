@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Happy Hour.png',
+        icon: '/wiki/images/Happy_Hour.png',
         description:
           'Innate: Periodically, after casting an ability, Gragas  heals himself for  6.5% of his maximum health.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Periodically, after casting an ability, Gragas  heals himself for  6.5% of his maximum health.',
+            raw: 'Periodically, after casting an ability, Gragas  heals himself for  6.5% of his maximum health.',
             healType: 'BonusHealth',
             values: 6,
             valuesIsPercent: true,
@@ -80,7 +80,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Barrel Roll.png',
+        icon: '/wiki/images/Barrel_Roll.png',
         description:
           'Active: Gragas rolls a cask to the target location, remaining there for 4 seconds, granting  sight of the area, and fermenting over 2 seconds to increase its  damage and  slow effectiveness, up to a maximum of 150%. Barrel Roll can be recast at any time within its duration after the cask has fully travelled, and does so automatically after its duration ends.',
         descriptionHTML:
@@ -89,7 +89,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Gragas rolls a cask to the target location, remaining there for 4 seconds, granting  sight of the area, and fermenting over 2 seconds to increase its  damage and  slow effectiveness, up to a maximum of 150%',
+            raw: 'Gragas rolls a cask to the target location, remaining there for 4 seconds, granting  sight of the area, and fermenting over 2 seconds to increase its  damage and  slow effectiveness, up to a maximum of 150%',
             values: 4,
             valuesIsPercent: true,
             user: 'none',
@@ -103,7 +103,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Barrel Roll 2.png',
+        icon: '/wiki/images/Barrel_Roll_2.png',
         description:
           'Recast: Gragas detonates the cask, dealing magic damage to nearby enemies, reduced by 30% against  minions, and  slowing them for 2 seconds.',
         descriptionHTML:
@@ -112,7 +112,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Recast:',
-            raw: ' Gragas detonates the cask, dealing magic damage to nearby enemies, reduced by 30% against  minions, and  slowing them for 2 seconds.',
+            raw: 'Gragas detonates the cask, dealing magic damage to nearby enemies, reduced by 30% against  minions, and  slowing them for 2 seconds.',
             values: 3,
             valuesIsPercent: true,
             user: 'none',
@@ -233,7 +233,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Drunken Rage.png',
+        icon: '/wiki/images/Drunken_Rage.png',
         description:
           'Active: Gragas  channels for 0.75 seconds, drinking out of his brew, and gains damage reduction for 2.5 seconds.',
         descriptionHTML:
@@ -272,7 +272,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Drunken Rage 2.png',
+        icon: '/wiki/images/Drunken_Rage_2.png',
         description:
           'Upon completing the channel, Gragas empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range and deal bonus magic damage to the target and nearby enemies, capped at 300 against  monsters.',
         descriptionHTML:
@@ -393,7 +393,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Body Slam.png',
+        icon: '/wiki/images/Body_Slam.png',
         description:
           'Active: Gragas  charges in the target direction and stops upon colliding with an enemy, dealing magic damage to all nearby enemies,  knocking them back, though not through terrain, and  stunning them for 1 second.',
         descriptionHTML:
@@ -402,7 +402,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gragas  charges in the target direction and stops upon colliding with an enemy, dealing magic damage to all nearby enemies,  knocking them back, though not through terrain, and  stunning them for 1 second.',
+            raw: 'Gragas  charges in the target direction and stops upon colliding with an enemy, dealing magic damage to all nearby enemies,  knocking them back, though not through terrain, and  stunning them for 1 second.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -444,6 +444,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Body Slam's  current cooldown is reduced by 3 seconds if Gragas hits an enemy.",
         descriptionHTML:
@@ -465,6 +466,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Barrel Roll and  Explosive Cask can be cast during the dash.',
         descriptionHTML:
@@ -508,7 +510,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Explosive Cask.png',
+        icon: '/wiki/images/Explosive_Cask.png',
         description:
           'Active: Gragas hurls a cask that travels to the target location over 0.55 seconds, exploding on impact to deal magic damage to all enemies within the area and  knock them back 900 units, though not through terrain, from the epicenter of the explosion, as well as granting  sight of the area for 1 second.',
         descriptionHTML:

@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Thousand Cuts.png',
+        icon: '/wiki/images/Thousand_Cuts.png',
         description:
           "Innate: Gwen's basic attacks  on-hit, the center of  Snip Snip!, and  Needlework deal bonus magic damage equal to 1% (+ 0.8% per 100 AP) of the target's maximum health.",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Gwen's basic attacks  on-hit, the center of  Snip Snip!, and  Needlework deal bonus magic damage equal to 1% (+ 0.8% per 100 AP) of the target's maximum health.",
+            raw: "Gwen's basic attacks  on-hit, the center of  Snip Snip!, and  Needlework deal bonus magic damage equal to 1% (+ 0.8% per 100 AP) of the target's maximum health.",
             healType: 'OutgoingHeals',
             values: 1,
             valuesIsPercent: true,
@@ -55,6 +55,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Thousand Cuts is modified based on the target:\n Heals Gwen for 50% of post-mitigation damage dealt against  champions, capped at 10 − 25 (based on level) (+ 6.5% AP) per instance.\nDeals an additional 8 − 30 (based on level) bonus magic damage against  minions that are below 40% health.\nDeals a maximum of 6 (+ 10% AP) magic damage against  monsters.',
         descriptionHTML:
@@ -62,9 +63,9 @@ export default {
         descriptionRatios: [
           {
             effectType: 'Heal',
-            name: 'Thousand Cuts is modified based on the target:',
-            raw: '\n Heals Gwen for 50% of post-mitigation damage dealt against  champions, capped at 10 − 25 (based on level) (+ 6.5% AP) per instance.\nDeals an additional 8 − 30 (based on level) bonus magic damage against  minions that are below 40% health.\nDeals a maximum of 6 (+ 10% AP) magic damage against  monsters.',
-            healType: 'BonusHealth',
+            name: 'Line 1:',
+            raw: 'Thousand Cuts is modified based on the target:\n Heals Gwen for 50% of post-mitigation damage dealt against  champions, capped at 10 − 25 (based on level) (+ 6.5% AP) per instance.\nDeals an additional 8 − 30 (based on level) bonus magic damage against  minions that are below 40% health.\nDeals a maximum of 6 (+ 10% AP) magic damage against  monsters.',
+            healType: 'OutgoingHeals',
             values: [
               10, 10.88, 11.76, 12.65, 13.53, 14.41, 15.29, 16.18, 17.06, 17.94,
               18.82, 19.71, 20.59, 21.47, 22.35, 23.24, 24.12, 25,
@@ -73,7 +74,7 @@ export default {
             basedOn: 'level',
             units: 'total_ad',
             unitsText: 'per instance.\nDeals an additional 8 − 30',
-            pre: 'Heals Gwen for 50% of post-mitigation damage dealt against  champions, capped at 10 − 25',
+            pre: 'Thousand Cuts is modified based on the target:\n Heals Gwen for 50% of post-mitigation damage dealt against  champions, capped at 10 − 25',
             post: 'per instance.\nDeals an additional 8 − 30',
             children: [
               {
@@ -139,13 +140,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Gwen's basic attacks generate a stack of Snippy on-hit for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.",
+            raw: "Gwen's basic attacks generate a stack of Snippy on-hit for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.",
             min: 0,
-            max: 10,
+            max: 4,
             description:
-              " Gwen's basic attacks generate a stack of Snippy on-hit for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.",
+              "Gwen's basic attacks generate a stack of Snippy on-hit for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.",
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks generate a stack of Snippy on-hit for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.',
             pre: "Gwen's basic attacks generate a stack of Snippy on-hit for 6 seconds, stacking up to 4 times and refreshing on subsequent attacks.",
@@ -155,7 +156,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Snip Snip!.png',
+        icon: '/wiki/images/Snip_Snip!.png',
         description:
           'Active: Gwen snips at least twice with her scissors in a cone in the target direction over the cast time, dealing magic damage per snip to all enemies within the area, with the final snip dealing increased damage. The center of each snip applies  Thousand Cuts and converts 50% of the damage to   true damage instead. Snip Snip! deals 75% damage against  minions, and  executes them on the first damage instance if they are below 20% health.',
         descriptionHTML:
@@ -245,6 +246,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Gwen has any Snippy stacks, she consumes them to snip an additional time for each.',
         descriptionHTML:
@@ -350,7 +352,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hallowed Mist.png',
+        icon: '/wiki/images/Hallowed_Mist.png',
         description:
           'Active: Gwen summons the Hallowed Mist upon her current location, lasting for 4 seconds. Hallowed Mist can be recast after 0.5 seconds, and does so automatically if Gwen attempts to leave the area.',
         descriptionHTML:
@@ -359,7 +361,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Gwen summons the Hallowed Mist upon her current location, lasting for 4 seconds',
+            raw: 'Gwen summons the Hallowed Mist upon her current location, lasting for 4 seconds',
             values: 4,
             user: 'none',
             units: '',
@@ -372,7 +374,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Hallowed Mist 2.png',
+        icon: '/wiki/images/Hallowed_Mist_2.png',
         description:
           'While inside the mist, Gwen gains  bonus armor and  bonus magic resistance and is  untargetable to all enemies (except  turrets and  monsters) outside of the mist.',
         descriptionHTML:
@@ -431,6 +433,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Gwen commands the mist to move to her current location.',
         descriptionHTML:
@@ -440,6 +443,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Gwen negates all attacks by  monsters outside of the mist.',
         descriptionHTML:
@@ -480,7 +484,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Skip 'n Slash.png",
+        icon: "/wiki/images/Skip_'n_Slash.png",
         description:
           'Active: Gwen  dashes to the target location, then empowers her basic attacks within the next 4 seconds to deal 15 (+ 20% AP) bonus magic damage  on-hit and gain  bonus attack speed and  75 bonus attack range.',
         descriptionHTML:
@@ -489,7 +493,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Gwen  dashes to the target location, then empowers her basic attacks within the next 4 seconds to deal 15 (+ 20% AP) bonus magic damage  on-hit and gain  bonus attack speed and  75 bonus attack range.',
+            raw: 'Gwen  dashes to the target location, then empowers her basic attacks within the next 4 seconds to deal 15 (+ 20% AP) bonus magic damage  on-hit and gain  bonus attack speed and  75 bonus attack range.',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -530,6 +534,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gwen's first basic attack within the duration refunds a portion of Skip 'n Slash's  cooldown.",
         descriptionHTML:
@@ -557,6 +562,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Skip 'n Slash  resets Gwen's basic attack timer, and can be cast during any of her abilities, and vice versa. Skip 'n Slash will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -606,7 +612,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Gwen Needlework.png',
+        icon: '/wiki/images/Gwen_Needlework.png',
         description:
           'Active: Gwen launches a needle in the target direction that deals magic damage to enemies hit and  slows them for 1.5 seconds.',
         descriptionHTML:
@@ -615,7 +621,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Gwen launches a needle in the target direction that deals magic damage to enemies hit and  slows them for 1.5 seconds.',
+            raw: 'Gwen launches a needle in the target direction that deals magic damage to enemies hit and  slows them for 1.5 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -673,7 +679,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Gwen Needlework 2.png',
+        icon: '/wiki/images/Gwen_Needlework_2.png',
         description:
           'Needlework can be recast twice more within 6 seconds of the activation at no additional cost, with a 1-second static cooldown between casts. Each subsequent cast refreshes the duration and increases the number of needles launched by 2. Needle hits beyond the first  slow by a reduced amount against each individual target.',
         descriptionHTML:
@@ -725,7 +731,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Gwen Needlework 3.png',
+        icon: '/wiki/images/Gwen_Needlework_3.png',
         description:
           "Recast: Gwen mimics the first cast's effects, while launching three needles on the second cast and five on the third cast.",
         descriptionHTML:

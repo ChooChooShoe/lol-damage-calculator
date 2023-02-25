@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Void Shift.png',
+        icon: '/wiki/images/Void_Shift.png',
         description:
           'Innate: Periodically, Malzahar gains Void Shift until he takes non- minion damage or negates a  crowd control effect, to which it then lingers for 0.25 seconds before expiring. Void Shift: Malzahar gains  crowd control immunity and 90% damage reduction.',
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Void Shift:',
-            raw: ' Malzahar gains  crowd control immunity and 90% damage reduction.',
+            raw: 'Malzahar gains  crowd control immunity and 90% damage reduction.',
             values: 9,
             valuesIsPercent: true,
             user: 'none',
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Void Shift's  cooldown refreshes whenever Malzahar takes non- minion damage or is affected by a  crowd control effect, and resets upon respawning.",
         descriptionHTML:
@@ -88,7 +89,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Call of the Void.png',
+        icon: '/wiki/images/Call_of_the_Void.png',
         description:
           'Active: Malzahar opens two portals to the void centered at the target location, granting  sight of the area in between. After 0.4 seconds, enemies between the portals are dealt magic damage and  silenced for a duration.',
         descriptionHTML:
@@ -185,13 +186,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Malzahar generates a stack of Zz'Rot Swarm when he casts another ability, up to a maximum of 2.",
+            raw: "Malzahar generates a stack of Zz'Rot Swarm when he casts another ability, up to a maximum of 2.",
             min: 0,
             max: 10,
             description:
-              " Malzahar generates a stack of Zz'Rot Swarm when he casts another ability, up to a maximum of 2.",
+              "Malzahar generates a stack of Zz'Rot Swarm when he casts another ability, up to a maximum of 2.",
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "generates a stack of Zz'Rot Swarm when he casts another ability, up to a maximum of 2.",
             pre: "Malzahar generates a stack of Zz'Rot Swarm when he casts another ability, up to a maximum of 2.",
@@ -201,7 +202,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Void Swarm.png',
+        icon: '/wiki/images/Void_Swarm.png',
         description:
           "Active: Malzahar consumes all Zz'Rot Swarm stacks and, after a 0.5-second delay, summons a  Voidling at the target location. Additional Voidlings are then summoned for each Zz'Rot Swarm stack consumed.",
         descriptionHTML:
@@ -228,6 +229,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Voidlings deal magic damage with their attacks, reduced by 50% against epic monsters and increased by 200% to enemy  minions infected by  Malefic Visions.',
         descriptionHTML:
@@ -297,6 +299,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about Voidlings.',
         descriptionHTML:
           '<i>See <a href="/wiki/Malzahar/LoL#Pets" title="Malzahar/LoL">Pets</a> for more details about Voidlings.</i>',
@@ -340,7 +343,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Malefic Visions.png',
+        icon: '/wiki/images/Malefic_Visions.png',
         description:
           "Active: Malzahar infects the target enemy's mind, dealing magic damage every 0.5 seconds over 4 seconds, which refreshes upon damaging them with  Call of the Void or  Nether Grasp. Malefic Visions executes  minions if they would be damaged below  15 − 45 (based on level) health.",
         descriptionHTML:
@@ -356,7 +359,7 @@ export default {
               32.65, 34.41, 36.18, 37.94, 39.71, 41.47, 43.24, 45,
             ],
             basedOn: 'level',
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText: 'health.',
             pre: 'Malefic Visions executes  minions if they would be damaged below  15 − 45',
             post: 'health.',
@@ -394,6 +397,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target dies while infected, they spread Malefic Visions onto the closest nearby enemy and Malzahar restores  2% of his maximum mana.',
         descriptionHTML:
@@ -455,7 +459,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Nether Grasp.png',
+        icon: '/wiki/images/Nether_Grasp.png',
         description:
           'Active: Malzahar  tethers to the target enemy champion,  knocking them down. He then  channels for up to 2.5 seconds,  suppressing and  revealing the target and dealing them magic damage every 0.25 seconds,  revealing himself in the process.',
         descriptionHTML:
@@ -506,6 +510,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Malzahar will continue to channel as long as the tether is not broken, even if the suppression is removed.',
         descriptionHTML:
@@ -515,7 +520,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Null Zone.png',
+        icon: '/wiki/images/Null_Zone.png',
         description:
           "Additionally, a Null Zone is opened beneath the target's location at the time of cast that lasts 5 seconds, dealing magic damage every 0.5 seconds to enemies within, capped at 120 per tick against  minions and  monsters.",
         descriptionHTML:
@@ -568,6 +573,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Null Zone will persist even if the channel is interrupted.',
         descriptionHTML:

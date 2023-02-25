@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Hecarim gains  bonus attack damage equal to 12% − 24% (based on level) of his  bonus movement speed.',
+            raw: 'Hecarim gains  bonus attack damage equal to 12% − 24% (based on level) of his  bonus movement speed.',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -88,7 +88,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Hecarim cleaves his glaive around himself, dealing physical damage to nearby enemies, reduced to 60% against  minions.',
+            raw: 'Hecarim cleaves his glaive around himself, dealing physical damage to nearby enemies, reduced to 60% against  minions.',
             values: 6,
             valuesIsPercent: true,
             user: 'none',
@@ -130,18 +130,22 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If this damages an enemy, Hecarim gains a stack of Rampage for 8 seconds,  refreshing on subsequent damage and stacking up to 3 times. Each stack increases Rampage's damage by 3% (+ 4% per 100 bonus AD) and reduces its  base cooldown by 0.75 seconds, up to a 9% (+ 12% per 100 bonus AD) damage increase and a 2.25-second reduction of the base cooldown at maximum stacks. Stacks expire by one every 1 second when the duration ends.",
         descriptionHTML:
           'If this damages an enemy, <b>Hecarim</b> gains a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Rampage</i> for 8 seconds,  refreshing on subsequent damage and stacking up to 3 times. Each stack increases <i>Rampage\'s</i> damage by 3% <span style="color:orange; white-space:normal">(+&nbsp;4% per 100 <b>bonus</b> AD)</span> and reduces its <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>base</b> cooldown</span> by 0.<small>75</small> seconds, up to a 9% <span style="color:orange; white-space:normal">(+&nbsp;12% per 100 <b>bonus</b> AD)</span> damage increase and a 2.<small>25</small>-second reduction of the <b>base</b> cooldown at maximum stacks. Stacks expire by one every 1 second when the duration ends.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'If this damages an enemy, Hecarim gains a stack of Rampage for 8 seconds,  refreshing on subsequent damage and stacking up to 3 times',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 3,
+            description:
+              'If this damages an enemy, Hecarim gains a stack of Rampage for 8 seconds,  refreshing on subsequent damage and stacking up to 3 times',
             values: 8,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'this damages an enemy, Hecarim gains a stack of Rampage for 8 seconds,  refreshing on subsequent damage and stacking up to 3 times',
             pre: 'If this damages an enemy, Hecarim gains a stack of Rampage for 8 seconds,  refreshing on subsequent damage and stacking up to 3 times',
@@ -233,7 +237,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spirit of Dread.png',
+        icon: '/wiki/images/Spirit_of_Dread.png',
         description:
           'Active: Hecarim surrounds himself with the Spirit of Dread for 4 seconds, dealing magic damage every second to nearby enemies.',
         descriptionHTML:
@@ -242,7 +246,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Hecarim surrounds himself with the Spirit of Dread for 4 seconds, dealing magic damage every second to nearby enemies.',
+            raw: 'Hecarim surrounds himself with the Spirit of Dread for 4 seconds, dealing magic damage every second to nearby enemies.',
             damagetype: 'Magic',
             values: 4,
             units: 'total_ad',
@@ -283,6 +287,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While active, Hecarim gains  bonus armor and  bonus magic resistance and is  healed for 25% (+ 2% of 100 bonus AD) of the post-mitigation damage dealt to enemies within the area, halved to 12.5% (+ 1% of 100 bonus AD) for damage dealt by allies. The healing is capped against  minions and  monsters.',
         descriptionHTML:
@@ -391,7 +396,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Devastating Charge.png',
+        icon: '/wiki/images/Devastating_Charge.png',
         description:
           'Active: Hecarim becomes  ghosted and gains  25% − 65% (based on time active) bonus total movement speed for 4 seconds.',
         descriptionHTML:
@@ -400,7 +405,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Hecarim becomes  ghosted and gains  25% − 65% (based on time active) bonus total movement speed for 4 seconds.',
+            raw: 'Hecarim becomes  ghosted and gains  25% − 65% (based on time active) bonus total movement speed for 4 seconds.',
             values: 2,
             valuesIsPercent: true,
             basedOn: 'time active',
@@ -415,6 +420,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "During this time, Hecarim empowers his next basic attack to gain 50 − 250 (based on distance traveled)  bonus range and cause him to  dash in the target's direction,  revealing them for 1 second. If the target remains nearby during the dash, the  ghosting and bonus movement speed ends prematurely and Hecarim  knocks them back 150 − 350 (based on distance traveled) units, though not through terrain,  stuns them for 0.25 seconds, and deals them modified physical damage, increased by 0% − 100% (based on distance traveled).",
         descriptionHTML:
@@ -480,6 +486,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Devastating Charge can  critically strike for (75% +  35%) AD bonus physical damage.',
         descriptionHTML:
@@ -511,6 +518,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Devastating Charge  resets Hecarim's basic attack timer. Hecarim can cast any of his abilities during the dash. Devastating Charge's duration is paused during  Onslaught of Shadows.",
         descriptionHTML:
@@ -561,7 +569,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Onslaught of Shadows.png',
+        icon: '/wiki/images/Onslaught_of_Shadows.png',
         description:
           'Active: Hecarim  dashes with  displacement immunity to the target location and summons 5 spectral riders in an arrow formation that charge alongside him in the target direction, dealing magic damage to all enemies in their path and  revealing them for 2.5 seconds.',
         descriptionHTML:
@@ -570,7 +578,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Hecarim  dashes with  displacement immunity to the target location and summons 5 spectral riders in an arrow formation that charge alongside him in the target direction, dealing magic damage to all enemies in their path and  revealing them for 2.5 seconds.',
+            raw: 'Hecarim  dashes with  displacement immunity to the target location and summons 5 spectral riders in an arrow formation that charge alongside him in the target direction, dealing magic damage to all enemies in their path and  revealing them for 2.5 seconds.',
             damagetype: 'Magic',
             values: 5,
             user: 'none',
@@ -612,6 +620,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon arrival, he  fears nearby enemies for 0.75 − 1.5 (based on distance traveled) seconds and  slows them, ramping to 99% over the duration.',
         descriptionHTML:
@@ -635,6 +644,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The wave of spectral riders travels independently of Hecarim and will always charge at the same distance. The slow's strength cannot be reduced and is increased based on how far away the affected units are from Hecarim. Onslaught of Shadows will cast at max range if cast beyond that.",
         descriptionHTML:

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Glorious Evolution.png',
+        icon: '/wiki/images/Glorious_Evolution.png',
         description:
           'Innate: Viktor can augment each of his basic abilities at the cost of 100 Hex Fragments, which he gains from killing enemies:\n Minions and  monsters generate 1 Hex Fragment.\nSiege minions, super minions, and epic monsters generate 5 Hex Fragments.\nEnemy  champion  takedowns generate 25 Hex Fragments.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Viktor can augment each of his basic abilities at the cost of 100 Hex Fragments, which he gains from killing enemies:\n Minions and  monsters generate 1 Hex Fragment.\nSiege minions, super minions, and epic monsters generate 5 Hex Fragments.\nEnemy  champion  takedowns generate 25 Hex Fragments.',
+            raw: 'Viktor can augment each of his basic abilities at the cost of 100 Hex Fragments, which he gains from killing enemies:\n Minions and  monsters generate 1 Hex Fragment.\nSiege minions, super minions, and epic monsters generate 5 Hex Fragments.\nEnemy  champion  takedowns generate 25 Hex Fragments.',
             values: 1,
             user: 'none',
             units: '',
@@ -45,6 +45,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Chaos Storm becomes augmented once all of Viktor's basic abilities have been augmented.",
         descriptionHTML:
@@ -88,7 +89,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Siphon Power.png',
+        icon: '/wiki/images/Siphon_Power.png',
         description:
           'Active: Viktor throws a device at the target enemy that deals magic damage. He also grants himself a  shield for 27 − 105 (based on level) (+ 18% AP) for 2.5 seconds and gains Discharge for 3.5 seconds.',
         descriptionHTML:
@@ -231,7 +232,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Augment- Turbocharge.png',
+        icon: '/wiki/images/Augment-_Turbocharge.png',
         description:
           "Augment: Turbocharge: After the device hits, Viktor gains  30% bonus movement speed for 2.5 seconds and the shield's strength is increased by 60%, up to 48 − 184 (based on level) (+ 32% AP).",
         descriptionHTML:
@@ -240,7 +241,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Augment:',
-            raw: " Turbocharge: After the device hits, Viktor gains  30% bonus movement speed for 2.5 seconds and the shield's strength is increased by 60%, up to 48 − 184 (based on level) (+ 32% AP).",
+            raw: "Turbocharge: After the device hits, Viktor gains  30% bonus movement speed for 2.5 seconds and the shield's strength is increased by 60%, up to 48 − 184 (based on level) (+ 32% AP).",
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: [
@@ -306,7 +307,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Gravity Field.png',
+        icon: '/wiki/images/Gravity_Field.png',
         description:
           'Active: Viktor deploys a gravity field at the target location for 4 seconds. After a 0.75-second delay, it activates to  slow enemies within, persisting for 0.25 seconds after leaving the area or generating 3 stacks.',
         descriptionHTML:
@@ -315,7 +316,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Viktor deploys a gravity field at the target location for 4 seconds',
+            raw: 'Viktor deploys a gravity field at the target location for 4 seconds',
             values: 4,
             user: 'none',
             units: '',
@@ -346,6 +347,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The field applies a stack to enemies within every 0.5 seconds, stacking up to 3 times. The third stack consumes them all to  knock down and  stun the target for 1.5 seconds. The target then becomes immune to Gravity Field's effects, occurring once per cast.",
         descriptionHTML:
@@ -360,7 +362,7 @@ export default {
             description:
               'The third stack consumes them all to  knock down and  stun the target for 1.5 seconds',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'third stack consumes them all to  knock down and  stun the target for 1.5 seconds',
             pre: 'The third stack consumes them all to  knock down and  stun the target for 1.5 seconds',
@@ -370,7 +372,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Augment- Magnetize.png',
+        icon: '/wiki/images/Augment-_Magnetize.png',
         description:
           "Augment: Magnetize: Viktor's other abilities, excluding  Chaos Storm's persistent damage,  slow enemies hit by 20% for 1 second.",
         descriptionHTML:
@@ -379,7 +381,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Augment:',
-            raw: " Magnetize: Viktor's other abilities, excluding  Chaos Storm's persistent damage,  slow enemies hit by 20% for 1 second.",
+            raw: "Magnetize: Viktor's other abilities, excluding  Chaos Storm's persistent damage,  slow enemies hit by 20% for 1 second.",
             damagetype: 'None',
             values: 2,
             valuesIsPercent: true,
@@ -432,7 +434,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Death Ray.png',
+        icon: '/wiki/images/Death_Ray.png',
         description:
           'Active: Viktor fires an energy beam along the target path that deals magic damage to enemies hit and briefly grants  sight of the area.',
         descriptionHTML:
@@ -470,7 +472,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Augment- Aftershock.png',
+        icon: '/wiki/images/Augment-_Aftershock.png',
         description:
           "Augment: Aftershock: The path explodes along the beam's wake after 1 second, dealing magic damage to enemies hit.",
         descriptionHTML:
@@ -479,7 +481,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Augment:',
-            raw: " Aftershock: The path explodes along the beam's wake after 1 second, dealing magic damage to enemies hit.",
+            raw: "Aftershock: The path explodes along the beam's wake after 1 second, dealing magic damage to enemies hit.",
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -563,7 +565,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Chaos Storm.png',
+        icon: '/wiki/images/Chaos_Storm.png',
         description:
           'Active: Viktor conjures an arcane singularity at the target location, dealing magic damage to enemies within the area and  disrupting their  channeled abilities.',
         descriptionHTML:
@@ -601,6 +603,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The singularity then remains active for 6.5 seconds, dealing magic damage to enemies within it every second and granting  sight of the area. The singularity targets the nearest champion hit by its initial damage and will follow them, moving faster based on its proximity to Viktor.',
         descriptionHTML:
@@ -650,6 +653,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Chaos Storm can be recast at any time while the singularity is active.',
         descriptionHTML:
@@ -659,7 +663,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Chaos Storm 2.png',
+        icon: '/wiki/images/Chaos_Storm_2.png',
         description:
           'Recast: Viktor directs the singularity to the target location or enemy champion.',
         descriptionHTML:
@@ -669,7 +673,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Augment- Perfect Storm.png',
+        icon: '/wiki/images/Augment-_Perfect_Storm.png',
         description:
           'Augment: Perfect Storm: The singularity moves 25% faster.',
         descriptionHTML:
@@ -678,7 +682,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Augment:',
-            raw: ' Perfect Storm: The singularity moves 25% faster.',
+            raw: 'Perfect Storm: The singularity moves 25% faster.',
             values: 2,
             valuesIsPercent: true,
             user: 'none',

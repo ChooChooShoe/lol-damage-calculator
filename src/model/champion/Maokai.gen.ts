@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sap Magic.png',
+        icon: '/wiki/images/Sap_Magic.png',
         description:
           'Innate: Periodically, Maokai empowers his next basic attack to have an  uncancellable windup and  heal him for 4 − 34 (based on level) (+ 4% − 12% (based on level) maximum health) after a 0.25-second delay.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Periodically, Maokai empowers his next basic attack to have an  uncancellable windup and  heal him for 4 − 34 (based on level) (+ 4% − 12% (based on level) maximum health) after a 0.25-second delay.',
+            raw: 'Periodically, Maokai empowers his next basic attack to have an  uncancellable windup and  heal him for 4 − 34 (based on level) (+ 4% − 12% (based on level) maximum health) after a 0.25-second delay.',
             healType: 'BonusHealth',
             values: [
               4, 5.76, 7.53, 9.29, 11.06, 12.82, 14.59, 16.35, 18.12, 19.88,
@@ -63,7 +63,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sap Magic 2.png',
+        icon: '/wiki/images/Sap_Magic_2.png',
         description:
           "Each time Maokai casts an ability, hits at least one enemy champion or epic monster with  Sapling Toss, or is struck by an enemy's ability, Sap Magic's  cooldown is reduced by 4 seconds, modified to 1.5 if he is hit by a large  monster's basic attack or ability.",
         descriptionHTML:
@@ -85,6 +85,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Sap Magic  resets Maokai's basic attack timer, and will not trigger if he is above 95% maximum  health.",
         descriptionHTML:
@@ -142,7 +143,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bramble Smash.png',
+        icon: '/wiki/images/Bramble_Smash.png',
         description:
           'Active: Maokai sends a shockwave in the target direction that deals magic damage to enemies hit and  slows them by 99% for 0.25 seconds. Bramble Smash deals bonus magic damage to  monsters.',
         descriptionHTML:
@@ -151,7 +152,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Maokai sends a shockwave in the target direction that deals magic damage to enemies hit and  slows them by 99% for 0.25 seconds',
+            raw: 'Maokai sends a shockwave in the target direction that deals magic damage to enemies hit and  slows them by 99% for 0.25 seconds',
             damagetype: 'Magic',
             values: 9,
             valuesIsPercent: true,
@@ -166,9 +167,9 @@ export default {
           {
             name: 'Magic Damage:',
             values:
-              "70 / 120 / 170 / 220 / 270 (+ 2 / 2.25 / 2.5 / 2.75 / 3% of the target's maximum health) (+ 40% AP)",
+              "70 / 120 / 170 / 220 / 270 (+ 2 / 2.5 / 3 / 3.5 / 4% of the target's maximum health) (+ 40% AP)",
             valuesHTML:
-              '70 / 120 / 170 / 220 / 270 <span style="color: #1F995C; white-space:normal">(+&nbsp;2 / 2.<small>25</small> / 2.<small>5</small> / 2.<small>75</small> / 3% of the target\'s <b>maximum</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;40% AP)</span>',
+              '70 / 120 / 170 / 220 / 270 <span style="color: #1F995C; white-space:normal">(+&nbsp;2 / 2.<small>5</small> / 3 / 3.<small>5</small> / 4% of the target\'s <b>maximum</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;40% AP)</span>',
           },
           {
             name: 'Bonus Monster Damage:',
@@ -180,7 +181,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Magic Damage:',
-            raw: "70 / 120 / 170 / 220 / 270 (+ 2 / 2.25 / 2.5 / 2.75 / 3% of the target's maximum health) (+ 40% AP)",
+            raw: "70 / 120 / 170 / 220 / 270 (+ 2 / 2.5 / 3 / 3.5 / 4% of the target's maximum health) (+ 40% AP)",
             healType: 'OutgoingHeals',
             values: [70, 120, 170, 220, 270],
             user: 'none',
@@ -189,12 +190,12 @@ export default {
             pre: '70 / 120 / 170 / 220 / 270',
             children: [
               {
-                values: [2, 2.25, 2.5, 2.75, 3],
+                values: [2, 2.5, 3, 3.5, 4],
                 valuesIsPercent: true,
                 user: 'target',
                 units: 'maximum_hp',
                 unitsText: "of the target's maximum health",
-                pre: "+ 2 / 2.25 / 2.5 / 2.75 / 3% of the target's maximum health",
+                pre: "+ 2 / 2.5 / 3 / 3.5 / 4% of the target's maximum health",
               },
               {
                 values: 40,
@@ -219,6 +220,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies near Maokai are also  stunned for 0.5 seconds and  knocked back up to 300 units based on their proximity to him.',
         descriptionHTML:
@@ -264,7 +266,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Twisted Advance.png',
+        icon: '/wiki/images/Twisted_Advance.png',
         description:
           'Active: Maokai  dashes to the target enemy while being  untargetable. Upon arrival, he deals magic damage and  roots them for a duration.',
         descriptionHTML:
@@ -351,7 +353,7 @@ export default {
     cast_time: '0.<small>25</small>',
     cost: '45 / 55 / 65 / 75 / 85',
     costtype: 'Mana',
-    cooldown: '10',
+    cooldown: '14',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Maokai" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Maokai/LoL" title="Maokai"><img alt="Maokai" src="/wiki/images/Maokai_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Maokai/LoL" title="Maokai/LoL">Maokai</a></span></span> flings a <i>Sapling</i> to the target location, where it remains for some time. A <i>Sapling</i> will chase nearby enemies for a short time, expiring afterward or upon contact.',
       'When a <i>Sapling</i> expires, it deals <span style="color: #00B0F0; white-space:normal">magic damage</span> to nearby enemies based on <span style="color: #1F995C; white-space:normal">their <b>maximum</b> health</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> them for a short time.',
@@ -359,7 +361,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sapling Toss.png',
+        icon: '/wiki/images/Sapling_Toss.png',
         description:
           'Active: Maokai  flings a Sapling to the target location, granting  sight of the area.',
         descriptionHTML:
@@ -369,6 +371,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once landed, a Sapling remains stationary for 30 seconds or until it reacts to the first nearby visible enemy, chasing them for up to 2.5 seconds. The Sapling explodes upon colliding with an enemy or when it expires, dealing magic damage to nearby enemies, capped at 300 against non-champions, and  slowing them by 45% for 2 seconds.',
         descriptionHTML:
@@ -401,22 +404,22 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '55 / 80 / 105 / 130 / 155 (+ 5% bonus health) (+ 35% AP)',
+            values: '50 / 75 / 100 / 125 / 150 (+ 5% bonus health) (+ 25% AP)',
             valuesHTML:
-              '55 / 80 / 105 / 130 / 155 <span style="color: #1F995C; white-space:normal">(+&nbsp;5% <b>bonus</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;35% AP)</span>',
+              '50 / 75 / 100 / 125 / 150 <span style="color: #1F995C; white-space:normal">(+&nbsp;5% <b>bonus</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;25% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Heal',
             name: 'Magic Damage:',
-            raw: '55 / 80 / 105 / 130 / 155 (+ 5% bonus health) (+ 35% AP)',
+            raw: '50 / 75 / 100 / 125 / 150 (+ 5% bonus health) (+ 25% AP)',
             healType: 'BonusHealth',
-            values: [55, 80, 105, 130, 155],
+            values: [50, 75, 100, 125, 150],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '55 / 80 / 105 / 130 / 155',
+            pre: '50 / 75 / 100 / 125 / 150',
             children: [
               {
                 values: 5,
@@ -426,26 +429,27 @@ export default {
                 pre: '+ 5% bonus health',
               },
               {
-                values: 35,
+                values: 25,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 35% AP',
+                pre: '+ 25% AP',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
-          'A Sapling placed in  brush instead lasts 30 (+ 2.5% bonus health) seconds, deals double damage to struck non- minion targets over 3 bursts, and  slows them by 45% (+ 0.9% per 100 bonus health) (+ 4% per 100 AP), as well as  reveals them for 3 seconds. The first instance of damage is dealt instantly and the second and third instances occur each 0.75 seconds thereafter. The total damage is capped at 600 against non-champions.',
+          'A Sapling placed in  brush instead lasts 30 (+ 2.5% bonus health) seconds, deals double damage to struck non- minion targets over 3 bursts, and  slows them by 45% (+ 1% per 100 bonus health) (+ 1% per 100 AP), as well as  reveals them for 3 seconds. The first instance of damage is dealt instantly and the second and third instances occur each 0.75 seconds thereafter. The total damage is capped at 600 against non-champions.',
         descriptionHTML:
-          'A <i>Sapling</i> placed in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Brush"><a href="/wiki/Brush" title="Brush"><img alt="Brushmaker.png" src="/wiki/images/Ivern_Brushmaker.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Brush" title="Brush">brush</a></span> instead lasts 30 <span style="color: #1F995C; white-space:normal">(+&nbsp;2.<small>5</small>% <b>bonus</b> health)</span> seconds, deals double damage to struck non-<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minion"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minion</a></span> targets over 3 bursts, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> them by 45% <span style="color: #1F995C; white-space:normal">(+&nbsp;0.<small>9</small>% per 100 <b>bonus</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;4% per 100 AP)</span>, as well as <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Standard sight"><a href="/wiki/Sight" title="Sight"><img alt="Reveal icon.png" src="/wiki/images/Reveal_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">reveals</a></span> them for 3 seconds. The first instance of damage is dealt instantly and the second and third instances occur each 0.<small>75</small> seconds thereafter. The <b>total</b> damage is capped at 600 against non-champions.',
+          'A <i>Sapling</i> placed in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Brush"><a href="/wiki/Brush" title="Brush"><img alt="Brushmaker.png" src="/wiki/images/Ivern_Brushmaker.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Brush" title="Brush">brush</a></span> instead lasts 30 <span style="color: #1F995C; white-space:normal">(+&nbsp;2.<small>5</small>% <b>bonus</b> health)</span> seconds, deals double damage to struck non-<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minion"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minion</a></span> targets over 3 bursts, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> them by 45% <span style="color: #1F995C; white-space:normal">(+&nbsp;1% per 100 <b>bonus</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;1% per 100 AP)</span>, as well as <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Standard sight"><a href="/wiki/Sight" title="Sight"><img alt="Reveal icon.png" src="/wiki/images/Reveal_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">reveals</a></span> them for 3 seconds. The first instance of damage is dealt instantly and the second and third instances occur each 0.<small>75</small> seconds thereafter. The <b>total</b> damage is capped at 600 against non-champions.',
         descriptionRatios: [
           {
             effectType: 'Heal',
             name: 'Line 1:',
-            raw: 'A Sapling placed in  brush instead lasts 30 (+ 2.5% bonus health) seconds, deals double damage to struck non- minion targets over 3 bursts, and  slows them by 45% (+ 0.9% per 100 bonus health) (+ 4% per 100 AP), as well as  reveals them for 3 seconds',
+            raw: 'A Sapling placed in  brush instead lasts 30 (+ 2.5% bonus health) seconds, deals double damage to struck non- minion targets over 3 bursts, and  slows them by 45% (+ 1% per 100 bonus health) (+ 1% per 100 AP), as well as  reveals them for 3 seconds',
             healType: 'OutgoingHeals',
             values: 3,
             user: 'none',
@@ -463,18 +467,18 @@ export default {
                 pre: '+ 2.5% bonus health',
               },
               {
-                values: 0.9,
+                values: 1,
                 valuesIsPercent: true,
                 units: 'bonus_hp',
                 unitsText: 'per 100 bonus health',
-                pre: '+ 0.9% per 100 bonus health',
+                pre: '+ 1% per 100 bonus health',
               },
               {
-                values: 4,
+                values: 1,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'per 100 AP',
-                pre: '+ 4% per 100 AP',
+                pre: '+ 1% per 100 AP',
               },
             ],
           },
@@ -493,22 +497,22 @@ export default {
           {
             name: 'Total Enhanced Damage:',
             values:
-              '110 / 160 / 210 / 260 / 310 (+ 10% bonus health) (+ 70% AP)',
+              '100 / 150 / 200 / 250 / 300 (+ 10% bonus health) (+ 50% AP)',
             valuesHTML:
-              '110 / 160 / 210 / 260 / 310 <span style="color: #1F995C; white-space:normal">(+&nbsp;10% <b>bonus</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;70% AP)</span>',
+              '100 / 150 / 200 / 250 / 300 <span style="color: #1F995C; white-space:normal">(+&nbsp;10% <b>bonus</b> health)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;50% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Heal',
             name: 'Total Enhanced Damage:',
-            raw: '110 / 160 / 210 / 260 / 310 (+ 10% bonus health) (+ 70% AP)',
+            raw: '100 / 150 / 200 / 250 / 300 (+ 10% bonus health) (+ 50% AP)',
             healType: 'BonusHealth',
-            values: [110, 160, 210, 260, 310],
+            values: [100, 150, 200, 250, 300],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '110 / 160 / 210 / 260 / 310',
+            pre: '100 / 150 / 200 / 250 / 300',
             children: [
               {
                 values: 10,
@@ -518,17 +522,18 @@ export default {
                 pre: '+ 10% bonus health',
               },
               {
-                values: 70,
+                values: 50,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 70% AP',
+                pre: '+ 50% AP',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about Saplings.',
         descriptionHTML:
           '<i>See <a href="/wiki/Maokai/LoL#Pets" title="Maokai/LoL">Pets</a> for more details about Saplings.</i>',
@@ -578,7 +583,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Nature's Grasp.png",
+        icon: "/wiki/images/Nature's_Grasp.png",
         description:
           'Active: Maokai summons a colossal wall of five thorny brambles that slowly advances in the target direction, accelerating over time, each stopping when they collide with an enemy  champion. Hitting at least one enemy champion grants Maokai  bonus movement speed decaying over 2 seconds.',
         descriptionHTML:
@@ -618,6 +623,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Each bramble deals magic damage to enemies hit and  roots them for 0.8 − 2.6 (based on distance traveled) seconds.',
         descriptionHTML:

@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Whenever Cho'Gath kills an enemy, it  heals for 18 − 52 (based on level) and restores  4.72 − 9.48 (based on level) mana.",
+            raw: "Whenever Cho'Gath kills an enemy, it  heals for 18 − 52 (based on level) and restores  4.72 − 9.48 (based on level) mana.",
             healType: 'DrainEffect',
             values: [
               18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48,
@@ -74,7 +74,7 @@ export default {
     effect_radius:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center.png" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 250',
     cast_time: '0.<small>5</small>',
-    cost: '60',
+    cost: '50',
     costtype: 'mana',
     cooldown: '6',
     blurb: [
@@ -91,22 +91,22 @@ export default {
         leveling: [
           {
             name: 'Magic damage:',
-            values: '80 / 135 / 190 / 245 / 300 (+ 100% AP)',
+            values: '80 / 140 / 200 / 260 / 320 (+ 100% AP)',
             valuesHTML:
-              '80 / 135 / 190 / 245 / 300 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;100% AP)</span>',
+              '80 / 140 / 200 / 260 / 320 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;100% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Magic damage:',
-            raw: '80 / 135 / 190 / 245 / 300 (+ 100% AP)',
+            raw: '80 / 140 / 200 / 260 / 320 (+ 100% AP)',
             damagetype: 'Magic',
-            values: [80, 135, 190, 245, 300],
+            values: [80, 140, 200, 260, 320],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '80 / 135 / 190 / 245 / 300',
+            pre: '80 / 140 / 200 / 260 / 320',
             children: [
               {
                 values: 100,
@@ -148,7 +148,7 @@ export default {
     angle:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Er"><a href="/wiki/Range" title="Range"><img alt="Range model.png" src="/wiki/images/Range_model.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 60°',
     cast_time: '0.<small>5</small>',
-    cost: '70 / 80 / 90 / 100 / 110',
+    cost: '70 / 75 / 80 / 85 / 90',
     costtype: 'mana',
     cooldown: '13 / 12 / 11 / 10 / 9',
     blurb: [
@@ -156,7 +156,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Feral Scream.png',
+        icon: '/wiki/images/Feral_Scream.png',
         description:
           "Active: Cho'Gath roars in a cone in the target direction, dealing magic damage to enemies hit.",
         descriptionHTML:
@@ -194,6 +194,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy  champions and  Rift Scuttlers hit are also  silenced for a duration.',
         descriptionHTML:
@@ -259,7 +260,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vorpal Spikes.png',
+        icon: '/wiki/images/Vorpal_Spikes.png',
         description:
           "Active: Cho'Gath empowers its next 3 basic attacks within 6 seconds to gain  50 bonus range and launch a blast of spikes on-attack in the target's direction. Enemies struck are dealt magic damage and  slowed by an amount that decays over 1.5 seconds. The damage based on the target's health ratio is capped against  minions and  monsters.",
         descriptionHTML:
@@ -268,7 +269,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Cho'Gath empowers its next 3 basic attacks within 6 seconds to gain  50 bonus range and launch a blast of spikes on-attack in the target's direction",
+            raw: "Cho'Gath empowers its next 3 basic attacks within 6 seconds to gain  50 bonus range and launch a blast of spikes on-attack in the target's direction",
             increasedStat: 'bonus_ad',
             values: 3,
             user: 'target',
@@ -373,6 +374,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Vorpal Spikes  resets Cho'Gath's basic attack timer.",
         descriptionHTML:
           '<i>Vorpal Spikes <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Cho\'Gath\'s</b> basic attack timer.</i>',
@@ -495,18 +497,22 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the target is killed, Cho'Gath gains a stack of Feast. Only 6 stacks can be gained from non-epic  monsters or  minions.",
         descriptionHTML:
           'If the target is killed, <b>Cho\'Gath</b> gains a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Feast</i>. Only 6 stacks can be gained from non-epic <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minion"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minions</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'Only 6 stacks can be gained from non-epic  monsters or  minions.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'Only 6 stacks can be gained from non-epic  monsters or  minions.',
             values: 6,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               '6 stacks can be gained from non-epic  monsters or  minions.',
             pre: 'Only 6 stacks can be gained from non-epic  monsters or  minions.',
@@ -516,6 +522,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Each stack of Feast grants Cho'Gath  bonus health as well as  bonus attack range and increased size, capping at  75 bonus attack range and 100% increased size.",
         descriptionHTML:

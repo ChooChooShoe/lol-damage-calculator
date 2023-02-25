@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Darkin Scythe.png',
+        icon: '/wiki/images/The_Darkin_Scythe.png',
         description:
           'Innate: Kayn has a secondary experience bar that tracks progress toward his  Darkin and  Shadow Assassin forms. He gathers orbs from champion  takedowns and each instance of damage (excluding damage over time) dealt against champions. Once he has earned enough orbs, he unlocks a form based on whether he earned more from  melee or  ranged champions (for  Darkin and  Shadow Assassin, respectively), with the other form unlocked later.',
         descriptionHTML:
@@ -74,7 +74,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Kayn Form Selection UI.png',
+        icon: '/wiki/images/Kayn_Form_Selection_UI.png',
         description:
           "Kayn can move near the summoning platform to transform over 6 seconds, during which he is  invulnerable,  untargetable, and unable to act. Kayn cannot choose a form if he is unable to cast abilities. The transformation will grant a passive bonus and permanently empower some of Kayn's abilities based on the form chosen. He gains a one-time Homeguard once the transformation is complete.",
         descriptionHTML:
@@ -96,7 +96,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/The Darkin Scythe A.png',
+        icon: '/wiki/images/The_Darkin_Scythe_A.png',
         description:
           'Shadow Assassin Bonus: If Kayn has been out of combat with enemy champions for over 8 seconds, or he casts  Umbral Trespass, he deals 15% − 45% (based on level) of post-mitigation damage dealt against enemy champions as bonus magic damage, lasting for 3 seconds upon entering combat and also applying on the first instance of damage dealt. If this effect is ready, it will not be lost by taking damage.',
         descriptionHTML:
@@ -105,7 +105,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Shadow Assassin Bonus:',
-            raw: ' If Kayn has been out of combat with enemy champions for over 8 seconds, or he casts  Umbral Trespass, he deals 15% − 45% (based on level) of post-mitigation damage dealt against enemy champions as bonus magic damage, lasting for 3 seconds upon entering combat and also applying on the first instance of damage dealt',
+            raw: 'If Kayn has been out of combat with enemy champions for over 8 seconds, or he casts  Umbral Trespass, he deals 15% − 45% (based on level) of post-mitigation damage dealt against enemy champions as bonus magic damage, lasting for 3 seconds upon entering combat and also applying on the first instance of damage dealt',
             increasedStat: 'total_ap',
             values: [],
             valuesIsPercent: true,
@@ -121,7 +121,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/The Darkin Scythe R.png',
+        icon: '/wiki/images/The_Darkin_Scythe_R.png',
         description:
           'Darkin Bonus: Rhaast  heals for 20% − 30% (based on level) of the post-mitigation  physical damage that he deals to enemy champions with his abilities.',
         descriptionHTML:
@@ -130,7 +130,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Darkin Bonus:',
-            raw: ' Rhaast  heals for 20% − 30% (based on level) of the post-mitigation  physical damage that he deals to enemy champions with his abilities.',
+            raw: 'Rhaast  heals for 20% − 30% (based on level) of the post-mitigation  physical damage that he deals to enemy champions with his abilities.',
             healType: 'PhysicalVamp',
             values: [],
             valuesIsPercent: true,
@@ -181,7 +181,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Reaping Slash.png',
+        icon: '/wiki/images/Reaping_Slash.png',
         description:
           'Active: Kayn  dashes in the target direction, dealing physical damage to enemies he passes through. He then swings his scythe, dealing the same damage to nearby enemies.',
         descriptionHTML:
@@ -219,6 +219,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Both instances of Reaping Slash deal 40 bonus physical damage against  minions and  monsters.',
         descriptionHTML:
@@ -268,7 +269,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Reaping Slash R.png',
+        icon: '/wiki/images/Reaping_Slash_R.png',
         description:
           "Darkin Bonus: Reaping Slash's damage is modified to deal 65% AD (+ 5% (+ 3.5% per 100 bonus AD) of the target's maximum health) physical damage for both instances. This damage has a cap against monsters that does not include the bonus damage.",
         descriptionHTML:
@@ -277,7 +278,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Darkin Bonus:',
-            raw: " Reaping Slash's damage is modified to deal 65% AD (+ 5% (+ 3.5% per 100 bonus AD) of the target's maximum health) physical damage for both instances",
+            raw: "Reaping Slash's damage is modified to deal 65% AD (+ 5% (+ 3.5% per 100 bonus AD) of the target's maximum health) physical damage for both instances",
             healType: 'PhysicalVamp',
             values: 6,
             valuesIsPercent: true,
@@ -330,6 +331,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Reaping Slash's dash speed scales with Kayn's  total movement speed.",
         descriptionHTML:
@@ -375,7 +377,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Blade's Reach.png",
+        icon: "/wiki/images/Blade's_Reach.png",
         description:
           'Active: Kayn swings his scythe in the target direction, dealing physical damage to enemies hit and  slowing them by 90% decaying over 1.5 seconds.',
         descriptionHTML:
@@ -384,7 +386,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Kayn swings his scythe in the target direction, dealing physical damage to enemies hit and  slowing them by 90% decaying over 1.5 seconds.',
+            raw: 'Kayn swings his scythe in the target direction, dealing physical damage to enemies hit and  slowing them by 90% decaying over 1.5 seconds.',
             damagetype: 'Physical',
             values: 9,
             valuesIsPercent: true,
@@ -427,7 +429,7 @@ export default {
         ],
       },
       {
-        icon: "/wiki/images/Blade's Reach A.png",
+        icon: "/wiki/images/Blade's_Reach_A.png",
         description:
           "Shadow Assassin Bonus: Blade's Reach's radius is extended by 200 units. Kayn conjures an  untargetable shadow at the casting position to perform Blade's Reach's sweep over 0.55 seconds in his stead, removing the ability's cast time.",
         descriptionHTML:
@@ -436,7 +438,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Shadow Assassin Bonus:',
-            raw: " Blade's Reach's radius is extended by 200 units",
+            raw: "Blade's Reach's radius is extended by 200 units",
             damagetype: 'None',
             values: 2,
             units: 'total_ad',
@@ -448,7 +450,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Blade's Reach R.png",
+        icon: "/wiki/images/Blade's_Reach_R.png",
         description:
           "Darkin Bonus: Blade's Reach  knocks up enemies hit for 1 second.",
         descriptionHTML:
@@ -457,7 +459,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Darkin Bonus:',
-            raw: " Blade's Reach  knocks up enemies hit for 1 second.",
+            raw: "Blade's Reach  knocks up enemies hit for 1 second.",
             damagetype: 'None',
             values: 1,
             user: 'none',
@@ -507,7 +509,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shadow Step.png',
+        icon: '/wiki/images/Shadow_Step.png',
         description:
           'Active: Kayn gains  40% bonus total movement speed,  ghosting and the ability to ignore terrain collision for a duration. If he has been in combat with enemy champions within the last 3 seconds, Shadow Step will instead last 1.5 seconds.',
         descriptionHTML:
@@ -516,10 +518,10 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Kayn gains  40% bonus total movement speed,  ghosting and the ability to ignore terrain collision for a duration',
-            increasedStat: 'total_ap',
+            raw: 'Kayn gains  40% bonus total movement speed,  ghosting and the ability to ignore terrain collision for a duration',
             values: 4,
             valuesIsPercent: true,
+            user: 'none',
             units: '',
             unitsText:
               'bonus total movement speed,  ghosting and the ability to ignore terrain collision for a durationgains  40',
@@ -558,6 +560,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Kayn  heals himself upon entering terrain for the first time from casting Shadow Step and he gains  unobstructed vision while inside.',
         descriptionHTML:
@@ -595,6 +598,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Receiving damage from or dealing damage to an enemy  champion while Shadow Step is active reduces its remaining duration to 1.5 seconds. This effect also cannot remain active out of terrain for longer than 1.5 seconds and will cancel immediately if Kayn performs a basic attack or becomes  immobilized, excluding from  sleep(bug), or  polymorphed.',
         descriptionHTML:
@@ -636,7 +640,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Shadow Step A.png',
+        icon: '/wiki/images/Shadow_Step_A.png',
         description:
           "Shadow Assassin Bonus: Shadow Step's  cooldown is reduced to 8 seconds at all ranks. Kayn gains 100%  slow resist while active and, upon entering terrain, the bonus total movement speed is increased to 80% for the remaining duration.",
         descriptionHTML:
@@ -645,7 +649,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Shadow Assassin Bonus:',
-            raw: " Shadow Step's  cooldown is reduced to 8 seconds at all ranks",
+            raw: "Shadow Step's  cooldown is reduced to 8 seconds at all ranks",
             damagetype: 'None',
             values: 8,
             user: 'none',
@@ -716,7 +720,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: ' Kayn marks enemy champions he damaged in the last 3.15 seconds.',
+            raw: 'Kayn marks enemy champions he damaged in the last 3.15 seconds.',
             damagetype: 'None',
             values: 3,
             units: 'kindredMarks',
@@ -729,7 +733,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Umbral Trespass.png',
+        icon: '/wiki/images/Umbral_Trespass.png',
         description:
           'Active: Kayn  vanishes and  dashes to a marked enemy champion. Upon arrival, he  channels for up to 2.5 seconds,  attaching to the target and  revealing them. Umbral Trespass can be recast after 0.75 seconds during the channel, and does so automatically after the duration or if it is  interrupted.',
         descriptionHTML:
@@ -751,7 +755,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Umbral Trespass 2.png',
+        icon: '/wiki/images/Umbral_Trespass_2.png',
         description:
           'Recast: After a 0.75-second delay, Kayn deals physical damage to the target and  dashes out from their body in the target direction while still being  untargetable.',
         descriptionHTML:
@@ -789,6 +793,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Shadow Assassin Bonus: Umbral Trespass gains 200 bonus cast range and emerge range. Additionally, emerging will reset  The Darkin Scythe's  cooldown.",
         descriptionHTML:
@@ -797,7 +802,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Shadow Assassin Bonus:',
-            raw: ' Umbral Trespass gains 200 bonus cast range and emerge range',
+            raw: 'Umbral Trespass gains 200 bonus cast range and emerge range',
             values: 2,
             user: 'none',
             units: '',
@@ -809,7 +814,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Umbral Trespass 2 R.png',
+        icon: '/wiki/images/Umbral_Trespass_2_R.png',
         description:
           "Darkin Bonus: Umbral Trespass is modified to deal physical damage equal to 15% (+ 13% per 100 bonus AD) of the target's maximum health, and  heals him for 9.75% (+ 8.45% per 100 bonus AD) of target's maximum health.",
         descriptionHTML:
@@ -818,7 +823,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Darkin Bonus:',
-            raw: " Umbral Trespass is modified to deal physical damage equal to 15% (+ 13% per 100 bonus AD) of the target's maximum health, and  heals him for 9.75% (+ 8.45% per 100 bonus AD) of target's maximum health.",
+            raw: "Umbral Trespass is modified to deal physical damage equal to 15% (+ 13% per 100 bonus AD) of the target's maximum health, and  heals him for 9.75% (+ 8.45% per 100 bonus AD) of target's maximum health.",
             healType: 'PhysicalVamp',
             values: 1,
             valuesIsPercent: true,

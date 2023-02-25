@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Scoring a champion  takedown within 3 seconds of damaging them reduces the  current cooldowns of Katarina's abilities by 15 seconds.",
+            raw: "Scoring a champion  takedown within 3 seconds of damaging them reduces the  current cooldowns of Katarina's abilities by 15 seconds.",
             values: 3,
             user: 'none',
             units: '',
@@ -48,7 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sinister Steel.png',
+        icon: '/wiki/images/Sinister_Steel.png',
         description:
           "Innate - Sinister Steel: Whenever Katarina retrieves a Dagger, she uses it to slash around herself, dealing 68 − 240 (based on level) (+ 60% bonus AD) (+ 65 / 75 / 85 / 95% (based on level) AP) magic damage to nearby enemies and applying  on-hit effects at 100% effectiveness to enemy  champions hit, as well as reducing  Shunpo's current cooldown by 78 / 84 / 90 / 96% (based on level) of its total cooldown.",
         descriptionHTML:
@@ -57,7 +57,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Sinister Steel:',
-            raw: " Whenever Katarina retrieves a Dagger, she uses it to slash around herself, dealing 68 − 240 (based on level) (+ 60% bonus AD) (+ 65 / 75 / 85 / 95% (based on level) AP) magic damage to nearby enemies and applying  on-hit effects at 100% effectiveness to enemy  champions hit, as well as reducing  Shunpo's current cooldown by 78 / 84 / 90 / 96% (based on level) of its total cooldown.",
+            raw: "Whenever Katarina retrieves a Dagger, she uses it to slash around herself, dealing 68 − 240 (based on level) (+ 60% bonus AD) (+ 65 / 75 / 85 / 95% (based on level) AP) magic damage to nearby enemies and applying  on-hit effects at 100% effectiveness to enemy  champions hit, as well as reducing  Shunpo's current cooldown by 78 / 84 / 90 / 96% (based on level) of its total cooldown.",
             damagetype: 'Magic',
             values: [
               68, 78.12, 88.24, 98.35, 108.47, 118.59, 128.71, 138.82, 148.94,
@@ -94,6 +94,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Daggers grant  sight of their radius and will disappear after being on the ground for 4 seconds.',
         descriptionHTML:
@@ -149,7 +150,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bouncing Blade.png',
+        icon: '/wiki/images/Bouncing_Blade.png',
         description:
           'Active: Katarina throws a Dagger at the target enemy that deals magic damage and can bounce to up to two additional nearby enemies.',
         descriptionHTML:
@@ -187,6 +188,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The Dagger then lands onto the ground after 1 second, about 350 units opposite from where it struck the first target.',
         descriptionHTML:
@@ -208,6 +210,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The target does not have to be  visible for the Dagger to bounce to them.',
         descriptionHTML:
@@ -258,7 +261,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Katarina tosses a Dagger into the air above her current location and gains  bonus movement speed that decays until it lands after 1.25 seconds, becoming  ghosted for the same duration.',
+            raw: 'Katarina tosses a Dagger into the air above her current location and gains  bonus movement speed that decays until it lands after 1.25 seconds, becoming  ghosted for the same duration.',
             values: 1,
             user: 'none',
             units: '',
@@ -325,7 +328,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Katarina  blinks to the target location around the target unit or Dagger, dealing magic damage to the nearest enemy in range and applying  on-hit effects at 100% effectiveness.',
+            raw: 'Katarina  blinks to the target location around the target unit or Dagger, dealing magic damage to the nearest enemy in range and applying  on-hit effects at 100% effectiveness.',
             damagetype: 'Magic',
             values: 1,
             valuesIsPercent: true,
@@ -374,6 +377,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Shunpo  resets Katarina's basic attack timer. Upon blinking, Katarina enters a 0.15-second cast time.",
         descriptionHTML:
@@ -422,7 +426,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Death Lotus.png',
+        icon: '/wiki/images/Death_Lotus.png',
         description:
           'Active: Katarina  channels for up to 2.5 seconds, rapidly throwing a dagger every 0.166 seconds to up to 3 of the closest nearby enemy champions,  revealing herself in the process.Each dagger deals physical damage and magic damage, applies on-attack and  on-hit (without applying  life steal) effects, and inflicts  Grievous Wounds on the target for 3 seconds.',
         descriptionHTML:
@@ -431,7 +435,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Katarina  channels for up to 2.5 seconds, rapidly throwing a dagger every 0.166 seconds to up to 3 of the closest nearby enemy champions,  revealing herself in the process.Each dagger deals physical damage and magic damage, applies on-attack and  on-hit (without applying  life steal) effects, and inflicts  Grievous Wounds on the target for 3 seconds.',
+            raw: 'Katarina  channels for up to 2.5 seconds, rapidly throwing a dagger every 0.166 seconds to up to 3 of the closest nearby enemy champions,  revealing herself in the process.Each dagger deals physical damage and magic damage, applies on-attack and  on-hit (without applying  life steal) effects, and inflicts  Grievous Wounds on the target for 3 seconds.',
             damagetype: 'Physical',
             values: 2,
             user: 'none',
@@ -527,6 +531,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An enemy champion within  500 units is required to cast this ability. The target does not have to be  visible to be hit by this ability.',
         descriptionHTML:
@@ -537,7 +542,8 @@ export default {
             name: 'Line 1:',
             raw: 'An enemy champion within  500 units is required to cast this ability',
             values: 5,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'enemy champion within  500 units is required to cast this ability',
             pre: 'An enemy champion within  500 units is required to cast this ability',

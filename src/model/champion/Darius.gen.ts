@@ -31,11 +31,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Darius'  damaging basic attacks and abilities apply a stack of Hemorrhage to enemies for 5 seconds, refreshing on subsequent applications and stacking up to 5 times.",
+            raw: "Darius'  damaging basic attacks and abilities apply a stack of Hemorrhage to enemies for 5 seconds, refreshing on subsequent applications and stacking up to 5 times.",
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              " Darius'  damaging basic attacks and abilities apply a stack of Hemorrhage to enemies for 5 seconds, refreshing on subsequent applications and stacking up to 5 times.",
+              "Darius'  damaging basic attacks and abilities apply a stack of Hemorrhage to enemies for 5 seconds, refreshing on subsequent applications and stacking up to 5 times.",
             values: 5,
             units: 'total_ap',
             unitsText:
@@ -54,9 +54,13 @@ export default {
           '<span class="template_sbc"><b>Hemorrhage:</b></span> For each stack, the target is dealt<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="13;" data-finish="30;" data-bot_values="13;14;15;16;17;18;19;20;21;22;23;24;25;26;27;28;29;30" data-top_values="">13 − 30 (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;30% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal"><b>total</b> physical damage</span> over the duration,&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="3.25;" data-finish="7.5;" data-bot_values="3.25;3.5;3.75;4;4.25;4.5;4.75;5;5.25;5.5;5.75;6;6.25;6.5;6.75;7;7.25;7.5" data-top_values="">3.<small>25</small> − 7.<small>5</small> (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;7.<small>5</small>% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> every 1.<small>25</small> seconds over the duration,&nbsp;」</span></span>up to a maximum of<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="65;" data-finish="150;" data-bot_values="65;70;75;80;85;90;95;100;105;110;115;120;125;130;135;140;145;150" data-top_values="">65 − 150 (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;150% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal"><b>total</b> physical damage</span> over the duration.&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="16.25;" data-finish="37.5;" data-bot_values="16.25;17.5;18.75;20;21.25;22.5;23.75;25;26.25;27.5;28.75;30;31.25;32.5;33.75;35;36.25;37.5" data-top_values="">16.<small>25</small> − 37.<small>5</small> (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;37.<small>5</small>% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> with each tick.&nbsp;」</span></span><i>Hemorrhage</i> deals 300% damage against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Hemorrhage:',
-            raw: ' For each stack, the target is dealt「 13 − 30 (based on level) (+ 30% bonus AD) total physical damage over the duration, 」「 3.25 − 7.5 (based on level) (+ 7.5% bonus AD) physical damage every 1.25 seconds over the duration, 」up to a maximum of「 65 − 150 (based on level) (+ 150% bonus AD) total physical damage over the duration. 」「 16.25 − 37.5 (based on level) (+ 37.5% bonus AD) physical damage with each tick. 」Hemorrhage deals 300% damage against  monsters.',
+            raw: 'For each stack, the target is dealt「 13 − 30 (based on level) (+ 30% bonus AD) total physical damage over the duration, 」「 3.25 − 7.5 (based on level) (+ 7.5% bonus AD) physical damage every 1.25 seconds over the duration, 」up to a maximum of「 65 − 150 (based on level) (+ 150% bonus AD) total physical damage over the duration. 」「 16.25 − 37.5 (based on level) (+ 37.5% bonus AD) physical damage with each tick. 」Hemorrhage deals 300% damage against  monsters.',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, the target is dealt「 13 − 30 (based on level) (+ 30% bonus AD) total physical damage over the duration, 」「 3.25 − 7.5 (based on level) (+ 7.5% bonus AD) physical damage every 1.25 seconds over the duration, 」up to a maximum of「 65 − 150 (based on level) (+ 150% bonus AD) total physical damage over the duration. 」「 16.25 − 37.5 (based on level) (+ 37.5% bonus AD) physical damage with each tick. 」Hemorrhage deals 300% damage against  monsters.',
             values: [
               13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
               29, 30,
@@ -104,7 +108,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Hemorrhage 3.png',
+        icon: '/wiki/images/Hemorrhage_3.png',
         description:
           'When Darius kills a champion with  Noxian Guillotine, or applies 5 stacks on an enemy  champion, he becomes empowered with Noxian Might for 5 seconds.',
         descriptionHTML:
@@ -129,24 +133,27 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Hemorrhage 2.png',
+        icon: '/wiki/images/Hemorrhage_2.png',
         description:
           'Noxian Might: Darius gains 30 − 230 (based on level)  bonus attack damage and instantly applies 5 Hemorrhage stacks through his usual means.',
         descriptionHTML:
           '<span class="template_sbc"><b>Noxian Might:</b></span> <b>Darius</b> gains <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:orange;" data-displayformula="30 + 5 per level until level 10, then + 10 per level until level 13, then + 25 per level" data-bot_values="30;35;40;45;50;55;60;65;70;75;85;95;105;130;155;180;205;230" data-top_values="">30 − 230 (based on level)</span> <span style="white-space:nowrap"><a href="/wiki/Attack_damage" title="Attack damage"><img alt="Attack damage icon.png" src="/wiki/images/Attack_damage_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span></span> and instantly applies 5 <i>Hemorrhage</i> stacks through his usual means.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Noxian Might:',
-            raw: ' Darius gains 30 − 230 (based on level)  bonus attack damage and instantly applies 5 Hemorrhage stacks through his usual means.',
-            increasedStat: 'total_ap',
+            raw: 'Darius gains 30 − 230 (based on level)  bonus attack damage and instantly applies 5 Hemorrhage stacks through his usual means.',
+            min: 0,
+            max: 10,
+            description:
+              'Darius gains 30 − 230 (based on level)  bonus attack damage and instantly applies 5 Hemorrhage stacks through his usual means.',
             values: [
               30, 41.76, 53.53, 65.29, 77.06, 88.82, 100.59, 112.35, 124.12,
               135.88, 147.65, 159.41, 171.18, 182.94, 194.71, 206.47, 218.24,
               230,
             ],
             basedOn: 'level',
-            units: '',
+            units: 'total_ap',
             unitsText:
               'bonus attack damage and instantly applies 5 Hemorrhage stacks through his usual means.',
             pre: 'Darius gains 30 − 230',
@@ -235,6 +242,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Against champions and large monsters hit, Darius  heals for  13% − 39% (based on enemies hit by the blade) of his missing health. The handle of Darius'  axe will not heal him nor apply nor refresh  Hemorrhage.",
         descriptionHTML:
@@ -258,6 +266,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Darius is unable to declare basic attacks or cast  Apprehend or  Noxian Guillotine during Decimate.',
         descriptionHTML:
@@ -302,7 +311,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crippling Strike.png',
+        icon: '/wiki/images/Crippling_Strike.png',
         description:
           'Active: Darius empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  25 bonus range, deal modified physical damage and  slow the target by 90% for 1 second.',
         descriptionHTML:
@@ -311,7 +320,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Darius empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  25 bonus range, deal modified physical damage and  slow the target by 90% for 1 second.',
+            raw: 'Darius empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  25 bonus range, deal modified physical damage and  slow the target by 90% for 1 second.',
             increasedStat: 'bonus_ad',
             values: 4,
             valuesIsPercent: true,
@@ -345,6 +354,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If this attack kills the target, half of Crippling Strike's  cooldown is reduced and its  mana cost is refunded.",
         descriptionHTML:
@@ -354,6 +364,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Crippling Strike's total damage is affected by  critical strike modifiers.",
         descriptionHTML:
@@ -363,6 +374,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Crippling Strike  resets Darius'  basic attack timer.",
         descriptionHTML:
           '<i>Crippling Strike <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Darius\' </b> basic attack timer.</i>',
@@ -444,7 +456,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Darius sweeps his axe in a cone in the target direction, granting  sight of the area for 1 second while  pulling enemies hit towards him',
+            raw: 'Darius sweeps his axe in a cone in the target direction, granting  sight of the area for 1 second while  pulling enemies hit towards him',
             values: 1,
             user: 'none',
             units: '',
@@ -469,6 +481,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Darius is unable to move or cast  Decimate or  Noxian Guillotine for 0.4 seconds after Apprehend's cast time.",
         descriptionHTML:
@@ -514,7 +527,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Noxian Guillotine.png',
+        icon: '/wiki/images/Noxian_Guillotine.png',
         description:
           'Active: Darius attempts to execute the target enemy  champion,  leaping towards them to deal  true damage, increased by 0% − 100% (based on  Hemorrhage stacks), and granting  sight of the area around them for 2.5 seconds from the start of the cast time.',
         descriptionHTML:
@@ -552,6 +565,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target dies within 0.15 seconds after being hit by Noxian Guillotine, Darius  fears nearby  minions and  monsters for 3 seconds, during which they are gradually  slowed by up to 99% over the duration. He can also recast the ability within 20 seconds at no cost, which refreshes on further executions.',
         descriptionHTML:
@@ -562,7 +576,8 @@ export default {
             name: 'Line 2:',
             raw: 'He can also recast the ability within 20 seconds at no cost, which refreshes on further executions.',
             values: 2,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'can also recast the ability within 20 seconds at no cost, which refreshes on further executions.',
             pre: 'He can also recast the ability within 20 seconds at no cost, which refreshes on further executions.',
@@ -572,6 +587,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'At rank 3, Noxian Guillotine has no  mana cost and recast timer.',
         descriptionHTML:
@@ -592,6 +608,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Darius is unable to cast  Decimate or  Apprehend for 0.25 seconds after Noxian Guillotine's cast time.",
         descriptionHTML:

@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Thresh's armor cannot increase through growth (per level).",
+            raw: "Thresh's armor cannot increase through growth (per level).",
             values: 0,
             user: 'none',
             units: '',
@@ -64,7 +64,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Enemy  champions, large  minions and large  monsters that die near Thresh drop a Soul for 8 seconds',
+            raw: 'Enemy  champions, large  minions and large  monsters that die near Thresh drop a Soul for 8 seconds',
             values: 8,
             units: 'darkHarvestStacks',
             unitsText:
@@ -87,6 +87,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Thresh automatically collects Souls near him or a placed  Dark Passage.',
         descriptionHTML:
@@ -96,18 +97,22 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Soul: For each stack, Thresh gains  1 ability power and  1 bonus armor.',
         descriptionHTML:
           '<span class="template_sbc"><b>Soul:</b></span> For each <a href="/wiki/Stack" title="Stack">stack</a>, <b>Thresh</b> gains <span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #7A6DFF; white-space:normal">1 ability power</span></span> and <span style="white-space:nowrap"><a href="/wiki/Armor" title="Armor"><img alt="Armor icon.png" src="/wiki/images/Armor_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal">1 <b>bonus</b> armor</span></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Soul:',
-            raw: ' For each stack, Thresh gains  1 ability power and  1 bonus armor.',
-            increasedStat: 'feastStacks',
+            raw: 'For each stack, Thresh gains  1 ability power and  1 bonus armor.',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Thresh gains  1 ability power and  1 bonus armor.',
             values: 1,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'each stack, Thresh gains  1 ability power and  1 bonus armor.',
             pre: 'For each stack, Thresh gains  1 ability power and  1 bonus armor.',
@@ -147,7 +152,7 @@ export default {
     cast_time: '0.<small>5</small>',
     cost: '70',
     costtype: 'Mana',
-    cooldown: '19 / 17 / 15 / 13 / 11',
+    cooldown: '19 / 16.<small>5</small> / 14 / 11.<small>5</small> / 9',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Thresh" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Thresh/LoL" title="Thresh"><img alt="Thresh" src="/wiki/images/Thresh_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Thresh/LoL" title="Thresh/LoL">Thresh</a></span></span> casts out his scythe in the target direction that catches the first enemy hit, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span>, <span style="white-space:nowrap"><a href="/wiki/Cooldown_reduction" title="Cooldown reduction"><img alt="Cooldown reduction icon.png" src="/wiki/images/Cooldown_reduction_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;reducing</span> the cooldown, and briefly <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stunning</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="True sight"><a href="/wiki/Sight#True_sight" title="Sight#True sight"><img alt="True Sight icon.png" src="/wiki/images/True_Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight#True_sight" title="Sight">revealing</a></span> them. <b>Thresh</b> will also mark them <i>Shackled</i>, during which he is briefly <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowed</a></span> and unable to declare basic attacks.',
       'While the target is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stunned</a></span>, <b>Thresh</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon.png" src="/wiki/images/Airborne_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">pulls</a></span> them twice over a short distance. He can also recast <i>Death Sentence</i>.',
@@ -155,7 +160,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Death Sentence.png',
+        icon: '/wiki/images/Death_Sentence.png',
         description:
           'Active: Thresh throws out his scythe in the target direction, becoming  unable to move or attack while it is in flight.',
         descriptionHTML:
@@ -165,6 +170,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The scythe catches the first enemy hit to deal magic damage and  stun and  reveal them for 1.5 seconds, as well as reduce Death Sentence's  current cooldown by 3 seconds. Thresh will also mark the target Shackled for 1.5 seconds, during which he is unable to declare basic attacks, and is  slowed by 20% for 1 second.",
         descriptionHTML:
@@ -197,35 +203,36 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '100 / 145 / 190 / 235 / 280 (+ 80% AP)',
+            values: '100 / 150 / 200 / 250 / 300 (+ 90% AP)',
             valuesHTML:
-              '100 / 145 / 190 / 235 / 280 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;80% AP)</span>',
+              '100 / 150 / 200 / 250 / 300 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;90% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '100 / 145 / 190 / 235 / 280 (+ 80% AP)',
+            raw: '100 / 150 / 200 / 250 / 300 (+ 90% AP)',
             damagetype: 'Magic',
-            values: [100, 145, 190, 235, 280],
+            values: [100, 150, 200, 250, 300],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '100 / 145 / 190 / 235 / 280',
+            pre: '100 / 150 / 200 / 250 / 300',
             children: [
               {
-                values: 80,
+                values: 90,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 80% AP',
+                pre: '+ 90% AP',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While the target is  stunned, Thresh tugs twice over 0.8 seconds,  pulling the target a short distance with each tug. After 0.5 seconds of hitting an enemy or instantly after hitting a  minion or  monster, Thresh can recast the ability while the target is Shackled, which will cause him to stop tugging.',
         descriptionHTML:
@@ -235,7 +242,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Deathly Leap.png',
+        icon: '/wiki/images/Deathly_Leap.png',
         description:
           'Recast - Deathly Leap: Thresh  dashes to the Shackled enemy, becoming able to attack again upon arrival. He can cast  Dark Passage and  Flay during the dash.',
         descriptionHTML:
@@ -277,14 +284,14 @@ export default {
     cast_time: 'none',
     cost: '50 / 55 / 60 / 65 / 70',
     costtype: 'Mana',
-    cooldown: '22 / 20.<small>5</small> / 19 / 17.<small>5</small> / 16',
+    cooldown: '21 / 20 / 19 / 18 / 17',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Thresh" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Thresh/LoL" title="Thresh"><img alt="Thresh" src="/wiki/images/Thresh_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Thresh/LoL" title="Thresh/LoL">Thresh</a></span></span> throws his lantern to the target location that remains for a few seconds while he remains nearby. He and the first allied champion to come near the lantern are granted a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for a few seconds, with the amount based on <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Thresh" data-ability="Damnation" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Thresh/LoL#Damnation" title="Souls"><img alt="Souls" src="/wiki/images/Thresh_Damnation.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Thresh/LoL#Damnation" title="Thresh/LoL">Souls</a></span></span></i>.',
       'An ally can grab the lantern to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash.png" src="/wiki/images/Dash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Dash" title="Dash">dash</a></span> to <b>Thresh</b> and gain the shield, but cannot do so while <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control#Immobilizing"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilized</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ground"><a href="/wiki/Ground" title="Ground"><img alt="Grounded icon.png" src="/wiki/images/Grounded_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ground" class="mw-redirect" title="Ground">grounded</a></span>, or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Silence"><a href="/wiki/Silence" title="Silence"><img alt="Silence icon.png" src="/wiki/images/Silence_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Silence" class="mw-redirect" title="Silence">silenced</a></span>.',
     ],
     description: [
       {
-        icon: '/wiki/images/Dark Passage.png',
+        icon: '/wiki/images/Dark_Passage.png',
         description:
           'Active: Thresh throws his lantern to the target location over 0.5 seconds, lasting for 6 seconds while he remains nearby and granting  sight of its surroundings. If Thresh moves too far away from the lantern, it returns back to him immediately.',
         descriptionHTML:
@@ -294,6 +301,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Thresh and the first allied champion to come near the lantern are granted a  shield for 4 seconds. An ally can select the lantern while in proximity of it,  dashing to Thresh and gaining the shield.',
         descriptionHTML:
@@ -316,23 +324,23 @@ export default {
         leveling: [
           {
             name: 'Shield Strength:',
-            values: '50 / 75 / 100 / 125 / 150 (+ 1.5 per  Soul collected)',
+            values: '50 / 70 / 90 / 110 / 130 (+ 1.5 per  Soul collected)',
             valuesHTML:
-              '50 / 75 / 100 / 125 / 150 (+ 1.<small>5</small> per <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Thresh" data-ability="Damnation" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Thresh/LoL#Damnation" title="Soul"><img alt="Soul" src="/wiki/images/Thresh_Damnation.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Thresh/LoL#Damnation" title="Thresh/LoL">Soul</a></span></span> collected)',
+              '50 / 70 / 90 / 110 / 130 (+ 1.<small>5</small> per <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Thresh" data-ability="Damnation" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Thresh/LoL#Damnation" title="Soul"><img alt="Soul" src="/wiki/images/Thresh_Damnation.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Thresh/LoL#Damnation" title="Thresh/LoL">Soul</a></span></span> collected)',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Shield',
             name: 'Shield Strength:',
-            raw: '50 / 75 / 100 / 125 / 150 (+ 1.5 per  Soul collected)',
+            raw: '50 / 70 / 90 / 110 / 130 (+ 1.5 per  Soul collected)',
             damagetype: 'None',
             shieldType: 'SelfShield',
-            values: [50, 75, 100, 125, 150],
+            values: [50, 70, 90, 110, 130],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '50 / 75 / 100 / 125 / 150',
+            pre: '50 / 70 / 90 / 110 / 130',
             children: [
               {
                 values: 1.5,
@@ -345,6 +353,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An ally cannot select the lantern while  immobilized,  grounded, or  silenced. The lantern will not expire from Thresh moving too far away if he is dashing with  Deathly Leap.',
         descriptionHTML:
@@ -404,7 +413,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: " Thresh's basic attacks are empowered to deal bonus magic damage, with the  AD ratio increasing over 10 seconds without basic attacking enemies.",
+            raw: "Thresh's basic attacks are empowered to deal bonus magic damage, with the  AD ratio increasing over 10 seconds without basic attacking enemies.",
             damagetype: 'Magic',
             values: 1,
             units: 'bonus_ad',
@@ -492,9 +501,9 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '75 / 110 / 145 / 180 / 215 (+ 60% AP)',
+            values: '75 / 115 / 155 / 195 / 235 (+ 70% AP)',
             valuesHTML:
-              '75 / 110 / 145 / 180 / 215 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;60% AP)</span>',
+              '75 / 115 / 155 / 195 / 235 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;70% AP)</span>',
           },
           {
             name: 'Slow:',
@@ -506,20 +515,20 @@ export default {
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '75 / 110 / 145 / 180 / 215 (+ 60% AP)',
+            raw: '75 / 115 / 155 / 195 / 235 (+ 70% AP)',
             damagetype: 'Magic',
-            values: [75, 110, 145, 180, 215],
+            values: [75, 115, 155, 195, 235],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '75 / 110 / 145 / 180 / 215',
+            pre: '75 / 115 / 155 / 195 / 235',
             children: [
               {
-                values: 60,
+                values: 70,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 60% AP',
+                pre: '+ 70% AP',
               },
             ],
           },
@@ -577,7 +586,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Box.png',
+        icon: '/wiki/images/The_Box.png',
         description:
           'Active: Thresh erects a pentagon of spectral walls around him that each last for 5 seconds. A wall will break upon enemy champion contact, dealing magic damage and  slowing them by 99% for 2 seconds.',
         descriptionHTML:
@@ -586,7 +595,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Thresh erects a pentagon of spectral walls around him that each last for 5 seconds',
+            raw: 'Thresh erects a pentagon of spectral walls around him that each last for 5 seconds',
             values: 5,
             user: 'none',
             units: '',
@@ -640,6 +649,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies that break a wall cannot do so again for 1 second. Subsequent walls they break will deal no damage and  slow for only 1 second.',
         descriptionHTML:

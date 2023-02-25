@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Eternal Hunger.png',
+        icon: '/wiki/images/Eternal_Hunger.png',
         description:
           'Innate: Warwick deals 12 − 46 (based on level) (+ 15% bonus AD) (+ 10% AP) bonus magic damage  on-hit.\nWhile below 50% maximum health, Warwick also  heals for 100% of the post-mitigation damage dealt by Eternal Hunger, increased to 250% while below 25% maximum health.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Warwick deals 12 − 46 (based on level) (+ 15% bonus AD) (+ 10% AP) bonus magic damage  on-hit.\nWhile below 50% maximum health, Warwick also  heals for 100% of the post-mitigation damage dealt by Eternal Hunger, increased to 250% while below 25% maximum health.',
+            raw: 'Warwick deals 12 − 46 (based on level) (+ 15% bonus AD) (+ 10% AP) bonus magic damage  on-hit.\nWhile below 50% maximum health, Warwick also  heals for 100% of the post-mitigation damage dealt by Eternal Hunger, increased to 250% while below 25% maximum health.',
             healType: 'BonusHealth',
             values: [
               12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42,
@@ -105,7 +105,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Jaws of the Beast.png',
+        icon: '/wiki/images/Jaws_of_the_Beast.png',
         description:
           "Active: Warwick  lunges at the target enemy over 0.264 seconds and bites them, dealing magic damage,  healing himself for a percentage of the post-mitigation damage dealt, as well as applying  on-hit and on-attack effects, and  life steal at 100% effectiveness. The damage based on the target's health ratio is capped against  monsters.",
         descriptionHTML:
@@ -170,6 +170,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While Jaws of the Beast is active, Warwick is  displacement immune and clamps his jaw on the target, following all of their movement. The ability can be held for additional effects.',
         descriptionHTML:
@@ -179,6 +180,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Hold: Warwick performs the bite, and then begins to  charge for 0.5 seconds, extended if the target is under effects of a  dash or  displacement. During the charge, he  leaps behind the target.',
         descriptionHTML:
@@ -235,7 +237,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Warwick gains  bonus attack speed upon basic attacking an enemy who is below  50% of their maximum health, but loses it when not attacking them or switching to a target above the threshold.',
+            raw: 'Warwick gains  bonus attack speed upon basic attacking an enemy who is below  50% of their maximum health, but loses it when not attacking them or switching to a target above the threshold.',
             healType: 'OutgoingHeals',
             values: 5,
             valuesIsPercent: true,
@@ -268,6 +270,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Passive: Warwick senses all enemy  champions on the map who are damaged below  50% of their maximum health by an allied source, marking them with Blood Hunt until they regenerate or  heal above this threshold again. He sees trails leading toward them and gains  bonus movement speed while following a trail. This bonus is lost for 0.5 seconds upon entering champion combat, but will build up again over 3.5 seconds.',
         descriptionHTML:
@@ -276,7 +279,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Warwick senses all enemy  champions on the map who are damaged below  50% of their maximum health by an allied source, marking them with Blood Hunt until they regenerate or  heal above this threshold again',
+            raw: 'Warwick senses all enemy  champions on the map who are damaged below  50% of their maximum health by an allied source, marking them with Blood Hunt until they regenerate or  heal above this threshold again',
             healType: 'HealthRegen',
             values: 5,
             valuesIsPercent: true,
@@ -308,6 +311,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The attack speed and movement speed Passive bonuses are increased to 250% against enemies who are below  20% of their maximum health.',
         descriptionHTML:
@@ -330,7 +334,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Blood Hunt.png',
+        icon: '/wiki/images/Blood_Hunt.png',
         description:
           'Active: Warwick senses the nearest enemy champion in the area, marking them with Blood Hunt for 8 seconds, gaining both passive bonuses against them regardless of their  current health.',
         descriptionHTML:
@@ -339,7 +343,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Warwick senses the nearest enemy champion in the area, marking them with Blood Hunt for 8 seconds, gaining both passive bonuses against them regardless of their  current health.',
+            raw: 'Warwick senses the nearest enemy champion in the area, marking them with Blood Hunt for 8 seconds, gaining both passive bonuses against them regardless of their  current health.',
             healType: 'BonusHealth',
             values: 8,
             units: 'kindredMarks',
@@ -352,6 +356,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Blood Hunt is placed on a  3-second static cooldown during champion combat. Additionally, while no enemy champions are marked, the current cooldown of Blood Hunt runs out twice as quickly - it is reduced by an additional second for each second passed.',
         descriptionHTML:
@@ -410,7 +415,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Primal Howl.png',
+        icon: '/wiki/images/Primal_Howl.png',
         description:
           'Active: Warwick gains damage reduction for up to 2.5 seconds. Primal Howl can be recast after 1 second, and does so automatically after the duration.',
         descriptionHTML:
@@ -419,7 +424,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Warwick gains damage reduction for up to 2.5 seconds',
+            raw: 'Warwick gains damage reduction for up to 2.5 seconds',
             values: 2,
             user: 'none',
             units: '',
@@ -461,7 +466,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Primal Howl 2.png',
+        icon: '/wiki/images/Primal_Howl_2.png',
         description:
           "Recast: Warwick howls, ending Primal Howl's effects and  fearing nearby enemies for 1 second,  slowing them by 90%.",
         descriptionHTML:
@@ -470,7 +475,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Recast:',
-            raw: " Warwick howls, ending Primal Howl's effects and  fearing nearby enemies for 1 second,  slowing them by 90%.",
+            raw: "Warwick howls, ending Primal Howl's effects and  fearing nearby enemies for 1 second,  slowing them by 90%.",
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -484,6 +489,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Starting  Infinite Duress' channel while Primal Howl is active will initiate the recast without ending the damage reduction buff prematurely.",
         descriptionHTML:
@@ -530,7 +536,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Infinite Duress.png',
+        icon: '/wiki/images/Infinite_Duress.png',
         description:
           'Active: Warwick  leaps in the target direction with  crowd control immunity, stopping upon hitting an enemy champion. He then  knocks them down and  channels for up to 1.5 seconds to  suppress,  reveal, and deal magic damage every 0.25 seconds,  revealing himself in the process.',
         descriptionHTML:
@@ -581,6 +587,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Warwick  heals for 100% of all post-mitigation damage he deals to the target during Infinite Duress.',
         descriptionHTML:
@@ -604,6 +611,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Infinite Duress applies  on-hit and on-attack effects 3 times, and  life steal at 100% effectiveness.',
         descriptionHTML:
@@ -626,6 +634,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Primal Howl can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Warwick" data-ability="Primal Howl" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Warwick/LoL#Primal_Howl" title="Primal Howl"><img alt="Primal Howl" src="/wiki/images/Warwick_Primal_Howl.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Warwick/LoL#Primal_Howl" title="Warwick/LoL">Primal Howl</a></span></span> can be cast during the dash.</i>',

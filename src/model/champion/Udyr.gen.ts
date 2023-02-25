@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Udyr Bridge Between.png',
+        icon: '/wiki/images/Udyr_Bridge_Between.png',
         description:
           'Innate - Awakened Spirit: Udyr has no ultimate ability and instead has 4 basic abilities that each incur a  1.5-second global cooldown when cast. Each ability grants a Stance that empowers his next two basic attacks, and switching Stances will replace the empowered attacks from the previous Stance.',
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Awakened Spirit:',
-            raw: ' Udyr has no ultimate ability and instead has 4 basic abilities that each incur a  1.5-second global cooldown when cast',
+            raw: 'Udyr has no ultimate ability and instead has 4 basic abilities that each incur a  1.5-second global cooldown when cast',
             damagetype: 'None',
             values: 4,
             units: 'total_ad',
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Periodically, after Udyr enters a Stance, he can cast it again at no cost after 0.25 seconds to Awaken it, refreshing the cooldown and empowering the Stance with an additional effect.This effect is placed on cooldown at the start of the game.',
         descriptionHTML:
@@ -57,7 +58,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Udyr Bridge Between 2.png',
+        icon: '/wiki/images/Udyr_Bridge_Between_2.png',
         description:
           "Innate - Monk Training: After casting an ability, Udyr empowers his next two basic attacks within 4 seconds to gain  30% bonus attack speed and refund 5% of Awakened Spirit's total cooldown, though not if the remaining cooldown is less than 1 second.",
         descriptionHTML:
@@ -66,7 +67,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Monk Training:',
-            raw: " After casting an ability, Udyr empowers his next two basic attacks within 4 seconds to gain  30% bonus attack speed and refund 5% of Awakened Spirit's total cooldown, though not if the remaining cooldown is less than 1 second.",
+            raw: "After casting an ability, Udyr empowers his next two basic attacks within 4 seconds to gain  30% bonus attack speed and refund 5% of Awakened Spirit's total cooldown, though not if the remaining cooldown is less than 1 second.",
             increasedStat: 'bonus_ad',
             values: 4,
             valuesIsPercent: true,
@@ -113,7 +114,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Udyr Wilding Claw.png',
+        icon: '/wiki/images/Udyr_Wilding_Claw.png',
         description:
           'Active - Stance: Udyr enters Claw Stance, empowering his next two basic attacks to gain  50 bonus range and deal bonus physical damage.',
         descriptionHTML:
@@ -122,7 +123,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active - Stance:',
-            raw: ' Udyr enters Claw Stance, empowering his next two basic attacks to gain  50 bonus range and deal bonus physical damage.',
+            raw: 'Udyr enters Claw Stance, empowering his next two basic attacks to gain  50 bonus range and deal bonus physical damage.',
             increasedStat: 'bonus_ad',
             values: 5,
             units: '',
@@ -166,6 +167,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, Udyr gains bonus attack speed and deals bonus physical damage  on-hit for 4 seconds.',
         descriptionHTML:
@@ -191,9 +193,9 @@ export default {
           },
           {
             name: 'Bonus Physical Damage On-Hit:',
-            values: '5 / 11 / 17 / 23 / 29 / 35 (+ 30% bonus AD)',
+            values: '5 / 11 / 17 / 23 / 29 / 35 (+ 25% bonus AD)',
             valuesHTML:
-              '5 / 11 / 17 / 23 / 29 / 35 <span style="color:orange; white-space:normal">(+&nbsp;30% <b>bonus</b> AD)</span>',
+              '5 / 11 / 17 / 23 / 29 / 35 <span style="color:orange; white-space:normal">(+&nbsp;25% <b>bonus</b> AD)</span>',
           },
         ],
         levelingRatios: [
@@ -211,7 +213,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Bonus Physical Damage On-Hit:',
-            raw: '5 / 11 / 17 / 23 / 29 / 35 (+ 30% bonus AD)',
+            raw: '5 / 11 / 17 / 23 / 29 / 35 (+ 25% bonus AD)',
             damagetype: 'Physical',
             values: [5, 11, 17, 23, 29, 35],
             user: 'none',
@@ -220,17 +222,18 @@ export default {
             pre: '5 / 11 / 17 / 23 / 29 / 35',
             children: [
               {
-                values: 30,
+                values: 25,
                 valuesIsPercent: true,
                 units: 'bonus_ad',
                 unitsText: 'bonus AD',
-                pre: '+ 30% bonus AD',
+                pre: '+ 25% bonus AD',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Recast - Awaken: Udyr gains an additional 20% − 70% (based on level) bonus attack speed. The empowered attacks deal an additional 2% − 4% (based on level) (+ 2% per 100 bonus AD) of target's maximum health  bonus physical damage. Udyr's next two basic attacks in any Stance are empowered to strike with lightning 6 times, dealing  bonus magic damage equal to 1.5% − 3% (based on level) (+ 0.8% per 100 AP) of the target's maximum health per hit, chaining to up to 3 nearby  visible enemies and being able to hit the same target multiple times. This deals a minumum of 40 − 160 (based on level) against  minions and is capped at 20 (+ 100% bonus AD) (+ 50% AP) against  monsters.",
         descriptionHTML:
@@ -239,7 +242,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Recast - Awaken:',
-            raw: ' Udyr gains an additional 20% − 70% (based on level) bonus attack speed',
+            raw: 'Udyr gains an additional 20% − 70% (based on level) bonus attack speed',
             increasedStat: 'bonus_ad',
             values: [],
             valuesIsPercent: true,
@@ -369,7 +372,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Udyr Iron Mantle.png',
+        icon: '/wiki/images/Udyr_Iron_Mantle.png',
         description:
           'Active - Stance: Udyr enters Mantle Stance, empowering his next two basic attacks to gain  life steal and  heal him for 1.2% of his maximum health (+ 8% AP) on-hit.',
         descriptionHTML:
@@ -378,7 +381,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active - Stance:',
-            raw: ' Udyr enters Mantle Stance, empowering his next two basic attacks to gain  life steal and  heal him for 1.2% of his maximum health (+ 8% AP) on-hit.',
+            raw: 'Udyr enters Mantle Stance, empowering his next two basic attacks to gain  life steal and  heal him for 1.2% of his maximum health (+ 8% AP) on-hit.',
             healType: 'BonusHealth',
             values: 1,
             valuesIsPercent: true,
@@ -420,6 +423,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, Udyr grants himself a  shield for 4 seconds.',
         descriptionHTML:
@@ -478,6 +482,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Recast - Awaken: Udyr increases the  shield's strength, stacking with the remaining shield from the first cast, and  heals every 0.25 seconds over the next 4 seconds, as well as causes the empowered attacks to instead gain doubled  life steal and  heal him for 2.4% of his maximum health (+ 16% AP) on-hit.",
         descriptionHTML:
@@ -486,7 +491,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Recast - Awaken:',
-            raw: " Udyr increases the  shield's strength, stacking with the remaining shield from the first cast, and  heals every 0.25 seconds over the next 4 seconds, as well as causes the empowered attacks to instead gain doubled  life steal and  heal him for 2.4% of his maximum health (+ 16% AP) on-hit.",
+            raw: "Udyr increases the  shield's strength, stacking with the remaining shield from the first cast, and  heals every 0.25 seconds over the next 4 seconds, as well as causes the empowered attacks to instead gain doubled  life steal and  heal him for 2.4% of his maximum health (+ 16% AP) on-hit.",
             healType: 'BonusHealth',
             values: 0,
             valuesIsPercent: true,
@@ -618,6 +623,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Healing on-hit is reduced to 60% against  minions.',
         descriptionHTML:
           'Healing <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> is reduced to 60% against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minions"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minions</a></span>.',
@@ -674,7 +680,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Udyr Blazing Stampede.png',
+        icon: '/wiki/images/Udyr_Blazing_Stampede.png',
         description:
           'Active - Stance: Udyr enters Stampede Stance, empowering his basic attacks to have an  uncancellable windup and  pounce on the target to  stun them for 0.75 seconds. This cannot affect the same target more than once every few seconds.',
         descriptionHTML:
@@ -684,6 +690,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, Udyr becomes  ghosted and gains  bonus movement speed for 4 seconds, which decays to 30% effectiveness over 1.5 seconds.',
         descriptionHTML:
@@ -741,6 +748,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast - Awaken: Udyr gains  75 bonus attack range and an additional 30% − 40% (based on level) bonus movement speed. He also gains  immunity to crowd control for 1.5 seconds.',
         descriptionHTML:
@@ -749,7 +757,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Recast - Awaken:',
-            raw: ' Udyr gains  75 bonus attack range and an additional 30% − 40% (based on level) bonus movement speed',
+            raw: 'Udyr gains  75 bonus attack range and an additional 30% − 40% (based on level) bonus movement speed',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -810,7 +818,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Udyr Wingborne Storm.png',
+        icon: '/wiki/images/Udyr_Wingborne_Storm.png',
         description:
           'Active - Stance: Udyr enters Storm Stance, empowering his next two basic attacks to deal 10 − 30 (based on level) (+ 30% AP) magic damage to nearby enemies.',
         descriptionHTML:
@@ -819,7 +827,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active - Stance:',
-            raw: ' Udyr enters Storm Stance, empowering his next two basic attacks to deal 10 − 30 (based on level) (+ 30% AP) magic damage to nearby enemies.',
+            raw: 'Udyr enters Storm Stance, empowering his next two basic attacks to deal 10 − 30 (based on level) (+ 30% AP) magic damage to nearby enemies.',
             damagetype: 'Magic',
             values: [
               10, 11.18, 12.35, 13.53, 14.71, 15.88, 17.06, 18.24, 19.41, 20.59,
@@ -846,6 +854,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, Udyr summons a blizzard around himself for 4 seconds that deals magic damage every 0.5 seconds to nearby enemies and  slows them.  Minions take 50 / 60 / 70 / 80% (based on level) damage.',
         descriptionHTML:
@@ -926,15 +935,16 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
-          "Recast - Awaken: Udyr ends the blizzard if it is active and unleashes a glacial storm for 4 seconds that is able to move on its own, as well as causes the empowered attacks to instead deal their damage to enemies within that storm. The storm follows the closest nearby  visible target and applies the same effects but deals  bonus magic damage equal to「 1% − 2% (based on level) (+ 0.4375% per 100 AP) of the target's maximum health per tick, capped at 10 − 50 (based on level) 」「 8% − 16% (based on level) (+ 3.5% per 100 AP) of the target's maximum health over the duration, capped at 80 − 400 (based on level) 」against  monsters, and  slows by an additional 10%.",
+          "Recast - Awaken: Udyr ends the blizzard if it is active and unleashes a glacial storm for 4 seconds that is able to move on its own, as well as causes the empowered attacks to instead deal their damage to enemies within that storm. The storm follows the closest nearby  visible target and applies the same effects but deals  bonus magic damage equal to「 1% − 2% (based on level) (+ 0.4375% per 100 AP) of the target's maximum health per tick, capped at 10 − 50 (based on level) 」「 8% − 16% (based on level) (+ 3.5% per 100 AP) of the target's maximum health over the duration, capped at 80 − 400 (based on level) 」against  monsters, and  slows by an additional 5%.",
         descriptionHTML:
-          '<span class="template_sbc"><b>Recast - Awaken:</b></span> <b>Udyr</b> ends the blizzard if it is active and unleashes a glacial storm for 4 seconds that is able to move on its own, as well as causes the empowered attacks to instead deal their damage to enemies within that storm. The storm follows the closest nearby <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> target and applies the same effects but deals <a href="/wiki/Critical_strike#Cosmetic_critical_strikes" title="Critical strike#Cosmetic critical strikes"><img alt="Critical strike magic icon.png" src="/wiki/images/Critical_strike_magic_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Cosmetic critical strike"><span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span></span> equal to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="1;" data-finish="2;" data-bot_values="1;1.06;1.12;1.18;1.24;1.29;1.35;1.41;1.47;1.53;1.59;1.65;1.71;1.76;1.82;1.88;1.94;2" data-top_values="" data-bot_key="%">1% − 2% (based on level)</span></span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;0.<small>4375</small>% per 100 AP)</span> <span style="color: #1F995C; white-space:normal">of the target\'s <b>maximum</b> health</span> per tick, capped at <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="10;" data-finish="50;" data-bot_values="10;12.35;14.71;17.06;19.41;21.76;24.12;26.47;28.82;31.18;33.53;35.88;38.24;40.59;42.94;45.29;47.65;50" data-top_values="">10 − 50 (based on level)</span>&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="8;" data-finish="16;" data-bot_values="8;8.47;8.94;9.41;9.88;10.35;10.82;11.29;11.76;12.24;12.71;13.18;13.65;14.12;14.59;15.06;15.53;16" data-top_values="" data-bot_key="%">8% − 16% (based on level)</span></span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;3.<small>5</small>% per 100 AP)</span> <span style="color: #1F995C; white-space:normal">of the target\'s <b>maximum</b> health</span> over the duration, capped at <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="80;" data-finish="400;" data-bot_values="80;98.82;117.65;136.47;155.29;174.12;192.94;211.76;230.59;249.41;268.24;287.06;305.88;324.71;343.53;362.35;381.18;400" data-top_values="">80 − 400 (based on level)</span>&nbsp;」</span></span>against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> by an additional 10%.',
+          '<span class="template_sbc"><b>Recast - Awaken:</b></span> <b>Udyr</b> ends the blizzard if it is active and unleashes a glacial storm for 4 seconds that is able to move on its own, as well as causes the empowered attacks to instead deal their damage to enemies within that storm. The storm follows the closest nearby <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> target and applies the same effects but deals <a href="/wiki/Critical_strike#Cosmetic_critical_strikes" title="Critical strike#Cosmetic critical strikes"><img alt="Critical strike magic icon.png" src="/wiki/images/Critical_strike_magic_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Cosmetic critical strike"><span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span></span> equal to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="1;" data-finish="2;" data-bot_values="1;1.06;1.12;1.18;1.24;1.29;1.35;1.41;1.47;1.53;1.59;1.65;1.71;1.76;1.82;1.88;1.94;2" data-top_values="" data-bot_key="%">1% − 2% (based on level)</span></span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;0.<small>4375</small>% per 100 AP)</span> <span style="color: #1F995C; white-space:normal">of the target\'s <b>maximum</b> health</span> per tick, capped at <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="10;" data-finish="50;" data-bot_values="10;12.35;14.71;17.06;19.41;21.76;24.12;26.47;28.82;31.18;33.53;35.88;38.24;40.59;42.94;45.29;47.65;50" data-top_values="">10 − 50 (based on level)</span>&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #1F995C; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="8;" data-finish="16;" data-bot_values="8;8.47;8.94;9.41;9.88;10.35;10.82;11.29;11.76;12.24;12.71;13.18;13.65;14.12;14.59;15.06;15.53;16" data-top_values="" data-bot_key="%">8% − 16% (based on level)</span></span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;3.<small>5</small>% per 100 AP)</span> <span style="color: #1F995C; white-space:normal">of the target\'s <b>maximum</b> health</span> over the duration, capped at <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="80;" data-finish="400;" data-bot_values="80;98.82;117.65;136.47;155.29;174.12;192.94;211.76;230.59;249.41;268.24;287.06;305.88;324.71;343.53;362.35;381.18;400" data-top_values="">80 − 400 (based on level)</span>&nbsp;」</span></span>against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> by an additional 5%.',
         descriptionRatios: [
           {
             effectType: 'Damage',
             name: 'Recast - Awaken:',
-            raw: ' Udyr ends the blizzard if it is active and unleashes a glacial storm for 4 seconds that is able to move on its own, as well as causes the empowered attacks to instead deal their damage to enemies within that storm',
+            raw: 'Udyr ends the blizzard if it is active and unleashes a glacial storm for 4 seconds that is able to move on its own, as well as causes the empowered attacks to instead deal their damage to enemies within that storm',
             damagetype: 'None',
             values: 4,
             units: 'total_ad',
@@ -945,7 +955,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Line 2:',
-            raw: "The storm follows the closest nearby  visible target and applies the same effects but deals  bonus magic damage equal to「 1% − 2% (based on level) (+ 0.4375% per 100 AP) of the target's maximum health per tick, capped at 10 − 50 (based on level) 」「 8% − 16% (based on level) (+ 3.5% per 100 AP) of the target's maximum health over the duration, capped at 80 − 400 (based on level) 」against  monsters, and  slows by an additional 10%.",
+            raw: "The storm follows the closest nearby  visible target and applies the same effects but deals  bonus magic damage equal to「 1% − 2% (based on level) (+ 0.4375% per 100 AP) of the target's maximum health per tick, capped at 10 − 50 (based on level) 」「 8% − 16% (based on level) (+ 3.5% per 100 AP) of the target's maximum health over the duration, capped at 80 − 400 (based on level) 」against  monsters, and  slows by an additional 5%.",
             healType: 'OutgoingHeals',
             values: [],
             valuesIsPercent: true,
@@ -976,25 +986,26 @@ export default {
         leveling: [
           {
             name: 'Increased Slow:',
-            values: '25 / 28 / 31 / 34 / 37 / 40%',
-            valuesHTML: '25 / 28 / 31 / 34 / 37 / 40%',
+            values: '20 / 23 / 26 / 29 / 32 / 35%',
+            valuesHTML: '20 / 23 / 26 / 29 / 32 / 35%',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Unique',
             name: 'Increased Slow:',
-            raw: '25 / 28 / 31 / 34 / 37 / 40%',
-            values: [25, 28, 31, 34, 37, 40],
+            raw: '20 / 23 / 26 / 29 / 32 / 35%',
+            values: [20, 23, 26, 29, 32, 35],
             valuesIsPercent: true,
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '25 / 28 / 31 / 34 / 37 / 40%',
+            pre: '20 / 23 / 26 / 29 / 32 / 35%',
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The unleashed storm grants  sight of its surroundings and prioritizes following the last enemy Udyr has attacked while he is nearby, then enemy  champions, then non-champions, then Udyr.',
         descriptionHTML:

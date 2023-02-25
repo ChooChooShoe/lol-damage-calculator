@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/More Sparkles!.png',
+        icon: '/wiki/images/More_Sparkles!.png',
         description:
           'Innate: After casting an ability, Zoe empowers her next basic attack or  Spell Thief bolt within 5 seconds to become  non-projectile and deal 16 − 130 (based on level) (+ 20% AP) bonus magic damage.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' After casting an ability, Zoe empowers her next basic attack or  Spell Thief bolt within 5 seconds to become  non-projectile and deal 16 − 130 (based on level) (+ 20% AP) bonus magic damage.',
+            raw: 'After casting an ability, Zoe empowers her next basic attack or  Spell Thief bolt within 5 seconds to become  non-projectile and deal 16 − 130 (based on level) (+ 20% AP) bonus magic damage.',
             damagetype: 'Magic',
             values: [
               16, 22.71, 29.41, 36.12, 42.82, 49.53, 56.24, 62.94, 69.65, 76.35,
@@ -103,7 +103,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Paddle Star.png',
+        icon: '/wiki/images/Paddle_Star.png',
         description:
           'Active: Zoe shoots a star in the target direction that explodes upon hitting an enemy, dealing magic damage to nearby enemies hit, reduced to 80% for enemies hit beyond the first. The total damage is increased by 0% − 150% (based on distance traveled).',
         descriptionHTML:
@@ -112,7 +112,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Zoe shoots a star in the target direction that explodes upon hitting an enemy, dealing magic damage to nearby enemies hit, reduced to 80% for enemies hit beyond the first',
+            raw: 'Zoe shoots a star in the target direction that explodes upon hitting an enemy, dealing magic damage to nearby enemies hit, reduced to 80% for enemies hit beyond the first',
             damagetype: 'Magic',
             values: 8,
             valuesIsPercent: true,
@@ -167,6 +167,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The star lingers at maximum range for 1 second, during which Paddle Star can be recast after 0.25 seconds in the duration.',
         descriptionHTML:
@@ -188,7 +189,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Paddle Star 2.png',
+        icon: '/wiki/images/Paddle_Star_2.png',
         description:
           'Recast: Zoe redirects the star in the target path, empowering it with increased speed and radius, and resetting its damage modifier on cast. The redirected star can travel until it reaches 800-units outbound from Zoe.',
         descriptionHTML:
@@ -210,6 +211,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Paddle Star's recast can be used while affected by  cast-inhibiting crowd control.",
         descriptionHTML:
@@ -255,7 +257,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Zoe Spell Thief 2.png',
+        icon: '/wiki/images/Zoe_Spell_Thief_2.png',
         description:
           'Passive - Wheeeee: Whenever Zoe casts Spell Thief or a summoner spell, she gains  bonus movement speed for a duration, and summons three bolts that orbit her for the next 10 seconds.',
         descriptionHTML:
@@ -264,7 +266,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive - Wheeeee:',
-            raw: ' Whenever Zoe casts Spell Thief or a summoner spell, she gains  bonus movement speed for a duration, and summons three bolts that orbit her for the next 10 seconds.',
+            raw: 'Whenever Zoe casts Spell Thief or a summoner spell, she gains  bonus movement speed for a duration, and summons three bolts that orbit her for the next 10 seconds.',
             values: 1,
             user: 'none',
             units: '',
@@ -311,6 +313,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Zoe is not affected by  complete crowd control, she shoots one bolt at a time at the nearest non- sleeping enemy in range, prioritizing her attack target, dealing magic damage with each bolt.',
         descriptionHTML:
@@ -348,7 +351,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Spell Thief.png',
+        icon: '/wiki/images/Spell_Thief.png',
         description:
           'Passive: Whenever an enemy champion casts a  summoner spell or  item active, they drop the corresponding  Spell Shard onto the ground that grants  sight over a 100-radius area and remains for 40 seconds. Enemy  minions have a 10% chance to spawn with a random Spell Shard that drops and remains for 20 seconds if Zoe kills them. Allied champions that kill them will cause the orb to drop only if Zoe is nearby.',
         descriptionHTML:
@@ -357,7 +360,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' Whenever an enemy champion casts a  summoner spell or  item active, they drop the corresponding  Spell Shard onto the ground that grants  sight over a 100-radius area and remains for 40 seconds',
+            raw: 'Whenever an enemy champion casts a  summoner spell or  item active, they drop the corresponding  Spell Shard onto the ground that grants  sight over a 100-radius area and remains for 40 seconds',
             increasedStat: 'total_ad',
             values: 1,
             units: '',
@@ -382,6 +385,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Zoe can collect a Spell Shard for 60 seconds, and replace it by moving directly onto another Spell Shard.',
         descriptionHTML:
@@ -403,6 +407,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Active: Zoe mimics the active of the collected Spell Shard.',
         descriptionHTML:
@@ -457,7 +462,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sleepy Trouble Bubble.png',
+        icon: '/wiki/images/Sleepy_Trouble_Bubble.png',
         description:
           'Active: Zoe kicks a bubble in the target direction that bursts upon the first enemy hit, otherwise lingering at maximum range over 1 second, then becoming a trap for 5 seconds that bursts upon contact with an enemy. The bubble can move through terrain only once, but travels the entire distance as bonus range, and will fall short if it would enter terrain again.',
         descriptionHTML:
@@ -466,7 +471,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Zoe kicks a bubble in the target direction that bursts upon the first enemy hit, otherwise lingering at maximum range over 1 second, then becoming a trap for 5 seconds that bursts upon contact with an enemy',
+            raw: 'Zoe kicks a bubble in the target direction that bursts upon the first enemy hit, otherwise lingering at maximum range over 1 second, then becoming a trap for 5 seconds that bursts upon contact with an enemy',
             damagetype: 'None',
             values: 1,
             units: 'total_ap',
@@ -479,6 +484,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The burst deals magic damage to the target and inflicts them with  drowsy for 1.4 seconds, which gradually  slows them until they fall  asleep for 2.25 seconds. While the target is  asleep, they are inflicted with  magic resistance reduction.',
         descriptionHTML:
@@ -563,6 +569,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The next instance of non- persistent damage that the  sleeping target takes from  champions, large  monsters or  structures consumes the debuff to deal  bonus true damage equal to the post-mitigation damage dealt, capped at Sleepy Trouble Bubble's damage. The bonus damage is dealt before the triggering damage.",
         descriptionHTML:
@@ -636,7 +643,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Portal Jump.png',
+        icon: '/wiki/images/Portal_Jump.png',
         description:
           'Active: Zoe  blinks in the target direction and remains there for 0.75 seconds, during which she sets her movement speed to a static 0 and has  unobstructed vision. Afterwards, she  blinks back to her casting position.',
         descriptionHTML:
@@ -646,6 +653,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Portal Jump  resets Zoe's basic attack timer. Zoe is unable to basic attack and cast her abilities and movement spells for 0.75 seconds after casting Portal Jump and for 0.5 seconds after blinking back.",
         descriptionHTML:

@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Fey Feathers.png',
+        icon: '/wiki/images/Fey_Feathers.png',
         description:
           'Innate: Periodically, Rakan grants himself a  shield for 30 − 225 (based on level) (+ 95% AP) that lasts until broken. After being out of combat for 5 seconds, any leftover shield will be restored to maximum value.',
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Innate:',
-            raw: ' Periodically, Rakan grants himself a  shield for 30 − 225 (based on level) (+ 95% AP) that lasts until broken',
+            raw: 'Periodically, Rakan grants himself a  shield for 30 − 225 (based on level) (+ 95% AP) that lasts until broken',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: [
@@ -77,6 +77,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Rakan's basic attacks and ability hits reduce Fey Feathers'   cooldown by 1 second for each enemy  champion hit.",
         descriptionHTML:
@@ -97,7 +98,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/ProfileIcon1634 Blazing Feathers.png',
+        icon: '/wiki/images/ProfileIcon1634_Blazing_Feathers.png',
         description:
           "Innate - Lover's Leap: If either Rakan or  Xayah is channeling  Recall, the other may move nearby and channel their own to join alongside them. Both reach base at the time of which the initiator's  Recall completes.",
         descriptionHTML:
@@ -143,7 +144,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Gleaming Quill.png',
+        icon: '/wiki/images/Gleaming_Quill.png',
         description:
           'Active: Rakan slings an enchanted feather in the target direction that deals magic damage to the first enemy hit.',
         descriptionHTML:
@@ -181,6 +182,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target was an enemy  champion or epic  monster, a radius is marked around Rakan. After 3 seconds or if an allied champion enters the radius, Rakan  heals himself and nearby allied champions for 40 − 210 (based on level) (+ 55% AP).',
         descriptionHTML:
@@ -255,7 +257,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Grand Entrance.png',
+        icon: '/wiki/images/Grand_Entrance.png',
         description:
           'Active: Rakan  dashes to the target location. After a 0.35-second delay upon arrival, he deals magic damage to nearby enemies and  knocks them up for 1 second.',
         descriptionHTML:
@@ -293,6 +295,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Rakan will be  knocked down by any  immobilizing or  polymorphing crowd control, excluding  sleep(bug), during Grand Entrance.',
         descriptionHTML:
@@ -323,6 +326,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Grand Entrance will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -370,7 +374,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Battle Dance.png',
+        icon: '/wiki/images/Battle_Dance.png',
         description:
           'Active: Rakan grants a  shield to the target allied champion for 3 seconds and then  dashes to and around them. Battle Dance can be recast within 5 seconds at no additional cost.',
         descriptionHTML:
@@ -379,7 +383,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Rakan grants a  shield to the target allied champion for 3 seconds and then  dashes to and around them',
+            raw: 'Rakan grants a  shield to the target allied champion for 3 seconds and then  dashes to and around them',
             damagetype: 'None',
             shieldType: 'OutgoingShields',
             values: 3,
@@ -434,7 +438,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Battle Dance 2.png',
+        icon: '/wiki/images/Battle_Dance_2.png',
         description: "Recast: Rakan mimics the first cast's effects.",
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Rakan</b> mimics the first cast\'s effects.',
@@ -443,6 +447,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Rakan will be  knocked down by any  immobilizing or  polymorphing crowd control, excluding  sleep(bug), during Battle Dance.',
         descriptionHTML:
@@ -473,6 +478,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If  Xayah is the target, Battle Dance can be cast from an increased range.',
         descriptionHTML:
@@ -516,7 +522,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Quickness.png',
+        icon: '/wiki/images/The_Quickness.png',
         description:
           'Active: Rakan breaks into a captivating sprint for 4 seconds, gaining  ghosting and  75% bonus movement speed for the duration. During this time, he deals magic damage to enemies he collides with and  charms and  slows them by 75% for a duration. This cannot affect the same enemy more than once.',
         descriptionHTML:
@@ -525,7 +531,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Rakan breaks into a captivating sprint for 4 seconds, gaining  ghosting and  75% bonus movement speed for the duration',
+            raw: 'Rakan breaks into a captivating sprint for 4 seconds, gaining  ghosting and  75% bonus movement speed for the duration',
             increasedStat: 'total_ap',
             values: 4,
             valuesIsPercent: true,
@@ -596,6 +602,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Colliding with an enemy  champion extends The Quickness' duration by 0.25 seconds, which can occur once per champion. When Rakan collides with his first enemy champion, he gains an additional 75% bonus movement speed that decays after 0.5 seconds by 20% every 0.5 seconds, then by 15% after decaying by 60% over 1.5 seconds.",
         descriptionHTML:
@@ -618,6 +625,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'During The Quickness, Rakan cannot basic attack enemy champions he did not collide with, unless the attack command was inputted before the ability was activated.',
         descriptionHTML:

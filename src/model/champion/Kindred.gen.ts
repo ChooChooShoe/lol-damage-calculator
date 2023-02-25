@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mark of the Kindred.png',
+        icon: '/wiki/images/Mark_of_the_Kindred.png',
         description:
           'Innate: Both Lamb and Wolf mark targets to hunt. Scoring a  takedown against a hunted target collects a stack of Mark of the Kindred. Mark of the Kindred: Lamb gains 75 − 250 (based on marks)  bonus range on her basic attacks and  Mounting Dread.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Mark of the Kindred:',
-            raw: ' Lamb gains 75 − 250 (based on marks)  bonus range on her basic attacks and  Mounting Dread.',
+            raw: 'Lamb gains 75 − 250 (based on marks)  bonus range on her basic attacks and  Mounting Dread.',
             increasedStat: 'bonus_ad',
             values: [7, 250],
             basedOn: 'marks',
@@ -48,7 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Lamb's Mask profileicon.png",
+        icon: "/wiki/images/Lamb's_Mask_profileicon.png",
         description:
           'Innate - Lamb: Lamb is offered a selection of enemy  champions to hunt if she has not been in combat with them in the last 6 seconds. Once selected, the mark is applied after an 8-second delay and thereafter it can be collected by Kindred. Lamb gains the ability to select a new target every 75 seconds. Targets successfully hunted cannot be marked again for 4 minutes.',
         descriptionHTML:
@@ -57,7 +57,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - Lamb:',
-            raw: ' Lamb is offered a selection of enemy  champions to hunt if she has not been in combat with them in the last 6 seconds',
+            raw: 'Lamb is offered a selection of enemy  champions to hunt if she has not been in combat with them in the last 6 seconds',
             values: 6,
             user: 'none',
             units: '',
@@ -80,9 +80,8 @@ export default {
             effectType: 'Gain',
             name: 'Line 3:',
             raw: 'Lamb gains the ability to select a new target every 75 seconds',
-            increasedStat: 'total_ap',
             values: 7,
-            user: 'target',
+            user: 'none',
             units: '',
             unitsText:
               'gains the ability to select a new target every 75 seconds',
@@ -104,7 +103,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Wolf's Mask profileicon.png",
+        icon: "/wiki/images/Wolf's_Mask_profileicon.png",
         description:
           "Innate - Wolf: Starting at 3:15, Wolf periodically marks a random large  monster within the enemy team's jungle for 180 seconds. The hunted camp is highlighted on the mini map to both teams. Once the hunted target is slain or the mark expires, Wolf will wait 45 seconds before selecting a new target. The type of monster that Wolf can mark changes based on Kindred's current Mark of the Kindred stacks:\n0 :  Rift Scuttler\n1 – 3:  Rift Scuttler,  Crimson Raptor,  Gromp\n4 – 7:  Ancient Krug,  Blue Sentinel,  Greater Murk Wolf, or  Red Brambleback\n8 + :  Rift Herald or  Baron Nashor,  Dragon or  Elder Dragon",
         descriptionHTML:
@@ -113,7 +112,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - Wolf:',
-            raw: " Starting at 3:15, Wolf periodically marks a random large  monster within the enemy team's jungle for 180 seconds",
+            raw: "Starting at 3:15, Wolf periodically marks a random large  monster within the enemy team's jungle for 180 seconds",
             values: 3,
             units: 'kindredMarks',
             unitsText:
@@ -129,6 +128,17 @@ export default {
             unitsText:
               'the hunted target is slain or the mark expires, Wolf will wait 45 seconds before selecting a new target',
             pre: 'Once the hunted target is slain or the mark expires, Wolf will wait 45 seconds before selecting a new target',
+          },
+          {
+            effectType: 'Damage',
+            name: "The type of monster that Wolf can mark changes based on Kindred's current Mark of the Kindred stacks:\n0 :",
+            raw: ' Rift Scuttler\n1 – 3:  Rift Scuttler,  Crimson Raptor,  Gromp\n4 – 7:  Ancient Krug,  Blue Sentinel,  Greater Murk Wolf, or  Red Brambleback\n8 + :  Rift Herald or  Baron Nashor,  Dragon or  Elder Dragon',
+            damagetype: 'None',
+            values: 1,
+            user: 'none',
+            units: '',
+            unitsText: 'Scuttler',
+            pre: 'Rift Scuttler\n1 – 3:  Rift Scuttler,  Crimson Raptor,  Gromp\n4 – 7:  Ancient Krug,  Blue Sentinel,  Greater Murk Wolf, or  Red Brambleback\n8 + :  Rift Herald or  Baron Nashor,  Dragon or  Elder Dragon',
           },
         ],
         leveling: [],
@@ -172,7 +182,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dance of Arrows.png',
+        icon: '/wiki/images/Dance_of_Arrows.png',
         description:
           'Active: Lamb  dashes toward the target location, gaining  35% (+ 5% per  mark) bonus attack speed for 4 seconds and firing an arrow at up to 3 nearby  visible enemies that deals physical damage. Her current attack target within any proximity will be prioritized by one of the arrows.',
         descriptionHTML:
@@ -181,7 +191,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Lamb  dashes toward the target location, gaining  35% (+ 5% per  mark) bonus attack speed for 4 seconds and firing an arrow at up to 3 nearby  visible enemies that deals physical damage',
+            raw: 'Lamb  dashes toward the target location, gaining  35% (+ 5% per  mark) bonus attack speed for 4 seconds and firing an arrow at up to 3 nearby  visible enemies that deals physical damage',
             increasedStat: 'bonus_ad',
             values: 3,
             valuesIsPercent: true,
@@ -233,6 +243,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Dance of Arrows'   total cooldown is reduced to an amount while Lamb is within the area of  Wolf's Frenzy. Casting  Wolf's Frenzy reduces Dance of Arrows'  current cooldown to the same amount.",
         descriptionHTML:
@@ -259,6 +270,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Dance of Arrows  resets Lamb's basic attack timer. Lamb can cast any of her abilities during the dash. Dance of Arrows will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -316,13 +328,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " As Kindred move and attack, they build up to 100 stacks of Hunter's Vigor",
+            raw: "As Kindred move and attack, they build up to 100 stacks of Hunter's Vigor",
             min: 0,
             max: 10,
             description:
-              " As Kindred move and attack, they build up to 100 stacks of Hunter's Vigor",
+              "As Kindred move and attack, they build up to 100 stacks of Hunter's Vigor",
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "Kindred move and attack, they build up to 100 stacks of Hunter's Vigor",
             pre: "As Kindred move and attack, they build up to 100 stacks of Hunter's Vigor",
@@ -346,7 +358,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Wolf's Frenzy.png",
+        icon: "/wiki/images/Wolf's_Frenzy.png",
         description:
           'Active: Wolf  dashes to the target location, then claims the surrounding area as his territory for the next 8.5 seconds, separating from Lamb. He automatically attacks the closest nearby  visible enemy within the area, prioritizing the last enemy Lamb has attacked, then enemy champions, then non-champions.',
         descriptionHTML:
@@ -355,7 +367,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Wolf  dashes to the target location, then claims the surrounding area as his territory for the next 8.5 seconds, separating from Lamb',
+            raw: 'Wolf  dashes to the target location, then claims the surrounding area as his territory for the next 8.5 seconds, separating from Lamb',
             values: 8,
             user: 'none',
             units: '',
@@ -368,6 +380,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Wolf's attacks deal magic damage and scale with 25% of Kindred's bonus attack speed. Against monsters, his attacks deal 150% damage and  slow the target by 50% for 2 seconds.",
         descriptionHTML:
@@ -450,6 +463,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Wolf's Frenzy ends immediately if Lamb leaves the area or dies.",
         descriptionHTML:
@@ -494,7 +508,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mounting Dread.png',
+        icon: '/wiki/images/Mounting_Dread.png',
         description:
           'Active: Lamb fires a shot at the target enemy that  slows them by 50% for 1 second and applies a stack of Mounting Dread for 4 seconds. Her basic attacks each apply an additional stack, refreshing the duration and stacking up to 4 times.',
         descriptionHTML:
@@ -503,11 +517,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Active:',
-            raw: ' Lamb fires a shot at the target enemy that  slows them by 50% for 1 second and applies a stack of Mounting Dread for 4 seconds',
+            raw: 'Lamb fires a shot at the target enemy that  slows them by 50% for 1 second and applies a stack of Mounting Dread for 4 seconds',
             min: 0,
             max: 10,
             description:
-              ' Lamb fires a shot at the target enemy that  slows them by 50% for 1 second and applies a stack of Mounting Dread for 4 seconds',
+              'Lamb fires a shot at the target enemy that  slows them by 50% for 1 second and applies a stack of Mounting Dread for 4 seconds',
             values: 5,
             valuesIsPercent: true,
             units: 'total_ap',
@@ -520,7 +534,7 @@ export default {
             name: 'Line 2:',
             raw: 'Her basic attacks each apply an additional stack, refreshing the duration and stacking up to 4 times.',
             min: 0,
-            max: 10,
+            max: 4,
             description:
               'Her basic attacks each apply an additional stack, refreshing the duration and stacking up to 4 times.',
             values: 4,
@@ -534,18 +548,22 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Her next basic attack against a target with 3 stacks directs Wolf to pounce on the target, consuming all stacks to deal additional physical damage, capped at 300 against  monsters.',
         descriptionHTML:
           'Her next basic attack against a target with 3 stacks directs <b>Wolf</b> to pounce on the target, consuming all stacks to deal <span style="color:orange; white-space:normal"><b>additional</b> physical damage</span>, capped at 300 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'Her next basic attack against a target with 3 stacks directs Wolf to pounce on the target, consuming all stacks to deal additional physical damage, capped at 300 against  monsters.',
-            increasedStat: 'total_ap',
+            min: 0,
+            max: 10,
+            description:
+              'Her next basic attack against a target with 3 stacks directs Wolf to pounce on the target, consuming all stacks to deal additional physical damage, capped at 300 against  monsters.',
             values: 3,
-            units: '',
+            units: 'total_ap',
             unitsText:
               'next basic attack against a target with 3 stacks directs Wolf to pounce on the target, consuming all stacks to deal additional physical damage, capped at 300 against  monsters.',
             pre: 'Her next basic attack against a target with 3 stacks directs Wolf to pounce on the target, consuming all stacks to deal additional physical damage, capped at 300 against  monsters.',
@@ -602,6 +620,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The additional damage will  critically strike against targets below 15% − 65% (based on critical strike chance) of their  maximum health, increasing the missing health portion by (50% +  35%), and cannot  critically strike otherwise. The base damage of the pounce can independently  critically strike.',
         descriptionHTML:
@@ -672,7 +691,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Lamb's Respite.png",
+        icon: "/wiki/images/Lamb's_Respite.png",
         description:
           'Active: Lamb blesses the ground under herself for 4 seconds and enters a 0.264 seconds cast time. All units inside the zone gain a  minimum health threshold of  10% of their maximum health, and will become  invulnerable for the remaining duration when they reach or are at the threshold, during which they also cannot be  healed, but can still  regenerate health.',
         descriptionHTML:
@@ -681,7 +700,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Lamb blesses the ground under herself for 4 seconds and enters a 0.264 seconds cast time',
+            raw: 'Lamb blesses the ground under herself for 4 seconds and enters a 0.264 seconds cast time',
             values: 4,
             user: 'none',
             units: '',
@@ -706,6 +725,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'All targetable units within the zone are  healed when the blessing ends.',
         descriptionHTML:

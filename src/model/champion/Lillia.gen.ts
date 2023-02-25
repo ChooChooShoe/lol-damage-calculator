@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dream-Laden Bough.png',
+        icon: '/wiki/images/Dream-Laden_Bough.png',
         description:
           "Innate: Lillia's abilities apply Dream Dust to enemies hit, which deals「 5% (+ 1.5% per 100 AP) of the target's maximum health total magic damage over 3 seconds, capped at 50 − 150 (based on level) 」「 0.83% (+ 0.25% per 100 AP) of the target's maximum health magic damage every 0.5 seconds over 3 seconds, capped at 8.33 − 25 (based on level) per tick 」against  monsters.",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Lillia's abilities apply Dream Dust to enemies hit, which deals「 5% (+ 1.5% per 100 AP) of the target's maximum health total magic damage over 3 seconds, capped at 50 − 150 (based on level) 」「 0.83% (+ 0.25% per 100 AP) of the target's maximum health magic damage every 0.5 seconds over 3 seconds, capped at 8.33 − 25 (based on level) per tick 」against  monsters.",
+            raw: "Lillia's abilities apply Dream Dust to enemies hit, which deals「 5% (+ 1.5% per 100 AP) of the target's maximum health total magic damage over 3 seconds, capped at 50 − 150 (based on level) 」「 0.83% (+ 0.25% per 100 AP) of the target's maximum health magic damage every 0.5 seconds over 3 seconds, capped at 8.33 − 25 (based on level) per tick 」against  monsters.",
             healType: 'OutgoingHeals',
             values: [],
             valuesIsPercent: true,
@@ -63,6 +63,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Lillia  heals for 24 − 75 (based on level) (+ 5.4% AP) against large  monsters and 6 − 120 (based on level) (+ 18% AP) against  champions over the duration of Dream Dust, reduced to 33% effectiveness for each target beyond the first. She may only heal against 1 monster at a time.',
         descriptionHTML:
@@ -160,13 +161,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Whenever Lillia's abilities hit at least one enemy, she generates a stack of Prance for 6.5 seconds, refreshing on subsequent hits and stacking up to 4 times",
+            raw: "Whenever Lillia's abilities hit at least one enemy, she generates a stack of Prance for 6.5 seconds, refreshing on subsequent hits and stacking up to 4 times",
             min: 0,
-            max: 10,
+            max: 4,
             description:
-              " Whenever Lillia's abilities hit at least one enemy, she generates a stack of Prance for 6.5 seconds, refreshing on subsequent hits and stacking up to 4 times",
+              "Whenever Lillia's abilities hit at least one enemy, she generates a stack of Prance for 6.5 seconds, refreshing on subsequent hits and stacking up to 4 times",
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "Lillia's abilities hit at least one enemy, she generates a stack of Prance for 6.5 seconds, refreshing on subsequent hits and stacking up to 4 times",
             pre: "Whenever Lillia's abilities hit at least one enemy, she generates a stack of Prance for 6.5 seconds, refreshing on subsequent hits and stacking up to 4 times",
@@ -230,7 +231,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Blooming Blows.png',
+        icon: '/wiki/images/Blooming_Blows.png',
         description:
           'Active: Lillia swings her censer around her, dealing magic damage to nearby enemies. Enemies hit within the outer edge of the area additionally take the same amount as  bonus true damage.',
         descriptionHTML:
@@ -305,7 +306,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Watch Out! Eep!.png',
+        icon: '/wiki/images/Watch_Out!_Eep!.png',
         description:
           'Active: Lillia  dashes to 150 units in front of the target location over 0.759 seconds, though not through terrain, and deals magic damage in an area around the target spot. Enemies hit within the epicenter are dealt  200% increased damage.',
         descriptionHTML:
@@ -314,7 +315,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lillia  dashes to 150 units in front of the target location over 0.759 seconds, though not through terrain, and deals magic damage in an area around the target spot',
+            raw: 'Lillia  dashes to 150 units in front of the target location over 0.759 seconds, though not through terrain, and deals magic damage in an area around the target spot',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -369,6 +370,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Watch Out! Eep! deals 50% damage to  minions.',
         descriptionHTML:
           '<i>Watch Out! Eep!</i> deals 50% damage to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minions"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minions</a></span>.',
@@ -418,6 +420,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Watch Out! Eep! will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -518,6 +521,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Swirlseed will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Swirlseed will cast at max range if cast beyond that.</i>',
@@ -562,7 +566,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Lilting Lullaby.png',
+        icon: '/wiki/images/Lilting_Lullaby.png',
         description:
           'Active: Lillia casts a magical lullaby over all enemy  champions affected by  Dream Dust, which arrives after 0.3 seconds and renders them  drowsy for 1.5 seconds,  slowing them by 10%. After the duration, they fall  asleep for a duration.',
         descriptionHTML:
@@ -590,7 +594,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Lilting Lullaby 2.png',
+        icon: '/wiki/images/Lilting_Lullaby_2.png',
         description:
           'The next instance of non- persistent non- minion non-small and medium  monster damage against a  sleeping target consumes the debuff to deal additional magic damage.',
         descriptionHTML:
@@ -628,6 +632,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An enemy champion affected by  Dream Dust is required to cast this ability.',
         descriptionHTML:

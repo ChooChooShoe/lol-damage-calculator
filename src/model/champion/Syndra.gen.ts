@@ -33,27 +33,27 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Syndra collects Splinters of Wrath that enhance each of her abilities based on the number of them collected, stacking up to 120 times',
+            raw: 'Syndra collects Splinters of Wrath that enhance each of her abilities based on the number of them collected, stacking up to 120 times',
             min: 0,
-            max: 10,
+            max: 120,
             description:
-              ' Syndra collects Splinters of Wrath that enhance each of her abilities based on the number of them collected, stacking up to 120 times',
+              'Syndra collects Splinters of Wrath that enhance each of her abilities based on the number of them collected, stacking up to 120 times',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'collects Splinters of Wrath that enhance each of her abilities based on the number of them collected, stacking up to 120 times',
             pre: 'Syndra collects Splinters of Wrath that enhance each of her abilities based on the number of them collected, stacking up to 120 times',
           },
           {
             effectType: 'Gain',
-            name: 'She gains Splinters of Wrath from the following:',
-            raw: '\nDealing two instances of ability damage to an enemy champion within 4 seconds grants 1 / 2 / 3 (based on level) Splinters',
+            name: 'Line 2:',
+            raw: 'She gains Splinters of Wrath from the following:\nDealing two instances of ability damage to an enemy champion within 4 seconds grants 1 / 2 / 3 (based on level) Splinters',
             values: [],
             basedOn: 'level',
             user: 'none',
             units: '',
             unitsText: 'Splinters',
-            pre: 'Dealing two instances of ability damage to an enemy champion within 4 seconds grants 1 / 2 / 3',
+            pre: 'She gains Splinters of Wrath from the following:\nDealing two instances of ability damage to an enemy champion within 4 seconds grants 1 / 2 / 3',
             post: 'Splinters',
           },
           {
@@ -72,6 +72,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Collecting a Splinter of Wrath from an enemy restores  20 − 215 (based on level) mana. Splinters of Wrath are brought to Syndra from enemies over 0.6 seconds.',
         descriptionHTML:
@@ -97,7 +98,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Transcendent 2.png',
+        icon: '/wiki/images/Transcendent_2.png',
         description:
           'At 120 Splinters of Wrath, Syndra achieves Transcendence, increasing her  ability power by 15%.',
         descriptionHTML:
@@ -109,7 +110,8 @@ export default {
             raw: 'At 120 Splinters of Wrath, Syndra achieves Transcendence, increasing her  ability power by 15%.',
             values: 1,
             valuesIsPercent: true,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               '.120 Splinters of Wrath, Syndra achieves Transcendence, increasing her  ability power by 15',
             pre: 'At 120 Splinters of Wrath, Syndra achieves Transcendence, increasing her  ability power by 15%.',
@@ -119,6 +121,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Syndra can collect Splinters of Wrath from enemies even if she is at maximum stacks. These Splinters do not grant any stacks, but will still restore mana for Syndra.',
         descriptionHTML:
@@ -167,7 +170,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dark Sphere.png',
+        icon: '/wiki/images/Dark_Sphere.png',
         description:
           'Active: Syndra conjures a Dark Sphere at the target location that appears after a 0.6-second delay, dealing magic damage to nearby enemies. The Dark Sphere then remains on the ground for 6 seconds.',
         descriptionHTML:
@@ -216,7 +219,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Dark Sphere 2.png',
+        icon: '/wiki/images/Dark_Sphere_2.png',
         description:
           'Transcendent Bonus: Collecting 40 Splinters of Wrath causes Syndra to periodically stock a Dark Sphere charge, up to a maximum of 2.',
         descriptionHTML:
@@ -225,7 +228,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Transcendent Bonus:',
-            raw: ' Collecting 40 Splinters of Wrath causes Syndra to periodically stock a Dark Sphere charge, up to a maximum of 2.',
+            raw: 'Collecting 40 Splinters of Wrath causes Syndra to periodically stock a Dark Sphere charge, up to a maximum of 2.',
             values: 4,
             user: 'none',
             units: '',
@@ -238,6 +241,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Dark Sphere will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Dark Sphere will cast at max range if cast beyond that.</i>',
@@ -285,7 +289,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Force of Will.png',
+        icon: '/wiki/images/Force_of_Will.png',
         description:
           'Active: Syndra grabs the nearest  Dark Sphere, enemy  minion or non-epic  monster within 500 units from the target location, and holds the target for 5 seconds. If a Dark Sphere is grabbed, its duration is refreshed; if a minion or monster is grabbed, it is put in  stasis. She prioritizes grabbing the nearest unit, then  Dark Spheres.',
         descriptionHTML:
@@ -294,7 +298,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Syndra grabs the nearest  Dark Sphere, enemy  minion or non-epic  monster within 500 units from the target location, and holds the target for 5 seconds',
+            raw: 'Syndra grabs the nearest  Dark Sphere, enemy  minion or non-epic  monster within 500 units from the target location, and holds the target for 5 seconds',
             values: 5,
             user: 'none',
             units: '',
@@ -307,6 +311,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Force of Will can be recast while the target is being held.',
         descriptionHTML:
@@ -316,7 +321,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Force of Will 2.png',
+        icon: '/wiki/images/Force_of_Will_2.png',
         description:
           'Recast: Syndra throws the grabbed target towards the target location, granting  sight of their surroundings as they fall and dealing magic damage to them and nearby enemies. All targets hit are  slowed for 1.5 seconds.',
         descriptionHTML:
@@ -381,7 +386,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Force of Will 4.png',
+        icon: '/wiki/images/Force_of_Will_4.png',
         description:
           'Transcendent Bonus: Collecting 60 Splinters of Wrath enhances Force of Will to deal  12% (+ 2% per 100 AP) bonus true damage.',
         descriptionHTML:
@@ -390,7 +395,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Transcendent Bonus:',
-            raw: ' Collecting 60 Splinters of Wrath enhances Force of Will to deal  12% (+ 2% per 100 AP) bonus true damage.',
+            raw: 'Collecting 60 Splinters of Wrath enhances Force of Will to deal  12% (+ 2% per 100 AP) bonus true damage.',
             damagetype: 'True',
             values: 6,
             valuesIsPercent: true,
@@ -459,7 +464,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Scatter the Weak.png',
+        icon: '/wiki/images/Scatter_the_Weak.png',
         description:
           'Active: Syndra propels a wave of force in a cone in the target direction that deals magic damage to enemies hit and  knocks them back for 400 units and up to 800 units away from Syndra based on proximity, though not through terrain.',
         descriptionHTML:
@@ -468,7 +473,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Syndra propels a wave of force in a cone in the target direction that deals magic damage to enemies hit and  knocks them back for 400 units and up to 800 units away from Syndra based on proximity, though not through terrain.',
+            raw: 'Syndra propels a wave of force in a cone in the target direction that deals magic damage to enemies hit and  knocks them back for 400 units and up to 800 units away from Syndra based on proximity, though not through terrain.',
             damagetype: 'Magic',
             values: 4,
             user: 'none',
@@ -510,6 +515,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Dark Spheres can be knocked back for 950 units and up to 1200 units away from Syndra based on proximity,  knocking back enemies they hit over 70 units, though not through terrain. Targets hit are also  stunned for 1.25 seconds, during which they are also  revealed, and dealt Scatter the Weak's damage if they were not damaged by the initial cast.",
         descriptionHTML:
@@ -543,7 +549,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Scatter the Weak 2.png',
+        icon: '/wiki/images/Scatter_the_Weak_2.png',
         description:
           'Transcendent Bonus: Collecting 80 Splinters of Wrath enhances Scatter the Weak to have an increased scatter angle and  slow enemies hit by 70% for 1.25 seconds starting after the  knock back ends or if the target was hit by a pushed Dark Sphere, after the  stun has ended.',
         descriptionHTML:
@@ -552,7 +558,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Transcendent Bonus:',
-            raw: ' Collecting 80 Splinters of Wrath enhances Scatter the Weak to have an increased scatter angle and  slow enemies hit by 70% for 1.25 seconds starting after the  knock back ends or if the target was hit by a pushed Dark Sphere, after the  stun has ended.',
+            raw: 'Collecting 80 Splinters of Wrath enhances Scatter the Weak to have an increased scatter angle and  slow enemies hit by 70% for 1.25 seconds starting after the  knock back ends or if the target was hit by a pushed Dark Sphere, after the  stun has ended.',
             values: 8,
             valuesIsPercent: true,
             user: 'none',
@@ -628,7 +634,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Unleashed Power.png',
+        icon: '/wiki/images/Unleashed_Power.png',
         description:
           'Active: Syndra enters a 0.264 seconds cast time, creating  3 Dark Spheres and grabbing up to 4 nearby Dark Spheres that were last spawned. Afterwards, the collected Dark Spheres are hurled in a volley at the target enemy champion, each dealing magic damage upon hit.',
         descriptionHTML:
@@ -692,6 +698,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The  Dark Spheres will then remain on the ground for 6 seconds.',
         descriptionHTML:
@@ -713,7 +720,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Unleashed Power 2.png',
+        icon: '/wiki/images/Unleashed_Power_2.png',
         description:
           'Transcendent Bonus: Collecting 100 Splinters of Wrath enhances Unleashed Power to  execute the target if it would damage them to below  15% of their maximum health.',
         descriptionHTML:
@@ -722,7 +729,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Transcendent Bonus:',
-            raw: ' Collecting 100 Splinters of Wrath enhances Unleashed Power to  execute the target if it would damage them to below  15% of their maximum health.',
+            raw: 'Collecting 100 Splinters of Wrath enhances Unleashed Power to  execute the target if it would damage them to below  15% of their maximum health.',
             healType: 'OutgoingHeals',
             values: 1,
             valuesIsPercent: true,

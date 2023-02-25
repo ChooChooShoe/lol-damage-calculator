@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mana Surge.png',
+        icon: '/wiki/images/Mana_Surge.png',
         description:
           'Innate: Periodically, Xerath empowers his next basic attack to restore  30 − 195 (based on level) mana, doubled to 60 − 390 (based on level) against enemy  champions.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Periodically, Xerath empowers his next basic attack to restore  30 − 195 (based on level) mana, doubled to 60 − 390 (based on level) against enemy  champions.',
+            raw: 'Periodically, Xerath empowers his next basic attack to restore  30 − 195 (based on level) mana, doubled to 60 − 390 (based on level) against enemy  champions.',
             increasedStat: 'total_mana',
             values: [
               30, 39.71, 49.41, 59.12, 68.82, 78.53, 88.24, 97.94, 107.65,
@@ -50,6 +50,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Mana Surge does not trigger if Xerath would restore above his maximum mana.',
         descriptionHTML:
@@ -104,6 +105,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Arcanopulse can be recast within the duration. If the charge is  interrupted or completes without reactivation, Arcanopulse is cancelled and refunds  half the mana cost.',
         descriptionHTML:
@@ -131,6 +133,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: After a 0.528 seconds delay, Xerath fires a beam of energy in a line in the target direction that deals magic damage to enemies hit.',
         descriptionHTML:
@@ -204,7 +207,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Eye of Destruction.png',
+        icon: '/wiki/images/Eye_of_Destruction.png',
         description:
           'Active: Xerath casts down a blast of arcane energy that strikes the target location after 0.528 seconds, briefly granting  sight of the area and dealing magic damage to enemies hit and  slowing them by 25% for 2.5 seconds.',
         descriptionHTML:
@@ -242,6 +245,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies in the epicenter take 66.7% increased damage and are  slowed by a greater amount, decaying to 25% over the duration.',
         descriptionHTML:
@@ -346,7 +350,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shocking Orb.png',
+        icon: '/wiki/images/Shocking_Orb.png',
         description:
           'Active: Xerath fires an orb of energy in the target direction that deals magic damage to the first enemy hit and  stuns them for 0.75 − 2.25 (based on orb travel distance) seconds.',
         descriptionHTML:
@@ -355,7 +359,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Xerath fires an orb of energy in the target direction that deals magic damage to the first enemy hit and  stuns them for 0.75 − 2.25 (based on orb travel distance) seconds.',
+            raw: 'Xerath fires an orb of energy in the target direction that deals magic damage to the first enemy hit and  stuns them for 0.75 − 2.25 (based on orb travel distance) seconds.',
             damagetype: 'Magic',
             values: [0, 2.25],
             basedOn: 'orb travel distance',
@@ -438,7 +442,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rite of the Arcane.png',
+        icon: '/wiki/images/Rite_of_the_Arcane.png',
         description:
           'Active: Xerath  channels for up to 10 seconds, gaining the ability to recast Rite of the Arcane multiple times after 0.5 seconds within the duration. If Rite of the Arcane ends without any of the recasts being used, half of its  cooldown is refunded.',
         descriptionHTML:
@@ -447,9 +451,9 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Xerath  channels for up to 10 seconds, gaining the ability to recast Rite of the Arcane multiple times after 0.5 seconds within the duration',
-            increasedStat: 'total_ap',
+            raw: 'Xerath  channels for up to 10 seconds, gaining the ability to recast Rite of the Arcane multiple times after 0.5 seconds within the duration',
             values: 1,
+            user: 'none',
             units: '',
             unitsText:
               'channels for up to 10 seconds, gaining the ability to recast Rite of the Arcane multiple times after 0.5 seconds within the duration',
@@ -477,6 +481,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast - Arcane Barrage: Xerath catapults an arcane missile that strikes the target location after a 0.627 seconds delay, briefly granting  sight of the area and dealing magic damage to enemies hit. Each cast has a static cooldown of 0.5 seconds.',
         descriptionHTML:
@@ -514,6 +519,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Xerath will  reveal himself if a missile strikes near an enemy.',
         descriptionHTML:
@@ -541,6 +547,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Rite of the Arcane's recast will cast at max range if cast beyond that.",
         descriptionHTML:

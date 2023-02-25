@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Janna gains  6% bonus movement speed while facing nearby allied  champions, and grants them the same amount while they are facing her.',
+            raw: 'Janna gains  6% bonus movement speed while facing nearby allied  champions, and grants them the same amount while they are facing her.',
             values: 6,
             valuesIsPercent: true,
             user: 'none',
@@ -85,7 +85,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Howling Gale.png',
+        icon: '/wiki/images/Howling_Gale.png',
         description:
           "Active: Janna summons a whirlwind at her current location that charges up over 3 seconds, increasing its range, speed, damage, and  knock up duration every second over the duration. Howling Gale's direction is determined by this cast.",
         descriptionHTML:
@@ -94,7 +94,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Janna summons a whirlwind at her current location that charges up over 3 seconds, increasing its range, speed, damage, and  knock up duration every second over the duration',
+            raw: 'Janna summons a whirlwind at her current location that charges up over 3 seconds, increasing its range, speed, damage, and  knock up duration every second over the duration',
             damagetype: 'None',
             values: 3,
             user: 'none',
@@ -162,6 +162,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Howling Gale can be recast at any time within the duration, and does so automatically after the duration.',
         descriptionHTML:
@@ -171,6 +172,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Janna launches the whirlwind in the direction she targeted over 1.25 seconds, dealing magic damage to enemies hit and  knocking them up for 0.5 − 1.25 (based on seconds charged) seconds.',
         descriptionHTML:
@@ -179,7 +181,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Janna launches the whirlwind in the direction she targeted over 1.25 seconds, dealing magic damage to enemies hit and  knocking them up for 0.5 − 1.25 (based on seconds charged) seconds.',
+            raw: 'Janna launches the whirlwind in the direction she targeted over 1.25 seconds, dealing magic damage to enemies hit and  knocking them up for 0.5 − 1.25 (based on seconds charged) seconds.',
             damagetype: 'Magic',
             values: [1, 1.25],
             basedOn: 'seconds charged',
@@ -277,7 +279,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Janna sends an air elemental at the target enemy that deals magic damage and  slows them for 3 seconds, capped at 99%.',
+            raw: 'Janna sends an air elemental at the target enemy that deals magic damage and  slows them for 3 seconds, capped at 99%.',
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -391,7 +393,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: " Whenever Janna's abilities  slow or  knock up at least one enemy  champion, she gains 15%  heal and shield power for 4 seconds",
+            raw: "Whenever Janna's abilities  slow or  knock up at least one enemy  champion, she gains 15%  heal and shield power for 4 seconds",
             healType: 'DrainEffect',
             values: 1,
             valuesIsPercent: true,
@@ -406,7 +408,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Eye of the Storm.png',
+        icon: '/wiki/images/Eye_of_the_Storm.png',
         description:
           'Active: Janna grants the target allied champion,  turret, or herself a  shield for 5 seconds, decaying after 1.25 seconds.',
         descriptionHTML:
@@ -415,7 +417,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Janna grants the target allied champion,  turret, or herself a  shield for 5 seconds, decaying after 1.25 seconds.',
+            raw: 'Janna grants the target allied champion,  turret, or herself a  shield for 5 seconds, decaying after 1.25 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 5,
@@ -459,6 +461,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While the shield holds, the target gains  bonus attack damage.',
         descriptionHTML:
@@ -539,7 +542,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Janna unleashes a blast that  knocks back all nearby enemies to up to 875 units over 0.5 seconds based on their proximity, though not through terrain.',
+            raw: 'Janna unleashes a blast that  knocks back all nearby enemies to up to 875 units over 0.5 seconds based on their proximity, though not through terrain.',
             values: 8,
             user: 'none',
             units: '',
@@ -552,6 +555,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Janna also  channels for up to 3 seconds,  healing nearby allies every 0.25 seconds.',
         descriptionHTML:

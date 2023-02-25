@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Draw a Bead.png',
+        icon: '/wiki/images/Draw_a_Bead.png',
         description:
           "Innate: Tristana's basic attacks,  Explosive Charge and  Buster Shot gain  0 − 136 (based on level) bonus range, for a total of 525 − 661 (based on level).",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Tristana's basic attacks,  Explosive Charge and  Buster Shot gain  0 − 136 (based on level) bonus range, for a total of 525 − 661 (based on level).",
+            raw: "Tristana's basic attacks,  Explosive Charge and  Buster Shot gain  0 − 136 (based on level) bonus range, for a total of 525 − 661 (based on level).",
             values: [
               0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120,
               128, 136,
@@ -75,7 +75,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rapid Fire.png',
+        icon: '/wiki/images/Rapid_Fire.png',
         description:
           'Active: Tristana empowers her cannon, gaining  bonus attack speed for 7 seconds.',
         descriptionHTML:
@@ -84,7 +84,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Tristana empowers her cannon, gaining  bonus attack speed for 7 seconds.',
+            raw: 'Tristana empowers her cannon, gaining  bonus attack speed for 7 seconds.',
             increasedStat: 'bonus_ad',
             values: 7,
             units: '',
@@ -150,7 +150,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rocket Jump.png',
+        icon: '/wiki/images/Rocket_Jump.png',
         description:
           'Active: Tristana  jumps to the target location. Upon landing, she deals magic damage to nearby enemies and  slows them by 60% for a duration.',
         descriptionHTML:
@@ -217,6 +217,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Scoring an enemy  champion  takedown or detonating  Explosive Charge at maximum stacks on a  champion will reset Rocket Jump's  cooldown.",
         descriptionHTML:
@@ -226,6 +227,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Tristana can cast any of her abilities during the dash. Rocket Jump will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -312,7 +314,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Explosive Charge.png',
+        icon: '/wiki/images/Explosive_Charge.png',
         description:
           'Active: Tristana tosses an explosive charge at the target enemy that attaches to them for 4 seconds. The charge then detonates, dealing physical damage to nearby enemies. Explosive Charge can target and damage  turrets, and explodes in a larger radius on a turret.',
         descriptionHTML:
@@ -321,7 +323,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Tristana tosses an explosive charge at the target enemy that attaches to them for 4 seconds',
+            raw: 'Tristana tosses an explosive charge at the target enemy that attaches to them for 4 seconds',
             values: 4,
             user: 'none',
             units: '',
@@ -370,15 +372,20 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Tristana's basic attacks  on-hit and abilities against the target increase Explosive Charge's damage by 30%, stacking up to 4 times for a maximum 120% increase, upon which the charge also detonates instantly.The charge's total damage is additionally increased by 0% − 33.3% (based on critical strike chance).",
         descriptionHTML:
           '<b>Tristana\'s</b> <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> and <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> against the target increase <i>Explosive Charge\'s</i> damage by 30%, <a href="/wiki/Stack" title="Stack">stacking</a> up to 4 times for a maximum 120% increase, upon which the charge also detonates instantly.<br>The charge\'s <b>total</b> damage is additionally increased by <span style="color: #E56013; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="critical strike chance" data-displayformula="0.333%*critical strike chance, capped at 33.3% increase" data-bot_values="0;3.33;6.66;9.99;13.32;16.65;19.98;23.31;26.64;29.97;33.3" data-top_values="0;10;20;30;40;50;60;70;80;90;100" data-bot_key="%" data-top_key="%">0% − 33.<small>3</small>% (based on critical strike chance)</span></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: "Tristana's basic attacks  on-hit and abilities against the target increase Explosive Charge's damage by 30%, stacking up to 4 times for a maximum 120% increase, upon which the charge also detonates instantly.The charge's total damage is additionally increased by 0% − 33.3% (based on critical strike chance).",
+            min: 0,
+            max: 4,
+            description:
+              "Tristana's basic attacks  on-hit and abilities against the target increase Explosive Charge's damage by 30%, stacking up to 4 times for a maximum 120% increase, upon which the charge also detonates instantly.The charge's total damage is additionally increased by 0% − 33.3% (based on critical strike chance).",
             values: 3,
             valuesIsPercent: true,
             basedOn: 'critical strike chance',
@@ -432,6 +439,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If  Buster Shot is used to apply the last stack, the detonation will instead be delayed until the end of the  knock back or the 4 seconds expire.',
         descriptionHTML:
@@ -456,6 +464,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Tristana will attempt to basic attack the target afterwards.',
         descriptionHTML:
@@ -504,7 +513,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Buster Shot.png',
+        icon: '/wiki/images/Buster_Shot.png',
         description:
           'Active: Tristana fires a massive cannonball at the target enemy that deals magic damage. They and surrounding enemies are also  knocked back and  stunned for up-to 0.75 seconds, during which they are  revealed.',
         descriptionHTML:

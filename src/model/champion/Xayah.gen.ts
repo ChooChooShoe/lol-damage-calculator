@@ -29,7 +29,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Clean Cuts.png',
+        icon: '/wiki/images/Clean_Cuts.png',
         description:
           'Innate: Feathers shot by Xayah will linger in the ground at maximum range for 6 seconds.',
         descriptionHTML:
@@ -38,7 +38,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Feathers shot by Xayah will linger in the ground at maximum range for 6 seconds.',
+            raw: 'Feathers shot by Xayah will linger in the ground at maximum range for 6 seconds.',
             values: 6,
             user: 'none',
             units: '',
@@ -51,6 +51,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate: Xayah's ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times. Xayah's basic attacks are empowered to each consume a stack on-attack to instead shoot a Feather that deals the attack's damage to the primary target and 30 / 40 / 50% (based on level) AD physical damage to other enemies hit, with the secondary damage also  critically striking if the main attack does.",
         descriptionHTML:
@@ -59,13 +60,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Xayah's ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times",
+            raw: "Xayah's ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times",
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              " Xayah's ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times",
+              "Xayah's ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times",
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times',
             pre: "Xayah's ability casts generate 3 stacks of Clean Cuts, lasting for 8 seconds, refreshing on subsequent casts, and stacking up to 5 times",
@@ -92,7 +93,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/ProfileIcon1634 Blazing Feathers.png',
+        icon: '/wiki/images/ProfileIcon1634_Blazing_Feathers.png',
         description:
           "Innate - Lover's Leap: If either Xayah or  Rakan is channeling  Recall, the other may move nearby and channel their own to join alongside them. Both reach base at the time of which the initiator's  Recall completes.",
         descriptionHTML:
@@ -139,7 +140,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Double Daggers.png',
+        icon: '/wiki/images/Double_Daggers.png',
         description:
           'Active: Xayah throws a volley of two Feathers in the target direction that each deal physical damage to enemies hit.',
         descriptionHTML:
@@ -177,6 +178,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Targets hit after the first take 50% reduced damage.',
         descriptionHTML: 'Targets hit after the first take 50% reduced damage.',
         descriptionRatios: [
@@ -264,7 +266,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Deadly Plumage.png',
+        icon: '/wiki/images/Deadly_Plumage.png',
         description:
           'Active: Xayah enters a frenzy for 4 seconds, gaining  bonus attack speed and empowering her basic attacks to strike a second time, dealing 20% damage.',
         descriptionHTML:
@@ -273,7 +275,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Xayah enters a frenzy for 4 seconds, gaining  bonus attack speed and empowering her basic attacks to strike a second time, dealing 20% damage.',
+            raw: 'Xayah enters a frenzy for 4 seconds, gaining  bonus attack speed and empowering her basic attacks to strike a second time, dealing 20% damage.',
             increasedStat: 'bonus_ad',
             values: 4,
             valuesIsPercent: true,
@@ -305,6 +307,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Whenever Xayah hits an enemy  champion with the strike, she gains  30% bonus movement speed for 1.5 seconds.',
         descriptionHTML:
@@ -327,6 +330,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If  Rakan is nearby upon cast, he also becomes empowered, and gains the  bonus movement speed at the same time as Xayah.',
         descriptionHTML:
@@ -425,6 +429,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An enemy takes 100% − 10% (based on previous feathers hit) damage from a Feather.',
         descriptionHTML:
@@ -449,6 +454,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A target hit by at least three Feathers is  rooted for 1.25 seconds.',
         descriptionHTML:
@@ -470,6 +476,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies can be hit by an individual Feather only once per pass.',
         descriptionHTML:
@@ -527,7 +534,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Xayah leaps into the air, becoming  untargetable and  ghosted for 1.5 seconds',
+            raw: 'Xayah leaps into the air, becoming  untargetable and  ghosted for 1.5 seconds',
             damagetype: 'None',
             values: 1,
             units: 'total_ap',
@@ -580,6 +587,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Xayah is unable to basic attack or cast abilities during Featherstorm, but can still move.',
         descriptionHTML:

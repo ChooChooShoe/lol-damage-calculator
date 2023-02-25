@@ -30,12 +30,15 @@ export default {
           '<span class="template_sbc"><b>Innate:</b></span> <b>Irelia</b> generates a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Ionian Fervor</i> for each enemy champion hit by her <a href="/wiki/Champion_ability" title="Champion ability">abilities</a>, or if she hits at least one non-champion, lasting for 6 seconds, refreshing on basic attacks and ability hits against enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champions"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span> and large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>, and stacking up to 4 times.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Irelia generates a stack of Ionian Fervor for each enemy champion hit by her abilities, or if she hits at least one non-champion, lasting for 6 seconds, refreshing on basic attacks and ability hits against enemy  champions and large  monsters, and stacking up to 4 times.',
-            increasedStat: 'feastStacks',
+            raw: 'Irelia generates a stack of Ionian Fervor for each enemy champion hit by her abilities, or if she hits at least one non-champion, lasting for 6 seconds, refreshing on basic attacks and ability hits against enemy  champions and large  monsters, and stacking up to 4 times.',
+            min: 0,
+            max: 4,
+            description:
+              'Irelia generates a stack of Ionian Fervor for each enemy champion hit by her abilities, or if she hits at least one non-champion, lasting for 6 seconds, refreshing on basic attacks and ability hits against enemy  champions and large  monsters, and stacking up to 4 times.',
             values: 6,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'generates a stack of Ionian Fervor for each enemy champion hit by her abilities, or if she hits at least one non-champion, lasting for 6 seconds, refreshing on basic attacks and ability hits against enemy  champions and large  monsters, and stacking up to 4 times.',
             pre: 'Irelia generates a stack of Ionian Fervor for each enemy champion hit by her abilities, or if she hits at least one non-champion, lasting for 6 seconds, refreshing on basic attacks and ability hits against enemy  champions and large  monsters, and stacking up to 4 times.',
@@ -45,21 +48,24 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Ionian Fervor.png',
+        icon: '/wiki/images/Ionian_Fervor.png',
         description:
           "Ionian Fervor: For each stack, Irelia gains 7.5% − 20% (based on level)  bonus attack speed, up to a maximum of 30% − 80% (based on level). At maximum stacks, Irelia's basic attacks are empowered to deal 10 − 61 (based on level) (+ 20% bonus AD) bonus magic damage  on-hit.",
         descriptionHTML:
           '<span class="template_sbc"><b>Ionian Fervor:</b></span> For each stack, <b>Irelia</b> gains <span style="color:orangered; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="7.5;13.75;20" data-top_values="1;7;13" data-bot_key="%">7.<small>5</small>% − 20% (based on level)</span> <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>bonus</b> attack speed</span></span>, up to a maximum of <span style="color:orangered; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="30;55;80" data-top_values="1;7;13" data-bot_key="%">30% − 80% (based on level)</span></span>. At maximum stacks, <b>Irelia\'s</b> <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> are empowered to deal <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="10;" data-finish="61;" data-bot_values="10;13;16;19;22;25;28;31;34;37;40;43;46;49;52;55;58;61" data-top_values="">10 − 61 (based on level)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;20% <b>bonus</b> AD)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Ionian Fervor:',
-            raw: ' For each stack, Irelia gains 7.5% − 20% (based on level)  bonus attack speed, up to a maximum of 30% − 80% (based on level)',
-            increasedStat: 'bonus_ad',
+            raw: 'For each stack, Irelia gains 7.5% − 20% (based on level)  bonus attack speed, up to a maximum of 30% − 80% (based on level)',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Irelia gains 7.5% − 20% (based on level)  bonus attack speed, up to a maximum of 30% − 80% (based on level)',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
-            units: '',
+            units: 'bonus_ad',
             unitsText: 'bonus attack speed, up to a maximum of 30% − 80%',
             pre: 'For each stack, Irelia gains 7.5% − 20%',
             post: 'bonus attack speed, up to a maximum of 30% − 80%',
@@ -97,7 +103,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Bladesurge 2.png',
+        icon: '/wiki/images/Bladesurge_2.png',
         description:
           "Innate - Unsteady: Enemy  champions and large  monsters hit by  Flawless Duet and  Vanguard's Edge's initial barrage are marked as Unsteady for 5 seconds. The mark can be consumed by  Bladesurge.",
         descriptionHTML:
@@ -106,7 +112,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Unsteady:',
-            raw: " Enemy  champions and large  monsters hit by  Flawless Duet and  Vanguard's Edge's initial barrage are marked as Unsteady for 5 seconds",
+            raw: "Enemy  champions and large  monsters hit by  Flawless Duet and  Vanguard's Edge's initial barrage are marked as Unsteady for 5 seconds",
             damagetype: 'None',
             values: 5,
             units: 'kindredMarks',
@@ -164,7 +170,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Irelia  dashes 100 units through the target enemy's location, and upon collision or dash completion, she deals physical damage, applies  on-hit effects, and  heals herself",
+            raw: "Irelia  dashes 100 units through the target enemy's location, and upon collision or dash completion, she deals physical damage, applies  on-hit effects, and  heals herself",
             healType: 'PhysicalVamp',
             values: 1,
             units: 'total_ap',
@@ -238,6 +244,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Bladesurge's  current cooldown is reduced to 0.2 seconds upon collision of targets marked as  Unsteady, and is reset if the target dies to or during Bladesurge's dash.",
         descriptionHTML:
@@ -247,6 +254,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Flawless Duet can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Irelia" data-ability="Flawless Duet" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Irelia/LoL#Flawless_Duet" title="Flawless Duet"><img alt="Flawless Duet" src="/wiki/images/Irelia_Flawless_Duet.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Irelia/LoL#Flawless_Duet" title="Irelia/LoL">Flawless Duet</a></span></span> can be cast during the dash.</i>',
@@ -298,7 +306,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Defiant Dance.png',
+        icon: '/wiki/images/Defiant_Dance.png',
         description:
           "Active: Irelia  charges for up to 1.5 seconds, during which she increases Defiant Dance's damage over the first 0.75 seconds of the channel and reduces incoming physical damage by 40% − 70% (based on level) (+ 7% per 100 AP) and incoming magic damage by 20% − 35% (based on level) (+ 3.5% per 100 AP).",
         descriptionHTML:
@@ -307,7 +315,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Irelia  charges for up to 1.5 seconds, during which she increases Defiant Dance's damage over the first 0.75 seconds of the channel and reduces incoming physical damage by 40% − 70% (based on level) (+ 7% per 100 AP) and incoming magic damage by 20% − 35% (based on level) (+ 3.5% per 100 AP).",
+            raw: "Irelia  charges for up to 1.5 seconds, during which she increases Defiant Dance's damage over the first 0.75 seconds of the channel and reduces incoming physical damage by 40% − 70% (based on level) (+ 7% per 100 AP) and incoming magic damage by 20% − 35% (based on level) (+ 3.5% per 100 AP).",
             damagetype: 'Physical',
             values: [],
             valuesIsPercent: true,
@@ -339,6 +347,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Defiant Dance can be recast within the duration, and does so automatically afterwards. Defiant Dance's charge cannot be  interrupted by  crowd control.",
         descriptionHTML:
@@ -348,6 +357,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Irelia swipes her blades in the target direction, dealing physical damage to enemies around her and within a line, increased by 0% − 200% (based on channel time). She also retains the damage reduction for 0.5 seconds.',
         descriptionHTML:
@@ -392,6 +402,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Defiant Dance's recast can be used while affected by  cast-inhibiting crowd control. If  Ionian Fervor would expire during the charge, it will instead refresh every 0.25 seconds for the remaining charge and be retained for 0.5 seconds after the recast is initiated.",
         descriptionHTML:
@@ -447,7 +458,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Flawless Duet.png',
+        icon: '/wiki/images/Flawless_Duet.png',
         description:
           'Active: Irelia sends a blade to the target location for 3.5 seconds. Flawless Duet can be recast after 0.15 seconds while the blade is active, and does so automatically at the end of its duration, though not if she is unable to cast abilities.',
         descriptionHTML:
@@ -456,7 +467,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Irelia sends a blade to the target location for 3.5 seconds',
+            raw: 'Irelia sends a blade to the target location for 3.5 seconds',
             damagetype: 'None',
             values: 3,
             user: 'target',
@@ -469,7 +480,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Irelia Flawless Duet 2.png',
+        icon: '/wiki/images/Irelia_Flawless_Duet_2.png',
         description:
           'Recast: Irelia sends a second blade to the target location, or to her current position if Flawless Duet was recast automatically.',
         descriptionHTML:
@@ -479,6 +490,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once both blades have been placed, they fly toward each other regardless of distance and converge over 0.25 seconds, afterwards dealing magic damage to all enemies within a line between them and  stunning them for 0.75 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -516,6 +528,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Flawless Duet's recast can be used during  Bladesurge and the cast time of  Vanguard's Edge. Each of the blades' travel times are 0.264 seconds. Flawless Duet will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -590,7 +603,7 @@ export default {
         ],
       },
       {
-        icon: "/wiki/images/Vanguard's Edge.png",
+        icon: "/wiki/images/Vanguard's_Edge.png",
         description:
           'Active: Irelia launches a barrage of blades in the target direction, expanding outward upon hitting an enemy champion, dealing magic damage to all enemies hit and  revealing them for 1 second.',
         descriptionHTML:
@@ -599,7 +612,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Irelia launches a barrage of blades in the target direction, expanding outward upon hitting an enemy champion, dealing magic damage to all enemies hit and  revealing them for 1 second.',
+            raw: 'Irelia launches a barrage of blades in the target direction, expanding outward upon hitting an enemy champion, dealing magic damage to all enemies hit and  revealing them for 1 second.',
             damagetype: 'Magic',
             values: 1,
             user: 'target',
@@ -641,6 +654,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After expanding, the blades drop on the ground, knocking all enemy units away from them, though not rendering them  airborne, and forming a spade-shaped perimeter around the enemy champion hit for 2.5 seconds that grants  sight of its surroundings. Enemies that pass through the blades for the first time are dealt the same magic damage and are  slowed by 90% for 1.5 seconds.',
         descriptionHTML:
@@ -674,6 +688,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The perimeter will point at the same angle Irelia casted it from, but based on the target's center.",
         descriptionHTML:

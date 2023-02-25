@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Night Hunter.png',
+        icon: '/wiki/images/Night_Hunter.png',
         description:
           'Innate: Vayne gains  30 bonus movement speed while facing a nearby  visible enemy champion.\n Final Hour Bonus: The bonus movement speed is tripled to 90.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Vayne gains  30 bonus movement speed while facing a nearby  visible enemy champion.\n Final Hour Bonus: The bonus movement speed is tripled to 90.',
+            raw: 'Vayne gains  30 bonus movement speed while facing a nearby  visible enemy champion.\n Final Hour Bonus: The bonus movement speed is tripled to 90.',
             values: 3,
             user: 'none',
             units: '',
@@ -87,7 +87,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Vayne  dashes a fixed distance in the target direction, though not through terrain, and empowers her next basic attack within 7 seconds to deal bonus physical damage.',
+            raw: 'Vayne  dashes a fixed distance in the target direction, though not through terrain, and empowers her next basic attack within 7 seconds to deal bonus physical damage.',
             damagetype: 'Physical',
             values: 7,
             user: 'target',
@@ -120,6 +120,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Tumble  resets Vayne's basic attack timer.",
         descriptionHTML:
           '<i>Tumble <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Vayne\'s</b> basic attack timer.</i>',
@@ -156,7 +157,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Silver Bolts.png',
+        icon: '/wiki/images/Silver_Bolts.png',
         description:
           "Passive: Vayne's basic attacks  on-hit and  Condemn apply a stack of Silver Bolts for 3.5 seconds, refreshing on subsequent applications, expiring upon attacking a new enemy, and stacking up to 3 times.",
         descriptionHTML:
@@ -165,11 +166,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Vayne's basic attacks  on-hit and  Condemn apply a stack of Silver Bolts for 3.5 seconds, refreshing on subsequent applications, expiring upon attacking a new enemy, and stacking up to 3 times.",
+            raw: "Vayne's basic attacks  on-hit and  Condemn apply a stack of Silver Bolts for 3.5 seconds, refreshing on subsequent applications, expiring upon attacking a new enemy, and stacking up to 3 times.",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Vayne's basic attacks  on-hit and  Condemn apply a stack of Silver Bolts for 3.5 seconds, refreshing on subsequent applications, expiring upon attacking a new enemy, and stacking up to 3 times.",
+              "Vayne's basic attacks  on-hit and  Condemn apply a stack of Silver Bolts for 3.5 seconds, refreshing on subsequent applications, expiring upon attacking a new enemy, and stacking up to 3 times.",
             values: 3,
             units: 'total_ap',
             unitsText:
@@ -181,6 +182,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The third stack consumes them all to deal  bonus true damage, with a minimum threshold. This damage is capped at 200 against  monsters.',
         descriptionHTML:
@@ -284,7 +286,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Vayne fires a heavy bolt at the target enemy that deals physical damage and  knocks them back 475 units, though not through terrain.',
+            raw: 'Vayne fires a heavy bolt at the target enemy that deals physical damage and  knocks them back 475 units, though not through terrain.',
             damagetype: 'Physical',
             values: 4,
             user: 'none',
@@ -326,6 +328,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target collides with terrain, they take  bonus physical damage and become  stunned for 1.5 seconds.',
         descriptionHTML:
@@ -413,7 +416,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Final Hour.png',
+        icon: '/wiki/images/Final_Hour.png',
         description:
           "Active: Vayne equips her crossbow, gaining  bonus attack damage and tripling  Night Hunter's bonus for a duration.",
         descriptionHTML:
@@ -456,6 +459,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally,  Tumble becomes empowered with a reduced  cooldown, and grants Vayne  invisibility for 1 second. Attacking or casting  Condemn breaks the stealth immediately.',
         descriptionHTML:
@@ -495,6 +499,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Scoring an enemy champion  takedown within 3 seconds of damaging them will extend Final Hour's duration by 4 seconds, up to its original duration.",
         descriptionHTML:

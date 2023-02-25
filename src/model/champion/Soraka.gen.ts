@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Soraka gains  70% bonus movement speed while facing nearby allied  champions that are below 40% of their maximum health.',
+            raw: 'Soraka gains  70% bonus movement speed while facing nearby allied  champions that are below 40% of their maximum health.',
             healType: 'BonusHealth',
             values: 7,
             valuesIsPercent: true,
@@ -90,7 +90,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Soraka calls down a star upon the target location that grants  sight of the area before landing after 0.25 − 1 (based on target range) seconds, dealing magic damage to enemies hit and  slowing them by 30% for 1.5 seconds.',
+            raw: 'Soraka calls down a star upon the target location that grants  sight of the area before landing after 0.25 − 1 (based on target range) seconds, dealing magic damage to enemies hit and  slowing them by 30% for 1.5 seconds.',
             values: [0, 1],
             basedOn: 'target range',
             user: 'none',
@@ -133,6 +133,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If this hits at least one enemy  champion, the star dust returns to Soraka to grant her Rejuvenation for 2.5 seconds. While Soraka has Rejuvenation,  Astral Infusion will also grant the effects of Rejuvenation to the target ally for the same duration.',
         descriptionHTML:
@@ -154,6 +155,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Rejuvenation: The target  heals every 0.5 seconds and gains  bonus movement speed that decays over the duration.',
         descriptionHTML:
@@ -244,7 +246,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Astral Infusion.png',
+        icon: '/wiki/images/Astral_Infusion.png',
         description: 'Active: Soraka  heals the target allied champion.',
         descriptionHTML:
           '<span class="template_sbc"><b>Active:</b></span> <b>Soraka</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> the target allied champion.',
@@ -281,6 +283,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If cast while under  Rejuvenation, the health cost will be reduced by a percentage.',
         descriptionHTML:
@@ -309,6 +312,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Astral Infusion cannot be cast if Soraka is  below 5% of her maximum health.',
         descriptionHTML:
@@ -416,6 +420,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Afterwards, the zone erupts to deal the same damage to enemy champions within and  root them for a duration.',
         descriptionHTML:
@@ -511,7 +516,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Soraka calls upon the stars,  healing herself and all allied champions, increased by 50% on targets below 40% of their maximum health.',
+            raw: 'Soraka calls upon the stars,  healing herself and all allied champions, increased by 50% on targets below 40% of their maximum health.',
             healType: 'OutgoingHeals',
             values: 5,
             valuesIsPercent: true,

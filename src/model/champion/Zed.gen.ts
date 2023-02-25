@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Contempt for the Weak.png',
+        icon: '/wiki/images/Contempt_for_the_Weak.png',
         description:
           "Innate: Zed's basic attacks against targets below 50% maximum health are empowered to deal 6 / 8 / 10% (based on level) of the target's maximum health as bonus magic damage.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Zed's basic attacks against targets below 50% maximum health are empowered to deal 6 / 8 / 10% (based on level) of the target's maximum health as bonus magic damage.",
+            raw: "Zed's basic attacks against targets below 50% maximum health are empowered to deal 6 / 8 / 10% (based on level) of the target's maximum health as bonus magic damage.",
             healType: 'OutgoingHeals',
             values: [],
             valuesIsPercent: true,
@@ -49,6 +49,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Against  monsters, Contempt for the Weak deals 200% damage, capped at 300.',
         descriptionHTML:
@@ -71,6 +72,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Contempt for the Weak cannot occur on the same  champion more than once every few seconds.',
         descriptionHTML:
@@ -117,7 +119,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Razor Shuriken.png',
+        icon: '/wiki/images/Razor_Shuriken.png',
         description:
           'Active: Zed throws a shuriken in the target direction that deals physical damage to enemies hit, reduced to 60% against targets beyond the first.',
         descriptionHTML:
@@ -126,7 +128,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Zed throws a shuriken in the target direction that deals physical damage to enemies hit, reduced to 60% against targets beyond the first.',
+            raw: 'Zed throws a shuriken in the target direction that deals physical damage to enemies hit, reduced to 60% against targets beyond the first.',
             values: 6,
             valuesIsPercent: true,
             user: 'none',
@@ -235,7 +237,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Living Shadow.png',
+        icon: '/wiki/images/Living_Shadow.png',
         description:
           'Active: Zed creates a  Shadow that dashes to the target location and remains there for 5.25 seconds, being able to mimic  Razor Shuriken and  Shadow Slash regardless of range. Living Shadow can be recast while within range of the Shadow.',
         descriptionHTML:
@@ -244,7 +246,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Zed creates a  Shadow that dashes to the target location and remains there for 5.25 seconds, being able to mimic  Razor Shuriken and  Shadow Slash regardless of range',
+            raw: 'Zed creates a  Shadow that dashes to the target location and remains there for 5.25 seconds, being able to mimic  Razor Shuriken and  Shadow Slash regardless of range',
             damagetype: 'None',
             values: 5,
             user: 'target',
@@ -258,7 +260,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Living Shadow 2.png',
+        icon: '/wiki/images/Living_Shadow_2.png',
         description:
           'Recast: Zed and the  Shadow  blink to swap places. If Living Shadow was recast while the Shadow is dashing, the recast will instead occur once it has been placed.',
         descriptionHTML:
@@ -268,6 +270,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If an ability is cast while the Shadow is dashing, it will cast that ability once it has been placed. See Pets for more details about Shadows. Living Shadow will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -313,7 +316,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shadow Slash.png',
+        icon: '/wiki/images/Shadow_Slash.png',
         description:
           'Active: Zed slashes to deal physical damage to nearby enemies.',
         descriptionHTML:
@@ -351,6 +354,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies hit by a  Shadow's slash are  slowed for 1.5 seconds, with multiple slashes dealing no additional damage but the slow's effectiveness being increased by 50%.",
         descriptionHTML:
@@ -391,6 +395,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Living Shadow's  current cooldown is reduced by 2 seconds for each enemy  champion hit by Zed's slash.",
         descriptionHTML:
@@ -449,7 +454,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Death Mark.png',
+        icon: '/wiki/images/Death_Mark.png',
         description:
           'Active: Zed becomes  untargetable and, after 0.6 seconds, he  dashes 125 units through the target enemy champion over 0.35 seconds. Afterwards, he becomes targetable again, renders them Marked for Death for 3 seconds, and gains  ghosting for the same duration.',
         descriptionHTML:
@@ -471,6 +476,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Zed also spawns a  Shadow at his casting position for 9 seconds which is able to mimic  Razor Shuriken and  Shadow Slash regardless of range. Death Mark can be recast after 0.5 seconds of his reappearance while the  Shadow is active, though not in the last 1.25 seconds of its duration.',
         descriptionHTML:
@@ -492,6 +498,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Marked for Death: Zed stores a portion of all pre-mitigation physical damage and magic damage he and his  Shadows deal to the target, detonating at the end of the duration to deal physical damage.',
         descriptionHTML:
@@ -530,7 +537,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Death Mark 2.png',
+        icon: '/wiki/images/Death_Mark_2.png',
         description: 'Recast: Zed and the  Shadow  blink to swap places.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Zed</b> and the <a href="https://static.wikia.nocookie.net/leagueoflegends/images/2/25/Zed%27s_Shadow.png/revision/latest?cb=20180818091903" class="image"><img alt="Zed\'s Shadow.png" src="/wiki/images/Zed%27s_Shadow.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a> <i>Shadow</i> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blink"><a href="/wiki/Blink" title="Blink"><img alt="Flash.png" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blink" title="Blink">blink</a></span> to swap places.',
@@ -539,6 +546,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target dies or is 1950 or more units away before the dash begins, Death Mark is cancelled, goes on a  0.5-second cooldown, and Zed reappears at the cast location. The  Shadow spawned also disappears.',
         descriptionHTML:

@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Hitman and the Seer.png',
+        icon: '/wiki/images/The_Hitman_and_the_Seer.png',
         description:
           'Innate: Aphelios has access to an arsenal of 5 Moonstone Weapons, created by his sister Alune. He equips two weapons at any one time, one as his main weapon and one as his off-hand. Each weapon has a unique basic attack and passive effect.',
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' Aphelios has access to an arsenal of 5 Moonstone Weapons, created by his sister Alune',
+            raw: 'Aphelios has access to an arsenal of 5 Moonstone Weapons, created by his sister Alune',
             damagetype: 'None',
             values: 5,
             units: 'total_ap',
@@ -46,6 +46,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Aphelios begins the game with  Calibrum as his main weapon and  Severum in his off-hand, with  Gravitum,  Infernum, and  Crescendum queued in reserve. The queue order can be rearranged based on weapon usage.',
         descriptionHTML:
@@ -55,7 +56,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/The Hitman and the Seer 2.png',
+        icon: '/wiki/images/The_Hitman_and_the_Seer_2.png',
         description:
           'Innate - Moonlight: Weapons spawn with 50 Moonlight for ammunition, which is consumed on basic attacks on-attack or to cast his  abilities. Abilities that cause Aphelios to attack do not cost additional Moonlight on top of their ability cost. Once his main weapon is exhausted of Moonlight, it is moved to the end of the queue and Aphelios assembles his next available weapon over 1 second to equip it from his reserve, with its  ability being placed on a 1.5-second  cooldown before that time. Aphelios cannot cast  Phase during the assembly.',
         descriptionHTML:
@@ -64,7 +65,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Moonlight:',
-            raw: ' Weapons spawn with 50 Moonlight for ammunition, which is consumed on basic attacks on-attack or to cast his  abilities',
+            raw: 'Weapons spawn with 50 Moonlight for ammunition, which is consumed on basic attacks on-attack or to cast his  abilities',
             damagetype: 'None',
             values: 5,
             units: 'total_ad',
@@ -88,6 +89,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - Weapon Master: Aphelios cannot improve his abilities with skill points. He starts the game with  Phase and gains access to  abilities at level 2 and  Moonlight Vigil at level 6, with the latter improving automatically at levels 11 and 16. Instead, Aphelios may spend his skill points to gain  bonus attack damage,  bonus attack speed or  lethality.',
         descriptionHTML:
@@ -114,9 +116,9 @@ export default {
           },
           {
             name: 'Bonus Attack Speed:',
-            values: '7.5 / 15 / 22.5 / 30 / 37.5 / 45%',
+            values: '9 / 18 / 27 / 36 / 45 / 54%',
             valuesHTML:
-              '<span style="color:orangered; white-space:normal">7.<small>5</small> / 15 / 22.<small>5</small> / 30 / 37.<small>5</small> / 45%</span>',
+              '<span style="color:orangered; white-space:normal">9 / 18 / 27 / 36 / 45 / 54%</span>',
           },
           {
             name: 'Lethality:',
@@ -140,13 +142,13 @@ export default {
           {
             effectType: 'Unique',
             name: 'Bonus Attack Speed:',
-            raw: '7.5 / 15 / 22.5 / 30 / 37.5 / 45%',
-            values: [7.5, 15, 22.5, 30, 37.5, 45],
+            raw: '9 / 18 / 27 / 36 / 45 / 54%',
+            values: [9, 18, 27, 36, 45, 54],
             valuesIsPercent: true,
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '7.5 / 15 / 22.5 / 30 / 37.5 / 45%',
+            pre: '9 / 18 / 27 / 36 / 45 / 54%',
           },
           {
             effectType: 'Unique',
@@ -225,6 +227,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The empowered attack will consume the marks from all targets, dealing 15 (+ 20% bonus AD) bonus physical damage to the main target for each mark consumed. If Calibrum is the current off-hand weapon, the main weapon is used for the attack instead.',
         descriptionHTML:
@@ -305,6 +308,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Healing from Severum in excess of Aphelios'   maximum health is converted into a  shield for an amount of up to 10 − 140 (based on level) (+ 6% maximum health), lingering for up to 30 seconds.",
         descriptionHTML:
@@ -458,6 +462,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Critical strikes also apply to damage dealt to secondary targets and instead spray 6 missiles in a 50% wider cone that deals  critical damage.',
         descriptionHTML:
@@ -516,7 +521,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Crescendum 2.png',
+        icon: '/wiki/images/Crescendum_2.png',
         description:
           'Whenever Aphelios casts an ability that would require him to throw Crescendum, he instead fires a spectral Chakram at the target that similarly returns to him. Aphelios accumulates the Chakrams he catches, up to 20, which last for 5 seconds or until Crescendum is depleted of Moonlight. Attacks with Crescendum against  champions will refresh the duration of Chakrams.',
         descriptionHTML:
@@ -539,6 +544,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Basic attacks with Crescendum are empowered to deal 0% − 138.5% (based on number of Chakrams) AD bonus physical damage and have a 10.67% wind up percentage, decreased to 6.67% when  critically striking. The bonus damage from Chakrams is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -578,7 +584,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Weapons of the Faithful.png',
+        icon: '/wiki/images/Weapons_of_the_Faithful.png',
         description:
           "The active effect of Aphelios'  varies based on his current main weapon.",
         descriptionHTML:
@@ -588,6 +594,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'The individual actives do not share a cooldown.',
         descriptionHTML: 'The individual actives do not share a cooldown.',
         descriptionRatios: [],
@@ -637,7 +644,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Aphelios fires a bolt of energy in the target direction that deals 60 − 160 (based on level) (+ 42% − 60% (based on level) bonus AD) (+ 100% AP) physical damage to the first enemy hit.',
+            raw: 'Aphelios fires a bolt of energy in the target direction that deals 60 − 160 (based on level) (+ 42% − 60% (based on level) bonus AD) (+ 100% AP) physical damage to the first enemy hit.',
             damagetype: 'Physical',
             values: [
               60, 65.88, 71.76, 77.65, 83.53, 89.41, 95.29, 101.18, 107.06,
@@ -719,7 +726,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Aphelios enters an onslaught for 1.75 seconds, gaining  20% (+ 10% per 100 AP) bonus movement speed and automatically performing up to 6 (+ 2 per 100% bonus attack speed) attacks over the duration against the nearest  visible enemy, prioritizing enemy  champions.',
+            raw: 'Aphelios enters an onslaught for 1.75 seconds, gaining  20% (+ 10% per 100 AP) bonus movement speed and automatically performing up to 6 (+ 2 per 100% bonus attack speed) attacks over the duration against the nearest  visible enemy, prioritizing enemy  champions.',
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -750,6 +757,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Attacks alternate between Severum and his current off-hand weapon, each dealing 10 − 40 (based on level) (+ 20% − 35% (based on level) bonus AD) physical damage, affected by  critical strike modifiers, and applying  on-hit damage at 25% effectiveness.',
         descriptionHTML:
@@ -787,6 +795,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Aphelios cannot cast  Phase nor  Moonlight Vigil during Onslaught, but he is still able to move. He cannot perform attacks while unable to declare basic attacks.',
         descriptionHTML:
@@ -831,7 +840,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Binding Eclipse.png',
+        icon: '/wiki/images/Binding_Eclipse.png',
         description:
           "Gravitum - Active: Aphelios expunges all enemies with Gravitum's  slow debuff, dealing 50 − 110 (based on level) (+ 26% − 35% (based on level) bonus AD) (+ 70% AP) magic damage and  rooting them for 1 second.",
         descriptionHTML:
@@ -840,7 +849,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Gravitum - Active:',
-            raw: " Aphelios expunges all enemies with Gravitum's  slow debuff, dealing 50 − 110 (based on level) (+ 26% − 35% (based on level) bonus AD) (+ 70% AP) magic damage and  rooting them for 1 second.",
+            raw: "Aphelios expunges all enemies with Gravitum's  slow debuff, dealing 50 − 110 (based on level) (+ 26% − 35% (based on level) bonus AD) (+ 70% AP) magic damage and  rooting them for 1 second.",
             damagetype: 'Magic',
             values: [
               50, 53.53, 57.06, 60.59, 64.12, 67.65, 71.18, 74.71, 78.24, 81.76,
@@ -876,6 +885,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Binding Eclipse also empowers in-flight Gravitum projectiles to instantly affect their targets upon applying the slow successively.',
         descriptionHTML:
@@ -929,7 +939,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Aphelios unleashes a wave of energy in a cone in the target direction, dealing 25 − 65 (based on level) (+ 56% − 80% (based on level) bonus AD) (+ 70% AP) physical damage to all enemies hit and locking onto each of them',
+            raw: 'Aphelios unleashes a wave of energy in a cone in the target direction, dealing 25 − 65 (based on level) (+ 56% − 80% (based on level) bonus AD) (+ 70% AP) physical damage to all enemies hit and locking onto each of them',
             damagetype: 'Physical',
             values: [
               25, 27.35, 29.71, 32.06, 34.41, 36.76, 39.12, 41.47, 43.82, 46.18,
@@ -1036,6 +1046,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The sentry grants  sight of its surroundings and autonomously attacks the nearest visible enemy in range with a replica of Aphelios'  current off-hand weapon, dealing 31 − 100 (based on level) (+ 40% − 60% (based on level) bonus AD) (+ 50% AP) physical damage per hit. The sentry can  critically strike and benefits from both Aphelios'  attack speed and  critical strike chance at 100% effectiveness.",
         descriptionHTML:
@@ -1091,6 +1102,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'See Pets for more details about the sentry. Sentry will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -1175,6 +1187,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Active: Aphelios receives a text prompt of the weapon Alune will create next.',
         descriptionHTML:
@@ -1218,7 +1231,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Moonlight Vigil.png',
+        icon: '/wiki/images/Moonlight_Vigil.png',
         description:
           'Active: Aphelios casts forth a lunar spotlight in the target direction that briefly grants  sight of the area along its path and stops upon illuminating an enemy  champion. Alune smites the area centered on the illuminated target, dealing 125 / 175 / 225 (based on level) (+ 20% bonus AD) (+ 100% AP) physical damage to enemy champions struck and locking-on to each target hit, as well as granting  sight of the area for 2 seconds.',
         descriptionHTML:
@@ -1258,6 +1271,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "After 0.3 seconds of the illumination, attacks based on Aphelios'  current main weapon will launch from the sky against each locked-on target, dealing 100% AD physical damage and applying  on-hit effects at 100% effectiveness. These attacks can  critically strike for (20% +  35%) AD bonus physical damage. There is no  range limit for locked-on targets.\n Calibrum: Applies an empowered mark that deals 50 / 80 / 110 (based on level) bonus physical damage per mark consumed.\n Severum:  Heals Aphelios for 250 / 350 / 450 (based on level) if at least one enemy champion is hit.\n Gravitum: Increases the initial  slow to 99% and empowers  Binding Eclipse to  root targets affected by the enhanced slow for 1.35 seconds.\n Infernum: Deals 50 / 100 / 150 (based on level) (+ 25% bonus AD) bonus physical damage on the initial blast. Attacks splash in a 400 radius instead of a cone, dealing「 90% of that damage. 」「 45 / 90 / 135 (based on level) (+ 22.5% bonus AD) physical damage. 」Enemy champions will take damage from overlapping areas.\n Crescendum: Generates 5 additional spectral Chakrams that return to Aphelios from the first enemy champion hit, for a total of 6, on top of those from other targets hit.",
         descriptionHTML:
@@ -1287,7 +1301,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'There is no  range limit for locked-on targets.\n Calibrum:',
-            raw: ' Applies an empowered mark that deals 50 / 80 / 110 (based on level) bonus physical damage per mark consumed.\n Severum:  Heals Aphelios for 250 / 350 / 450 (based on level) if at least one enemy champion is hit.\n Gravitum: Increases the initial  slow to 99% and empowers  Binding Eclipse to  root targets affected by the enhanced slow for 1.35 seconds.\n Infernum: Deals 50 / 100 / 150 (based on level) (+ 25% bonus AD) bonus physical damage on the initial blast',
+            raw: 'Applies an empowered mark that deals 50 / 80 / 110 (based on level) bonus physical damage per mark consumed.\n Severum:  Heals Aphelios for 250 / 350 / 450 (based on level) if at least one enemy champion is hit.\n Gravitum: Increases the initial  slow to 99% and empowers  Binding Eclipse to  root targets affected by the enhanced slow for 1.35 seconds.\n Infernum: Deals 50 / 100 / 150 (based on level) (+ 25% bonus AD) bonus physical damage on the initial blast',
             healType: 'PhysicalVamp',
             values: [],
             basedOn: 'level',
@@ -1309,7 +1323,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Attacks splash in a 400 radius instead of a cone, dealing「 90% of that damage. 」「 45 / 90 / 135 (based on level) (+ 22.5% bonus AD) physical damage. 」Enemy champions will take damage from overlapping areas.\n Crescendum:',
-            raw: ' Generates 5 additional spectral Chakrams that return to Aphelios from the first enemy champion hit, for a total of 6, on top of those from other targets hit.',
+            raw: 'Generates 5 additional spectral Chakrams that return to Aphelios from the first enemy champion hit, for a total of 6, on top of those from other targets hit.',
             damagetype: 'None',
             values: 5,
             units: 'total_ap',

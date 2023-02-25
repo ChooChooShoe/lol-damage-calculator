@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Shard of the Monolith:',
-            raw: ' Malphite gains increased percentage size equal to 8% of his total armor, capped at 35% increased size at 437.5 armor.',
+            raw: 'Malphite gains increased percentage size equal to 8% of his total armor, capped at 35% increased size at 437.5 armor.',
             increasedStat: 'total_ap',
             values: 8,
             valuesIsPercent: true,
@@ -46,7 +46,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Granite Shield.png',
+        icon: '/wiki/images/Granite_Shield.png',
         description:
           'Innate: Malphite grants himself a  shield for 9% of his maximum health. The shield lasts until it is broken, and refreshes after a few seconds of not taking damage.',
         descriptionHTML:
@@ -55,7 +55,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Malphite grants himself a  shield for 9% of his maximum health',
+            raw: 'Malphite grants himself a  shield for 9% of his maximum health',
             healType: 'BonusHealth',
             values: 9,
             valuesIsPercent: true,
@@ -101,7 +101,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Seismic Shard.png',
+        icon: '/wiki/images/Seismic_Shard.png',
         description:
           'Active: Malphite sends a shard to the target enemy that deals magic damage and  slows them for 3 seconds.',
         descriptionHTML:
@@ -110,7 +110,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Malphite sends a shard to the target enemy that deals magic damage and  slows them for 3 seconds.',
+            raw: 'Malphite sends a shard to the target enemy that deals magic damage and  slows them for 3 seconds.',
             damagetype: 'Magic',
             values: 3,
             user: 'none',
@@ -168,6 +168,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Malphite also gains  bonus movement speed equal to the raw amount the target lost from the slow for the duration.',
         descriptionHTML:
@@ -206,7 +207,7 @@ export default {
     cost: '30 / 35 / 40 / 45 / 50',
     costtype: 'mana',
     cooldown:
-      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts on cast">12 / 11.<small>5</small> / 11 / 10.<small>5</small> / 10</span>',
+      '<span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Starts on cast">10 / 9.<small>5</small> / 9 / 8.<small>5</small> / 8</span>',
     blurb: [
       '<span class="template_sbc"><b>Passive:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Malphite" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Malphite/LoL" title="Malphite"><img alt="Malphite" src="/wiki/images/Malphite_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Malphite/LoL" title="Malphite/LoL">Malphite</a></span></span> gains <span style="white-space:nowrap"><a href="/wiki/Armor" title="Armor"><img alt="Armor icon.png" src="/wiki/images/Armor_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:yellow; white-space:normal"><b>bonus</b> armor</span></span>, tripled while <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Malphite" data-ability="Granite Shield" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Malphite/LoL#Granite_Shield" title="Granite Shield"><img alt="Granite Shield" src="/wiki/images/Malphite_Granite_Shield.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Malphite/LoL#Granite_Shield" title="Malphite/LoL">Granite Shield</a></span></span> is active.',
       '<span class="template_sbc"><b>Active:</b></span> <b>Malphite\'s</b> next basic attack within a few seconds is empowered to gain <span style="white-space:nowrap"><a href="/wiki/Range" title="Range"><img alt="Range icon.png" src="/wiki/images/Range_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>bonus</b> range</span> and deal <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span>.',
@@ -250,7 +251,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Malphite empowers his next basic attack within 6 seconds to gain  50 bonus range and deal  bonus physical damage  on-hit.',
+            raw: 'Malphite empowers his next basic attack within 6 seconds to gain  50 bonus range and deal  bonus physical damage  on-hit.',
             increasedStat: 'bonus_ad',
             values: 6,
             units: '',
@@ -262,16 +263,16 @@ export default {
         leveling: [
           {
             name: 'Bonus Physical Damage:',
-            values: '30 / 45 / 60 / 75 / 90 (+ 20% AP) (+ 10% armor)',
+            values: '30 / 45 / 60 / 75 / 90 (+ 20% AP) (+ 15% armor)',
             valuesHTML:
-              '30 / 45 / 60 / 75 / 90 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;20% AP)</span> <span style="color:yellow; white-space:normal">(+&nbsp;10% armor)</span>',
+              '30 / 45 / 60 / 75 / 90 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;20% AP)</span> <span style="color:yellow; white-space:normal">(+&nbsp;15% armor)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Bonus Physical Damage:',
-            raw: '30 / 45 / 60 / 75 / 90 (+ 20% AP) (+ 10% armor)',
+            raw: '30 / 45 / 60 / 75 / 90 (+ 20% AP) (+ 15% armor)',
             damagetype: 'Physical',
             values: [30, 45, 60, 75, 90],
             user: 'none',
@@ -287,17 +288,18 @@ export default {
                 pre: '+ 20% AP',
               },
               {
-                values: 10,
+                values: 15,
                 valuesIsPercent: true,
                 units: 'total_armor',
                 unitsText: 'armor',
-                pre: '+ 10% armor',
+                pre: '+ 15% armor',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Additionally, Malphite's basic attacks  on-hit for the next 5 seconds are empowered to trigger a cone in the direction of the target that deals physical damage to enemies hit.",
         descriptionHTML:
@@ -319,16 +321,16 @@ export default {
         leveling: [
           {
             name: 'Physical Damage:',
-            values: '15 / 25 / 35 / 45 / 55 (+ 30% AP) (+ 15% armor)',
+            values: '15 / 25 / 35 / 45 / 55 (+ 30% AP) (+ 20% armor)',
             valuesHTML:
-              '15 / 25 / 35 / 45 / 55 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;30% AP)</span> <span style="color:yellow; white-space:normal">(+&nbsp;15% armor)</span>',
+              '15 / 25 / 35 / 45 / 55 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;30% AP)</span> <span style="color:yellow; white-space:normal">(+&nbsp;20% armor)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Physical Damage:',
-            raw: '15 / 25 / 35 / 45 / 55 (+ 30% AP) (+ 15% armor)',
+            raw: '15 / 25 / 35 / 45 / 55 (+ 30% AP) (+ 20% armor)',
             damagetype: 'Physical',
             values: [15, 25, 35, 45, 55],
             user: 'none',
@@ -344,17 +346,18 @@ export default {
                 pre: '+ 30% AP',
               },
               {
-                values: 15,
+                values: 20,
                 valuesIsPercent: true,
                 units: 'total_armor',
                 unitsText: 'armor',
-                pre: '+ 15% armor',
+                pre: '+ 20% armor',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Thunderclap  resets Malphite's basic attack timer.",
         descriptionHTML:
           '<i>Thunderclap <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Malphite\'s</b> basic attack timer.</i>',
@@ -397,7 +400,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ground Slam.png',
+        icon: '/wiki/images/Ground_Slam.png',
         description:
           'Active: Malphite slams the ground beneath him, dealing magic damage to nearby enemies and  crippling them for 3 seconds.',
         descriptionHTML:
@@ -406,7 +409,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Malphite slams the ground beneath him, dealing magic damage to nearby enemies and  crippling them for 3 seconds.',
+            raw: 'Malphite slams the ground beneath him, dealing magic damage to nearby enemies and  crippling them for 3 seconds.',
             damagetype: 'Magic',
             values: 3,
             user: 'none',
@@ -509,7 +512,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Unstoppable Force.png',
+        icon: '/wiki/images/Unstoppable_Force.png',
         description:
           'Active: Malphite  dashes with  displacement immunity to the target location. Upon arrival, he deals magic damage to nearby enemies and  knocks them up for 1.5 seconds.',
         descriptionHTML:
@@ -560,6 +563,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Unstoppable Force will cast at max range if cast beyond that.',
         descriptionHTML:

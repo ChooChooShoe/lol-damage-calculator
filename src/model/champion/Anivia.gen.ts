@@ -32,10 +32,10 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Periodically, upon taking  fatal damage, Anivia enters  resurrection for 6 seconds and restores all of her  health.',
+            raw: 'Periodically, upon taking  fatal damage, Anivia enters  resurrection for 6 seconds and restores all of her  health.',
             healType: 'BonusHealth',
             values: 6,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'upon taking  fatal damage, Anivia enters  resurrection for 6 seconds and restores all of her  health.',
             pre: 'Periodically, upon taking  fatal damage, Anivia enters  resurrection for 6 seconds and restores all of her  health.',
@@ -45,6 +45,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While under resurrection, Anivia is  unable to act and gains -40 − 20 (based on level)  bonus armor and  bonus magic resistance.',
         descriptionHTML:
@@ -70,6 +71,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Anivia remains alive by the end of the duration, she is revived with her current health.',
         descriptionHTML:
@@ -119,7 +121,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Flash Frost.png',
+        icon: '/wiki/images/Flash_Frost.png',
         description:
           "Active: Anivia launches a chunk of ice in the target direction that deals magic damage to enemies hit and  slows them by 20% − 40% (based on  Glacial Storm's Rank) for 3 seconds.",
         descriptionHTML:
@@ -128,7 +130,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Anivia launches a chunk of ice in the target direction that deals magic damage to enemies hit and  slows them by 20% − 40% (based on  Glacial Storm's Rank) for 3 seconds.",
+            raw: "Anivia launches a chunk of ice in the target direction that deals magic damage to enemies hit and  slows them by 20% − 40% (based on  Glacial Storm's Rank) for 3 seconds.",
             damagetype: 'Magic',
             values: 2,
             valuesIsPercent: true,
@@ -172,6 +174,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Flash Frost can be recast while the ice is in flight after its cast time, and does so automatically at maximum range.',
         descriptionHTML:
@@ -181,6 +184,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Anivia shatters the ice, dealing magic damage to nearby enemies and  stunning them for a duration, as well as refreshing the  slow.',
         descriptionHTML:
@@ -367,7 +371,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive:',
-            raw: ' Enemies hit by  Flash Frost or a fully formed  Glacial Storm become Chilled for 3 seconds, refreshing on subsequent hits.',
+            raw: 'Enemies hit by  Flash Frost or a fully formed  Glacial Storm become Chilled for 3 seconds, refreshing on subsequent hits.',
             values: 3,
             user: 'none',
             units: '',
@@ -458,7 +462,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Glacial Storm.png',
+        icon: '/wiki/images/Glacial_Storm.png',
         description:
           'Active: Anivia calls forth a driving rain of ice and hail at the target location, dealing magic damage every 0.5 seconds to enemies within and  slowing them for 1 second, refreshing every 0.5 seconds while they remain inside.',
         descriptionHTML:
@@ -512,6 +516,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The blizzard increases in size over 1.5 seconds. At maximum size, Glacial Storm is empowered to deal 300% damage and increase the effectiveness of its slow by 50%, which also instead lasts 1.5 seconds and refreshes every 0.25 seconds.',
         descriptionHTML:
@@ -590,6 +595,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Glacial Storm can be recast after 1 second, and does so automatically if Anivia is no longer in range or unable to pay the  mana cost, or becomes affected by any form of  interrupting  crowd control.',
         descriptionHTML:
@@ -610,6 +616,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Anivia ends Glacial Storm, dealing one last tick of damage.',
         descriptionHTML:

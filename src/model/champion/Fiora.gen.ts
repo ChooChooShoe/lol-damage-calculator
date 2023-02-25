@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Duelist's Dance.png",
+        icon: "/wiki/images/Duelist's_Dance.png",
         description:
           'Innate: Fiora identifies the Vitals of nearby  visible enemy champions, marked as an arc around them in North-, East-, South- or Westward direction. Vitals take 1.75 seconds to become targetable and linger for 13.25 seconds afterwards while Fiora remains near the target, otherwise the Vital will disappear. After a Vital ends, Fiora identifies a new one on her target.',
         descriptionHTML:
@@ -48,7 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Duelist's Dance 2.png",
+        icon: "/wiki/images/Duelist's_Dance_2.png",
         description:
           "Dealing damage in the direction of a Vital will trigger it to deal  bonus true damage equal to 3% (+ 4% per 100 bonus AD) of target's maximum health,  heal Fiora for 35 − 100 (based on level), and grant her 20 / 30 / 40 / 50% (based on  Grand Challenge's Rank)  bonus movement speed that decays over 1.85 seconds.",
         descriptionHTML:
@@ -141,6 +141,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The stab deals physical damage and applies  on-hit effects at 100% effectiveness.',
         descriptionHTML:
@@ -192,6 +193,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Fiora can cast any of her abilities during the dash. The target does not have to be  visible to be hit by this ability.',
         descriptionHTML:
@@ -251,6 +253,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, over the first 0.6 seconds of the duration, Fiora poises to strike, after which she sends a shock with her sword in a line in the target direction, dealing magic damage to all enemies hit until colliding with an enemy champion.',
         descriptionHTML:
@@ -288,6 +291,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The enemy champion struck is also  slowed and  crippled by 50% for 2 seconds. If Riposte negates at least one hostile  immobilizing effect, Fiora  stuns the target for the same duration instead.',
         descriptionHTML:
@@ -357,7 +361,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Fiora empowers her next two basic attacks on-attack within 4 seconds to gain  25 bonus range and  bonus attack speed.',
+            raw: 'Fiora empowers her next two basic attacks on-attack within 4 seconds to gain  25 bonus range and  bonus attack speed.',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -388,6 +392,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The first attack  slows the target by 30% for 1 second but cannot  critically strike. The second attack will  critically strike for  modified critical damage, including to  structures.',
         descriptionHTML:
@@ -429,6 +434,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Bladework  resets Fiora's basic attack timer.",
         descriptionHTML:
           '<i>Bladework <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Fiora\'s</b> basic attack timer.</i>',
@@ -504,7 +510,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Grand Challenge.png',
+        icon: '/wiki/images/Grand_Challenge.png',
         description:
           "Active: Fiora challenges the target enemy champion for 8 seconds, highlighting all four of their Vitals after a 0.5-second delay. While in effect,  Duelist's Dance does not identify new Vitals on Fiora's target.",
         descriptionHTML:
@@ -513,7 +519,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Fiora challenges the target enemy champion for 8 seconds, highlighting all four of their Vitals after a 0.5-second delay',
+            raw: 'Fiora challenges the target enemy champion for 8 seconds, highlighting all four of their Vitals after a 0.5-second delay',
             values: 8,
             user: 'none',
             units: '',
@@ -526,6 +532,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While near the target, Fiora gains  Duelist's Dance's  bonus movement speed.",
         descriptionHTML:
@@ -535,7 +542,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Grand Challenge 2.png',
+        icon: '/wiki/images/Grand_Challenge_2.png',
         description:
           'If Fiora triggers at least one Vital before the target  dies, or triggers all four, she creates a  Victory Zone at their location for 2 − 5 (based on Vitals hit) seconds, which  heals Fiora and all allies within the area every second.',
         descriptionHTML:
@@ -588,6 +595,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Unlike  Duelist's Dance, the Vitals will continue to linger even if Fiora is not nearby.",
         descriptionHTML:

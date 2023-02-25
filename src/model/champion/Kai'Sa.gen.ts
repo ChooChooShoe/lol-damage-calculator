@@ -27,7 +27,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Second Skin.png',
+        icon: '/wiki/images/Second_Skin.png',
         description:
           "Innate - Living Weapon: Kai'Sa can evolve each of her basic abilities by gaining a set amount of permanent stats from items and stat growth, granting them additional effects. Evolving an ability causes her to enter a 2-second cast time. The upgrade is lost if the stat requirement is no longer met.",
         descriptionHTML:
@@ -38,7 +38,8 @@ export default {
             name: 'Line 2:',
             raw: 'Evolving an ability causes her to enter a 2-second cast time',
             values: 2,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText: 'an ability causes her to enter a 2-second cast time',
             pre: 'Evolving an ability causes her to enter a 2-second cast time',
           },
@@ -47,7 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Kai'Sa Plasma.png",
+        icon: "/wiki/images/Kai'Sa_Plasma.png",
         description:
           "Innate - Plasma: Kai'Sa's basic attacks  on-hit and  Void Seeker apply stacks of Plasma to enemies for 4 seconds, refreshing on subsequent applications and stacking up to 5 times. Basic attacks each apply 1 stack and  Void Seeker applies 2 stacks, increased to 3 if it is  evolved. Her and nearby allies'  immobilizing effects and  polymorphs against enemy  champions will also apply a stack of Plasma.",
         descriptionHTML:
@@ -56,11 +57,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate - Plasma:',
-            raw: " Kai'Sa's basic attacks  on-hit and  Void Seeker apply stacks of Plasma to enemies for 4 seconds, refreshing on subsequent applications and stacking up to 5 times",
+            raw: "Kai'Sa's basic attacks  on-hit and  Void Seeker apply stacks of Plasma to enemies for 4 seconds, refreshing on subsequent applications and stacking up to 5 times",
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              " Kai'Sa's basic attacks  on-hit and  Void Seeker apply stacks of Plasma to enemies for 4 seconds, refreshing on subsequent applications and stacking up to 5 times",
+              "Kai'Sa's basic attacks  on-hit and  Void Seeker apply stacks of Plasma to enemies for 4 seconds, refreshing on subsequent applications and stacking up to 5 times",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -86,6 +87,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Caustic Wounds: Plasma stacks applied by Kai'Sa's basic attacks or  Void Seeker deal 5 − 23 (based on level) (+ 1 − 12 (based on level) per Plasma stack before application) (+ 15% − 25% (based on Plasma stacks before application) AP) bonus magic damage. The fifth stack against a target consumes them all to deal additional bonus magic damage equal to 15% (+ 6% per 100 AP) of the target's missing health, capped at 400 against  monsters.",
         descriptionHTML:
@@ -94,11 +96,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate - Caustic Wounds:',
-            raw: " Plasma stacks applied by Kai'Sa's basic attacks or  Void Seeker deal 5 − 23 (based on level) (+ 1 − 12 (based on level) per Plasma stack before application) (+ 15% − 25% (based on Plasma stacks before application) AP) bonus magic damage",
+            raw: "Plasma stacks applied by Kai'Sa's basic attacks or  Void Seeker deal 5 − 23 (based on level) (+ 1 − 12 (based on level) per Plasma stack before application) (+ 15% − 25% (based on Plasma stacks before application) AP) bonus magic damage",
             min: 0,
             max: 10,
             description:
-              " Plasma stacks applied by Kai'Sa's basic attacks or  Void Seeker deal 5 − 23 (based on level) (+ 1 − 12 (based on level) per Plasma stack before application) (+ 15% − 25% (based on Plasma stacks before application) AP) bonus magic damage",
+              "Plasma stacks applied by Kai'Sa's basic attacks or  Void Seeker deal 5 − 23 (based on level) (+ 1 − 12 (based on level) per Plasma stack before application) (+ 15% − 25% (based on Plasma stacks before application) AP) bonus magic damage",
             values: [
               5, 6.06, 7.12, 8.18, 9.24, 10.29, 11.35, 12.41, 13.47, 14.53,
               15.59, 16.65, 17.71, 18.76, 19.82, 20.88, 21.94, 23,
@@ -194,7 +196,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Icathian Rain.png',
+        icon: '/wiki/images/Icathian_Rain.png',
         description:
           "Active: Kai'Sa releases a swarm of 6 missiles that evenly distributes among nearby  visible enemies, each one hitting their target after 0.4 seconds to deal physical damage.  Minions below  35% health take double damage.",
         descriptionHTML:
@@ -203,7 +205,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Kai'Sa releases a swarm of 6 missiles that evenly distributes among nearby  visible enemies, each one hitting their target after 0.4 seconds to deal physical damage",
+            raw: "Kai'Sa releases a swarm of 6 missiles that evenly distributes among nearby  visible enemies, each one hitting their target after 0.4 seconds to deal physical damage",
             damagetype: 'Physical',
             values: 6,
             user: 'none',
@@ -219,7 +221,7 @@ export default {
             healType: 'BonusHealth',
             values: 3,
             valuesIsPercent: true,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText: 'health take double damage.below  35',
             pre: 'Minions below  35% health take double damage.',
           },
@@ -263,6 +265,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Non-minions take 25% damage from missiles beyond their first.',
         descriptionHTML:
@@ -321,7 +324,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Icathian Rain 2.png',
+        icon: '/wiki/images/Icathian_Rain_2.png',
         description:
           'Evolution: Requires「  100 − 66 (based on level) attack damage from items 」「  100 attack damage from items and stat growth 」to upgrade – Icathian Rain instead fires 12 missiles.',
         descriptionHTML:
@@ -330,7 +333,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Evolution:',
-            raw: ' Requires「  100 − 66 (based on level) attack damage from items 」「  100 attack damage from items and stat growth 」to upgrade – Icathian Rain instead fires 12 missiles.',
+            raw: 'Requires「  100 − 66 (based on level) attack damage from items 」「  100 attack damage from items and stat growth 」to upgrade – Icathian Rain instead fires 12 missiles.',
             damagetype: 'None',
             values: [
               100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70,
@@ -384,6 +387,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'A nearby enemy is required to cast this ability.',
         descriptionHTML:
           '<i>A nearby enemy is required to cast this ability.</i>',
@@ -431,7 +435,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Void Seeker.png',
+        icon: '/wiki/images/Void_Seeker.png',
         description:
           "Active: Kai'Sa fires a void bolt in the target direction that briefly grants  sight around its trajectory as it travels, deals magic damage to the first enemy hit, applies 2 Plasma, and  reveals them for 4 seconds.",
         descriptionHTML:
@@ -440,7 +444,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Kai'Sa fires a void bolt in the target direction that briefly grants  sight around its trajectory as it travels, deals magic damage to the first enemy hit, applies 2 Plasma, and  reveals them for 4 seconds.",
+            raw: "Kai'Sa fires a void bolt in the target direction that briefly grants  sight around its trajectory as it travels, deals magic damage to the first enemy hit, applies 2 Plasma, and  reveals them for 4 seconds.",
             increasedStat: 'total_ap',
             values: 2,
             units: '',
@@ -488,7 +492,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Void Seeker 2.png',
+        icon: '/wiki/images/Void_Seeker_2.png',
         description:
           'Evolution: Requires  100 ability power from items to upgrade – Void Seeker applies 3 Plasma instead and refunds 77% of its  cooldown it hits an enemy  champion.',
         descriptionHTML:
@@ -497,7 +501,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Evolution:',
-            raw: ' Requires  100 ability power from items to upgrade – Void Seeker applies 3 Plasma instead and refunds 77% of its  cooldown it hits an enemy  champion.',
+            raw: 'Requires  100 ability power from items to upgrade – Void Seeker applies 3 Plasma instead and refunds 77% of its  cooldown it hits an enemy  champion.',
             damagetype: 'None',
             values: 1,
             valuesIsPercent: true,
@@ -575,6 +579,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After completing the charge, she gains  bonus attack speed and reduces her basic attack windup percentage by 6.44% for 4 seconds.',
         descriptionHTML:
@@ -615,6 +620,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Supercharge's  current cooldown is reduced by 0.5 seconds on-attack.",
         descriptionHTML:
@@ -624,7 +630,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Supercharge 2.png',
+        icon: '/wiki/images/Supercharge_2.png',
         description:
           'Evolution: Requires「  100% − 70% (based on level) attack speed from items 」「  100% attack speed from items and stat growth 」to upgrade – Supercharge grants  invisibility at the start of the cast time for 0.5 seconds.',
         descriptionHTML:
@@ -633,7 +639,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Evolution:',
-            raw: ' Requires「  100% − 70% (based on level) attack speed from items 」「  100% attack speed from items and stat growth 」to upgrade – Supercharge grants  invisibility at the start of the cast time for 0.5 seconds.',
+            raw: 'Requires「  100% − 70% (based on level) attack speed from items 」「  100% attack speed from items and stat growth 」to upgrade – Supercharge grants  invisibility at the start of the cast time for 0.5 seconds.',
             increasedStat: 'total_ad',
             values: [],
             valuesIsPercent: true,
@@ -682,7 +688,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Killer Instinct.png',
+        icon: '/wiki/images/Killer_Instinct.png',
         description:
           "Active: Kai'Sa grants herself a  shield for 2 seconds and  dashes to a target location near a  visible enemy champion that was affected by Plasma within the last 4 seconds. The shield's duration is refreshed when the dash ends.",
         descriptionHTML:
@@ -691,7 +697,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: " Kai'Sa grants herself a  shield for 2 seconds and  dashes to a target location near a  visible enemy champion that was affected by Plasma within the last 4 seconds",
+            raw: "Kai'Sa grants herself a  shield for 2 seconds and  dashes to a target location near a  visible enemy champion that was affected by Plasma within the last 4 seconds",
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -743,6 +749,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "A nearby enemy champion affected by Plasma is required to cast this ability. Killer Instinct  resets Kai'Sa's basic attack timer. Kai'Sa can cast any of her abilities during the dash.",
         descriptionHTML:

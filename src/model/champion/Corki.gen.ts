@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hextech Munitions.png',
+        icon: '/wiki/images/Hextech_Munitions.png',
         description:
           "Innate - Hextech Shrapnel Shells: Corki's basic attacks are modified to deal 80% AD magic damage and 20% AD physical damage.",
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Hextech Shrapnel Shells:',
-            raw: " Corki's basic attacks are modified to deal 80% AD magic damage and 20% AD physical damage.",
+            raw: "Corki's basic attacks are modified to deal 80% AD magic damage and 20% AD physical damage.",
             damagetype: 'Physical',
             values: 8,
             valuesIsPercent: true,
@@ -48,7 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/The Package.png',
+        icon: '/wiki/images/The_Package.png',
         description:
           'Innate - The Package: After 10:00,  The Package is delivered to both corners of the allied fountain, which can be selected by Corki to pick up after  channeling for 1 second. Upon completion of the channel, Corki gains one cast of  Special Delivery for 60 seconds, replacing  Valkyrie for the duration. While holding the  The Package, Corki gains  40% bonus movement speed out of combat and  ghosting.',
         descriptionHTML:
@@ -57,7 +57,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - The Package:',
-            raw: ' After 10:00,  The Package is delivered to both corners of the allied fountain, which can be selected by Corki to pick up after  channeling for 1 second',
+            raw: 'After 10:00,  The Package is delivered to both corners of the allied fountain, which can be selected by Corki to pick up after  channeling for 1 second',
             values: 1,
             user: 'none',
             units: '',
@@ -93,6 +93,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Corki cannot start the  channel to pick up the package while he is unable to cast abilities.',
         descriptionHTML:
@@ -141,7 +142,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Phosphorus Bomb.png',
+        icon: '/wiki/images/Phosphorus_Bomb.png',
         description:
           'Active: Corki launches a bomb at the target location that explodes upon impact, dealing magic damage to enemies hit.',
         descriptionHTML:
@@ -186,6 +187,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The bomb also grants  sight of the area for 6 seconds and  reveals enemy  champions hit for the same duration.',
         descriptionHTML:
@@ -254,7 +256,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Corki  dashes to the target location and drops bombs that leave up to 3 blazing patches along his path, depending on the distance traveled',
+            raw: 'Corki  dashes to the target location and drops bombs that leave up to 3 blazing patches along his path, depending on the distance traveled',
             values: 3,
             user: 'none',
             units: '',
@@ -277,6 +279,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies within the patches are dealt magic damage every 0.25 seconds.',
         descriptionHTML:
@@ -314,6 +317,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Gatling Gun can be cast during the dash. Valkyrie will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -357,7 +361,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Special Delivery.png',
+        icon: '/wiki/images/Special_Delivery.png',
         description:
           'Active: Corki  dashes with  displacement immunity to the target location,  knocking aside all enemies in his path 500 units and leaving behind a trail of fire for 5 seconds, which grants  sight of the area for its duration and for 3 seconds afterwards.',
         descriptionHTML:
@@ -366,7 +370,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Corki  dashes with  displacement immunity to the target location,  knocking aside all enemies in his path 500 units and leaving behind a trail of fire for 5 seconds, which grants  sight of the area for its duration and for 3 seconds afterwards.',
+            raw: 'Corki  dashes with  displacement immunity to the target location,  knocking aside all enemies in his path 500 units and leaving behind a trail of fire for 5 seconds, which grants  sight of the area for its duration and for 3 seconds afterwards.',
             values: 5,
             user: 'none',
             units: '',
@@ -379,6 +383,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies hit by Corki's dash or within the trail are burned and  slowed by 90% for 2 seconds, refreshing every 0.25 seconds while inside the area. The burn deals 7.5 − 25 (based on level) (+ 50% bonus AD) (+ 6% AP) magic damage every 0.25 seconds.",
         descriptionHTML:
@@ -433,6 +438,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Casting Special Delivery instantly resets  Valkyrie's  cooldown.",
         descriptionHTML:
@@ -442,6 +448,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Special Delivery will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -490,7 +497,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Gatling Gun.png',
+        icon: '/wiki/images/Gatling_Gun.png',
         description:
           'Active: Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
         descriptionHTML:
@@ -499,13 +506,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Active:',
-            raw: ' Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
+            raw: 'Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
             min: 0,
-            max: 10,
+            max: 8,
             description:
-              ' Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
+              'Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
             pre: 'Corki sprays bullets in a cone toward his facing direction for 4 seconds, dealing equal parts physical and magic damage every 0.25 seconds to all enemies hit as well as reducing their  armor and  magic resistance with each tick, lasting for 2 seconds, refreshing on subsequent ticks, and stacking up to 8 times.',
@@ -604,7 +611,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Missile Barrage.png',
+        icon: '/wiki/images/Missile_Barrage.png',
         description:
           'Active: Corki fires a missile in the target direction that explodes upon the first enemy hit, dealing magic damage to enemies within the area.',
         descriptionHTML:
@@ -650,6 +657,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Corki periodically stocks a Missile Barrage charge, up to a maximum of 7. He gains maximum charges upon respawning.',
         descriptionHTML:
@@ -671,7 +679,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Big One.png',
+        icon: '/wiki/images/Big_One.png',
         description:
           'Every third missile Corki fires is a  Big One, dealing 100% increased damage as well as gaining increased range and explosion radius.',
         descriptionHTML:

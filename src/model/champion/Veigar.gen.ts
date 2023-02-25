@@ -31,13 +31,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Veigar generates a stack of Phenomenal Evil for each enemy  champion hit by his abilities, and 5 stacks whenever he scores an enemy champion  takedown.',
+            raw: 'Veigar generates a stack of Phenomenal Evil for each enemy  champion hit by his abilities, and 5 stacks whenever he scores an enemy champion  takedown.',
             min: 0,
             max: 10,
             description:
-              ' Veigar generates a stack of Phenomenal Evil for each enemy  champion hit by his abilities, and 5 stacks whenever he scores an enemy champion  takedown.',
+              'Veigar generates a stack of Phenomenal Evil for each enemy  champion hit by his abilities, and 5 stacks whenever he scores an enemy champion  takedown.',
             values: 5,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates a stack of Phenomenal Evil for each enemy  champion hit by his abilities, and 5 stacks whenever he scores an enemy champion  takedown.',
             pre: 'Veigar generates a stack of Phenomenal Evil for each enemy  champion hit by his abilities, and 5 stacks whenever he scores an enemy champion  takedown.',
@@ -47,19 +47,21 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Phenomenal Evil Power.png',
+        icon: '/wiki/images/Phenomenal_Evil_Power.png',
         description:
           'Phenomenal Evil: For each stack, Veigar gains  1 ability power.',
         descriptionHTML:
           '<span class="template_sbc"><b>Phenomenal Evil:</b></span> For each stack, <b>Veigar</b> gains <span style="white-space:nowrap"><a href="/wiki/Ability_power" title="Ability power"><img alt="Ability power icon.png" src="/wiki/images/Ability_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #7A6DFF; white-space:normal">1 ability power</span></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Phenomenal Evil:',
-            raw: ' For each stack, Veigar gains  1 ability power.',
-            increasedStat: 'feastStacks',
+            raw: 'For each stack, Veigar gains  1 ability power.',
+            min: 0,
+            max: 10,
+            description: 'For each stack, Veigar gains  1 ability power.',
             values: 1,
-            units: '',
+            units: 'genericStacks',
             unitsText: 'each stack, Veigar gains  1 ability power.',
             pre: 'For each stack, Veigar gains  1 ability power.',
           },
@@ -88,7 +90,7 @@ export default {
       w: 48,
       h: 48,
     },
-    target_range: '950 /  890',
+    target_range: '1050 /  990',
     width:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Er"><a href="/wiki/Range" title="Range"><img alt="Range model.png" src="/wiki/images/Range_model.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 140',
     speed: '2200',
@@ -102,7 +104,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Baleful Strike.png',
+        icon: '/wiki/images/Baleful_Strike.png',
         description:
           'Active: Veigar blasts a dark bolt in the target direction that deals magic damage to the first two enemies hit.',
         descriptionHTML:
@@ -140,18 +142,22 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If this kills an enemy, it generates 1 stack of  Phenomenal Evil, tripled against large  minions and  monsters.',
         descriptionHTML:
           'If this kills an enemy, it generates 1 stack of <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Veigar" data-ability="Phenomenal Evil Power" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Veigar/LoL#Phenomenal_Evil_Power" title="Phenomenal Evil"><img alt="Phenomenal Evil" src="/wiki/images/Veigar_Phenomenal_Evil_Power.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Veigar/LoL#Phenomenal_Evil_Power" title="Veigar/LoL">Phenomenal Evil</a></span></span></i>, tripled against large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minions"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minions</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'If this kills an enemy, it generates 1 stack of  Phenomenal Evil, tripled against large  minions and  monsters.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'If this kills an enemy, it generates 1 stack of  Phenomenal Evil, tripled against large  minions and  monsters.',
             values: 1,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'this kills an enemy, it generates 1 stack of  Phenomenal Evil, tripled against large  minions and  monsters.',
             pre: 'If this kills an enemy, it generates 1 stack of  Phenomenal Evil, tripled against large  minions and  monsters.',
@@ -185,7 +191,7 @@ export default {
       w: 48,
       h: 48,
     },
-    target_range: '900',
+    target_range: '950',
     effect_radius:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center.png" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 240',
     cast_time: '0.<small>25</small>',
@@ -199,7 +205,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dark Matter.png',
+        icon: '/wiki/images/Dark_Matter.png',
         description:
           'Active: Veigar casts down a mass of dark matter that strikes the target location after a 1.221 seconds delay, dealing magic damage to enemies hit.',
         descriptionHTML:
@@ -208,7 +214,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Veigar casts down a mass of dark matter that strikes the target location after a 1.221 seconds delay, dealing magic damage to enemies hit.',
+            raw: 'Veigar casts down a mass of dark matter that strikes the target location after a 1.221 seconds delay, dealing magic damage to enemies hit.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -250,6 +256,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Dark Matter's  cooldown is reduced based on stacks of  Phenomenal Evil.",
         descriptionHTML:
@@ -295,7 +302,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Event Horizon.png',
+        icon: '/wiki/images/Event_Horizon.png',
         description:
           'Active: Veigar forms a cage at the target location that erects after a 0.5 second delay, remaining there for 3 seconds. Enemies that collide with the edges of the cage are  knocked down and  stunned for a duration.',
         descriptionHTML:
@@ -323,6 +330,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies can be affected by Event Horizon's effects only once per cast.",
         descriptionHTML:
@@ -363,7 +371,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Primordial Burst.png',
+        icon: '/wiki/images/Primordial_Burst.png',
         description:
           "Active: Veigar sends a primordial burst at the target enemy champion that deals magic damage, increased by 0% − 100% (based on target's missing health).",
         descriptionHTML:

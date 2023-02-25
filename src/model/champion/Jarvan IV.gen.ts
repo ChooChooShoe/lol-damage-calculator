@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Martial Cadence.png',
+        icon: '/wiki/images/Martial_Cadence.png',
         description:
           "Innate: Jarvan IV's basic attacks are empowered to deal additional physical damage equal to 8% of the target's current health, with a minimum threshold of 20 and capped at 400 against all targets.",
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Jarvan IV's basic attacks are empowered to deal additional physical damage equal to 8% of the target's current health, with a minimum threshold of 20 and capped at 400 against all targets.",
+            raw: "Jarvan IV's basic attacks are empowered to deal additional physical damage equal to 8% of the target's current health, with a minimum threshold of 20 and capped at 400 against all targets.",
             healType: 'PhysicalVamp',
             values: 8,
             valuesIsPercent: true,
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'This effect cannot occur on the same target more than once every few seconds.',
         descriptionHTML:
@@ -95,7 +96,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dragon Strike.png',
+        icon: '/wiki/images/Dragon_Strike.png',
         description:
           'Active: Jarvan IV extends his lance in the target direction, dealing physical damage to enemies hit and inflicting them with  armor reduction for 3 seconds.',
         descriptionHTML:
@@ -104,7 +105,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Jarvan IV extends his lance in the target direction, dealing physical damage to enemies hit and inflicting them with  armor reduction for 3 seconds.',
+            raw: 'Jarvan IV extends his lance in the target direction, dealing physical damage to enemies hit and inflicting them with  armor reduction for 3 seconds.',
             damagetype: 'Physical',
             values: 3,
             user: 'target',
@@ -163,6 +164,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the lance connects with a deployed  Demacian Standard, Jarvan IV  dashes to its location,  knocking up nearby enemies around him and along his path for 0.75 seconds.',
         descriptionHTML:
@@ -172,6 +174,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Jarvan IV can cast any of his abilities during the dash.',
         descriptionHTML:
           '<i><b>Jarvan IV</b> can cast any of his <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> during the dash.</i>',
@@ -208,14 +211,14 @@ export default {
     cast_time: 'none',
     cost: '30',
     costtype: 'Mana',
-    cooldown: '8',
+    cooldown: '9',
     blurb: [
       '<span class="template_sbc"><b>Active:</b></span> <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Jarvan IV" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Jarvan_IV/LoL" title="Jarvan IV"><img alt="Jarvan IV" src="/wiki/images/Jarvan_IV_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Jarvan_IV/LoL" title="Jarvan IV/LoL">Jarvan IV</a></span></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> nearby enemies for a short time.',
       'He will also <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon.png" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> himself for a few seconds, with the strength increased if he hit more enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champions"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span>.',
     ],
     description: [
       {
-        icon: '/wiki/images/Golden Aegis.png',
+        icon: '/wiki/images/Golden_Aegis.png',
         description:
           'Active: Jarvan IV  slows all nearby enemies for 2 seconds.',
         descriptionHTML:
@@ -224,7 +227,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Jarvan IV  slows all nearby enemies for 2 seconds.',
+            raw: 'Jarvan IV  slows all nearby enemies for 2 seconds.',
             values: 2,
             user: 'none',
             units: '',
@@ -254,6 +257,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Jarvan IV also grants himself a  shield for 4 seconds, increased by 1.3% of his maximum health for each enemy  champion hit by Golden Aegis.',
         descriptionHTML:
@@ -275,16 +279,16 @@ export default {
         leveling: [
           {
             name: 'Shield Strength:',
-            values: '60 / 80 / 100 / 120 / 140 (+ 80% bonus AD)',
+            values: '60 / 80 / 100 / 120 / 140 (+ 70% bonus AD)',
             valuesHTML:
-              '60 / 80 / 100 / 120 / 140 <span style="color:orange; white-space:normal">(+&nbsp;80% <b>bonus</b> AD)</span>',
+              '60 / 80 / 100 / 120 / 140 <span style="color:orange; white-space:normal">(+&nbsp;70% <b>bonus</b> AD)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Shield',
             name: 'Shield Strength:',
-            raw: '60 / 80 / 100 / 120 / 140 (+ 80% bonus AD)',
+            raw: '60 / 80 / 100 / 120 / 140 (+ 70% bonus AD)',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: [60, 80, 100, 120, 140],
@@ -294,11 +298,11 @@ export default {
             pre: '60 / 80 / 100 / 120 / 140',
             children: [
               {
-                values: 80,
+                values: 70,
                 valuesIsPercent: true,
                 units: 'bonus_ad',
                 unitsText: 'bonus AD',
-                pre: '+ 80% bonus AD',
+                pre: '+ 70% bonus AD',
               },
             ],
           },
@@ -367,7 +371,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Demacian Standard.png',
+        icon: '/wiki/images/Demacian_Standard.png',
         description:
           'Active: Jarvan IV throws a Demacian flag to the target location, dealing magic damage to enemies within the area.',
         descriptionHTML:
@@ -405,6 +409,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The flag then remains for 8 seconds, granting  sight of its surroundings and providing an aura that grants bonus attack speed equal to Demacian Standard's passive to Jarvan IV and all nearby allied champions.",
         descriptionHTML:
@@ -426,6 +431,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Demacian Standard will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -516,6 +522,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon impact, he creates a circle of impassable terrain that initially pulls units inside it, though not rendering them  airborne. The terrain lasts for 3.5 seconds and grants  sight of the area. Cataclysm can be recast after 1 second while the terrain is active.',
         descriptionHTML:
@@ -548,6 +555,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Jarvan IV destroys the terrain created by Cataclysm.',
         descriptionHTML:

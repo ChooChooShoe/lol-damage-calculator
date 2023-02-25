@@ -28,7 +28,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Stage Presence.png',
+        icon: '/wiki/images/Stage_Presence.png',
         description:
           "Innate - Echo: Seraphine basic abilities generate a stack of Echo, stacking up to 2 times. At 2 stacks, Seraphine's next basic ability casts an additional time at no cost after a 0.033 seconds delay, consuming all Echo stacks after the cast time of the second cast.Seraphine gains maximum stacks of Echo when the game starts and upon respawning.",
         descriptionHTML:
@@ -37,24 +37,27 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate - Echo:',
-            raw: ' Seraphine basic abilities generate a stack of Echo, stacking up to 2 times',
+            raw: 'Seraphine basic abilities generate a stack of Echo, stacking up to 2 times',
             min: 0,
-            max: 10,
+            max: 2,
             description:
-              ' Seraphine basic abilities generate a stack of Echo, stacking up to 2 times',
+              'Seraphine basic abilities generate a stack of Echo, stacking up to 2 times',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic abilities generate a stack of Echo, stacking up to 2 times',
             pre: 'Seraphine basic abilities generate a stack of Echo, stacking up to 2 times',
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: "At 2 stacks, Seraphine's next basic ability casts an additional time at no cost after a 0.033 seconds delay, consuming all Echo stacks after the cast time of the second cast.Seraphine gains maximum stacks of Echo when the game starts and upon respawning.",
-            increasedStat: 'total_ap',
+            min: 0,
+            max: 10,
+            description:
+              "At 2 stacks, Seraphine's next basic ability casts an additional time at no cost after a 0.033 seconds delay, consuming all Echo stacks after the cast time of the second cast.Seraphine gains maximum stacks of Echo when the game starts and upon respawning.",
             values: 2,
-            units: '',
+            units: 'total_ap',
             unitsText:
               "2 stacks, Seraphine's next basic ability casts an additional time at no cost after a 0.033 seconds delay, consuming all Echo stacks after the cast time of the second cast.Seraphine gains maximum stacks of Echo when the game starts and upon respawning.",
             pre: "At 2 stacks, Seraphine's next basic ability casts an additional time at no cost after a 0.033 seconds delay, consuming all Echo stacks after the cast time of the second cast.Seraphine gains maximum stacks of Echo when the game starts and upon respawning.",
@@ -64,18 +67,22 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Harmony: Seraphine's ability casts grant a Note to herself and nearby allied  champions that lasts 6 seconds, refreshes on subsequent Notes and stacks up to 4 times on each unit.",
         descriptionHTML:
           '<span class="template_sbc"><b>Innate - Harmony:</b></span> <b>Seraphine\'s</b> ability casts grant a <i>Note</i> to herself and nearby allied <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champions"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span> that lasts 6 seconds, refreshes on subsequent <i>Notes</i> and stacks up to 4 times on each unit.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Innate - Harmony:',
-            raw: " Seraphine's ability casts grant a Note to herself and nearby allied  champions that lasts 6 seconds, refreshes on subsequent Notes and stacks up to 4 times on each unit.",
-            increasedStat: 'feastStacks',
+            raw: "Seraphine's ability casts grant a Note to herself and nearby allied  champions that lasts 6 seconds, refreshes on subsequent Notes and stacks up to 4 times on each unit.",
+            min: 0,
+            max: 10,
+            description:
+              "Seraphine's ability casts grant a Note to herself and nearby allied  champions that lasts 6 seconds, refreshes on subsequent Notes and stacks up to 4 times on each unit.",
             values: 6,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'ability casts grant a Note to herself and nearby allied  champions that lasts 6 seconds, refreshes on subsequent Notes and stacks up to 4 times on each unit.',
             pre: "Seraphine's ability casts grant a Note to herself and nearby allied  champions that lasts 6 seconds, refreshes on subsequent Notes and stacks up to 4 times on each unit.",
@@ -85,6 +92,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While any amount of Notes are active, Seraphine's next basic attack is empowered to have an  uncancellable windup, gain  25 bonus attack range per Note, and fire all Notes at the target, with each one dealing 4 / 8 / 14 / 24 (based on level) (+ 7% AP) magic damage, reduced by 75% for Notes from allies and increased by 200% against  minions.",
         descriptionHTML:
@@ -156,7 +164,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/High Note.png',
+        icon: '/wiki/images/High_Note.png',
         description:
           "Active: Seraphine hurls a soundwave to the target location that quickly expands in a radius upon arrival, dealing magic damage to enemies within the area,  increased by 0% − 50% (based on target's missing health).",
         descriptionHTML:
@@ -194,6 +202,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'High Note will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>High Note will cast at max range if cast beyond that.</i>',
@@ -239,7 +248,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Surround Sound.png',
+        icon: '/wiki/images/Surround_Sound.png',
         description:
           'Active: Seraphine grants a  shield to herself and nearby allied champions for 2.5 seconds. For the same duration, she also gains  20% (+ 4% per 100 AP) decaying bonus movement speed and grants allies 8% (+ 1.6% per 100 AP) bonus movement speed.',
         descriptionHTML:
@@ -248,7 +257,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Seraphine grants a  shield to herself and nearby allied champions for 2.5 seconds',
+            raw: 'Seraphine grants a  shield to herself and nearby allied champions for 2.5 seconds',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -320,6 +329,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Seraphine already had a  shield at the time of cast, Surround Sound will pulse after the duration,  healing herself and nearby allied champions, increased for each ally.',
         descriptionHTML:
@@ -360,6 +370,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Surround Sound's effects can stack up to 2 times.",
         descriptionHTML:
           "<i>Surround Sound's effects can stack up to 2 times.</i>",
@@ -372,7 +383,7 @@ export default {
             max: 10,
             description: "Surround Sound's effects can stack up to 2 times.",
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText: "Sound's effects can stack up to 2 times.",
             pre: "Surround Sound's effects can stack up to 2 times.",
           },
@@ -419,7 +430,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Beat Drop.png',
+        icon: '/wiki/images/Beat_Drop.png',
         description:
           'Active: Seraphine fires a heavy soundwave in the target direction that deals magic damage to enemies hit and  slows them by 99% for 1.25 seconds.',
         descriptionHTML:
@@ -428,7 +439,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Seraphine fires a heavy soundwave in the target direction that deals magic damage to enemies hit and  slows them by 99% for 1.25 seconds.',
+            raw: 'Seraphine fires a heavy soundwave in the target direction that deals magic damage to enemies hit and  slows them by 99% for 1.25 seconds.',
             damagetype: 'Magic',
             values: 9,
             valuesIsPercent: true,
@@ -471,7 +482,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Beat Drop 4.png',
+        icon: '/wiki/images/Beat_Drop_4.png',
         description:
           'Enemies that are already  slowed are also  rooted for the same duration.',
         descriptionHTML:
@@ -481,7 +492,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Beat Drop 5.png',
+        icon: '/wiki/images/Beat_Drop_5.png',
         description:
           'Enemies that are  immobilized or  grounded are also  stunned for the same duration.',
         descriptionHTML:
@@ -539,7 +550,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Seraphine projects a captivating force in the target direction that deals magic damage to enemies hit,  charms them, during which they are  revealed, and  slows them by 40% for a duration, increasing by 15% every 0.25 seconds over the duration up to 99%.',
+            raw: 'Seraphine projects a captivating force in the target direction that deals magic damage to enemies hit,  charms them, during which they are  revealed, and  slows them by 40% for a duration, increasing by 15% every 0.25 seconds over the duration up to 99%.',
             damagetype: 'Magic',
             values: 4,
             valuesIsPercent: true,
@@ -597,6 +608,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Encore's projectile resets its remaining travel distance whenever it hits an allied or enemy  champion, excluding Seraphine. Allied champions hit gain  4 Notes.",
         descriptionHTML:

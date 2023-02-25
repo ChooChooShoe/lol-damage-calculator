@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/King's Tribute.png",
+        icon: "/wiki/images/King's_Tribute.png",
         description:
           "Innate: Whenever a nearby enemy dies, Trundle  heals himself for 1.8% − 5.5% (based on level) of the target's maximum health.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Whenever a nearby enemy dies, Trundle  heals himself for 1.8% − 5.5% (based on level) of the target's maximum health.",
+            raw: "Whenever a nearby enemy dies, Trundle  heals himself for 1.8% − 5.5% (based on level) of the target's maximum health.",
             healType: 'OutgoingHeals',
             values: [],
             valuesIsPercent: true,
@@ -90,7 +90,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Trundle empowers his next basic attack within 7 seconds to have an  uncancellable windup, deal bonus physical damage and  slow the target by 75% for 0.1 seconds.',
+            raw: 'Trundle empowers his next basic attack within 7 seconds to have an  uncancellable windup, deal bonus physical damage and  slow the target by 75% for 0.1 seconds.',
             damagetype: 'Physical',
             values: 7,
             valuesIsPercent: true,
@@ -133,6 +133,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "After using the empowered attack, Trundle gains  bonus attack damage for 5 seconds and reduces the target's attack damage by half that amount for the same duration.",
         descriptionHTML:
@@ -190,6 +191,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Chomp  resets Trundle's basic attack timer.",
         descriptionHTML:
           '<i>Chomp <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Trundle\'s</b> basic attack timer.</i>',
@@ -233,7 +235,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Frozen Domain.png',
+        icon: '/wiki/images/Frozen_Domain.png',
         description:
           'Active: Trundle coats the target location in ice for 8 seconds. While he is within the area, he gains  bonus attack speed,  bonus movement speed, and 25% increased  healing from all sources.',
         descriptionHTML:
@@ -242,7 +244,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Trundle coats the target location in ice for 8 seconds',
+            raw: 'Trundle coats the target location in ice for 8 seconds',
             values: 8,
             user: 'none',
             units: '',
@@ -300,6 +302,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Frozen Domain will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -344,7 +347,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pillar of Ice.png',
+        icon: '/wiki/images/Pillar_of_Ice.png',
         description:
           'Active: Trundle erects a pillar of ice at the target location for 6 seconds, which  knocks back units hit to 225 units from its center. The pillar acts as terrain and  slows nearby enemies.',
         descriptionHTML:
@@ -353,7 +356,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Trundle erects a pillar of ice at the target location for 6 seconds, which  knocks back units hit to 225 units from its center',
+            raw: 'Trundle erects a pillar of ice at the target location for 6 seconds, which  knocks back units hit to 225 units from its center',
             values: 6,
             user: 'none',
             units: '',
@@ -471,6 +474,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Half of the total damage and stealing are applied instantly, and the other half, as well as the size modifiers, are applied every second over the next 4 seconds, even if the target has  died.',
         descriptionHTML:
@@ -523,6 +527,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The armor and magic resistance will remain stolen for 4 seconds after the drain has ended.',
         descriptionHTML:

@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Serpentine Grace.png',
+        icon: '/wiki/images/Serpentine_Grace.png',
         description:
           'Innate: Cassiopeia gains 4 − 72 (based on level)  bonus movement speed, but she cannot purchase Boots.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Cassiopeia gains 4 − 72 (based on level)  bonus movement speed, but she cannot purchase Boots.',
+            raw: 'Cassiopeia gains 4 − 72 (based on level)  bonus movement speed, but she cannot purchase Boots.',
             values: [
               4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68,
               72,
@@ -80,7 +80,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Noxious Blast.png',
+        icon: '/wiki/images/Noxious_Blast.png',
         description:
           'Active: Cassiopeia creates a blast at the target location that explodes after a 0.4-second delay. Enemies within the blast are  poisoned for 3 seconds, taking magic damage every second over the duration.',
         descriptionHTML:
@@ -131,6 +131,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Noxious Blast hits an enemy  champion, Cassiopeia gains  bonus movement speed that decays over 3 seconds.',
         descriptionHTML:
@@ -217,7 +218,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Cassiopeia spews forth 8 bolts of venom in an arc at the target location, creating toxic clouds at the area for 5 seconds.',
+            raw: 'Cassiopeia spews forth 8 bolts of venom in an arc at the target location, creating toxic clouds at the area for 5 seconds.',
             values: 8,
             user: 'none',
             units: '',
@@ -230,6 +231,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies within the clouds are  poisoned to take magic damage every second and become  grounded and  slowed by an amount that decays over the area's duration.",
         descriptionHTML:
@@ -283,6 +285,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Miasma will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Miasma will cast at max range if cast beyond that.</i>',
@@ -328,7 +331,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Twin Fang.png',
+        icon: '/wiki/images/Twin_Fang.png',
         description:
           "Active: Cassiopeia launches her fangs at the target enemy that deal 52 − 120 (based on level) (+ 10% AP) magic damage. If this kills the target, Twin Fang's  mana cost is refunded.",
         descriptionHTML:
@@ -337,7 +340,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Cassiopeia launches her fangs at the target enemy that deal 52 − 120 (based on level) (+ 10% AP) magic damage',
+            raw: 'Cassiopeia launches her fangs at the target enemy that deal 52 − 120 (based on level) (+ 10% AP) magic damage',
             damagetype: 'Magic',
             values: [
               52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96, 100, 104, 108,
@@ -364,6 +367,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Against a  poisoned target, Twin Fang deals bonus magic damage and  heals Cassiopeia. The heal is reduced by 75% against  minions and small and medium  monsters.',
         descriptionHTML:
@@ -471,7 +475,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Petrifying Gaze.png',
+        icon: '/wiki/images/Petrifying_Gaze.png',
         description:
           'Active: Cassiopeia blasts enemies in a cone in the target direction, dealing magic damage to enemies struck within and  slowing them by 40% for 2 seconds. Enemies with their facing direction towards her are instead  stunned for the same duration.',
         descriptionHTML:
@@ -480,7 +484,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Cassiopeia blasts enemies in a cone in the target direction, dealing magic damage to enemies struck within and  slowing them by 40% for 2 seconds',
+            raw: 'Cassiopeia blasts enemies in a cone in the target direction, dealing magic damage to enemies struck within and  slowing them by 40% for 2 seconds',
             damagetype: 'Magic',
             values: 4,
             valuesIsPercent: true,

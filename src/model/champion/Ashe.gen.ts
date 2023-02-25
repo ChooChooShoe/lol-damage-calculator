@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Frost Shot.png',
+        icon: '/wiki/images/Frost_Shot.png',
         description:
           "Innate - Frost Shot: Ashe's basic attacks and ability hits apply Frost to enemies for 2 seconds, which  slows them by 20% − 30% (based on level) for the duration. Basic attacks against enemies with Frost are modified to deal 110% (+ (75% +  35%) of critical strike chance) damage.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Frost Shot:',
-            raw: " Ashe's basic attacks and ability hits apply Frost to enemies for 2 seconds, which  slows them by 20% − 30% (based on level) for the duration",
+            raw: "Ashe's basic attacks and ability hits apply Frost to enemies for 2 seconds, which  slows them by 20% − 30% (based on level) for the duration",
             damagetype: 'None',
             values: [],
             valuesIsPercent: true,
@@ -79,7 +79,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Frost Shot 2.png',
+        icon: '/wiki/images/Frost_Shot_2.png',
         description:
           "Innate - Critical Slow: Ashe's  critical strikes do not deal any additional damage, instead they double Frost's slow strength to 40% − 60% (based on level), decaying over 1 second to its normal strength.",
         descriptionHTML:
@@ -88,7 +88,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Critical Slow:',
-            raw: " Ashe's  critical strikes do not deal any additional damage, instead they double Frost's slow strength to 40% − 60% (based on level), decaying over 1 second to its normal strength.",
+            raw: "Ashe's  critical strikes do not deal any additional damage, instead they double Frost's slow strength to 40% − 60% (based on level), decaying over 1 second to its normal strength.",
             damagetype: 'None',
             values: [],
             valuesIsPercent: true,
@@ -146,13 +146,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " While Ranger's Focus is inactive, Ashe's basic attacks on-attack generate a stack of Focus for 4 seconds, which refreshes on subsequent attacks and stacks up to 4 times",
+            raw: "While Ranger's Focus is inactive, Ashe's basic attacks on-attack generate a stack of Focus for 4 seconds, which refreshes on subsequent attacks and stacks up to 4 times",
             min: 0,
             max: 10,
             description:
-              " While Ranger's Focus is inactive, Ashe's basic attacks on-attack generate a stack of Focus for 4 seconds, which refreshes on subsequent attacks and stacks up to 4 times",
+              "While Ranger's Focus is inactive, Ashe's basic attacks on-attack generate a stack of Focus for 4 seconds, which refreshes on subsequent attacks and stacks up to 4 times",
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "Ranger's Focus is inactive, Ashe's basic attacks on-attack generate a stack of Focus for 4 seconds, which refreshes on subsequent attacks and stacks up to 4 times",
             pre: "While Ranger's Focus is inactive, Ashe's basic attacks on-attack generate a stack of Focus for 4 seconds, which refreshes on subsequent attacks and stacks up to 4 times",
@@ -175,7 +175,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Ranger's Focus.png",
+        icon: "/wiki/images/Ranger's_Focus.png",
         description:
           'Active: For 4 seconds, Ashe gains  bonus attack speed and empowers her basic attacks to fire a flurry of five arrows.',
         descriptionHTML:
@@ -184,7 +184,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' For 4 seconds, Ashe gains  bonus attack speed and empowers her basic attacks to fire a flurry of five arrows.',
+            raw: 'For 4 seconds, Ashe gains  bonus attack speed and empowers her basic attacks to fire a flurry of five arrows.',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -216,7 +216,7 @@ export default {
         ],
       },
       {
-        icon: "/wiki/images/Ranger's Focus 2.png",
+        icon: "/wiki/images/Ranger's_Focus_2.png",
         description:
           'Each arrow deals modified physical damage that benefits from  Frost Shot and  life steal. Flurries apply on-hit effects only once.',
         descriptionHTML:
@@ -245,6 +245,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Ranger's Focus  resets Ashe's basic attack timer.",
         descriptionHTML:
           '<i>Ranger\'s Focus <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Ashe\'s</b> basic attack timer.</i>',
@@ -348,6 +349,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies can intercept multiple arrows but do not take damage from any beyond the first.',
         descriptionHTML:
@@ -407,6 +409,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ashe periodically stocks a Hawkshot charge, up to a maximum of 2.',
         descriptionHTML:
@@ -468,7 +471,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Enchanted Crystal Arrow.png',
+        icon: '/wiki/images/Enchanted_Crystal_Arrow.png',
         description:
           'Active: Ashe fires a massive arrow of ice in the target direction, granting  sight of the area it flies through each for 1 second. The arrow shatters upon hitting an enemy  champion, dealing them magic damage,  stunning them for 1 − 3.5 (based on distance traveled) seconds, and granting  sight of the area around them for 1 second.',
         descriptionHTML:
@@ -477,7 +480,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ashe fires a massive arrow of ice in the target direction, granting  sight of the area it flies through each for 1 second',
+            raw: 'Ashe fires a massive arrow of ice in the target direction, granting  sight of the area it flies through each for 1 second',
             values: 1,
             user: 'none',
             units: '',
@@ -531,6 +534,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies surrounding the primary target are dealt 50% damage and afflicted with  Frost Shot.',
         descriptionHTML:

@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Ornn increases his  bonus armor,  bonus magic resistance and  bonus health by 10% from all sources, further increased by 4% each time he upgrades a Mythic item into a Masterwork item.',
+            raw: 'Ornn increases his  bonus armor,  bonus magic resistance and  bonus health by 10% from all sources, further increased by 4% each time he upgrades a Mythic item into a Masterwork item.',
             healType: 'BonusHealth',
             values: 1,
             valuesIsPercent: true,
@@ -49,7 +49,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Living Forge.png',
+        icon: '/wiki/images/Living_Forge.png',
         description:
           'Innate - Living Forge: Ornn can purchase non-consumable items from anywhere on the field by forging them himself, and is also presented a Forge Menu with his recommended items to select to be forged.  Forging takes 4 seconds and the process is  interrupted if Ornn takes damage from enemy  champions or  turrets, disabling Living Forge for a few seconds.  Gold is only expended upon completing the forge.',
         descriptionHTML:
@@ -72,6 +72,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Master Craftsman: When Ornn reaches level 13, the Mythic item he owns or purchases is upgraded for free. Additionally, for each level after 13 (levels 14, 15, 16 and 17, excluding 18), Ornn can upgrade one of an allied champion's Mythic item by selecting them within 600 range. Each Masterwork item has roughly  1000-worth of additional stats.\nMasterwork items:\nAssassin:  Draktharr's Shadowcarver,  Sandshrike's Claw,  Syzygy.\nFighter:  Ceaseless Hunger,  Deicide,  Dreamshatter,  Infinity Force.\nMage:  Caesura,  Eternal Winter,  Eye of Luden,  Icathia's Curse,  Infinite Convergence,  Liandry's Lament,  Upgraded Aeropack,  Vespertide.\nMarksman:  Bloodward,  Typhoon,  Wyrmfallen Sacrifice.\nSupport:  Equinox,  Reliquary of the Golden Dawn,  Seat of Command,  Shurelya's Requiem,  Starcaster.\nTank:  Frozen Fist,  Leviathan,  Primordial Dawn,  The Unspoken Parasite.",
         descriptionHTML:
@@ -80,7 +81,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Master Craftsman:',
-            raw: ' When Ornn reaches level 13, the Mythic item he owns or purchases is upgraded for free',
+            raw: 'When Ornn reaches level 13, the Mythic item he owns or purchases is upgraded for free',
             damagetype: 'None',
             values: 1,
             units: 'total_ad',
@@ -114,6 +115,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Temper: Ornn's basic attacks against  Brittle enemies  knock them back a short distance.",
         descriptionHTML:
@@ -123,6 +125,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Ornn's and allies'  immobilizing effects against enemies afflicted by Brittle will consume the debuff to deal bonus magic damage equal to 10% − 18% (based on Ornn's level) of the target's maximum health, capped at 250 against  monsters, and last 30% longer (if applicable).",
         descriptionHTML:
@@ -195,7 +198,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Volcanic Rupture.png',
+        icon: '/wiki/images/Volcanic_Rupture.png',
         description:
           'Active: Ornn sends a fissure in the target direction that deals physical damage to enemies hit and  slows them by 40% for 2 seconds.',
         descriptionHTML:
@@ -204,7 +207,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ornn sends a fissure in the target direction that deals physical damage to enemies hit and  slows them by 40% for 2 seconds.',
+            raw: 'Ornn sends a fissure in the target direction that deals physical damage to enemies hit and  slows them by 40% for 2 seconds.',
             damagetype: 'Physical',
             values: 4,
             valuesIsPercent: true,
@@ -247,6 +250,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The fissure stops at maximum range or 200 units behind the first enemy champion struck. After 1.125-seconds, a magma pillar then erupts to  knock aside enemies, though not through terrain, and linger as impassible terrain for 4 seconds.',
         descriptionHTML:
@@ -279,6 +283,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'The pillar will not expire while Ornn is  charging.',
         descriptionHTML:
           '<i>The pillar will not expire while <b>Ornn</b> is <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Ornn" data-ability="Searing Charge" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ornn/LoL#Searing_Charge" title="charging"><img alt="charging" src="/wiki/images/Ornn_Searing_Charge.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ornn/LoL#Searing_Charge" title="Ornn/LoL">charging</a></span></span>.</i>',
@@ -325,7 +330,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Bellows Breath.png',
+        icon: '/wiki/images/Bellows_Breath.png',
         description:
           'Active: Ornn marches in the target direction over 0.75 seconds, gaining  displacement immunity, becoming  unable to act, and reducing his  movement speed by 35% for the duration.',
         descriptionHTML:
@@ -335,6 +340,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Over the march he belches fire over a cone in front of him, dealing magic damage every 0.15 seconds to enemies hit. The final gout of flame will apply  Brittle for 3 seconds.',
         descriptionHTML:
@@ -375,6 +381,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Bellows Breath has a minimum damage threshold, which is also the damage dealt to  minions.  Monsters take modified damage as well.',
         descriptionHTML:
@@ -457,7 +464,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Searing Charge.png',
+        icon: '/wiki/images/Searing_Charge.png',
         description:
           'Active: Ornn  charges in the target direction, dealing physical damage to enemies he passes through and stopping upon colliding with terrain.',
         descriptionHTML:
@@ -503,6 +510,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Ornn collides with terrain during the charge, he creates a shockwave that  knocks up and  stuns nearby enemies for 1.25 seconds and deals the same damage if they were not already hit by the charge.',
         descriptionHTML:
@@ -524,6 +532,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The shockwave destructs the pillar formed by  Volcanic Rupture and partially destroys terrain created by enemy  champions.',
         descriptionHTML:
@@ -576,7 +585,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Call of the Forge God.png',
+        icon: '/wiki/images/Call_of_the_Forge_God.png',
         description:
           'Active: Ornn sounds his horn, summoning a lava elemental at maximum range from the target direction that stampedes towards his casting position at increasing speed. The elemental deals magic damage to enemies it passes through and  slows them for 2 seconds.',
         descriptionHTML:
@@ -643,6 +652,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Call of the Forge God can be recast after 1.25 seconds while the elemental is active.',
         descriptionHTML:
@@ -664,7 +674,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Call of the Forge God 2.png',
+        icon: '/wiki/images/Call_of_the_Forge_God_2.png',
         description:
           'Recast: Ornn  dashes in the target direction, though not through terrain. If he collides with the elemental, he sends it stampeding in the same direction. The elemental deals the same damage to enemies it passes through and  knocks them up and  stuns them for 1 second, reduced to 0.5 seconds after the first enemy  champion hit.',
         descriptionHTML:
@@ -715,6 +725,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Each pass applies  Brittle to targets for 3 seconds and can affect enemies only once. The elemental briefly grants  sight around its trajectory as it travels.',
         descriptionHTML:

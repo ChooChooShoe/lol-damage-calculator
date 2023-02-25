@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Relentless Storm.png',
+        icon: '/wiki/images/The_Relentless_Storm.png',
         description:
           'Innate: Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times. At 5 stacks, Volibear gains Lightning Claws.',
         descriptionHTML:
@@ -34,24 +34,26 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times',
+            raw: 'Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times',
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              ' Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times',
+              'Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times',
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times',
             pre: 'Whenever Volibear damages at least one enemy with a basic attack or ability, he generates a stack of The Relentless Storm for 6 seconds, refreshing on subsequent damage and stacking up to 5 times',
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'At 5 stacks, Volibear gains Lightning Claws.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description: 'At 5 stacks, Volibear gains Lightning Claws.',
             values: 5,
-            units: '',
+            units: 'genericStacks',
             unitsText: '5 stacks, Volibear gains Lightning Claws.',
             pre: 'At 5 stacks, Volibear gains Lightning Claws.',
           },
@@ -60,19 +62,23 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The Relentless Storm: For each stack, Volibear gains  5% (+ 4% per 100 AP) bonus attack speed, up to 25% (+ 20% per 100 AP).',
         descriptionHTML:
           '<span class="template_sbc"><b>The Relentless Storm:</b></span> For each stack, <b>Volibear</b> gains <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orangered; white-space:normal">5%</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;4% per 100 AP)</span> <span style="color:orangered; white-space:normal"><b>bonus</b> attack speed</span></span>, up to <span style="color:orangered; white-space:normal">25%</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;20% per 100 AP)</span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'The Relentless Storm:',
-            raw: ' For each stack, Volibear gains  5% (+ 4% per 100 AP) bonus attack speed, up to 25% (+ 20% per 100 AP).',
-            increasedStat: 'bonus_ad',
+            raw: 'For each stack, Volibear gains  5% (+ 4% per 100 AP) bonus attack speed, up to 25% (+ 20% per 100 AP).',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Volibear gains  5% (+ 4% per 100 AP) bonus attack speed, up to 25% (+ 20% per 100 AP).',
             values: 5,
             valuesIsPercent: true,
-            units: '',
+            units: 'bonus_ad',
             unitsText: 'bonus attack speed, up to 25%',
             pre: 'For each stack, Volibear gains  5%',
             post: 'bonus attack speed, up to 25%',
@@ -98,6 +104,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Lightning Claws: Volibear's claws ignite with lightning, empowering his basic attacks  on-hit to deal 11 − 60 (based on level) (+ 40% AP) bonus magic damage to the target and the nearest  visible enemy within 450 units of the target, chaining up to 4 subsequent targets.",
         descriptionHTML:
@@ -106,7 +113,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Lightning Claws:',
-            raw: " Volibear's claws ignite with lightning, empowering his basic attacks  on-hit to deal 11 − 60 (based on level) (+ 40% AP) bonus magic damage to the target and the nearest  visible enemy within 450 units of the target, chaining up to 4 subsequent targets.",
+            raw: "Volibear's claws ignite with lightning, empowering his basic attacks  on-hit to deal 11 − 60 (based on level) (+ 40% AP) bonus magic damage to the target and the nearest  visible enemy within 450 units of the target, chaining up to 4 subsequent targets.",
             damagetype: 'Magic',
             values: [
               11, 13.88, 16.76, 19.65, 22.53, 25.41, 28.29, 31.18, 34.06, 36.94,
@@ -169,7 +176,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Thundering Smash.png',
+        icon: '/wiki/images/Thundering_Smash.png',
         description:
           'Active: Volibear drops on all fours, becoming  ghosted and gaining  bonus movement speed for 4 seconds, doubled while facing a  visible enemy  champion within 2000 units.',
         descriptionHTML:
@@ -178,7 +185,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Volibear drops on all fours, becoming  ghosted and gaining  bonus movement speed for 4 seconds, doubled while facing a  visible enemy  champion within 2000 units.',
+            raw: 'Volibear drops on all fours, becoming  ghosted and gaining  bonus movement speed for 4 seconds, doubled while facing a  visible enemy  champion within 2000 units.',
             values: 4,
             user: 'none',
             units: '',
@@ -209,6 +216,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "During this time, Volibear's next basic attack is empowered to consume the bonus movement speed to have an  uncancellable windup and  pounce on the target, dealing bonus physical damage and  stunning them for 1 second.",
         descriptionHTML:
@@ -259,6 +267,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Volibear becomes  immobilized or  polymorphed by an enemy during Thundering Smash, the effect ends prematurely and the  cooldown is reset.',
         descriptionHTML:
@@ -268,6 +277,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Thundering Smash's bonus damage is affected by  critical strike modifiers and applies  life steal at 100% effectiveness.",
         descriptionHTML:
@@ -290,6 +300,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Thundering Smash  resets Volibear's basic attack timer.",
         descriptionHTML:
           '<i>Thundering Smash <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Volibear\'s</b> basic attack timer.</i>',
@@ -333,7 +344,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Frenzied Maul.png',
+        icon: '/wiki/images/Frenzied_Maul.png',
         description:
           'Active: Volibear strikes the target enemy to deal physical damage, apply  on-hit and on-attack effects at 100% effectiveness, and mark them Wounded for 8 seconds.',
         descriptionHTML:
@@ -342,7 +353,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Volibear strikes the target enemy to deal physical damage, apply  on-hit and on-attack effects at 100% effectiveness, and mark them Wounded for 8 seconds.',
+            raw: 'Volibear strikes the target enemy to deal physical damage, apply  on-hit and on-attack effects at 100% effectiveness, and mark them Wounded for 8 seconds.',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -392,6 +403,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Wounded Bonus: Frenzied Maul deals  50% increased damage and  heals Volibear. The heal is halved against  minions.',
         descriptionHTML:
@@ -400,7 +412,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Wounded Bonus:',
-            raw: ' Frenzied Maul deals  50% increased damage and  heals Volibear',
+            raw: 'Frenzied Maul deals  50% increased damage and  heals Volibear',
             healType: 'DrainEffect',
             values: 5,
             valuesIsPercent: true,
@@ -443,6 +455,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Frenzied Maul applies  life steal at 100% effectiveness.',
         descriptionHTML:
           '<i>Frenzied Maul</i> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Applies life steal"><a href="/wiki/Life_steal" title="Life steal">applies</a></span> <span style="white-space:nowrap"><a href="/wiki/Life_steal" title="Life steal"><img alt="Life steal icon.png" src="/wiki/images/Life_steal_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Life_steal" title="Life steal">life steal</a></span> at 100% effectiveness.',
@@ -501,7 +514,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sky Splitter.png',
+        icon: '/wiki/images/Sky_Splitter.png',
         description:
           'Active: Volibear summons a lightning bolt to strike at the target location after a 2-second delay. If Volibear is within the strike, he gains a  shield equal to 14% of his maximum health (+ 75% AP) for 3 seconds.',
         descriptionHTML:
@@ -510,7 +523,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Volibear summons a lightning bolt to strike at the target location after a 2-second delay',
+            raw: 'Volibear summons a lightning bolt to strike at the target location after a 2-second delay',
             values: 2,
             user: 'none',
             units: '',
@@ -545,7 +558,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sky Splitter 2.png',
+        icon: '/wiki/images/Sky_Splitter_2.png',
         description:
           'The bolt deals magic damage to enemies hit, capped at 650 against non-champions,  slows them by 40% for 2 seconds, and grants  sight of the area for 1 second.',
         descriptionHTML:
@@ -654,7 +667,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Volibear gains Stormbringer for 12 seconds and  leaps to the target location with  crowd control immunity, granting  sight of the area in a 500 radius during the travel.',
+            raw: 'Volibear gains Stormbringer for 12 seconds and  leaps to the target location with  crowd control immunity, granting  sight of the area in a 500 radius during the travel.',
             increasedStat: 'total_ap',
             values: 1,
             units: '',
@@ -667,6 +680,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Stormbringer: Volibear gains  ghosting,  bonus health,  50 bonus attack range, 25 increased range on  Frenzied Maul, and 35% increased size.',
         descriptionHTML:
@@ -675,7 +689,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Stormbringer:',
-            raw: ' Volibear gains  ghosting,  bonus health,  50 bonus attack range, 25 increased range on  Frenzied Maul, and 35% increased size.',
+            raw: 'Volibear gains  ghosting,  bonus health,  50 bonus attack range, 25 increased range on  Frenzied Maul, and 35% increased size.',
             healType: 'BonusHealth',
             values: 5,
             valuesIsPercent: true,
@@ -708,6 +722,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Volibear impacts after 1 second,  slowing nearby enemies by 50% decaying over 1 second. Enemies within the epicenter are also dealt  physical damage.',
         descriptionHTML:
@@ -765,6 +780,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Volibear also disables enemy  turrets in an area for a duration, rendering them unable to attack, as well as dealing them the  same damage.',
         descriptionHTML:
@@ -791,6 +807,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Stormbringer will cast at max range if cast beyond that.  Thundering Smash's duration will be paused for the  leap.",
         descriptionHTML:

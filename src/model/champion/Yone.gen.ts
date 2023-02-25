@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Way of the Hunter.png',
+        icon: '/wiki/images/Way_of_the_Hunter.png',
         description:
           "Innate - Intent: Yone's  total critical strike chance is multiplied by 2.5 from all other sources, but his  critical strikes deal only「 (57.5% +  31.5%) AD bonus physical damage. 」「 90% of the normal  critical strike damage. 」Additionally,「 every 1% critical strike chance in excess of 100% is converted into 0.4 bonus AD. 」「 every 50% critical strike chance in excess of 100% is converted into 20 bonus AD. 」",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Intent:',
-            raw: " Yone's  total critical strike chance is multiplied by 2.5 from all other sources, but his  critical strikes deal only「 (57.5% +  31.5%) AD bonus physical damage. 」「 90% of the normal  critical strike damage. 」Additionally,「 every 1% critical strike chance in excess of 100% is converted into 0.4 bonus AD. 」「 every 50% critical strike chance in excess of 100% is converted into 20 bonus AD. 」",
+            raw: "Yone's  total critical strike chance is multiplied by 2.5 from all other sources, but his  critical strikes deal only「 (57.5% +  31.5%) AD bonus physical damage. 」「 90% of the normal  critical strike damage. 」Additionally,「 every 1% critical strike chance in excess of 100% is converted into 0.4 bonus AD. 」「 every 50% critical strike chance in excess of 100% is converted into 20 bonus AD. 」",
             damagetype: 'Physical',
             values: 2,
             units: 'bonus_ad',
@@ -56,6 +56,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Steel and Spirit: Yone's basic attacks alternate between his Steel Sword and Azakana Sword on-attack. Yone begins attacking with Steel Sword, and basic attacks with Azakana Sword deal 50% AD physical damage and 50% AD magic damage.",
         descriptionHTML:
@@ -119,7 +120,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mortal Steel.png',
+        icon: '/wiki/images/Mortal_Steel.png',
         description:
           "Active: Yone thrusts his Steel Sword in a line in the target direction that deals physical damage to enemies hit and applies  on-hit and on-attack effects at 100% effectiveness to the first enemy hit. Mortal Steel's damage can  critically strike for「 (47% +  29.4%) AD bonus physical damage. 」「 84% of the  critical damage champions usually have. 」",
         descriptionHTML:
@@ -128,7 +129,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Yone thrusts his Steel Sword in a line in the target direction that deals physical damage to enemies hit and applies  on-hit and on-attack effects at 100% effectiveness to the first enemy hit',
+            raw: 'Yone thrusts his Steel Sword in a line in the target direction that deals physical damage to enemies hit and applies  on-hit and on-attack effects at 100% effectiveness to the first enemy hit',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -192,6 +193,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If this hits at least one enemy, Yone generates a stack of Gathering Storm for 6 seconds, stacking up to 2 times and refreshing on subsequent hits. At 2 stacks, the next Mortal Steel consumes them all to become empowered with a new effect.',
         descriptionHTML:
@@ -202,11 +204,11 @@ export default {
             name: 'Line 1:',
             raw: 'If this hits at least one enemy, Yone generates a stack of Gathering Storm for 6 seconds, stacking up to 2 times and refreshing on subsequent hits',
             min: 0,
-            max: 10,
+            max: 2,
             description:
               'If this hits at least one enemy, Yone generates a stack of Gathering Storm for 6 seconds, stacking up to 2 times and refreshing on subsequent hits',
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'this hits at least one enemy, Yone generates a stack of Gathering Storm for 6 seconds, stacking up to 2 times and refreshing on subsequent hits',
             pre: 'If this hits at least one enemy, Yone generates a stack of Gathering Storm for 6 seconds, stacking up to 2 times and refreshing on subsequent hits',
@@ -220,7 +222,7 @@ export default {
             description:
               'At 2 stacks, the next Mortal Steel consumes them all to become empowered with a new effect.',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               '2 stacks, the next Mortal Steel consumes them all to become empowered with a new effect.',
             pre: 'At 2 stacks, the next Mortal Steel consumes them all to become empowered with a new effect.',
@@ -230,7 +232,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Mortal Steel 2.png',
+        icon: '/wiki/images/Mortal_Steel_2.png',
         description:
           'Gathering Storm Bonus: Yone  dashes a fixed distance in the target direction and unleashes a whirlwind in the same direction, both dealing the same damage to enemies hit in their path and  knocking them up for 0.75 seconds, but being unable to affect the same target twice.',
         descriptionHTML:
@@ -240,6 +242,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Mortal Steel's thrust is  interrupted if Yone is affected by  disarming crowd control during the cast time but its  cooldown is reset to 0.1 seconds.",
         descriptionHTML:
@@ -287,7 +290,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spirit Cleave.png',
+        icon: '/wiki/images/Spirit_Cleave.png',
         description:
           'Active: Yone cleaves his Azakana Sword in a cone in the target direction, dealing equal parts physical and magic damage to enemies hit. The total mixed damage has a minimum threshold of 40 − 410 (based on level) against  minions and a maximum threshold of 150 − 320 (based on level) against  monsters.',
         descriptionHTML:
@@ -344,6 +347,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If this hits an enemy, Yone grants himself a  shield for 35 − 55 (based on level) (+ 55% bonus AD) for 1.5 seconds, increased by 100% if it hits a  champion and by 50% for each subsequent champion hit.',
         descriptionHTML:
@@ -422,7 +426,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Soul Unbound.png',
+        icon: '/wiki/images/Soul_Unbound.png',
         description:
           "Active: Yone  dashes a fixed distance in the target direction, discarding his body and entering Spirit Form for 5 seconds. Yone's body is  untargetable and is sent the same distance behind the cast location, though not through terrain, and is reclaimed when Soul Unbound ends.",
         descriptionHTML:
@@ -431,7 +435,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Yone  dashes a fixed distance in the target direction, discarding his body and entering Spirit Form for 5 seconds',
+            raw: 'Yone  dashes a fixed distance in the target direction, discarding his body and entering Spirit Form for 5 seconds',
             values: 5,
             user: 'none',
             units: '',
@@ -444,7 +448,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Soul Unbound 3.png',
+        icon: '/wiki/images/Soul_Unbound_3.png',
         description:
           'Spirit Form: Yone becomes  ghosted and gains  10% − 30% (based on time active) bonus movement speed. Enemy champions damaged by his basic attacks or abilities are marked. Each mark stores a portion of the post-mitigation damage that Yone deals to the target with his basic attacks and abilities.',
         descriptionHTML:
@@ -453,7 +457,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Spirit Form:',
-            raw: ' Yone becomes  ghosted and gains  10% − 30% (based on time active) bonus movement speed',
+            raw: 'Yone becomes  ghosted and gains  10% − 30% (based on time active) bonus movement speed',
             values: 1,
             valuesIsPercent: true,
             basedOn: 'time active',
@@ -488,6 +492,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Activation resets  Way of the Hunter's current sword state. Soul Unbound can be recast after 0.5 seconds, and automatically does so after the duration.",
         descriptionHTML:
@@ -497,7 +502,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Soul Unbound 2.png',
+        icon: '/wiki/images/Soul_Unbound_2.png',
         description:
           'Recast: Yone remains in cast time for 0.25 seconds then  dashes back to his body with  displacement immunity, ending Spirit Form and detonating the marks on each champion to deal  true damage equal to the amount stored against each of them. After the cast time, he will  cleanse himself from all  immobilizing effects and  polymorphs* that were applied to him during it as well as all  blinds,  cripples and  drowsy effects.',
         descriptionHTML:
@@ -507,6 +512,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The automatic recast is delayed if Yone is winding up a basic attack or is unable to recast Soul Unbound under any circumstances, which includes if he cannot move or cast abilities. Soul Unbound will also immediately recast upon  death or entering  resurrection.',
         descriptionHTML:
@@ -553,7 +559,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Fate Sealed.png',
+        icon: '/wiki/images/Fate_Sealed.png',
         description:
           'Active: Yone prepares a strike over the cast time, then marks all enemies within a line in the target direction,  knocking them down and  stunning them for 1 second. He  blinks 200 units beyond the center of the last enemy  champion struck, or else to maximum range instead.',
         descriptionHTML:
@@ -562,7 +568,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Yone prepares a strike over the cast time, then marks all enemies within a line in the target direction,  knocking them down and  stunning them for 1 second',
+            raw: 'Yone prepares a strike over the cast time, then marks all enemies within a line in the target direction,  knocking them down and  stunning them for 1 second',
             values: 1,
             units: 'kindredMarks',
             unitsText:
@@ -585,6 +591,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 0.3 seconds, a gust rushes along the same line that deals equal parts physical and magic damage to marked enemies within the area and  pulls them towards the location Yone blinked to, then  knocks them up for 0.75 seconds.',
         descriptionHTML:
@@ -622,6 +629,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'The  stun ends prematurely upon the knock up.',
         descriptionHTML:
           '<i>The <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stun</a></span> ends prematurely upon the knock up.</i>',

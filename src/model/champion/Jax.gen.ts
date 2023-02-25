@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Relentless Assault.png',
+        icon: '/wiki/images/Relentless_Assault.png',
         description:
           "Innate: Jax's basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times. Stacks expire by one every 0.25 seconds when the duration ends.",
         descriptionHTML:
@@ -32,13 +32,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Jax's basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times",
+            raw: "Jax's basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times",
             min: 0,
-            max: 10,
+            max: 8,
             description:
-              " Jax's basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times",
+              "Jax's basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times",
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times',
             pre: "Jax's basic attacks generate a stack of Relentless Assault on-attack for 2.5 seconds, refreshing on subsequent attacks and stacking up to 8 times",
@@ -48,20 +48,24 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Relentless Assault: For each stack, Jax gains 3.5% − 11% (based on level)  bonus attack speed, up to a maximum of 28% − 88% (based on level).',
         descriptionHTML:
           '<span class="template_sbc"><b>Relentless Assault:</b></span> For each stack, <b>Jax</b> gains <span style="color:orangered; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="3.5;1" data-finish="11;16" data-bot_values="3.5;5;6.5;8;9.5;11" data-top_values="1;4;7;10;13;16" data-bot_key="%">3.<small>5</small>% − 11% (based on level)</span> <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>bonus</b> attack speed</span></span>, up to a maximum of <span style="color:orangered; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="28;1" data-finish="88;16" data-bot_values="28;40;52;64;76;88" data-top_values="1;4;7;10;13;16" data-bot_key="%">28% − 88% (based on level)</span></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Relentless Assault:',
-            raw: ' For each stack, Jax gains 3.5% − 11% (based on level)  bonus attack speed, up to a maximum of 28% − 88% (based on level).',
-            increasedStat: 'bonus_ad',
+            raw: 'For each stack, Jax gains 3.5% − 11% (based on level)  bonus attack speed, up to a maximum of 28% − 88% (based on level).',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Jax gains 3.5% − 11% (based on level)  bonus attack speed, up to a maximum of 28% − 88% (based on level).',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
-            units: '',
+            units: 'bonus_ad',
             unitsText: 'bonus attack speed, up to a maximum of 28% − 88%',
             pre: 'For each stack, Jax gains 3.5% − 11%',
             post: 'bonus attack speed, up to a maximum of 28% − 88%',
@@ -71,7 +75,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Grandmaster at Angling.png',
+        icon: '/wiki/images/Grandmaster_at_Angling.png',
         description:
           'Grandmaster at Angling: While out of combat and idle in the river, Jax will occasionally catch a fish, granting him  1.',
         descriptionHTML:
@@ -80,7 +84,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Grandmaster at Angling:',
-            raw: ' While out of combat and idle in the river, Jax will occasionally catch a fish, granting him  1.',
+            raw: 'While out of combat and idle in the river, Jax will occasionally catch a fish, granting him  1.',
             values: 1,
             user: 'none',
             units: '',
@@ -122,7 +126,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Leap Strike.png',
+        icon: '/wiki/images/Leap_Strike.png',
         description: "Active: Jax  dashes to the target unit's location.",
         descriptionHTML:
           '<span class="template_sbc"><b>Active:</b></span> <b>Jax</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dashes"><a href="/wiki/Dash" title="Dash"><img alt="Dash.png" src="/wiki/images/Dash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Dash" title="Dash">dashes</a></span> to the target unit\'s location.',
@@ -131,6 +135,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target is an enemy and they are in range upon arrival, Jax deals them physical damage.',
         descriptionHTML:
@@ -168,6 +173,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Jax can cast any of his abilities during the dash.',
         descriptionHTML:
           '<i><b>Jax</b> can cast any of his <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> during the dash.</i>',
@@ -219,7 +225,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Jax empowers his next basic attack or  Leap Strike against an enemy within 10 seconds to deal bonus magic damage',
+            raw: 'Jax empowers his next basic attack or  Leap Strike against an enemy within 10 seconds to deal bonus magic damage',
             increasedStat: 'total_ap',
             values: 1,
             units: '',
@@ -271,6 +277,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Empower  resets Jax's basic attack timer.",
         descriptionHTML:
           '<i>Empower <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Jax\'s</b> basic attack timer.</i>',
@@ -316,7 +323,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Counter Strike.png',
+        icon: '/wiki/images/Counter_Strike.png',
         description:
           'Active: Jax enters Evasion for 2 seconds: a defensive stance that causes him to  dodge all incoming non- turret basic attacks and take 25% reduced damage from all area of effect abilities from  champions.  Counter Strike can be recast after 1 second, and does so automatically after the duration.',
         descriptionHTML:
@@ -325,7 +332,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Jax enters Evasion for 2 seconds: a defensive stance that causes him to  dodge all incoming non- turret basic attacks and take 25% reduced damage from all area of effect abilities from  champions',
+            raw: 'Jax enters Evasion for 2 seconds: a defensive stance that causes him to  dodge all incoming non- turret basic attacks and take 25% reduced damage from all area of effect abilities from  champions',
             damagetype: 'None',
             values: 2,
             valuesIsPercent: true,
@@ -350,38 +357,39 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
-          'Recast: Jax deals magic damage to nearby enemies, with the base damage increased by 20% for each attack dodged, up to a 100% increase, and  stuns them for 1 second.',
+          'Recast: Jax deals magic damage to nearby enemies, with the total damage increased by 20% for each attack dodged, up to a 100% increase, and  stuns them for 1 second.',
         descriptionHTML:
-          '<span class="template_sbc"><b>Recast:</b></span> <b>Jax</b> deals <span style="color: #00B0F0; white-space:normal">magic damage</span> to nearby enemies, with the <b>base</b> damage increased by 20% for each attack dodged, up to a 100% increase, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stuns</a></span> them for 1 second.',
+          '<span class="template_sbc"><b>Recast:</b></span> <b>Jax</b> deals <span style="color: #00B0F0; white-space:normal">magic damage</span> to nearby enemies, with the <b>total</b> damage increased by 20% for each attack dodged, up to a 100% increase, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stuns</a></span> them for 1 second.',
         descriptionRatios: [
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Jax deals magic damage to nearby enemies, with the base damage increased by 20% for each attack dodged, up to a 100% increase, and  stuns them for 1 second.',
+            raw: 'Jax deals magic damage to nearby enemies, with the total damage increased by 20% for each attack dodged, up to a 100% increase, and  stuns them for 1 second.',
             damagetype: 'Magic',
             values: 2,
             valuesIsPercent: true,
-            units: 'base_ad',
+            units: 'total_ad',
             unitsText:
-              'for each attack dodged, up to a 100deals magic damage to nearby enemies, with the base damage increased by 20',
-            pre: 'Jax deals magic damage to nearby enemies, with the base damage increased by 20% for each attack dodged, up to a 100% increase, and  stuns them for 1 second.',
+              'for each attack dodged, up to a 100deals magic damage to nearby enemies, with the total damage increased by 20',
+            pre: 'Jax deals magic damage to nearby enemies, with the total damage increased by 20% for each attack dodged, up to a 100% increase, and  stuns them for 1 second.',
           },
         ],
         leveling: [
           {
             name: 'Minimum Magic Damage:',
             values:
-              "55 / 85 / 115 / 145 / 175 (+ 100% AP) (+ 4% of target's maximum health)",
+              "55 / 85 / 115 / 145 / 175 (+ 70% AP) (+ 4% of target's maximum health)",
             valuesHTML:
-              '55 / 85 / 115 / 145 / 175 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;100% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;4% of target\'s <b>maximum</b> health)</span>',
+              '55 / 85 / 115 / 145 / 175 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;70% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;4% of target\'s <b>maximum</b> health)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Heal',
             name: 'Minimum Magic Damage:',
-            raw: "55 / 85 / 115 / 145 / 175 (+ 100% AP) (+ 4% of target's maximum health)",
+            raw: "55 / 85 / 115 / 145 / 175 (+ 70% AP) (+ 4% of target's maximum health)",
             healType: 'OutgoingHeals',
             values: [55, 85, 115, 145, 175],
             user: 'none',
@@ -390,11 +398,11 @@ export default {
             pre: '55 / 85 / 115 / 145 / 175',
             children: [
               {
-                values: 100,
+                values: 70,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 100% AP',
+                pre: '+ 70% AP',
               },
               {
                 values: 4,
@@ -453,13 +461,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Jax's basic attacks generate a stack of Grandmaster-At-Arms  on-hit for 2.5 seconds, refreshing on subsequent hits and stacking up to 2 times",
+            raw: "Jax's basic attacks generate a stack of Grandmaster-At-Arms  on-hit for 2.5 seconds, refreshing on subsequent hits and stacking up to 2 times",
             min: 0,
-            max: 10,
+            max: 2,
             description:
-              " Jax's basic attacks generate a stack of Grandmaster-At-Arms  on-hit for 2.5 seconds, refreshing on subsequent hits and stacking up to 2 times",
+              "Jax's basic attacks generate a stack of Grandmaster-At-Arms  on-hit for 2.5 seconds, refreshing on subsequent hits and stacking up to 2 times",
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks generate a stack of Grandmaster-At-Arms  on-hit for 2.5 seconds, refreshing on subsequent hits and stacking up to 2 times',
             pre: "Jax's basic attacks generate a stack of Grandmaster-At-Arms  on-hit for 2.5 seconds, refreshing on subsequent hits and stacking up to 2 times",
@@ -473,7 +481,7 @@ export default {
             description:
               'At 2 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               '2 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage',
             pre: 'At 2 stacks, his next basic attack is empowered to consume them all to deal bonus magic damage',
@@ -487,7 +495,7 @@ export default {
             description:
               'While Grandmaster-At-Arms is active, the empowered attack triggers at 1 stack instead.',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'Grandmaster-At-Arms is active, the empowered attack triggers at 1 stack instead.',
             pre: 'While Grandmaster-At-Arms is active, the empowered attack triggers at 1 stack instead.',
@@ -496,22 +504,22 @@ export default {
         leveling: [
           {
             name: 'Bonus Magic Damage:',
-            values: '80 / 100 / 120 / 140 / 160 (+ 60% AP)',
+            values: '60 / 85 / 110 / 135 / 160 (+ 60% AP)',
             valuesHTML:
-              '80 / 100 / 120 / 140 / 160 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;60% AP)</span>',
+              '60 / 85 / 110 / 135 / 160 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;60% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Bonus Magic Damage:',
-            raw: '80 / 100 / 120 / 140 / 160 (+ 60% AP)',
+            raw: '60 / 85 / 110 / 135 / 160 (+ 60% AP)',
             damagetype: 'Magic',
-            values: [80, 100, 120, 140, 160],
+            values: [60, 85, 110, 135, 160],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '80 / 100 / 120 / 140 / 160',
+            pre: '60 / 85 / 110 / 135 / 160',
             children: [
               {
                 values: 60,
@@ -525,7 +533,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Jax Grandmaster-At-Arms.png',
+        icon: '/wiki/images/Jax_Grandmaster-At-Arms.png',
         description:
           'Active: Jax swings his lantern around, dealing magic damage to nearby enemies. If this hits a champion, he gains  bonus armor, increased for each champion hit beyond the first, and  bonus magic resistance equal to 60% of that amount as well as 10% increased size for 8 seconds.',
         descriptionHTML:
@@ -553,9 +561,9 @@ export default {
           },
           {
             name: 'Bonus Armor:',
-            values: '25 / 35 / 45 / 55 / 65 (+ 40% bonus AD)',
+            values: '15 / 27.5 / 40 / 52.5 / 65 (+ 40% bonus AD)',
             valuesHTML:
-              '25 / 35 / 45 / 55 / 65 <span style="color:orange; white-space:normal">(+&nbsp;40% <b>bonus</b> AD)</span>',
+              '15 / 27.<small>5</small> / 40 / 52.<small>5</small> / 65 <span style="color:orange; white-space:normal">(+&nbsp;40% <b>bonus</b> AD)</span>',
           },
           {
             name: 'Bonus Armor per Champion Hit:',
@@ -588,13 +596,13 @@ export default {
           {
             effectType: 'Damage',
             name: 'Bonus Armor:',
-            raw: '25 / 35 / 45 / 55 / 65 (+ 40% bonus AD)',
+            raw: '15 / 27.5 / 40 / 52.5 / 65 (+ 40% bonus AD)',
             damagetype: 'None',
-            values: [25, 35, 45, 55, 65],
+            values: [15, 27.5, 40, 52.5, 65],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '25 / 35 / 45 / 55 / 65',
+            pre: '15 / 27.5 / 40 / 52.5 / 65',
             children: [
               {
                 values: 40,

@@ -31,7 +31,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Echoing Flames.png',
+        icon: '/wiki/images/Echoing_Flames.png',
         description:
           "Innate: Urgot's six legs each conceal a shotgun that covers an arc, together forming a full circle of cover around him. Each shotgun can fire once before incurring a unique  cooldown.",
         descriptionHTML:
@@ -41,6 +41,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Urgot's next basic attack  on-hit within the arc of a shotgun will cause it to fire in a cone, dealing 40% − 100% (based on level) AD (+ 2% − 6% (based on level) of target's maximum health) physical damage to enemies hit, capped at 100 − 360 (based on level) against  monsters.",
         descriptionHTML:
@@ -113,7 +114,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Corrosive Charge.png',
+        icon: '/wiki/images/Corrosive_Charge.png',
         description:
           'Active: Urgot launches a canister at the target location. Upon landing, it explodes after 0.3 seconds to deal physical damage to enemies hit and  slow them for 1.25 seconds.',
         descriptionHTML:
@@ -219,7 +220,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive:',
-            raw: " Urgot's other abilities mark enemy  champions hit for 5 seconds",
+            raw: "Urgot's other abilities mark enemy  champions hit for 5 seconds",
             values: 5,
             units: 'kindredMarks',
             unitsText:
@@ -240,7 +241,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Urgot equips his machine gun for 4 seconds, granting  ghosting to minions and non-epic monsters around him and autonomously firing at the nearest enemy at a fixed  3.0 attack speed, prioritizing marked enemy champions and refreshing the mark with every attack',
+            raw: 'Urgot equips his machine gun for 4 seconds, granting  ghosting to minions and non-epic monsters around him and autonomously firing at the nearest enemy at a fixed  3.0 attack speed, prioritizing marked enemy champions and refreshing the mark with every attack',
             increasedStat: 'kindredMarks',
             values: 4,
             units: '',
@@ -265,6 +266,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Attacks with Purge deal modified physical damage, with a minimum threshold of 50 against  monsters and  minions, and apply  on-hit and on-attack damage at 50% effectiveness, but they cannot  critically strike. Urgot cannot perform attacks while unable to declare basic attacks.',
         descriptionHTML:
@@ -315,6 +317,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Purge can be recast after 0.5 seconds within the duration, and does so automatically afterwards.',
         descriptionHTML:
@@ -324,7 +327,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Purge 2.png',
+        icon: '/wiki/images/Purge_2.png',
         description: 'Recast: Urgot ends Purge.',
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Urgot</b> ends <i>Purge</i>.',
@@ -381,7 +384,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Urgot grants himself a  shield for 4 seconds.',
+            raw: 'Urgot grants himself a  shield for 4 seconds.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 4,
@@ -431,6 +434,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After the cast time, Urgot  dashes in the target direction, though not through terrain, dealing physical damage to enemies he passes through,  knocking them aside and  stunning them for 1 second.',
         descriptionHTML:
@@ -481,6 +485,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Urgot will stop upon hitting an enemy  champion,  stunning them for 1.5 seconds and, after 0.25 seconds, also  flinging them to the location 100 units behind him, though not through terrain.',
         descriptionHTML:
@@ -502,6 +507,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Purge can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Urgot" data-ability="Purge" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Urgot/LoL#Purge" title="Purge"><img alt="Purge" src="/wiki/images/Urgot_Purge.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Urgot/LoL#Purge" title="Urgot/LoL">Purge</a></span></span> can be cast during the dash.</i>',
@@ -552,7 +558,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Fear Beyond Death.png',
+        icon: '/wiki/images/Fear_Beyond_Death.png',
         description:
           "Active: Urgot fires a chem-drill in the target direction that impales the first enemy champion hit, dealing physical damage and leashing the target for 4 seconds, during which they are  revealed and  slowed by 0% − 75% (based on target's missing health).",
         descriptionHTML:
@@ -561,7 +567,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Urgot fires a chem-drill in the target direction that impales the first enemy champion hit, dealing physical damage and leashing the target for 4 seconds, during which they are  revealed and  slowed by 0% − 75% (based on target's missing health).",
+            raw: "Urgot fires a chem-drill in the target direction that impales the first enemy champion hit, dealing physical damage and leashing the target for 4 seconds, during which they are  revealed and  slowed by 0% − 75% (based on target's missing health).",
             healType: 'PhysicalVamp',
             values: 4,
             valuesIsPercent: true,
@@ -605,7 +611,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Fear Beyond Death 3.png',
+        icon: '/wiki/images/Fear_Beyond_Death_3.png',
         description:
           'Fear Beyond Death can be recast if the leashed target is below  25% of their maximum health, and does so automatically if the chem-drill would kill the target, the ability is cast again while the target was above the threshold and is then brought within it, or the target is within the threshold at the end of the duration.',
         descriptionHTML:
@@ -629,7 +635,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Fear Beyond Death 2.png',
+        icon: '/wiki/images/Fear_Beyond_Death_2.png',
         description:
           'Recast - Mercy: Urgot launches chains at the leashed target, then  channels for 1.5 seconds once they latch on. During this time, he reels them toward him,  suppressing them,  revealing them, rendering them  untargetable, and preventing them from taking damage from other sources. If the target is near Urgot when the chains connect, they are pushed up to 1000 units away based on their proximity to him. This channel cannot be  interrupted by  crowd control.',
         descriptionHTML:
@@ -638,7 +644,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Recast - Mercy:',
-            raw: ' Urgot launches chains at the leashed target, then  channels for 1.5 seconds once they latch on',
+            raw: 'Urgot launches chains at the leashed target, then  channels for 1.5 seconds once they latch on',
             values: 1,
             user: 'none',
             units: '',
@@ -662,6 +668,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon completing the channel, the target is   executed. If the execution is successful, he  fears nearby enemies for 1.5 seconds, during which they are  slowed by 75%.',
         descriptionHTML:
@@ -684,6 +691,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Fear Beyond Death's recast can be used while affected by  cast-inhibiting crowd control.",
         descriptionHTML:

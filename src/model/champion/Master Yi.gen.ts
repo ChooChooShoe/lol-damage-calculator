@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Double Strike.png',
+        icon: '/wiki/images/Double_Strike.png',
         description:
           "Innate: Master Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times. At 3 stacks, Master Yi's next basic attack on-attack is empowered to consume the stacks to strike twice, the second strike dealing 50% AD physical damage.",
         descriptionHTML:
@@ -31,13 +31,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Master Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
+            raw: "Master Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Master Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
+              "Master Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
             pre: "Master Yi's basic attacks  on-hit generate a stack of Double Strike for 4 seconds, refreshing on subsequent hits and stacking up to 3 times",
@@ -52,7 +52,7 @@ export default {
               "At 3 stacks, Master Yi's next basic attack on-attack is empowered to consume the stacks to strike twice, the second strike dealing 50% AD physical damage.",
             values: 3,
             valuesIsPercent: true,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "AD physical damage.3 stacks, Master Yi's next basic attack on-attack is empowered to consume the stacks to strike twice, the second strike dealing 50",
             pre: "At 3 stacks, Master Yi's next basic attack on-attack is empowered to consume the stacks to strike twice, the second strike dealing 50% AD physical damage.",
@@ -62,6 +62,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The second strike applies  on-hit and on-attack effects at 100% effectiveness and is affected by  critical strike modifiers.',
         descriptionHTML:
@@ -84,6 +85,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Master Yi's primary target is killed before the second strike, he automatically attacks another enemy within 300 range.",
         descriptionHTML:
@@ -105,6 +107,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'The second strike can  critically strike  structures.',
         descriptionHTML:
           '<i>The second strike can <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critical strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon.png" src="/wiki/images/Critical_strike_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Critical_strike" title="Critical strike">critically strike</a></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turrets"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">structures</a></span>.</i>',
@@ -152,7 +155,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Alpha Strike.png',
+        icon: '/wiki/images/Alpha_Strike.png',
         description:
           'Active: Master Yi  vanishes and becomes  unable to act. After 0.231 seconds, he marks the target enemy and then proceeds to mark the nearest  visible un-marked enemy within 600 units, recurring every 0.231 seconds up to 3 times. If there are no other eligible targets before then, Master Yi can mark the same enemies again.\nUpon finishing marking, he  reappears 75 units in front of the target and becomes able to act again「 after 0.165 seconds. 」「 1.087 seconds after the start of the cast with 4 bounces. 」During Alpha Strike, Master Yi may choose a direction around the primary target to instead reappear 75 units in that direction. If the primary target  dies or is too far away during the delay, he will reappear at the cast location instead.',
         descriptionHTML:
@@ -174,6 +177,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Master Yi then detonates the marks, dealing physical damage and applying  on-hit effects at 75% effectiveness. Subsequent marks on a target instantly deal 25% damage and apply  on-hit effects at 18.75% effectiveness. Alpha Strike deals bonus physical damage to  monsters per hit.',
         descriptionHTML:
@@ -252,6 +256,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Alpha Strike's primary and lesser damage can  critically strike for bonus physical damage equal to (17.5% +  6.125%) AD and (4.375% +  1.53125%) AD respectively.",
         descriptionHTML:
@@ -291,6 +296,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Basic attacks  on-hit reduce Alpha Strike's  current cooldown by 1 second.",
         descriptionHTML:
@@ -311,6 +317,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Wuju Style and  Highlander can be cast during Alpha Strike. Each time Alpha Strike hits a target, the durations of  Wuju Style and  Highlander are refreshed by their current duration. Alpha Strike does not trigger its cooldown reduction nor grant a stack of  Double Strike when applying on-hit effects.',
         descriptionHTML:
@@ -366,7 +373,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Master Yi  channels for up to 4 seconds,  healing himself every 0.5 seconds, increased by 0% − 100% (based on missing health).',
+            raw: 'Master Yi  channels for up to 4 seconds,  healing himself every 0.5 seconds, increased by 0% − 100% (based on missing health).',
             healType: 'BonusHealth',
             values: 4,
             valuesIsPercent: true,
@@ -436,6 +443,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While channeling, Master Yi gains 90% damage reduction for the first 0.5 seconds, which is then modified to a reduced amount for the remaining duration of the channel. Meditate's damage reduction is halved against  turrets and lingers for 0.5 seconds after the channel ends.",
         descriptionHTML:
@@ -478,6 +486,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Meditate  resets Master Yi's basic attack timer, pauses  Wuju Style's and  Highlander's duration, and grants one stack of  Double Strike per second during the channel.",
         descriptionHTML:
@@ -518,7 +527,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wuju Style.png',
+        icon: '/wiki/images/Wuju_Style.png',
         description:
           'Active: Master Yi empowers his basic attacks within the next 5 seconds to deal  bonus true damage  on-hit.',
         descriptionHTML:
@@ -527,7 +536,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Master Yi empowers his basic attacks within the next 5 seconds to deal  bonus true damage  on-hit.',
+            raw: 'Master Yi empowers his basic attacks within the next 5 seconds to deal  bonus true damage  on-hit.',
             damagetype: 'True',
             values: 5,
             units: 'bonus_ad',
@@ -610,7 +619,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive:',
-            raw: " Scoring a champion  takedown reduces the  current cooldowns of Master Yi's basic abilities by 70%.",
+            raw: "Scoring a champion  takedown reduces the  current cooldowns of Master Yi's basic abilities by 70%.",
             values: 7,
             valuesIsPercent: true,
             user: 'none',
@@ -680,6 +689,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While active, scoring a champion  takedown extends Highlander's duration by 7 seconds.",
         descriptionHTML:

@@ -32,13 +32,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Xin Zhao's basic attacks and  Wind Becomes Lightning strikes generate a stack of Determination, stacking up to 3 times",
+            raw: "Xin Zhao's basic attacks and  Wind Becomes Lightning strikes generate a stack of Determination, stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Xin Zhao's basic attacks and  Wind Becomes Lightning strikes generate a stack of Determination, stacking up to 3 times",
+              "Xin Zhao's basic attacks and  Wind Becomes Lightning strikes generate a stack of Determination, stacking up to 3 times",
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "Zhao's basic attacks and  Wind Becomes Lightning strikes generate a stack of Determination, stacking up to 3 times",
             pre: "Xin Zhao's basic attacks and  Wind Becomes Lightning strikes generate a stack of Determination, stacking up to 3 times",
@@ -110,7 +110,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Three Talon Strike.png',
+        icon: '/wiki/images/Three_Talon_Strike.png',
         description:
           "Active: Xin Zhao empowers his next three basic attacks on-attack to each have an  uncancellable windup, deal bonus physical damage and reduce his other abilities'  current cooldowns by 1 second. Each attack refreshes the duration.",
         descriptionHTML:
@@ -119,7 +119,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Xin Zhao empowers his next three basic attacks on-attack to each have an  uncancellable windup, deal bonus physical damage and reduce his other abilities'  current cooldowns by 1 second",
+            raw: "Xin Zhao empowers his next three basic attacks on-attack to each have an  uncancellable windup, deal bonus physical damage and reduce his other abilities'  current cooldowns by 1 second",
             damagetype: 'Physical',
             values: 1,
             units: 'bonus_ad',
@@ -160,6 +160,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'The third attack  knocks up the target for 0.75 seconds.',
         descriptionHTML:
           'The third attack <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon.png" src="/wiki/images/Airborne_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">knocks up</a></span> the target for 0.<small>75</small> seconds.',
@@ -168,6 +169,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Three Talon Strike's bonus damage is affected by  critical strike modifiers.",
         descriptionHTML:
@@ -177,6 +179,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Three Talon Strike  resets Xin Zhao's basic attack timer.",
         descriptionHTML:
@@ -228,7 +231,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wind Becomes Lightning.png',
+        icon: '/wiki/images/Wind_Becomes_Lightning.png',
         description:
           'Active: Xin Zhao slashes in an arc and, after the cast time, thrusts his spear in a line in the target direction. Each strike deals physical damage to enemies hit, modified to 50% − 100% (based on level) against  minions.\nThe thrust deals increased damage, further by 0% − 33.3% (based on critical strike chance), and  slows enemies hit by 50% for 1.5 seconds. Enemy  champions and  monsters hit are also marked Challenged for 3 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -357,6 +360,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The durations of  Three Talon Strike,  Audacious Charge's bonus attack speed, and  Crescent Guard are delayed relative to Wind Becomes Lightning's cast time after 0.2 seconds of its activation.",
         descriptionHTML:
@@ -366,6 +370,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Wind Becomes Lightning's damage  heals Xin Zhao for 33.3% of his  life steal.",
         descriptionHTML:
@@ -427,7 +432,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Audacious Charge.png',
+        icon: '/wiki/images/Audacious_Charge.png',
         description:
           "Active: Xin Zhao  dashes to the target enemy's location, dealing magic damage to enemies near them and  slowing them by 30% for 0.5 seconds. Audacious Charge's range is increased against Challenged targets.",
         descriptionHTML:
@@ -436,7 +441,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Xin Zhao  dashes to the target enemy's location, dealing magic damage to enemies near them and  slowing them by 30% for 0.5 seconds",
+            raw: "Xin Zhao  dashes to the target enemy's location, dealing magic damage to enemies near them and  slowing them by 30% for 0.5 seconds",
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -479,6 +484,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Xin Zhao then gains  bonus attack speed for 5 seconds.',
         descriptionHTML:
           '<b>Xin Zhao</b> then gains <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orangered; white-space:normal"><b>bonus</b> attack speed</span></span> for 5 seconds.',
@@ -516,6 +522,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Three Talon Strike and  Crescent Guard can be cast during the dash.',
         descriptionHTML:
@@ -564,7 +571,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Xin Zhao Challenged Mark.png',
+        icon: '/wiki/images/Xin_Zhao_Challenged_Mark.png',
         description:
           "Passive - Challenge: The last enemy champion hit by Xin Zhao's basic attacks or  Audacious Charge is marked Challenged for 3 seconds.",
         descriptionHTML:
@@ -573,7 +580,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive - Challenge:',
-            raw: " The last enemy champion hit by Xin Zhao's basic attacks or  Audacious Charge is marked Challenged for 3 seconds.",
+            raw: "The last enemy champion hit by Xin Zhao's basic attacks or  Audacious Charge is marked Challenged for 3 seconds.",
             values: 3,
             units: 'kindredMarks',
             unitsText:
@@ -585,7 +592,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Crescent Guard.png',
+        icon: '/wiki/images/Crescent_Guard.png',
         description:
           'Active: Xin Zhao sweeps his spear around him, dealing physical damage to nearby enemies, capped at 600 against  monsters, and  knocking back all non-Challenged targets hit up-to 700 units over 0.75 seconds, as well as  stunning them for the same duration.',
         descriptionHTML:
@@ -594,7 +601,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Xin Zhao sweeps his spear around him, dealing physical damage to nearby enemies, capped at 600 against  monsters, and  knocking back all non-Challenged targets hit up-to 700 units over 0.75 seconds, as well as  stunning them for the same duration.',
+            raw: 'Xin Zhao sweeps his spear around him, dealing physical damage to nearby enemies, capped at 600 against  monsters, and  knocking back all non-Challenged targets hit up-to 700 units over 0.75 seconds, as well as  stunning them for the same duration.',
             increasedStat: 'total_ap',
             values: 6,
             units: '',
@@ -651,6 +658,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'For the next 4 seconds, Xin Zhao is  invulnerable against enemy  champions far away from him.',
         descriptionHTML:

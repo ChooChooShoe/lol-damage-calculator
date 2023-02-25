@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Soul Siphon.png',
+        icon: '/wiki/images/Soul_Siphon.png',
         description:
           'Innate: Morgana  heals herself for 18% of the post-mitigation damage dealt by her abilities against  champions, large  minions, and medium and large  monsters.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Morgana  heals herself for 18% of the post-mitigation damage dealt by her abilities against  champions, large  minions, and medium and large  monsters.',
+            raw: 'Morgana  heals herself for 18% of the post-mitigation damage dealt by her abilities against  champions, large  minions, and medium and large  monsters.',
             healType: 'SelfHeal',
             values: 1,
             valuesIsPercent: true,
@@ -80,7 +80,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dark Binding.png',
+        icon: '/wiki/images/Dark_Binding.png',
         description:
           'Active: Morgana throws a sphere of dark magic in the target direction that deals magic damage to the first enemy hit and  roots them for a duration.',
         descriptionHTML:
@@ -179,7 +179,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: " Tormented Shadow's  current cooldown is reduced by 5% of its total cooldown whenever  Soul Siphon triggers",
+            raw: "Tormented Shadow's  current cooldown is reduced by 5% of its total cooldown whenever  Soul Siphon triggers",
             damagetype: 'None',
             values: 5,
             valuesIsPercent: true,
@@ -193,7 +193,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Tormented Shadow.png',
+        icon: '/wiki/images/Tormented_Shadow.png',
         description:
           "Active: Morgana torments the soil at the target location, causing the area to become desecrated for 5 seconds. Enemies within take magic damage on-cast and every 0.5 seconds, increased by 0% − 170% (based on target's missing health). Tormented Shadow deals 155% damage against  monsters.",
         descriptionHTML:
@@ -202,7 +202,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Morgana torments the soil at the target location, causing the area to become desecrated for 5 seconds',
+            raw: 'Morgana torments the soil at the target location, causing the area to become desecrated for 5 seconds',
             values: 5,
             user: 'none',
             units: '',
@@ -315,7 +315,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Black Shield.png',
+        icon: '/wiki/images/Black_Shield.png',
         description:
           'Active: Morgana grants a  shield to the target allied  champion or herself for 5 seconds, which absorbs incoming magic damage and grants  crowd control immunity while it holds.',
         descriptionHTML:
@@ -324,7 +324,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Morgana grants a  shield to the target allied  champion or herself for 5 seconds, which absorbs incoming magic damage and grants  crowd control immunity while it holds.',
+            raw: 'Morgana grants a  shield to the target allied  champion or herself for 5 seconds, which absorbs incoming magic damage and grants  crowd control immunity while it holds.',
             damagetype: 'Magic',
             shieldType: 'SelfShield',
             values: 5,
@@ -405,7 +405,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Soul Shackles.png',
+        icon: '/wiki/images/Soul_Shackles.png',
         description:
           'Active: Morgana latches chains of energy onto nearby enemy champions over the cast time, dealing magic damage and forming a  tether between herself and each target for 3 seconds, during which the targets are  revealed and  slowed by 20%.',
         descriptionHTML:
@@ -414,7 +414,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Morgana latches chains of energy onto nearby enemy champions over the cast time, dealing magic damage and forming a  tether between herself and each target for 3 seconds, during which the targets are  revealed and  slowed by 20%.',
+            raw: 'Morgana latches chains of energy onto nearby enemy champions over the cast time, dealing magic damage and forming a  tether between herself and each target for 3 seconds, during which the targets are  revealed and  slowed by 20%.',
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -457,6 +457,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Morgana gains  bonus movement speed while facing enemies tethered to her.',
         descriptionHTML:
@@ -485,6 +486,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If a target does not break their tether by the ends of its duration, they are dealt the same magic damage again and become  stunned for 1.5 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -506,6 +508,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A nearby enemy champion is required to cast this ability. The target does not have to be  visible to be tethered by this ability.',
         descriptionHTML:

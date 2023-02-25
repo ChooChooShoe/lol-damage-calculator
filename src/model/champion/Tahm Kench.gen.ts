@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/An Acquired Taste.png',
+        icon: '/wiki/images/An_Acquired_Taste.png',
         description:
           "Innate: Tahm Kench's basic attacks  on-hit and  Tongue Lash are empowered to deal 8 − 60 (based on level) (+ 2% AP per 100 bonus health) (+ 3% of his bonus health) bonus magic damage and apply a stack of An Acquired Taste against enemy  champions for 5 seconds, refreshing on subsequent hits and stacking up to 3 times. Stacks expire by one every 0.67 seconds when the duration ends.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Tahm Kench's basic attacks  on-hit and  Tongue Lash are empowered to deal 8 − 60 (based on level) (+ 2% AP per 100 bonus health) (+ 3% of his bonus health) bonus magic damage and apply a stack of An Acquired Taste against enemy  champions for 5 seconds, refreshing on subsequent hits and stacking up to 3 times",
+            raw: "Tahm Kench's basic attacks  on-hit and  Tongue Lash are empowered to deal 8 − 60 (based on level) (+ 2% AP per 100 bonus health) (+ 3% of his bonus health) bonus magic damage and apply a stack of An Acquired Taste against enemy  champions for 5 seconds, refreshing on subsequent hits and stacking up to 3 times",
             healType: 'BonusHealth',
             values: [
               8, 11.06, 14.12, 17.18, 20.24, 23.29, 26.35, 29.41, 32.47, 35.53,
@@ -66,18 +66,22 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Tongue Lash and  Devour gain additional effects against enemies with 3 stacks, consuming them all.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Tahm Kench" data-ability="Tongue Lash" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Tahm_Kench/LoL#Tongue_Lash" title="Tongue Lash"><img alt="Tongue Lash" src="/wiki/images/Tahm_Kench_Tongue_Lash.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Tahm_Kench/LoL#Tongue_Lash" title="Tahm Kench/LoL">Tongue Lash</a></span></span></i> and <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Tahm Kench" data-ability="Devour" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Tahm_Kench/LoL#Devour" title="Devour"><img alt="Devour" src="/wiki/images/Tahm_Kench_Devour.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Tahm_Kench/LoL#Devour" title="Tahm Kench/LoL">Devour</a></span></span></i> gain additional effects against enemies with 3 stacks, consuming them all.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'Tongue Lash and  Devour gain additional effects against enemies with 3 stacks, consuming them all.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'Tongue Lash and  Devour gain additional effects against enemies with 3 stacks, consuming them all.',
             values: 3,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'Lash and  Devour gain additional effects against enemies with 3 stacks, consuming them all.',
             pre: 'Tongue Lash and  Devour gain additional effects against enemies with 3 stacks, consuming them all.',
@@ -123,7 +127,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Tongue Lash.png',
+        icon: '/wiki/images/Tongue_Lash.png',
         description:
           'Active: Tahm Kench lashes his tongue in the target direction that deals magic damage to the first enemy hit and  slows them by 50% for 2 seconds. If this hits an enemy  champion, Tahm Kench also  heals himself.',
         descriptionHTML:
@@ -132,7 +136,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Tahm Kench lashes his tongue in the target direction that deals magic damage to the first enemy hit and  slows them by 50% for 2 seconds',
+            raw: 'Tahm Kench lashes his tongue in the target direction that deals magic damage to the first enemy hit and  slows them by 50% for 2 seconds',
             damagetype: 'Magic',
             values: 5,
             valuesIsPercent: true,
@@ -230,6 +234,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An Acquired Taste Bonus: The target is  stunned for 1.5 seconds.  Devour can be cast during Tongue Lash at no cost to pull the target to Tahm Kench before swallowing them.',
         descriptionHTML:
@@ -238,7 +243,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'An Acquired Taste Bonus:',
-            raw: ' The target is  stunned for 1.5 seconds',
+            raw: 'The target is  stunned for 1.5 seconds',
             values: 1,
             user: 'none',
             units: '',
@@ -250,6 +255,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Tahm Kench is  unable to move, attack, or cast  Abyssal Dive or  Devour on a different target while his tongue is in flight. Tongue Lash's range and travel speed can be increased by Tahm Kench's size.",
         descriptionHTML:
@@ -297,7 +303,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Abyssal Dive.png',
+        icon: '/wiki/images/Abyssal_Dive.png',
         description:
           'Active: Tahm Kench  channels for 1.35 seconds as he dives into the waters, then  blinks to the target location after a 0.15-second delay and remains  unable to act for 0.65 seconds after the channel completes. Abyssal Dive grants  sight of the area during the channel.',
         descriptionHTML:
@@ -306,7 +312,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Tahm Kench  channels for 1.35 seconds as he dives into the waters, then  blinks to the target location after a 0.15-second delay and remains  unable to act for 0.65 seconds after the channel completes',
+            raw: 'Tahm Kench  channels for 1.35 seconds as he dives into the waters, then  blinks to the target location after a 0.15-second delay and remains  unable to act for 0.65 seconds after the channel completes',
             values: 1,
             user: 'none',
             units: '',
@@ -319,6 +325,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Tahm Kench emerges to deal magic damage to nearby enemies, as well as  knock up and  stun them for 1 second. If this hits at least one enemy  champion, 40% of Abyssal Dive's  cooldown and  mana cost are refunded.",
         descriptionHTML:
@@ -380,6 +387,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies can see the indicator for Tahm Kench's destination after he has channeled for 0.75 seconds. Abyssal Dive will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -430,7 +438,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Passive:',
-            raw: ' Tahm Kench stores a portion of the post-mitigation damage he takes as grey health on his health bar, increased while there are at least 2 nearby  visible enemy champions either dead or alive',
+            raw: 'Tahm Kench stores a portion of the post-mitigation damage he takes as grey health on his health bar, increased while there are at least 2 nearby  visible enemy champions either dead or alive',
             healType: 'BonusHealth',
             values: 2,
             units: 'total_ad',
@@ -491,6 +499,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While Thick Skin is not on cooldown, and after 4 seconds without taking damage, Tahm Kench rapidly consumes his grey health to restore 45% − 100% (based on level) of the amount,  healing for 10% of his maximum health every 0.264 seconds.',
         descriptionHTML:
@@ -515,7 +524,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Thick Skin.png',
+        icon: '/wiki/images/Thick_Skin.png',
         description:
           'Active: Tahm Kench converts his current grey health into a  shield that lasts for 2.5 seconds.',
         descriptionHTML:
@@ -524,7 +533,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Tahm Kench converts his current grey health into a  shield that lasts for 2.5 seconds.',
+            raw: 'Tahm Kench converts his current grey health into a  shield that lasts for 2.5 seconds.',
             healType: 'BonusHealth',
             values: 2,
             units: 'current_hp',
@@ -580,7 +589,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Tahm Kench swallows the target  champion for up to 3 seconds, rendering them  untargetable and  displacement immune',
+            raw: 'Tahm Kench swallows the target  champion for up to 3 seconds, rendering them  untargetable and  displacement immune',
             values: 3,
             user: 'none',
             units: '',
@@ -597,7 +606,7 @@ export default {
             description:
               'Devour can be cast on enemies only with 3 stacks of  An Acquired Taste.',
             values: 3,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'can be cast on enemies only with 3 stacks of  An Acquired Taste.',
             pre: 'Devour can be cast on enemies only with 3 stacks of  An Acquired Taste.',
@@ -607,6 +616,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target is an ally, they become  unable to act and are granted a  shield, which decays in strength by 50 every 0.25 seconds after they are  Regurgitated. Tahm Kench will also gain  40% bonus movement speed for 3 seconds and is unable to cast movement spells besides  Abyssal Dive while an ally is swallowed.',
         descriptionHTML:
@@ -671,6 +681,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 1 second, Tahm Kench can cast  Regurgitate within the duration, and automatically does so afterwards. The swallowed ally can also input a movement command to force this cast in the target direction, unless they are  immobilized.',
         descriptionHTML:
@@ -692,6 +703,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'An Acquired Taste Bonus: The target is  suppressed while swallowed. Tahm Kench will also be  grounded and  slowed by 40% while an enemy is swallowed.',
         descriptionHTML:
@@ -714,6 +726,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Tahm Kench is performing  Abyssal Dive,  Regurgitate will not automatically cast until after he finishes.',
         descriptionHTML:

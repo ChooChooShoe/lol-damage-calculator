@@ -50,7 +50,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Goes Where He Pleases.png',
+        icon: '/wiki/images/Goes_Where_He_Pleases.png',
         description:
           'Passive: Periodically, Dr. Mundo gains immunity to the  immobilizing effects of the next hostile spell to affect him. Upon resisting one, Dr. Mundo pays a health cost equal to 4% of his current health and propels a canister that lands 525 units in the general direction of its source, remaining on the ground for 7 seconds.',
         descriptionHTML:
@@ -73,6 +73,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Dr. Mundo can move near the canister to consume it,  healing himself for 4% of his maximum health and reducing the  cooldown of Goes Where He Pleases by 15 seconds. Enemy  champions can move near it to destroy it.',
         descriptionHTML:
@@ -95,6 +96,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Goes Where He Pleases'  cooldown resets upon respawning.",
         descriptionHTML:
           '<i>Goes Where He Pleases\' </i> cooldown resets upon <a href="/wiki/Respawn" class="mw-redirect" title="Respawn">respawning</a>.',
@@ -140,7 +142,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Infected Bonesaw.png',
+        icon: '/wiki/images/Infected_Bonesaw.png',
         description:
           'Active: Dr. Mundo throws an infected bonesaw in the target direction that deals magic damage to the first enemy hit and  slows them by 40% for 2 seconds.',
         descriptionHTML:
@@ -184,6 +186,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Infected Bonesaw has a minimum damage threshold, and is capped against  monsters.',
         descriptionHTML:
@@ -227,6 +230,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the bonesaw hits an enemy, Dr. Mundo  heals for 50% of the health cost, increased to 100% against  champions or  monsters.',
         descriptionHTML:
@@ -239,7 +243,7 @@ export default {
             healType: 'BonusHealth',
             values: 5,
             valuesIsPercent: true,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText: 'of the health cost, increased to 100 heals for 50',
             pre: 'Mundo  heals for 50% of the health cost, increased to 100% against  champions or  monsters.',
           },
@@ -289,7 +293,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Heart Zapper.png',
+        icon: '/wiki/images/Heart_Zapper.png',
         description:
           'Active: Dr. Mundo charges up a defibrillator for up to 3 seconds, dealing magic damage every 0.25 seconds to nearby enemies and storing 80% − 95% (based on level) of post-mitigation damage he takes as grey health on his health bar, reduced to 25% after the first 0.75 seconds.',
         descriptionHTML:
@@ -303,7 +307,7 @@ export default {
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'of post-mitigation damage he takes as grey health on his health bar, reduced to 25% after the first 0.75 seconds.',
             pre: 'Mundo charges up a defibrillator for up to 3 seconds, dealing magic damage every 0.25 seconds to nearby enemies and storing 80% − 95%',
@@ -333,6 +337,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Heart Zapper can be recast after 1 second within the duration, and does so automatically after the duration.',
         descriptionHTML:
@@ -354,7 +359,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Heart Zapper 2.png',
+        icon: '/wiki/images/Heart_Zapper_2.png',
         description:
           'Recast: Dr. Mundo detonates the defibrillator, dealing magic damage to nearby enemies and  healing for 50% of grey health, increased to 100% if at least one enemy champion or large monster is hit.',
         descriptionHTML:
@@ -367,7 +372,7 @@ export default {
             healType: 'BonusHealth',
             values: 5,
             valuesIsPercent: true,
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText:
               'of grey health, increased to 100detonates the defibrillator, dealing magic damage to nearby enemies and  healing for 50',
             pre: 'Mundo detonates the defibrillator, dealing magic damage to nearby enemies and  healing for 50% of grey health, increased to 100% if at least one enemy champion or large monster is hit.',
@@ -467,7 +472,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Blunt Force Trauma.png',
+        icon: '/wiki/images/Blunt_Force_Trauma.png',
         description:
           "Active: Dr. Mundo empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus physical damage, increased by 0% − 60% (based on missing health). If the target dies or is a small monster, they are sent flying away in a line, though not through terrain, causing all enemies they pass through to take 100% AD plus Blunt Force Trauma's minimum bonus damage.",
         descriptionHTML:
@@ -532,6 +537,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Blunt Force Trauma as well as the triggering attack's damage is increased to 140% against  minions and 150% against  monsters.",
         descriptionHTML:
@@ -554,6 +560,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Blunt Force Trauma  resets Dr. Mundo's basic attack timer.",
         descriptionHTML:
@@ -594,7 +601,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Maximum Dosage.png',
+        icon: '/wiki/images/Maximum_Dosage.png',
         description:
           'Active: Dr. Mundo injects himself with chemicals to become enhanced for 10 seconds, gaining increased  base health,  bonus movement speed, and  bonus health regeneration.',
         descriptionHTML:
@@ -606,7 +613,7 @@ export default {
             raw: 'Mundo injects himself with chemicals to become enhanced for 10 seconds, gaining increased  base health,  bonus movement speed, and  bonus health regeneration.',
             healType: 'HealthRegen',
             values: 1,
-            units: 'bonus_hp',
+            units: 'bonus_hpregen',
             unitsText:
               'injects himself with chemicals to become enhanced for 10 seconds, gaining increased  base health,  bonus movement speed, and  bonus health regeneration.',
             pre: 'Mundo injects himself with chemicals to become enhanced for 10 seconds, gaining increased  base health,  bonus movement speed, and  bonus health regeneration.',
@@ -668,6 +675,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "At rank 3, Maximum Dosage's increased base health and bonus health regeneration are both increased by 5% for each enemy  champion within 1200 units at the time of cast.",
         descriptionHTML:
@@ -680,7 +688,7 @@ export default {
             healType: 'HealthRegen',
             values: 3,
             valuesIsPercent: true,
-            units: 'maximum_hp',
+            units: 'bonus_hpregen',
             unitsText:
               "for each enemy  champion within 1200 units at the time of cast.rank 3, Maximum Dosage's increased base health and bonus health regeneration are both increased by 5",
             pre: "At rank 3, Maximum Dosage's increased base health and bonus health regeneration are both increased by 5% for each enemy  champion within 1200 units at the time of cast.",

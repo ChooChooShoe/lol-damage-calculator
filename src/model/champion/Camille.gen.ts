@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Adaptive Defenses.png',
+        icon: '/wiki/images/Adaptive_Defenses.png',
         description:
           "Innate: Periodically, Camille's next basic attack against an enemy champion is enhanced to  on-hit grant her a  shield equal to  20% of her maximum health for 2 seconds from either exclusively  physical damage or  magic damage, based on which type the target has previously dealt most of against champions as well as on Camille's current  armor and  magic resistance.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Periodically, Camille's next basic attack against an enemy champion is enhanced to  on-hit grant her a  shield equal to  20% of her maximum health for 2 seconds from either exclusively  physical damage or  magic damage, based on which type the target has previously dealt most of against champions as well as on Camille's current  armor and  magic resistance.",
+            raw: "Periodically, Camille's next basic attack against an enemy champion is enhanced to  on-hit grant her a  shield equal to  20% of her maximum health for 2 seconds from either exclusively  physical damage or  magic damage, based on which type the target has previously dealt most of against champions as well as on Camille's current  armor and  magic resistance.",
             healType: 'PhysicalVamp',
             values: 2,
             valuesIsPercent: true,
@@ -84,7 +84,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Precision Protocol.png',
+        icon: '/wiki/images/Precision_Protocol.png',
         description:
           'Active: Camille empowers her next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, deal bonus physical damage and grant her  bonus movement speed for 1 second.',
         descriptionHTML:
@@ -93,7 +93,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Camille empowers her next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, deal bonus physical damage and grant her  bonus movement speed for 1 second.',
+            raw: 'Camille empowers her next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, deal bonus physical damage and grant her  bonus movement speed for 1 second.',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -141,7 +141,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Precision Protocol 2.png',
+        icon: '/wiki/images/Precision_Protocol_2.png',
         description:
           'After 0.25 seconds, Precision Protocol can then be recast within the next 3.5 seconds at no additional cost.',
         descriptionHTML:
@@ -151,7 +151,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Precision Protocol 3.png',
+        icon: '/wiki/images/Precision_Protocol_3.png',
         description:
           "Recast: Camille mimics the first cast's effects. If Precision Protocol is recast after 1.5 seconds of the first attack, then the bonus damage is doubled, and 40% − 100% (based on level) of the attack's total damage will be dealt as  true damage.",
         descriptionHTML:
@@ -195,6 +195,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Both casts of Precision Protocol  reset Camille's basic attack timer. Camille is able to cast  Tactical Sweep,  Hookshot, or  The Hextech Ultimatum during the windup of Precision Protocol's empowered attack without cancelling it.",
         descriptionHTML:
@@ -243,7 +244,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Tactical Sweep.png',
+        icon: '/wiki/images/Tactical_Sweep.png',
         description:
           'Active: Camille sweeps her leg in a cone in the target direction over 1.1 seconds, during which she is  ghosted and unable to declare basic attacks. Afterwards, she deals physical damage to all enemies within.',
         descriptionHTML:
@@ -252,7 +253,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Camille sweeps her leg in a cone in the target direction over 1.1 seconds, during which she is  ghosted and unable to declare basic attacks',
+            raw: 'Camille sweeps her leg in a cone in the target direction over 1.1 seconds, during which she is  ghosted and unable to declare basic attacks',
             values: 1,
             user: 'target',
             units: 'total_ad',
@@ -293,6 +294,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies hit by the outer half of the cone take additional physical damage, capped at 300 against  monsters, and are  slowed by 80% decaying over 2 seconds. Camille is  healed for 100% of this additional damage post-mitigation against enemy  champions in the outer half.',
         descriptionHTML:
@@ -358,6 +360,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Non-epic monsters take 50% damage from Tactical Sweep.',
         descriptionHTML:
           'Non-epic monsters take 50% damage from <i>Tactical Sweep</i>.',
@@ -436,6 +439,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Other abilities can be cast during the animation without cancelling it.',
         descriptionHTML:
@@ -492,6 +496,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Camille will be  knocked down by any  immobilizing or  polymorphing crowd control, excluding  sleep(bug), during the dash.',
         descriptionHTML:
@@ -522,6 +527,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Other abilities can be cast during the ability. Casting  The Hextech Ultimatum will cause the grapple to disappear if it is in flight.',
         descriptionHTML:
@@ -564,7 +570,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Wall Dive.png',
+        icon: '/wiki/images/Wall_Dive.png',
         description:
           "Active: Camille  dashes in the target direction, dealing physical damage to enemies near the landing location. Wall Dive's range is doubled towards enemy  champions within 1400 units. Camille grants  ghosting to non-champions she passes through for 4 seconds.",
         descriptionHTML:
@@ -625,6 +631,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Camille stops prematurely upon colliding with an enemy champion,  knocking back all nearby enemy champions, though not through terrain, as well as  stunning them for 0.75 seconds, while also gaining  bonus attack speed for 5 seconds.',
         descriptionHTML:
@@ -652,6 +659,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Wall Dive may be also cast with movement or attack commands. Other abilities besides  The Hextech Ultimatum can be cast while grappled or during the dash.',
         descriptionHTML:
@@ -699,7 +707,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/The Hextech Ultimatum.png',
+        icon: '/wiki/images/The_Hextech_Ultimatum.png',
         description:
           'Active: Camille becomes  untargetable and  leaps with  displacement immunity towards the target enemy  champion over 0.5 seconds,  revealing them for the duration and  disrupting their ongoing  channels.',
         descriptionHTML:
@@ -709,6 +717,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon landing on the target, she becomes targetable again and creates a hexagonal zone around her current location for a duration,  knocking away all other nearby enemies on impact, though not through terrain.',
         descriptionHTML:
@@ -735,6 +744,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The target cannot escape the zone through any means. While within the zone, Camille's basic attacks deal bonus magic damage.",
         descriptionHTML:
@@ -773,6 +783,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The Hextech Ultimatum ends automatically within 1 second if Camille leaves the area or dies.',
         descriptionHTML:

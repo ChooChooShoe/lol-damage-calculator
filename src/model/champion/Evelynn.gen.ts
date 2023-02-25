@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Demon Shade.png',
+        icon: '/wiki/images/Demon_Shade.png',
         description:
           'Innate: Evelynn shrouds herself in Demon Shade after not performing actions that break stealth for 4 seconds. Attacking or casting abilities ends Demon Shade immediately and places it on a 4-second static cooldown, reduced to 1.25 seconds from casting  Last Caress. Taking damage from  champions or  turrets interrupts Demon Shade and places it on a 1.5-second static cooldown.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' Evelynn shrouds herself in Demon Shade after not performing actions that break stealth for 4 seconds',
+            raw: 'Evelynn shrouds herself in Demon Shade after not performing actions that break stealth for 4 seconds',
             damagetype: 'None',
             values: 4,
             units: 'total_ad',
@@ -69,6 +69,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Demon Shade: While below  250 − 590 (based on level) (+ 250% AP) health, Evelynn  heals herself for 15 − 150 (based on level) every second. From level 6 onward, Demon Shade also grants  camouflage.',
         descriptionHTML:
@@ -77,14 +78,14 @@ export default {
           {
             effectType: 'Heal',
             name: 'Demon Shade:',
-            raw: ' While below  250 − 590 (based on level) (+ 250% AP) health, Evelynn  heals herself for 15 − 150 (based on level) every second',
+            raw: 'While below  250 − 590 (based on level) (+ 250% AP) health, Evelynn  heals herself for 15 − 150 (based on level) every second',
             healType: 'BonusHealth',
             values: [
               250, 270, 290, 310, 330, 350, 370, 390, 410, 430, 450, 470, 490,
               510, 530, 550, 570, 590,
             ],
             basedOn: 'level',
-            units: 'total_hp',
+            units: 'maximum_hp',
             unitsText: 'health, Evelynn  heals herself for 15 − 150',
             pre: 'While below  250 − 590',
             post: 'health, Evelynn  heals herself for 15 − 150',
@@ -154,7 +155,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hate Spike.png',
+        icon: '/wiki/images/Hate_Spike.png',
         description:
           'Active: Evelynn launches a dart in the target direction, dealing magic damage to the first enemy hit and marking them for 4 seconds.',
         descriptionHTML:
@@ -163,7 +164,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Evelynn launches a dart in the target direction, dealing magic damage to the first enemy hit and marking them for 4 seconds.',
+            raw: 'Evelynn launches a dart in the target direction, dealing magic damage to the first enemy hit and marking them for 4 seconds.',
             damagetype: 'Magic',
             values: 4,
             units: 'kindredMarks',
@@ -204,6 +205,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Evelynn's next 3 basic attacks or abilities against the marked target deal bonus magic damage.",
         descriptionHTML:
@@ -253,6 +255,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Hate Spike may be recast up to 3 times at no cost until the ability comes off cooldown.',
         descriptionHTML:
@@ -263,7 +266,8 @@ export default {
             name: 'Line 1:',
             raw: 'Hate Spike may be recast up to 3 times at no cost until the ability comes off cooldown.',
             values: 3,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'Spike may be recast up to 3 times at no cost until the ability comes off cooldown.',
             pre: 'Hate Spike may be recast up to 3 times at no cost until the ability comes off cooldown.',
@@ -273,7 +277,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Hate Spike 2.png',
+        icon: '/wiki/images/Hate_Spike_2.png',
         description:
           'Recast: Evelynn unleashes a line of deadly spikes in the direction of the nearest  visible enemy that deals magic damage to all enemies struck.',
         descriptionHTML:
@@ -311,6 +315,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Hate Spike's recast prioritizes targeting Evelynn's attack target, then the nearest enemy champion, then the nearest non-champion.",
         descriptionHTML:
@@ -368,7 +373,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Evelynn curses the target enemy  champion or  monster for 5 seconds.',
+            raw: 'Evelynn curses the target enemy  champion or  monster for 5 seconds.',
             values: 5,
             user: 'none',
             units: '',
@@ -381,6 +386,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Evelynn's next basic attack or ability against the accursed target expunges them,  slowing them by 65% for 0.75 seconds.",
         descriptionHTML:
@@ -404,6 +410,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Expunging a target will refund Allure's  mana cost. If the target is cursed for at least 2.5 seconds, the expunge also  charms them for a few seconds and the duration of the  slow is increased to last for this time, as well as applying additional effects based on the target type.",
         descriptionHTML:
@@ -443,6 +450,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Against champions, the expunge also inflicts  magic resistance reduction for 4 seconds.Against monsters, the expunge deals bonus magic damage and the  charm lasts 2 seconds longer.',
         descriptionHTML:
@@ -510,6 +518,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Casting Allure does not break  Demon Shade nor its fade into it.',
         descriptionHTML:
@@ -567,7 +576,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Evelynn whips the target enemy with her lashers, dealing magic damage and applying  on-hit effects at 100% effectiveness.',
+            raw: 'Evelynn whips the target enemy with her lashers, dealing magic damage and applying  on-hit effects at 100% effectiveness.',
             damagetype: 'Magic',
             values: 1,
             valuesIsPercent: true,
@@ -621,7 +630,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Whiplash 2.png',
+        icon: '/wiki/images/Whiplash_2.png',
         description:
           'Evelynn also gains  30% bonus movement speed for 2 seconds.',
         descriptionHTML:
@@ -643,6 +652,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gaining  Demon Shade resets Whiplash's  cooldown and  empowers its next cast. The damage based on the target's health ratio for both Whiplash and its  empowered cast deals a minimum of 25 and is capped at 450 against  monsters.",
         descriptionHTML:
@@ -697,7 +707,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Empowered Whiplash.png',
+        icon: '/wiki/images/Empowered_Whiplash.png',
         description:
           'Active: Evelynn  dashes toward the target enemy with her lashers, dealing  increased damage to them upon completion as well as to all enemies within her path.',
         descriptionHTML:
@@ -747,6 +757,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Empowered Whiplash only applies  on-hit effects to the primary target.',
         descriptionHTML:
@@ -794,7 +805,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Last Caress.png',
+        icon: '/wiki/images/Last_Caress.png',
         description:
           'Active: Evelynn reveals her true form, becoming  untargetable at the start of the cast time and then unleashing her lashers in a cone in the target direction, dealing magic damage to enemies struck within. After 0.5 seconds, she  blinks 700 units in the opposite direction and becomes targetable again.',
         descriptionHTML:
@@ -832,7 +843,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Last Caress 2.png',
+        icon: '/wiki/images/Last_Caress_2.png',
         description:
           'Last Caress deals  140% increased damage to enemies below  30% of their maximum health.',
         descriptionHTML:

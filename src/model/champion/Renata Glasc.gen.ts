@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Renata Glasc Leverage.png',
+        icon: '/wiki/images/Renata_Glasc_Leverage.png',
         description:
           "Innate: Renata's basic attacks are empowered to apply a mark that lasts 6 seconds, refreshes on subsequent hits and expires when attacking a new enemy. If the enemy was unmarked, the attack also deals bonus magic damage equal to 1% − 2% (based on level) (+ 2% per 100 AP) of the target's maximum health.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Renata's basic attacks are empowered to apply a mark that lasts 6 seconds, refreshes on subsequent hits and expires when attacking a new enemy",
+            raw: "Renata's basic attacks are empowered to apply a mark that lasts 6 seconds, refreshes on subsequent hits and expires when attacking a new enemy",
             damagetype: 'None',
             values: 6,
             units: 'total_ap',
@@ -68,6 +68,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Allied  champions' damaging attacks and abilities against a marked target will consume the mark to deal additional bonus magic damage equal to 1% − 2% (based on level) (+ 2% per 100 AP) of the target's maximum health.",
         descriptionHTML:
@@ -101,6 +102,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Leverage's damage is capped at 150 against  monsters.",
         descriptionHTML:
           '<i>Leverage\'s</i> damage is capped at 150 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
@@ -161,7 +163,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Renata Glasc Handshake.png',
+        icon: '/wiki/images/Renata_Glasc_Handshake.png',
         description:
           'Active: Renata fires a hook in the target direction that deals magic damage to the first enemy hit and  roots them for 1 second, during which they are  revealed.If the  root was applied, Renata forms a  tether between her and the target for the same duration, causing Renata to become unable to declare attacks and have her movement speed reduced by 30%.',
         descriptionHTML:
@@ -170,7 +172,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Renata fires a hook in the target direction that deals magic damage to the first enemy hit and  roots them for 1 second, during which they are  revealed.If the  root was applied, Renata forms a  tether between her and the target for the same duration, causing Renata to become unable to declare attacks and have her movement speed reduced by 30%.',
+            raw: 'Renata fires a hook in the target direction that deals magic damage to the first enemy hit and  roots them for 1 second, during which they are  revealed.If the  root was applied, Renata forms a  tether between her and the target for the same duration, causing Renata to become unable to declare attacks and have her movement speed reduced by 30%.',
             damagetype: 'Magic',
             values: 1,
             valuesIsPercent: true,
@@ -212,6 +214,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Handshake can be recast while the tether is active.',
         descriptionHTML:
           '<i>Handshake</i> can be recast while the tether is active.',
@@ -220,7 +223,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Renata Glasc Handshake 2.png',
+        icon: '/wiki/images/Renata_Glasc_Handshake_2.png',
         description:
           'Recast: Renata breaks the tether to  knock the target in the target direction, though not through terrain, dealing the same damage to enemies they pass through. If the thrown target is a  champion, all secondary targets hit are  stunned for 0.5 seconds.',
         descriptionHTML:
@@ -268,7 +271,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Renata Glasc Bailout.png',
+        icon: '/wiki/images/Renata_Glasc_Bailout.png',
         description:
           "Active: Renata infuses herself or the target allied champion with a chemtech formula for 5 seconds, granting the target  bonus attack speed in addition to  bonus movement speed while they are facing nearby  visible enemy champions and minions, both increasing in effectiveness by 100% over the duration. Bailout's duration resets whenever the target scores a  takedown against an enemy champion within 6 seconds of damaging them.",
         descriptionHTML:
@@ -277,7 +280,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Renata infuses herself or the target allied champion with a chemtech formula for 5 seconds, granting the target  bonus attack speed in addition to  bonus movement speed while they are facing nearby  visible enemy champions and minions, both increasing in effectiveness by 100% over the duration',
+            raw: 'Renata infuses herself or the target allied champion with a chemtech formula for 5 seconds, granting the target  bonus attack speed in addition to  bonus movement speed while they are facing nearby  visible enemy champions and minions, both increasing in effectiveness by 100% over the duration',
             increasedStat: 'bonus_ad',
             values: 5,
             valuesIsPercent: true,
@@ -359,6 +362,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the target takes  fatal damage while Bailout is active, they are restored to 100% of their maximum health but suffer a  true damage burn equal to 10% of their maximum health every 0.264 seconds until they die from reaching 0 health, during which Bailout's duration resets every 0.25 seconds. This effect may occur only once per application of Bailout while the target already has the buff and is not burning.During this time, if they score a  takedown against an enemy champion within 6 seconds of damaging them, the burn is stopped prematurely and they are set to 20% of their maximum health.",
         descriptionHTML:
@@ -431,7 +435,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Renata Glasc Loyalty Program.png',
+        icon: '/wiki/images/Renata_Glasc_Loyalty_Program.png',
         description:
           'Active: Renata sends out chemtech rockets from either side of her that instantly strike targets around her. After 0.429 seconds they converge and travel to the target location as a single missile, striking targets along its path and exploding upon reaching the target location.',
         descriptionHTML:
@@ -441,6 +445,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Renata and allies struck are granted a  shield for 3 seconds and enemies struck are dealt magic damage and  slowed by 30% for 2 seconds.',
         descriptionHTML:
@@ -520,6 +525,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Loyalty Program will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -572,7 +578,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Renata Glasc Hostile Takeover.png',
+        icon: '/wiki/images/Renata_Glasc_Hostile_Takeover.png',
         description:
           'Active: Renata launches a cloud of potent chemicals that travels in the target direction, granting  sight of its surroundings. Enemy champions and minions hit become  berserk for a duration.',
         descriptionHTML:
@@ -600,6 +606,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Berserked units gain 100% bonus attack speed and 25% increased size. Within their targeting radius, they prioritize attacking the closest unit by the following categories in descending order:\nTheir allied champions\nAllied non-champions\nAllied  wards\nEnemy units (including  monsters)',
         descriptionHTML:
@@ -617,15 +624,16 @@ export default {
             pre: 'Berserked units gain 100% bonus attack speed and 25% increased size',
           },
           {
-            effectType: 'Unique',
-            name: 'Within their targeting radius, they prioritize attacking the closest unit by the following categories in descending order:',
-            raw: '\nTheir allied champions\nAllied non-champions\nAllied  wards\nEnemy units (including  monsters)',
+            effectType: 'Damage',
+            name: 'Line 2:',
+            raw: 'Within their targeting radius, they prioritize attacking the closest unit by the following categories in descending order:\nTheir allied champions\nAllied non-champions\nAllied  wards\nEnemy units (including  monsters)',
+            damagetype: 'None',
             values: 0,
-            user: 'none',
-            units: '',
+            user: 'target',
+            units: 'total_ad',
             unitsText:
-              'Their allied champions\nAllied non-champions\nAllied  wards\nEnemy units',
-            pre: 'Their allied champions\nAllied non-champions\nAllied  wards\nEnemy units',
+              'Within their targeting radius, they prioritize attacking the closest unit by the following categories in descending order:\nTheir allied champions\nAllied non-champions\nAllied  wards\nEnemy units',
+            pre: 'Within their targeting radius, they prioritize attacking the closest unit by the following categories in descending order:\nTheir allied champions\nAllied non-champions\nAllied  wards\nEnemy units',
             children: [
               {
                 values: 0,

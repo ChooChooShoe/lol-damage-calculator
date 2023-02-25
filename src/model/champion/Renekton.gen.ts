@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Reign of Anger.png',
+        icon: '/wiki/images/Reign_of_Anger.png',
         description:
           "Innate: Renekton's basic attacks generate  5 Fury. After 12 seconds of being out of combat, he loses 1 Fury every 0.25 seconds.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Renekton's basic attacks generate  5 Fury",
+            raw: "Renekton's basic attacks generate  5 Fury",
             values: 5,
             units: 'total_ad',
             unitsText: 'basic attacks generate  5 Fury',
@@ -54,6 +54,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While Renekton has at least 50 Fury, his next basic ability consumes 50 Fury to become empowered with an additional effect. Empowered abilities do not generate Fury.',
         descriptionHTML:
@@ -75,6 +76,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Renekton generates 50% bonus Fury from all sources while below 50% of his maximum health.',
         descriptionHTML:
@@ -127,7 +129,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Cull the Meek.png',
+        icon: '/wiki/images/Cull_the_Meek.png',
         description:
           'Active: Renekton cleaves around himself, dealing physical damage to nearby enemies and  healing himself for each enemy hit, up to a cap.',
         descriptionHTML:
@@ -207,6 +209,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Against  champions, the healing is increased by 300%.',
         descriptionHTML:
           'Against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champions</a></span>, the healing is increased by 300%.',
@@ -256,6 +259,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Renekton generates  2.5 Fury for each non-champion hit and 10 Fury for each champion hit, with the Fury generated per cast capped at 30.',
         descriptionHTML:
@@ -277,6 +281,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Reign of Anger Bonus: Cull the Meek has increased damage, tripled total healing, and a quadrupled healing cap.',
         descriptionHTML:
@@ -286,6 +291,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Renekton cannot basic attack nor cast  Slice,  Dice, or  Dominus for 0.25 seconds after Cull the Meek's activation.",
         descriptionHTML:
@@ -327,7 +333,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ruthless Predator.png',
+        icon: '/wiki/images/Ruthless_Predator.png',
         description:
           'Active: Renekton empowers his next basic attack within 7 seconds to have a 0.2-second cast time, gain  50 bonus range and strike the target twice, dealing modified physical damage and  stunning them for 0.75 seconds. Each strike applies  on-hit effects at 100% effectiveness and generates  Fury. Hitting an enemy  champion generates 10 bonus Fury.',
         descriptionHTML:
@@ -336,7 +342,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Renekton empowers his next basic attack within 7 seconds to have a 0.2-second cast time, gain  50 bonus range and strike the target twice, dealing modified physical damage and  stunning them for 0.75 seconds',
+            raw: 'Renekton empowers his next basic attack within 7 seconds to have a 0.2-second cast time, gain  50 bonus range and strike the target twice, dealing modified physical damage and  stunning them for 0.75 seconds',
             increasedStat: 'bonus_ad',
             values: 7,
             user: 'target',
@@ -400,6 +406,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Reign of Anger Bonus: Renekton instead strikes 3 times, completely destroying damage-mitigating  shields on the target upon the first strike, as well as increasing the  stun duration to 1.5 seconds.',
         descriptionHTML:
@@ -408,7 +415,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Reign of Anger Bonus:',
-            raw: ' Renekton instead strikes 3 times, completely destroying damage-mitigating  shields on the target upon the first strike, as well as increasing the  stun duration to 1.5 seconds.',
+            raw: 'Renekton instead strikes 3 times, completely destroying damage-mitigating  shields on the target upon the first strike, as well as increasing the  stun duration to 1.5 seconds.',
             damagetype: 'None',
             shieldType: 'OutgoingShields',
             values: 3,
@@ -451,6 +458,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Ruthless Predator  resets Renekton's basic attack timer. After Ruthless Predator's standard and empowered attack cast time, Renekton cannot move nor cast  Cull the Meek,  Slice, nor  Dice for 0.528 seconds.",
         descriptionHTML:
@@ -533,6 +541,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Renekton hits an enemy, he can cast Dice within the next 4 seconds.',
         descriptionHTML:
@@ -620,6 +629,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Both Slice and Dice generate  2 Fury for each non-champion hit, and 10 Fury for each champion hit, with the Fury generated per dash capped at 30.',
         descriptionHTML:
@@ -641,6 +651,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Reign of Anger Bonus: Dice deals bonus physical damage and inflicts  armor reduction to enemies hit for 4 seconds.',
         descriptionHTML:
@@ -649,7 +660,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Reign of Anger Bonus:',
-            raw: ' Dice deals bonus physical damage and inflicts  armor reduction to enemies hit for 4 seconds.',
+            raw: 'Dice deals bonus physical damage and inflicts  armor reduction to enemies hit for 4 seconds.',
             damagetype: 'Physical',
             values: 4,
             units: 'bonus_armor',
@@ -749,7 +760,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Renekton empowers himself for 15 seconds, gaining  bonus health, 20% increased size,  25 bonus attack range, and  20 Fury, as well as increasing  Cull the Meek's effect radius.",
+            raw: "Renekton empowers himself for 15 seconds, gaining  bonus health, 20% increased size,  25 bonus attack range, and  20 Fury, as well as increasing  Cull the Meek's effect radius.",
             healType: 'BonusHealth',
             values: 1,
             valuesIsPercent: true,
@@ -781,6 +792,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'During this time, he deals magic damage every 0.5 seconds to nearby enemies and generates 5 Fury per second, up to a maximum of 75 Fury.',
         descriptionHTML:

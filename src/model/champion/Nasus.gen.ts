@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Soul Eater.png',
+        icon: '/wiki/images/Soul_Eater.png',
         description:
           'Innate: Nasus gains  9 / 14 / 19% (based on level) life steal.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Nasus gains  9 / 14 / 19% (based on level) life steal.',
+            raw: 'Nasus gains  9 / 14 / 19% (based on level) life steal.',
             increasedStat: 'lifesteal',
             values: [],
             valuesIsPercent: true,
@@ -76,7 +76,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Siphoning Strike.png',
+        icon: '/wiki/images/Siphoning_Strike.png',
         description:
           'Active: Nasus empowers his next basic attack within 10 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus physical damage.',
         descriptionHTML:
@@ -85,7 +85,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Nasus empowers his next basic attack within 10 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus physical damage.',
+            raw: 'Nasus empowers his next basic attack within 10 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus physical damage.',
             increasedStat: 'bonus_ad',
             values: 1,
             units: '',
@@ -127,18 +127,22 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Siphoning Strike kills the target, Nasus permanently gains 3 stacks, increased to 12 if the target is a  champion, large  minion, or large  monster.',
         descriptionHTML:
           'If <i>Siphoning Strike</i> kills the target, <b>Nasus</b> permanently gains <span style="color: #5C58C9; white-space:normal">3 stacks</span>, increased to <span style="color: #5C58C9; white-space:normal">12</span> if the target is a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span>, large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minion"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minion</a></span>, or large <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'If Siphoning Strike kills the target, Nasus permanently gains 3 stacks, increased to 12 if the target is a  champion, large  minion, or large  monster.',
-            increasedStat: 'siphoningStrikeStacks',
+            min: 0,
+            max: 10,
+            description:
+              'If Siphoning Strike kills the target, Nasus permanently gains 3 stacks, increased to 12 if the target is a  champion, large  minion, or large  monster.',
             values: 3,
-            units: '',
+            units: 'siphoningStrikeStacks',
             unitsText:
               'Siphoning Strike kills the target, Nasus permanently gains 3 stacks, increased to 12 if the target is a  champion, large  minion, or large  monster.',
             pre: 'If Siphoning Strike kills the target, Nasus permanently gains 3 stacks, increased to 12 if the target is a  champion, large  minion, or large  monster.',
@@ -148,6 +152,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Siphoning Strike  resets Nasus' basic attack timer.",
         descriptionHTML:
           '<i>Siphoning Strike <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Nasus\'</b> basic attack timer.</i>',
@@ -198,7 +203,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Nasus ages the target enemy champion for 5 seconds,  slowing them by 35% and  crippling them by「 75% of that amount, 」「 26.25%, 」both increasing every second over the duration.',
+            raw: 'Nasus ages the target enemy champion for 5 seconds,  slowing them by 35% and  crippling them by「 75% of that amount, 」「 26.25%, 」both increasing every second over the duration.',
             values: 5,
             valuesIsPercent: true,
             user: 'none',
@@ -254,7 +259,7 @@ export default {
     notes:
       '* If <i>Wither\'s</i> duration is affected by <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon.png" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">Tenacity</a></span> the effects will apply slower (negative tenacity percentage) or faster (positive tenacity percentage) so the maximum values are still reached when the modified duration ends.\n<ul><li><i>Wither\'s</i> cripple effectiveness calculates from its slow\'s base values, thus <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow resist"><a href="/wiki/Slow_resist" title="Slow resist"><img alt="Slow immune icon.png" src="/wiki/images/Slow_immune_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist" title="Slow resist">slow resist</a></span> will not interact with the attack speed modifier indirectly.</li>\n<li>Both <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slow</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cripple"><a href="/wiki/Cripple" title="Cripple"><img alt="Cripple icon.png" src="/wiki/images/Cripple_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Cripple" class="mw-redirect" title="Cripple">cripple</a></span> from <i>Wither</i> are considered to be a single <a href="/wiki/Debuff" title="Debuff">debuff</a>. <sup><span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="This may not be intended.">(bug)</span></sup>\n<ul><li>Therefore, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow immunity"><a href="/wiki/Slow_resist#Slow_Immunity" title="Slow resist#Slow Immunity"><img alt="Slow immune 2.png" src="/wiki/images/Slow_immune_2.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist#Slow_Immunity" title="Slow resist">slow immunity</a></span> will prevent both, even without technical <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cripple immunity"><a href="/wiki/Slow_resist#Cripple_Immunity" title="Slow resist#Cripple Immunity"><img alt="Cripple immune.png" src="/wiki/images/Cripple_immune.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist#Cripple_Immunity" title="Slow resist">cripple immunity</a></span>.</li></ul></li>\n<li><i>Wither</i> is cancelled if <b>Nasus</b> loses <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the target during the cast time.</li>\n<li>If the target becomes <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon.png" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Death"><a href="/wiki/Death" title="Death"><img alt="Death.png" src="/wiki/images/Death.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Death" title="Death">dies</a></span>, or is too far away or no longer in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon.png" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> during the cast time, this ability will cancel but does not go on <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;cooldown</span> nor pay its cost (if applicable).</li></ul>',
     flavorsound:
-      'https://leagueoflegends.fandom.com/wiki/File:Nasus_Original_W_0.ogg   "Become dust."',
+      'http://leagueoflegends.fandom.com/wiki/File:Nasus_Original_W_0.ogg   "Become dust."',
   },
   'Spirit Fire': {
     name: 'Spirit Fire',
@@ -284,7 +289,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spirit Fire.png',
+        icon: '/wiki/images/Spirit_Fire.png',
         description:
           'Active: Nasus unleashes a spirit fire at the target location, granting  sight of the area for 2.5 seconds and, after a 0.264 seconds delay, dealing magic damage to enemies within.',
         descriptionHTML:
@@ -293,7 +298,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Nasus unleashes a spirit fire at the target location, granting  sight of the area for 2.5 seconds and, after a 0.264 seconds delay, dealing magic damage to enemies within.',
+            raw: 'Nasus unleashes a spirit fire at the target location, granting  sight of the area for 2.5 seconds and, after a 0.264 seconds delay, dealing magic damage to enemies within.',
             values: 2,
             user: 'none',
             units: '',
@@ -334,6 +339,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The fire then remains for 5 seconds, dealing magic damage each second to enemies within and inflicting them with  armor reduction, lingering for 1 second.',
         descriptionHTML:
@@ -436,7 +442,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Fury of the Sands.png',
+        icon: '/wiki/images/Fury_of_the_Sands.png',
         description:
           'Active: Nasus empowers himself for 15 seconds, gaining  bonus health,  bonus armor,  bonus magic resistance, increased size, and  50 bonus attack range for the duration.',
         descriptionHTML:
@@ -445,7 +451,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Nasus empowers himself for 15 seconds, gaining  bonus health,  bonus armor,  bonus magic resistance, increased size, and  50 bonus attack range for the duration.',
+            raw: 'Nasus empowers himself for 15 seconds, gaining  bonus health,  bonus armor,  bonus magic resistance, increased size, and  50 bonus attack range for the duration.',
             healType: 'BonusHealth',
             values: 1,
             units: 'bonus_ad',
@@ -509,6 +515,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While Nasus is empowered, he deals magic damage every 0.5 seconds to nearby enemies, capped at 240 per second, and  Siphoning Strike's  cooldown is halved.",
         descriptionHTML:

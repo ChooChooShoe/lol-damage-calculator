@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Clockwork Windup.png',
+        icon: '/wiki/images/Clockwork_Windup.png',
         description:
           'Innate - The Ball: Orianna is accompanied by The Ball, which she commands with her abilities. The Ball incurs a  0.15-second global cooldown on all of her abilities between casts. Additionally, The Ball attaches to Orianna if she is near it, and snaps back to her if she moves too far away from it, which incurs a  0.5-second global cooldown on all of her abilities.',
         descriptionHTML:
@@ -36,7 +36,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Clockwork Winding.png',
+        icon: '/wiki/images/Clockwork_Winding.png',
         description:
           "Innate: Orianna's basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times. All stacks are lost when attacking a new enemy.\nClockwork Winding: Orianna's basic attacks are empowered to deal 10 − 50 (based on level) (+ 15% AP) bonus magic damage  on-hit, increased by「 20% 」「 2 − 10 (based on level) (+ 3% AP) 」per stack, up to 14 − 70 (based on level) (+ 21% AP) total bonus magic damage.",
         descriptionHTML:
@@ -45,13 +45,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Orianna's basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times",
+            raw: "Orianna's basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times",
             min: 0,
-            max: 10,
+            max: 2,
             description:
-              " Orianna's basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times",
+              "Orianna's basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times",
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times',
             pre: "Orianna's basic attacks generate a stack of Clockwork Winding for 4 seconds, refreshing on subsequent attacks and stacking up to 2 times",
@@ -59,11 +59,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'All stacks are lost when attacking a new enemy.\nClockwork Winding:',
-            raw: " Orianna's basic attacks are empowered to deal 10 − 50 (based on level) (+ 15% AP) bonus magic damage  on-hit, increased by「 20% 」「 2 − 10 (based on level) (+ 3% AP) 」per stack, up to 14 − 70 (based on level) (+ 21% AP) total bonus magic damage.",
+            raw: "Orianna's basic attacks are empowered to deal 10 − 50 (based on level) (+ 15% AP) bonus magic damage  on-hit, increased by「 20% 」「 2 − 10 (based on level) (+ 3% AP) 」per stack, up to 14 − 70 (based on level) (+ 21% AP) total bonus magic damage.",
             min: 0,
             max: 10,
             description:
-              " Orianna's basic attacks are empowered to deal 10 − 50 (based on level) (+ 15% AP) bonus magic damage  on-hit, increased by「 20% 」「 2 − 10 (based on level) (+ 3% AP) 」per stack, up to 14 − 70 (based on level) (+ 21% AP) total bonus magic damage.",
+              "Orianna's basic attacks are empowered to deal 10 − 50 (based on level) (+ 15% AP) bonus magic damage  on-hit, increased by「 20% 」「 2 − 10 (based on level) (+ 3% AP) 」per stack, up to 14 − 70 (based on level) (+ 21% AP) total bonus magic damage.",
             values: [
               10, 12.35, 14.71, 17.06, 19.41, 21.76, 24.12, 26.47, 28.82, 31.18,
               33.53, 35.88, 38.24, 40.59, 42.94, 45.29, 47.65, 50,
@@ -104,6 +104,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about The Ball.',
         descriptionHTML:
           '<i>See <a href="/wiki/Orianna/LoL#Pets" title="Orianna/LoL">Pets</a> for more details about The Ball.</i>',
@@ -151,7 +152,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Command Attack.png',
+        icon: '/wiki/images/Command_Attack.png',
         description:
           'Active: Orianna commands  The Ball to fly to the target location and remain there, dealing magic damage to enemies it passes through and nearby enemies upon arrival, reduced to 70% against those hit beyond the first.',
         descriptionHTML:
@@ -160,7 +161,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Orianna commands  The Ball to fly to the target location and remain there, dealing magic damage to enemies it passes through and nearby enemies upon arrival, reduced to 70% against those hit beyond the first.',
+            raw: 'Orianna commands  The Ball to fly to the target location and remain there, dealing magic damage to enemies it passes through and nearby enemies upon arrival, reduced to 70% against those hit beyond the first.',
             values: 7,
             valuesIsPercent: true,
             user: 'none',
@@ -231,7 +232,7 @@ export default {
     effect_radius:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center.png" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Both damage and persisting field radius">225</span>',
     cast_time: 'none',
-    cost: '70 / 75 / 80 / 85 / 90',
+    cost: '60 / 65 / 70 / 75 / 80',
     costtype: 'Mana',
     cooldown: '7',
     blurb: [
@@ -240,7 +241,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Command Dissonance.png',
+        icon: '/wiki/images/Command_Dissonance.png',
         description:
           'Active: Orianna commands  The Ball to emit an electric pulse that deals magic damage to nearby enemies.',
         descriptionHTML:
@@ -278,6 +279,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The pulse leaves behind an electric field that last 3 seconds, granting  bonus movement speed to Orianna and her allies when they move within. Enemies that move within the field are  slowed by the same amount, decaying over 2 seconds after leaving.',
         descriptionHTML:
@@ -393,7 +395,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Command Protect.png',
+        icon: '/wiki/images/Command_Protect.png',
         description:
           'Active: Orianna commands The Ball to fly to herself or the target allied  champion and attach itself to the target, dealing magic damage to enemies it passes through and granting the target a  shield for 2.5 seconds upon arrival.',
         descriptionHTML:
@@ -402,7 +404,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Orianna commands The Ball to fly to herself or the target allied  champion and attach itself to the target, dealing magic damage to enemies it passes through and granting the target a  shield for 2.5 seconds upon arrival.',
+            raw: 'Orianna commands The Ball to fly to herself or the target allied  champion and attach itself to the target, dealing magic damage to enemies it passes through and granting the target a  shield for 2.5 seconds upon arrival.',
             damagetype: 'Magic',
             shieldType: 'SelfShield',
             values: 2,
@@ -509,7 +511,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Command Shockwave.png',
+        icon: '/wiki/images/Command_Shockwave.png',
         description:
           'Active: Orianna commands  The Ball to unleash a shockwave that deals magic damage to nearby enemies,  stunning them for 0.75 seconds, and  pulling them over 325 − 700 (based on proximity to ball) units, though not through terrain.',
         descriptionHTML:
@@ -518,7 +520,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Orianna commands  The Ball to unleash a shockwave that deals magic damage to nearby enemies,  stunning them for 0.75 seconds, and  pulling them over 325 − 700 (based on proximity to ball) units, though not through terrain.',
+            raw: 'Orianna commands  The Ball to unleash a shockwave that deals magic damage to nearby enemies,  stunning them for 0.75 seconds, and  pulling them over 325 − 700 (based on proximity to ball) units, though not through terrain.',
             damagetype: 'Magic',
             values: [0, 700],
             basedOn: 'proximity to ball',

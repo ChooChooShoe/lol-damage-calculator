@@ -32,12 +32,15 @@ export default {
           '<span class="template_sbc"><b>Innate:</b></span> Whenever <b>Singed</b> moves near a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span>, he gains a <a href="/wiki/Stack" title="Stack">stack</a> of <i>Noxious Slipstream</i> for 2 seconds, refreshing on subsequent passes and stacking up to 25 times.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Whenever Singed moves near a  champion, he gains a stack of Noxious Slipstream for 2 seconds, refreshing on subsequent passes and stacking up to 25 times.',
-            increasedStat: 'feastStacks',
+            raw: 'Whenever Singed moves near a  champion, he gains a stack of Noxious Slipstream for 2 seconds, refreshing on subsequent passes and stacking up to 25 times.',
+            min: 0,
+            max: 25,
+            description:
+              'Whenever Singed moves near a  champion, he gains a stack of Noxious Slipstream for 2 seconds, refreshing on subsequent passes and stacking up to 25 times.',
             values: 2,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'Singed moves near a  champion, he gains a stack of Noxious Slipstream for 2 seconds, refreshing on subsequent passes and stacking up to 25 times.',
             pre: 'Whenever Singed moves near a  champion, he gains a stack of Noxious Slipstream for 2 seconds, refreshing on subsequent passes and stacking up to 25 times.',
@@ -47,20 +50,23 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Noxious Slipstream.png',
+        icon: '/wiki/images/Noxious_Slipstream.png',
         description:
           'Noxious Slipstream: For each stack, Singed gains  25% bonus movement speed, up to a maximum of 625%.',
         descriptionHTML:
           '<span class="template_sbc"><b>Noxious Slipstream:</b></span> For each stack, <b>Singed</b> gains <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal">25% <b>bonus</b> movement speed</span></span>, up to a maximum of <span style="color: #F5EE99; white-space:normal">625%</span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Noxious Slipstream:',
-            raw: ' For each stack, Singed gains  25% bonus movement speed, up to a maximum of 625%.',
-            increasedStat: 'feastStacks',
+            raw: 'For each stack, Singed gains  25% bonus movement speed, up to a maximum of 625%.',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Singed gains  25% bonus movement speed, up to a maximum of 625%.',
             values: 2,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'bonus movement speed, up to a maximum of 625each stack, Singed gains  25',
             pre: 'For each stack, Singed gains  25% bonus movement speed, up to a maximum of 625%.',
@@ -70,6 +76,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'This effect cannot occur on the same target more than once every few seconds.',
         descriptionHTML:
@@ -110,7 +117,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Poison Trail.png',
+        icon: '/wiki/images/Poison_Trail.png',
         description:
           'Toggle: Singed continually creates a toxic cloud in his wake that lingers for 3.25 seconds. The cloud inflicts  poison to enemies within, and resets the duration every 0.5 seconds while they remain.',
         descriptionHTML:
@@ -119,7 +126,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Toggle:',
-            raw: ' Singed continually creates a toxic cloud in his wake that lingers for 3.25 seconds',
+            raw: 'Singed continually creates a toxic cloud in his wake that lingers for 3.25 seconds',
             values: 3,
             user: 'none',
             units: '',
@@ -132,6 +139,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'poison: The target takes magic damage every 0.25 seconds over 2 seconds. Subsequent inflictions refresh the duration.',
         descriptionHTML:
@@ -203,7 +211,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mega Adhesive.png',
+        icon: '/wiki/images/Mega_Adhesive.png',
         description:
           'Active: Singed spills a potent adhesive that lands at the target location over 0.264 seconds to 0.528 seconds, creating a field for 3 seconds that  grounds enemies within and  slows them.',
         descriptionHTML:
@@ -273,7 +281,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Singed  flings the target enemy 550 units over himself, dealing magic damage, capped against  minions and  monsters.',
+            raw: 'Singed  flings the target enemy 550 units over himself, dealing magic damage, capped against  minions and  monsters.',
             increasedStat: 'total_ap',
             values: 5,
             units: '',
@@ -323,6 +331,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target lands on  Mega Adhesive, they are  rooted for a duration.',
         descriptionHTML:
@@ -385,7 +394,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Insanity Potion.png',
+        icon: '/wiki/images/Insanity_Potion.png',
         description:
           'Active: Singed empowers himself for 25 seconds with  ability power,  bonus armor,  bonus magic resistance,  bonus movement speed,  bonus health regeneration, and  bonus mana regeneration.',
         descriptionHTML:
@@ -394,10 +403,10 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Singed empowers himself for 25 seconds with  ability power,  bonus armor,  bonus magic resistance,  bonus movement speed,  bonus health regeneration, and  bonus mana regeneration.',
+            raw: 'Singed empowers himself for 25 seconds with  ability power,  bonus armor,  bonus magic resistance,  bonus movement speed,  bonus health regeneration, and  bonus mana regeneration.',
             healType: 'HealthRegen',
             values: 2,
-            units: 'bonus_armor',
+            units: 'bonus_mana',
             unitsText:
               'empowers himself for 25 seconds with  ability power,  bonus armor,  bonus magic resistance,  bonus movement speed,  bonus health regeneration, and  bonus mana regeneration.',
             pre: 'Singed empowers himself for 25 seconds with  ability power,  bonus armor,  bonus magic resistance,  bonus movement speed,  bonus health regeneration, and  bonus mana regeneration.',
@@ -441,6 +450,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'During this time,  Poison Trail additionally applies  Grievous Wounds for 1 second, which refreshes every 0.25 seconds while the  poison persists.',
         descriptionHTML:

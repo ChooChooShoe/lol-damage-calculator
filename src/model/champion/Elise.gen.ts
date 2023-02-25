@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spider Queen.png',
+        icon: '/wiki/images/Spider_Queen.png',
         description:
           "Innate - Human Form: Elise gains one dormant Spiderling whenever she hits an enemy with an ability, storing up to 2 / 3 / 4 / 5 (based on  Human Form's Rank) at a time.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Human Form:',
-            raw: " Elise gains one dormant Spiderling whenever she hits an enemy with an ability, storing up to 2 / 3 / 4 / 5 (based on  Human Form's Rank) at a time.",
+            raw: "Elise gains one dormant Spiderling whenever she hits an enemy with an ability, storing up to 2 / 3 / 4 / 5 (based on  Human Form's Rank) at a time.",
             values: [2, 3, 4, 5],
             basedOn: " Human Form's Rank",
             user: 'none',
@@ -47,6 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Spider Form: Elise's basic attacks deal 10 / 20 / 30 / 40 (based on  Spider Form's Rank) (+ 20% AP) bonus magic damage and  heal her for 4 / 6 / 8 / 10 (based on  Spider Form's Rank) (+ 8% AP)  on-hit.",
         descriptionHTML:
@@ -55,7 +56,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate - Spider Form:',
-            raw: " Elise's basic attacks deal 10 / 20 / 30 / 40 (based on  Spider Form's Rank) (+ 20% AP) bonus magic damage and  heal her for 4 / 6 / 8 / 10 (based on  Spider Form's Rank) (+ 8% AP)  on-hit.",
+            raw: "Elise's basic attacks deal 10 / 20 / 30 / 40 (based on  Spider Form's Rank) (+ 20% AP) bonus magic damage and  heal her for 4 / 6 / 8 / 10 (based on  Spider Form's Rank) (+ 8% AP)  on-hit.",
             healType: 'BonusHealth',
             values: [1, 20, 30, 40],
             basedOn: " Spider Form's Rank",
@@ -86,6 +87,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about Spiderlings.',
         descriptionHTML:
           '<i>See <a href="/wiki/Elise/LoL#Pets" title="Elise/LoL">Pets</a> for more details about Spiderlings.</i>',
@@ -230,7 +232,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Venomous Bite.png',
+        icon: '/wiki/images/Venomous_Bite.png',
         description:
           "Active: Elise  pounces at the target enemy with her fangs and bites them, dealing magic damage and applying  on-hit effects at 100% effectiveness. The damage based on the target's health ratio is capped against  monsters.",
         descriptionHTML:
@@ -239,7 +241,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Elise  pounces at the target enemy with her fangs and bites them, dealing magic damage and applying  on-hit effects at 100% effectiveness',
+            raw: 'Elise  pounces at the target enemy with her fangs and bites them, dealing magic damage and applying  on-hit effects at 100% effectiveness',
             damagetype: 'Magic',
             values: 1,
             valuesIsPercent: true,
@@ -253,9 +255,9 @@ export default {
           {
             name: 'Magic Damage:',
             values:
-              "70 / 105 / 140 / 175 / 210 (+ 8% (+ 3% per 100 AP) of target's missing health)",
+              "60 / 90 / 120 / 150 / 180 (+ 8% (+ 3% per 100 AP) of target's missing health)",
             valuesHTML:
-              '70 / 105 / 140 / 175 / 210 <span style="color: #1F995C; white-space:normal">(+&nbsp;8% <span style="color: #7A6DFF; white-space:normal">(+&nbsp;3% per 100 AP)</span> of target\'s <b>missing</b> health)</span>',
+              '60 / 90 / 120 / 150 / 180 <span style="color: #1F995C; white-space:normal">(+&nbsp;8% <span style="color: #7A6DFF; white-space:normal">(+&nbsp;3% per 100 AP)</span> of target\'s <b>missing</b> health)</span>',
           },
           {
             name: 'Capped Monster Damage:',
@@ -267,13 +269,13 @@ export default {
           {
             effectType: 'Heal',
             name: 'Magic Damage:',
-            raw: "70 / 105 / 140 / 175 / 210 (+ 8% (+ 3% per 100 AP) of target's missing health)",
+            raw: "60 / 90 / 120 / 150 / 180 (+ 8% (+ 3% per 100 AP) of target's missing health)",
             healType: 'OutgoingHeals',
-            values: [70, 105, 140, 175, 210],
+            values: [60, 90, 120, 150, 180],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '70 / 105 / 140 / 175 / 210',
+            pre: '60 / 90 / 120 / 150 / 180',
             children: [
               {
                 values: 8,
@@ -309,6 +311,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If there are active  Spiderlings or  Volatile Spiderlings nearby, they will  dash alongside Elise towards Venomous Bite's target and reprioritize them.",
         descriptionHTML:
@@ -358,7 +361,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Volatile Spiderling.png',
+        icon: '/wiki/images/Volatile_Spiderling.png',
         description:
           'Active: Elise summons a venom-gorged spider for 3 seconds, which is  untargetable and crawls to the target location, navigating its path upon encountering terrain.',
         descriptionHTML:
@@ -367,7 +370,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Elise summons a venom-gorged spider for 3 seconds, which is  untargetable and crawls to the target location, navigating its path upon encountering terrain.',
+            raw: 'Elise summons a venom-gorged spider for 3 seconds, which is  untargetable and crawls to the target location, navigating its path upon encountering terrain.',
             values: 3,
             user: 'none',
             units: '',
@@ -380,6 +383,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The spider explodes upon contact with an enemy or at the end of its lifespan, dealing magic damage to nearby enemies.',
         descriptionHTML:
@@ -417,6 +421,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the spider does not hit an enemy before reaching the target location, it chases down a nearby enemy, prioritizing  champions and gaining  bonus movement speed based on its proximity to the target.',
         descriptionHTML:
@@ -486,7 +491,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Skittering Frenzy.png',
+        icon: '/wiki/images/Skittering_Frenzy.png',
         description:
           'Active: Elise and her  Spiderlings gain bonus attack speed for 3 seconds.',
         descriptionHTML:
@@ -495,7 +500,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Elise and her  Spiderlings gain bonus attack speed for 3 seconds.',
+            raw: 'Elise and her  Spiderlings gain bonus attack speed for 3 seconds.',
             increasedStat: 'bonus_ad',
             values: 3,
             units: '',
@@ -526,6 +531,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Skittering Frenzy  resets Elise's basic attack timer. Elise loses Skittering Frenzy immediately when she switches to  Human Form.",
         descriptionHTML:
@@ -640,7 +646,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Elise and her  Spiderlings lift up into the air,  vanishing and becoming  unable to act for up to 2 seconds and granting  sight of the area for the duration.',
+            raw: 'Elise and her  Spiderlings lift up into the air,  vanishing and becoming  unable to act for up to 2 seconds and granting  sight of the area for the duration.',
             values: 2,
             user: 'none',
             units: '',
@@ -653,6 +659,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Rappel can be recast on a target enemy within the duration, and does so automatically after the duration without a target.',
         descriptionHTML:
@@ -662,6 +669,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Elise and her  Spiderlings instantly  descend behind the target, or their current position if there is no target.',
         descriptionHTML:
@@ -671,6 +679,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If cast directly on an enemy, Elise and her  Spiderlings automatically recast on the target after 1 second. Upon landing this way,  Spider Queen's bonuses are increased for 5 seconds.",
         descriptionHTML:
@@ -721,6 +730,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Rappel's recast can be used while affected by  cast-inhibiting crowd control.",
         descriptionHTML:
@@ -770,7 +780,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Spider Form.png',
+        icon: '/wiki/images/Spider_Form.png',
         description:
           'Toggle: Elise switches between her  Human Form and  Spider Form.',
         descriptionHTML:
@@ -780,6 +790,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Spider Form: Elise transforms into a spider, gaining  25 bonus movement speed,  melee basic attacks with  125 range, and access to her arachnid abilities. Additionally, she summons all stored  Spiderlings.',
         descriptionHTML:
@@ -788,7 +799,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Spider Form:',
-            raw: ' Elise transforms into a spider, gaining  25 bonus movement speed,  melee basic attacks with  125 range, and access to her arachnid abilities',
+            raw: 'Elise transforms into a spider, gaining  25 bonus movement speed,  melee basic attacks with  125 range, and access to her arachnid abilities',
             increasedStat: 'bonus_ad',
             values: 2,
             units: '',
@@ -801,6 +812,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Human Form: Elise transforms into a human, gaining  ranged basic attacks, and access to her human abilities. Additionally, she stores all active Spiderlings.',
         descriptionHTML:
@@ -810,6 +822,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Elise begins with one rank in Spider Form / Human Form and can increase it at levels 6, 11, and 16.',
         descriptionHTML:

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Unseen Threat.png',
+        icon: '/wiki/images/Unseen_Threat.png',
         description:
           "Innate: Kha'Zix gains Unseen Threat whenever the enemy loses  sight of him or he activates  Void Assault. Unseen Threat: Kha'Zix empowers his next basic attack against an enemy champion to deal 14 − 116 (based on level) (+ 40% bonus AD) bonus magic damage and  slow them by 25% for 2 seconds.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Unseen Threat:',
-            raw: " Kha'Zix empowers his next basic attack against an enemy champion to deal 14 − 116 (based on level) (+ 40% bonus AD) bonus magic damage and  slow them by 25% for 2 seconds.",
+            raw: "Kha'Zix empowers his next basic attack against an enemy champion to deal 14 − 116 (based on level) (+ 40% bonus AD) bonus magic damage and  slow them by 25% for 2 seconds.",
             values: [
               14, 20, 26, 32, 38, 44, 50, 56, 62, 68, 74, 80, 86, 92, 98, 104,
               110, 116,
@@ -96,7 +96,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Unseen Threat 2.png',
+        icon: '/wiki/images/Unseen_Threat_2.png',
         description:
           "Passive: Kha'Zix considers any enemy unit to be Isolated if they are not nearby to one of their allies.  Taste Their Fear,  Evolved Reaper Claws, and  Evolved Spike Racks have special interactions against Isolated targets.",
         descriptionHTML:
@@ -106,7 +106,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Taste Their Fear.png',
+        icon: '/wiki/images/Taste_Their_Fear.png',
         description:
           "Active: Kha'Zix slashes the target enemy, dealing physical damage, increased by 110% against Isolated targets.",
         descriptionHTML:
@@ -115,7 +115,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Kha'Zix slashes the target enemy, dealing physical damage, increased by 110% against Isolated targets.",
+            raw: "Kha'Zix slashes the target enemy, dealing physical damage, increased by 110% against Isolated targets.",
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -189,7 +189,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Evolved Reaper Claws.png',
+        icon: '/wiki/images/Evolved_Reaper_Claws.png',
         description:
           "Passive: Kha'Zix gains  50 bonus range on his basic attacks and Taste Their Fear. Evolved Bonus: If the target is Isolated, the  cooldown is reduced by 45%.",
         descriptionHTML:
@@ -198,7 +198,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: " Kha'Zix gains  50 bonus range on his basic attacks and Taste Their Fear",
+            raw: "Kha'Zix gains  50 bonus range on his basic attacks and Taste Their Fear",
             increasedStat: 'bonus_ad',
             values: 5,
             units: '',
@@ -209,7 +209,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Evolved Bonus:',
-            raw: ' If the target is Isolated, the  cooldown is reduced by 45%.',
+            raw: 'If the target is Isolated, the  cooldown is reduced by 45%.',
             values: 4,
             valuesIsPercent: true,
             user: 'none',
@@ -262,7 +262,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Void Spike.png',
+        icon: '/wiki/images/Void_Spike.png',
         description:
           "Active: Kha'Zix fires a bolt of spikes in the target direction that explodes upon hitting an enemy, dealing physical damage to nearby enemies.",
         descriptionHTML:
@@ -300,6 +300,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Kha'Zix  heals himself if he is within the explosion.",
         descriptionHTML:
           '<b>Kha\'Zix</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> himself if he is within the explosion.',
@@ -367,7 +368,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Evolved Spike Racks.png',
+        icon: '/wiki/images/Evolved_Spike_Racks.png',
         description:
           "Evolved Bonus: Void Spike now fires three clusters in a cone,  slows by 60% and  reveals enemy champions hit for 2 seconds. Multiple explosions do not deal extra damage to the same target nor provide Kha'Zix with additional healing.",
         descriptionHTML:
@@ -376,7 +377,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Evolved Bonus:',
-            raw: ' Void Spike now fires three clusters in a cone,  slows by 60% and  reveals enemy champions hit for 2 seconds',
+            raw: 'Void Spike now fires three clusters in a cone,  slows by 60% and  reveals enemy champions hit for 2 seconds',
             values: 6,
             valuesIsPercent: true,
             user: 'none',
@@ -390,6 +391,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Isolated targets hit by Evolved Spike Racks are  slowed by 90% instead.',
         descriptionHTML:
@@ -487,6 +489,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Taste Their Fear can be cast during the dash. Leap will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -526,7 +529,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Evolved Wings.png',
+        icon: '/wiki/images/Evolved_Wings.png',
         description:
           'Evolved Bonus: Leap gains 200 bonus cast range, and the  cooldown resets upon scoring a champion  takedown.',
         descriptionHTML:
@@ -535,7 +538,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Evolved Bonus:',
-            raw: ' Leap gains 200 bonus cast range, and the  cooldown resets upon scoring a champion  takedown.',
+            raw: 'Leap gains 200 bonus cast range, and the  cooldown resets upon scoring a champion  takedown.',
             values: 2,
             user: 'none',
             units: '',
@@ -593,7 +596,8 @@ export default {
             name: 'Line 2:',
             raw: 'Evolving an ability causes him to enter a 2-second cast time',
             values: 2,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText: 'an ability causes him to enter a 2-second cast time',
             pre: 'Evolving an ability causes him to enter a 2-second cast time',
           },
@@ -602,7 +606,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Void Assault.png',
+        icon: '/wiki/images/Void_Assault.png',
         description:
           "Active: Kha'Zix becomes  invisible for 1.25 seconds, during which he gains  40% bonus movement speed.",
         descriptionHTML:
@@ -611,7 +615,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Kha'Zix becomes  invisible for 1.25 seconds, during which he gains  40% bonus movement speed.",
+            raw: "Kha'Zix becomes  invisible for 1.25 seconds, during which he gains  40% bonus movement speed.",
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -625,7 +629,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Void Assault 2.png',
+        icon: '/wiki/images/Void_Assault_2.png',
         description:
           'After 2 seconds of leaving  invisibility, and for the next 10 seconds, Void Assault can be recast at no additional cost.',
         descriptionHTML:
@@ -647,6 +651,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Recast: Kha'Zix mimics the first cast's effects.",
         descriptionHTML:
           '<span class="template_sbc"><b>Recast</b></span>: <b>Kha\'Zix</b> mimics the first cast\'s effects.',
@@ -681,7 +686,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Evolved Adaptive Cloaking.png',
+        icon: '/wiki/images/Evolved_Adaptive_Cloaking.png',
         description:
           'Evolved Bonus: The  invisibility now lasts 2 seconds, and Void Assault can be recast twice.',
         descriptionHTML:
@@ -690,7 +695,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Evolved Bonus:',
-            raw: ' The  invisibility now lasts 2 seconds, and Void Assault can be recast twice.',
+            raw: 'The  invisibility now lasts 2 seconds, and Void Assault can be recast twice.',
             values: 2,
             user: 'none',
             units: '',

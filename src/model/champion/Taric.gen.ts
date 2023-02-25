@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' After casting an ability, Taric empowers his next two basic attacks within 5 seconds to each gain  100% total attack speed, deal 25 − 93 (based on level) (+ 15% bonus armor) bonus magic damage, and reduce the  current cooldowns of his basic abilities by 1 second.',
+            raw: 'After casting an ability, Taric empowers his next two basic attacks within 5 seconds to each gain  100% total attack speed, deal 25 − 93 (based on level) (+ 15% bonus armor) bonus magic damage, and reduce the  current cooldowns of his basic abilities by 1 second.',
             values: [
               25, 29, 33, 37, 41, 45, 49, 53, 57, 61, 65, 69, 73, 77, 81, 85,
               89, 93,
@@ -94,7 +94,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Starlight's Touch.png",
+        icon: "/wiki/images/Starlight's_Touch.png",
         description:
           "Active: Taric  heals himself and nearby allied champions for 25 (+ 15% AP) (+ 1% of his maximum health) per charge of Starlight's Touch that he periodically stocks, up to a maximum amount.  Bravado's empowered attacks each grant one charge.",
         descriptionHTML:
@@ -103,7 +103,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Taric  heals himself and nearby allied champions for 25 (+ 15% AP) (+ 1% of his maximum health) per charge of Starlight's Touch that he periodically stocks, up to a maximum amount",
+            raw: "Taric  heals himself and nearby allied champions for 25 (+ 15% AP) (+ 1% of his maximum health) per charge of Starlight's Touch that he periodically stocks, up to a maximum amount",
             healType: 'BonusHealth',
             values: 2,
             user: 'none',
@@ -151,6 +151,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Starlight's Touch can heal up to a maximum of 125 (+ 75% AP) (+ 5% of Taric's maximum health) at 5 charges.",
         descriptionHTML:
@@ -254,7 +255,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Bastion 2.png',
+        icon: '/wiki/images/Bastion_2.png',
         description:
           'Active: Taric grants himself and the target allied champion a  shield for 2.5 seconds, binding them with Bastion.',
         descriptionHTML:
@@ -263,7 +264,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Taric grants himself and the target allied champion a  shield for 2.5 seconds, binding them with Bastion.',
+            raw: 'Taric grants himself and the target allied champion a  shield for 2.5 seconds, binding them with Bastion.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -298,6 +299,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Taric can also self-cast to shield himself; if he is untethered, this will instead target the nearest ally. Only one ally can be bound at a time, and selecting a new ally overrides the previous bind.',
         descriptionHTML:
@@ -351,7 +353,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Taric winds up over 1 second, then projects a beam of starlight in the target direction that deals magic damage to enemies hit and  stuns them for 1.5 seconds.',
+            raw: 'Taric winds up over 1 second, then projects a beam of starlight in the target direction that deals magic damage to enemies hit and  stuns them for 1.5 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -400,6 +402,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Taric can move during Dazzle's windup.",
         descriptionHTML: "<i><b>Taric</b> can move during Dazzle's windup.</i>",
         descriptionRatios: [],
@@ -443,7 +446,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Cosmic Radiance.png',
+        icon: '/wiki/images/Cosmic_Radiance.png',
         description:
           'Active: Taric calls down a star from above that descends to him over 2.5 seconds. Afterwards, he and nearby allied champions become  invulnerable for 2.5 seconds.',
         descriptionHTML:
@@ -452,7 +455,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Taric calls down a star from above that descends to him over 2.5 seconds',
+            raw: 'Taric calls down a star from above that descends to him over 2.5 seconds',
             values: 2,
             user: 'none',
             units: '',

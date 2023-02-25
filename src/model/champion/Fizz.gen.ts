@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Nimble Fighter.png',
+        icon: '/wiki/images/Nimble_Fighter.png',
         description:
           'Innate: Fizz gains  ghosting and takes 4 (+ 1% AP) reduced damage from every instance of damage, up to a maximum of 50% reduction.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Fizz gains  ghosting and takes 4 (+ 1% AP) reduced damage from every instance of damage, up to a maximum of 50% reduction.',
+            raw: 'Fizz gains  ghosting and takes 4 (+ 1% AP) reduced damage from every instance of damage, up to a maximum of 50% reduction.',
             values: 4,
             user: 'none',
             units: '',
@@ -84,7 +84,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Urchin Strike.png',
+        icon: '/wiki/images/Urchin_Strike.png',
         description:
           'Active: Fizz  dashes a fixed distance in the direction of the target enemy. If they are in range upon arrival, he deals magic damage plus 100% AD physical damage and applies  on-hit effects at 100% effectiveness.',
         descriptionHTML:
@@ -135,6 +135,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Seastone Trident and  Chum the Waters can be cast during the dash.',
         descriptionHTML:
@@ -148,11 +149,11 @@ export default {
     affects: 'Enemies',
     damagetype:
       '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Physical damage"><a href="/wiki/Physical_damage" title="Physical damage"><img alt="Attack damage.png" src="/wiki/images/Attack_damage.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Physical_damage" title="Physical damage">Physical</a></span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Magic damage"><a href="/wiki/Magic_damage" title="Magic damage"><img alt="Magic damage.png" src="/wiki/images/Magic_damage.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Magic_damage" title="Magic damage">Magic</a></span>',
-    spelleffects: 'Special',
+    spelleffects: 'spell',
     spellshield: true,
     callforhelp: 'True',
     notes:
-      '* <i>Urchin Strike</i> can only go through walls if the target is on the other side.\n<ul><li><i>Urchin Strike</i> only damages targets if within 200 units of their original location upon completion of the dash.</li>\n<li><b>Fizz</b> will be automatically ordered to <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> the target after <i>Urchin Strike</i>.</li>\n<li><i>Urchin Strike</i> does not deal damage if the target is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon.png" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span>.</li>\n<li>The physical portion of the effect deals <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic damage"><a href="/wiki/Damage" title="Damage"><img alt="Basic Attack.png" src="/wiki/images/Basic_Attack.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">basic damage</a></span>, while the magic portion of the effect deals <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Proc damage"><a href="/wiki/Damage" title="Damage"><img alt="Wit\'s End item.png" src="/wiki/images/Wit%27s_End_item.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">proc damage</a></span>.</li>\n<li><span style="white-space:nowrap"><a href="/wiki/Life_steal" title="Life steal"><img alt="Life steal icon.png" src="/wiki/images/Life_steal_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Life_steal" title="Life steal">Life steal</a></span> applies only on the physical damage component. <span style="white-space:nowrap"><a href="/wiki/Spell_vamp" title="Spell vamp"><img alt="Spell vamp icon.png" src="/wiki/images/Spell_vamp_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Spell_vamp" class="mw-redirect" title="Spell vamp">Spell vamp</a></span> applies to both the physical damage and bonus magic damage.</li></ul>',
+      '* <i>Urchin Strike</i> can only go through walls if the target is on the other side.\n<ul><li><i>Urchin Strike</i> only damages targets if within 200 units of their original location upon completion of the dash.</li>\n<li><b>Fizz</b> will be automatically ordered to <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> the target after <i>Urchin Strike</i>.</li>\n<li><i>Urchin Strike</i> does not deal damage if the target is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon.png" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span>.</li>\n<li><span style="white-space:nowrap"><a href="/wiki/Life_steal" title="Life steal"><img alt="Life steal icon.png" src="/wiki/images/Life_steal_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Life_steal" title="Life steal">Life steal</a></span> applies only on the physical damage component. <span style="white-space:nowrap"><a href="/wiki/Spell_vamp" title="Spell vamp"><img alt="Spell vamp icon.png" src="/wiki/images/Spell_vamp_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Spell_vamp" class="mw-redirect" title="Spell vamp">Spell vamp</a></span> applies to both the physical damage and bonus magic damage.</li></ul>',
   },
   'Seastone Trident': {
     name: 'Seastone Trident',
@@ -217,7 +218,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Seastone Trident.png',
+        icon: '/wiki/images/Seastone_Trident.png',
         description:
           'Active: Fizz empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus magic damage.',
         descriptionHTML:
@@ -226,7 +227,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Fizz empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus magic damage.',
+            raw: 'Fizz empowers his next basic attack within 4 seconds to have an  uncancellable windup, gain  50 bonus range, and deal bonus magic damage.',
             increasedStat: 'bonus_ad',
             values: 4,
             units: '',
@@ -267,6 +268,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Seastone Trident kills its target, the  cooldown is reduced to 1 second and Fizz restores  mana. Otherwise, if the target is not killed, Fizz's basic attacks deal bonus magic damage  on-hit for the next 5 seconds.",
         descriptionHTML:
@@ -344,6 +346,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Seastone Trident  resets Fizz's basic attack timer.",
         descriptionHTML:
           '<i>Seastone Trident <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Fizz\'s</b> basic attack timer.</i>',
@@ -400,6 +403,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'He then begins to hop off of his trident over 0.5 seconds, afterwards becoming targetable and landing to create a splash that deals magic damage to nearby enemies and  slows them for 2 seconds.',
         descriptionHTML:
@@ -453,6 +457,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While hopping off of the trident, Fizz may input movement commands to direct his landing. Playful will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -503,6 +508,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Trickster will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Trickster will cast at max range if cast beyond that.</i>',
@@ -546,7 +552,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Chum the Waters.png',
+        icon: '/wiki/images/Chum_the_Waters.png',
         description:
           "Active: Fizz throws down a lure at the target location that attracts a shark, granting  sight of the area before it emerges to chomp at the lure after 2 seconds, dealing magic damage to nearby enemies,  knocking them back, though not through terrain, and  slowing them for 2 seconds. The further the lure travels in its initial flight, the larger the shark that is attracted; increasing Chum the Waters'  damage, slow, eruption radius and knock back distance.",
         descriptionHTML:
@@ -555,7 +561,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Fizz throws down a lure at the target location that attracts a shark, granting  sight of the area before it emerges to chomp at the lure after 2 seconds, dealing magic damage to nearby enemies,  knocking them back, though not through terrain, and  slowing them for 2 seconds',
+            raw: 'Fizz throws down a lure at the target location that attracts a shark, granting  sight of the area before it emerges to chomp at the lure after 2 seconds, dealing magic damage to nearby enemies,  knocking them back, though not through terrain, and  slowing them for 2 seconds',
             values: 2,
             user: 'none',
             units: '',
@@ -568,6 +574,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Guppy (<455): 40% slow, 200 eruption radius and 150 unit knock back distance.',
         descriptionHTML:
@@ -576,7 +583,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Guppy (<455):',
-            raw: ' 40% slow, 200 eruption radius and 150 unit knock back distance.',
+            raw: '40% slow, 200 eruption radius and 150 unit knock back distance.',
             damagetype: 'None',
             values: 40,
             valuesIsPercent: true,
@@ -618,6 +625,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Chomper (455-910): 60% slow, 325 eruption radius and 250 unit knock back distance.',
         descriptionHTML:
@@ -626,7 +634,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Chomper (455-910):',
-            raw: ' 60% slow, 325 eruption radius and 250 unit knock back distance.',
+            raw: '60% slow, 325 eruption radius and 250 unit knock back distance.',
             damagetype: 'None',
             values: 60,
             valuesIsPercent: true,
@@ -668,6 +676,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Gigalodon (>910): 80% slow, 450 eruption radius and 350 unit knock back distance.',
         descriptionHTML:
@@ -676,7 +685,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Gigalodon (>910):',
-            raw: ' 80% slow, 450 eruption radius and 350 unit knock back distance.',
+            raw: '80% slow, 450 eruption radius and 350 unit knock back distance.',
             damagetype: 'None',
             values: 80,
             valuesIsPercent: true,
@@ -718,6 +727,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemy  champions can intercept the lure while it is in flight, which attaches to them upon contact and causes the shark to emerge at their position after the same delay. The lure's holder is  slowed and  revealed for the duration and afterwards is impacted by the eruption but is  knocked up for 1 second instead of knocked back.",
         descriptionHTML:

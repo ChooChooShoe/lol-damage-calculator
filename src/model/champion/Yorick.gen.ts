@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shepherd of Souls.png',
+        icon: '/wiki/images/Shepherd_of_Souls.png',
         description:
           'Innate - Final Service: Yorick raises a grave for every enemy he kills with  Last Rites, as well as for every enemy  champion and large  monster that dies near him. Additionally, Yorick raises a grave for every 12th / 6th / 2nd (based on level) enemy that dies otherwise near him. Up to 4 graves can exist at once, with the furthest ones being replaced by the newest.',
         descriptionHTML:
@@ -60,6 +60,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Yorick can use  Awakening and  Mourning Mist's mark to raise a Mist Walker from each grave.",
         descriptionHTML:
@@ -69,6 +70,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - The Cursed Horde: Up to 4 Mist Walkers can be active at once, with the closest ones being replaced by the newest.',
         descriptionHTML:
@@ -77,7 +79,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - The Cursed Horde:',
-            raw: ' Up to 4 Mist Walkers can be active at once, with the closest ones being replaced by the newest.',
+            raw: 'Up to 4 Mist Walkers can be active at once, with the closest ones being replaced by the newest.',
             values: 4,
             user: 'none',
             units: '',
@@ -90,6 +92,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about Mist Walkers.',
         descriptionHTML:
           '<i>See <a href="/wiki/Yorick/LoL#Pets" title="Yorick/LoL">Pets</a> for more details about <span style="color: #26DFB0; white-space:normal">Mist Walkers</span>.</i>',
@@ -129,7 +132,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Last Rites.png',
+        icon: '/wiki/images/Last_Rites.png',
         description:
           'Active: Yorick empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal bonus physical damage, and  heal him for 10 − 68 (based on level). The heal is doubled to 20 − 136 (based on level) if he is below 50% maximum health.',
         descriptionHTML:
@@ -138,7 +141,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Yorick empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal bonus physical damage, and  heal him for 10 − 68 (based on level)',
+            raw: 'Yorick empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal bonus physical damage, and  heal him for 10 − 68 (based on level)',
             healType: 'PhysicalVamp',
             values: [
               10, 13.41, 16.82, 20.24, 23.65, 27.06, 30.47, 33.88, 37.29, 40.71,
@@ -198,6 +201,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While there are at least 3 graves nearby and Last Rites is active or on  cooldown, Yorick can cast  Awakening.',
         descriptionHTML:
@@ -219,6 +223,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Last Rites  resets Yorick's basic attack timer.",
         descriptionHTML:
           '<i>Last Rites <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Yorick\'s</b> basic attack timer.</i>',
@@ -305,7 +310,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dark Procession.png',
+        icon: '/wiki/images/Dark_Procession.png',
         description:
           'Active: Yorick summons a ring of spirits around the target location that arises after a 0.75-second delay,  knocking aside enemies hit over 0.25 seconds, though not through terrain. Within 210-units, they are pulled inside; otherwise they are pushed away. The ring remains for 4 seconds as impassible terrain against enemies, granting  sight inside the ring.',
         descriptionHTML:
@@ -338,6 +343,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Dark Procession can only be targeted by enemy  champion basic attacks and  turrets. The wall takes 1 damage per attack from champions and is destroyed instantly from turret attacks.',
         descriptionHTML:
@@ -413,7 +419,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mourning Mist.png',
+        icon: '/wiki/images/Mourning_Mist.png',
         description:
           "Active: Yorick hurls a globule of Black Mist that splashes across an area at the target location, dealing magic damage to enemies hit equal to 15% of the target's current health, down to a minimum threshold.",
         descriptionHTML:
@@ -422,7 +428,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Yorick hurls a globule of Black Mist that splashes across an area at the target location, dealing magic damage to enemies hit equal to 15% of the target's current health, down to a minimum threshold.",
+            raw: "Yorick hurls a globule of Black Mist that splashes across an area at the target location, dealing magic damage to enemies hit equal to 15% of the target's current health, down to a minimum threshold.",
             healType: 'OutgoingHeals',
             values: 1,
             valuesIsPercent: true,
@@ -465,6 +471,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy  champions and  monsters hit are  slowed by 30% for 2 seconds, and marked as Cursed for 4 seconds. Cursed champions are also  revealed.',
         descriptionHTML:
@@ -486,7 +493,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Mourning Mist 2.png',
+        icon: '/wiki/images/Mourning_Mist_2.png',
         description:
           'Cursed: The target takes 40% bonus damage from 8 attacks by Mist Walkers and continually raises a Mist Walker from each nearby grave, up to a maximum of 4.\nYorick, Mist Walkers and the  The Maiden gain  20% bonus movement speed while facing nearby Cursed enemies. Mist Walkers will  leap to nearby Cursed enemy champions and large monsters, dealing  100% of their AD upon arrival.',
         descriptionHTML:
@@ -495,7 +502,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Cursed:',
-            raw: ' The target takes 40% bonus damage from 8 attacks by Mist Walkers and continually raises a Mist Walker from each nearby grave, up to a maximum of 4.\nYorick, Mist Walkers and the  The Maiden gain  20% bonus movement speed while facing nearby Cursed enemies',
+            raw: 'The target takes 40% bonus damage from 8 attacks by Mist Walkers and continually raises a Mist Walker from each nearby grave, up to a maximum of 4.\nYorick, Mist Walkers and the  The Maiden gain  20% bonus movement speed while facing nearby Cursed enemies',
             increasedStat: 'bonus_ad',
             values: 4,
             valuesIsPercent: true,
@@ -522,6 +529,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Mourning Mist will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -572,7 +580,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Eulogy of the Isles.png',
+        icon: '/wiki/images/Eulogy_of_the_Isles.png',
         description:
           'Active: Yorick summons the Maiden of the Mist surrounded by a number of Mist Walkers at the target location, which remain on the battlefield until she or Yorick dies. Eulogy of the Isles can be recast once while the Maiden is alive after 10 seconds of the activation.',
         descriptionHTML:
@@ -611,6 +619,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Yorick sets the Maiden free, allowing her to push the nearest lane until she dies.',
         descriptionHTML:
@@ -620,6 +629,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'See Pets for more details about The Maiden of the Mist. Eulogy of the Isles will cast at max range if cast beyond that.',
         descriptionHTML:

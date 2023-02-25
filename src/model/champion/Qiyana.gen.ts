@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Royal Privilege.png',
+        icon: '/wiki/images/Royal_Privilege.png',
         description:
           "Innate: Qiyana's basic attacks and basic abilities deal 15 − 83 (based on level) (+ 30% bonus AD) (+ 30% AP) additional physical damage. This effect cannot occur on the same target more than once every few seconds.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: " Qiyana's basic attacks and basic abilities deal 15 − 83 (based on level) (+ 30% bonus AD) (+ 30% AP) additional physical damage",
+            raw: "Qiyana's basic attacks and basic abilities deal 15 − 83 (based on level) (+ 30% bonus AD) (+ 30% AP) additional physical damage",
             damagetype: 'Physical',
             values: [
               15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 55, 59, 63, 67, 71, 75,
@@ -66,6 +66,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gathering an Element with  Terrashape resets Royal Privilege's per-target  cooldown for enemies affected by Royal Privilege using a different Element (or no Element).",
         descriptionHTML:
@@ -133,7 +134,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Edge of Ixtal.png',
+        icon: '/wiki/images/Edge_of_Ixtal.png',
         description:
           'Active: Qiyana slashes forward in the target direction, dealing physical damage to enemies in a line, reduced to 75% damage against targets beyond the first. Edge of Ixtal deals 150% damage against  monsters.',
         descriptionHTML:
@@ -142,7 +143,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Qiyana slashes forward in the target direction, dealing physical damage to enemies in a line, reduced to 75% damage against targets beyond the first',
+            raw: 'Qiyana slashes forward in the target direction, dealing physical damage to enemies in a line, reduced to 75% damage against targets beyond the first',
             values: 7,
             valuesIsPercent: true,
             user: 'none',
@@ -195,6 +196,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gathering an Element with  Terrashape resets Edge of Ixtal's  cooldown and upgrades it into Elemental Wrath.",
         descriptionHTML:
@@ -204,6 +206,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If cast during  Audacity's dash towards an enemy  champion and the target is within 150 units of Qiyana at the end of the dash, Edge of Ixtal will autonomously aim at the target.",
         descriptionHTML:
@@ -260,7 +263,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Qiyana Elemental Wrath.gif',
+        icon: '/wiki/images/Qiyana_Elemental_Wrath.gif',
         description:
           'Active: Qiyana hurls her blade in the target direction that blasts in a line upon hitting an enemy or maximum range, consuming the current Element to empower the blade with an additional effect.',
         descriptionHTML:
@@ -270,6 +273,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies hit are dealt Edge of Ixtal's damage, reduced to 75% against subsequent enemies beyond the closest. Elemental Wrath deals 150% damage against  monsters.",
         descriptionHTML:
@@ -331,7 +335,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Qiyana Terrashape Brush.png',
+        icon: '/wiki/images/Qiyana_Terrashape_Brush.png',
         description:
           'Brush: The blade creates a grass field around Qiyana that lasts for up to 3 seconds, granting her  invisibility and  20% bonus movement speed until she attacks, casts an ability other than  Terrashape, or exits the field.',
         descriptionHTML:
@@ -340,7 +344,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Brush:',
-            raw: ' The blade creates a grass field around Qiyana that lasts for up to 3 seconds, granting her  invisibility and  20% bonus movement speed until she attacks, casts an ability other than  Terrashape, or exits the field.',
+            raw: 'The blade creates a grass field around Qiyana that lasts for up to 3 seconds, granting her  invisibility and  20% bonus movement speed until she attacks, casts an ability other than  Terrashape, or exits the field.',
             increasedStat: 'total_ap',
             values: 3,
             valuesIsPercent: true,
@@ -354,7 +358,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Qiyana Terrashape River.png',
+        icon: '/wiki/images/Qiyana_Terrashape_River.png',
         description:
           'River: The blast  roots enemies hit for 0.5 seconds, then  slows them by 20% for 1 second.',
         descriptionHTML:
@@ -364,7 +368,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Qiyana Terrashape Rock.png',
+        icon: '/wiki/images/Qiyana_Terrashape_Rock.png',
         description:
           'Terrain: The blast deals  60% increased damage against enemies below 50% of their maximum health.',
         descriptionHTML:
@@ -373,7 +377,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Terrain:',
-            raw: ' The blast deals  60% increased damage against enemies below 50% of their maximum health.',
+            raw: 'The blast deals  60% increased damage against enemies below 50% of their maximum health.',
             healType: 'BonusHealth',
             values: 6,
             valuesIsPercent: true,
@@ -464,7 +468,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' While holding an Element, Qiyana gains  bonus attack speed,  25 bonus attack range and bonus magic damage on her basic attacks  on-hit and basic abilities',
+            raw: 'While holding an Element, Qiyana gains  bonus attack speed,  25 bonus attack range and bonus magic damage on her basic attacks  on-hit and basic abilities',
             increasedStat: 'bonus_ad',
             values: 2,
             units: '',
@@ -553,7 +557,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Qiyana  dashes up to 300 units towards the target location to gather the Element of the nearest  Brush,  River or  Terrain she targeted.',
+            raw: 'Qiyana  dashes up to 300 units towards the target location to gather the Element of the nearest  Brush,  River or  Terrain she targeted.',
             values: 3,
             user: 'none',
             units: '',
@@ -566,6 +570,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'A target Element is required to cast this ability.',
         descriptionHTML:
           '<i>A target Element is required to cast this ability</i>.',
@@ -574,6 +579,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once Terrashape has been learned, Qiyana is automatically given the  Terrain element upon respawning.',
         descriptionHTML:
@@ -583,6 +589,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Qiyana can cast any of her abilities during the dash.',
         descriptionHTML:
           '<i><b>Qiyana</b> can cast any of her abilities during the dash.</i>',
@@ -663,6 +670,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Qiyana can cast any of her abilities during the dash.',
         descriptionHTML:
           '<i><b>Qiyana</b> can cast any of her abilities during the dash.</i>',
@@ -712,7 +720,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Supreme Display of Talent.png',
+        icon: '/wiki/images/Supreme_Display_of_Talent.png',
         description:
           'Active: Qiyana sweeps a windblast in the target direction that  knocks back enemies hit, though not through terrain, and stops upon hitting Terrain.',
         descriptionHTML:
@@ -722,6 +730,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The windblast creates a cascading shockwave across any River or Brush it passes through, as well as around the borders of Terrain it reaches, dealing physical damage to enemies hit,  stunning them for 0.5 − 1 (based on proximity) seconds, and briefly granting  sight of the area along its path. The damage based on the target's health ratio is capped against  monsters.",
         descriptionHTML:

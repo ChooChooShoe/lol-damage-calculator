@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hextech Affinity.png',
+        icon: '/wiki/images/Hextech_Affinity.png',
         description:
           'Innate: Heimerdinger gains  20% bonus movement speed while near an allied  turret or a  H-28G Evolution Turret or  H-28Q Apex Turret deployed by him.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Heimerdinger gains  20% bonus movement speed while near an allied  turret or a  H-28G Evolution Turret or  H-28Q Apex Turret deployed by him.',
+            raw: 'Heimerdinger gains  20% bonus movement speed while near an allied  turret or a  H-28G Evolution Turret or  H-28Q Apex Turret deployed by him.',
             increasedStat: 'total_ap',
             values: 2,
             valuesIsPercent: true,
@@ -78,7 +78,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/H-28G Evolution Turret.png',
+        icon: '/wiki/images/H-28G_Evolution_Turret.png',
         description:
           'Active: Heimerdinger deploys a H-28G Evolution Turret at the target location, which lasts until destroyed.',
         descriptionHTML:
@@ -87,7 +87,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Heimerdinger deploys a H-28G Evolution Turret at the target location, which lasts until destroyed.',
+            raw: 'Heimerdinger deploys a H-28G Evolution Turret at the target location, which lasts until destroyed.',
             values: 2,
             user: 'none',
             units: '',
@@ -100,6 +100,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Heimerdinger periodically stocks a Turret Kit charge, up to a maximum of 3.',
         descriptionHTML:
@@ -121,6 +122,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Up to 3 H-28G Evolution Turrets can be deployed at a time, with those deployed beyond the maximum destroying the oldest one.',
         descriptionHTML:
@@ -142,6 +144,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about H-28G Evolution Turrets.',
         descriptionHTML:
           '<i>See <a href="/wiki/Heimerdinger/LoL#Pets" title="Heimerdinger/LoL">Pets</a> for more details about H-28G Evolution Turrets.</i>',
@@ -195,7 +198,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/H-28Q Apex Turret.png',
+        icon: '/wiki/images/H-28Q_Apex_Turret.png',
         description:
           'UPGRADE!!! - Active: Heimerdinger deploys a H-28Q Apex Turret at the target location, which lasts for 8 seconds.',
         descriptionHTML:
@@ -204,7 +207,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'UPGRADE!!! - Active:',
-            raw: ' Heimerdinger deploys a H-28Q Apex Turret at the target location, which lasts for 8 seconds.',
+            raw: 'Heimerdinger deploys a H-28Q Apex Turret at the target location, which lasts for 8 seconds.',
             damagetype: 'None',
             values: 2,
             units: 'total_ap',
@@ -217,6 +220,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "H-28Q Apex Turret scales with  UPGRADE!!!'s rank.",
         descriptionHTML:
           '<i>H-28Q Apex Turret</i> scales with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Heimerdinger" data-ability="UPGRADE!!!" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Heimerdinger/LoL#UPGRADE!!!" title="UPGRADE!!!\'s"><img alt="UPGRADE!!!\'s" src="/wiki/images/Heimerdinger_UPGRADE%21%21%21.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Heimerdinger/LoL#UPGRADE!!!" title="Heimerdinger/LoL">UPGRADE!!!\'s</a></span></span></i> rank.',
@@ -236,6 +240,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about the H-28Q Apex Turret.',
         descriptionHTML:
           '<i>See <a href="/wiki/Heimerdinger/LoL#Pets" title="Heimerdinger/LoL">Pets</a> for more details about the H-28Q Apex Turret.</i>',
@@ -291,7 +296,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hextech Micro-Rockets.png',
+        icon: '/wiki/images/Hextech_Micro-Rockets.png',
         description:
           'Active: Heimerdinger unleashes a wave of 5 rockets that converge to the target location and fan beyond it up to a maximum range, with each one dealing magic damage to the first enemy it hits. Every rocket hitting an enemy  champion grants 20% beam charge to all   turrets within 1000 range, up to a maximum of 100% beam charge when hitting 5 rockets on an enemy champion.',
         descriptionHTML:
@@ -300,7 +305,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Heimerdinger unleashes a wave of 5 rockets that converge to the target location and fan beyond it up to a maximum range, with each one dealing magic damage to the first enemy it hits',
+            raw: 'Heimerdinger unleashes a wave of 5 rockets that converge to the target location and fan beyond it up to a maximum range, with each one dealing magic damage to the first enemy it hits',
             damagetype: 'Magic',
             values: 5,
             user: 'none',
@@ -354,6 +359,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies can be hit by multiple rockets, with each one beyond the first dealing 20% damage, increased to 40% against  minions.',
         descriptionHTML:
@@ -462,7 +468,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hextech Rocket Swarm.png',
+        icon: '/wiki/images/Hextech_Rocket_Swarm.png',
         description:
           'UPGRADE!!! - Active: Heimerdinger launches 4 waves of 5 rockets in quick succession to the target location, each one dealing magic damage. Enemy  champions and  monsters are dealt reduced damage from rockets beyond the first, and further reduced beyond the fifth.  Minions take 100% damage from every rocket.',
         descriptionHTML:
@@ -471,7 +477,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'UPGRADE!!! - Active:',
-            raw: ' Heimerdinger launches 4 waves of 5 rockets in quick succession to the target location, each one dealing magic damage',
+            raw: 'Heimerdinger launches 4 waves of 5 rockets in quick succession to the target location, each one dealing magic damage',
             damagetype: 'Magic',
             values: 4,
             user: 'none',
@@ -551,6 +557,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Hextech Rocket Swarm scales with  UPGRADE!!!'s rank.",
         descriptionHTML:
           '<i>Hextech Rocket Swarm</i> scales with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Heimerdinger" data-ability="UPGRADE!!!" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Heimerdinger/LoL#UPGRADE!!!" title="UPGRADE!!!\'s"><img alt="UPGRADE!!!\'s" src="/wiki/images/Heimerdinger_UPGRADE%21%21%21.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Heimerdinger/LoL#UPGRADE!!!" title="Heimerdinger/LoL">UPGRADE!!!\'s</a></span></span></i> rank.',
@@ -597,7 +604,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/CH-2 Electron Storm Grenade.png',
+        icon: '/wiki/images/CH-2_Electron_Storm_Grenade.png',
         description:
           'Active: Heimerdinger hurls a grenade at the target location that detonates upon impact, dealing magic damage to nearby enemies and  slowing them by 35% for 2 seconds. If the grenade hits an enemy  champion, all   turrets within 1000 range of the impact gain 100% beam charge.',
         descriptionHTML:
@@ -606,7 +613,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Heimerdinger hurls a grenade at the target location that detonates upon impact, dealing magic damage to nearby enemies and  slowing them by 35% for 2 seconds',
+            raw: 'Heimerdinger hurls a grenade at the target location that detonates upon impact, dealing magic damage to nearby enemies and  slowing them by 35% for 2 seconds',
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -661,6 +668,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies hit at the center of the grenade's impact are also  stunned for 1.5 seconds.",
         descriptionHTML:
@@ -718,7 +726,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/CH-3X Lightning Grenade.png',
+        icon: '/wiki/images/CH-3X_Lightning_Grenade.png',
         description:
           'UPGRADE!!! - Active: Heimerdinger hurls a massive grenade at the target location that bounces a fixed distance 3 times, exploding each time at twice the radius.',
         descriptionHTML:
@@ -727,7 +735,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'UPGRADE!!! - Active:',
-            raw: ' Heimerdinger hurls a massive grenade at the target location that bounces a fixed distance 3 times, exploding each time at twice the radius.',
+            raw: 'Heimerdinger hurls a massive grenade at the target location that bounces a fixed distance 3 times, exploding each time at twice the radius.',
             damagetype: 'None',
             values: 3,
             user: 'target',
@@ -769,6 +777,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy champions can only be damaged once per cast, but can be  slowed and  stunned multiple times if circumstances permit.',
         descriptionHTML:
@@ -778,6 +787,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "CH-3X Lightning Grenade scales with  UPGRADE!!!'s rank.",
         descriptionHTML:
           '<i>CH-3X Lightning Grenade</i> scales with <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Heimerdinger" data-ability="UPGRADE!!!" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Heimerdinger/LoL#UPGRADE!!!" title="UPGRADE!!!\'s"><img alt="UPGRADE!!!\'s" src="/wiki/images/Heimerdinger_UPGRADE%21%21%21.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Heimerdinger/LoL#UPGRADE!!!" title="Heimerdinger/LoL">UPGRADE!!!\'s</a></span></span></i> rank.',
@@ -797,6 +807,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'CH-3X Lightning Grenade will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -865,7 +876,8 @@ export default {
             raw: 'UPGRADE!!! can be recast after 3 seconds, and does so automatically upon casting another ability.',
             damagetype: 'None',
             values: 3,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'can be recast after 3 seconds, and does so automatically upon casting another ability.',
             pre: 'UPGRADE!!! can be recast after 3 seconds, and does so automatically upon casting another ability.',
@@ -875,6 +887,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Heimerdinger ends UPGRADE!!! and puts it on a 3-second  cooldown.',
         descriptionHTML:
@@ -883,7 +896,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Heimerdinger ends UPGRADE!!! and puts it on a 3-second  cooldown.',
+            raw: 'Heimerdinger ends UPGRADE!!! and puts it on a 3-second  cooldown.',
             damagetype: 'None',
             values: 3,
             units: 'total_ad',
@@ -895,6 +908,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'UPGRADE!!! can be used while affected by  cast-inhibiting crowd control.',
         descriptionHTML:

@@ -1,4 +1,22 @@
 export type Stat = keyof ChampObjStats;
+
+export type BBT_Perfix = 'base' | 'bonus' | 'total';
+export type BBT_Perfix_Ex = BBT_Perfix | 'maximum' | 'missing' | 'current';
+export type BBT_Units =
+  | 'ad'
+  | 'mana'
+  | 'movespeed'
+  | 'armor'
+  | 'mr'
+  | 'attackrange'
+  | 'hpregen'
+  | 'manaregen'
+  | 'critchance'
+  | 'critdamage'
+  | 'hp';
+
+export type BBT_Stat = `${BBT_Perfix}_${BBT_Units}`;
+
 export interface ChampObjStats {
   level: number;
   flat_mr_reduction: number;
@@ -22,6 +40,8 @@ export interface ChampObjStats {
 
   base_hp: number;
   bonus_hp: number;
+  total_hp: number;
+
   maximum_hp: number;
   missing_hp: number;
   current_hp: number;

@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Sovereign's Domination 2.png",
+        icon: "/wiki/images/Sovereign's_Domination_2.png",
         description:
           "Innate: Whenever Viego scores an enemy champion  takedown while alive and within 3 seconds of damaging them, a Mist Wraith spawns from that champion's corpse for 8 seconds. Viego can basic attack a Mist Wraith to consume it: causing him to  blink to its location after winding up for 1 second, during which he is  untargetable (except to  turrets) and  unable to act. He then gains Possession and  heals himself for 2% (+ 2.5% per 100 bonus AD) (+ 2% per 100 AP) (+ 5% per 100% bonus attack speed) of the target's maximum health.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Whenever Viego scores an enemy champion  takedown while alive and within 3 seconds of damaging them, a Mist Wraith spawns from that champion's corpse for 8 seconds",
+            raw: "Whenever Viego scores an enemy champion  takedown while alive and within 3 seconds of damaging them, a Mist Wraith spawns from that champion's corpse for 8 seconds",
             values: 3,
             user: 'none',
             units: '',
@@ -44,7 +44,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Viego can basic attack a Mist Wraith to consume it:',
-            raw: ' causing him to  blink to its location after winding up for 1 second, during which he is  untargetable (except to  turrets) and  unable to act',
+            raw: 'causing him to  blink to its location after winding up for 1 second, during which he is  untargetable (except to  turrets) and  unable to act',
             values: 1,
             user: 'none',
             units: '',
@@ -103,7 +103,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Sovereign's Domination.png",
+        icon: "/wiki/images/Sovereign's_Domination.png",
         description:
           "Possession: For 10 seconds, Viego assumes the enemy champion's form and gains their basic attacks, basic abilities, items, and base stats (based on Viego's level). He also gains a free cast of  Heartbreaker, which is initially placed on a  1.5-second cooldown, and  10% bonus movement speed while facing enemy champions within 2500 units.",
         descriptionHTML:
@@ -112,7 +112,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Possession:',
-            raw: " For 10 seconds, Viego assumes the enemy champion's form and gains their basic attacks, basic abilities, items, and base stats (based on Viego's level)",
+            raw: "For 10 seconds, Viego assumes the enemy champion's form and gains their basic attacks, basic abilities, items, and base stats (based on Viego's level)",
             increasedStat: 'base_ad',
             values: 1,
             basedOn: "Viego's level",
@@ -138,6 +138,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Viego cannot use item actives, consumable items, nor the shop during Possession. Casting  Heartbreaker or attacking a Mist Wraith ends Possession immediately.',
         descriptionHTML:
@@ -147,6 +148,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Viego will preserve his current health percentage between transformations.',
         descriptionHTML:
@@ -192,20 +194,20 @@ export default {
     description: [
       {
         description:
-          "Passive: Viego's basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters.",
+          "Passive: Viego's basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters. This damage is affected by  critical strike modifiers.",
         descriptionHTML:
-          '<span class="template_sbc"><b>Passive:</b></span> <b>Viego\'s</b> basic attacks are empowered to deal <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span>, which has a minimum threshold and is capped at 80 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
+          '<span class="template_sbc"><b>Passive:</b></span> <b>Viego\'s</b> basic attacks are empowered to deal <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects#On Hitting"><img alt="On-hit icon.png" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span>, which has a minimum threshold and is capped at 80 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>. This damage is affected by <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critical strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon.png" src="/wiki/images/Critical_strike_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Critical_strike" title="Critical strike">critical strike</a></span> modifiers.',
         descriptionRatios: [
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: " Viego's basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters.",
+            raw: "Viego's basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters",
             increasedStat: 'total_ap',
             values: 8,
             units: '',
             unitsText:
-              'basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters.',
-            pre: "Viego's basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters.",
+              'basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters',
+            pre: "Viego's basic attacks are empowered to deal bonus physical damage  on-hit, which has a minimum threshold and is capped at 80 against  monsters",
           },
         ],
         leveling: [
@@ -248,6 +250,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Additionally, his damaging abilities apply a mark to enemies hit for 4 seconds. Viego's next basic attack against a marked target is empowered to consume the mark  on-hit to strike a second time, dealing 20% AD (+ 15% AP) physical damage and  healing him for 135% of the post-mitigation damage dealt, increased to 145% against monsters and reduced to 10% against  minions.",
         descriptionHTML:
@@ -292,6 +295,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The second strike can  critically strike for 35% (+  7%) AD (+ 26.25% (+ 5.25%) AP) physical damage and applies  on-hit effects at 100% effectiveness.',
         descriptionHTML:
@@ -342,7 +346,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Blade of the Ruined King.png',
+        icon: '/wiki/images/Blade_of_the_Ruined_King.png',
         description:
           'Active: Viego stabs in a line in the target direction that deals physical damage to enemies hit, increased by 0% − 100% (based on critical strike chance), and 20 bonus physical damage against monsters.',
         descriptionHTML:
@@ -399,6 +403,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Blade of the Ruined King's passive remains under  Possession, and while transformed, the second strike is instead converted to bonus damage on-hit which no longer applies on-hit effects but can still  critically strike (based on possessed stats).",
         descriptionHTML:
@@ -446,7 +451,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spectral Maw.png',
+        icon: '/wiki/images/Spectral_Maw.png',
         description:
           "Active: Viego  charges while being  slowed by 10% for up to 3 seconds to increase Spectral Maw's missile range and  stun duration over the first second of the channel.",
         descriptionHTML:
@@ -455,7 +460,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: " Viego  charges while being  slowed by 10% for up to 3 seconds to increase Spectral Maw's missile range and  stun duration over the first second of the channel.",
+            raw: "Viego  charges while being  slowed by 10% for up to 3 seconds to increase Spectral Maw's missile range and  stun duration over the first second of the channel.",
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -469,6 +474,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Spectral Maw can be recast within the duration. If the charge completes without reactivation, Spectral Maw is cancelled and placed on  full cooldown. If the charge is  interrupted, it will be placed on a 3-second cooldown.',
         descriptionHTML:
@@ -490,6 +496,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Viego hurls a blast of mist in the target direction and  dashes a fixed distance in the same direction, though not through terrain. The mist deals magic damage to the first enemy hit and  stuns them for 0.25 − 1.25 (based on channel time) seconds.',
         descriptionHTML:
@@ -541,6 +548,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Spectral Maw  resets Viego's basic attack timer. Viego can cast any of his abilities during the dash.",
         descriptionHTML:
@@ -591,7 +599,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Harrowed Path.png',
+        icon: '/wiki/images/Harrowed_Path.png',
         description:
           'Active: Viego sends a spectre in the target direction that creates a trail of mist in its wake which lasts 8 seconds. If it hits terrain, the mist will spread further around either side.',
         descriptionHTML:
@@ -600,7 +608,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Viego sends a spectre in the target direction that creates a trail of mist in its wake which lasts 8 seconds',
+            raw: 'Viego sends a spectre in the target direction that creates a trail of mist in its wake which lasts 8 seconds',
             values: 8,
             user: 'none',
             units: '',
@@ -613,7 +621,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Harrowed Path 2.png',
+        icon: '/wiki/images/Harrowed_Path_2.png',
         description:
           'While inside the mist, Viego gains  bonus attack speed. If he does not attack or cast abilities, he also gains  bonus movement speed and  camouflage.',
         descriptionHTML:
@@ -668,6 +676,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Declaring a basic attack or casting an ability will break the camouflage and remove the bonus movement speed, preventing Viego from gaining them again for 1 second, reduced to 0.6 seconds if he recasted  Spectral Maw and increased to 2 seconds if he attacked a  monster. This duration refreshes on subsequent attacks and ability casts.',
         descriptionHTML:
@@ -689,6 +698,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Harrowed Path can be cast during any of Viego's abilities. He cannot gain the camouflage nor bonus movement speed from Harrowed Path for 0.75 seconds after starting the channel of  Spectral Maw, recasting ends this duration prematurely.",
         descriptionHTML:
@@ -765,16 +775,16 @@ export default {
           {
             name: 'Physical Damage:',
             values:
-              "12 / 14 / 16 / 18 / 20% (+ 3% per 100 bonus AD) of target's missing health",
+              "12 / 14 / 16 / 18 / 20% (+ 5% per 100 bonus AD) of target's missing health",
             valuesHTML:
-              '<span style="color: #1F995C; white-space:normal">12 / 14 / 16 / 18 / 20% <span style="color:orange; white-space:normal">(+&nbsp;3% per 100 <b>bonus</b> AD)</span> of target\'s <b>missing</b> health</span>',
+              '<span style="color: #1F995C; white-space:normal">12 / 14 / 16 / 18 / 20% <span style="color:orange; white-space:normal">(+&nbsp;5% per 100 <b>bonus</b> AD)</span> of target\'s <b>missing</b> health</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Heal',
             name: 'Physical Damage:',
-            raw: "12 / 14 / 16 / 18 / 20% (+ 3% per 100 bonus AD) of target's missing health",
+            raw: "12 / 14 / 16 / 18 / 20% (+ 5% per 100 bonus AD) of target's missing health",
             healType: 'PhysicalVamp',
             values: [12, 14, 16, 18, 20],
             valuesIsPercent: true,
@@ -785,17 +795,18 @@ export default {
             post: "of target's missing health",
             children: [
               {
-                values: 3,
+                values: 5,
                 valuesIsPercent: true,
                 units: 'bonus_ad',
                 unitsText: 'per 100 bonus AD',
-                pre: '+ 3% per 100 bonus AD',
+                pre: '+ 5% per 100 bonus AD',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'All targets hit are dealt 120% AD physical damage, increased by 0% − 100% (based on critical strike chance).',
         descriptionHTML:
@@ -820,6 +831,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If a  Possession is discarded, Heartbreaker will be placed on a  1.5-second cooldown if it is not already on cooldown. Heartbreaker will cast at max range if cast beyond that.',
         descriptionHTML:

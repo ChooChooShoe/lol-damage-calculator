@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Passive - Doom:',
-            raw: ' Periodically, Vex empowers her next basic ability to  knock down and  fear enemies hit for 0.75 / 1 / 1.25 / 1.5 (based on level) seconds, during which they are  slowed by 60% − 99% (based on distance from Vex)',
+            raw: 'Periodically, Vex empowers her next basic ability to  knock down and  fear enemies hit for 0.75 / 1 / 1.25 / 1.5 (based on level) seconds, during which they are  slowed by 60% − 99% (based on distance from Vex)',
             values: [0, 1, 1.25, 1.5],
             basedOn: 'distance from Vex',
             user: 'none',
@@ -49,7 +49,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Vex Doom 'n Gloom.png",
+        icon: "/wiki/images/Vex_Doom_'n_Gloom.png",
         description:
           "Innate - Gloom: Nearby enemy  champions and  monsters that  dash or  blink will be marked with Gloom for 6 seconds. Vex's next basic attack, which becomes  non-projectile, or basic ability hit against an enemy with Gloom will detonate the mark.  Looming Darkness will also inflict Gloom, but cannot detonate it.",
         descriptionHTML:
@@ -58,7 +58,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate - Gloom:',
-            raw: ' Nearby enemy  champions and  monsters that  dash or  blink will be marked with Gloom for 6 seconds',
+            raw: 'Nearby enemy  champions and  monsters that  dash or  blink will be marked with Gloom for 6 seconds',
             values: 6,
             units: 'kindredMarks',
             unitsText:
@@ -70,6 +70,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Gloom's detonation deals 30 − 140 (based on level) (+ 20% AP)  bonus magic damage and refunds 25% of Doom's cooldown. Against non-champions, this instead deals 40 / 45 / 50 / 55 / 60% (based on level) damage and refunds 10% of Doom's cooldown.",
         descriptionHTML:
@@ -156,7 +157,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vex Mistral Bolt.png',
+        icon: '/wiki/images/Vex_Mistral_Bolt.png',
         description:
           'Active: Vex launches a wave of mist in the target direction that deals magic damage to enemies hit. After travelling 500 units, the wave accelerates but also narrows itself.',
         descriptionHTML:
@@ -241,7 +242,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vex Personal Space.png',
+        icon: '/wiki/images/Vex_Personal_Space.png',
         description:
           'Active: Vex emits a shockwave around her before the cast time, dealing magic damage to nearby enemies and granting herself a  shield for 2.5 seconds.',
         descriptionHTML:
@@ -250,7 +251,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Vex emits a shockwave around her before the cast time, dealing magic damage to nearby enemies and granting herself a  shield for 2.5 seconds.',
+            raw: 'Vex emits a shockwave around her before the cast time, dealing magic damage to nearby enemies and granting herself a  shield for 2.5 seconds.',
             damagetype: 'Magic',
             shieldType: 'SelfShield',
             values: 2,
@@ -356,7 +357,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vex Looming Darkness.png',
+        icon: '/wiki/images/Vex_Looming_Darkness.png',
         description:
           "Active: Vex tosses her Shadow to explode at the target location, dealing magic damage to enemies hit and  slowing them for 2 seconds. The explosion's radius increases based on cast distance.",
         descriptionHTML:
@@ -365,7 +366,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Vex tosses her Shadow to explode at the target location, dealing magic damage to enemies hit and  slowing them for 2 seconds',
+            raw: 'Vex tosses her Shadow to explode at the target location, dealing magic damage to enemies hit and  slowing them for 2 seconds',
             damagetype: 'Magic',
             values: 2,
             user: 'target',
@@ -423,6 +424,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Looming Darkness will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -475,7 +477,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vex Shadow Surge.png',
+        icon: '/wiki/images/Vex_Shadow_Surge.png',
         description:
           'Active: Vex sends her Shadow in the target direction that grants  sight around its trajectory and deals magic damage to enemies hit.',
         descriptionHTML:
@@ -513,6 +515,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Shadow stops upon hitting an enemy  champion to mark them for 4 seconds, during which they are  revealed. Shadow Surge can be recast while the target is marked.',
         descriptionHTML:
@@ -534,7 +537,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Vex Shadow Surge 2.png',
+        icon: '/wiki/images/Vex_Shadow_Surge_2.png',
         description:
           'Recast: Vex  dashes towards the marked target with  displacement immunity. Upon arrival, she consumes their mark and deals magic damage.',
         descriptionHTML:
@@ -572,6 +575,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target dies within 6 seconds of being marked, Vex can cast Shadow Surge again within 12 seconds at no cost after 0.5 seconds.',
         descriptionHTML:

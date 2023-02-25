@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Dauntless Instinct.png',
+        icon: '/wiki/images/Dauntless_Instinct.png',
         description:
           "Innate: K'Sante's abilities mark enemies hit for 4 seconds. His basic attacks against marked enemies are empowered to gain  25 bonus range and consume the mark on-hit, dealing 5 − 20 (based on level) (+ 1 / 1.33 / 1.66 / 2% (based on level) of target's maximum health) bonus physical damage.",
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " K'Sante's abilities mark enemies hit for 4 seconds",
+            raw: "K'Sante's abilities mark enemies hit for 4 seconds",
             values: 4,
             units: 'kindredMarks',
             unitsText: 'abilities mark enemies hit for 4 seconds',
@@ -71,6 +71,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "All Out Bonus: Both the attack's damage and the mark damage are increased by 35% (+ 20% per 100 bonus armor) (+ 20% per 100 bonus magic resistance). The bonus damage dealt by consuming a mark is converted to  true damage.",
         descriptionHTML:
@@ -79,7 +80,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'All Out Bonus:',
-            raw: " Both the attack's damage and the mark damage are increased by 35% (+ 20% per 100 bonus armor) (+ 20% per 100 bonus magic resistance)",
+            raw: "Both the attack's damage and the mark damage are increased by 35% (+ 20% per 100 bonus armor) (+ 20% per 100 bonus magic resistance)",
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -150,7 +151,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/K'Sante Ntofo Strikes.png",
+        icon: "/wiki/images/K'Sante_Ntofo_Strikes.png",
         description:
           "Active: K'Sante slams his ntofo down in the target direction that deals physical damage to enemies hit and  slows them by 80% for 0.5 seconds.",
         descriptionHTML:
@@ -159,7 +160,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " K'Sante slams his ntofo down in the target direction that deals physical damage to enemies hit and  slows them by 80% for 0.5 seconds.",
+            raw: "K'Sante slams his ntofo down in the target direction that deals physical damage to enemies hit and  slows them by 80% for 0.5 seconds.",
             damagetype: 'Physical',
             values: 8,
             valuesIsPercent: true,
@@ -217,7 +218,7 @@ export default {
         ],
       },
       {
-        icon: "/wiki/images/K'Sante Ntofo Strikes 2.png",
+        icon: "/wiki/images/K'Sante_Ntofo_Strikes_2.png",
         description:
           "If this hits at least one enemy, K'Sante generates a stack for 6 seconds, stacking up to 2 times and refreshing on subsequent hits. At 2 stacks, the next Ntofo Strikes consumes them all to become empowered with a new effect.",
         descriptionHTML:
@@ -228,11 +229,11 @@ export default {
             name: 'Line 1:',
             raw: "If this hits at least one enemy, K'Sante generates a stack for 6 seconds, stacking up to 2 times and refreshing on subsequent hits",
             min: 0,
-            max: 10,
+            max: 2,
             description:
               "If this hits at least one enemy, K'Sante generates a stack for 6 seconds, stacking up to 2 times and refreshing on subsequent hits",
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "this hits at least one enemy, K'Sante generates a stack for 6 seconds, stacking up to 2 times and refreshing on subsequent hits",
             pre: "If this hits at least one enemy, K'Sante generates a stack for 6 seconds, stacking up to 2 times and refreshing on subsequent hits",
@@ -246,7 +247,7 @@ export default {
             description:
               'At 2 stacks, the next Ntofo Strikes consumes them all to become empowered with a new effect.',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               '2 stacks, the next Ntofo Strikes consumes them all to become empowered with a new effect.',
             pre: 'At 2 stacks, the next Ntofo Strikes consumes them all to become empowered with a new effect.',
@@ -256,7 +257,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/K'Sante Ntofo Strikes 3.png",
+        icon: "/wiki/images/K'Sante_Ntofo_Strikes_3.png",
         description:
           "Empowered Active: K'Sante fires a shockwave in the target direction that applies the same effects to enemies hit, but also  pulls them towards him over 0.65 seconds and  stuns them for 1 second.",
         descriptionHTML:
@@ -266,6 +267,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "All Out Bonus: Ntofo Strikes's  cooldown is reduced by 1 second, up to a minimum of 1.33 seconds, but it will no longer slow all targets hit.",
         descriptionHTML:
@@ -274,7 +276,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'All Out Bonus:',
-            raw: " Ntofo Strikes's  cooldown is reduced by 1 second, up to a minimum of 1.33 seconds, but it will no longer slow all targets hit.",
+            raw: "Ntofo Strikes's  cooldown is reduced by 1 second, up to a minimum of 1.33 seconds, but it will no longer slow all targets hit.",
             values: 1,
             user: 'none',
             units: '',
@@ -287,6 +289,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Ntofo Strikes partially  resets K'Sante's basic attack timer. While  All Out, it fully resets the timer.",
         descriptionHTML:
@@ -335,7 +338,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Path Maker.png',
+        icon: '/wiki/images/Path_Maker.png',
         description:
           "Active: K'Sante  charges for up to 1 second, during which he increases Path Maker's range, damage, and  stun duration over the first 0.85 seconds of the channel. During this time, he gains  displacement immunity and 25% (+ 10% per 100 bonus armor) (+ 10% per 100 bonus magic resistance) (+ 1% per 100 bonus health) damage reduction.",
         descriptionHTML:
@@ -344,7 +347,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " K'Sante  charges for up to 1 second, during which he increases Path Maker's range, damage, and  stun duration over the first 0.85 seconds of the channel",
+            raw: "K'Sante  charges for up to 1 second, during which he increases Path Maker's range, damage, and  stun duration over the first 0.85 seconds of the channel",
             damagetype: 'None',
             values: 1,
             user: 'none',
@@ -394,6 +397,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Path Maker can be recast within the duration, and does so automatically afterwards. Path Maker's charge cannot be  interrupted by  crowd control.",
         descriptionHTML:
@@ -403,6 +407,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Recast: K'Sante  dashes in the target direction, though not through terrain, dealing physical damage to enemies he passes through,  carrying them alongside him, and  stunning them for a duration. This damage is capped at 50 − 475 (based on level) against  monsters.",
         descriptionHTML:
@@ -464,6 +469,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "All Out Bonus: Path Maker no longer applies its  knock back and  stun, but it deals bonus physical damage and its damage reduction is increased to 30% (+ 12% per 100 bonus armor) (+ 12% per 100 bonus magic resistance) (+ 1.2% per 100 bonus health), and has twice the charge speed and dash speed. Upon entering All Out, Path Maker's  cooldown is refreshed.",
         descriptionHTML:
@@ -472,7 +478,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'All Out Bonus:',
-            raw: ' Path Maker no longer applies its  knock back and  stun, but it deals bonus physical damage and its damage reduction is increased to 30% (+ 12% per 100 bonus armor) (+ 12% per 100 bonus magic resistance) (+ 1.2% per 100 bonus health), and has twice the charge speed and dash speed',
+            raw: 'Path Maker no longer applies its  knock back and  stun, but it deals bonus physical damage and its damage reduction is increased to 30% (+ 12% per 100 bonus armor) (+ 12% per 100 bonus magic resistance) (+ 1.2% per 100 bonus health), and has twice the charge speed and dash speed',
             healType: 'PhysicalVamp',
             values: 3,
             valuesIsPercent: true,
@@ -573,6 +579,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Ntofo Strikes and  All Out can be cast during the dash. Path Maker's recast can be used while affected by  cast-inhibiting crowd control.",
         descriptionHTML:
@@ -628,7 +635,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: " K'Sante  dashes to the target location, though not through terrain, and grants himself a  shield for 2 seconds",
+            raw: "K'Sante  dashes to the target location, though not through terrain, and grants himself a  shield for 2 seconds",
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 2,
@@ -671,6 +678,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "All Out Bonus: Footwork's dash speed and location range are increased, and it can dash through terrain.",
         descriptionHTML:
@@ -680,6 +688,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Footwork partially  resets K'Sante's basic attack timer. While  All Out, it fully resets the timer. K'Sante can cast any of his abilities during the dash. Footwork will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -727,7 +736,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/All Out.png',
+        icon: '/wiki/images/All_Out.png',
         description:
           "Active: K'Sante  roots the target enemy  champion for 0.5 seconds and gains  displacement immunity over the cast time, then shatters his ntofos to  knock them back, during which they are  revealed, and  blinks to the end location. The target is dealt physical damage near the end of the displacement and is  stunned for 0.25 seconds afterwards.",
         descriptionHTML:
@@ -765,6 +774,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the target hits terrain during the displacement, they are knocked back through the terrain and dealt the physical damage once they emerge. At the end of the displacement, they remain  airborne for 0.5 seconds and K'Sante strikes them to deal additional physical damage, after which they are  stunned for 0.25 seconds.",
         descriptionHTML:
@@ -828,6 +838,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "After K'Sante  blinks, he enters All Out for 20 seconds, and the ability can be recast after 1.5 seconds within the duration.",
         descriptionHTML:
@@ -838,7 +849,8 @@ export default {
             name: 'Line 1:',
             raw: "After K'Sante  blinks, he enters All Out for 20 seconds, and the ability can be recast after 1.5 seconds within the duration.",
             values: 2,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               "K'Sante  blinks, he enters All Out for 20 seconds, and the ability can be recast after 1.5 seconds within the duration.",
             pre: "After K'Sante  blinks, he enters All Out for 20 seconds, and the ability can be recast after 1.5 seconds within the duration.",
@@ -848,6 +860,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "All Out: K'Sante gains a health threshold equal to  55% maximum health which cannot be modified nor exceeded by any means. Upon entering All Out, his current health is reduced to this threshold. Additionally, his  base armor and  base magic resistance are reduced by 85% bonus armor and 85% bonus magic resistance, respectively. In return, he gains  5 (+ 32.5% bonus armor) (+ 32.5% bonus magic resistance) bonus attack damage and  10% (+ 0.75% per 100 bonus health) omnivamp and modifies his basic abilities, which can be cast at no cost.",
         descriptionHTML:
@@ -856,7 +869,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'All Out:',
-            raw: " K'Sante gains a health threshold equal to  55% maximum health which cannot be modified nor exceeded by any means",
+            raw: "K'Sante gains a health threshold equal to  55% maximum health which cannot be modified nor exceeded by any means",
             healType: 'BonusHealth',
             values: 5,
             valuesIsPercent: true,
@@ -916,7 +929,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/All Out 2.png',
+        icon: '/wiki/images/All_Out_2.png',
         description: "Recast: K'Sante ends All Out early.",
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>K\'Sante</b> ends <i>All Out</i> early.',

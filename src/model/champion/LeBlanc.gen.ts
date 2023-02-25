@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mirror Image.png',
+        icon: '/wiki/images/Mirror_Image.png',
         description:
           'Innate: Periodically, when LeBlanc is damaged to  40% maximum health, she creates a  clone of herself, after which they both instantly become  invisible for 1 second.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Periodically, when LeBlanc is damaged to  40% maximum health, she creates a  clone of herself, after which they both instantly become  invisible for 1 second.',
+            raw: 'Periodically, when LeBlanc is damaged to  40% maximum health, she creates a  clone of herself, after which they both instantly become  invisible for 1 second.',
             healType: 'BonusHealth',
             values: 4,
             valuesIsPercent: true,
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The clone can basic attack but deals no damage, lasts for 8 seconds, and starts running 1900 units towards a random place in front of LeBlanc decided the moment it spawns.',
         descriptionHTML:
@@ -69,6 +70,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "See Pets for more details about LeBlanc's clone.",
         descriptionHTML:
           '<i>See <a href="/wiki/LeBlanc/LoL#Pets" title="LeBlanc/LoL">Pets</a> for more details about <b>LeBlanc\'s</b> clone.</i>',
@@ -111,7 +113,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sigil of Malice.png',
+        icon: '/wiki/images/Sigil_of_Malice.png',
         description:
           'Active: LeBlanc projects an orb at the target enemy that deals magic damage and marks them for 3.5 seconds.',
         descriptionHTML:
@@ -120,7 +122,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' LeBlanc projects an orb at the target enemy that deals magic damage and marks them for 3.5 seconds.',
+            raw: 'LeBlanc projects an orb at the target enemy that deals magic damage and marks them for 3.5 seconds.',
             damagetype: 'Magic',
             values: 3,
             units: 'kindredMarks',
@@ -161,6 +163,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Leblanc's next damaging ability against the marked target will consume the mark to deal them the  same damage again.",
         descriptionHTML:
@@ -247,7 +250,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' LeBlanc  dashes to the target location, dealing magic damage to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds',
+            raw: 'LeBlanc  dashes to the target location, dealing magic damage to all nearby enemies upon arrival and leaving a return pad at the cast location for 4 seconds',
             damagetype: 'Magic',
             values: 4,
             user: 'target',
@@ -289,7 +292,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Distortion 2.png',
+        icon: '/wiki/images/Distortion_2.png',
         description:
           "Recast: LeBlanc  blinks to Distortion's return pad, regardless of range.",
         descriptionHTML:
@@ -299,6 +302,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Distortion will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Distortion will cast at max range if cast beyond that.</i>',
@@ -348,7 +352,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ethereal Chains.png',
+        icon: '/wiki/images/Ethereal_Chains.png',
         description:
           'Active: LeBlanc flings an illusory chain in the target direction that deals magic damage to the first enemy it hits and forms a  tether between LeBlanc and the target for 1.5 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -357,7 +361,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' LeBlanc flings an illusory chain in the target direction that deals magic damage to the first enemy it hits and forms a  tether between LeBlanc and the target for 1.5 seconds, during which they are  revealed.',
+            raw: 'LeBlanc flings an illusory chain in the target direction that deals magic damage to the first enemy it hits and forms a  tether between LeBlanc and the target for 1.5 seconds, during which they are  revealed.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -399,6 +403,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the tether is not broken by the end of its duration, the target is dealt magic damage and is  rooted for 1.5 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -489,6 +494,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Mimic: Sigil of Malice: Deals modified damage and double damage upon triggering the mark.',
         descriptionHTML:
@@ -526,6 +532,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Mimic: Distortion: Deals modified damage.',
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="LeBlanc" data-ability="Mimic: Distortion" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/LeBlanc/LoL#Mimic:_Distortion" title="Mimic: Distortion"><img alt="Mimic: Distortion" src="/wiki/images/LeBlanc_Mimic-_Distortion.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/LeBlanc/LoL#Mimic:_Distortion" title="LeBlanc/LoL">Mimic: Distortion</a></span></span>:</b></span> Deals modified damage.',
@@ -562,6 +569,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Mimic: Ethereal Chains: Deals modified damage and double damage after the tether lasts its full duration.',
         descriptionHTML:

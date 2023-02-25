@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Void Stone.png',
+        icon: '/wiki/images/Void_Stone.png',
         description:
           'Innate: Kassadin is permanently  ghosted and takes 10% reduced  magic damage.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' Kassadin is permanently  ghosted and takes 10% reduced  magic damage.',
+            raw: 'Kassadin is permanently  ghosted and takes 10% reduced  magic damage.',
             damagetype: 'Magic',
             values: 1,
             valuesIsPercent: true,
@@ -77,7 +77,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Null Sphere.png',
+        icon: '/wiki/images/Null_Sphere.png',
         description:
           'Active: Kassadin fires an orb of void energy at the target enemy that deals magic damage and  disrupts their ongoing  channels.',
         descriptionHTML:
@@ -115,6 +115,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'He also gains a  shield that absorbs magic damage for 1.5 seconds.',
         descriptionHTML:
@@ -210,7 +211,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: " Kassadin's basic attacks deal 20 (+ 10% AP) bonus magic damage  on-hit.",
+            raw: "Kassadin's basic attacks deal 20 (+ 10% AP) bonus magic damage  on-hit.",
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -233,7 +234,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Nether Blade.png',
+        icon: '/wiki/images/Nether_Blade.png',
         description:
           'Active: Kassadin empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal increased bonus magic damage, and restore  mana, with the restoration amount quintupled against  champions.',
         descriptionHTML:
@@ -242,7 +243,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Kassadin empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal increased bonus magic damage, and restore  mana, with the restoration amount quintupled against  champions.',
+            raw: 'Kassadin empowers his next basic attack within 5 seconds to have an  uncancellable windup, gain  50 bonus range, deal increased bonus magic damage, and restore  mana, with the restoration amount quintupled against  champions.',
             increasedStat: 'bonus_ad',
             values: 5,
             units: '',
@@ -299,6 +300,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Nether Blade  resets Kassadin's basic attack timer.",
         descriptionHTML:
           '<i>Nether Blade <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Kassadin\'s</b> basic attack timer.</i>',
@@ -353,7 +355,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Force Pulse.png',
+        icon: '/wiki/images/Force_Pulse.png',
         description:
           'Active: Kassadin emits a pulse of void energy in a cone in the target direction that deals magic damage to enemies hit and  slows them for 1 second.',
         descriptionHTML:
@@ -362,7 +364,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Kassadin emits a pulse of void energy in a cone in the target direction that deals magic damage to enemies hit and  slows them for 1 second.',
+            raw: 'Kassadin emits a pulse of void energy in a cone in the target direction that deals magic damage to enemies hit and  slows them for 1 second.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -465,12 +467,15 @@ export default {
           '<span class="template_sbc"><b>Active:</b></span> <b>Kassadin</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blinks"><a href="/wiki/Blink" title="Blink"><img alt="Flash.png" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blink" title="Blink">blinks</a></span> toward the target location, dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to all nearby enemies upon arrival. He then gains a stack of <i>Riftwalk</i> for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'He then gains a stack of Riftwalk for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 4,
+            description:
+              'He then gains a stack of Riftwalk for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
             values: 5,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'then gains a stack of Riftwalk for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
             pre: 'He then gains a stack of Riftwalk for 5 seconds, refreshing on subsequent casts and stacking up to 4 times.',
@@ -515,6 +520,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Riftwalk: For each stack, Riftwalk deals bonus magic damage at an increased  mana cost.',
         descriptionHTML:
@@ -562,6 +568,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Riftwalk will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Riftwalk will cast at max range if cast beyond that.</i>',

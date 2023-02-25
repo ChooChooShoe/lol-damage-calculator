@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Crimson Pact.png',
+        icon: '/wiki/images/Crimson_Pact.png',
         description:
           'Innate: Vladimir gains (3.3% bonus health) as  ability power and (160% AP) as  bonus health. These two bonuses do not stack with each other.',
         descriptionHTML:
@@ -32,10 +32,11 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Vladimir gains (3.3% bonus health) as  ability power and (160% AP) as  bonus health',
+            raw: 'Vladimir gains (3.3% bonus health) as  ability power and (160% AP) as  bonus health',
             healType: 'BonusHealth',
             values: 0,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText: 'as  ability power and',
             pre: 'Vladimir gains',
             post: 'as  ability power and',
@@ -156,15 +157,20 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'At 2 stacks, Vladimir gains  10% / 20% / 30% / 40% (based on level) bonus movement speed for 0.5 seconds, and enters Crimson Rush while the  Bloodthirst depletes over 2.5 seconds. The  Bloodthirst depletes 75% slower during  Sanguine Pool,  Tides of Blood, or  stasis.',
         descriptionHTML:
           'At 2 stacks, <b>Vladimir</b> gains <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="10%;20%;30%;40%" data-top_values="1;6;11;16">10% / 20% / 30% / 40% (based on level)</span> <b>bonus</b> movement speed</span></span> for 0.<small>5</small> seconds, and enters <i>Crimson Rush</i> while the <i><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Fury"><a href="/wiki/Manaless#Fury" title="Manaless#Fury"><img alt="Fury resource.png" src="/wiki/images/Fury_resource.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Manaless#Fury" title="Manaless">Bloodthirst</a></span></i> depletes over 2.<small>5</small> seconds. The <i><span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Fury"><a href="/wiki/Manaless#Fury" title="Manaless#Fury"><img alt="Fury resource.png" src="/wiki/images/Fury_resource.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Manaless#Fury" title="Manaless">Bloodthirst</a></span></i> depletes 75% slower during <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Vladimir" data-ability="Sanguine Pool" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Vladimir/LoL#Sanguine_Pool" title="Sanguine Pool"><img alt="Sanguine Pool" src="/wiki/images/Vladimir_Sanguine_Pool.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Vladimir/LoL#Sanguine_Pool" title="Vladimir/LoL">Sanguine Pool</a></span></span></i>, <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Vladimir" data-ability="Tides of Blood" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Vladimir/LoL#Tides_of_Blood" title="Tides of Blood"><img alt="Tides of Blood" src="/wiki/images/Vladimir_Tides_of_Blood.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Vladimir/LoL#Tides_of_Blood" title="Vladimir/LoL">Tides of Blood</a></span></span></i>, or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stasis (buff)"><a href="/wiki/Invulnerability#Stasis" title="Invulnerability#Stasis"><img alt="Stasis icon.png" src="/wiki/images/Stasis_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability#Stasis" title="Invulnerability">stasis</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'At 2 stacks, Vladimir gains  10% / 20% / 30% / 40% (based on level) bonus movement speed for 0.5 seconds, and enters Crimson Rush while the  Bloodthirst depletes over 2.5 seconds',
+            min: 0,
+            max: 10,
+            description:
+              'At 2 stacks, Vladimir gains  10% / 20% / 30% / 40% (based on level) bonus movement speed for 0.5 seconds, and enters Crimson Rush while the  Bloodthirst depletes over 2.5 seconds',
             values: [],
             valuesIsPercent: true,
             basedOn: 'level',
@@ -192,7 +198,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Crimson Rush.png',
+        icon: '/wiki/images/Crimson_Rush.png',
         description:
           'Crimson Rush Bonus: Transfusion consumes all  Bloodthirst to deal  85% increased damage and heal Vladimir for an additional 30 − 200 (based on level) (+ 5% (+ 4% per 100 AP) missing health), reduced to 35% against  minions.',
         descriptionHTML:
@@ -201,7 +207,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Crimson Rush Bonus:',
-            raw: ' Transfusion consumes all  Bloodthirst to deal  85% increased damage and heal Vladimir for an additional 30 − 200 (based on level) (+ 5% (+ 4% per 100 AP) missing health), reduced to 35% against  minions.',
+            raw: 'Transfusion consumes all  Bloodthirst to deal  85% increased damage and heal Vladimir for an additional 30 − 200 (based on level) (+ 5% (+ 4% per 100 AP) missing health), reduced to 35% against  minions.',
             healType: 'BonusHealth',
             values: [
               30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160,
@@ -305,7 +311,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sanguine Pool.png',
+        icon: '/wiki/images/Sanguine_Pool.png',
         description:
           'Active: Vladimir sinks into a pool of blood, becoming  untargetable and  ghosted for 2 seconds. He also gains  37.5% bonus movement speed that decays exponentially over 1 second.',
         descriptionHTML:
@@ -314,7 +320,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Vladimir sinks into a pool of blood, becoming  untargetable and  ghosted for 2 seconds',
+            raw: 'Vladimir sinks into a pool of blood, becoming  untargetable and  ghosted for 2 seconds',
             damagetype: 'None',
             values: 2,
             user: 'none',
@@ -340,6 +346,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies within the pool are dealt magic damage every 0.5 seconds over the duration and are  slowed by 40%. Vladimir  heals himself for 15% of the pre-mitigation damage dealt.',
         descriptionHTML:
@@ -391,6 +398,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Vladimir cannot use basic attacks nor abilities during Sanguine Pool, but he can still move. If  Tides of Blood is charging at the time of Sanguine Pool's activation, that ability may still be recast.",
         descriptionHTML:
@@ -440,7 +448,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Tides of Blood.png',
+        icon: '/wiki/images/Tides_of_Blood.png',
         description:
           "Active: Vladimir  charges for up to 1.5 seconds, during which he increases Tides of Blood's damage over the first second of the channel, and becomes  slowed by 20% afterwards for the remaining duration. Tides of Blood can be recast within the duration, and does so automatically afterwards or if it is  interrupted.",
         descriptionHTML:
@@ -449,7 +457,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Vladimir  charges for up to 1.5 seconds, during which he increases Tides of Blood's damage over the first second of the channel, and becomes  slowed by 20% afterwards for the remaining duration",
+            raw: "Vladimir  charges for up to 1.5 seconds, during which he increases Tides of Blood's damage over the first second of the channel, and becomes  slowed by 20% afterwards for the remaining duration",
             damagetype: 'None',
             values: 1,
             valuesIsPercent: true,
@@ -464,6 +472,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Vladimir unleashes a nova of 15 blood bolts around himself that each deal magic damage to the first enemy hit, increased based on charge time, up to the first second.',
         descriptionHTML:
@@ -472,7 +481,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Recast:',
-            raw: ' Vladimir unleashes a nova of 15 blood bolts around himself that each deal magic damage to the first enemy hit, increased based on charge time, up to the first second.',
+            raw: 'Vladimir unleashes a nova of 15 blood bolts around himself that each deal magic damage to the first enemy hit, increased based on charge time, up to the first second.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -521,6 +530,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Tides of Blood was charged for at least 1 second, enemies hit are also  slowed for 0.5 seconds.',
         descriptionHTML:
@@ -560,6 +570,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies can intercept multiple bolts, but can be damaged only once.',
         descriptionHTML:
@@ -569,6 +580,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Vladimir is below 12% of his maximum health, Tides of Blood will not cost any health.',
         descriptionHTML:
@@ -635,7 +647,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Vladimir spreads a virulent plague at the target location that infects enemies hit for 4 seconds, increasing the damage they take from all sources by 10%.',
+            raw: 'Vladimir spreads a virulent plague at the target location that infects enemies hit for 4 seconds, increasing the damage they take from all sources by 10%.',
             damagetype: 'None',
             values: 4,
             valuesIsPercent: true,
@@ -650,6 +662,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After the duration, the infection bursts to deal magic damage to all affected targets and, after a 0.4-second delay,  heal Vladimir for each infected champion, reduced by 40% for subsequent champions.',
         descriptionHTML:

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Get Excited!.png',
+        icon: '/wiki/images/Get_Excited!.png',
         description:
           'Innate: Whenever Jinx scores a  takedown against an enemy  champion, epic  monster,  turret, or inhibitor within 3 seconds of damaging them, she gains  175% bonus movement speed decaying over 6 seconds.',
         descriptionHTML:
@@ -32,7 +32,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Whenever Jinx scores a  takedown against an enemy  champion, epic  monster,  turret, or inhibitor within 3 seconds of damaging them, she gains  175% bonus movement speed decaying over 6 seconds.',
+            raw: 'Whenever Jinx scores a  takedown against an enemy  champion, epic  monster,  turret, or inhibitor within 3 seconds of damaging them, she gains  175% bonus movement speed decaying over 6 seconds.',
             values: 3,
             valuesIsPercent: true,
             user: 'none',
@@ -46,6 +46,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, she gains  25% total attack speed and is allowed to exceed the attack speed cap for the same duration.',
         descriptionHTML:
@@ -122,25 +123,28 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Pow-Pow:',
-            raw: " Basic attacks with Pow-Pow generate a stack of  Rev'd up for 2.5 seconds, refreshing on subsequent attacks with Pow-Pow and stacking up to 3 times",
+            raw: "Basic attacks with Pow-Pow generate a stack of  Rev'd up for 2.5 seconds, refreshing on subsequent attacks with Pow-Pow and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Basic attacks with Pow-Pow generate a stack of  Rev'd up for 2.5 seconds, refreshing on subsequent attacks with Pow-Pow and stacking up to 3 times",
+              "Basic attacks with Pow-Pow generate a stack of  Rev'd up for 2.5 seconds, refreshing on subsequent attacks with Pow-Pow and stacking up to 3 times",
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "attacks with Pow-Pow generate a stack of  Rev'd up for 2.5 seconds, refreshing on subsequent attacks with Pow-Pow and stacking up to 3 times",
             pre: "Basic attacks with Pow-Pow generate a stack of  Rev'd up for 2.5 seconds, refreshing on subsequent attacks with Pow-Pow and stacking up to 3 times",
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: "Each stack of Rev'd up grants  bonus attack speed, with all stacks beyond the first one being 50% effective",
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              "Each stack of Rev'd up grants  bonus attack speed, with all stacks beyond the first one being 50% effective",
             values: 5,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               "effectivestack of Rev'd up grants  bonus attack speed, with all stacks beyond the first one being 50",
             pre: "Each stack of Rev'd up grants  bonus attack speed, with all stacks beyond the first one being 50% effective",
@@ -178,7 +182,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Fishbones:',
-            raw: ' Basic attacks with Fishbones cost  mana on-attack to deal 110% AD modified physical damage to the target and nearby enemies',
+            raw: 'Basic attacks with Fishbones cost  mana on-attack to deal 110% AD modified physical damage to the target and nearby enemies',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -222,6 +226,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Only the first attack after switching to Fishbones will benefit from  Rev'd up.",
         descriptionHTML:
@@ -278,7 +283,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Jinx fires a shock blast in the target direction that deals physical damage to the first enemy it hits and  reveals and  slows them for 2 seconds.',
+            raw: 'Jinx fires a shock blast in the target direction that deals physical damage to the first enemy it hits and  reveals and  slows them for 2 seconds.',
             damagetype: 'Physical',
             values: 2,
             user: 'none',
@@ -376,7 +381,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Flame Chompers!.png',
+        icon: '/wiki/images/Flame_Chompers!.png',
         description:
           'Active: Jinx tosses out 3 Chompers centered at the target location, landing after 0.4 seconds, arming after 0.5 seconds, and exploding after 5 seconds to deal magic damage to nearby enemies.',
         descriptionHTML:
@@ -385,7 +390,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Jinx tosses out 3 Chompers centered at the target location, landing after 0.4 seconds, arming after 0.5 seconds, and exploding after 5 seconds to deal magic damage to nearby enemies.',
+            raw: 'Jinx tosses out 3 Chompers centered at the target location, landing after 0.4 seconds, arming after 0.5 seconds, and exploding after 5 seconds to deal magic damage to nearby enemies.',
             damagetype: 'Magic',
             values: 3,
             user: 'none',
@@ -427,7 +432,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Flame Chompers! 2.png',
+        icon: '/wiki/images/Flame_Chompers!_2.png',
         description:
           'Each Chomper explodes on contact with an enemy  champion,  knocking them down and  rooting them for 1.5 seconds. Enemy champions can be affected by only one Chomper.',
         descriptionHTML:
@@ -449,6 +454,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Flame Chompers! will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -499,7 +505,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Super Mega Death Rocket!.png',
+        icon: '/wiki/images/Super_Mega_Death_Rocket!.png',
         description:
           'Active: Jinx fires a massive rocket in the target direction, briefly granting  sight of its surroundings and exploding upon colliding with an enemy champion. The explosion deals physical damage to nearby enemies and grants  sight of the area for 2 seconds.',
         descriptionHTML:
@@ -521,6 +527,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Super Mega Death Rocket! deals 10% − 100% (based on distance traveled) damage. This does not affect the bonus damage based on the target's missing health.",
         descriptionHTML:
@@ -582,6 +589,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Enemies surrounding the primary target take 80% damage. The bonus damage based on the target's missing health is capped at 800 against  monsters.",
         descriptionHTML:

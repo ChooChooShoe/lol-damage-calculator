@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mortal Will.png',
+        icon: '/wiki/images/Mortal_Will.png',
         description:
           "Innate: Pantheon generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times. At 5 stacks, Pantheon's next basic ability consumes the stacks to become empowered with an additional effect.",
         descriptionHTML:
@@ -31,13 +31,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Pantheon generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times',
+            raw: 'Pantheon generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times',
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              ' Pantheon generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times',
+              'Pantheon generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times',
             values: 5,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times',
             pre: 'Pantheon generates a stack of Mortal Will whenever he lands a basic attack  on-hit or casts an ability, stacking up to 5 times',
@@ -51,7 +51,7 @@ export default {
             description:
               "At 5 stacks, Pantheon's next basic ability consumes the stacks to become empowered with an additional effect.",
             values: 5,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "5 stacks, Pantheon's next basic ability consumes the stacks to become empowered with an additional effect.",
             pre: "At 5 stacks, Pantheon's next basic ability consumes the stacks to become empowered with an additional effect.",
@@ -61,6 +61,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Pantheon gains maximum stacks of Mortal Will upon starting the game, completing a  Recall channel, and respawning.',
         descriptionHTML:
@@ -108,7 +109,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Comet Spear.png',
+        icon: '/wiki/images/Comet_Spear.png',
         description:
           "Active: Pantheon  charges while being  slowed by 10% for up to 4 seconds to increase Comet Spear's  range after 0.35 seconds of channeling. Comet Spear can be recast within the duration.",
         descriptionHTML:
@@ -117,7 +118,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: " Pantheon  charges while being  slowed by 10% for up to 4 seconds to increase Comet Spear's  range after 0.35 seconds of channeling",
+            raw: "Pantheon  charges while being  slowed by 10% for up to 4 seconds to increase Comet Spear's  range after 0.35 seconds of channeling",
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -131,6 +132,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Pantheon hurls his spear in the target direction that deals physical damage to enemies hit,  increased against enemies below 20% of their maximum health but reduced by 50% against enemies beyond the first. Total damage is increased to 105% against  monsters and reduced to 70% against  minions.',
         descriptionHTML:
@@ -139,7 +141,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Recast:',
-            raw: ' Pantheon hurls his spear in the target direction that deals physical damage to enemies hit,  increased against enemies below 20% of their maximum health but reduced by 50% against enemies beyond the first',
+            raw: 'Pantheon hurls his spear in the target direction that deals physical damage to enemies hit,  increased against enemies below 20% of their maximum health but reduced by 50% against enemies beyond the first',
             healType: 'PhysicalVamp',
             values: 2,
             valuesIsPercent: true,
@@ -220,6 +222,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Releasing the ability within 0.35 seconds causes Pantheon to instead thrust his spear in the target direction, dealing the same physical damage to enemies hit and refunding 60% of Comet Spear's  cooldown. The thrust's damage is not reduced against enemies beyond the first.",
         descriptionHTML:
@@ -229,6 +232,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the charge is  interrupted or completes without reactivation, Comet Spear is cancelled and the ability is put on full cooldown but refunds  half the mana cost.',
         descriptionHTML:
@@ -238,7 +242,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Comet Spear 2.png',
+        icon: '/wiki/images/Comet_Spear_2.png',
         description:
           'Mortal Will: Comet Spear gains 20 − 240 (based on level) (+ 115% bonus AD) bonus physical damage, affected by the previous damage reductions. Consumes the stacks upon recasting.',
         descriptionHTML:
@@ -247,7 +251,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Mortal Will:',
-            raw: ' Comet Spear gains 20 − 240 (based on level) (+ 115% bonus AD) bonus physical damage, affected by the previous damage reductions',
+            raw: 'Comet Spear gains 20 − 240 (based on level) (+ 115% bonus AD) bonus physical damage, affected by the previous damage reductions',
             values: [
               20, 32.94, 45.88, 58.82, 71.76, 84.71, 97.65, 110.59, 123.53,
               136.47, 149.41, 162.35, 175.29, 188.24, 201.18, 214.12, 227.06,
@@ -311,7 +315,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shield Vault.png',
+        icon: '/wiki/images/Shield_Vault.png',
         description:
           "Active: Pantheon  leaps to the front of the target enemy's location. If the target is within 800 units upon arrival, he deals physical damage and  stuns them for 1 second.",
         descriptionHTML:
@@ -362,7 +366,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Shield Vault 2.png',
+        icon: '/wiki/images/Shield_Vault_2.png',
         description:
           'Mortal Will: Pantheon empowers his next basic attack within 4 seconds to have a cast time and strike the target 3 times over a brief period, dealing 40% − 55% (based on level) AD physical damage per hit, up to 120% − 165% (based on level) AD. Each hit is affected by  critical strike modifiers and applies  on-hit effects at 100% effectiveness.',
         descriptionHTML:
@@ -371,7 +375,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Mortal Will:',
-            raw: ' Pantheon empowers his next basic attack within 4 seconds to have a cast time and strike the target 3 times over a brief period, dealing 40% − 55% (based on level) AD physical damage per hit, up to 120% − 165% (based on level) AD',
+            raw: 'Pantheon empowers his next basic attack within 4 seconds to have a cast time and strike the target 3 times over a brief period, dealing 40% − 55% (based on level) AD physical damage per hit, up to 120% − 165% (based on level) AD',
             damagetype: 'Physical',
             values: [],
             valuesIsPercent: true,
@@ -398,6 +402,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Empowered Shield Vault  resets Pantheon's basic attack timer. Pantheon will attempt to basic attack the target at the end of the leap.",
         descriptionHTML:
@@ -448,7 +453,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Aegis Assault.png',
+        icon: '/wiki/images/Aegis_Assault.png',
         description:
           'Active: Pantheon braces his shield in the target direction and  channels for 1.5 seconds, during which he becomes  invulnerable against non- turret damage dealt by enemies from the target direction. He also continually performs strikes in a cone in front of him, dealing 8.3% AD physical damage every 0.125 seconds to enemies hit, reduced by 50% against  minions and up to 100% AD total physical damage.',
         descriptionHTML:
@@ -457,7 +462,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Pantheon braces his shield in the target direction and  channels for 1.5 seconds, during which he becomes  invulnerable against non- turret damage dealt by enemies from the target direction',
+            raw: 'Pantheon braces his shield in the target direction and  channels for 1.5 seconds, during which he becomes  invulnerable against non- turret damage dealt by enemies from the target direction',
             damagetype: 'None',
             shieldType: 'OutgoingShields',
             values: 1,
@@ -484,6 +489,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Aegis Assault can be recast after 0.3 seconds, and does so automatically after the duration. Aegis Assault's channel cannot be  interrupted by  crowd control.",
         descriptionHTML:
@@ -493,6 +499,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Pantheon slams with his shield in a cone in front of him, dealing physical damage to enemies hit.',
         descriptionHTML:
@@ -530,7 +537,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Aegis Assault 2.png',
+        icon: '/wiki/images/Aegis_Assault_2.png',
         description:
           'Mortal Will: After recasting, Pantheon gains  60% bonus movement speed for 1.5 seconds.',
         descriptionHTML:
@@ -539,7 +546,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Mortal Will:',
-            raw: ' After recasting, Pantheon gains  60% bonus movement speed for 1.5 seconds.',
+            raw: 'After recasting, Pantheon gains  60% bonus movement speed for 1.5 seconds.',
             values: 6,
             valuesIsPercent: true,
             user: 'none',
@@ -621,7 +628,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Grand Starfall.png',
+        icon: '/wiki/images/Grand_Starfall.png',
         description:
           'Active: Pantheon  channels for 2 seconds, then leaps high into the air,  vanishing and becoming  immune to crowd control until he reappears. While in the air, Pantheon  channels again for 2.2 seconds and grants  sight around the target location 0.5 seconds into the channel.',
         descriptionHTML:
@@ -630,7 +637,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Pantheon  channels for 2 seconds, then leaps high into the air,  vanishing and becoming  immune to crowd control until he reappears',
+            raw: 'Pantheon  channels for 2 seconds, then leaps high into the air,  vanishing and becoming  immune to crowd control until he reappears',
             damagetype: 'None',
             values: 2,
             units: 'total_ap',
@@ -654,6 +661,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "After 0.8 seconds into the channel, Pantheon prepares for landing by hurling his spear to the target location over 0.2 seconds that deals 40 − 190 (based on  Comet Spear's rank) (+ 115% bonus AD) physical damage to enemies near its landing point and  slows them by 50% for 2 seconds.",
         descriptionHTML:
@@ -687,6 +695,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Over the remaining 1.2 seconds, Pantheon crashes down and creates a shockwave alongside himself that travels toward the target location, dealing magic damage to enemies hit, reduced by up to 50% for those hit at the edge of the area. Upon completion of the channel, Pantheon  reappears at the target location and gains full stacks of  Mortal Will.',
         descriptionHTML:
@@ -738,6 +747,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Grand Starfall is put on a  30-second cooldown if the first channel is canceled.',
         descriptionHTML:

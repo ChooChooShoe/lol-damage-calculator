@@ -39,7 +39,7 @@ export default {
             description:
               'At 6 stacks, or 5 while in brush, her next basic attack consumes all stacks to become a Headshot.',
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               '6 stacks, or 5 while in brush, her next basic attack consumes all stacks to become a Headshot.',
             pre: 'At 6 stacks, or 5 while in brush, her next basic attack consumes all stacks to become a Headshot.',
@@ -58,7 +58,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Headshot:',
-            raw: " Caitlyn's basic attack is empowered to have an  uncancellable windup and deal 60 / 90 / 120% (based on level) (+ (131.25% +  26.25%) critical strike chance) AD bonus physical damage, increased to 110 / 115 / 120% (based on level) (+ (131.25% +  26.25%) critical strike chance AD against non-champions.",
+            raw: "Caitlyn's basic attack is empowered to have an  uncancellable windup and deal 60 / 90 / 120% (based on level) (+ (131.25% +  26.25%) critical strike chance) AD bonus physical damage, increased to 110 / 115 / 120% (based on level) (+ (131.25% +  26.25%) critical strike chance AD against non-champions.",
             increasedStat: 'bonus_ad',
             values: [],
             valuesIsPercent: true,
@@ -101,6 +101,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Caitlyn may fire more than one Headshot until it hits a target, which consumes all stacks.',
         descriptionHTML:
@@ -110,19 +111,22 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Headshot 2.png',
+        icon: '/wiki/images/Headshot_2.png',
         description:
           'Enemies that step over a  Yordle Snap Trap or are hit by  90 Caliber Net can grant an additional Headshot against them at  1300 range within 1.8 seconds, without consuming stacks. Each method grants only one Headshot at a time.',
         descriptionHTML:
           'Enemies that step over a <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Caitlyn" data-ability="Yordle Snap Trap" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Caitlyn/LoL#Yordle_Snap_Trap" title="Yordle Snap Trap"><img alt="Yordle Snap Trap" src="/wiki/images/Caitlyn_Yordle_Snap_Trap.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Caitlyn/LoL#Yordle_Snap_Trap" title="Caitlyn/LoL">Yordle Snap Trap</a></span></span></i> or are hit by <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Caitlyn" data-ability="90 Caliber Net" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Caitlyn/LoL#90_Caliber_Net" title="90 Caliber Net"><img alt="90 Caliber Net" src="/wiki/images/Caitlyn_90_Caliber_Net.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Caitlyn/LoL#90_Caliber_Net" title="Caitlyn/LoL">90 Caliber Net</a></span></span></i> can grant an additional <i>Headshot</i> against them at <span style="white-space:nowrap"><a href="/wiki/Range" title="Range"><img alt="Range icon.png" src="/wiki/images/Range_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;1300 range</span> within 1.<small>8</small> seconds, without consuming stacks. Each method grants only one <i>Headshot</i> at a time.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'Enemies that step over a  Yordle Snap Trap or are hit by  90 Caliber Net can grant an additional Headshot against them at  1300 range within 1.8 seconds, without consuming stacks',
-            increasedStat: 'total_ap',
+            min: 0,
+            max: 10,
+            description:
+              'Enemies that step over a  Yordle Snap Trap or are hit by  90 Caliber Net can grant an additional Headshot against them at  1300 range within 1.8 seconds, without consuming stacks',
             values: 9,
-            units: '',
+            units: 'total_ap',
             unitsText:
               'that step over a  Yordle Snap Trap or are hit by  90 Caliber Net can grant an additional Headshot against them at  1300 range within 1.8 seconds, without consuming stacks',
             pre: 'Enemies that step over a  Yordle Snap Trap or are hit by  90 Caliber Net can grant an additional Headshot against them at  1300 range within 1.8 seconds, without consuming stacks',
@@ -171,7 +175,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Piltover Peacemaker.png',
+        icon: '/wiki/images/Piltover_Peacemaker.png',
         description:
           'Active: Caitlyn fires a piercing shot in the target direction that deals physical damage to the first enemy it passes through, after which it expands in width but deals only 50% damage to enemies it hits thereafter.',
         descriptionHTML:
@@ -180,7 +184,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Caitlyn fires a piercing shot in the target direction that deals physical damage to the first enemy it passes through, after which it expands in width but deals only 50% damage to enemies it hits thereafter.',
+            raw: 'Caitlyn fires a piercing shot in the target direction that deals physical damage to the first enemy it passes through, after which it expands in width but deals only 50% damage to enemies it hits thereafter.',
             damagetype: 'Physical',
             values: 5,
             valuesIsPercent: true,
@@ -224,6 +228,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies  revealed by  Yordle Snap Trap always take  full damage from Piltover Peacemaker.',
         descriptionHTML:
@@ -273,7 +278,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Yordle Snap Trap.png',
+        icon: '/wiki/images/Yordle_Snap_Trap.png',
         description:
           'Active: Caitlyn sets a visible trap at the target location that is  untargetable and arms after 1 second, lasting for a duration. The trap grants  sight of the area for 1 second after being placed.',
         descriptionHTML:
@@ -282,7 +287,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Caitlyn sets a visible trap at the target location that is  untargetable and arms after 1 second, lasting for a duration',
+            raw: 'Caitlyn sets a visible trap at the target location that is  untargetable and arms after 1 second, lasting for a duration',
             damagetype: 'None',
             values: 1,
             units: 'total_ap',
@@ -324,6 +329,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Caitlyn periodically stocks a Yordle Snap Trap charge, up to a maximum amount. Deploying traps beyond the maximum destroys the oldest one.',
         descriptionHTML:
@@ -351,6 +357,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The next enemy champion that springs the trap is  rooted for 1.5 seconds and  revealed for 3 seconds, as well as takes additional damage from  Headshot. Trapped targets become immune to further Yordle Snap Traps for 3 seconds.',
         descriptionHTML:
@@ -449,7 +456,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/90 Caliber Net.png',
+        icon: '/wiki/images/90_Caliber_Net.png',
         description:
           'Active: Caitlyn fires a net in the target direction and  recoils 390 units in the opposite direction. The net deals magic damage to the first enemy hit and  slows them by 50% for 1 second.',
         descriptionHTML:
@@ -458,7 +465,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Caitlyn fires a net in the target direction and  recoils 390 units in the opposite direction',
+            raw: 'Caitlyn fires a net in the target direction and  recoils 390 units in the opposite direction',
             values: 3,
             user: 'none',
             units: '',
@@ -512,6 +519,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Caitlyn will not dash backwards if she is  immobilized or  grounded during the cast time. She can cast any of her abilities during the dash.',
         descriptionHTML:
@@ -561,7 +569,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ace in the Hole.png',
+        icon: '/wiki/images/Ace_in_the_Hole.png',
         description:
           'Active: Caitlyn locks onto the target enemy champion and  channels for 1 second,  revealing them as well as  revealing herself.',
         descriptionHTML:
@@ -570,7 +578,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Caitlyn locks onto the target enemy champion and  channels for 1 second,  revealing them as well as  revealing herself.',
+            raw: 'Caitlyn locks onto the target enemy champion and  channels for 1 second,  revealing them as well as  revealing herself.',
             values: 1,
             user: 'none',
             units: '',
@@ -583,6 +591,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ace in the Hole is placed on a 5-second  cooldown if canceled.',
         descriptionHTML:
@@ -604,6 +613,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Once Caitlyn completes the channel, she fires a homing bullet toward the target that deals physical damage to the first enemy champion it hits, increased by 0% − 25% (based on critical strike chance).',
         descriptionHTML:

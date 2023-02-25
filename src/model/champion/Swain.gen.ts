@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ravenous Flock.png',
+        icon: '/wiki/images/Ravenous_Flock.png',
         description:
           "Innate: Enemy champions that  die will leave behind a Soul Fragment for 16 seconds, which can be collected by Swain after 1 second. Swain's ravens collect nearby Soul Fragments, as well as with  Vision of Empire and  Nevermove.\nSoul Fragment: For each stack, Swain gains 12 bonus health. Upon collection, he will  heal for 3 / 4 / 5 / 6% (based on level) of his maximum health.",
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Enemy champions that  die will leave behind a Soul Fragment for 16 seconds, which can be collected by Swain after 1 second',
+            raw: 'Enemy champions that  die will leave behind a Soul Fragment for 16 seconds, which can be collected by Swain after 1 second',
             values: 1,
             units: 'darkHarvestStacks',
             unitsText:
@@ -44,10 +44,10 @@ export default {
           {
             effectType: 'Heal',
             name: "Swain's ravens collect nearby Soul Fragments, as well as with  Vision of Empire and  Nevermove.\nSoul Fragment:",
-            raw: ' For each stack, Swain gains 12 bonus health',
+            raw: 'For each stack, Swain gains 12 bonus health',
             healType: 'BonusHealth',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText: 'each stack, Swain gains 12 bonus health',
             pre: 'For each stack, Swain gains 12 bonus health',
           },
@@ -102,7 +102,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Death's Hand.png",
+        icon: "/wiki/images/Death's_Hand.png",
         description:
           'Active: Swain unleashes five bolts of eldritch power over 0.264 seconds in a cone in the target direction that deal magic damage to enemies hit. Subsequent bolts against an enemy deal bonus magic damage.',
         descriptionHTML:
@@ -203,7 +203,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vision of Empire.png',
+        icon: '/wiki/images/Vision_of_Empire.png',
         description:
           'Active: Swain summons a demonic eye at the target location that grants  sight of the area for 2 seconds and explodes after 1.5 seconds, dealing magic damage to enemies within, halved against  minions, and  slowing them for 2.5 seconds.',
         descriptionHTML:
@@ -212,7 +212,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Swain summons a demonic eye at the target location that grants  sight of the area for 2 seconds and explodes after 1.5 seconds, dealing magic damage to enemies within, halved against  minions, and  slowing them for 2.5 seconds.',
+            raw: 'Swain summons a demonic eye at the target location that grants  sight of the area for 2 seconds and explodes after 1.5 seconds, dealing magic damage to enemies within, halved against  minions, and  slowing them for 2.5 seconds.',
             values: 2,
             user: 'none',
             units: '',
@@ -269,6 +269,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy  champions hit are also  revealed for a duration and have a Soul Fragment collected from them.',
         descriptionHTML:
@@ -374,6 +375,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'At maximum range, the wave homes back to Swain and detonates upon the first enemy hit, dealing magic damage to nearby enemies and  rooting them for 1.5 seconds, during which they are  revealed. Nevermove can be recast while  champions hit are rooted.',
         descriptionHTML:
@@ -424,7 +426,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Nevermove 2.png',
+        icon: '/wiki/images/Nevermove_2.png',
         description:
           'Recast: Swain  pulls the rooted champions over 290 units and collects a Soul Fragment from each of them. If the targets would be brought past Swain, they are instead  knocked back the excess distance.',
         descriptionHTML:
@@ -433,7 +435,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Recast:',
-            raw: ' Swain  pulls the rooted champions over 290 units and collects a Soul Fragment from each of them',
+            raw: 'Swain  pulls the rooted champions over 290 units and collects a Soul Fragment from each of them',
             values: 2,
             units: 'darkHarvestStacks',
             unitsText:
@@ -484,7 +486,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Demonic Ascension.png',
+        icon: '/wiki/images/Demonic_Ascension.png',
         description:
           'Active: Swain frees the demon within, gaining Demonic Ascension and generating 50 Demonic Energy. Demonic Ascension is maintained with Demonic Energy, which decays by 5 every 0.5 seconds, increased to 7.5 after 5 seconds have elapsed. Swain generates 10 Demonic Energy every 0.5 seconds while draining from at least one enemy  champion, and fully restores it to the maximum of 50 upon scoring a  champion  takedown.',
         descriptionHTML:
@@ -493,7 +495,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Swain frees the demon within, gaining Demonic Ascension and generating 50 Demonic Energy',
+            raw: 'Swain frees the demon within, gaining Demonic Ascension and generating 50 Demonic Energy',
             values: 5,
             user: 'none',
             units: '',
@@ -528,6 +530,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Demonic Ascension: Swain is  ghosted and drains the lifeforce of nearby enemies, both dealing magic damage and  healing himself each second per target affected. The heal is reduced by 90% against  minions and  monsters.  Nevermove's  cooldown is also reduced by 20%.",
         descriptionHTML:
@@ -615,6 +618,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 2 seconds, Swain can cast  Demonflare, and does so automatically when Demonic Ascension expires.',
         descriptionHTML:
@@ -636,6 +640,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The targets do not have to be  visible to be hit by this ability.',
         descriptionHTML:
@@ -690,7 +695,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Swain releases a nova of soulfire that deals magic damage to nearby enemies and  slows them by 60%, decaying over 1.5 seconds.',
+            raw: 'Swain releases a nova of soulfire that deals magic damage to nearby enemies and  slows them by 60%, decaying over 1.5 seconds.',
             damagetype: 'Magic',
             values: 6,
             valuesIsPercent: true,

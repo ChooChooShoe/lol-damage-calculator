@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Time in a Bottle.png',
+        icon: '/wiki/images/Time_in_a_Bottle.png',
         description:
           'Innate: Zilean generates  2 / 3.5 / 5 / 6 / 12 (based on level) experience (does not count towards his own level up) every 5 seconds. Time in a Bottle is on cooldown when the game starts and becomes disabled when Zilean reaches level 18.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Zilean generates  2 / 3.5 / 5 / 6 / 12 (based on level) experience (does not count towards his own level up) every 5 seconds',
+            raw: 'Zilean generates  2 / 3.5 / 5 / 6 / 12 (based on level) experience (does not count towards his own level up) every 5 seconds',
             values: [],
             basedOn: 'level',
             user: 'none',
@@ -68,6 +68,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'When he has enough to level up an allied  champion, he can select them to  channel for 1.2 seconds after a 0.5-second cast time. The channel is  interrupted and disabled upon entering combat with enemy champions or taking damage from  turrets, placing it on a  10-second cooldown. If Zilean interrupts it himself, it is placed on a 1-second cooldown, increased to 2 if he used a basic attack against a turret to do so.',
         descriptionHTML:
@@ -112,6 +113,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A successful channel levels up the target and rewards Zilean the same amount of experience for himself as well.',
         descriptionHTML:
@@ -156,7 +158,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Time Bomb.png',
+        icon: '/wiki/images/Time_Bomb.png',
         description:
           'Active: Zilean throws a ticking time bomb to the target location that grants  sight of its surroundings. The bomb will attach itself to units that move within the epicenter, or those hit directly,  revealing them.',
         descriptionHTML:
@@ -166,6 +168,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 3 seconds, or when the attached unit dies, the bomb explodes to deal magic damage to nearby enemies.',
         descriptionHTML:
@@ -216,6 +219,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The bomb detonates immediately if another bomb attaches itself to the same unit,  stunning nearby enemies for a duration.',
         descriptionHTML:
@@ -285,7 +289,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Zilean reduces the  current cooldowns of  Time Bomb and  Time Warp by 10 seconds each.',
+            raw: 'Zilean reduces the  current cooldowns of  Time Bomb and  Time Warp by 10 seconds each.',
             values: 1,
             user: 'none',
             units: '',
@@ -329,7 +333,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Time Warp.png',
+        icon: '/wiki/images/Time_Warp.png',
         description:
           'Active: Zilean applies Time Warp to the target champion which lasts for 2.5 seconds.',
         descriptionHTML:
@@ -338,7 +342,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Zilean applies Time Warp to the target champion which lasts for 2.5 seconds.',
+            raw: 'Zilean applies Time Warp to the target champion which lasts for 2.5 seconds.',
             damagetype: 'None',
             values: 2,
             units: 'total_ap',
@@ -351,6 +355,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Time Warp: If the target is an ally, they gain  bonus movement speed. If the target is an enemy, they are  slowed.',
         descriptionHTML:
@@ -419,7 +424,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Zilean places a protective time rune on the target allied  champion or himself for 5 seconds.',
+            raw: 'Zilean places a protective time rune on the target allied  champion or himself for 5 seconds.',
             values: 5,
             user: 'none',
             units: '',
@@ -432,6 +437,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the target takes  fatal damage within the duration, they enter  resurrection for 3 seconds, becoming  invulnerable,  untargetable, and  unable to act. Afterwards, they revive while being  healed.',
         descriptionHTML:

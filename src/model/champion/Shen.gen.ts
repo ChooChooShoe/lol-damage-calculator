@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ki Barrier.png',
+        icon: '/wiki/images/Ki_Barrier.png',
         description:
           "Innate: After completing an ability's effects, Shen grants himself a  shield for 50 − 101 (based on level) (+ 12% bonus health) for 2.5 seconds. If the triggering ability successfully affected at least one enemy  champion, Ki Barrier's  cooldown is reduced by 4 − 7.5 (based on level) seconds.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " After completing an ability's effects, Shen grants himself a  shield for 50 − 101 (based on level) (+ 12% bonus health) for 2.5 seconds",
+            raw: "After completing an ability's effects, Shen grants himself a  shield for 50 − 101 (based on level) (+ 12% bonus health) for 2.5 seconds",
             healType: 'BonusHealth',
             values: [
               50, 53, 56, 59, 62, 65, 68, 71, 74, 77, 80, 83, 86, 89, 92, 95,
@@ -75,6 +75,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Shen manifests a Spirit Blade that he can control with  Twilight Assault and  Spirit's Refuge.",
         descriptionHTML:
@@ -123,7 +124,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Twilight Assault.png',
+        icon: '/wiki/images/Twilight_Assault.png',
         description:
           'Active: Shen recalls his Spirit Blade to his location. Enemy champions hit are  slowed for the next 2 seconds while moving away from Shen.',
         descriptionHTML:
@@ -163,7 +164,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Twilight Assault 2.png',
+        icon: '/wiki/images/Twilight_Assault_2.png',
         description:
           'Once it arrives, Shen empowers his next 3 basic attacks within 8 seconds to gain  75 bonus range and deal bonus magic damage.',
         descriptionHTML:
@@ -229,7 +230,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Twilight Assault 3.png',
+        icon: '/wiki/images/Twilight_Assault_3.png',
         description:
           'If the Spirit Blade hit at least one enemy  champion during the travel, the empowerment is enhanced to deal increased bonus magic damage and additionally grant Shen  50% bonus attack speed.',
         descriptionHTML:
@@ -296,6 +297,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Empowered attacks against  monsters deal 100% bonus damage, but their total damage is capped.',
         descriptionHTML:
@@ -372,7 +374,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Spirit's Refuge.png",
+        icon: "/wiki/images/Spirit's_Refuge.png",
         description:
           'Active: Shen primes his Spirit Blade, creating an area around it. After 2 seconds, or when Shen or an allied champion enter the area, the Spirit Blade erupts a protective zone for 1.75 seconds,  blocking all non- turret basic attacks that hit Shen or allied champions in the area.',
         descriptionHTML:
@@ -438,7 +440,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Passive:',
-            raw: ' Dealing damage with  Twilight Assault or Shadow Dash restores  30 / 40 / 50 (based on level) energy.',
+            raw: 'Dealing damage with  Twilight Assault or Shadow Dash restores  30 / 40 / 50 (based on level) energy.',
             damagetype: 'None',
             values: [],
             basedOn: 'level',
@@ -453,7 +455,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Shadow Dash.png',
+        icon: '/wiki/images/Shadow_Dash.png',
         description:
           'Active: Shen  dashes to the target location, dealing physical damage to enemy  champions and  monsters he passes through and  taunting them for 1.5 seconds.',
         descriptionHTML:
@@ -462,7 +464,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Shen  dashes to the target location, dealing physical damage to enemy  champions and  monsters he passes through and  taunting them for 1.5 seconds.',
+            raw: 'Shen  dashes to the target location, dealing physical damage to enemy  champions and  monsters he passes through and  taunting them for 1.5 seconds.',
             damagetype: 'Physical',
             values: 1,
             user: 'none',
@@ -504,6 +506,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Twilight Assault and  Spirit's Refuge can be cast during the dash. Shadow Dash will cast at max range if cast beyond that.",
         descriptionHTML:
@@ -546,7 +549,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Stand United.png',
+        icon: '/wiki/images/Stand_United.png',
         description:
           "Active: Shen  channels for 3 seconds and granting a  shield to the target allied champion at the time of cast for up to 5 seconds, increased by 0% − 60% (based on target's missing health).",
         descriptionHTML:
@@ -555,7 +558,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Shen  channels for 3 seconds and granting a  shield to the target allied champion at the time of cast for up to 5 seconds, increased by 0% − 60% (based on target's missing health).",
+            raw: "Shen  channels for 3 seconds and granting a  shield to the target allied champion at the time of cast for up to 5 seconds, increased by 0% − 60% (based on target's missing health).",
             healType: 'OutgoingHeals',
             values: 3,
             valuesIsPercent: true,
@@ -607,7 +610,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Stand United 2.png',
+        icon: '/wiki/images/Stand_United_2.png',
         description:
           "Upon completing the channel, Shen and his Spirit Blade  blink to the target ally's location, placed between them and the nearest enemy champion. Shen also  destroys any  projectiles targeting him at the time of completion.",
         descriptionHTML:

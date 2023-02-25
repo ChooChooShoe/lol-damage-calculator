@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate - Prowl:',
-            raw: ' While in  brush, Nidalee gains  10% bonus movement speed, increased to 30% when facing a nearby  visible enemy  champion, and persisting for 2 seconds after leaving brush.',
+            raw: 'While in  brush, Nidalee gains  10% bonus movement speed, increased to 30% when facing a nearby  visible enemy  champion, and persisting for 2 seconds after leaving brush.',
             values: 1,
             valuesIsPercent: true,
             user: 'none',
@@ -47,6 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Innate - Hunt: Hitting  monsters or enemy champions with  Javelin Toss, or  Bushwhack while they are nearby, applies a Hunted mark and  reveals them for 4 seconds. During this time, Nidalee gains  10% bonus movement speed, increased to 30% when facing a nearby Hunted target.  Additionally, Nidalee's first use of  Takedown and  Pounce against Hunted targets are empowered.",
         descriptionHTML:
@@ -55,7 +56,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Hunt:',
-            raw: ' Hitting  monsters or enemy champions with  Javelin Toss, or  Bushwhack while they are nearby, applies a Hunted mark and  reveals them for 4 seconds',
+            raw: 'Hitting  monsters or enemy champions with  Javelin Toss, or  Bushwhack while they are nearby, applies a Hunted mark and  reveals them for 4 seconds',
             damagetype: 'None',
             values: 4,
             units: 'total_ap',
@@ -80,6 +81,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The bonus movement speed from Prowl and Hunt can stack, but cannot exceed 30%.',
         descriptionHTML:
@@ -95,7 +97,7 @@ export default {
               'The bonus movement speed from Prowl and Hunt can stack, but cannot exceed 30%.',
             values: 3,
             valuesIsPercent: true,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               '.bonus movement speed from Prowl and Hunt can stack, but cannot exceed 30',
             pre: 'The bonus movement speed from Prowl and Hunt can stack, but cannot exceed 30%.',
@@ -138,7 +140,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Javelin Toss.png',
+        icon: '/wiki/images/Javelin_Toss.png',
         description:
           'Active: Nidalee hurls a javelin in the target direction that deals magic damage to the first enemy hit, increased by 0% − 200% (based on distance traveled).',
         descriptionHTML:
@@ -218,7 +220,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Nidalee empowers her next basic attack within 10 seconds to have an  uncancellable windup, gain  75 bonus range and deal modified magic damage that is increased by an amount for every 1% of the target's missing health.",
+            raw: "Nidalee empowers her next basic attack within 10 seconds to have an  uncancellable windup, gain  75 bonus range and deal modified magic damage that is increased by an amount for every 1% of the target's missing health.",
             healType: 'OutgoingHeals',
             values: 1,
             valuesIsPercent: true,
@@ -286,6 +288,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Hunt Bonus: Hitting a Hunted target  increases Takedown's damage by 40%.",
         descriptionHTML:
@@ -294,7 +297,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Hunt Bonus:',
-            raw: " Hitting a Hunted target  increases Takedown's damage by 40%.",
+            raw: "Hitting a Hunted target  increases Takedown's damage by 40%.",
             damagetype: 'None',
             values: 4,
             valuesIsPercent: true,
@@ -343,6 +346,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Takedown  resets Nidalee's basic attack timer. Other damage converted to magic damage by Takedown are not increased by Takedown's respective effects. Nidalee loses Takedown's empowered attack immediately when she switches to  Human Form.",
         descriptionHTML:
@@ -396,7 +400,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Nidalee lays a trap at the target location that becomes  stealthed after arming over 1.5 seconds, lasting for up to 120 seconds and granting  sight within its radius',
+            raw: 'Nidalee lays a trap at the target location that becomes  stealthed after arming over 1.5 seconds, lasting for up to 120 seconds and granting  sight within its radius',
             increasedStat: 'total_ap',
             values: 1,
             units: '',
@@ -448,6 +452,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Traps have  6 maximum health and can only be damaged by champion basic attacks (2 hit points from  ranged and 3 hit points from  melee). Up to a maximum of 4 / 6 / 8 / 10 (based on level) traps may be active at once.',
         descriptionHTML:
@@ -491,6 +496,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about traps.',
         descriptionHTML:
           '<i>See <a href="/wiki/Nidalee/LoL#Pets" title="Nidalee/LoL">Pets</a> for more details about traps.</i>',
@@ -598,6 +604,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Hunted Bonus: Nidalee can perform Pounce from an increased range on a Hunted enemy closest to the cursor. She can Pounce to a target location near a Hunted enemy if she is close to them.',
         descriptionHTML:
@@ -607,6 +614,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Takedown and  Aspect of the Cougar can be cast during the dash. Pounce will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -650,7 +658,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Primal Surge.png',
+        icon: '/wiki/images/Primal_Surge.png',
         description:
           "Active: Nidalee revitalizes herself or the target allied champion, granting the target  bonus attack speed for 7 seconds and  healing them for an amount that is increased by 0% − 100% (based on target's missing health).",
         descriptionHTML:
@@ -659,7 +667,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Nidalee revitalizes herself or the target allied champion, granting the target  bonus attack speed for 7 seconds and  healing them for an amount that is increased by 0% − 100% (based on target's missing health).",
+            raw: "Nidalee revitalizes herself or the target allied champion, granting the target  bonus attack speed for 7 seconds and  healing them for an amount that is increased by 0% − 100% (based on target's missing health).",
             healType: 'OutgoingHeals',
             values: 7,
             valuesIsPercent: true,
@@ -830,7 +838,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Aspect of the Cougar.png',
+        icon: '/wiki/images/Aspect_of_the_Cougar.png',
         description:
           'Cougar Form: Nidalee transforms into a cougar, gaining  melee attacks with  125 range and access to her cougar abilities.',
         descriptionHTML:
@@ -839,7 +847,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Cougar Form:',
-            raw: ' Nidalee transforms into a cougar, gaining  melee attacks with  125 range and access to her cougar abilities.',
+            raw: 'Nidalee transforms into a cougar, gaining  melee attacks with  125 range and access to her cougar abilities.',
             increasedStat: 'total_ad',
             values: 1,
             units: '',
@@ -852,7 +860,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Aspect of the Cougar 2.png',
+        icon: '/wiki/images/Aspect_of_the_Cougar_2.png',
         description:
           "Human Form: Nidalee transforms into a human, gaining  ranged attacks with  525 range and access to her human abilities. While in this form, applying a  Hunted mark will reset Aspect of the Cougar's  cooldown.",
         descriptionHTML:
@@ -861,7 +869,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Human Form:',
-            raw: ' Nidalee transforms into a human, gaining  ranged attacks with  525 range and access to her human abilities',
+            raw: 'Nidalee transforms into a human, gaining  ranged attacks with  525 range and access to her human abilities',
             increasedStat: 'total_ad',
             values: 5,
             units: '',
@@ -874,6 +882,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Nidalee begins with one rank in Aspect of the Cougar and can increase it at levels 6, 11, and 16. Cougar Form's abilities scale based on Aspect of the Cougar's rank.",
         descriptionHTML:

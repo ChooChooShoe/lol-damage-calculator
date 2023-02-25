@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " After casting an ability, Lee Sin's next 2 basic attacks within 3 seconds gain  40% bonus attack speed and restore  energy.",
+            raw: "After casting an ability, Lee Sin's next 2 basic attacks within 3 seconds gain  40% bonus attack speed and restore  energy.",
             increasedStat: 'bonus_ad',
             values: 2,
             valuesIsPercent: true,
@@ -45,6 +45,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The first attack restores 20 / 30 / 40 (based on level) energy and the second attack restores「 half of that amount. 」「 10 / 15 / 20 (based on level) energy. 」',
         descriptionHTML:
@@ -104,7 +105,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sonic Wave.png',
+        icon: '/wiki/images/Sonic_Wave.png',
         description:
           'Active: Lee Sin fires a sonic blast in the target direction that deals physical damage to the first enemy hit and marks them for 3 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -113,7 +114,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lee Sin fires a sonic blast in the target direction that deals physical damage to the first enemy hit and marks them for 3 seconds, during which they are  revealed.',
+            raw: 'Lee Sin fires a sonic blast in the target direction that deals physical damage to the first enemy hit and marks them for 3 seconds, during which they are  revealed.',
             damagetype: 'Physical',
             values: 3,
             units: 'kindredMarks',
@@ -154,6 +155,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While the target is marked, Lee Sin can cast  Resonating Strike.',
         descriptionHTML:
@@ -198,7 +200,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Resonating Strike.png',
+        icon: '/wiki/images/Resonating_Strike.png',
         description:
           "Active: Lee Sin  dashes to the nearby enemy marked by  Sonic Wave. Upon arrival, he consumes the mark and deals physical damage, increased by 0% − 100% (based on target's missing health).",
         descriptionHTML:
@@ -236,6 +238,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Iron Will and  Cripple can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Lee Sin" data-ability="Iron Will" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Lee_Sin/LoL#Iron_Will" title="Iron Will"><img alt="Iron Will" src="/wiki/images/Lee_Sin_Iron_Will.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Lee_Sin/LoL#Iron_Will" title="Lee Sin/LoL">Iron Will</a></span></span> and <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Lee Sin" data-ability="Cripple" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Lee_Sin/LoL#Cripple" title="Cripple"><img alt="Cripple" src="/wiki/images/Lee_Sin_Cripple.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Lee_Sin/LoL#Cripple" title="Lee Sin/LoL">Cripple</a></span></span> can be cast during the dash.</i>',
@@ -334,6 +337,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After Safeguard is cast, Lee Sin can cast  Iron Will within the next 3 seconds.',
         descriptionHTML:
@@ -355,6 +359,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Iron Will and  Cripple can be cast during the dash.',
         descriptionHTML:
           '<i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Lee Sin" data-ability="Iron Will" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Lee_Sin/LoL#Iron_Will" title="Iron Will"><img alt="Iron Will" src="/wiki/images/Lee_Sin_Iron_Will.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Lee_Sin/LoL#Iron_Will" title="Lee Sin/LoL">Iron Will</a></span></span> and <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Lee Sin" data-ability="Cripple" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Lee_Sin/LoL#Cripple" title="Cripple"><img alt="Cripple" src="/wiki/images/Lee_Sin_Cripple.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Lee_Sin/LoL#Cripple" title="Lee Sin/LoL">Cripple</a></span></span> can be cast during the dash.</i>',
@@ -391,7 +396,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Iron Will.png',
+        icon: '/wiki/images/Iron_Will.png',
         description:
           'Active: Lee Sin gains  life steal and  spell vamp for 4 seconds.',
         descriptionHTML:
@@ -400,7 +405,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Lee Sin gains  life steal and  spell vamp for 4 seconds.',
+            raw: 'Lee Sin gains  life steal and  spell vamp for 4 seconds.',
             increasedStat: 'spellvamp',
             values: 4,
             units: '',
@@ -472,7 +477,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lee Sin smashes the ground beneath him, dealing magic damage to nearby enemies, marking them for 4 seconds and, if they are not  invisible when struck,  revealing them for the same duration.',
+            raw: 'Lee Sin smashes the ground beneath him, dealing magic damage to nearby enemies, marking them for 4 seconds and, if they are not  invisible when struck,  revealing them for the same duration.',
             damagetype: 'Magic',
             values: 4,
             units: 'kindredMarks',
@@ -513,6 +518,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Tempest hits an enemy, Lee Sin can cast  Cripple within the next 3 seconds after a 0.1-second delay.',
         descriptionHTML:
@@ -578,7 +584,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Lee Sin sends a wave to nearby enemies marked by  Tempest, which  slows them for 4 seconds, decaying over the duration.',
+            raw: 'Lee Sin sends a wave to nearby enemies marked by  Tempest, which  slows them for 4 seconds, decaying over the duration.',
             values: 4,
             units: 'kindredMarks',
             unitsText:
@@ -641,7 +647,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Dragon's Rage.png",
+        icon: "/wiki/images/Dragon's_Rage.png",
         description:
           'Active: Lee Sin  roots the target enemy champion over the cast time, then roundhouse kicks them to deal physical damage and  knock them back up to 800 units over 0.8 seconds, rendering them  airborne for 1 second.',
         descriptionHTML:
@@ -650,7 +656,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lee Sin  roots the target enemy champion over the cast time, then roundhouse kicks them to deal physical damage and  knock them back up to 800 units over 0.8 seconds, rendering them  airborne for 1 second.',
+            raw: 'Lee Sin  roots the target enemy champion over the cast time, then roundhouse kicks them to deal physical damage and  knock them back up to 800 units over 0.8 seconds, rendering them  airborne for 1 second.',
             damagetype: 'Physical',
             values: 8,
             user: 'none',
@@ -692,6 +698,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies that collide with the displaced enemy while it is  airborne take the same damage plus bonus physical damage and are  knocked up for 1 second.',
         descriptionHTML:

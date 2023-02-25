@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Living Vengeance.png',
+        icon: '/wiki/images/Living_Vengeance.png',
         description:
           'Innate: When Varus kills an enemy, he gains  10 / 15 / 20% (based on level) (+ 20% bonus attack speed) bonus attack speed for 5 / 7 / 9 / 11 (based on level) seconds, increased to 40% (+ 40% bonus attack speed) upon scoring an enemy  champion  takedown.',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' When Varus kills an enemy, he gains  10 / 15 / 20% (based on level) (+ 20% bonus attack speed) bonus attack speed for 5 / 7 / 9 / 11 (based on level) seconds, increased to 40% (+ 40% bonus attack speed) upon scoring an enemy  champion  takedown.',
+            raw: 'When Varus kills an enemy, he gains  10 / 15 / 20% (based on level) (+ 20% bonus attack speed) bonus attack speed for 5 / 7 / 9 / 11 (based on level) seconds, increased to 40% (+ 40% bonus attack speed) upon scoring an enemy  champion  takedown.',
             increasedStat: 'bonus_ad',
             values: [],
             valuesIsPercent: true,
@@ -99,7 +99,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Piercing Arrow.png',
+        icon: '/wiki/images/Piercing_Arrow.png',
         description:
           "Active: Varus  charges while being  slowed by 20% for up to 4 seconds to increase Piercing Arrow's  range and damage over the first 1.25 seconds of the channel.",
         descriptionHTML:
@@ -108,7 +108,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Varus  charges while being  slowed by 20% for up to 4 seconds to increase Piercing Arrow's  range and damage over the first 1.25 seconds of the channel.",
+            raw: "Varus  charges while being  slowed by 20% for up to 4 seconds to increase Piercing Arrow's  range and damage over the first 1.25 seconds of the channel.",
             damagetype: 'None',
             values: 2,
             valuesIsPercent: true,
@@ -123,6 +123,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Piercing Arrow can be recast within the duration. If the charge completes without reactivation, Piercing Arrow is cancelled and refunds  50% of the mana cost.',
         descriptionHTML:
@@ -144,6 +145,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Recast: Varus fires a piercing arrow in the target direction that deals physical damage to enemies hit. The damage of the arrow as well as any detonated  Blight stacks are   increased by 0% − 50% (based on channel time), and the arrow's damage is reduced by 0% − 67% (based on enemies hit).",
         descriptionHTML:
@@ -254,11 +256,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Varus' basic attacks are empowered to deal bonus magic damage and apply a stack of Blight  on-hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times",
+            raw: "Varus' basic attacks are empowered to deal bonus magic damage and apply a stack of Blight  on-hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Varus' basic attacks are empowered to deal bonus magic damage and apply a stack of Blight  on-hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times",
+              "Varus' basic attacks are empowered to deal bonus magic damage and apply a stack of Blight  on-hit for 6 seconds, refreshing on subsequent applications and stacking up to 3 times",
             values: 6,
             units: 'total_ap',
             unitsText:
@@ -298,20 +300,23 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Blighted Quiver.png',
+        icon: '/wiki/images/Blighted_Quiver.png',
         description:
           "Blight: For each stack consumed, the target is dealt bonus magic damage. Against a  champion or epic  monster, this also reduces his basic abilities'  current cooldowns by 12% of the total cooldown for each stack, up to 36% per target. This damage is capped at 360 against  monsters.",
         descriptionHTML:
           '<span class="template_sbc"><b>Blight:</b></span> For each stack consumed, the target is dealt <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span>. Against a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> or epic <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monster</a></span>, this also reduces his basic abilities\' <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<b>current</b> cooldowns</span> by 12% of the <b>total</b> cooldown for each stack, up to 36% per target. This damage is capped at 360 against <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monsters"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: "Against a  champion or epic  monster, this also reduces his basic abilities'  current cooldowns by 12% of the total cooldown for each stack, up to 36% per target",
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              "Against a  champion or epic  monster, this also reduces his basic abilities'  current cooldowns by 12% of the total cooldown for each stack, up to 36% per target",
             values: 1,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               "of the total cooldown for each stack, up to 36a  champion or epic  monster, this also reduces his basic abilities'  current cooldowns by 12",
             pre: "Against a  champion or epic  monster, this also reduces his basic abilities'  current cooldowns by 12% of the total cooldown for each stack, up to 36% per target",
@@ -362,7 +367,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Blighted Quiver 2.png',
+        icon: '/wiki/images/Blighted_Quiver_2.png',
         description:
           "Active: Varus' next  Piercing Arrow within 5.5 seconds is empowered to deal 6% − 14% (based on level) of the target's missing health bonus magic damage, increased by 0% − 50% (based on Piercing Arrow's channel time), for a maximum of 9% − 21% (based on level) of the target's missing health. This damage is capped at 360 against  monsters.",
         descriptionHTML:
@@ -371,7 +376,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: " Varus' next  Piercing Arrow within 5.5 seconds is empowered to deal 6% − 14% (based on level) of the target's missing health bonus magic damage, increased by 0% − 50% (based on Piercing Arrow's channel time), for a maximum of 9% − 21% (based on level) of the target's missing health",
+            raw: "Varus' next  Piercing Arrow within 5.5 seconds is empowered to deal 6% − 14% (based on level) of the target's missing health bonus magic damage, increased by 0% − 50% (based on Piercing Arrow's channel time), for a maximum of 9% − 21% (based on level) of the target's missing health",
             healType: 'OutgoingHeals',
             values: [],
             valuesIsPercent: true,
@@ -398,6 +403,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Varus does not cast  Piercing Arrow, Blighted Quiver can be recast after 1 second within the duration, and does so automatically afterwards or when he dies. Blighted Quiver can be cast during the first 0.25 seconds of  Piercing Arrow's charge, and will be placed on full cooldown even if  Piercing Arrow is not recast.",
         descriptionHTML:
@@ -419,6 +425,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Varus ends Blighted Quiver and places it on a 1-second cooldown.',
         descriptionHTML:
@@ -427,7 +434,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Recast:',
-            raw: ' Varus ends Blighted Quiver and places it on a 1-second cooldown.',
+            raw: 'Varus ends Blighted Quiver and places it on a 1-second cooldown.',
             values: 1,
             user: 'none',
             units: '',
@@ -478,7 +485,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Hail of Arrows.png',
+        icon: '/wiki/images/Hail_of_Arrows.png',
         description:
           'Active: Varus fires a hail of arrows at the target location that land after 0.5 seconds, dealing physical damage to enemies hit.',
         descriptionHTML:
@@ -516,6 +523,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The area then becomes desecrated for 4 seconds,  slowing enemies within and inflicting them with  Grievous Wounds.',
         descriptionHTML:
@@ -555,6 +563,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Hail of Arrows will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -609,7 +618,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Chain of Corruption.png',
+        icon: '/wiki/images/Chain_of_Corruption.png',
         description:
           'Active: Varus unleashes a tendril of corruption in the target direction that infects the first enemy champion hit, dealing magic damage and  rooting them for 2 seconds, during which they are  revealed. Over the first 1.5 seconds, they are also inflicted with maximum stacks of  Blight.',
         descriptionHTML:
@@ -618,7 +627,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Varus unleashes a tendril of corruption in the target direction that infects the first enemy champion hit, dealing magic damage and  rooting them for 2 seconds, during which they are  revealed',
+            raw: 'Varus unleashes a tendril of corruption in the target direction that infects the first enemy champion hit, dealing magic damage and  rooting them for 2 seconds, during which they are  revealed',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -636,7 +645,7 @@ export default {
             description:
               'Over the first 1.5 seconds, they are also inflicted with maximum stacks of  Blight.',
             values: 1,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'the first 1.5 seconds, they are also inflicted with maximum stacks of  Blight.',
             pre: 'Over the first 1.5 seconds, they are also inflicted with maximum stacks of  Blight.',
@@ -674,7 +683,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Chain of Corruption 2.png',
+        icon: '/wiki/images/Chain_of_Corruption_2.png',
         description:
           'Upon impact, the tendril roots into the ground from which it seeks out nearby enemy  champions. If a target does not leave the area within 2 seconds, they subsequently become infected as well, taking the same damage and effects. A new tendril is then spread out from the infected target that is closest to a nearby uninfected enemy champion. The infection can spread repeatedly until there are no new targets.',
         descriptionHTML:
@@ -697,6 +706,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The target does not have to be  visible to be caught by the tendril.',
         descriptionHTML:

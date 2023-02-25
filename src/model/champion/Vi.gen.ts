@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blast Shield.png',
+        icon: '/wiki/images/Blast_Shield.png',
         description:
           "Innate: Periodically, Vi's next ability hit grants her a  shield equal to 13% of her maximum health for 3 seconds.",
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Periodically, Vi's next ability hit grants her a  shield equal to 13% of her maximum health for 3 seconds.",
+            raw: "Periodically, Vi's next ability hit grants her a  shield equal to 13% of her maximum health for 3 seconds.",
             healType: 'BonusHealth',
             values: 1,
             valuesIsPercent: true,
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Blast Shield's  cooldown is reduced by 3 seconds each time  Denting Blows is consumed.",
         descriptionHTML:
@@ -107,7 +108,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Vault Breaker.png',
+        icon: '/wiki/images/Vault_Breaker.png',
         description:
           "Active: Vi  charges while being  slowed by 15% for up to 4 seconds to increase Vault Breaker's  range, speed, and damage over the first 1.25 seconds of the channel.",
         descriptionHTML:
@@ -116,7 +117,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Vi  charges while being  slowed by 15% for up to 4 seconds to increase Vault Breaker's  range, speed, and damage over the first 1.25 seconds of the channel.",
+            raw: "Vi  charges while being  slowed by 15% for up to 4 seconds to increase Vault Breaker's  range, speed, and damage over the first 1.25 seconds of the channel.",
             damagetype: 'None',
             values: 1,
             valuesIsPercent: true,
@@ -131,6 +132,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Vault Breaker can be recast within the duration. If the charge completes without reactivation, Vault Breaker is cancelled and put on  full cooldown. If the charge is  interrupted, it will be put on a 3-second cooldown.',
         descriptionHTML:
@@ -152,6 +154,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Vi  dashes in the target direction to deal physical damage to enemies within her path, increased by 0% − 100% (based on channel time), and  pull all non-champions hit towards her.',
         descriptionHTML:
@@ -189,6 +192,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'She stops upon hitting an enemy  champion,  knocking them back over 0.75 seconds.',
         descriptionHTML:
@@ -198,6 +202,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Relentless Force and  Cease and Desist can be cast during the dash.',
         descriptionHTML:
@@ -237,7 +242,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Denting Blows.png',
+        icon: '/wiki/images/Denting_Blows.png',
         description:
           "Passive: Vi's basic attacks  on-hit and  Vault Breaker apply a stack of Denting Blows to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times. The third stack consumes them all to deal bonus physical damage, capped at 300 against non-champions, and inflict  20% armor reduction for 4 seconds.",
         descriptionHTML:
@@ -246,11 +251,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Vi's basic attacks  on-hit and  Vault Breaker apply a stack of Denting Blows to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
+            raw: "Vi's basic attacks  on-hit and  Vault Breaker apply a stack of Denting Blows to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Vi's basic attacks  on-hit and  Vault Breaker apply a stack of Denting Blows to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
+              "Vi's basic attacks  on-hit and  Vault Breaker apply a stack of Denting Blows to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -258,13 +263,16 @@ export default {
             pre: "Vi's basic attacks  on-hit and  Vault Breaker apply a stack of Denting Blows to enemies hit for 4 seconds, refreshing on subsequent applications and stacking up to 3 times",
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'The third stack consumes them all to deal bonus physical damage, capped at 300 against non-champions, and inflict  20% armor reduction for 4 seconds.',
-            increasedStat: 'total_ap',
+            min: 0,
+            max: 10,
+            description:
+              'The third stack consumes them all to deal bonus physical damage, capped at 300 against non-champions, and inflict  20% armor reduction for 4 seconds.',
             values: 3,
             valuesIsPercent: true,
-            units: '',
+            units: 'total_ap',
             unitsText:
               'armor reduction for 4 seconds.third stack consumes them all to deal bonus physical damage, capped at 300 against non-champions, and inflict  20',
             pre: 'The third stack consumes them all to deal bonus physical damage, capped at 300 against non-champions, and inflict  20% armor reduction for 4 seconds.',
@@ -306,7 +314,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Denting Blows 2.png',
+        icon: '/wiki/images/Denting_Blows_2.png',
         description:
           'After consuming Denting Blows, Vi gains  bonus attack speed for 4 seconds, which refreshes on subsequent triggers.',
         descriptionHTML:
@@ -384,7 +392,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Relentless Force 2.png',
+        icon: '/wiki/images/Relentless_Force_2.png',
         description:
           "Active: Vi empowers her next basic attack within 6 seconds to have an  uncancellable windup, gain  50 bonus range and trigger a blast in the target's direction that deals modified physical damage to enemies hit in a cone. Relentless Force can  critically strike for (75% +  35%) AD bonus physical damage.",
         descriptionHTML:
@@ -393,7 +401,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: " Vi empowers her next basic attack within 6 seconds to have an  uncancellable windup, gain  50 bonus range and trigger a blast in the target's direction that deals modified physical damage to enemies hit in a cone",
+            raw: "Vi empowers her next basic attack within 6 seconds to have an  uncancellable windup, gain  50 bonus range and trigger a blast in the target's direction that deals modified physical damage to enemies hit in a cone",
             increasedStat: 'bonus_ad',
             values: 6,
             user: 'target',
@@ -463,7 +471,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Relentless Force.png',
+        icon: '/wiki/images/Relentless_Force.png',
         description:
           'Vi periodically stocks a Relentless Force charge, up to a maximum of 2.',
         descriptionHTML:
@@ -485,6 +493,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Relentless Force  resets Vi's basic attack timer.",
         descriptionHTML:
           '<i>Relentless Force <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack reset"><a href="/wiki/Basic_attack#Resets" title="Basic attack#Resets"><img alt="Bladework.png" src="/wiki/images/Fiora_Bladework.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a></span> <b>Vi\'s</b> basic attack timer.</i>',
@@ -531,7 +540,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Cease and Desist.png',
+        icon: '/wiki/images/Cease_and_Desist.png',
         description:
           'Active: Vi singles out the target enemy  champion and  dashes with  displacement immunity towards them, during which they are  revealed. Upon approaching within 300-units, she  dashes through and grabs them,  knocking them up for 1.3 seconds and dealing physical damage after 0.75 seconds.',
         descriptionHTML:
@@ -581,6 +590,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies she dashes through are dealt the same damage,  knocked aside by 350 units over 0.25 seconds, and  stunned for 0.75 seconds.',
         descriptionHTML:

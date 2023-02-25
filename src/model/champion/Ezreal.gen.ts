@@ -31,13 +31,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: ' Ezreal generates a stack of Rising Spell Force for each enemy hit by his abilities, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.',
+            raw: 'Ezreal generates a stack of Rising Spell Force for each enemy hit by his abilities, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.',
             min: 0,
-            max: 10,
+            max: 5,
             description:
-              ' Ezreal generates a stack of Rising Spell Force for each enemy hit by his abilities, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.',
+              'Ezreal generates a stack of Rising Spell Force for each enemy hit by his abilities, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.',
             values: 6,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates a stack of Rising Spell Force for each enemy hit by his abilities, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.',
             pre: 'Ezreal generates a stack of Rising Spell Force for each enemy hit by his abilities, lasting for 6 seconds, refreshing on subsequent hits, and stacking up to 5 times.',
@@ -47,20 +47,23 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Rising Spell Force.png',
+        icon: '/wiki/images/Rising_Spell_Force.png',
         description:
           'Rising Spell Force: For each stack, Ezreal gains  10% bonus attack speed, up to a maximum of 50%.',
         descriptionHTML:
           '<span class="template_sbc"><b>Rising Spell Force:</b></span> For each stack, <b>Ezreal</b> gains <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orangered; white-space:normal">10% <b>bonus</b> attack speed</span></span>, up to a maximum of <span style="color:orangered; white-space:normal">50%</span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Rising Spell Force:',
-            raw: ' For each stack, Ezreal gains  10% bonus attack speed, up to a maximum of 50%.',
-            increasedStat: 'feastStacks',
+            raw: 'For each stack, Ezreal gains  10% bonus attack speed, up to a maximum of 50%.',
+            min: 0,
+            max: 10,
+            description:
+              'For each stack, Ezreal gains  10% bonus attack speed, up to a maximum of 50%.',
             values: 1,
             valuesIsPercent: true,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'bonus attack speed, up to a maximum of 50each stack, Ezreal gains  10',
             pre: 'For each stack, Ezreal gains  10% bonus attack speed, up to a maximum of 50%.',
@@ -105,7 +108,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Mystic Shot.png',
+        icon: '/wiki/images/Mystic_Shot.png',
         description:
           'Active: Ezreal fires a bolt of energy in the target direction that deals physical damage to the first enemy hit and applies  on-hit and on-attack effects at 100% effectiveness.',
         descriptionHTML:
@@ -114,7 +117,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ezreal fires a bolt of energy in the target direction that deals physical damage to the first enemy hit and applies  on-hit and on-attack effects at 100% effectiveness.',
+            raw: 'Ezreal fires a bolt of energy in the target direction that deals physical damage to the first enemy hit and applies  on-hit and on-attack effects at 100% effectiveness.',
             damagetype: 'Physical',
             values: 1,
             valuesIsPercent: true,
@@ -163,6 +166,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Mystic Shot successfully hits an enemy, the  current cooldowns of Ezreal's abilities, including Mystic Shot's, are reduced by 1.5 seconds.",
         descriptionHTML:
@@ -224,7 +228,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Essence Flux.png',
+        icon: '/wiki/images/Essence_Flux.png',
         description:
           'Active: Ezreal fires an orb in the target direction that marks the first enemy  champion, epic  monster, or structure hit for 4 seconds.',
         descriptionHTML:
@@ -233,7 +237,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Ezreal fires an orb in the target direction that marks the first enemy  champion, epic  monster, or structure hit for 4 seconds.',
+            raw: 'Ezreal fires an orb in the target direction that marks the first enemy  champion, epic  monster, or structure hit for 4 seconds.',
             values: 4,
             units: 'kindredMarks',
             unitsText:
@@ -245,6 +249,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'His next basic attack or ability against the target detonates the mark to deal them bonus magic damage.',
         descriptionHTML:
@@ -290,6 +295,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the mark was detonated with an ability, Ezreal restores  60 mana plus the mana cost of that ability.',
         descriptionHTML:
@@ -349,7 +355,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Arcane Shift.png',
+        icon: '/wiki/images/Arcane_Shift.png',
         description:
           'Active: Ezreal  blinks from his current location to up to 475 units towards the target location, then fires a homing bolt towards the nearest enemy that deals magic damage and  reveals them for 1 second.',
         descriptionHTML:
@@ -358,7 +364,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ezreal  blinks from his current location to up to 475 units towards the target location, then fires a homing bolt towards the nearest enemy that deals magic damage and  reveals them for 1 second.',
+            raw: 'Ezreal  blinks from his current location to up to 475 units towards the target location, then fires a homing bolt towards the nearest enemy that deals magic damage and  reveals them for 1 second.',
             damagetype: 'Magic',
             values: 4,
             user: 'none',
@@ -407,6 +413,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Arcane Shift prioritizes firing at the nearest enemy marked by  Essence Flux.',
         descriptionHTML:
@@ -416,6 +423,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The target does not have to be  visible to be hit by this ability. Arcane Shift will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -464,7 +472,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Trueshot Barrage.png',
+        icon: '/wiki/images/Trueshot_Barrage.png',
         description:
           'Active: Ezreal fires an arc of energy in the target direction that briefly grants  sight of its surroundings and deals magic damage to enemies hit.',
         descriptionHTML:
@@ -509,6 +517,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Minions and non-epic  monsters take 50% reduced damage.',
         descriptionHTML:
           '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minion"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon.png" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">Minions</a></span> and non-epic <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Monster"><a href="/wiki/Monster" title="Monster"><img alt="Monster icon.png" src="/wiki/images/Monster_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Monster" title="Monster">monsters</a></span> take 50% reduced damage.',

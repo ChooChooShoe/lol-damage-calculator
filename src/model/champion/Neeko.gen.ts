@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Inherent Glamour.png',
+        icon: '/wiki/images/Inherent_Glamour.png',
         description:
           'Innate: Neeko is offered a selection of allied  champions to take on their appearance. She can choose a new champion to switch her disguise or select herself to deactivate her disguise, placing Inherent Glamour on a 2-second cooldown.',
         descriptionHTML:
@@ -47,6 +47,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While disguised, Neeko can use basic attacks while keeping her form. Taking direct damage from enemy  champions or using a damaging ability, summoner spell, or item active puts Inherent Glamour on full  cooldown.',
         descriptionHTML:
@@ -56,6 +57,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Neeko cannot activate Inherent Glamour while she is unable to cast abilities.',
         descriptionHTML:
@@ -98,7 +100,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blooming Burst.png',
+        icon: '/wiki/images/Blooming_Burst.png',
         description:
           'Active: Neeko tosses a seed that blooms at the target location, dealing magic damage to nearby enemies.',
         descriptionHTML:
@@ -136,6 +138,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the bloom kills an enemy or hits a  champion or large  monster, it will bloom again after 0.75 seconds to deal magic damage. This may occur up to 2 times per cast.',
         descriptionHTML:
@@ -227,11 +230,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Neeko's basic attacks  on-hit generate a stack of Shapesplitter, stacking up to 2 times",
+            raw: "Neeko's basic attacks  on-hit generate a stack of Shapesplitter, stacking up to 2 times",
             min: 0,
-            max: 10,
+            max: 2,
             description:
-              " Neeko's basic attacks  on-hit generate a stack of Shapesplitter, stacking up to 2 times",
+              "Neeko's basic attacks  on-hit generate a stack of Shapesplitter, stacking up to 2 times",
             values: 2,
             units: 'total_ap',
             unitsText:
@@ -239,12 +242,15 @@ export default {
             pre: "Neeko's basic attacks  on-hit generate a stack of Shapesplitter, stacking up to 2 times",
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'At 2 stacks, her next basic attack on-attack is empowered to consume them all to become  non-projectile, deal bonus magic damage and grant her  bonus movement speed for 1 second.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'At 2 stacks, her next basic attack on-attack is empowered to consume them all to become  non-projectile, deal bonus magic damage and grant her  bonus movement speed for 1 second.',
             values: 2,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               '2 stacks, her next basic attack on-attack is empowered to consume them all to become  non-projectile, deal bonus magic damage and grant her  bonus movement speed for 1 second.',
             pre: 'At 2 stacks, her next basic attack on-attack is empowered to consume them all to become  non-projectile, deal bonus magic damage and grant her  bonus movement speed for 1 second.',
@@ -327,6 +333,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The clone lasts for 3 seconds, and starts running a fixed distance in the target direction. It is  untargetable to allies and for the first 0.5 seconds of its lifespan to enemies.',
         descriptionHTML:
@@ -444,6 +451,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the spiral hits at least one enemy, it grows in size and its speed and root duration is increased.',
         descriptionHTML:
@@ -509,7 +517,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Pop Blossom.png',
+        icon: '/wiki/images/Pop_Blossom.png',
         description:
           'Active: Neeko winds up spiritual essence over 1.25 seconds and highlights an area around herself, which is visible to enemies unless Neeko is  disguised.',
         descriptionHTML:
@@ -518,7 +526,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Neeko winds up spiritual essence over 1.25 seconds and highlights an area around herself, which is visible to enemies unless Neeko is  disguised.',
+            raw: 'Neeko winds up spiritual essence over 1.25 seconds and highlights an area around herself, which is visible to enemies unless Neeko is  disguised.',
             values: 1,
             user: 'none',
             units: '',
@@ -531,6 +539,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After winding up, the cast time begins and Neeko leaps into the air, granting herself a  shield for 2 seconds that is increased for each nearby enemy  champion.',
         descriptionHTML:
@@ -609,6 +618,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'When the cast time ends, she lands to emit a burst of energy that deals magic damage to nearby enemies and  stuns them for 1.25 seconds.',
         descriptionHTML:

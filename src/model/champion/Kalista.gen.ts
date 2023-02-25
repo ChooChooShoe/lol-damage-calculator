@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Martial Poise.png',
+        icon: '/wiki/images/Martial_Poise.png',
         description:
           "Innate: Whenever Kalista inputs a movement command during her  basic attack windup or the cast time of  Pierce, she will  dash in the target direction.Kalista's dash from Martial Poise will be  knocked down by any  immobilizing or  polymorphing crowd control, excluding  sleep(bug).",
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: " Whenever Kalista inputs a movement command during her  basic attack windup or the cast time of  Pierce, she will  dash in the target direction.Kalista's dash from Martial Poise will be  knocked down by any  immobilizing or  polymorphing crowd control, excluding  sleep(bug).",
+            raw: "Whenever Kalista inputs a movement command during her  basic attack windup or the cast time of  Pierce, she will  dash in the target direction.Kalista's dash from Martial Poise will be  knocked down by any  immobilizing or  polymorphing crowd control, excluding  sleep(bug).",
             values: 0,
             user: 'none',
             units: '',
@@ -57,6 +57,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The range and speed of Martial Poise are modified by the tier of Kalista's Boots. The base range when dashing from a basic attack is 250 / 265 / 280 (based on Boots Tier) units. This base distance is reduced when dashing toward the direction of her attack, to a minimum of 150 / 165 / 180 (based on Boots Tier) units.",
         descriptionHTML:
@@ -91,6 +92,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The base range when dashing from  Pierce's cast is increased「 by 50 units. 」「 to 300 / 315 / 330 (based on Boots Tier) units. 」If dashing away from the point of cast, the dash range is reduced, to a minimum of 165 / 180 / 195 (based on Boots Tier) units.",
         descriptionHTML:
@@ -114,6 +116,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Innate - Oathsworn Bond: Kalista begins the game with an exclusive  Black Spear.',
         descriptionHTML:
@@ -197,6 +200,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Pierce kills the target, the spear continues onward to transfer all of the target's  Rend stacks to the next enemy it hits. This can repeat indefinitely until the spear reaches its maximum range.",
         descriptionHTML:
@@ -244,7 +248,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Sentinel 2.png',
+        icon: '/wiki/images/Sentinel_2.png',
         description:
           'Passive - Soul-Marked: While Kalista and her  Oathsworn are  tethered, their basic attacks and  Pierce apply a Soul-Mark to their targets.',
         descriptionHTML:
@@ -254,7 +258,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Sentinel 3.png',
+        icon: '/wiki/images/Sentinel_3.png',
         description:
           "If both Soul-Marks are applied to the same target within 4 seconds, they take bonus magic damage, capped against non-champions, and cannot be Soul-Marked again for a few seconds. Soul-Mark deals a minimum of 75 damage to  minions, executes them if they're below  125 health, and is capped against non-champions. Kalista applies the damage on-attack while the Oathsworn does so  on-hit.",
         descriptionHTML:
@@ -333,6 +337,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Kalista periodically stocks a Sentinel charge, up to a maximum of 2.',
         descriptionHTML:
@@ -354,6 +359,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about Sentinels.',
         descriptionHTML:
           '<i>See <a href="/wiki/Kalista/LoL#Pets" title="Kalista/LoL">Pets</a> for more details about Sentinels.</i>',
@@ -405,11 +411,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Kalista's basic attacks  on-hit and  Pierce apply a stack of Rend to enemies for 4 seconds, refreshing on subsequent hits and stacking up to 254 times.",
+            raw: "Kalista's basic attacks  on-hit and  Pierce apply a stack of Rend to enemies for 4 seconds, refreshing on subsequent hits and stacking up to 254 times.",
             min: 0,
-            max: 10,
+            max: 254,
             description:
-              " Kalista's basic attacks  on-hit and  Pierce apply a stack of Rend to enemies for 4 seconds, refreshing on subsequent hits and stacking up to 254 times.",
+              "Kalista's basic attacks  on-hit and  Pierce apply a stack of Rend to enemies for 4 seconds, refreshing on subsequent hits and stacking up to 254 times.",
             values: 4,
             units: 'total_ap',
             unitsText:
@@ -430,13 +436,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Active:',
-            raw: ' Kalista rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and  slow them for 2 seconds',
+            raw: 'Kalista rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and  slow them for 2 seconds',
             min: 0,
             max: 10,
             description:
-              ' Kalista rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and  slow them for 2 seconds',
+              'Kalista rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and  slow them for 2 seconds',
             values: 2,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and  slow them for 2 seconds',
             pre: 'Kalista rips all lodged spears from nearby enemies, consuming all of their stacks to deal them physical damage and  slow them for 2 seconds',
@@ -501,6 +507,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Rend kills at least one target, the  cooldown is reset and Kalista restores  mana.',
         descriptionHTML:
@@ -528,6 +535,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "A nearby enemy with a Rend stack is required to cast this ability. Rend can be used during the dash of  Martial Poise and the cast time of  Pierce. In-flight spears and  Pierce if in cast will be empowered to apply Rend's effects to their targets. These empowered spears can also trigger Rend's refund.",
         descriptionHTML:
@@ -572,7 +580,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Fate's Call.png",
+        icon: "/wiki/images/Fate's_Call.png",
         description:
           'Active: Kalista invokes her  tether to retrieve her Oathsworn and hold them for 4 seconds,  pulling them to her over 1 second and  cleansing them from all  crowd control, as well as rendering them  invulnerable and  untargetable for the duration.',
         descriptionHTML:
@@ -581,7 +589,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Kalista invokes her  tether to retrieve her Oathsworn and hold them for 4 seconds,  pulling them to her over 1 second and  cleansing them from all  crowd control, as well as rendering them  invulnerable and  untargetable for the duration.',
+            raw: 'Kalista invokes her  tether to retrieve her Oathsworn and hold them for 4 seconds,  pulling them to her over 1 second and  cleansing them from all  crowd control, as well as rendering them  invulnerable and  untargetable for the duration.',
             values: 4,
             user: 'none',
             units: '',
@@ -594,6 +602,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "While held, the Oathsworn is  vanished and may  dash with  displacement immunity to end Fate's Call's effects and reappear at the target location; after the duration, they will automatically do so at maximum range from Kalista's facing direction. The Oathsworn stops upon colliding with an enemy  champion,  knocking up all nearby enemies for a duration and landing to their  basic attack range from the target collided with.",
         descriptionHTML:
@@ -621,6 +630,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The Oathsworn must be nearby to cast this ability, and is also  silenced and unable to perform movement or attack commands while Fate's Call is in effect.",
         descriptionHTML:

@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Triumphant Roar.png',
+        icon: '/wiki/images/Triumphant_Roar.png',
         description:
           'Innate: Alistar generates a stack of Triumph for each enemy  champion he  stuns or  displaces with his abilities, and each time a nearby enemy  minion or non-epic  monster dies. He generates 7 stacks if a nearby enemy champion or epic monster dies.',
         descriptionHTML:
@@ -41,7 +41,7 @@ export default {
             description:
               'He generates 7 stacks if a nearby enemy champion or epic monster dies.',
             values: 7,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'generates 7 stacks if a nearby enemy champion or epic monster dies.',
             pre: 'He generates 7 stacks if a nearby enemy champion or epic monster dies.',
@@ -51,28 +51,30 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
-          'At 7 stacks, Alistar consumes them all to  heal himself for 5% of his maximum health and nearby allied champions for 6% of his maximum health.',
+          'At 7 stacks, Alistar consumes them all to  heal himself for 5% of his maximum health and nearby allied champions for 7% of his maximum health.',
         descriptionHTML:
-          'At 7 stacks, <b>Alistar</b> consumes them all to <span style="color: #60E08F; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;heal</span></span> himself for <span style="color: #1F995C; white-space:normal">5% of his <b>maximum</b> health</span> and nearby allied champions for <span style="color: #1F995C; white-space:normal">6% of his <b>maximum</b> health</span>.',
+          'At 7 stacks, <b>Alistar</b> consumes them all to <span style="color: #60E08F; white-space:normal"><span style="white-space:nowrap"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon.png" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;heal</span></span> himself for <span style="color: #1F995C; white-space:normal">5% of his <b>maximum</b> health</span> and nearby allied champions for <span style="color: #1F995C; white-space:normal">7% of his <b>maximum</b> health</span>.',
         descriptionRatios: [
           {
             effectType: 'Heal',
             name: 'Line 1:',
-            raw: 'At 7 stacks, Alistar consumes them all to  heal himself for 5% of his maximum health and nearby allied champions for 6% of his maximum health.',
+            raw: 'At 7 stacks, Alistar consumes them all to  heal himself for 5% of his maximum health and nearby allied champions for 7% of his maximum health.',
             healType: 'BonusHealth',
             values: 7,
             valuesIsPercent: true,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
-              'of his maximum health and nearby allied champions for 67 stacks, Alistar consumes them all to  heal himself for 5',
-            pre: 'At 7 stacks, Alistar consumes them all to  heal himself for 5% of his maximum health and nearby allied champions for 6% of his maximum health.',
+              'of his maximum health and nearby allied champions for 77 stacks, Alistar consumes them all to  heal himself for 5',
+            pre: 'At 7 stacks, Alistar consumes them all to  heal himself for 5% of his maximum health and nearby allied champions for 7% of his maximum health.',
           },
         ],
         leveling: [],
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Triumphant Roar can occur only once every few seconds, though Alistar may still generate stacks before then.',
         descriptionHTML:
@@ -126,7 +128,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Alistar smashes the ground, dealing magic damage to nearby enemies and  stunning and  knocking them up simultaneously for 1 second.',
+            raw: 'Alistar smashes the ground, dealing magic damage to nearby enemies and  stunning and  knocking them up simultaneously for 1 second.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -139,16 +141,16 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '60 / 100 / 140 / 180 / 220 (+ 70% AP)',
+            values: '60 / 100 / 140 / 180 / 220 (+ 80% AP)',
             valuesHTML:
-              '60 / 100 / 140 / 180 / 220 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;70% AP)</span>',
+              '60 / 100 / 140 / 180 / 220 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;80% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '60 / 100 / 140 / 180 / 220 (+ 70% AP)',
+            raw: '60 / 100 / 140 / 180 / 220 (+ 80% AP)',
             damagetype: 'Magic',
             values: [60, 100, 140, 180, 220],
             user: 'none',
@@ -157,11 +159,11 @@ export default {
             pre: '60 / 100 / 140 / 180 / 220',
             children: [
               {
-                values: 70,
+                values: 80,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 70% AP',
+                pre: '+ 80% AP',
               },
             ],
           },
@@ -226,16 +228,16 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '55 / 110 / 165 / 220 / 275 (+ 90% AP)',
+            values: '55 / 110 / 165 / 220 / 275 (+ 100% AP)',
             valuesHTML:
-              '55 / 110 / 165 / 220 / 275 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;90% AP)</span>',
+              '55 / 110 / 165 / 220 / 275 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;100% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '55 / 110 / 165 / 220 / 275 (+ 90% AP)',
+            raw: '55 / 110 / 165 / 220 / 275 (+ 100% AP)',
             damagetype: 'Magic',
             values: [55, 110, 165, 220, 275],
             user: 'none',
@@ -244,11 +246,11 @@ export default {
             pre: '55 / 110 / 165 / 220 / 275',
             children: [
               {
-                values: 90,
+                values: 100,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 90% AP',
+                pre: '+ 100% AP',
               },
             ],
           },
@@ -304,11 +306,11 @@ export default {
             name: 'Line 2:',
             raw: 'Each time this damages at least one enemy champion, he generates a stack of Trample that lasts for the remaining duration, stacking up to 5 times.',
             min: 0,
-            max: 10,
+            max: 5,
             description:
               'Each time this damages at least one enemy champion, he generates a stack of Trample that lasts for the remaining duration, stacking up to 5 times.',
             values: 5,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               'time this damages at least one enemy champion, he generates a stack of Trample that lasts for the remaining duration, stacking up to 5 times.',
             pre: 'Each time this damages at least one enemy champion, he generates a stack of Trample that lasts for the remaining duration, stacking up to 5 times.',
@@ -346,16 +348,20 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Trample 2.png',
+        icon: '/wiki/images/Trample_2.png',
         description:
           "At 5 stacks, Alistar's next basic attack against a  champion within 6 seconds is empowered to deal 20 − 275 (based on level) bonus magic damage and  stun the target for 1 second. This will end Trample prematurely.",
         descriptionHTML:
           'At 5 stacks, <b>Alistar\'s</b> next <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> against a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> within 6 seconds is empowered to deal <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="20;" data-finish="275;" data-bot_values="20;35;50;65;80;95;110;125;140;155;170;185;200;215;230;245;260;275" data-top_values="">20 − 275 (based on level)</span> <b>bonus</b> magic damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stun"><a href="/wiki/Stun" title="Stun"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stun" class="mw-redirect" title="Stun">stun</a></span> the target for 1 second. This will end <i>Trample</i> prematurely.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: "At 5 stacks, Alistar's next basic attack against a  champion within 6 seconds is empowered to deal 20 − 275 (based on level) bonus magic damage and  stun the target for 1 second",
+            min: 0,
+            max: 10,
+            description:
+              "At 5 stacks, Alistar's next basic attack against a  champion within 6 seconds is empowered to deal 20 − 275 (based on level) bonus magic damage and  stun the target for 1 second",
             values: [
               20, 35, 50, 65, 80, 95, 110, 125, 140, 155, 170, 185, 200, 215,
               230, 245, 260, 275,
@@ -407,7 +413,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Unbreakable Will.png',
+        icon: '/wiki/images/Unbreakable_Will.png',
         description:
           'Active: Alistar  cleanses himself of all  crowd control. For the next 7 seconds, he reduces incoming damage taken.',
         descriptionHTML:

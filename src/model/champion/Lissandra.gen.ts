@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Iceborn Subjugation.png',
+        icon: '/wiki/images/Iceborn_Subjugation.png',
         description:
           'Innate: Whenever a nearby enemy champion dies, Lissandra spawns a Frozen Thrall from their corpse.Frozen Thralls are  invulnerable and  untargetable ice spirits that have 33.48 − 325 (based on seconds) movement speed and  slow nearby enemies by 25%. They will chase nearby  visible enemies for 4 seconds, prioritizing  champions, after which they shatter to deal 120 − 520 (based on level) (+ 50% AP) magic damage to nearby enemies.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Innate:',
-            raw: ' Whenever a nearby enemy champion dies, Lissandra spawns a Frozen Thrall from their corpse.Frozen Thralls are  invulnerable and  untargetable ice spirits that have 33.48 − 325 (based on seconds) movement speed and  slow nearby enemies by 25%',
+            raw: 'Whenever a nearby enemy champion dies, Lissandra spawns a Frozen Thrall from their corpse.Frozen Thralls are  invulnerable and  untargetable ice spirits that have 33.48 − 325 (based on seconds) movement speed and  slow nearby enemies by 25%',
             values: [3, 325],
             basedOn: 'seconds',
             user: 'none',
@@ -113,7 +113,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ice Shard.png',
+        icon: '/wiki/images/Ice_Shard.png',
         description:
           'Active: Lissandra launches a shard of ice in the target direction that deals magic damage to enemies hit. The first target hit is  slowed for 1.5 seconds.',
         descriptionHTML:
@@ -178,6 +178,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Ice Shard hits an enemy, it will shatter, increasing its width and maximum range.',
         descriptionHTML:
@@ -222,7 +223,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ring of Frost.png',
+        icon: '/wiki/images/Ring_of_Frost.png',
         description:
           'Active: Lissandra freezes nearby enemies, dealing magic damage and  rooting them for a duration.',
         descriptionHTML:
@@ -315,7 +316,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Glacial Path.png',
+        icon: '/wiki/images/Glacial_Path.png',
         description:
           'Active: Lissandra sends a claw of ice in the target direction that deals magic damage to enemies it passes through, decelerating over 1.25 seconds. Glacial Path can be recast after 0.5 seconds while the claw is active.',
         descriptionHTML:
@@ -324,7 +325,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Lissandra sends a claw of ice in the target direction that deals magic damage to enemies it passes through, decelerating over 1.25 seconds',
+            raw: 'Lissandra sends a claw of ice in the target direction that deals magic damage to enemies it passes through, decelerating over 1.25 seconds',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -366,6 +367,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Lissandra consumes the claw and  blinks to its current location.',
         descriptionHTML:
@@ -417,7 +419,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Frozen Tomb.png',
+        icon: '/wiki/images/Frozen_Tomb.png',
         description:
           'Active: Lissandra can cast Frozen Tomb on herself or a target enemy champion.',
         descriptionHTML:
@@ -427,6 +429,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemy Cast: Lissandra freezes the target enemy champion,  knocking them down and  stunning them for 1.5 seconds.',
         descriptionHTML:
@@ -435,7 +438,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Enemy Cast:',
-            raw: ' Lissandra freezes the target enemy champion,  knocking them down and  stunning them for 1.5 seconds.',
+            raw: 'Lissandra freezes the target enemy champion,  knocking them down and  stunning them for 1.5 seconds.',
             values: 1,
             user: 'none',
             units: '',
@@ -448,6 +451,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Self Cast: Lissandra instantly entombs herself, placing herself in  stasis for 2.5 seconds while  healing herself every 0.25 seconds over the duration, which is increased by 0% − 100% (based on missing health) at time of cast.',
         descriptionHTML:
@@ -456,7 +460,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Self Cast:',
-            raw: ' Lissandra instantly entombs herself, placing herself in  stasis for 2.5 seconds while  healing herself every 0.25 seconds over the duration, which is increased by 0% − 100% (based on missing health) at time of cast.',
+            raw: 'Lissandra instantly entombs herself, placing herself in  stasis for 2.5 seconds while  healing herself every 0.25 seconds over the duration, which is increased by 0% − 100% (based on missing health) at time of cast.',
             healType: 'BonusHealth',
             values: 2,
             valuesIsPercent: true,
@@ -526,6 +530,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Frozen Tomb creates a field of ice that spreads out from the target over 1.5 seconds and covers the surrounding area for 3 seconds, dealing magic damage to enemies and  slowing them for 0.5 seconds, refreshing every 0.25 seconds while they remain.',
         descriptionHTML:

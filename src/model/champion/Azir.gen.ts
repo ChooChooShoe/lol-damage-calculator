@@ -36,7 +36,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Shurima's Legacy.png",
+        icon: "/wiki/images/Shurima's_Legacy.png",
         description:
           'Innate - Disc of the Sun: Azir can select a marker to construct the Sun Disc above the ruins after a 0.5-second cast time. The Sun Disc will activate after being assembled over 5 seconds.',
         descriptionHTML:
@@ -58,6 +58,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "The Sun Disc functions the same as a standard inner turret, gains 15% AP  bonus attack damage, and grants its kill credit to Azir. The Sun Disc's  health decays over 60 seconds and loses  100 armor while Azir is not alive or is too far away.",
         descriptionHTML:
@@ -91,6 +92,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Azir cannot construct a Sun Disc with the marker while he is unable to cast abilities.',
         descriptionHTML:
@@ -100,6 +102,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'See Pets for more details about the Sun Disc.',
         descriptionHTML:
           '<i>See <a href="/wiki/Azir/LoL#Pets" title="Azir/LoL">Pets</a> for more details about the <span style="color: #56C456; white-space:normal">Sun Disc</span>.</i>',
@@ -148,7 +151,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Conquering Sands.png',
+        icon: '/wiki/images/Conquering_Sands.png',
         description:
           'Active: Azir orders all Sand Soldiers to dash toward the target location, dealing magic damage to all enemies they pass through and  slowing them by 25% for 1 second.',
         descriptionHTML:
@@ -157,7 +160,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Azir orders all Sand Soldiers to dash toward the target location, dealing magic damage to all enemies they pass through and  slowing them by 25% for 1 second.',
+            raw: 'Azir orders all Sand Soldiers to dash toward the target location, dealing magic damage to all enemies they pass through and  slowing them by 25% for 1 second.',
             damagetype: 'Magic',
             values: 2,
             valuesIsPercent: true,
@@ -200,6 +203,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies hit by subsequent soldiers take no additional damage and are instead  slowed by an additional 25% per soldier.',
         descriptionHTML:
@@ -222,6 +226,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Conquering Sands will cast at max range if cast beyond that.',
         descriptionHTML:
@@ -263,8 +268,7 @@ export default {
     cost: '40',
     costtype: 'mana + 1 Sand Soldier',
     cooldown: '1.<small>5</small>',
-    recharge:
-      '9 / 8.<small>25</small> / 7.<small>5</small> / 6.<small>75</small> / 6',
+    recharge: '10 / 9 / 8 / 7 / 6',
     blurb: [
       '<span class="template_sbc"><b>Passive:</b></span> If three <span style="color: #56C456; white-space:normal">Sand Soldiers</span> are summoned, <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Azir" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Azir/LoL" title="Azir"><img alt="Azir" src="/wiki/images/Azir_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Azir/LoL" title="Azir/LoL">Azir</a></span></span> gains <span style="white-space:nowrap"><a href="/wiki/Attack_speed" title="Attack speed"><img alt="Attack speed icon.png" src="/wiki/images/Attack_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color:orangered; white-space:normal"><b>bonus</b> attack speed</span></span>.',
       '<span class="template_sbc"><b>Active:</b></span> <b>Azir</b> summons a <span style="color: #56C456; white-space:normal">Sand Soldier</span> to attack nearby targets for him, replacing his <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic attack"><a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a></span> against enemies within their range. Their attacks deal <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemies in a line.',
@@ -280,7 +284,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' Azir gains  bonus attack speed, doubled for 5 seconds if he summons a third concurrent soldier with Arise!',
+            raw: 'Azir gains  bonus attack speed, doubled for 5 seconds if he summons a third concurrent soldier with Arise!',
             increasedStat: 'bonus_ad',
             values: 5,
             units: '',
@@ -320,7 +324,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Azir summons a Sand Soldier at the target location that is  untargetable, lasts 10 seconds, and grants  sight of its surroundings',
+            raw: 'Azir summons a Sand Soldier at the target location that is  untargetable, lasts 10 seconds, and grants  sight of its surroundings',
             values: 1,
             user: 'none',
             units: '',
@@ -344,6 +348,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "When Azir declares a basic attack against an enemy in a soldier's  attack range, the Sand Soldier attacks in his stead, thrusting their spear in the target's direction to deal 50 − 150 (based on level) (+ 55% AP) magic damage to enemies struck in a line. Targets hit beyond the closest take 25 / 50 / 75 / 100% (based on level) damage. Subsequent Sand Soldiers against the same target deal 25% damage.",
         descriptionHTML:
@@ -404,6 +409,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Sand Soldiers cannot attack  structures,  wards, nor  traps.',
         descriptionHTML:
@@ -413,6 +419,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Arise! will cast at max range if cast beyond that. See Pets for more details about Sand Soldiers.',
         descriptionHTML:
@@ -430,7 +437,7 @@ export default {
     projectile: 'False',
     callforhelp: 'True',
     notes:
-      '* <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Nearsight"><a href="/wiki/Nearsight" title="Nearsight"><img alt="Nearsight icon.png" src="/wiki/images/Nearsight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Nearsight" class="mw-redirect" title="Nearsight">Nearsighting</a></span> effects will only allow <b>Azir</b> to perform attacks from soldiers within his own sight radius.\n<ul><li><b>Azir</b> must rank <i>Arise!</i> as his first ability, and will do so automatically if he reaches level 2 before ranking an ability.</li>\n<li><b>Azir</b> can only command his soldiers to attack if he is able to declare <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> commands himself, meaning <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Crowd control"><a href="/wiki/Crowd_control" title="Crowd control"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control" title="Crowd control">crowd control</a></span> effects that disable attacking, such as <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Disarm"><a href="/wiki/Disarm" title="Disarm"><img alt="Disarm icon.png" src="/wiki/images/Disarm_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Disarm" class="mw-redirect" title="Disarm">disarm</a></span>, do not allow him to order his soldiers to attack in his stead.</li>\n<li>Damage to enemy champions from <i>Sand Soldier</i> stabs will draw minion aggro even if the enemy champion was not the primary target.<sup><span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="This may not be intended.">(bug)</span></sup></li>\n<li>Attacking with the soldiers will trigger <span class="inline-image label-after rune-icon" style="display:inline;white-space:pre;" data-param="" data-rune="Hail of Blades" data-game="lol"><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Hail_of_Blades_(Rune)" title="Hail of Blades"><img alt="Hail of Blades" src="/wiki/images/Hail_of_Blades_rune.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> <span style="word-break: keep-all;;"><a href="/wiki/Hail_of_Blades_(Rune)" class="mw-redirect" title="Hail of Blades (Rune)">Hail of Blades</a></span></span>.</li>\n<li><span style="color: #56C456; white-space:normal">Sand Soldiers</span> will attack the closest enemy to <b>Azir</b> when using attack move (or <span class="template_sbc"><b>A + RMB</b></span> / <span class="template_sbc"><b>Shift + RMB</b></span>) or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Acquisition radius"><a href="/wiki/Basic_attack" title="Basic attack"><img alt="Acquisition range.png" src="/wiki/images/Acquisition_range.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack" title="Basic attack">auto-attack</a></span>.</li></ul>\n<figure class="thumb tleft " style="width: 191px"> \t<a href="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146" class="image"><img alt="" src="/wiki/images/Azir_Sand_Soldier_screenshot.png" decoding="async" loading="lazy" width="191" height="217" class="thumbimage lazyload"></a> \t<noscript><a href="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146" class="image"><img alt="" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146" decoding="async" loading="lazy" width="191" height="217" class="thumbimage" data-image-name="Azir Sand Soldier screenshot.png" data-image-key="Azir_Sand_Soldier_screenshot.png" data-src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146"></a></noscript> \t<figcaption class="thumbcaption"> \t\t \t\t \t\t \t\t\t<p class="caption">An exclamation mark (<b>!</b>) will appear above the <span style="color: #56C456; white-space:normal"><b>Sand Soldier\'s</b></span> head when within the range of an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">turret</a></span>.</p> \t\t \t</figcaption> </figure>',
+      '* <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Nearsight"><a href="/wiki/Nearsight" title="Nearsight"><img alt="Nearsight icon.png" src="/wiki/images/Nearsight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Nearsight" class="mw-redirect" title="Nearsight">Nearsighting</a></span> effects will only allow <b>Azir</b> to perform attacks from soldiers within his own sight radius.\n<ul><li><b>Azir</b> must rank <i>Arise!</i> as his first ability, and will do so automatically if he reaches level 2 before ranking an ability.</li>\n<li><b>Azir</b> can only command his soldiers to attack if he is able to declare <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> commands himself, meaning <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Crowd control"><a href="/wiki/Crowd_control" title="Crowd control"><img alt="Stun icon.png" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control" title="Crowd control">crowd control</a></span> effects that disable attacking, such as <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Disarm"><a href="/wiki/Disarm" title="Disarm"><img alt="Disarm icon.png" src="/wiki/images/Disarm_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Disarm" class="mw-redirect" title="Disarm">disarm</a></span>, do not allow him to order his soldiers to attack in his stead.</li>\n<li>Damage to enemy champions from <i>Sand Soldier</i> stabs will draw minion aggro even if the enemy champion was not the primary target.<sup><span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="This may not be intended.">(bug)</span></sup></li>\n<li>Attacking with the soldiers will trigger <span class="inline-image label-after rune-icon" style="display:inline;white-space:pre;" data-param="" data-rune="Hail of Blades" data-game="lol"><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Hail_of_Blades_(Rune)" title="Hail of Blades"><img alt="Hail of Blades" src="/wiki/images/Hail_of_Blades_rune.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> <span style="word-break: keep-all;;"><a href="/wiki/Hail_of_Blades_(Rune)" class="mw-redirect" title="Hail of Blades (Rune)">Hail of Blades</a></span></span>.</li>\n<li><span style="color: #56C456; white-space:normal">Sand Soldiers</span> will attack the closest enemy to <b>Azir</b> when using attack move (or <span class="template_sbc"><b>A + RMB</b></span> / <span class="template_sbc"><b>Shift + RMB</b></span>) or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Acquisition radius"><a href="/wiki/Basic_attack" title="Basic attack"><img alt="Acquisition range.png" src="/wiki/images/Acquisition_range.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Basic_attack" title="Basic attack">auto-attack</a></span>.</li></ul>\n<figure class="thumb tleft show-info-icon" style="width: 191px"> \t<a href="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146" class="image"><img alt="" src="/wiki/images/Azir_Sand_Soldier_screenshot.png" decoding="async" loading="lazy" width="191" height="217" class="thumbimage lazyload"></a> \t<noscript><a href="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146" class="image"><img alt="" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146" decoding="async" loading="lazy" width="191" height="217" class="thumbimage" data-image-name="Azir Sand Soldier screenshot.png" data-image-key="Azir_Sand_Soldier_screenshot.png" data-src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5b/Azir_Sand_Soldier_screenshot.png/revision/latest?cb=20200215163146"></a></noscript> \t<figcaption class="thumbcaption"> \t\t \t\t\t<a href="/wiki/File:Azir_Sand_Soldier_screenshot.png" class="info-icon"><svg><use xlink:href="#wds-icons-info-small"></use></svg></a> \t\t \t\t \t\t \t\t\t<p class="caption">An exclamation mark (<b>!</b>) will appear above the <span style="color: #56C456; white-space:normal"><b>Sand Soldier\'s</b></span> head when within the range of an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon.png" src="/wiki/images/Turret_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Turret" title="Turret">turret</a></span>.</p> \t\t \t</figcaption> </figure>',
     video: 'Azir WVideo.ogv',
   },
   'Shifting Sands': {
@@ -459,7 +466,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Shifting Sands.png',
+        icon: '/wiki/images/Shifting_Sands.png',
         description:
           'Active: Azir grants himself a  shield for 1.5 seconds and  dashes to the target Sand Soldier, dealing magic damage to enemies within his path.',
         descriptionHTML:
@@ -468,7 +475,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Azir grants himself a  shield for 1.5 seconds and  dashes to the target Sand Soldier, dealing magic damage to enemies within his path.',
+            raw: 'Azir grants himself a  shield for 1.5 seconds and  dashes to the target Sand Soldier, dealing magic damage to enemies within his path.',
             damagetype: 'Magic',
             shieldType: 'SelfShield',
             values: 1,
@@ -488,9 +495,9 @@ export default {
           },
           {
             name: 'Magic Damage:',
-            values: '60 / 90 / 120 / 150 / 180 (+ 40% AP)',
+            values: '60 / 100 / 140 / 180 / 220 (+ 55% AP)',
             valuesHTML:
-              '60 / 90 / 120 / 150 / 180 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;40% AP)</span>',
+              '60 / 100 / 140 / 180 / 220 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;55% AP)</span>',
           },
         ],
         levelingRatios: [
@@ -518,26 +525,27 @@ export default {
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '60 / 90 / 120 / 150 / 180 (+ 40% AP)',
+            raw: '60 / 100 / 140 / 180 / 220 (+ 55% AP)',
             damagetype: 'Magic',
-            values: [60, 90, 120, 150, 180],
+            values: [60, 100, 140, 180, 220],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '60 / 90 / 120 / 150 / 180',
+            pre: '60 / 100 / 140 / 180 / 220',
             children: [
               {
-                values: 40,
+                values: 55,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 40% AP',
+                pre: '+ 55% AP',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Azir dashes into an enemy  champion, he stops and gains a charge of  Arise!.',
         descriptionHTML:
@@ -547,6 +555,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Azir can cast of any of his abilities during the dash.',
         descriptionHTML:
           '<i><b>Azir</b> can cast of any of his <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> during the dash.</i>',
@@ -594,7 +603,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Emperor's Divide.png",
+        icon: "/wiki/images/Emperor's_Divide.png",
         description:
           'Active: Azir calls forth a phalanx of soldiers from 175 units behind him, catching enemies from up to 325 units behind him and charging forward 575 units in the target direction.',
         descriptionHTML:
@@ -603,7 +612,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Azir calls forth a phalanx of soldiers from 175 units behind him, catching enemies from up to 325 units behind him and charging forward 575 units in the target direction.',
+            raw: 'Azir calls forth a phalanx of soldiers from 175 units behind him, catching enemies from up to 325 units behind him and charging forward 575 units in the target direction.',
             values: 1,
             user: 'none',
             units: '',
@@ -634,6 +643,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Enemies impacted by the charge are dealt magic damage and  knocked away over 1 second to a line 650 units in front of Azir.',
         descriptionHTML:
@@ -655,35 +665,36 @@ export default {
         leveling: [
           {
             name: 'Magic Damage:',
-            values: '175 / 250 / 325 / 400 / 475 (+ 60% AP)',
+            values: '200 / 300 / 400 / 500 / 600 (+ 75% AP)',
             valuesHTML:
-              '175 / 250 / 325 / 400 / 475 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;60% AP)</span>',
+              '200 / 300 / 400 / 500 / 600 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;75% AP)</span>',
           },
         ],
         levelingRatios: [
           {
             effectType: 'Damage',
             name: 'Magic Damage:',
-            raw: '175 / 250 / 325 / 400 / 475 (+ 60% AP)',
+            raw: '200 / 300 / 400 / 500 / 600 (+ 75% AP)',
             damagetype: 'Magic',
-            values: [175, 250, 325, 400, 475],
+            values: [200, 300, 400, 500, 600],
             user: 'none',
             units: '',
             unitsText: '',
-            pre: '175 / 250 / 325 / 400 / 475',
+            pre: '200 / 300 / 400 / 500 / 600',
             children: [
               {
-                values: 60,
+                values: 75,
                 valuesIsPercent: true,
                 units: 'total_ap',
                 unitsText: 'AP',
-                pre: '+ 60% AP',
+                pre: '+ 75% AP',
               },
             ],
           },
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon finishing their charge, the soldiers stand as a wall for 5 seconds, acting as impassible terrain against enemies and granting  sight of their surroundings. Azir and his allies can move through these soldiers.',
         descriptionHTML:

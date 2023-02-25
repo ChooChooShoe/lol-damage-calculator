@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Arcane Mastery.png',
+        icon: '/wiki/images/Arcane_Mastery.png',
         description:
           'Innate: Ryze increases his  maximum mana by (6% per 100 AP).',
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate:',
-            raw: ' Ryze increases his  maximum mana by (6% per 100 AP).',
+            raw: 'Ryze increases his  maximum mana by (6% per 100 AP).',
             damagetype: 'None',
             values: 0,
             user: 'none',
@@ -90,7 +90,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Overload 5.png',
+        icon: '/wiki/images/Overload_5.png',
         description:
           "Passive: Ryze's other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
         descriptionHTML:
@@ -99,13 +99,13 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Passive:',
-            raw: " Ryze's other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
+            raw: "Ryze's other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
             min: 0,
-            max: 10,
+            max: 2,
             description:
-              " Ryze's other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
+              "Ryze's other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
             values: 4,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText:
               "other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
             pre: "Ryze's other basic ability casts reset Overload's  cooldown and charge a  Rune stack for 4 seconds, refreshing on subsequent casts and stacking up to 2 times.",
@@ -160,19 +160,22 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Overload 4.png',
+        icon: '/wiki/images/Overload_4.png',
         description:
           'If Ryze consumed 2 stacks, he gains  bonus movement speed for 2 seconds.',
         descriptionHTML:
           'If <b>Ryze</b> consumed 2 stacks, he gains <span style="white-space:nowrap"><a href="/wiki/Movement_speed" title="Movement speed"><img alt="Movement speed icon.png" src="/wiki/images/Movement_speed_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<span style="color: #F5EE99; white-space:normal"><b>bonus</b> movement speed</span></span> for 2 seconds.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'If Ryze consumed 2 stacks, he gains  bonus movement speed for 2 seconds.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'If Ryze consumed 2 stacks, he gains  bonus movement speed for 2 seconds.',
             values: 2,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'Ryze consumed 2 stacks, he gains  bonus movement speed for 2 seconds.',
             pre: 'If Ryze consumed 2 stacks, he gains  bonus movement speed for 2 seconds.',
@@ -200,6 +203,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Flux Bonus: Overload deals 10 / 40 / 70 / 100% (based on  Realm Warp's Rank)  increased damage and spreads to surrounding Fluxed enemies.",
         descriptionHTML:
@@ -208,7 +212,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Flux Bonus:',
-            raw: " Overload deals 10 / 40 / 70 / 100% (based on  Realm Warp's Rank)  increased damage and spreads to surrounding Fluxed enemies.",
+            raw: "Overload deals 10 / 40 / 70 / 100% (based on  Realm Warp's Rank)  increased damage and spreads to surrounding Fluxed enemies.",
             damagetype: 'None',
             values: [1, 40, 70, 100],
             valuesIsPercent: true,
@@ -260,7 +264,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rune Prison.png',
+        icon: '/wiki/images/Rune_Prison.png',
         description:
           'Active: Ryze seizes the target enemy, dealing magic damage and  slowing them by 35% for 1.5 seconds.',
         descriptionHTML:
@@ -269,7 +273,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ryze seizes the target enemy, dealing magic damage and  slowing them by 35% for 1.5 seconds.',
+            raw: 'Ryze seizes the target enemy, dealing magic damage and  slowing them by 35% for 1.5 seconds.',
             damagetype: 'Magic',
             values: 3,
             valuesIsPercent: true,
@@ -319,6 +323,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Flux Bonus: The target is  rooted instead of  slowed.',
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Ryze" data-ability="Spell Flux" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ryze/LoL#Spell_Flux" title="Flux"><img alt="Flux" src="/wiki/images/Ryze_Spell_Flux.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ryze/LoL#Spell_Flux" title="Ryze/LoL">Flux</a></span></span> Bonus:</b></span> The target is <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Root"><a href="/wiki/Root" title="Root"><img alt="Root icon.png" src="/wiki/images/Root_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Root" class="mw-redirect" title="Root">rooted</a></span> instead of <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon.png" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowed</a></span>.',
@@ -367,7 +372,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spell Flux.png',
+        icon: '/wiki/images/Spell_Flux.png',
         description:
           "Active: Ryze projects an orb upon the target enemy that deals magic damage.\nThe target and surrounding enemies are also marked with Flux for 3 seconds. Ryze's basic abilities against Flux targets consume the mark to become empowered with an additional effect.",
         descriptionHTML:
@@ -376,7 +381,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Ryze projects an orb upon the target enemy that deals magic damage.\nThe target and surrounding enemies are also marked with Flux for 3 seconds',
+            raw: 'Ryze projects an orb upon the target enemy that deals magic damage.\nThe target and surrounding enemies are also marked with Flux for 3 seconds',
             damagetype: 'Magic',
             values: 3,
             user: 'none',
@@ -425,6 +430,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Flux Bonus: Spell Flux spreads farther.',
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Ryze" data-ability="Spell Flux" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Ryze/LoL#Spell_Flux" title="Flux"><img alt="Flux" src="/wiki/images/Ryze_Spell_Flux.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Ryze/LoL#Spell_Flux" title="Ryze/LoL">Flux</a></span></span> Bonus:</b></span> <i>Spell Flux</i> spreads farther.',
@@ -501,7 +507,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Realm Warp.png',
+        icon: '/wiki/images/Realm_Warp.png',
         description:
           'Active: Ryze  channels for 2 seconds to open a portal beneath him, marking the target location as its destination and gaining  sight of the area. Ryze is able to act while channeling, but the portal will cancel if he is  interrupted.',
         descriptionHTML:
@@ -510,7 +516,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Ryze  channels for 2 seconds to open a portal beneath him, marking the target location as its destination and gaining  sight of the area',
+            raw: 'Ryze  channels for 2 seconds to open a portal beneath him, marking the target location as its destination and gaining  sight of the area',
             increasedStat: 'kindredMarks',
             values: 2,
             units: '',
@@ -523,6 +529,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Upon completion, Ryze and allied units within will  blink to the location and become  rooted,  disarmed,  silenced and  untargetable for 0.75 seconds.',
         descriptionHTML:
@@ -532,6 +539,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Realm Warp will cast at max range if cast beyond that.',
         descriptionHTML:
           '<i>Realm Warp will cast at max range if cast beyond that.</i>',

@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Deathbringer Stance.png',
+        icon: '/wiki/images/Deathbringer_Stance.png',
         description:
           "Innate: Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10% (based on level) of the target's maximum health, capped at 100 against  monsters. Aatrox  heals for 80% of the post-mitigation bonus damage dealt, reduced to 25% against  minions.",
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: " Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10% (based on level) of the target's maximum health, capped at 100 against  monsters",
+            raw: "Periodically, Aatrox empowers his next basic attack to gain  50 bonus range and deal bonus physical damage equal to 4% − 10% (based on level) of the target's maximum health, capped at 100 against  monsters",
             healType: 'PhysicalVamp',
             values: [],
             valuesIsPercent: true,
@@ -63,6 +63,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Whenever Aatrox hits at least one enemy  champion or large  monster with a basic attack  on-hit or an ability, the  cooldown of Deathbringer Stance is reduced by 2 seconds, modified to 4 if he hits with the Sweetspot of  The Darkin Blade.',
         descriptionHTML:
@@ -124,7 +125,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Aatrox can activate The Darkin Blade three times before the ability goes on cooldown, with a 1 second static cooldown between casts',
+            raw: 'Aatrox can activate The Darkin Blade three times before the ability goes on cooldown, with a 1 second static cooldown between casts',
             damagetype: 'None',
             values: 1,
             units: 'total_ad',
@@ -137,7 +138,8 @@ export default {
             name: 'Line 2:',
             raw: 'If Aatrox does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
             values: 4,
-            units: 'total_ap',
+            user: 'none',
+            units: '',
             unitsText:
               'Aatrox does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
             pre: 'If Aatrox does not recast the ability within 4 seconds of the previous cast, it goes on cooldown.',
@@ -147,6 +149,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Aatrox performs a strike with his greatsword for each of the three casts, dealing physical damage to enemies hit within an area. Enemies hit within a Sweetspot of the area take  60% bonus damage and also  knocked up for 0.25 seconds. Each subsequent cast increases The Darkin Blade's damage by 25%.",
         descriptionHTML:
@@ -182,7 +185,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/The Darkin Blade.png',
+        icon: '/wiki/images/The_Darkin_Blade.png',
         description:
           "First Cast: Aatrox's first strike affects a 625 × 180-unit rectangular area in the target direction, with him centered on the back line and the Sweetspot at the farthest edge.",
         descriptionHTML:
@@ -191,7 +194,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'First Cast:',
-            raw: " Aatrox's first strike affects a 625 × 180-unit rectangular area in the target direction, with him centered on the back line and the Sweetspot at the farthest edge.",
+            raw: "Aatrox's first strike affects a 625 × 180-unit rectangular area in the target direction, with him centered on the back line and the Sweetspot at the farthest edge.",
             values: 6,
             user: 'none',
             units: '',
@@ -232,7 +235,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/The Darkin Blade 2.png',
+        icon: '/wiki/images/The_Darkin_Blade_2.png',
         description:
           "Second Cast: Aatrox's second strike affects a trapezoidal area in the target direction, with the Sweetspot at the farthest edge. The hitbox begins 100-units behind Aatrox and extends 475-units in front of him, measuring between 300 and 500-units wide from behind to in front.",
         descriptionHTML:
@@ -283,7 +286,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/The Darkin Blade 3.png',
+        icon: '/wiki/images/The_Darkin_Blade_3.png',
         description:
           "Third Cast: Aatrox's third strike affects a 300-radius circular area centered on a target location that is 200 units in front of him, with a 180-radius Sweetspot within.",
         descriptionHTML:
@@ -292,7 +295,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Third Cast:',
-            raw: " Aatrox's third strike affects a 300-radius circular area centered on a target location that is 200 units in front of him, with a 180-radius Sweetspot within.",
+            raw: "Aatrox's third strike affects a 300-radius circular area centered on a target location that is 200 units in front of him, with a 180-radius Sweetspot within.",
             damagetype: 'None',
             values: 3,
             user: 'target',
@@ -371,7 +374,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Infernal Chains.png',
+        icon: '/wiki/images/Infernal_Chains.png',
         description:
           'Active: Aatrox sends a chain in the target direction that deals physical damage to the first enemy hit, doubled against  minions, and  slowing them by 25% for 1.5 seconds.',
         descriptionHTML:
@@ -380,7 +383,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Aatrox sends a chain in the target direction that deals physical damage to the first enemy hit, doubled against  minions, and  slowing them by 25% for 1.5 seconds.',
+            raw: 'Aatrox sends a chain in the target direction that deals physical damage to the first enemy hit, doubled against  minions, and  slowing them by 25% for 1.5 seconds.',
             values: 2,
             valuesIsPercent: true,
             user: 'none',
@@ -422,6 +425,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If this hits an enemy  champion or large  monster, a  tether is formed between the target and the ground beneath them for 1.5 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -443,6 +447,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the tether is not broken by the end of its duration, the target is dealt the same physical damage again and  pulled to the center of the area.',
         descriptionHTML:
@@ -546,7 +551,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Umbral Dash.png',
+        icon: '/wiki/images/Umbral_Dash.png',
         description: 'Active: Aatrox  dashes in the target direction.',
         descriptionHTML:
           '<span class="template_sbc"><b>Active:</b></span> <b>Aatrox</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash.png" src="/wiki/images/Dash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Dash" title="Dash">dashes</a></span> in the target direction.',
@@ -555,6 +560,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Umbral Dash  resets Aatrox's basic attack timer and can be cast during his other abilities without cancelling them and vice versa.",
         descriptionHTML:
@@ -596,7 +602,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/World Ender.png',
+        icon: '/wiki/images/World_Ender.png',
         description:
           'Active: Aatrox unleashes his true form for 10 seconds,  fearing nearby enemy  minions and  monsters for 3 seconds, during which they are gradually  slowed by up to 99% over the duration. He also gains  ghosting and  bonus movement speed that decays by 10% of the current bonus every 0.25 seconds, lasting until World Ender has ended.',
         descriptionHTML:
@@ -605,7 +611,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Aatrox unleashes his true form for 10 seconds,  fearing nearby enemy  minions and  monsters for 3 seconds, during which they are gradually  slowed by up to 99% over the duration',
+            raw: 'Aatrox unleashes his true form for 10 seconds,  fearing nearby enemy  minions and  monsters for 3 seconds, during which they are gradually  slowed by up to 99% over the duration',
             damagetype: 'True',
             values: 1,
             valuesIsPercent: true,
@@ -650,6 +656,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Whenever Aatrox scores a champion  takedown, he extends the duration by 5 seconds and becomes unleashed again.',
         descriptionHTML:
@@ -671,6 +678,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'During World Ender, Aatrox gains  bonus attack damage and 5% increased size, and receives increased  self-healing from all sources.',
         descriptionHTML:

@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Garden of Thorns.png',
+        icon: '/wiki/images/Garden_of_Thorns.png',
         description:
           'Innate: Periodically, Zyra spawns one or two Seeds nearby that last for 30 seconds, granting  sight over the surrounding area for 1 second.',
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: ' Periodically, Zyra spawns one or two Seeds nearby that last for 30 seconds, granting  sight over the surrounding area for 1 second.',
+            raw: 'Periodically, Zyra spawns one or two Seeds nearby that last for 30 seconds, granting  sight over the surrounding area for 1 second.',
             values: 3,
             user: 'none',
             units: '',
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 1 second, enemy  champions can destroy Seeds by stepping on them.',
         descriptionHTML:
@@ -69,6 +70,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Zyra can only have a total of 8 Seeds planted at a time, preserving Seeds spawned by  Rampant Growth over Seeds spawned by Garden of Thorns.',
         descriptionHTML:
@@ -121,7 +123,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Deadly Spines.png',
+        icon: '/wiki/images/Deadly_Spines.png',
         description:
           'Active: Zyra sprouts thorny spines at the target location that appear after a 0.625-seconds delay, dealing magic damage to enemies hit.',
         descriptionHTML:
@@ -159,6 +161,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Deadly Spine hits a Seed, it sprouts into a  Thorn Spitter that remains for 8 seconds.',
         descriptionHTML:
@@ -214,7 +217,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Rampant Growth.png',
+        icon: '/wiki/images/Rampant_Growth.png',
         description:
           'Active: Zyra plants a Seed at the target location that remains for 60 seconds and grants  sight over the surrounding area, though decreasing in radius after 1 second. After 1.5 seconds, enemy champions can destroy the Seed by stepping on it, which  reveals them for 2 seconds.',
         descriptionHTML:
@@ -223,7 +226,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Zyra plants a Seed at the target location that remains for 60 seconds and grants  sight over the surrounding area, though decreasing in radius after 1 second',
+            raw: 'Zyra plants a Seed at the target location that remains for 60 seconds and grants  sight over the surrounding area, though decreasing in radius after 1 second',
             increasedStat: 'total_ad',
             values: 6,
             user: 'target',
@@ -248,6 +251,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Zyra periodically stocks a Seed charge, up to a maximum of 2. Killing an enemy generates 20% charge toward a Seed, increased to 100% for large enemies and whenever scoring an enemy  champion  takedown.',
         descriptionHTML:
@@ -314,7 +318,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Grasping Roots.png',
+        icon: '/wiki/images/Grasping_Roots.png',
         description:
           'Active: Zyra shoots a surge of vines in the target direction that deals magic damage to enemies hit and  roots them for a duration.',
         descriptionHTML:
@@ -368,6 +372,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If Grasping Roots hits a Seed, it sprouts into a  Vine Lasher, which remains on the battlefield for 8 seconds.',
         descriptionHTML:
@@ -464,6 +469,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 2 seconds, the thicket snaps upward to  knock up enemies within for 1 second.',
         descriptionHTML:
@@ -485,6 +491,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Plants hit by the thicket become enraged, restoring  50% of their current health, increasing their  maximum health by 50%, gaining 25% increased size and refreshing their duration while the thicket expands. Additionally they attack in a flurry, launching two shots per attack, dealing 「 150% damage per flurry. 」「 75% damage per shot. 」',
         descriptionHTML:

@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/League of Draven.png',
+        icon: '/wiki/images/League_of_Draven.png',
         description:
           'Innate: When Draven catches a  Spinning Axe, kills a non-champion, or destroys a  turret, he gains a stack of Adoration.',
         descriptionHTML:
@@ -33,6 +33,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Additionally, whenever Draven kills a  minion or destroys a  ward or  trap, he generates a  Strike stack for 10 seconds, refreshing on subsequent kills and stacking up to 6 times. All Strike stacks are lost if he drops an  axe or a nearby  minion dies without him killing it. The sixth stack consumes all stacks to grant him 2 Adoration stacks.',
         descriptionHTML:
@@ -43,7 +44,7 @@ export default {
             name: 'Line 1:',
             raw: 'Additionally, whenever Draven kills a  minion or destroys a  ward or  trap, he generates a  Strike stack for 10 seconds, refreshing on subsequent kills and stacking up to 6 times',
             min: 0,
-            max: 10,
+            max: 6,
             description:
               'Additionally, whenever Draven kills a  minion or destroys a  ward or  trap, he generates a  Strike stack for 10 seconds, refreshing on subsequent kills and stacking up to 6 times',
             values: 1,
@@ -53,12 +54,15 @@ export default {
             pre: 'Additionally, whenever Draven kills a  minion or destroys a  ward or  trap, he generates a  Strike stack for 10 seconds, refreshing on subsequent kills and stacking up to 6 times',
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 3:',
             raw: 'The sixth stack consumes all stacks to grant him 2 Adoration stacks.',
-            increasedStat: 'feastStacks',
+            min: 0,
+            max: 10,
+            description:
+              'The sixth stack consumes all stacks to grant him 2 Adoration stacks.',
             values: 2,
-            units: '',
+            units: 'genericStacks',
             unitsText:
               'sixth stack consumes all stacks to grant him 2 Adoration stacks.',
             pre: 'The sixth stack consumes all stacks to grant him 2 Adoration stacks.',
@@ -68,18 +72,22 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'When Draven kills an enemy  champion, he consumes all of his Adoration stacks and gains  40 + (2.5 × stacks) bonus gold.',
         descriptionHTML:
           'When <b>Draven</b> kills an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span>, he consumes all of his <i>Adoration</i> stacks and gains <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="40 + (2.5&nbsp;×&nbsp;stacks) bonus gold Gold"><img alt="40 + (2.5&nbsp;×&nbsp;stacks) bonus gold Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">40 + (2.<small></small><small>5</small>&nbsp;×&nbsp;stacks) <b>bonus</b> gold</span></span>.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 1:',
             raw: 'When Draven kills an enemy  champion, he consumes all of his Adoration stacks and gains  40 + (2.5 × stacks) bonus gold.',
-            increasedStat: 'gold',
+            min: 0,
+            max: 10,
+            description:
+              'When Draven kills an enemy  champion, he consumes all of his Adoration stacks and gains  40 + (2.5 × stacks) bonus gold.',
             values: 4,
-            units: '',
+            units: 'gold',
             unitsText: 'bonus gold.',
             pre: 'When Draven kills an enemy  champion, he consumes all of his Adoration stacks and gains  40 +',
             post: 'bonus gold.',
@@ -98,6 +106,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Draven loses 75% of his Adoration stacks upon death.',
         descriptionHTML:
           '<b>Draven</b> loses 75% of his <i>Adoration</i> stacks upon <a href="/wiki/Death" title="Death">death</a>.',
@@ -111,7 +120,7 @@ export default {
             description: 'Draven loses 75% of his Adoration stacks upon death.',
             values: 7,
             valuesIsPercent: true,
-            units: 'feastStacks',
+            units: 'genericStacks',
             unitsText: 'of his Adoration stacks upon death.loses 75',
             pre: 'Draven loses 75% of his Adoration stacks upon death.',
           },
@@ -152,7 +161,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Spinning Axe.png',
+        icon: '/wiki/images/Spinning_Axe.png',
         description:
           'Active: Draven starts spinning his axe, empowering his next basic attack within 5.8 seconds to deal bonus physical damage.',
         descriptionHTML:
@@ -161,7 +170,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Draven starts spinning his axe, empowering his next basic attack within 5.8 seconds to deal bonus physical damage.',
+            raw: 'Draven starts spinning his axe, empowering his next basic attack within 5.8 seconds to deal bonus physical damage.',
             damagetype: 'Physical',
             values: 5,
             units: 'bonus_ad',
@@ -203,7 +212,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Draven Axe Indicator.png',
+        icon: '/wiki/images/Draven_Axe_Indicator.png',
         description:
           "Upon hitting the target, the axe then ricochets off of them to land after 2 seconds, with the location being determined by Draven's current movement. If Draven catches the axe, he gains Spinning Axe's empowered attack again.",
         descriptionHTML:
@@ -225,6 +234,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Draven can hold up to two Spinning Axes at once.',
         descriptionHTML:
           '<b>Draven</b> can hold up to two <i>Spinning Axes</i> at once.',
@@ -268,7 +278,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Blood Rush.png',
+        icon: '/wiki/images/Blood_Rush.png',
         description:
           'Active: Draven enters an adrenaline rush, gaining  bonus attack speed for 3 seconds as well as decaying  bonus movement speed and  ghosting for 1.5 seconds.',
         descriptionHTML:
@@ -277,7 +287,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Draven enters an adrenaline rush, gaining  bonus attack speed for 3 seconds as well as decaying  bonus movement speed and  ghosting for 1.5 seconds.',
+            raw: 'Draven enters an adrenaline rush, gaining  bonus attack speed for 3 seconds as well as decaying  bonus movement speed and  ghosting for 1.5 seconds.',
             increasedStat: 'bonus_ad',
             values: 3,
             units: '',
@@ -324,6 +334,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Catching a  Spinning Axe resets Blood Rush's  cooldown.",
         descriptionHTML:
           'Catching a <i><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Draven" data-ability="Spinning Axe" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Draven/LoL#Spinning_Axe" title="Spinning Axe"><img alt="Spinning Axe" src="/wiki/images/Draven_Spinning_Axe.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Draven/LoL#Spinning_Axe" title="Draven/LoL">Spinning Axe</a></span></span></i> resets <i>Blood Rush\'s</i> <span style="white-space:nowrap"><a href="/wiki/Cooldown" title="Cooldown"><img alt="Cooldown icon.png" src="/wiki/images/Cooldown_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;cooldown</span>.',
@@ -366,7 +377,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Stand Aside.png',
+        icon: '/wiki/images/Stand_Aside.png',
         description:
           'Active: Draven throws a fan of axes in a line in the target direction, dealing physical damage to enemies hit,  knocking them aside, though not through terrain, and  slowing them for 2 seconds.',
         descriptionHTML:
@@ -375,7 +386,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Draven throws a fan of axes in a line in the target direction, dealing physical damage to enemies hit,  knocking them aside, though not through terrain, and  slowing them for 2 seconds.',
+            raw: 'Draven throws a fan of axes in a line in the target direction, dealing physical damage to enemies hit,  knocking them aside, though not through terrain, and  slowing them for 2 seconds.',
             damagetype: 'Physical',
             values: 2,
             user: 'none',
@@ -474,7 +485,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Whirling Death.png',
+        icon: '/wiki/images/Whirling_Death.png',
         description:
           'Active: Draven hurls two massive axes in the target direction that briefly grant  sight of their surroundings and deal physical damage to enemies hit. Enemy  champions that would have  health left within the current number of  League of Draven stacks are  executed.',
         descriptionHTML:
@@ -513,6 +524,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Whirling Death can be recast after 1 second while the axes are traveling, and does so automatically after the axes hit an enemy  champion or the edge of the map.',
         descriptionHTML:
@@ -534,7 +546,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Whirling Death 2.png',
+        icon: '/wiki/images/Whirling_Death_2.png',
         description:
           'Recast: Draven forces the axes to reverse direction, slowly coming to a stop before homing back to him, dealing the same damage to enemies hit.',
         descriptionHTML:
@@ -544,6 +556,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Whirling Death deals 100% − 40% (based on enemies hit) damage, resetting upon reversing direction.',
         descriptionHTML:
@@ -597,6 +610,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Enemies can be hit only once per pass.',
         descriptionHTML: '<i>Enemies can be hit only once per pass.</i>',
         descriptionRatios: [],

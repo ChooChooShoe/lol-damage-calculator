@@ -25,7 +25,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Bop 'n' Block.png",
+        icon: "/wiki/images/Bop_'n'_Block.png",
         description:
           'Innate: Periodically, Yuumi empowers her next basic attack against an enemy  champion to gain  25 bonus range, have an  uncancellable windup, become  non-projectile, restore  25 − 100 (based on level) (+ 8% maximum mana) mana and grant her a  shield for 45 − 300 (based on level) (+ 25% AP) that lasts until it is destroyed.',
         descriptionHTML:
@@ -34,7 +34,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Innate:',
-            raw: ' Periodically, Yuumi empowers her next basic attack against an enemy  champion to gain  25 bonus range, have an  uncancellable windup, become  non-projectile, restore  25 − 100 (based on level) (+ 8% maximum mana) mana and grant her a  shield for 45 − 300 (based on level) (+ 25% AP) that lasts until it is destroyed.',
+            raw: 'Periodically, Yuumi empowers her next basic attack against an enemy  champion to gain  25 bonus range, have an  uncancellable windup, become  non-projectile, restore  25 − 100 (based on level) (+ 8% maximum mana) mana and grant her a  shield for 45 − 300 (based on level) (+ 25% AP) that lasts until it is destroyed.',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: [
@@ -68,6 +68,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Attached Bonus: The shield transfers to the Anchor.',
         descriptionHTML:
           '<span class="template_sbc"><b><span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Yuumi" data-ability="You and Me!" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Yuumi/LoL#You_and_Me!" title="Attached"><img alt="Attached" src="/wiki/images/Yuumi_You_and_Me%21.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Yuumi/LoL#You_and_Me!" title="Yuumi/LoL">Attached</a></span></span> Bonus:</b></span> The shield transfers to the <i>Anchor</i>.',
@@ -111,7 +112,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Prowling Projectile.png',
+        icon: '/wiki/images/Prowling_Projectile.png',
         description:
           'Active: Yuumi fires an errant missile in the target direction that deals magic damage to the first enemy hit.',
         descriptionHTML:
@@ -149,6 +150,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the missile is in flight for 1 second, it deals increased damage, and  slows by 20% for 1 second against  champions. The damage based on the target's health ratio is capped at 50 − 300 (based on level) against non-champions.",
         descriptionHTML:
@@ -225,7 +227,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Prowling Projectile 2.png',
+        icon: '/wiki/images/Prowling_Projectile_2.png',
         description:
           'Attached Bonus: Yuumi will  channel for up to 2 seconds to steer the missile, after which it fizzles.',
         descriptionHTML:
@@ -234,7 +236,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Attached Bonus:',
-            raw: ' Yuumi will  channel for up to 2 seconds to steer the missile, after which it fizzles.',
+            raw: 'Yuumi will  channel for up to 2 seconds to steer the missile, after which it fizzles.',
             values: 2,
             user: 'none',
             units: '',
@@ -350,6 +352,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Yuumi gains flat  adaptive force plus an amount based on a portion of the Anchor's current bonus attack damage or ability power, whichever is higher. Additionally, Yuumi starts with a skill point in You and Me! and  Prowling Projectile instead has 6 ranks.",
         descriptionHTML:
@@ -422,7 +425,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/You and Me!.png',
+        icon: '/wiki/images/You_and_Me!.png',
         description:
           "Active: Yuumi  channels for 0.25 seconds, then  dashes to the target allied champion and  attaches to them upon arrival. While attached, Yuumi is  untargetable (except from  turrets and inbound  projectiles) and casts her spells from the Anchor's position. The cooldown starts upon completing the  channel. You and Me! can be recast after 0.5 seconds.",
         descriptionHTML:
@@ -453,6 +456,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Yuumi will be  knocked down by any  immobilizing or  polymorphing crowd control during the dash.',
         descriptionHTML:
@@ -462,7 +466,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Change of Plan.png',
+        icon: '/wiki/images/Change_of_Plan.png',
         description:
           'Recast: Yuumi switches her Anchor to the target allied champion and  attaches to them, refreshing the recast. She will detach automatically if her Anchor dies or under certain circumstances. If recast without a valid target, Yuumi will detach from her Anchor and  dash 250-units in the target direction, placing You and Me! on a  0.25-second cooldown if it is not already on cooldown.',
         descriptionHTML:
@@ -527,7 +531,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Active:',
-            raw: ' Yuumi  heals herself and gains  20% bonus movement speed and  bonus attack speed for 3 seconds.',
+            raw: 'Yuumi  heals herself and gains  20% bonus movement speed and  bonus attack speed for 3 seconds.',
             healType: 'BonusHealth',
             values: 2,
             valuesIsPercent: true,
@@ -585,6 +589,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Attached Bonus: Zoomies affects the Anchor instead of Yuumi.',
         descriptionHTML:
@@ -630,7 +635,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Final Chapter.png',
+        icon: '/wiki/images/Final_Chapter.png',
         description:
           'Active: Yuumi and Book  channel for up to 3.5 seconds, launching 7 waves in the target direction that each deal magic damage to enemies hit. Enemy  champions hit take only 50% damage from subsequent waves, and when they are struck by three waves, they become  rooted for 1.25 seconds. This may occur only once per target.',
         descriptionHTML:
@@ -639,7 +644,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Yuumi and Book  channel for up to 3.5 seconds, launching 7 waves in the target direction that each deal magic damage to enemies hit',
+            raw: 'Yuumi and Book  channel for up to 3.5 seconds, launching 7 waves in the target direction that each deal magic damage to enemies hit',
             damagetype: 'Magic',
             values: 3,
             user: 'none',

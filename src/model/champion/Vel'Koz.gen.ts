@@ -23,7 +23,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Organic Deconstruction.png',
+        icon: '/wiki/images/Organic_Deconstruction.png',
         description:
           "Innate: Vel'Koz's abilities apply a stack of Deconstruction to enemies hit for 7 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
         descriptionHTML:
@@ -32,11 +32,11 @@ export default {
           {
             effectType: 'Stacks',
             name: 'Innate:',
-            raw: " Vel'Koz's abilities apply a stack of Deconstruction to enemies hit for 7 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
+            raw: "Vel'Koz's abilities apply a stack of Deconstruction to enemies hit for 7 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
             min: 0,
-            max: 10,
+            max: 3,
             description:
-              " Vel'Koz's abilities apply a stack of Deconstruction to enemies hit for 7 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
+              "Vel'Koz's abilities apply a stack of Deconstruction to enemies hit for 7 seconds, refreshing on basic attacks and subsequent applications and stacking up to 3 times.",
             values: 7,
             units: 'total_ap',
             unitsText:
@@ -48,6 +48,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The third stack consumes them all to deal  33 − 169 (based on level) (+ 50% AP) bonus true damage.',
         descriptionHTML:
@@ -125,7 +126,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Plasma Fission.png',
+        icon: '/wiki/images/Plasma_Fission.png',
         description:
           "Active: Vel'Koz fires a plasma bolt in the target direction that deals magic damage to the first enemy hit and  slows them by 70% decaying over a duration.\nPlasma Fission can be recast after 0.25 seconds while the bolt is in flight, and does so automatically upon hitting an enemy or maximum range.",
         descriptionHTML:
@@ -134,7 +135,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Vel'Koz fires a plasma bolt in the target direction that deals magic damage to the first enemy hit and  slows them by 70% decaying over a duration.\nPlasma Fission can be recast after 0.25 seconds while the bolt is in flight, and does so automatically upon hitting an enemy or maximum range.",
+            raw: "Vel'Koz fires a plasma bolt in the target direction that deals magic damage to the first enemy hit and  slows them by 70% decaying over a duration.\nPlasma Fission can be recast after 0.25 seconds while the bolt is in flight, and does so automatically upon hitting an enemy or maximum range.",
             damagetype: 'Magic',
             values: 7,
             valuesIsPercent: true,
@@ -193,7 +194,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Plasma Fission 2.png',
+        icon: '/wiki/images/Plasma_Fission_2.png',
         description:
           "Recast: Vel'Koz splits the bolt in two over 0.25 seconds, each part firing perpendicularly in opposite directions and applying the same effects to enemies hit.",
         descriptionHTML:
@@ -203,6 +204,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Whenever Plasma Fission kills an enemy, Vel'Koz restores  mana.",
         descriptionHTML:
@@ -272,7 +274,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Void Rift.png',
+        icon: '/wiki/images/Void_Rift.png',
         description:
           "Active: Vel'Koz cracks a rift in the target direction that opens after a 0.25-second delay, cascading through the area over 0.65 seconds to deal magic damage to enemies within.",
         descriptionHTML:
@@ -310,6 +312,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After 0.75 seconds, the rift violently collapses, dealing magic damage to enemies within and granting  sight of the surrounding area for 0.25 seconds.',
         descriptionHTML:
@@ -347,6 +350,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "Vel'Koz periodically stocks a Void Rift charge, up to a maximum of 2.",
         descriptionHTML:
@@ -406,7 +410,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Tectonic Disruption.png',
+        icon: '/wiki/images/Tectonic_Disruption.png',
         description:
           "Active: Vel'Koz hurls a disruptive anomaly that lands to the target location after 0.75 seconds, dealing magic damage to enemies hit and  knocking them up and  stunning them for 0.75 seconds, as well as granting  sight of the area briefly.",
         descriptionHTML:
@@ -444,6 +448,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If Tectonic Disruption is cast in close proximity of Vel'Koz, the anomaly will also slightly  knock back enemies hit in the direction of the cast.",
         descriptionHTML:
@@ -500,12 +505,15 @@ export default {
           '<span class="template_sbc"><b>Passive - Researched:</b></span> Applying 3 <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Vel\'Koz" data-ability="Organic Deconstruction" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Vel%27Koz/LoL#Organic_Deconstruction" title="Deconstruction"><img alt="Deconstruction" src="/wiki/images/Vel%27Koz_Organic_Deconstruction.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Vel%27Koz/LoL#Organic_Deconstruction" title="Vel\'Koz/LoL"><i>Deconstruction</i></a></span></span> stacks to an enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Champion"><a href="/wiki/Champion" title="Champion"><img alt="Champion icon.png" src="/wiki/images/Champion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Champion" title="Champion">champion</a></span> marks them as <i>Researched</i> for 7 seconds, refreshing on basic attacks and ability hits against them.',
         descriptionRatios: [
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Passive - Researched:',
-            raw: ' Applying 3  Deconstruction stacks to an enemy  champion marks them as Researched for 7 seconds, refreshing on basic attacks and ability hits against them.',
-            increasedStat: 'kindredMarks',
+            raw: 'Applying 3  Deconstruction stacks to an enemy  champion marks them as Researched for 7 seconds, refreshing on basic attacks and ability hits against them.',
+            min: 0,
+            max: 10,
+            description:
+              'Applying 3  Deconstruction stacks to an enemy  champion marks them as Researched for 7 seconds, refreshing on basic attacks and ability hits against them.',
             values: 3,
-            units: '',
+            units: 'kindredMarks',
             unitsText:
               '3  Deconstruction stacks to an enemy  champion marks them as Researched for 7 seconds, refreshing on basic attacks and ability hits against them.',
             pre: 'Applying 3  Deconstruction stacks to an enemy  champion marks them as Researched for 7 seconds, refreshing on basic attacks and ability hits against them.',
@@ -515,7 +523,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Lifeform Disintegration Ray.png',
+        icon: '/wiki/images/Lifeform_Disintegration_Ray.png',
         description:
           "Active: After a 0.2-second delay, Vel'Koz  channels for up to 2.6 seconds to project an energy beam, during which he can steer the beam in the target direction. Life Form Disintegration Ray can be recast after 1 second during the channel, and does so automatically after the duration.",
         descriptionHTML:
@@ -537,6 +545,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'The beam deals magic damage to enemies hit every 0.2 seconds, and  slows them by 20%, lingering for 1 second.  Deconstruction is applied every 0.7 seconds to enemies hit.  Researched enemies take true damage instead.',
         descriptionHTML:
@@ -574,6 +583,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: "Recast: Vel'Koz ends Life Form Disintegration Ray.",
         descriptionHTML:
           '<span class="template_sbc"><b>Recast:</b></span> <b>Vel\'Koz</b> ends <i>Life Form Disintegration Ray</i>.',

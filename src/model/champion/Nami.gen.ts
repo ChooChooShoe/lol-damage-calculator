@@ -22,7 +22,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Surging Tides.png',
+        icon: '/wiki/images/Surging_Tides.png',
         description:
           "Innate: Nami's abilities grant  90 (+ 20% AP) bonus movement speed to allied  champions hit, decaying over 1.5 seconds. The bonus is「 doubled 」「 increased to 180 (+ 40% AP) 」from  Tidal Wave.",
         descriptionHTML:
@@ -31,7 +31,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Innate:',
-            raw: " Nami's abilities grant  90 (+ 20% AP) bonus movement speed to allied  champions hit, decaying over 1.5 seconds",
+            raw: "Nami's abilities grant  90 (+ 20% AP) bonus movement speed to allied  champions hit, decaying over 1.5 seconds",
             values: 9,
             user: 'none',
             units: '',
@@ -107,7 +107,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Aqua Prison.png',
+        icon: '/wiki/images/Aqua_Prison.png',
         description:
           'Active: Nami launches a bubble at the target location that lands after 0.726 seconds, dealing magic damage to enemies hit and  suspending them for 1.5 seconds, during which they are  revealed.',
         descriptionHTML:
@@ -145,6 +145,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Allied champions are granted  Surging Tides in a slightly larger area.',
         descriptionHTML:
@@ -191,7 +192,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Ebb and Flow.png',
+        icon: '/wiki/images/Ebb_and_Flow.png',
         description:
           'Active: Nami unleashes a stream of water onto the target champion or herself, which then bounces to nearby unaffected champions up to twice, alternating between enemies and allies and Nami.',
         descriptionHTML:
@@ -201,6 +202,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Ebb and Flow  heals allies and deals magic damage to enemies, with each bounce modifying the effectiveness of the next by -15% (+ 7.5% per 100 AP).',
         descriptionHTML:
@@ -322,7 +324,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Tidecaller's Blessing.png",
+        icon: "/wiki/images/Tidecaller's_Blessing.png",
         description:
           "Active: Nami blesses herself or the target allied champion for 6 seconds, empowering the target's next 3 basic attacks or abilities to each deal bonus magic damage and  slow their target for 1 second.",
         descriptionHTML:
@@ -331,7 +333,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: " Nami blesses herself or the target allied champion for 6 seconds, empowering the target's next 3 basic attacks or abilities to each deal bonus magic damage and  slow their target for 1 second.",
+            raw: "Nami blesses herself or the target allied champion for 6 seconds, empowering the target's next 3 basic attacks or abilities to each deal bonus magic damage and  slow their target for 1 second.",
             damagetype: 'Magic',
             values: 6,
             user: 'target',
@@ -400,6 +402,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Empowered abilities that apply  area damage only deal 33% − 66% (based on level) of the bonus damage to non-champions.',
         descriptionHTML:
@@ -462,7 +465,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Tidal Wave.png',
+        icon: '/wiki/images/Tidal_Wave.png',
         description:
           'Active: Nami surges a tidal wave in the target direction, granting  sight around its trajectory as it travels, dealing magic damage to enemies hit,  knocking them up for 0.5 seconds, and  slowing them for 2 − 4 (based on distance traveled) seconds.',
         descriptionHTML:
@@ -471,7 +474,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Nami surges a tidal wave in the target direction, granting  sight around its trajectory as it travels, dealing magic damage to enemies hit,  knocking them up for 0.5 seconds, and  slowing them for 2 − 4 (based on distance traveled) seconds.',
+            raw: 'Nami surges a tidal wave in the target direction, granting  sight around its trajectory as it travels, dealing magic damage to enemies hit,  knocking them up for 0.5 seconds, and  slowing them for 2 − 4 (based on distance traveled) seconds.',
             values: [0, 4],
             basedOn: 'distance traveled',
             user: 'none',

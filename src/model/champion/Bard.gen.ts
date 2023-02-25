@@ -24,7 +24,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Traveler's Call.png",
+        icon: "/wiki/images/Traveler's_Call.png",
         description:
           "Innate - Ancient Chimes: Bard's presence causes sacred  Chimes to appear at random locations on the map, lingering for up to 10 minutes. Collecting a Chime grants Bard  24% bonus movement speed out of combat for 7 seconds, stacking up to 5 times, with every other Chime collected beyond the first granting an additional 14% bonus movement speed, up to a total of 80% bonus movement speed,  20 + (1 per minute after 5 minutes) experience, and  12% maximum mana. Bard empowers his Meeps each time he collects 5 Chimes.",
         descriptionHTML:
@@ -33,7 +33,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Innate - Ancient Chimes:',
-            raw: " Bard's presence causes sacred  Chimes to appear at random locations on the map, lingering for up to 10 minutes",
+            raw: "Bard's presence causes sacred  Chimes to appear at random locations on the map, lingering for up to 10 minutes",
             damagetype: 'None',
             values: 1,
             units: 'total_ap',
@@ -42,13 +42,16 @@ export default {
             pre: "Bard's presence causes sacred  Chimes to appear at random locations on the map, lingering for up to 10 minutes",
           },
           {
-            effectType: 'Gain',
+            effectType: 'Stacks',
             name: 'Line 2:',
             raw: 'Collecting a Chime grants Bard  24% bonus movement speed out of combat for 7 seconds, stacking up to 5 times, with every other Chime collected beyond the first granting an additional 14% bonus movement speed, up to a total of 80% bonus movement speed,  20 + (1 per minute after 5 minutes) experience, and  12% maximum mana',
-            increasedStat: 'total_mana',
+            min: 0,
+            max: 5,
+            description:
+              'Collecting a Chime grants Bard  24% bonus movement speed out of combat for 7 seconds, stacking up to 5 times, with every other Chime collected beyond the first granting an additional 14% bonus movement speed, up to a total of 80% bonus movement speed,  20 + (1 per minute after 5 minutes) experience, and  12% maximum mana',
             values: 2,
             valuesIsPercent: true,
-            units: '',
+            units: 'total_mana',
             unitsText: 'experience, and  12% maximum mana',
             pre: 'Collecting a Chime grants Bard  24% bonus movement speed out of combat for 7 seconds, stacking up to 5 times, with every other Chime collected beyond the first granting an additional 14% bonus movement speed, up to a total of 80% bonus movement speed,  20 +',
             post: 'experience, and  12% maximum mana',
@@ -77,7 +80,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: "/wiki/images/Traveler's Call 2.png",
+        icon: "/wiki/images/Traveler's_Call_2.png",
         description:
           "Innate - Meeps: Bard's presence attracts Meeps, which are small spirits that come to his side. While he has Meeps, his basic attacks are empowered to each consume a Meep on-attack to deal 35 (+ 14 per 5 Chimes collected) (+ 30% AP) bonus magic damage.\nAt 5 Chimes, Meeps  slow damaged enemies by 25% − 75% (based on number of Chimes) for 1 second.\nAt 15 Chimes, Meeps deal the damage to enemies within 150 units of the primary target as well as those in a cone behind them.\nAt 35 Chimes, the cone's radius increases.",
         descriptionHTML:
@@ -118,6 +121,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Meeps spawn every 8 − 4 (based on number of Chimes) seconds and Bard can have up to 1 − 9 (based on number of Chimes) of them at a time.',
         descriptionHTML:
@@ -188,7 +192,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Bard fires an energy bolt in the target direction that deals magic damage to the first enemy hit and  slows them by 60% for a duration.',
+            raw: 'Bard fires an energy bolt in the target direction that deals magic damage to the first enemy hit and  slows them by 60% for a duration.',
             damagetype: 'Magic',
             values: 6,
             valuesIsPercent: true,
@@ -247,6 +251,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'After Cosmic Binding hits an enemy, the bolt continues behind them for 300 units. If the bolt hits terrain or a second enemy, it  stuns both targets for the same duration, dealing the same damage to the secondary target.',
         descriptionHTML:
@@ -304,7 +309,7 @@ export default {
     ],
     description: [
       {
-        icon: "/wiki/images/Caretaker's Shrine.png",
+        icon: "/wiki/images/Caretaker's_Shrine.png",
         description:
           'Active: Bard conjures a shrine at the target location that gathers power over 10 seconds, granting  sight of its surroundings for 1.8 seconds. Shrines last until they are consumed by champions moving over them. Up to 3 shrines may be active at a time.',
         descriptionHTML:
@@ -313,7 +318,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Active:',
-            raw: ' Bard conjures a shrine at the target location that gathers power over 10 seconds, granting  sight of its surroundings for 1.8 seconds',
+            raw: 'Bard conjures a shrine at the target location that gathers power over 10 seconds, granting  sight of its surroundings for 1.8 seconds',
             values: 1,
             user: 'none',
             units: '',
@@ -336,6 +341,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           "If the champion was an ally or Bard himself, they are  healed for an amount based on the shrine's power and gain  30% bonus movement speed that decays over 1.5 seconds.",
         descriptionHTML:
@@ -423,7 +429,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Magical Journey.png',
+        icon: '/wiki/images/Magical_Journey.png',
         description:
           'Active: Bard opens a one-way magical corridor through a piece of terrain in the target direction for 10 seconds.',
         descriptionHTML:
@@ -432,7 +438,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Bard opens a one-way magical corridor through a piece of terrain in the target direction for 10 seconds.',
+            raw: 'Bard opens a one-way magical corridor through a piece of terrain in the target direction for 10 seconds.',
             damagetype: 'Magic',
             values: 1,
             user: 'none',
@@ -446,6 +452,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A champion can  pass through the corridor by selecting it, becoming  revealed during the travel. Bard and allies travel through the portal at 33% increased speed.',
         descriptionHTML:
@@ -468,6 +475,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'A nearby valid piece of terrain is required to cast this ability. Magical Journey cannot be taken while  immobilized or  grounded.',
         descriptionHTML:
@@ -510,7 +518,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Tempered Fate.png',
+        icon: '/wiki/images/Tempered_Fate.png',
         description:
           'Active: Bard sends magical energy arcing to the target location, granting  sight of the area during travel. Upon impact, it puts all units within into  stasis for 2.5 seconds, as well as  stunning all enemy  champions,  minions, and  turrets struck for the same duration. Enemies hit are  revealed for the duration.',
         descriptionHTML:
@@ -532,6 +540,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Epic  monsters and  turrets are affected by Tempered Fate despite being  immune to crowd control.',
         descriptionHTML:

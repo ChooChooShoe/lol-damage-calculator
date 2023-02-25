@@ -26,7 +26,7 @@ export default {
     ],
     description: [
       {
-        icon: '/wiki/images/Umbra Blades.png',
+        icon: '/wiki/images/Umbra_Blades.png',
         description:
           "Innate: Periodically, Nocturne empowers his next basic attack to slash in a circle, dealing 120% AD physical damage to the target and nearby enemies and  healing himself for 13 − 30 (based on level) (+ 30% AP) per enemy hit. Against  minions, Umbra Blade's damage to secondary targets and healing are reduced by 50% and it applies  on-hit effects(bug) to all targets at 100% effectiveness.",
         descriptionHTML:
@@ -35,7 +35,7 @@ export default {
           {
             effectType: 'Heal',
             name: 'Innate:',
-            raw: ' Periodically, Nocturne empowers his next basic attack to slash in a circle, dealing 120% AD physical damage to the target and nearby enemies and  healing himself for 13 − 30 (based on level) (+ 30% AP) per enemy hit',
+            raw: 'Periodically, Nocturne empowers his next basic attack to slash in a circle, dealing 120% AD physical damage to the target and nearby enemies and  healing himself for 13 − 30 (based on level) (+ 30% AP) per enemy hit',
             healType: 'PhysicalVamp',
             values: [
               13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28,
@@ -85,6 +85,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Umbra Blades can  critically strike against the primary target, modifying the physical damage dealt to「 (192.5% +  38.5%) AD. 」「 110% of the  critical damage of his basic attacks. 」',
         descriptionHTML:
@@ -117,7 +118,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Steel Blades.png',
+        icon: '/wiki/images/Steel_Blades.png',
         description:
           "Basic attacks reduce Umbra Blades'   cooldown by 1 second, increased to 3 against enemy  champions and  monsters.",
         descriptionHTML:
@@ -228,6 +229,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'While on the Dusk Trail, Nocturne is  ghosted and gains  bonus attack damage and  bonus total movement speed.',
         descriptionHTML:
@@ -331,7 +333,7 @@ export default {
         ],
       },
       {
-        icon: '/wiki/images/Shroud of Darkness.png',
+        icon: '/wiki/images/Shroud_of_Darkness.png',
         description:
           "Active: Nocturne gains a  spell shield for 1.5 seconds. Upon successfully blocking a hostile effect, Shroud of Darkness' bonus attack speed is doubled for 5 seconds.",
         descriptionHTML:
@@ -340,7 +342,7 @@ export default {
           {
             effectType: 'Shield',
             name: 'Active:',
-            raw: ' Nocturne gains a  spell shield for 1.5 seconds',
+            raw: 'Nocturne gains a  spell shield for 1.5 seconds',
             damagetype: 'None',
             shieldType: 'SelfShield',
             values: 1,
@@ -408,7 +410,7 @@ export default {
           {
             effectType: 'Gain',
             name: 'Passive:',
-            raw: ' Nocturne gains  90% bonus movement speed while facing nearby  feared targets.',
+            raw: 'Nocturne gains  90% bonus movement speed while facing nearby  feared targets.',
             values: 9,
             valuesIsPercent: true,
             user: 'none',
@@ -422,7 +424,7 @@ export default {
         levelingRatios: [],
       },
       {
-        icon: '/wiki/images/Unspeakable Horror.png',
+        icon: '/wiki/images/Unspeakable_Horror.png',
         description:
           'Active: Nocturne torments the target, forming a  tether between himself and the target for 2 seconds, during which the target takes magic damage every 0.5 seconds over the duration.',
         descriptionHTML:
@@ -431,7 +433,7 @@ export default {
           {
             effectType: 'Damage',
             name: 'Active:',
-            raw: ' Nocturne torments the target, forming a  tether between himself and the target for 2 seconds, during which the target takes magic damage every 0.5 seconds over the duration.',
+            raw: 'Nocturne torments the target, forming a  tether between himself and the target for 2 seconds, during which the target takes magic damage every 0.5 seconds over the duration.',
             damagetype: 'Magic',
             values: 2,
             user: 'none',
@@ -473,6 +475,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'If the tether is not broken by the end of its duration, the target is  feared for a duration while being  slowed by 90%.',
         descriptionHTML:
@@ -565,7 +568,7 @@ export default {
           {
             effectType: 'Unique',
             name: 'Active:',
-            raw: ' Nocturne terrorizes all enemy champions,  nearsighting them for 6 seconds',
+            raw: 'Nocturne terrorizes all enemy champions,  nearsighting them for 6 seconds',
             values: 6,
             user: 'none',
             units: '',
@@ -578,6 +581,7 @@ export default {
         levelingRatios: [],
       },
       {
+        icon: '/wiki/images/undefined',
         description:
           'Recast: Nocturne  dashes with  displacement immunity to the target enemy champion, dealing physical damage upon arrival.',
         descriptionHTML:
@@ -615,6 +619,7 @@ export default {
         ],
       },
       {
+        icon: '/wiki/images/undefined',
         description: 'Nocturne can cast any of his abilities during the dash.',
         descriptionHTML:
           '<i><b>Nocturne</b> can cast any of his <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> during the dash.</i>',
