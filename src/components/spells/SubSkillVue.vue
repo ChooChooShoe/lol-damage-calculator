@@ -1,12 +1,20 @@
 <template>
   <template v-if="nonLeveling">
-    <SpellImage :iconPath="skill.icon"></SpellImage>
-    <p
-      v-html="skill.descriptionHTML"
-      class="subskill__desciption shortmode"
-    ></p>
+    <SpellImage :iconPath="skill.icon" class="subskill__img"></SpellImage>
+    <p v-html="skill.descriptionHTML" class="subskill__desciption"></p>
+    <div class="subskill__effects">
+      <SpellEffects
+        v-for="(value, leveling_idx) in skill.descriptionRatios"
+        :custom="false"
+        :key="leveling_idx"
+        :pkey="`${idx}:d${leveling_idx + 1})`"
+        :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+        :effect="value"
+        :effectindex="leveling_idx"
+      ></SpellEffects>
+    </div>
   </template>
-  <template v-else-if="!subSkills?.locked">
+  <template v-else-if="!skill.locked">
     <div class="subskill__img ttam__toggle">
       <SpellImage :iconPath="skill.icon"></SpellImage>
       <label
@@ -26,12 +34,21 @@
     ></p>
     <div class="subskill__effects" v-if="active">
       <SpellEffects
+        v-for="(value, leveling_idx) in skill.descriptionRatios || []"
+        :custom="false"
+        :key="leveling_idx"
+        :pkey="`${idx}:d${leveling_idx + 1})`"
+        :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+        :effect="value"
+        :effectindex="leveling_idx"
+      ></SpellEffects>
+      <SpellEffects
         v-for="(value, leveling_idx) in skill.leveling"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}:${leveling_idx})`"
+        :pkey="`${idx}:e${leveling_idx + 1})`"
         :details="value"
-        :effect="subSkills?.leveling[leveling_idx]"
+        :effect="skill.levelingRatios[leveling_idx]"
         :effectindex="leveling_idx"
       ></SpellEffects>
     </div>
@@ -47,12 +64,21 @@
     ></p>
     <div class="subskill__effects">
       <SpellEffects
+        v-for="(value, leveling_idx) in skill.descriptionRatios || []"
+        :custom="false"
+        :key="leveling_idx"
+        :pkey="`${idx}:d${leveling_idx + 1})`"
+        :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+        :effect="value"
+        :effectindex="leveling_idx"
+      ></SpellEffects>
+      <SpellEffects
         v-for="(value, leveling_idx) in skill.leveling"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}:${leveling_idx})`"
+        :pkey="`${idx}:e${leveling_idx})`"
         :details="value"
-        :effect="subSkills.leveling[leveling_idx]"
+        :effect="undefined"
         :effectindex="leveling_idx"
       ></SpellEffects>
     </div>
@@ -60,20 +86,16 @@
 </template>
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import type { SkillDesciptionData, SubSkill } from '@/api/DataTypes';
+import type { SkillDesciptionData } from '@/api/DataTypes';
 import SpellEffects from './SpellEffects.vue';
 import SpellImage from '@/timeline/SpellImage.vue';
 
 const props = defineProps<{
   skill: SkillDesciptionData;
-  subSkills: SubSkill | undefined;
   idx: string;
 }>();
 
-const nonLeveling = computed(
-  () =>
-    !props.skill || !props.skill.leveling || props.skill.leveling.length === 0
-);
+const nonLeveling = computed(() => props.skill.leveling.length === 0);
 const active = ref(
   props.skill && props.skill.leveling && props.skill.leveling.length > 0
 );

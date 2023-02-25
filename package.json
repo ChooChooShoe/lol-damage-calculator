@@ -12,10 +12,10 @@
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --root src/",
     "deploy": "deploy.sh",
-    "build_champions": "echo export type ChampionName = string; > ./src/model/ChampionListData.ts && tsc --build ./dev && node --es-module-specifier-resolution=node ./build/dev/build_champions.js > ./dev/build_champions.log",
+    "build_champions": "echo export type ChampionName = string; > ./src/model/ChampionListData.ts && echo export const ChampionSkillsData = {};export type ChampionSkillsDataType = any; > ./src/model/ChampionSkillsData.ts && tsc --build ./dev && node --es-module-specifier-resolution=node ./build/dev/build_champions.js > ./dev/build_champions.log",
     "build_items": "tsc --build ./dev && node --es-module-specifier-resolution=node ./build/dev/build_items.js > ./dev/build_items.log",
     "build_perks": "tsc --build ./dev && node --es-module-specifier-resolution=node ./build/dev/build_perks.js > ./dev/build_perks.log",
-    "gen_per_champ_skill_effects": "tsc --build ./dev && node --es-module-specifier-resolution=node ./build/dev/gen_per_champ_skill_effects.js > ./dev/gen_per_champ_skill_effects.log"
+    "gen_per_champ_skill_effects": "tsc --build ./dev && node --es-module-specifier-resolution=node ./build/dev/gen_per_champ_skill_effects.js > ./dev/gen_per_champ_skill_effects.log && npm run lint"
   },
   "dependencies": {
     "pinia": "^2.0.28",

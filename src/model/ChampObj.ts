@@ -1,10 +1,5 @@
 import type { BaseStatsObj, ChampObjStats } from '@/api/ChampObjStats';
-import type {
-  SkillData,
-  SkillKey,
-  SkillModel,
-  SubSkill,
-} from '@/api/DataTypes';
+import type { SkillData } from '@/api/DataTypes';
 import { PerkSelections } from '../runes/perks';
 
 function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
@@ -339,6 +334,7 @@ export class ChampObjModel implements ChampObjStats {
   kindredMarks = 0;
   feastStacks = 0;
   siphoningStrikeStacks = 0;
+  genericStacks = 0;
 
   // Fizz, Leona, Guardian's Horn
   flatDamageReductionPreMitigation = 0;
@@ -465,21 +461,11 @@ export interface Image {
 // }
 
 import { ChampionListData, type ChampionName } from './ChampionListData';
-import { ChampionSkillsData } from './ChampionSkillsData';
-import { ChampionSkillsModel } from './ChampionSkillsModel';
 
 export function getChampListEntry(champ: ChampionName): ChampListEntry {
   return ChampionListData[champ];
 }
-export { ChampionListData, ChampionSkillsData, type ChampionName };
-
-export function getSkillModel(
-  champ: ChampionName,
-  skill_name: string
-): SkillModel {
-  const skillmodels: { [s in string]: SkillModel } = ChampionSkillsModel[champ];
-  return skillmodels[skill_name];
-}
+export { ChampionListData, type ChampionName };
 
 // prettier-ignore
 export type Resource = 'Blood Well' | 'Mana' | 'Energy' | 'None' | 'Health' | 'Rage' | 'Fury' | 'Grit' | 'Courage' | 'Shield' | 'Ferocity' | 'Heat' | 'Bloodthirst' | 'Flow' | 'Soul Unbound';

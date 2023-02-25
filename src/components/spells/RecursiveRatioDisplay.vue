@@ -42,6 +42,7 @@ const dispPre = computed(() => {
   if (props.display === 'value') {
     if (props.val.valuesIsPercent) str += '%';
     if (props.val.valuesIsBasedOnLevel) str += ' (based on level)';
+    if (props.val.basedOn) str += ` (based on ${props.val.basedOn})`;
   }
   return str;
 });

@@ -156,7 +156,7 @@ import type {
   DamageEffect,
   DamageType,
   EffectType,
-  SkillModel,
+  SkillData,
 } from '@/api/DataTypes';
 import EffectTypeField from '@/components/effects/EffectTypeField.vue';
 import EditBtn from '@/components/simple/EditBtn.vue';
@@ -190,7 +190,7 @@ const damage_type = ref<DamageType>('Magic');
 const effectType = ref<EffectType>('Damage');
 const damageSource = new DamageSource('Magic', 8);
 
-const skillbase = inject<SkillModel>('skillbase');
+const skillbase = inject<SkillData>('skillbase');
 
 watchEffect(() => {
   // let newRatios = reactive({});

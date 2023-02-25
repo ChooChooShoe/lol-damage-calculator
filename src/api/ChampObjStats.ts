@@ -89,6 +89,7 @@ export interface ChampObjStats {
   kindredMarks: number;
   feastStacks: number;
   siphoningStrikeStacks: number;
+  genericStacks: number;
 
   // Fizz, Leona, Guardian's Horn
   flatDamageReductionPreMitigation: number;

@@ -165,11 +165,14 @@ import { Zyra } from './champion/Zyra';
 
 import type { ChampionName } from './ChampObj';
 import type { SkillModel } from '@/api/DataTypes';
+
 export type ChampionSkillsModelType = {
-  [key in ChampionName]: {
-    [skillName in string]: SkillModel;
-  };
+  [key in ChampionName]: ChampionListSkills;
 };
+export type ChampionListSkills = {
+  [skillName in string]: SkillModel;
+};
+
 export const ChampionSkillsModel = {
   Aatrox: Aatrox,
   Ahri: Ahri,

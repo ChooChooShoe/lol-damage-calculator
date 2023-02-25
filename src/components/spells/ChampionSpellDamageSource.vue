@@ -14,7 +14,9 @@
       >
         <input
           v-for="(_, index) in Array(spell.maxrank || 5)"
-          :class="{ success: rankindex === index }"
+          :style="{
+            backgroundColor: rankindex === index ? 'var(--primary-color)' : '',
+          }"
           :key="index"
           @click="rankindex = index"
           type="button"
@@ -35,19 +37,15 @@
         ></p>
       </div> -->
 
-      <hr />
+      <hr style="clear: both" />
 
-      <SubSkillList
-        :subskills="spell.description"
-        :skill-model="skillModel"
-        :idx="idx"
-      />
+      <SubSkillList :subskills="spell.description" :idx="idx" />
       <div class="subskills__grid">
         <SubSkillVue
           v-for="(sub_skill, index) in customEffects"
           :key="`${idx}_${index}`"
           :skill="sub_skill"
-          :sub-skills="skillModel.effects[index]"
+          :sub-skills="undefined"
           :idx="`Custom: ${idx}_${index}`"
         ></SubSkillVue>
       </div>
@@ -75,15 +73,15 @@
     <TabPanel header="Settings">
       <div class="buttons">
         <label class="switch button">
-          <input type="checkbox" v-model="showDamage" />
+          <input type="checkbox" />
           <span class="switch--text">Show Offensive</span>
         </label>
         <label class="switch button">
-          <input type="checkbox" v-model="showDefence" />
+          <input type="checkbox" />
           <span class="switch--text">Show Defensive</span>
         </label>
         <label class="switch button">
-          <input type="checkbox" v-model="showExtra" />
+          <input type="checkbox" />
           <span class="switch--text">Show Extras</span>
         </label>
       </div>
@@ -105,16 +103,16 @@ import {
   reactive,
   type Ref,
 } from 'vue';
-import SpellImage from '../../timeline/SpellImage.vue';
+import SpellImage from '@/timeline/SpellImage.vue';
 import SpellEffects from './SpellEffects.vue';
 // import SimpleTooltip from ".././SimpleTooltip.vue";
 import SpellNotes from '.././SpellNotes.vue';
 import SpellSpan from '.././SpellSpan.vue';
-import { spriteBaseUri } from '../../model/league_data';
+import { spriteBaseUri } from '@/model/league_data';
 import DropdownSelect from '../simple/DropdownSelect.vue';
-import type { SkillData, SkillModel } from '../../api/DataTypes';
+import type { SkillModel } from '@/api/DataTypes';
 import SubSkillList from './SubSkillList.vue';
-import { getSkillModel, type ChampionName } from '@/model/ChampObj';
+import type { ChampionName } from '@/model/ChampObj';
 import AbilityInfo from '@/wiki/AbilityInfo.vue';
 import SubSkillVue from './SubSkillVue.vue';
 
@@ -122,14 +120,13 @@ interface ReactSkill {
   rankindex: Ref<number>;
 }
 const props = defineProps<{
-  spell: SkillData;
+  spell: SkillModel;
   champion: ChampionName;
   idx: string;
 }>();
 
 const activeTab = ref(0);
 
-const skillModel = getSkillModel(props.champion, props.spell.name);
 const rankindex = ref(0);
 const customEffects = ref([]);
 const lastEffectIndex = ref(0);

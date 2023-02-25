@@ -34,7 +34,7 @@ const keyword_to_basic_stat: Dictionary<Stat> = {
   mark: 'kindredMarks',
   'siphoning strike': 'siphoningStrikeStacks',
   feast: 'feastStacks',
-  stack: 'feastStacks',
+  stack: 'genericStacks',
 };
 export const keyword_to_player_stat = {
   ap: 'ap',
@@ -113,14 +113,14 @@ export function ratios_from_text(full_text: string): SubRatio {
 }
 
 export function spellEffectFromDescription(
-  name: string,
-  desc: string
+  lineNumber: string,
+  descTextLine: string
 ): RootRatio {
-  const nameSplit = desc.split(/:(.*)/s);
-  const betterName = nameSplit[1] ? name : nameSplit[0] + ':';
-  desc = nameSplit[1] || nameSplit[0];
+  const nameSplit = descTextLine.split(/: (.*)/s);
+  const betterName = nameSplit[1] ? nameSplit[0] + ':' : lineNumber;
+  descTextLine = nameSplit[1] || nameSplit[0];
 
-  return spellEffectFromStrings(name, desc, desc);
+  return spellEffectFromStrings(betterName, descTextLine, descTextLine);
 }
 export function spellEffectFromStrings(
   name: string,
@@ -152,7 +152,8 @@ export function spellEffectFromStrings(
     target.healType = matchKeyword(keywords, validHealTypes) || 'SelfHeal';
   } else if (target.effectType === 'Stacks') {
     target.min = 0;
-    target.max = 10;
+    const matchedMax = keywords.match(/stacking up to ([0-9]+) times/);
+    target.max = matchedMax ? Number(matchedMax[1]) || 10 : 10;
     target.description = raw;
   }
   // console.log(`[DEBUG] spellEffectFromStrings => ${name}: ${raw}`)
@@ -177,7 +178,7 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
       if (sub.unitsText?.startsWith('based on')) {
         // set flag, do not add as sub_ratio
         // Ex. 50 − 305 (based on level) (+ 80% bonus AD)
-        basedOn = sub.unitsText.slice(8);
+        basedOn = sub.unitsText.slice(9);
         // is_based_on_level = true;
       } else {
         sub_ratios.push(sub);
@@ -296,11 +297,11 @@ function level_to_ratio(fullText: string): {
 const validEffectTypes: Dictionary<EffectType> = {
   heal: 'Heal',
   shield: 'Shield',
+  stack: 'Stacks',
   gain: 'Gain',
   grant: 'Gain',
-  unique: 'Unique',
-  stack: 'Stacks',
   damage: 'Damage',
+  unique: 'Unique',
   magic: 'Damage',
   physical: 'Damage',
   ad: 'Damage',

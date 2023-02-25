@@ -1,7 +1,7 @@
-import type { SkillModel } from '@/api/DataTypes';
+import type { SkillData } from '@/api/DataTypes';
 import type { ChampionName } from '../ChampionListData';
-import { ChampionSkillsData } from '../ChampionSkillsData';
-export const name: ChampionName = 'Kled & Skaarl';
-export const skillsData = ChampionSkillsData['Kled & Skaarl'];
 
-export const KledSkaarl = {} satisfies { [skillName in string]: SkillModel };
+export const name: ChampionName = 'Kled & Skaarl';
+
+import KledSkaarl from './Kled & Skaarl.gen';
+export { KledSkaarl };

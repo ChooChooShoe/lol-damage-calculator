@@ -1,7 +1,7 @@
-import type { SkillModel } from '@/api/DataTypes';
+import type { SkillData } from '@/api/DataTypes';
 import type { ChampionName } from '../ChampionListData';
-import { ChampionSkillsData } from '../ChampionSkillsData';
-export const name: ChampionName = 'Mega Gnar';
-export const skillsData = ChampionSkillsData['Mega Gnar'];
 
-export const MegaGnar = {} satisfies { [skillName in string]: SkillModel };
+export const name: ChampionName = 'Mega Gnar';
+
+import MegaGnar from './Mega Gnar.gen';
+export { MegaGnar };

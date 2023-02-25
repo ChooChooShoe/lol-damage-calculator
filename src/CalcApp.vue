@@ -38,7 +38,7 @@ import AADamageSource from './components/spells/AADamageSource.vue';
 import ChampionSpellDamageSource from './components/spells/ChampionSpellDamageSource.vue';
 import CustomDamageSource from './components/spells/CustomDamageSource.vue';
 
-import { ref, reactive, provide, watchEffect } from 'vue';
+import { ref, computed, provide, watchEffect } from 'vue';
 import {
   onBeforeRouteUpdate,
   useRouter,
@@ -46,17 +46,11 @@ import {
   type RouteLocationNormalizedLoaded,
 } from 'vue-router';
 
-import {
-  ChampionSkillsData,
-  getSkillModel,
-  validateName,
-  type ChampionName,
-} from './model/ChampObj';
-import type { ChampionListSkills, SubSkill } from './api/DataTypes';
+import { validateName, type ChampionName } from './model/ChampObj';
 import { player, target } from './global/state';
 import {
   ChampionSkillsModel,
-  type ChampionSkillsModelEntry,
+  type ChampionListSkills,
 } from './model/ChampionSkillsModel';
 
 provide('obj', player);
@@ -90,18 +84,7 @@ const n = validateNames(useRoute());
 player.champ = n.player;
 target.champ = n.target;
 
-// const activeChampionModel = computed(() => ChampionListSkills[player.champ as keyof typeof ChampionListSkills])
-const activeChampionModel = ref<ChampionListSkills>();
-
-watchEffect(async () => {
-  const champ = player.champ;
-  if (champ in ChampionSkillsModel) {
-    activeChampionModel.value = ChampionSkillsData[champ];
-    // activeChampionModel.value = ChampionSkillsModel[champ];
-  } else {
-    activeChampionModel.value = {};
-  }
-});
+const activeChampionModel = computed(() => ChampionSkillsModel[player.champ]);
 
 provide('player', player);
 provide('target', target);

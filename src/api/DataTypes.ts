@@ -32,9 +32,6 @@ export interface JsonObj {
 export interface DataDragonChamp {
   [s: string]: string | Image | JsonObj;
 }
-export interface ChampionListSkills {
-  [key: string]: SkillData;
-}
 export interface SkillModelOld {
   name: string;
   display_name: string;
@@ -80,15 +77,13 @@ type DeepReadonly<T> = {
     : T[P];
 };
 
-export interface SkillModel {
-  effects: SubSkill[];
-}
-
 export type SkillKey = 'I' | 'A' | 'Q' | 'W' | 'E' | 'R' | 'CTRL+2'; // skill
 export interface SubSkill {
   img?: string;
   description: string;
-  leveling: RootRatio[];
+  descriptionRatios: RootRatio[];
+  leveling: SkillLevelingData[];
+  levelingRatios: RootRatio[];
   hidden?: boolean;
   locked?: boolean;
 }
@@ -100,7 +95,7 @@ export const SpellshieldText = [
   'See Notes',
   'Missing',
 ];
-
+export interface SkillModel extends SkillData {}
 export interface SkillData {
   name: string; // Necessary: Used for identification.
   display_name?: string; // Name of the ability Only necessary if the value differs from Edge of Ixtal.
@@ -156,7 +151,11 @@ export type SkillDesciptionData = {
   icon?: string;
   description: string;
   descriptionHTML: string;
+  descriptionRatios: RootRatio[];
   leveling: SkillLevelingData[];
+  levelingRatios: RootRatio[];
+  hidden?: boolean;
+  locked?: boolean;
 };
 export type SkillLevelingData = {
   name: string;
@@ -170,7 +169,7 @@ export interface SubRatio {
   valuesRanged?: RatioValue;
   valuesIsPercent?: boolean;
   valuesIsBasedOnLevel?: boolean;
-  basedOn?: 'level' | 'critical strike chance';
+  basedOn?: string | 'level' | 'critical strike chance';
   user?: 'none' | 'player' | 'target';
   units: OptionalStat;
   unitsText?: string;

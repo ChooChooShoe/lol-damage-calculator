@@ -4,6 +4,7 @@ import type {
   SkillLevelingData,
   SkillDesciptionData,
   WikiChampionData,
+  RootRatio,
 } from '@/api/DataTypes';
 import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
@@ -14,6 +15,10 @@ import { fix_wiki_img } from './live_wiki_fetch';
 import { ChampionComplex } from './datadragon';
 import _ from 'lodash';
 import { test, mutateStats } from './WikiChampListFetch';
+import {
+  spellEffectFromDescription,
+  spellEffectFromStrings,
+} from './skill_ratios_parse';
 
 export type Version = string;
 export type Key = string;
@@ -149,7 +154,6 @@ export async function fetchTemplateChampionSkillData(
     fix_wiki_img(htmlElement);
     const key = htmlElement.dataset.name.replaceAll(/ /g, '_');
     map[key] = htmlElement;
-    6;
   }
   // Does not test for type just assumes that all the values there.
   return map;
@@ -293,14 +297,46 @@ export function toSkillData(
     const icon = iconEl?.innerHTML.trim() || undefined;
     const description = descriptionEl?.textContent?.trim() || '';
     const descriptionHTML = descriptionEl?.innerHTML.trim() || '';
+
     //if one is non-empty add to the array;
-    if (icon || description || descriptionHTML || leveling.length > 0)
+    if (icon || description || descriptionHTML || leveling.length > 0) {
+      const descgArr: RootRatio[] = [];
+      const levelingArr: RootRatio[] = [];
+
+      //Try to make leveling from text;
+      const descriptionText = description.split('. ');
+      for (const [index, descTextLine] of Object.entries(descriptionText)) {
+        const root_ratio = spellEffectFromDescription(
+          `Line ${Number(index) + 1}:`,
+          descTextLine
+        );
+        // Filter the empty ones. values is 0 and has no children.
+        if (root_ratio.values === 0) if (!root_ratio.children) continue;
+
+        descgArr.push(root_ratio);
+      }
+      // Make leveingObj from leveing text.
+      for (const l of leveling) {
+        const root_ratio = spellEffectFromStrings(
+          l.name,
+          l.name + l.values,
+          l.values
+        );
+        levelingArr.push(root_ratio);
+      }
+
       descObj.push({
-        icon,
+        icon:
+          icon === 'false' || icon === '' || icon === 'undefined'
+            ? undefined
+            : `/wiki/images/${icon?.replaceAll(/ /, '_')}`,
         description,
         descriptionHTML,
+        descriptionRatios: descgArr,
         leveling,
+        levelingRatios: levelingArr,
       });
+    }
   }
 
   const ss = htmlOrNone(skill.spellshield)?.toLocaleLowerCase();

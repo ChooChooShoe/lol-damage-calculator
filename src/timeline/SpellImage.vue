@@ -2,16 +2,17 @@
   <span class="spell-image" :class="size" :style="style"></span>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { cdn, v } from '@/api/version.json';
+import type { Image } from '@/api/DataTypes';
 
 import { computed } from 'vue';
 
-const props = defineProps({
-  iconPath: String,
-  image: Object,
-  size: String,
-});
+const props = defineProps<{
+  iconPath?: String;
+  image?: Image;
+  size?: String;
+}>();
 const style = computed(() => {
   if (props.image) {
     if (props.size === 'small')
@@ -26,7 +27,7 @@ const style = computed(() => {
   }
   if (props.iconPath)
     return `background: url('${props.iconPath}') 0px 0px; background-size:contain;`;
-  return `background: transparent; background-size:contain; height: 0;`;
+  return `background: red; background-size:contain; height: 0;`;
 });
 </script>
 

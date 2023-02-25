@@ -1,7 +1,7 @@
 import JSON5 from 'json5';
 import { SkillData, WikiChampionData } from '../src/api/DataTypes';
 import { DataDragon } from './datadragon';
-import { fetchAndSaveRealms, saveStringFile } from './fetch_utils';
+import { fetchAndSaveRealms, mkdir, saveStringFile } from './fetch_utils';
 import {
   fetch_Module_ChampionData,
   getSkillModelsForChamp,
@@ -23,7 +23,7 @@ async function main() {
   const ModuleChampionDataFile = await fetch_Module_ChampionData();
 
   const ChampionList: Record<string, WikiChampionData | null> = {};
-  const SkillList: Record<string, Record<string, SkillData> | null> = {};
+  const SkillList: Record<string, Record<string, SkillData>> = {};
   const promises: Array<Promise<void>> = [];
   // const ChampionModule = await fetch_mod_data();
   for (const [name, raw_data] of Object.entries(ModuleChampionDataFile)) {
@@ -31,7 +31,7 @@ async function main() {
 
     // To keep the order consistant.
     ChampionList[name] = null;
-    SkillList[name] = null;
+    SkillList[name] = {};
 
     const ddragonFull = dataDragon.findChampion(raw_data.apiname);
 
@@ -76,23 +76,52 @@ ${JSON5.stringify(ChampionList, {
 export default ChampionListData;\n`
   );
   //Save ChampionSkillsData.ts
-  saveStringFile(
-    './src/model/ChampionSkillsData.ts',
-
-    `import type { SkillData } from '@/api/DataTypes';
-import type { ChampionName } from './ChampionListData';
-export type ChampionSkillsDataType = {
-  [key in ChampionName]: {
-    [s in string]: SkillData & (key extends string ? { champion: key } : never);
-    };
-};
-
-export const ChampionSkillsData = 
-${JSON5.stringify(SkillList, { space: 2 })} satisfies ChampionSkillsDataType;
-
-export default ChampionSkillsData;
-\n`
-  );
+  saveGenModels(SkillList);
 
   console.log('Goodbye');
+}
+
+function saveGenModels(SkillList: Record<string, Record<string, SkillData>>) {
+  const index: string[] = [];
+  const indexExport: string[] = [];
+  for (const [champKey, skillObj] of Object.entries(SkillList)) {
+    const jsKey = champKey.replaceAll(/[ &'.]/g, '');
+    const skillText: string[] = [];
+    for (const [k, v] of Object.entries(skillObj)) {
+      skillText.push(
+        `"${k}": ${JSON5.stringify(v, {
+          space: 2,
+        })}`
+      );
+    }
+
+    mkdir('./src/model/champion/');
+    saveStringFile(
+      `./src/model/champion/${champKey}.gen.ts`,
+      `import type { SkillData } from '@/api/DataTypes';
+import type { ChampionName } from '../ChampionListData';
+export const name: ChampionName = "${champKey}";
+
+export default {${skillText.join(
+        ',\n'
+      )}} satisfies { [skillName in string]: SkillData };`
+    );
+    index.push(`import ${jsKey} from "./champion/${champKey}"`);
+    indexExport.push(`"${champKey}": ${jsKey},`);
+  }
+  index.push(`
+import type { ChampionName } from './ChampObj';
+import type { SkillModel } from '@/api/DataTypes';
+export type ChampionSkillsModelType = {
+  [key in ChampionName]: {
+    [skillName in string]: SkillModel;
+  };
+};`);
+  index.push(
+    `export const ChampionSkillsModel = {
+${indexExport.join('\n')}
+} satisfies ChampionSkillsModelType;`
+  );
+  //Save champion/index.ts
+  saveStringFile(`./src/model/ChampionSkillsModel.gen.ts`, index.join('\n'));
 }

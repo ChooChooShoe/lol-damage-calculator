@@ -177,14 +177,19 @@ function mutateDescriptionLine(
     const textLines = text.split('. ');
     console.log(`[INFO] Found line (${textLines.length}):`, text);
     for (const i in textLines) {
-      const ratio = spellEffectFromDescription(`Name ${i + 1}:`, textLines[i]);
+      const ratio = spellEffectFromDescription(
+        `Name ${Number(i) + 1}:`,
+        textLines[i]
+      );
       leveling.push(ratio);
     }
   }
 
   return {
     description: p.innerHTML.trim(),
-    leveling,
+    descriptionRatios: leveling,
+    leveling: [],
+    levelingRatios: [],
     locked: leveling !== undefined,
   };
 }

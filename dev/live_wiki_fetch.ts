@@ -308,7 +308,13 @@ class SkillObj implements SkillModelOld {
         );
         leveling.push(root_ratio);
       }
-      this.subskills.push({ img, description: descriptionHtml, leveling });
+      this.subskills.push({
+        img,
+        description: descriptionHtml,
+        descriptionRatios: [],
+        leveling: [],
+        levelingRatios: leveling,
+      });
     }
 
     // this.leveling = [...main_div.querySelectorAll('.skill_leveling')]
