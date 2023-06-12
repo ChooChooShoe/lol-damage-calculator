@@ -162,6 +162,12 @@ export class ChampObjModel implements ChampObjStats {
   set maximum_hp(v) {
     this.bonus_hp = v - this.base_hp;
   }
+  get total_hp() {
+    return this.base_hp + this.bonus_hp;
+  }
+  set total_hp(v) {
+    this.bonus_hp = v - this.base_hp;
+  }
   missing_hp = 0;
   get current_hp() {
     return this.maximum_hp - this.missing_hp;

@@ -10,10 +10,17 @@
       @click="$emit('update:level', n)"
     />
   </DropdownSelect>
+
+  <Slider
+    :modelValue="level"
+    @update:modelValue="$emit('update:level', level)"
+    class="w-14rem"
+  />
 </template>
 
 <script lang="ts">
 import DropdownSelect from './DropdownSelect.vue';
+import Slider from 'primevue/slider';
 export default {
   props: {
     level: Number,

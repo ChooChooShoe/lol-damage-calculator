@@ -1,6 +1,6 @@
 <template>
   <div class="main-full itembuilder">
-    <ChampionDiv value="player"></ChampionDiv>
+    <ChampionDiv value="player" mode="player"></ChampionDiv>
     <span class="itembuilder__title">Inventory</span>
     <span class="itembuilder__title">ShopItemInfo</span>
     <ItemInventory :inv="inventory1" @sellItem="sellItem"></ItemInventory>
@@ -55,13 +55,14 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue';
+import { provide, reactive, ref } from 'vue';
 
 import items from '@/api/items/items.json';
-import ChampionDiv from './components/ChampionStats.vue';
+import ChampionDiv from '@/components/ChampionDiv.vue';
 import ItemInventory from './components/ItemInventory.vue';
 import ShopItemInfo from './components/ShopItemInfo.vue';
 import Item from './components/Item.vue';
+import { player } from '@/global/state';
 
 // import { dv as displayVersion } from '../../../../src/api/version.json';
 const appVersion = '0.1.0';
@@ -76,6 +77,9 @@ const itemFilter = ref('SR,HA');
 const selectedItem = ref(1001);
 
 console.log('ItemBuilder setup');
+
+provide('obj', player);
+console.log('Providing obj (player) as', player);
 
 const itemCategories = {
   championitems: 'Champion exclusive items',

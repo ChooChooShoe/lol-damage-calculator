@@ -4,56 +4,53 @@ import type { Image } from '../src/api/DataTypes';
 import fetch from 'node-fetch';
 import type { Dictionary } from 'lodash';
 import { fetchWiki, moduleToJSON } from './LeagueWiki';
+import { CDragonItem, CommunityDragon } from './communitydragon';
+import { fetchAllWikiItems, WikiItem } from './WikiItem';
+import { DataDragon, Item as RiotItemEntry } from './datadragon';
 
 const USE_FIXED_REALMS = true;
 const ITEMS_TO_ITEM_ARRAYS = false;
 const ITEMS_MISSMATCH_TEST = false;
+
+const args = process.argv.slice(2);
+let spriteBaseUri = 'null';
+
 const DEBUG = true;
 
-console.log('Building data for items.json');
-let spriteBaseUri = 'null';
-main();
-async function main() {
-  const cd_url =
-    'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json';
-  console.log('Fetching (CommunityDragon):', cd_url);
-  const bodyCDragon = fetch(cd_url).then((response) => response.json());
-  const wikiBody = fetchWiki(
-    `https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`
-  ).then((x) => moduleToJSON<{ [s: string]: WikiItemEntry }>(x));
+main(args);
+async function main(args: string[]) {
+  console.log('Building data for items.json. Using Args:', args);
+  const realms = await fetchAndSaveRealms();
+  const dataDragon = new DataDragon({
+    version: realms.v,
+    lang: 'en_US',
+  });
+  const bodyCDragon = CommunityDragon.getAllItems();
+  const wikiBody = fetchAllWikiItems();
 
-  // const bodyCDragon = fs.readFile('./src/api/items/cdragonItems.json').then(x => JSON.parse(x.toString()));
-  // const wikiBody = fs.readFile('./src/api/items/wikiItems.json').then(x => JSON.parse(x.toString()));
-
-  let realms: { v: string; l: string; cdn: string };
-  if (USE_FIXED_REALMS)
-    realms = {
-      v: '12.11.1',
-      l: 'en_US',
-      cdn: 'https://ddragon.leagueoflegends.com/cdn',
-    };
-  else realms = await fetchAndSaveRealms();
+  if (DEBUG) {
+    await saveFile('./.debug/Module_ItemData_data.json', await wikiBody);
+    return;
+  }
 
   spriteBaseUri = `${realms.cdn}/${realms.v}/img/sprite/`;
-  const dd_url = `${realms.cdn}/${realms.v}/data/${realms.l}/item.json`;
-  console.log('Fetching (DataDragon): %s', dd_url);
-  const bodyDDragon = fetch(dd_url).then((response) => response.json());
-  // const bodyDDragon = fs.readFile('./src/api/items/riotJson.json').then(x => JSON.parse(x.toString()));
+  const bodyDDragon = dataDragon.getItemsData();
 
   const model = await onItemsJsonResponse(
-    (await bodyDDragon) as { data: { [x: string]: RiotItemEntry } },
-    (await bodyCDragon) as ArrayLike<CDragonItemEntry>,
+    await bodyDDragon,
+    await bodyCDragon,
     await wikiBody
   );
 
   await saveFile('./src/api/items/items.json', model);
+
   console.log('Goodbye');
 }
 async function onItemsJsonResponse(
-  riotJson: { data: { [x: string]: RiotItemEntry } },
-  cdragonItems: ArrayLike<CDragonItemEntry>,
-  wikiItems: { [s: string]: WikiItemEntry }
-) {
+  riotJson: Record<string, RiotItemEntry>,
+  cdragonItems: Array<CDragonItem>,
+  wikiItems: Record<string, WikiItem>
+): Promise<Dictionary<any>> {
   const riotItems = riotJson.data;
   console.log(
     'Length of riotItems',
@@ -77,11 +74,11 @@ async function onItemsJsonResponse(
   //         "22": false
   //     },
   // }
-  const cdragon_by_id: { [x: string]: CDragonItemEntry } = {};
+  const cdragon_by_id: { [x: string]: CDragonItem } = {};
   for (const value of Object.values(cdragonItems)) {
     cdragon_by_id[value.id] = value;
   }
-  const wiki_by_id: { [x: string]: WikiItemEntry } = {};
+  const wiki_by_id: { [x: string]: WikiItemEntryOLD } = {};
   for (const [key, value] of Object.entries(wikiItems)) {
     wiki_by_id[value.id || 'no_id_using_key_' + key] = value;
   }
@@ -204,7 +201,7 @@ async function onItemsJsonResponse(
   return allItems;
 }
 
-function takeRiftItem(a: CDragonItemEntry, b: RiotItemEntry, c: WikiItemEntry) {
+function takeRiftItem(a: CDragonItem, b: RiotItemEntry, c: WikiItem) {
   function check(key: string, key2?: string): number | any[] {
     if (key2) return check_val(`${key}" and "${key2}`, a[key], b[key2]);
     return check_val(key, a[key], b[key]);
@@ -424,120 +421,6 @@ function map_number_to_names(maps: any): (string | null)[] {
 //     "10": true,
 //     "12": true
 //   }
-interface RiotItemEntry {
-  name: string;
-  description: string;
-  colloq: string; //default ";"
-  plaintext: string; //default ";"
-  specialRecipe?: number; // undefined defaults to 0
-  consumed?: true; // undefined defaults to false
-  consumeOnFull?: true; // undefined defaults to false
-  stacks?: number; // undefined defaults to 1
-  inStore?: false; // defaults to true
-  hideFromAll?: true; // defaults to false
-  requiredChampion?: 'FiddleSticks' | 'Kalista' | 'Sylas' | 'Gangplank'; //defaults to ""
-  requiredAlly?: 'Ornn'; //defaults to ""
-  from?: string[];
-  into?: string[];
-  image: Image;
-  gold: { base: number; purchasable: boolean; total: number; sell: number };
-  tags: string[];
-  maps: { '11': boolean; '12': boolean; '21': boolean; '22': boolean };
-  // stats: { [x: RiotStatName]: number; };
-  depth: number | undefined; // undefined defaults to 1
-  effect?: any;
-}
-type RiotStatName =
-  | 'FlatHPPoolMod'
-  | 'rFlatHPModPerLevel'
-  | 'FlatMPPoolMod'
-  | 'rFlatMPModPerLevel'
-  | 'PercentHPPoolMod'
-  | 'PercentMPPoolMod'
-  | 'FlatHPRegenMod'
-  | 'rFlatHPRegenModPerLevel'
-  | 'PercentHPRegenMod'
-  | 'FlatMPRegenMod'
-  | 'rFlatMPRegenModPerLevel'
-  | 'PercentMPRegenMod'
-  | 'FlatArmorMod'
-  | 'rFlatArmorModPerLevel'
-  | 'PercentArmorMod'
-  | 'rFlatArmorPenetrationMod'
-  | 'rFlatArmorPenetrationModPerLevel'
-  | 'rPercentArmorPenetrationMod'
-  | 'rPercentArmorPenetrationModPerLevel'
-  | 'FlatPhysicalDamageMod'
-  | 'rFlatPhysicalDamageModPerLevel'
-  | 'PercentPhysicalDamageMod'
-  | 'FlatMagicDamageMod'
-  | 'rFlatMagicDamageModPerLevel'
-  | 'PercentMagicDamageMod'
-  | 'FlatMovementSpeedMod'
-  | 'rFlatMovementSpeedModPerLevel'
-  | 'PercentMovementSpeedMod'
-  | 'rPercentMovementSpeedModPerLevel'
-  | 'FlatAttackSpeedMod'
-  | 'PercentAttackSpeedMod'
-  | 'rPercentAttackSpeedModPerLevel'
-  | 'rFlatDodgeMod'
-  | 'rFlatDodgeModPerLevel'
-  | 'PercentDodgeMod'
-  | 'FlatCritChanceMod'
-  | 'rFlatCritChanceModPerLevel'
-  | 'PercentCritChanceMod'
-  | 'FlatCritDamageMod'
-  | 'rFlatCritDamageModPerLevel'
-  | 'PercentCritDamageMod'
-  | 'FlatBlockMod'
-  | 'PercentBlockMod'
-  | 'FlatSpellBlockMod'
-  | 'rFlatSpellBlockModPerLevel'
-  | 'PercentSpellBlockMod'
-  | 'FlatEXPBonus'
-  | 'PercentEXPBonus'
-  | 'rPercentCooldownMod'
-  | 'rPercentCooldownModPerLevel'
-  | 'rFlatTimeDeadMod'
-  | 'rFlatTimeDeadModPerLevel'
-  | 'rPercentTimeDeadMod'
-  | 'rPercentTimeDeadModPerLevel'
-  | 'rFlatGoldPer10Mod'
-  | 'rFlatMagicPenetrationMod'
-  | 'rFlatMagicPenetrationModPerLevel'
-  | 'rPercentMagicPenetrationMod'
-  | 'rPercentMagicPenetrationModPerLevel'
-  | 'FlatEnergyRegenMod'
-  | 'rFlatEnergyRegenModPerLevel'
-  | 'FlatEnergyPoolMod'
-  | 'rFlatEnergyModPerLevel'
-  | 'PercentLifeStealMod'
-  | 'PercentSpellVampMod';
-
-interface CDragonItemEntry {
-  id: number;
-  name: string;
-  description: string;
-  active: boolean;
-  inStore: boolean;
-  from: number[];
-  to: number[];
-  categories: string[];
-  maxStacks: number; // 0 | 1 | 5 | 9 | 10
-  requiredChampion: '' | 'FiddleSticks' | 'Kalista' | 'Sylas' | 'Gangplank';
-  requiredAlly: '' | 'Ornn';
-  requiredBuffCurrencyName:
-    | ''
-    | 'GangplankBilgewaterToken'
-    | 'S11Support_Quest_Completion_Buff';
-  requiredBuffCurrencyCost: number; // 0 | 1 | 500
-  specialRecipe: number;
-  isEnchantment: false;
-  price: number;
-  priceTotal: number;
-  iconPath: string;
-}
-
 interface WikiItemEffect {
   cd?: number;
   charges?: number;
@@ -547,7 +430,7 @@ interface WikiItemEffect {
   unique: true;
 }
 
-interface WikiItemEntry {
+interface WikiItemEntryOLD {
   id: number;
   tier: 1 | 2 | 3 | 4;
   type?: string[];

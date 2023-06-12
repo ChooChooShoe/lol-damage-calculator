@@ -141,7 +141,7 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
   const pre_arr: string[] = [];
   const sub_ratios: SubRatio[] = [];
   const post_arr: string[] = [];
-  let basedOn: any = undefined;
+  let basedOn: string | undefined = undefined;
   let arr = pre_arr;
   // let is_based_on_level = false;
 
@@ -174,9 +174,9 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
   const pre_vals = level_to_ratio(pre);
 
   let values = pre_vals.values;
-  let unitsText = pre_vals.units;
+  let unitsText = pre_vals.unitsText;
 
-  if (basedOn === 'level') {
+  if (basedOn === 'level' && pre.includes(' − ')) {
     values = numberExpandOnLevel(pre);
     unitsText = '';
   }
@@ -189,12 +189,11 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
     );
     unitsText = post;
   }
-  const { user, unitsParsed: unitsParsed } =
-    convertUnitsToUserAndUnits(unitsText);
+  const { user, unitsParsed } = convertUnitsToUserAndUnits(unitsText);
   return {
     values,
-    valuesRanged: undefined,
-    valuesIsPercent: pre_vals.apply === '%' || undefined,
+    valuesRanged: pre_vals.valuesRanged,
+    valuesIsPercent: pre_vals.valuesIsPercent,
     // valuesIsBasedOnLevel: is_based_on_level || undefined,
     basedOn,
     user: user !== 'player' ? user : undefined,
@@ -207,20 +206,21 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
 }
 function level_to_ratio(fullText: string): {
   values: number | number[];
-  apply: '%' | undefined;
-  units: string;
+  valuesRanged: number | number[] | undefined;
+  valuesIsPercent: boolean;
+  unitsText: string;
 } {
   console.log(`[TRACE] level_to_ratio("${fullText}")`);
   // Trim leading + sign and split at percent sign if possialbe.
   // '+ 80% AP' => [' 80', ' AP']
   const s = fullText.trim().replace(/^\+/, '').split('%', 2);
   const leveling = s[0];
-  let apply: '%' | undefined = undefined;
+  let valuesIsPercent = false;
   let units: string = '';
 
   // IF text is like '70 / 80 / 90% AP' => ['70 / 80 / 90', 'AP']
   if (s.length === 2) {
-    apply = '%';
+    valuesIsPercent = true;
     units = s[1] || '';
   }
   // if (fullText === 'based on level') return { values: -1, units: leveling, utype: 'internal' };
@@ -242,7 +242,7 @@ function level_to_ratio(fullText: string): {
 
       return n;
     }
-    const justNumber = /([0-9])/.exec(x);
+    const justNumber = /([0-9.]+)/.exec(x);
     if (justNumber) {
       n = Number(justNumber[0]);
       if (Number.isFinite(n)) {
@@ -265,8 +265,9 @@ function level_to_ratio(fullText: string): {
 
   return {
     values: arr.length > 1 ? arr : arr[0],
-    apply,
-    units: units.trim(),
+    valuesRanged: undefined,
+    valuesIsPercent,
+    unitsText: units.trim(),
   };
 }
 

@@ -111,10 +111,17 @@ export class DataDragon {
       (res) => res.json() as Promise<Record<string, any>[]>
     );
   }
-  async getItems(): Promise<ItemJson> {
+  // The Raw Json File
+  async getItemsJson(): Promise<ItemJson> {
     return fetch(`${this.baseDataUri}/item.json`).then(
       (res) => res.json() as Promise<ItemJson>
     );
+  }
+  // Mergeed with basic data to have all fields filled.
+  async getItemsData(): Promise<Record<string, Item>> {
+    const json = await this.getItemsJson();
+
+    return json.data;
   }
 }
 
@@ -150,18 +157,95 @@ export interface ItemJson {
 }
 export interface Item {
   name: string;
+  //rune: any;
   description: string;
   colloq: string;
   plaintext: string;
+  specialRecipe?: number; // undefined defaults to 0
+  consumed?: true; // undefined defaults to false
+  consumeOnFull?: true; // undefined defaults to false
+  stacks?: number; // undefined defaults to 1
+  inStore?: false; // defaults to true
+  hideFromAll?: true; // defaults to false
+  requiredChampion?: 'FiddleSticks' | 'Kalista' | 'Sylas' | 'Gangplank'; //defaults to ""
+  requiredAlly?: 'Ornn'; //defaults to ""
   from?: string[];
   into?: string[];
   image: Image;
   gold: { base: number; purchasable: boolean; total: number; sell: number };
   tags: string[];
-  maps: { '11': true; '12': true; '21': true; '22': false };
+  maps: { '11': boolean; '12': boolean; '21': boolean; '22': boolean };
   stats?: Record<string, number>;
-  depth?: number;
+  depth: number | undefined; // undefined defaults to 1
+  effect?: any;
 }
+
+type RiotStatName =
+  | 'FlatHPPoolMod'
+  | 'rFlatHPModPerLevel'
+  | 'FlatMPPoolMod'
+  | 'rFlatMPModPerLevel'
+  | 'PercentHPPoolMod'
+  | 'PercentMPPoolMod'
+  | 'FlatHPRegenMod'
+  | 'rFlatHPRegenModPerLevel'
+  | 'PercentHPRegenMod'
+  | 'FlatMPRegenMod'
+  | 'rFlatMPRegenModPerLevel'
+  | 'PercentMPRegenMod'
+  | 'FlatArmorMod'
+  | 'rFlatArmorModPerLevel'
+  | 'PercentArmorMod'
+  | 'rFlatArmorPenetrationMod'
+  | 'rFlatArmorPenetrationModPerLevel'
+  | 'rPercentArmorPenetrationMod'
+  | 'rPercentArmorPenetrationModPerLevel'
+  | 'FlatPhysicalDamageMod'
+  | 'rFlatPhysicalDamageModPerLevel'
+  | 'PercentPhysicalDamageMod'
+  | 'FlatMagicDamageMod'
+  | 'rFlatMagicDamageModPerLevel'
+  | 'PercentMagicDamageMod'
+  | 'FlatMovementSpeedMod'
+  | 'rFlatMovementSpeedModPerLevel'
+  | 'PercentMovementSpeedMod'
+  | 'rPercentMovementSpeedModPerLevel'
+  | 'FlatAttackSpeedMod'
+  | 'PercentAttackSpeedMod'
+  | 'rPercentAttackSpeedModPerLevel'
+  | 'rFlatDodgeMod'
+  | 'rFlatDodgeModPerLevel'
+  | 'PercentDodgeMod'
+  | 'FlatCritChanceMod'
+  | 'rFlatCritChanceModPerLevel'
+  | 'PercentCritChanceMod'
+  | 'FlatCritDamageMod'
+  | 'rFlatCritDamageModPerLevel'
+  | 'PercentCritDamageMod'
+  | 'FlatBlockMod'
+  | 'PercentBlockMod'
+  | 'FlatSpellBlockMod'
+  | 'rFlatSpellBlockModPerLevel'
+  | 'PercentSpellBlockMod'
+  | 'FlatEXPBonus'
+  | 'PercentEXPBonus'
+  | 'rPercentCooldownMod'
+  | 'rPercentCooldownModPerLevel'
+  | 'rFlatTimeDeadMod'
+  | 'rFlatTimeDeadModPerLevel'
+  | 'rPercentTimeDeadMod'
+  | 'rPercentTimeDeadModPerLevel'
+  | 'rFlatGoldPer10Mod'
+  | 'rFlatMagicPenetrationMod'
+  | 'rFlatMagicPenetrationModPerLevel'
+  | 'rPercentMagicPenetrationMod'
+  | 'rPercentMagicPenetrationModPerLevel'
+  | 'FlatEnergyRegenMod'
+  | 'rFlatEnergyRegenModPerLevel'
+  | 'FlatEnergyPoolMod'
+  | 'rFlatEnergyModPerLevel'
+  | 'PercentLifeStealMod'
+  | 'PercentSpellVampMod';
 
 export interface ChampionBasic {
   version: Version;
