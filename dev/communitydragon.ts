@@ -33,5 +33,5 @@ export interface CDragonItem {
   isEnchantment: false;
   price: number;
   priceTotal: number;
-  iconPath: string;
+  iconPath: `/lol-game-data/assets/ASSETS/Items/Icons2D/${string}`;
 }

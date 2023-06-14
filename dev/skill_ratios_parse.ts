@@ -1,9 +1,9 @@
-import { numberExpandOnLevel } from './leveling';
+import { numberExpandOnLevel } from './leveling.js';
 import type { Dictionary } from 'lodash';
 import parenthesis, { type ArrayTree } from 'parenthesis';
-import { saveFile } from './fetch_utils';
-import { matchKeyword, table_check } from './mutate_untils';
-import {
+import { saveFile } from './fetch_utils.js';
+import { matchKeyword, table_check } from './mutate_untils.js';
+import type {
   SubRatio,
   RootRatio,
   EffectType,
@@ -12,7 +12,7 @@ import {
   ShieldType,
   OptionalStat,
 } from '../src/api/DataTypes';
-import {
+import type {
   BBT_Perfix,
   BBT_Perfix_Ex,
   BBT_Stat,

@@ -1,6 +1,6 @@
-import { cleanName, fetchWiki, moduleToJSON } from './LeagueWiki';
+import { cleanName, fetchWiki, moduleToJSON } from './LeagueWiki.js';
 import { JSDOM } from 'jsdom';
-import { fix_wiki_img } from './live_wiki_fetch';
+import { fix_wiki_img } from './live_wiki_fetch.js';
 
 export async function fetchAllWikiItems(): Promise<{ [s: string]: WikiItem }> {
   return fetchWiki(
@@ -13,7 +13,7 @@ export interface WikiItem {
   id?: number;
   formatname?: string;
   tier: number;
-  type?: string[] | string;
+  type?: string[];
   effects?: Effects;
   itemlimit?: string;
   itemlimit2?: string;

@@ -8,15 +8,15 @@ import type {
 import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
-import { saveFile, stackData } from './fetch_utils';
-import { BaseStatsObj } from '@/api/ChampObjStats';
-import { fix_wiki_img } from './live_wiki_fetch';
-import { ChampionComplex } from './datadragon';
+import { saveFile, stackData } from './fetch_utils.js';
+import type { BaseStatsObj } from '@/api/ChampObjStats';
+import { fix_wiki_img } from './live_wiki_fetch.js';
+import { ChampionComplex } from './datadragon.js';
 import _ from 'lodash';
 import {
   spellEffectFromDescription,
   spellEffectFromStrings,
-} from './skill_ratios_parse';
+} from './skill_ratios_parse.js';
 
 export type Version = string;
 export type Key = string;

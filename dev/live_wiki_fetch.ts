@@ -8,14 +8,14 @@ import type {
   SkillModelOld,
   SubSkill,
 } from '../src/api/DataTypes';
-import { fileExists, saveFileBlob } from './fetch_utils';
+import { fileExists, saveFileBlob } from './fetch_utils.js';
 import {
   spellEffectFromDescription,
   spellEffectFromStrings,
-} from './skill_ratios_parse';
-import { levelingToVal, mutate_damagetype } from './leveling';
-import { ChampionComplex, DataDragon } from './datadragon';
-import { ModuleChampionData } from './LeagueWiki';
+} from './skill_ratios_parse.js';
+import { levelingToVal, mutate_damagetype } from './leveling.js';
+import { ChampionComplex, DataDragon } from './datadragon.js';
+import { ModuleChampionData } from './LeagueWiki.js';
 
 // TODO rcp-fe-lol-champion-statistics
 // https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-champion-statistics/global/default/rcp-fe-lol-champion-statistics.js

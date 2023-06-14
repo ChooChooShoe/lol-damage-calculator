@@ -1,12 +1,12 @@
-import { fetchAndSaveRealms, saveFile } from './fetch_utils';
+import { fetchAndSaveRealms, saveFile } from './fetch_utils.js';
 import fs from 'fs/promises';
 import type { Image } from '../src/api/DataTypes';
 import fetch from 'node-fetch';
 import type { Dictionary } from 'lodash';
 import { fetchWiki, moduleToJSON } from './LeagueWiki';
-import { CDragonItem, CommunityDragon } from './communitydragon';
-import { fetchAllWikiItems, WikiItem } from './WikiItem';
-import { DataDragon, Item as RiotItemEntry } from './datadragon';
+import { CDragonItem, CommunityDragon } from './communitydragon.js';
+import { fetchAllWikiItems, WikiItem } from './WikiItem.js';
+import { DataDragon, Item as RiotItemEntry } from './datadragon.js';
 
 const USE_FIXED_REALMS = true;
 const ITEMS_TO_ITEM_ARRAYS = false;
@@ -28,13 +28,14 @@ async function main(args: string[]) {
   const bodyCDragon = CommunityDragon.getAllItems();
   const wikiBody = fetchAllWikiItems();
 
-  if (DEBUG) {
-    await saveFile('./.debug/Module_ItemData_data.json', await wikiBody);
-    return;
-  }
-
   spriteBaseUri = `${realms.cdn}/${realms.v}/img/sprite/`;
   const bodyDDragon = dataDragon.getItemsData();
+
+  if (DEBUG) {
+    await saveFile('./.debug/Module_ItemData_data.json', await wikiBody);
+    await saveFile('./.debug/CommunityDragon_items.json', await bodyCDragon);
+    await saveFile('./.debug/Riot_items.json', await bodyDDragon);
+  }
 
   const model = await onItemsJsonResponse(
     await bodyDDragon,
@@ -51,7 +52,7 @@ async function onItemsJsonResponse(
   cdragonItems: Array<CDragonItem>,
   wikiItems: Record<string, WikiItem>
 ): Promise<Dictionary<any>> {
-  const riotItems = riotJson.data;
+  const riotItems = riotJson;
   console.log(
     'Length of riotItems',
     Object.keys(riotItems).length,
@@ -80,7 +81,7 @@ async function onItemsJsonResponse(
   }
   const wiki_by_id: { [x: string]: WikiItemEntryOLD } = {};
   for (const [key, value] of Object.entries(wikiItems)) {
-    wiki_by_id[value.id || 'no_id_using_key_' + key] = value;
+    // wiki_by_id[value.id || 'no_id_using_key_' + key] = value;
   }
 
   // Lookup values for wiki data. Fix for "=>OrnnItem" entries
@@ -98,7 +99,7 @@ async function onItemsJsonResponse(
         for (const branch of tree) lookup = lookup[branch];
 
         if (lookup) {
-          console.log('Item lookup kv', key, val, 'from', lookup, tree);
+          console.log('Item lookup kv', key, val);
           entry[key] = lookup[key];
         } else {
           console.log(
@@ -174,7 +175,10 @@ async function onItemsJsonResponse(
   const allItems: Dictionary<any> = {};
   for (const [key, wikiItem] of Object.entries(wikiItems)) {
     // Ohmwrecker (Turret Item) has no id.
-    if (!wikiItem.id) continue;
+    if (!wikiItem.id) {
+      console.log(`WikiItem ${key} has no id set. Skipping...`);
+      continue;
+    }
     const riotItem = riotItems[wikiItem.id];
     const item_obj = cdragon_by_id[wikiItem.id];
     if (!riotItem) {
@@ -202,30 +206,38 @@ async function onItemsJsonResponse(
 }
 
 function takeRiftItem(a: CDragonItem, b: RiotItemEntry, c: WikiItem) {
-  function check(key: string, key2?: string): number | any[] {
+  function check(key: string, key2?: string): number | any[] | undefined {
     if (key2) return check_val(`${key}" and "${key2}`, a[key], b[key2]);
     return check_val(key, a[key], b[key]);
   }
   function check_val(
     key: string,
-    val_a: number | any[],
-    val_b: number | any[]
+    val_a: number | any[] | undefined,
+    val_b: number | any[] | undefined
   ) {
-    if (Array.isArray(val_a) && Array.isArray(val_b)) {
+    if (Array.isArray(val_a)) {
       val_a.sort();
+      if (val_a.length === 0) val_a = undefined;
+    }
+    if (Array.isArray(val_b)) {
       val_b.sort();
+      if (val_b.length === 0) val_b = undefined;
     }
     if (val_a && !val_b && key !== 'inStore')
-      console.log(`Item ${a.id}: Key "${key}" has no riot value (${val_a})`);
+      console.log(
+        `Item ${a.name}:${a.id} - Key "${key}" is null in riot (${val_a})`
+      );
     if (val_a && val_b && val_a.toString() !== val_b.toString())
       console.log(
-        `Item ${a.id}: Key "${key}" not match. (${val_a} !== ${val_b})`
+        `Item ${a.name}:${a.id} - Key "${key}" not match. (${val_a} !== ${val_b})`
       );
     return val_a;
   }
   function unique(key: string) {
     if (a[key])
-      console.log(`Item ${a.id}: Key "${key}" hade unique value. "${a[key]}"`);
+      console.log(
+        `Item ${a.name}:${a.id} - Key "${key}" hade unique value. "${a[key]}"`
+      );
     return a[key];
   }
   function get_type() {

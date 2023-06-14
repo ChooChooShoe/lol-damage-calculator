@@ -2,8 +2,8 @@ import * as fs from 'fs';
 import fetch, { type RequestInfo } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
-import { DataDragon } from './datadragon';
-import { fetchWiki } from './LeagueWiki';
+import { DataDragon } from './datadragon.js';
+import { fetchWiki } from './LeagueWiki.js';
 
 const DEBUG = true;
 
