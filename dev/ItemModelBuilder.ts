@@ -4,6 +4,7 @@ import { WikiItem } from './WikiItem.js';
 import { Item as RiotItemEntry } from './datadragon.js';
 import type { ItemGenData } from '../src/api/DataTypes.js';
 import { valid_knockdown } from './mutate_untils';
+import { fetchLiveItem } from './item/FandomItemPage.js';
 
 let spriteBaseUri = 'null';
 
@@ -95,12 +96,12 @@ export async function ModelFromJson(
       continue;
     }
     lookup_crawl(wikiItem, wikiItems, []);
-    allItems[wikiItem.id] = takeRiftItem(item_obj, riotItem, wikiItem);
+    allItems[wikiItem.id] = await takeRiftItem(item_obj, riotItem, wikiItem);
   }
   return allItems;
 }
 
-function takeRiftItem(
+async function takeRiftItem(
   a: CDragonItem,
   b: RiotItemEntry,
   c: WikiItem
@@ -298,9 +299,14 @@ function takeRiftItem(
     ? 'https://raw.communitydragon.org/latest/game/assets/items/icons2d' +
       a.iconPath.slice(a.iconPath.lastIndexOf('/')).toLowerCase()
     : '';
+
+  const liveData = await fetchLiveItem(c.name);
+  console.log(liveData);
+
   return {
     id: a.id,
     name: check('name'),
+    liveDate: liveData,
     description: a.description,
     colloq: colloq,
     active: a.active,
