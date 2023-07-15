@@ -8,7 +8,7 @@
         @showInfo="$emit('showInfo', $event)"
         v-for="x in value.to"
         :key="x"
-        :value="items[x]"
+        :value="fromNumber(x)"
       >
       </Item>
     </div>
@@ -55,7 +55,7 @@
             display="icon"
             @buyItem="$emit('buyItem', $event)"
             @showInfo="$emit('showInfo', $event)"
-            :value="items[x]"
+            :value="fromNumber(x)"
           >
           </Item>
           <span>+</span>
@@ -72,22 +72,20 @@
   <div v-else>No Item Selected</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive, ref, computed } from 'vue';
 import SimpleTooltip from '../../components/SimpleTooltip.vue';
 import Item from './Item.vue';
-import items from '@/api/items/items.json';
+import items, { fromNumber } from '@/model/items/items';
 
-const props = defineProps({
-  itemId: Number,
-});
+const props = defineProps<{ itemId: number }>();
 defineEmits(['showInfo', 'buyItem']);
 const visable = ref(false);
 const clientX = ref(0);
 const clientY = ref(0);
-const value = computed(() => items[props.itemId]);
+const value = computed(() => fromNumber(props.itemId));
 const displayCost = computed(() =>
-  value.value.priceTotal === 0 ? 'Free' : value.value.priceTotal
+  value.value?.priceTotal === 0 ? 'Free' : value.value?.priceTotal
 );
 </script>
 

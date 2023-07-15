@@ -7,7 +7,7 @@
         v-for="(value, leveling_idx) in skill.descriptionRatios"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}:d${leveling_idx + 1})`"
+        :pkey="`${idx}:static-desc:${leveling_idx + 1})`"
         :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
         :effect="value"
         :effectindex="leveling_idx"
@@ -37,7 +37,7 @@
         v-for="(value, leveling_idx) in skill.descriptionRatios || []"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}:d${leveling_idx + 1})`"
+        :pkey="`${idx}:dyn-desc-A-${leveling_idx + 1})`"
         :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
         :effect="value"
         :effectindex="leveling_idx"
@@ -46,7 +46,7 @@
         v-for="(value, leveling_idx) in skill.leveling"
         :custom="false"
         :key="leveling_idx"
-        :pkey="`${idx}:e${leveling_idx + 1})`"
+        :pkey="`${idx}:leveling-A-${leveling_idx + 1})`"
         :details="value"
         :effect="skill.levelingRatios[leveling_idx]"
         :effectindex="leveling_idx"
@@ -64,22 +64,21 @@
     ></p>
     <div class="subskill__effects">
       <SpellEffects
-        v-for="(value, leveling_idx) in skill.descriptionRatios || []"
+        v-for="(value, index) in skill.descriptionRatios || []"
         :custom="false"
-        :key="leveling_idx"
-        :pkey="`${idx}:d${leveling_idx + 1})`"
+        :key="index"
+        :pkey="`${idx}:dyn-desc-B-${index + 1})`"
         :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
         :effect="value"
-        :effectindex="leveling_idx"
+        :effectindex="index"
       ></SpellEffects>
       <SpellEffects
-        v-for="(value, leveling_idx) in skill.leveling"
+        v-for="(value, index) in skill.leveling"
         :custom="false"
-        :key="leveling_idx"
-        :pkey="`${idx}:e${leveling_idx})`"
+        :key="index"
+        :pkey="`${idx}:leveling-B-${index})`"
         :details="value"
         :effect="undefined"
-        :effectindex="leveling_idx"
       ></SpellEffects>
     </div>
   </template>

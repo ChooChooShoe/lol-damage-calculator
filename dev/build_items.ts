@@ -1,22 +1,12 @@
 import { fetchAndSaveRealms, saveFile } from './fetch_utils.js';
 import fs from 'fs/promises';
-import type { Image } from '../src/api/DataTypes';
-import fetch from 'node-fetch';
-import type { Dictionary } from 'lodash';
-import { fetchWiki, moduleToJSON } from './LeagueWiki';
-import { CDragonItem, CommunityDragon } from './communitydragon.js';
-import { fetchAllWikiItems, WikiItem } from './WikiItem.js';
-import { DataDragon, Item as RiotItemEntry } from './datadragon.js';
-
-const USE_FIXED_REALMS = true;
-const ITEMS_TO_ITEM_ARRAYS = false;
-const ITEMS_MISSMATCH_TEST = false;
+import { CommunityDragon } from './communitydragon.js';
+import { fetchAllWikiItems } from './WikiItem.js';
+import { DataDragon } from './datadragon.js';
+import { ModelFromJson } from './ItemModelBuilder.js';
 
 const args = process.argv.slice(2);
-let spriteBaseUri = 'null';
-
 const DEBUG = true;
-
 main(args);
 async function main(args: string[]) {
   console.log('Building data for items.json. Using Args:', args);
@@ -28,7 +18,7 @@ async function main(args: string[]) {
   const bodyCDragon = CommunityDragon.getAllItems();
   const wikiBody = fetchAllWikiItems();
 
-  spriteBaseUri = `${realms.cdn}/${realms.v}/img/sprite/`;
+  const spriteBaseUri = `${realms.cdn}/${realms.v}/img/sprite/`;
   const bodyDDragon = dataDragon.getItemsData();
 
   if (DEBUG) {
@@ -37,267 +27,79 @@ async function main(args: string[]) {
     await saveFile('./.debug/Riot_items.json', await bodyDDragon);
   }
 
-  const model = await onItemsJsonResponse(
+  const model = await ModelFromJson(
     await bodyDDragon,
     await bodyCDragon,
-    await wikiBody
+    await wikiBody,
+    { DEBUG, spriteBaseUri }
   );
 
-  await saveFile('./src/api/items/items.json', model);
+  // await fs.mkdir('./src/api/items/', { recursive: true });
+  // await saveFile('./src/api/items/items.json', model);
 
+  console.log(`Saving file ./src/model/items/items.gen.ts`);
+  await fs.mkdir('./src/model/items/', { recursive: true });
+
+  await fs.writeFile('./src/model/items/items.gen.ts', template(model));
   console.log('Goodbye');
 }
-async function onItemsJsonResponse(
-  riotJson: Record<string, RiotItemEntry>,
-  cdragonItems: Array<CDragonItem>,
-  wikiItems: Record<string, WikiItem>
-): Promise<Dictionary<any>> {
-  const riotItems = riotJson;
-  console.log(
-    'Length of riotItems',
-    Object.keys(riotItems).length,
-    ' vs ',
-    cdragonItems.length,
-    ' vs ',
-    Object.keys(wikiItems).length
-  );
 
-  // saveFile('./src/api/items/riotJson.json', riotJson);
-  // saveFile('./src/api/items/cdragonItems.json', cdragonItems);
-  // saveFile('./src/api/items/wikiItems.json', wikiItems);
+function template(model: {}): string {
+  const keys = Object.keys(model).join(' | ');
+  const body = JSON.stringify(model, null, 2);
+  return `// This file is auto-generated
+// prettier-ignore
+export type ItemNumber = ${keys};
 
-  // const defaultRiotItem = {
-  //     "name": "Missing Riot Item",
-  //     "from": [], "to": [], "image": null, "gold": {}, "tags": [], maps: {
-  //         "11": true,
-  //         "12": true,
-  //         "21": true,
-  //         "22": false
-  //     },
-  // }
-  const cdragon_by_id: { [x: string]: CDragonItem } = {};
-  for (const value of Object.values(cdragonItems)) {
-    cdragon_by_id[value.id] = value;
-  }
-  const wiki_by_id: { [x: string]: WikiItemEntryOLD } = {};
-  for (const [key, value] of Object.entries(wikiItems)) {
-    // wiki_by_id[value.id || 'no_id_using_key_' + key] = value;
-  }
+export default ${body} satisfies { [n in ItemNumber]: ItemGenData };
 
-  // Lookup values for wiki data. Fix for "=>OrnnItem" entries
-  function lookup_crawl(
-    entry: { [x: string]: any },
-    root: { [x: string]: any },
-    tree: string[]
-  ): void {
-    for (const [key, val] of Object.entries(entry)) {
-      if (
-        typeof val === 'string' &&
-        (val.startsWith('=>') || val.startsWith(':>'))
-      ) {
-        let lookup = root[val.slice(2)];
-        for (const branch of tree) lookup = lookup[branch];
-
-        if (lookup) {
-          console.log('Item lookup kv', key, val);
-          entry[key] = lookup[key];
-        } else {
-          console.log(
-            '[ERROR] Itemlookup failed for kv',
-            key,
-            val,
-            ' from is null or undefined'
-          );
-        }
-      }
-      if (val && typeof val === 'object') {
-        lookup_crawl(val, root, [...tree, key]);
-      }
-    }
-  }
-  // Converts values to arrays of all values. To see all posiable field values.
-  if (ITEMS_TO_ITEM_ARRAYS) {
-    const x = {},
-      y = {},
-      z = {};
-    for (const [key, value] of Object.entries(riotItems)) {
-      for (const [key, value2] of Object.entries(value)) {
-        if (key in x) {
-          if (!x[key].includes(value2)) x[key].push(value2);
-        } else x[key] = [value2];
-      }
-    }
-    for (const [key, value] of Object.entries(cdragon_by_id)) {
-      for (const [key, value2] of Object.entries(value)) {
-        if (key in y) {
-          if (!y[key].includes(value2)) y[key].push(value2);
-        } else y[key] = [value2];
-      }
-    }
-    for (const [key, value] of Object.entries(wikiItems)) {
-      for (const [key, value2] of Object.entries(value)) {
-        if (key in z) {
-          if (!z[key].includes(value2)) z[key].push(value2);
-        } else z[key] = [value2];
-      }
-    }
-    return { riot: x, cdragon: y, wiki: z };
-  }
-
-  if (ITEMS_MISSMATCH_TEST) {
-    const x: any = [],
-      y: any = [],
-      z: any = [];
-    for (const [key, value] of Object.entries(riotItems)) {
-      if (!cdragon_by_id[key]) y.push({ riot: key });
-      if (!wiki_by_id[key]) z.push({ riot: key });
-    }
-    // RIOT is missing cdragon's 2001, 2007, 2008 (Recall Items)
-    // and wiki's "Ohmwrecker (Turret Item)"
-    for (const [key, value] of Object.entries(cdragon_by_id)) {
-      if (!riotItems[key]) x.push({ cdragon: key });
-      if (!wiki_by_id[key]) z.push({ cdragon: key });
-    }
-    // cdragon is missing wiki's "Ohmwrecker (Turret Item)"
-    for (const [key, value] of Object.entries(wiki_by_id)) {
-      if (!riotItems[key]) x.push({ wiki: key });
-      if (!cdragon_by_id[key]) y.push({ wiki: key });
-    }
-    // WIKI is missing a bunch of not real items.
-    // 1040,1500,1504,1505,1516,1517,1518,1519,2001,2007,2008,7050
-    // 2424 Broken Stopwatch
-    // 3600 Kalista's Black Spear
-    // 4403 The Golden Spatula - has build paths
-    // 4641 Stirring Wardstone
-    return { riot: x, cdragon: y, wiki: z };
-  }
-
-  const allItems: Dictionary<any> = {};
-  for (const [key, wikiItem] of Object.entries(wikiItems)) {
-    // Ohmwrecker (Turret Item) has no id.
-    if (!wikiItem.id) {
-      console.log(`WikiItem ${key} has no id set. Skipping...`);
-      continue;
-    }
-    const riotItem = riotItems[wikiItem.id];
-    const item_obj = cdragon_by_id[wikiItem.id];
-    if (!riotItem) {
-      console.log(`[WARN] Item ${key} (${wikiItem.id}) is missing RiotData`);
-      continue;
-    }
-    if (!item_obj) {
-      console.log(`[WARN] Item ${key} (${wikiItem.id}) is missing CDragonData`);
-      continue;
-    }
-    lookup_crawl(wikiItem, wikiItems, []);
-    allItems[wikiItem.id] = takeRiftItem(item_obj, riotItem, wikiItem);
-  }
-
-  if (DEBUG) {
-    const xxx: any = [];
-    for (const [key, value] of Object.entries(wikiItems)) {
-      // value.effects = undefined;
-      xxx.push(Object.assign({ name: key }, value));
-    }
-    await saveFile('./.debug/Module_ItemData.json', xxx);
-  }
-
-  return allItems;
-}
-
-function takeRiftItem(a: CDragonItem, b: RiotItemEntry, c: WikiItem) {
-  function check(key: string, key2?: string): number | any[] | undefined {
-    if (key2) return check_val(`${key}" and "${key2}`, a[key], b[key2]);
-    return check_val(key, a[key], b[key]);
-  }
-  function check_val(
-    key: string,
-    val_a: number | any[] | undefined,
-    val_b: number | any[] | undefined
-  ) {
-    if (Array.isArray(val_a)) {
-      val_a.sort();
-      if (val_a.length === 0) val_a = undefined;
-    }
-    if (Array.isArray(val_b)) {
-      val_b.sort();
-      if (val_b.length === 0) val_b = undefined;
-    }
-    if (val_a && !val_b && key !== 'inStore')
-      console.log(
-        `Item ${a.name}:${a.id} - Key "${key}" is null in riot (${val_a})`
-      );
-    if (val_a && val_b && val_a.toString() !== val_b.toString())
-      console.log(
-        `Item ${a.name}:${a.id} - Key "${key}" not match. (${val_a} !== ${val_b})`
-      );
-    return val_a;
-  }
-  function unique(key: string) {
-    if (a[key])
-      console.log(
-        `Item ${a.name}:${a.id} - Key "${key}" hade unique value. "${a[key]}"`
-      );
-    return a[key];
-  }
-  function get_type() {
-    //typedata definition
-    const typedata = (c.type || []).join(',');
-    const s: string[] = [];
-
-    //consumable test
-    if (c.effects?.consume) {
-      if (c.tier === 1) s.push('Consumable');
-      else s.push('Advanced Consumable');
-    }
-    //distributed test
-    if (typedata.includes('Distributed')) s.push('Distributed');
-
-    //basic trinket test
-    if (typedata.includes('Basic Trinket')) s.push('Basic Trinket');
-    //enchantment test
-    if (typedata.includes('Enchantment')) s.push('Enchantment');
-    //potions test
-    if (typedata.includes('Potion')) s.push('Potion');
-    //boots test
-    if (typedata.includes('Boots')) s.push('Boots');
-    //turret test
-    if (typedata.includes('Turret')) s.push('Turret');
-    //minion item test
-    if (typedata.includes('Minion')) s.push('Minion');
-    // GeneratedTip test - not on wiki
-    if (a.description?.startsWith('GeneratedTip') || a.description === '')
-      s.push('GeneratedTip');
-
-    if (typedata.includes('Basic') && !typedata.includes('Basic Trinket'))
-      s.push('Basic');
-    else if (
-      typedata.includes('Starter') &&
-      !typedata.includes('Basic Trinket')
-    )
-      s.push('Starter');
-    else if (typedata.includes('Epic') && !typedata.includes('Basic Trinket'))
-      s.push('Epic');
-    else if (
-      typedata.includes('Legendary') &&
-      !typedata.includes('Basic Trinket')
-    )
-      s.push('Legendary');
-    else if (s.length == 0) {
-      if (b.depth === 0 || c.tier === 1) {
-        if (a.to?.length > 0) s.push('Basic');
-        else s.push('Starter');
-      } else {
-        if (c.effects?.mythic) s.push('Mythic');
-        else {
-          if (a.to?.length > 0) s.push('Epic');
-          else s.push('Legendary');
-        }
-      }
-    }
-    return s;
-  }
-  type ItemCatagoryType =
+export interface ItemGenData {
+  id: ItemNumber;
+  name: string;
+  description: Readonly<string>;
+  colloq: string;
+  active: boolean;
+  inStore: boolean;
+  // Some items have invalied ItemNumbers
+  from: (ItemNumber | number)[];
+  to: (ItemNumber | number)[];
+  categories?: string[];
+  maxStacks: number;
+  requiredChampion: '' | 'FiddleSticks' | 'Kalista' | 'Gangplank';
+  requiredAlly: '' | 'Ornn';
+  requiredBuffCurrencyName:
+    | ''
+    | 'GangplankBilgewaterToken'
+    | 'S11Support_Quest_Completion_Buff';
+  requiredBuffCurrencyCost: 0 | 500;
+  specialRecipe: number;
+  // "isEnchantment": check("isEnchantment"),
+  price: number;
+  priceTotal: number;
+  sellPrice: number;
+  purchasable: boolean;
+  iconPath: string;
+  spriteStyle: string;
+  image: {
+    full: string;
+    sprite: string;
+    group: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
+  maps: ['SR'] | ['SR', 'HA'] | ['HA'] | [];
+  depth: 1 | 2 | 3 | 4;
+  limit: '' | string;
+  menu: {
+    [key: string]: boolean;
+  };
+  stats: Stats;
+  // effects: import("../../dev/WikiItem").Effects;
+  effects: Effects;
+  type: string[];
+  category:
     | 'championitems'
     | 'distributives'
     | 'starters'
@@ -311,217 +113,59 @@ function takeRiftItem(a: CDragonItem, b: RiotItemEntry, c: WikiItem) {
     | 'mythics'
     | 'minionturretitems'
     | 'unsorted';
-
-  function get_category(): ItemCatagoryType {
-    const types = get_type().join(',');
-    if (c.champion || b.requiredChampion) return 'championitems';
-    if (types.includes('Distributed')) return 'distributives';
-    if (types.includes('Starter')) return 'starters';
-    if (types.includes('Potion') || types.includes('Consumable'))
-      return 'consumables';
-    if (types.includes('Trinket')) return 'trinkets';
-    if (types.includes('Boots')) return 'boots';
-    if (types.includes('Basic') && !types.includes('Basic Trinket'))
-      return 'basics';
-    if (types.includes('Epic')) return 'epics';
-    if (types.includes('Legendary')) return 'legendaries';
-    if (types.includes('Mythic'))
-      if (c.ornn === true) return 'ornnitems';
-      else return 'mythics';
-    if (types.includes('Trinket')) return 'trinkets';
-    if (
-      types.includes('Minion') ||
-      types.includes('Turret') ||
-      types.includes('GeneratedTip')
-    )
-      return 'minionturretitems';
-    return 'unsorted';
-  }
-  function make_stats() {
-    const ret: Dictionary<any> = c.stats || {};
-    for (const key of ['spec', 'spec2']) {
-      if (ret[key])
-        // Matches [[ thing ]] captures thing
-        ret[key] = ret[key].replace(
-          /\[\[([^[]*)\]\]/g,
-          function (_: any, capture: string) {
-            const parms = capture.split('|');
-            return `${parms[parms.length - 1]}`;
-          }
-        );
-    }
-    return ret;
-  }
-  // if (b.description) b.description = b.description.replace(/<attention>/g, "<attention> ").replace(/  /g, " ").replace(/<br> /g, "<br>");
-  // if (a.description) a.description = a.description.replace(/<attention>/g, "<attention> ").replace(/  /g, " ").replace(/<br> /g, "<br>");
-
-  // if (!a.iconPath.startsWith('/lol-game-data/assets/DATA/Items/Icons2D/')) {
-  //     console.log("Unknown Item PAth", a.iconPath);
-  //     a.iconPath = "";
-  // }
-  // else {
-  //     a.iconPath = a.iconPath.substring("/lol-game-data/assets/DATA/Items/Icons2D/".length);
-  // }
-  // if (b[a.id]) {
-  //     a.image = b[a.id].image;
-  //     a.colloq = ';' + b[a.id].colloq.split(';').filter(item => item).join(';');
-  //     a.search = a.name.toLowerCase() + a.colloq.toLowerCase();
-  // }
-  // else {
-  //     console.log('No image for item', a.id, a.name)
-  // }
-
-  // a.stats = {
-  //     //TODO item states
-  // };
-  let colloq = b.colloq || ';';
-  if (colloq.indexOf(';') !== 0) colloq = ';' + colloq;
-  const iconPath = a.iconPath
-    ? 'https://raw.communitydragon.org/latest/game/assets/items/icons2d' +
-      a.iconPath.slice(a.iconPath.lastIndexOf('/')).toLowerCase()
-    : '';
-  return {
-    id: a.id,
-    name: check('name'),
-    description: a.description,
-    colloq: colloq,
-    active: a.active,
-    inStore: check('inStore'),
-    from: check('from'),
-    to: check('to', 'into'),
-    categories: check('categories', 'tags'),
-    maxStacks: a.maxStacks,
-    requiredChampion: check('requiredChampion'),
-    requiredAlly: check('requiredAlly'),
-    requiredBuffCurrencyName: unique('requiredBuffCurrencyName'),
-    requiredBuffCurrencyCost: unique('requiredBuffCurrencyCost'),
-    specialRecipe: check('specialRecipe'),
-    // "isEnchantment": check("isEnchantment"),
-    price: check_val('price', a.price, b.gold.base),
-    priceTotal: check_val('priceTotal', a.priceTotal, b.gold.total),
-    sellPrice: b.gold.sell || 0,
-    purchasable: b.gold.purchasable || false,
-    iconPath: iconPath,
-    spriteStyle: b.image
-      ? `background: url('${spriteBaseUri}${b?.image?.sprite}') -${b?.image?.x}px -${b?.image?.y}px; width:${b?.image?.w}px; height:${b?.image?.h}px;`
-      : `background:url('${iconPath}') 0px 0px;width:48px;height:48px;background-size:contain;`,
-    image: b.image || null,
-    maps: map_number_to_names(b.maps),
-    depth: b.depth || 0,
-    limit: c.limit || '',
-    menu: c.menu || {},
-    stats: make_stats(),
-    effects: c.effects || {},
-    type: get_type(),
-    category: get_category(),
-  };
 }
 
-function map_number_to_names(maps: any): (string | null)[] {
-  console.assert(Object.keys(maps).length == 4, 'Maps not length 4');
-  return [
-    maps['11'] === true ? 'SR' : null,
-    maps['12'] === true ? 'HA' : null,
-    // maps["21"] === true ? 'Nexus Blitz' : null,
-    maps['22'] === true ? 'TFT' : null,
-  ].filter((x) => x !== null);
+export interface Effects {
+  act?: Act;
+  act2?: Act;
+  aura?: Act;
+  pass?: Act;
+  pass2?: Act;
+  pass3?: Act;
+  pass4?: Act;
+  pass5?: Act;
+  pass6?: Act;
+  consume?: string;
+  mythic?: Stats | string;
 }
 
-// "maps": {
-//     "1": true,
-//     "8": true,
-//     "10": true,
-//     "12": true
-//   }
-interface WikiItemEffect {
-  cd?: number;
-  charges?: number;
-  description: string;
+export interface Act {
   name: string;
-  range?: number;
-  unique: true;
+  unique: boolean;
+  description: string;
+  description2?: string;
+  cd?: number | string;
+  recharge?: number | string;
+  charges?: number | string;
+  range?: number | string;
+  radius?: number | string;
 }
 
-interface WikiItemEntryOLD {
-  id: number;
-  tier: 1 | 2 | 3 | 4;
-  type?: string[];
-  limit?: string;
-  maps: {
-    cs: true | 'als' | undefined;
-    ha: true | 'als' | undefined;
-    nb: true | 'als' | undefined;
-    sr: true | 'als' | undefined;
-    tt: true | 'als' | undefined;
-  };
-  effects?: {
-    act?: WikiItemEffect;
-    act2?: WikiItemEffect;
-    aura?: WikiItemEffect;
-    consume?: WikiItemEffect;
-    mythic?: WikiItemEffect | string;
-    pass?: WikiItemEffect;
-    pass2?: WikiItemEffect;
-    pass3?: WikiItemEffect;
-    pass4?: WikiItemEffect;
-    pass5?: WikiItemEffect;
-  };
-  menu: {
-    'ability power'?: true;
-    'armor pen'?: true;
-    assassin?: true;
-    'attack damage'?: true;
-    'attack speed'?: true;
-    fighter?: true;
-    'health and reg'?: true;
-    'lifesteal vamp'?: true;
-    mage?: true;
-    'magic pen'?: true;
-    'mana and reg'?: true;
-    marksman?: true;
-    movement?: true;
-    'onhit effects'?: true;
-    support?: true;
-    tank?: true;
-  };
-  stats: {
-    ad?: number; // (22) [55, 40, 45, 20, 65, 25, 70, 7, 60, 8, 75, 50, 15, 30, 10, 35, '=>Manamun//number;e', 6, 5, 3, 80, 85]
-    ah?: number; // (7) [10, 20, 25, 30, 15, "=>Winter's Approach", '=>Manamune']//
-    ap?: number; // (21) [30, 20, 60, 80, 40, 25, 55, 65, 15, 90, 70, 100, 35, 85, 110, 75, 120, num//ber;5, 8, 50, 10]
-    armor?: number; // (10) [30, 40, 15, 45, 50, 25, 80, 60, 20, 35]//
-    armpen?: number; // (2) [18, 30]
-    as?: number; // (10) [35, 25, 30, 12, 20, 45, 15, 40, 50, 18]
-    crit?: number; // (5) [20, '=>Immortal Shieldbow', 15, '=>Galeforce', '=>Kraken Slayernum//ber;']
-    gp10?: number; // (2) [3, 2]
-    hp?: number; // (20) [450, 650, 200, 300, 350, 75, 250, 40, 80, 70, 400, 325, "=>Winter's Appr//onumber;ach", 500, 150, 60, 100, 30, 10, 800]
-    hp5?: number; // (5) [100, 150, 200, 25, 50]
-    hp5flat?: number; // (2) [6, 20]
-    hsp?: number; // (2) [10, 20]
-    lethality?: number; // (4) [10, 26, 18, 12]
-    lifesteal?: number; // (4) [7, 18, 8, 10]
-    mana?: number; // (8) [500, 800, 600, 860, 400, 250, 300, 240]
-    mp5?: number; // (6) [100, 50, 75, 200, 115, 25]
-    mpen?: number; // (2) [13, 40]
-    mpenflat?: number; // (3) [10, 6, 18]
-    mr?: number; // (8) [30, 45, 40, 70, 50, 25, 60, 35]
-    ms?: number; // (3) [5, 8, 7]
-    msflat?: number; // (5) [45, 25, 60, 115, '=>Boots']
-    omnivamp?: number; // (5) [12, 7, 8, 5, 10]
-    spec?: string; // "+25% <a href='https://leagueoflegends.fandom.com/wiki/slow resist' class='wiki__link'>slow resist</a>"
-    spec2?: string;
-  };
-  recipe: string[];
-  buy: number;
-  nickname?: string[];
-  caption?: string;
-  itemlimit?: string;
-  tags?: ('HasOnHit' | 'OnHitAppliesLifeSteal')[];
-  formatname?: string;
-  sellratio?: number; // defualt 0.8
-  champion?: ('Fiddlesticks' | 'Gangplank' | 'Kalista' | 'Sylas')[]; // Fiddlesticks Gangplank Kalista Sylas
-  ornn?: true;
-  builds?: string | undefined; // see Broken Stopwatch and Perfectly Timed Stopwatch
-  req?: string;
-  sell?: number;
-  exclusive?: 'Clash'; // see Overcharged
+export interface Stats {
+  ad?: number;
+  ah?: number;
+  ap?: number;
+  armor?: number;
+  armpen?: number;
+  as?: number;
+  crit?: number;
+  gp10?: number;
+  hp?: number;
+  hp5?: number;
+  hp5flat?: number;
+  hsp?: number;
+  lethality?: number;
+  lifesteal?: number;
+  mana?: number;
+  mp5?: number;
+  mpen?: number;
+  mpenflat?: number;
+  mr?: number;
+  ms?: number;
+  msflat?: number;
+  omnivamp?: number;
+  spec?: string;
+}
+
+`;
 }

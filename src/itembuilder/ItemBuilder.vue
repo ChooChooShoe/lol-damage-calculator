@@ -1,9 +1,9 @@
 <template>
   <div class="main-full itembuilder">
-    <ChampionDiv value="player" mode="player"></ChampionDiv>
+    <ChampionDiv value="player" mode="player" class="hidden"></ChampionDiv>
     <span class="itembuilder__title">Inventory</span>
     <span class="itembuilder__title">ShopItemInfo</span>
-    <ItemInventory :inv="inventory1" @sellItem="sellItem"></ItemInventory>
+    <ItemInventory :inv="player.itemInventory" @sellItem="sellItem"></ItemInventory>
 
     <ShopItemInfo
       :itemId="selectedItem"
@@ -54,25 +54,16 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { provide, reactive, ref } from 'vue';
 
-import items from '@/api/items/items.json';
+import items, { fromNumber } from '@/model/items/items';
 import ChampionDiv from '@/components/ChampionDiv.vue';
 import ItemInventory from './components/ItemInventory.vue';
 import ShopItemInfo from './components/ShopItemInfo.vue';
 import Item from './components/Item.vue';
 import { player } from '@/global/state';
 
-// import { dv as displayVersion } from '../../../../src/api/version.json';
-const appVersion = '0.1.0';
-// const tags = {};
-// for (const x in items) {
-//   [...items[x].description.matchAll(/<[^>]+>/g)].forEach((element) => {
-//     if (!tags[element]) tags[element] = items[x].description;
-//   });
-// }
-// console.log("tags", Object.keys(tags));
 const itemFilter = ref('SR,HA');
 const selectedItem = ref(1001);
 
@@ -94,12 +85,13 @@ const itemCategories = {
   ornnitems: "Ornn's Mythic item upgrades",
   trinkets: 'Trinkets',
   minionturretitems: 'Minion and Turret items',
+  // unsorted: 'Unsorted',
 };
 
 const inventory1 = reactive([null, null, null, 3340, null, null, null]);
 
 const buyItem = (itemId) => {
-  const item = items[itemId];
+  const item = fromNumber(itemId);
   if (!item) return;
   selectedItem.value = itemId;
 

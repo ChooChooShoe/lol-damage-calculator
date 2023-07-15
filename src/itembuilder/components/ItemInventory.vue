@@ -16,7 +16,7 @@
       <Item :data-number="7" display="icon" :value="item(6)"> </Item>
     </div>
     <div class="inv__buttons">
-      <input type="button" value="Clear Items" @click="sellAll" />
+      <input type="button" value="Clear Items" @click="inv.sellAll" />
       <input
         type="button"
         value="Buy All Items"
@@ -41,6 +41,13 @@
         <span v-html="k.description"></span>
       </div>
     </div>
+    <div>
+      <UniqueItemEffectDamageSource
+        v-for="script in inv.getUniqueItemEffects()"
+        :key="script.itemData.id"
+        :script="script"
+      ></UniqueItemEffectDamageSource>
+    </div>
 
     <h2>Limits:</h2>
     <div v-for="(k, v) in collect('limit')" :key="v" v-html="k"></div>
@@ -51,23 +58,21 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue';
-import items from '@/api/items/items.json';
+import items from '@/model/items/items';
 import StatsDiv from './StatsDiv.vue';
 import Item from './Item.vue';
+import type { ItemInventory } from '@/model/ItemInventory';
+import SpellImage from '@/timeline/SpellImage.vue';
+import SpellEffects from '@/components/spells/SpellEffects.vue';
+import UniqueItemEffectDamageSource from './UniqueItemEffectDamageSource.vue';
 
-const props = defineProps({ inv: Array });
+const props = defineProps<{ inv: ItemInventory }>();
 const emit = defineEmits(['sellItem']);
 
-const item = (index) => {
+const item = (index: number) => {
   return items[props.inv[index]];
-};
-const sellAll = () => {
-  console.log('Selling all');
-  for (const [i, value] of props.inv.entries()) {
-    if (value) emit('sellItem', i);
-  }
 };
 
 /// TEST

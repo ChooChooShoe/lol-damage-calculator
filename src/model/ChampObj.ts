@@ -323,7 +323,7 @@ export class ChampObjModel implements ChampObjStats {
   }
 
   // runes: Perk[] = Array(9)
-  items: Item[] = Array(6);
+  itemInventory = new ItemInventory(this);
 
   bountyHunterStacks = 0;
   darkHarvestStacks = 0;
@@ -371,7 +371,6 @@ export class ChampObjModel implements ChampObjStats {
     return false;
   }
 }
-class Item {}
 class Rune {
   constructor(id: number) {}
 }
@@ -467,6 +466,7 @@ export interface Image {
 // }
 
 import { ChampionListData, type ChampionName } from './ChampionListData';
+import { ItemInventory } from './ItemInventory';
 
 export function getChampListEntry(champ: ChampionName): ChampListEntry {
   return ChampionListData[champ];

@@ -14,7 +14,7 @@
       >
       </RecursiveRatioDisplay>
 
-      <EffectTypeField v-model="effectType"></EffectTypeField>
+      <!-- <EffectTypeField v-model="effectType"></EffectTypeField> -->
       <DamageTypeField
         v-model="damage_type"
         v-if="effectType === 'Damage' || effectType === 'Shield'"

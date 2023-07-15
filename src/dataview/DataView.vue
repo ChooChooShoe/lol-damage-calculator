@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { computed, provide, reactive, ref } from 'vue';
-import ChampionListSkills from '../api//ChampionListSkills.json';
+import ChampionListSkills from '../api/ChampionListSkills.json';
 
 import ChampSearch from '../components/simple/ChampSearch.vue';
 import RecusiveView from './RecusiveView.vue';

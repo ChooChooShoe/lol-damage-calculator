@@ -1,35 +1,68 @@
 <template>
-  <div>Heal and Shield</div>
-
-  <!-- <template v-if="effect.effectType === 'Shield'">
+  <template v-if="effect.effectType === 'Shield'">
     <span class="ad spelleffect__title">Shield Strength: </span>
-    <div>
+    <span>
       <RecursiveRatioDisplay
         :val="effect"
-        :computed="computedRatioValues"
-        display="dmg_premitigation"
-        :index="index"
+        :computed-vals="computedRatioValues"
+        display="value"
       >
       </RecursiveRatioDisplay>
-      <span class="spelleffect__total">{{
-        ` = ${Math.round(computedRatioValues.scaledValueTotal.value)} `
-      }}</span>
-      <template v-if="repeat !== 1">
-        <span class="spelleffect__repeat">&times; {{ repeat }} ticks</span> =
-        <span class="spelleffect__total">{{
-          Math.round(dmg_premitigation * repeat)
-        }}</span>
-        <span class="spelleffect__total">&nbsp;</span>
-      </template>
-    </div>
-  </template> -->
+
+      <!-- <EffectTypeField v-model="effectType"></EffectTypeField> -->
+      <DamageTypeField
+        v-model="damage_type"
+        v-if="effectType === 'Damage' || effectType === 'Shield'"
+      >
+      </DamageTypeField>
+    </span>
+  </template>
+  <template v-else>
+    <span class="ad spelleffect__title">Heal: </span>
+    <span>
+      <RecursiveRatioDisplay
+        :val="effect"
+        :computed-vals="computedRatioValues"
+        display="value"
+      >
+      </RecursiveRatioDisplay>
+
+      <!-- <EffectTypeField v-model="effectType"></EffectTypeField> -->
+      <DamageTypeField
+        v-model="damage_type"
+        v-if="effectType === 'Damage' || effectType === 'Shield'"
+      >
+      </DamageTypeField>
+    </span>
+  </template>
 </template>
 
 <script setup lang="ts">
-import type { HealEffect, ShieldEffect } from '@/api/DataTypes';
+import type {
+  DamageType,
+  EffectType,
+  HealEffect,
+  ShieldEffect,
+  SkillData,
+} from '@/api/DataTypes';
+import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
+import { makeRootRatio } from '../ratios_info';
+import { type Ref, inject, ref } from 'vue';
+import type { ChampObjModel } from '@/model/ChampObj';
+import { DamageSource } from '@/model/league_data';
+
+const rankindex = inject<Ref<number>>('rankindex');
+const obj = inject<ChampObjModel>('obj');
+const damage_type = ref<DamageType>('Magic');
+const effectType = ref<EffectType>('Damage');
+const damageSource = new DamageSource('Magic', 65);
+
+const skillbase = inject<SkillData>('skillbase');
 
 const props = defineProps<{
   effect: HealEffect | ShieldEffect;
   pkey: string;
 }>();
+
+const computedRatioValues = makeRootRatio(props.effect, rankindex!, obj!);
 </script>
