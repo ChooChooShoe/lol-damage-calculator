@@ -1,4 +1,7 @@
 // This file is auto-generated
+
+import type { RootEffect, RootRatio } from "@/api/DataTypes";
+
 // prettier-ignore
 export type ItemNumber = 1001 | 1004 | 1006 | 1011 | 1018 | 1026 | 1027 | 1028 | 1029 | 1031 | 1033 | 1036 | 1037 | 1038 | 1042 | 1043 | 1052 | 1053 | 1054 | 1055 | 1056 | 1057 | 1058 | 1082 | 1083 | 1101 | 1102 | 1103 | 1501 | 1502 | 1503 | 1506 | 1507 | 1508 | 1509 | 1510 | 1511 | 1512 | 1515 | 2003 | 2010 | 2015 | 2031 | 2033 | 2051 | 2052 | 2055 | 2065 | 2138 | 2139 | 2140 | 2403 | 2419 | 2420 | 2421 | 2422 | 2423 | 3001 | 3003 | 3004 | 3006 | 3009 | 3011 | 3012 | 3020 | 3023 | 3024 | 3026 | 3031 | 3033 | 3035 | 3036 | 3040 | 3041 | 3042 | 3044 | 3046 | 3047 | 3050 | 3051 | 3053 | 3057 | 3065 | 3066 | 3067 | 3068 | 3070 | 3071 | 3072 | 3074 | 3075 | 3076 | 3077 | 3078 | 3082 | 3083 | 3084 | 3085 | 3086 | 3087 | 3089 | 3091 | 3094 | 3095 | 3100 | 3102 | 3105 | 3107 | 3108 | 3109 | 3110 | 3111 | 3112 | 3113 | 3114 | 3115 | 3116 | 3117 | 3119 | 3121 | 3123 | 3124 | 3133 | 3134 | 3135 | 3139 | 3140 | 3142 | 3143 | 3145 | 3152 | 3153 | 3155 | 3156 | 3157 | 3158 | 3161 | 3165 | 3177 | 3179 | 3181 | 3184 | 3190 | 3191 | 3193 | 3211 | 3222 | 3330 | 3340 | 3363 | 3364 | 3400 | 3504 | 3508 | 3513 | 3599 | 3742 | 3748 | 3801 | 3802 | 3803 | 3814 | 3850 | 3851 | 3853 | 3854 | 3855 | 3857 | 3858 | 3859 | 3860 | 3862 | 3863 | 3864 | 3901 | 3902 | 3903 | 3916 | 4005 | 4401 | 4628 | 4629 | 4630 | 4632 | 4633 | 4635 | 4636 | 4637 | 4638 | 4642 | 4643 | 4644 | 4645 | 6029 | 6035 | 6333 | 6609 | 6616 | 6617 | 6620 | 6630 | 6631 | 6632 | 6653 | 6655 | 6656 | 6657 | 6660 | 6662 | 6664 | 6665 | 6667 | 6670 | 6671 | 6672 | 6673 | 6675 | 6676 | 6677 | 6691 | 6692 | 6693 | 6694 | 6695 | 6696 | 7001 | 7002 | 7005 | 7006 | 7009 | 7010 | 7011 | 7012 | 7013 | 7014 | 7015 | 7016 | 7017 | 7018 | 7019 | 7020 | 7021 | 7023 | 7024 | 7025 | 7026 | 7027 | 7028 | 7029 | 7030 | 7031 | 7032 | 7033 | 8001 | 8020;
 
@@ -27,7 +30,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1001_class_t1_bootsofspeed.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -0px; width:48px; height:48px;",
     image: {
       full: '1001.png',
       sprite: 'item0.png',
@@ -39,7 +42,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       msflat: 25,
@@ -72,7 +77,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1004_class_t1_faeriecharm.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -0px; width:48px; height:48px;",
     image: {
       full: '1004.png',
       sprite: 'item0.png',
@@ -85,6 +90,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -120,7 +126,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1006_tank_t1_rejuvenationbead.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -0px; width:48px; height:48px;",
     image: {
       full: '1006.png',
       sprite: 'item0.png',
@@ -133,6 +139,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -167,7 +174,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1011_class_t2_giantsbelt.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -0px; width:48px; height:48px;",
     image: {
       full: '1011.png',
       sprite: 'item0.png',
@@ -180,6 +187,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       mage: true,
@@ -219,7 +227,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1018_base_t1_cloakagility.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -0px; width:48px; height:48px;",
     image: {
       full: '1018.png',
       sprite: 'item0.png',
@@ -232,6 +240,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
@@ -266,7 +275,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1026_mage_t1_blastingwand.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -0px; width:48px; height:48px;",
     image: {
       full: '1026.png',
       sprite: 'item0.png',
@@ -279,6 +288,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -314,7 +324,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1027_base_t1_saphirecrystal.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -288px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -288px -0px; width:48px; height:48px;",
     image: {
       full: '1027.png',
       sprite: 'item0.png',
@@ -327,6 +337,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       tank: true,
@@ -365,7 +376,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1028_base_t1_rubycrystal.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -0px; width:48px; height:48px;",
     image: {
       full: '1028.png',
       sprite: 'item0.png',
@@ -378,6 +389,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -417,7 +429,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1029_base_t1_clotharmor.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -0px; width:48px; height:48px;",
     image: {
       full: '1029.png',
       sprite: 'item0.png',
@@ -430,6 +442,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -469,7 +482,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1031_base_t2_chainvest.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -0px; width:48px; height:48px;",
     image: {
       full: '1031.png',
       sprite: 'item0.png',
@@ -482,6 +495,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -519,7 +533,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1033_base_t1_magicmantle.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -48px; width:48px; height:48px;",
     image: {
       full: '1033.png',
       sprite: 'item0.png',
@@ -532,6 +546,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -574,7 +589,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1036_class_t1_longsword.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -48px; width:48px; height:48px;",
     image: {
       full: '1036.png',
       sprite: 'item0.png',
@@ -587,6 +602,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -626,7 +642,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1037_class_t1_pickaxe.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -48px; width:48px; height:48px;",
     image: {
       full: '1037.png',
       sprite: 'item0.png',
@@ -639,6 +655,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -675,7 +692,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1038_marksman_t1_bfsword.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -48px; width:48px; height:48px;",
     image: {
       full: '1038.png',
       sprite: 'item0.png',
@@ -688,6 +705,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -724,7 +742,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1042_base_t1_dagger.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -48px; width:48px; height:48px;",
     image: {
       full: '1042.png',
       sprite: 'item0.png',
@@ -737,6 +755,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -773,7 +792,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1043_base_t2_recurvebow.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -48px; width:48px; height:48px;",
     image: {
       full: '1043.png',
       sprite: 'item0.png',
@@ -786,6 +805,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -800,6 +820,9 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|15 '''bonus''' magic damage}] [[on-hit]].",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal">15 <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -832,7 +855,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1052_mage_t2_amptome.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -48px; width:48px; height:48px;",
     image: {
       full: '1052.png',
       sprite: 'item0.png',
@@ -845,6 +868,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -880,7 +904,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1053_fighter_t2_vampiricscepter.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -96px; width:48px; height:48px;",
     image: {
       full: '1053.png',
       sprite: 'item0.png',
@@ -893,6 +917,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -930,7 +955,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1054_tank_t1_doransshield.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -96px; width:48px; height:48px;",
     image: {
       full: '1054.png',
       sprite: 'item0.png',
@@ -943,6 +968,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -961,12 +987,18 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|5 '''bonus''' physical damage}] [[on-hit]] against [[minions]].",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #FF8C34; white-space:normal">5 <b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> against <a href="/wiki/Minions" class="mw-redirect" title="Minions">minions</a>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Endure',
         unique: true,
         description:
           "After taking damage from a [[champion]] or large [[monster]], gain [[health regeneration]] equal to [{pp|0 to 40 for 11|type:'''current missing''' health|color:health|key1:%|0 to 75|formula:0.53 health regen for every 1% missing health}} health over 8 seconds. Reduced to{{ft|66% effectiveness|{{pp|0 to 26.4 for 11|type:'''current missing''' health|color:health|key1:%|0 to 75|formula:0.35 health regen for every 1% missing health}}}} on {{tip|ranged}] champions or when triggered by [[area of effect]], [[damage over time]], or [[damage|proc]].",
+        descriptionHTML:
+          'After taking damage from a <a href="/wiki/Champion" title="Champion">champion</a> or large <a href="/wiki/Monster" title="Monster">monster</a>, gain <a href="/wiki/Health_regeneration" title="Health regeneration">health regeneration</a> equal to <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="current missing health" data-displayformula="0.53 health regen for every 1% missing health" data-bot_values="0;4;8;12;16;20;24;28;32;36;40" data-top_values="0;7.5;15;22.5;30;37.5;45;52.5;60;67.5;75" data-top_key="%">0 − 40 (based on <b>current missing</b> health)</span> health over 8 seconds. Reduced to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;66% effectiveness&nbsp;」</span><span class="flipText2">「&nbsp;<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="current missing health" data-displayformula="0.35 health regen for every 1% missing health" data-bot_values="0;2.64;5.28;7.92;10.56;13.2;15.84;18.48;21.12;23.76;26.4" data-top_values="0;7.5;15;22.5;30;37.5;45;52.5;60;67.5;75" data-top_key="%">0 − 26.<small>4</small> (based on <b>current missing</b> health)</span>&nbsp;」</span></span> on <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ranged" class="mw-redirect" title="Ranged">ranged</a></span> champions or when triggered by <a href="/wiki/Area_of_effect" title="Area of effect">area of effect</a>, <a href="/wiki/Damage_over_time" title="Damage over time">damage over time</a>, or <a href="/wiki/Damage" title="Damage">proc</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -996,7 +1028,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1055_marksman_t1_doransblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -96px; width:48px; height:48px;",
     image: {
       full: '1055.png',
       sprite: 'item0.png',
@@ -1009,6 +1041,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -1024,6 +1057,9 @@ export default {
         name: 'Warmonger',
         unique: true,
         description: '+[{fd|2.5}]% [[omnivamp]]',
+        descriptionHTML:
+          '+2.<small>5</small>% <a href="/wiki/Omnivamp" class="mw-redirect" title="Omnivamp">omnivamp</a>',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1053,7 +1089,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1056_mage_t1_doransring.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -96px; width:48px; height:48px;",
     image: {
       full: '1056.png',
       sprite: 'item0.png',
@@ -1066,6 +1102,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       'mana and reg': true,
@@ -1081,12 +1118,18 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|5 '''bonus''' physical damage}] [[on-hit]] against [[minion]]s.",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #FF8C34; white-space:normal">5 <b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> against <a href="/wiki/Minion" class="mw-redirect" title="Minion">minions</a>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Drain',
         unique: true,
         description:
           'Restore [{as|1 mana}} every second, increased to {{as|{{fd|1.5}}|mana}} for 10 seconds when you damage an enemy champion. If you cannot gain mana, {{tip|heal}} for{{ft|45% of this value|{{ap|1.5*0.45}}}]instead.',
+        descriptionHTML:
+          'Restore <span style="color: #0099CC; white-space:normal">1 mana</span> every second, increased to <span style="color: #0099CC; white-space:normal">1.<small>5</small></span> for 10 seconds when you damage an enemy champion. If you cannot gain mana, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;45% of this value&nbsp;」</span><span class="flipText2">「&nbsp;0.<small>675</small>&nbsp;」</span></span>instead.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1116,7 +1159,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1057_tank_t2_negatroncloak.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -96px; width:48px; height:48px;",
     image: {
       full: '1057.png',
       sprite: 'item0.png',
@@ -1129,6 +1172,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       tank: true,
@@ -1165,7 +1209,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1058_mage_t1_largerod.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -96px; width:48px; height:48px;",
     image: {
       full: '1058.png',
       sprite: 'item0.png',
@@ -1178,6 +1222,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -1212,7 +1257,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1082_mage_t1_darkseal.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -288px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -288px -96px; width:48px; height:48px;",
     image: {
       full: '1082.png',
       sprite: 'item0.png',
@@ -1224,7 +1269,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Glory" title="Item group">Glory</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -1238,11 +1285,17 @@ export default {
         unique: true,
         description:
           "Gain 2 stacks for each champion [[kill]] and 1 stack for each [[assist]], up to a '''maximum''' of 10 stacks. Lose 5 stacks on [[death]]. Stacks are preserved when upgrading to [{ii|Mejai's Soulstealer}].",
+        descriptionHTML:
+          'Gain 2 stacks for each champion <a href="/wiki/Kill" title="Kill">kill</a> and 1 stack for each <a href="/wiki/Assist" title="Assist">assist</a>, up to a <b>maximum</b> of 10 stacks. Lose 5 stacks on <a href="/wiki/Death" title="Death">death</a>. Stacks are preserved when upgrading to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Mejai\'s Soulstealer" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Mejai%27s_Soulstealer" title="Mejai\'s Soulstealer"><img alt="Mejai\'s Soulstealer" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2e/Mejai%27s_Soulstealer_item.png/revision/latest/scale-to-width-down/20?cb=20201104235737" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Mejai\'s Soulstealer item.png" data-image-key="Mejai%27s_Soulstealer_item.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Mejai%27s_Soulstealer" title="Mejai\'s Soulstealer">Mejai\'s Soulstealer</a></span></span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Dread',
         unique: true,
         description: "Gain [{as|4 ability power}] for each stack of ''Glory''.",
+        descriptionHTML:
+          'Gain <span style="color: #7A6DFF; white-space:normal">4 ability power</span> for each stack of <i>Glory</i>.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1272,7 +1325,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1083_marksman_t1_cull.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -96px; width:48px; height:48px;",
     image: {
       full: '1083.png',
       sprite: 'item0.png',
@@ -1285,6 +1338,7 @@ export default {
     maps: ['SR'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -1295,6 +1349,7 @@ export default {
     stats: {
       ad: 7,
       spec: '+3 health on-hit',
+      spec_desc: '+3 health on-hit',
     },
     effects: {
       pass: {
@@ -1304,6 +1359,9 @@ export default {
           "Killing a [[minion]] grants an additional [{g|1}}, up to a '''maximum''' of {{g|100}].",
         description2:
           'After having killed 100 minions, grants an additional [{g|350}] and permanently disables this passive.',
+        descriptionHTML:
+          'Killing a <a href="/wiki/Minion" class="mw-redirect" title="Minion">minion</a> grants an additional <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="1 Gold"><img alt="1 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">1</span></span>, up to a <b>maximum</b> of <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="100 Gold"><img alt="100 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">100</span></span>.<br>After having killed 100 minions, grants an additional <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="350 Gold"><img alt="350 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">350</span></span> and permanently disables this passive.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1333,7 +1391,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1101_jungle_t1_scorchclawpup.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -96px; width:48px; height:48px;",
     image: {
       full: '1101.png',
       sprite: 'item0.png',
@@ -1345,7 +1403,10 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Jungle" title="Item group">Jungle</a> / Support</b></span> item.<br></p>',
+    requirementDescription:
+      'Can only be purchased if you have <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Smite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Smite" title="Smite"><img alt="Smite" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/05/Smite.png/revision/latest/scale-to-width-down/20?cb=20180514003641" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Smite.png" data-image-key="Smite.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Smite" title="Smite">Smite</a></span></span>.',
     menu: {
       fighter: true,
       marksman: true,
@@ -1356,6 +1417,7 @@ export default {
     },
     stats: {
       spec: '+20% damage against non-epic monsters',
+      spec_desc: '+20% damage against non-epic monsters',
     },
     effects: {
       pass: {
@@ -1363,6 +1425,9 @@ export default {
         unique: true,
         description:
           'After your pet reaches its final evolution, consumes this item to grant you the [{bi|Scorchclaw}] buff.',
+        descriptionHTML:
+          'After your pet reaches its final evolution, consumes this item to grant you the <span class="inline-image label-after buff-icon" style="display:inline;white-space:pre;" data-param="" data-buff="Scorchclaw" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Scorchclaw" title="Scorchclaw"><img alt="Scorchclaw" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/aa/Scorchclaw_buff.png/revision/latest/scale-to-width-down/20?cb=20230208040409" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Scorchclaw buff.png" data-image-key="Scorchclaw_buff.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Scorchclaw" class="mw-redirect" title="Scorchclaw">Scorchclaw</a></span></span> buff.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1392,7 +1457,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1102_jungle_t1_gustwalkerhatchling.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -96px; width:48px; height:48px;",
     image: {
       full: '1102.png',
       sprite: 'item0.png',
@@ -1404,7 +1469,10 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Jungle" title="Item group">Jungle</a> / Support</b></span> item.<br></p>',
+    requirementDescription:
+      'Can only be purchased if you have <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Smite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Smite" title="Smite"><img alt="Smite" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/05/Smite.png/revision/latest/scale-to-width-down/20?cb=20180514003641" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Smite.png" data-image-key="Smite.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Smite" title="Smite">Smite</a></span></span>.',
     menu: {
       fighter: true,
       marksman: true,
@@ -1415,6 +1483,7 @@ export default {
     },
     stats: {
       spec: '+20% damage against non-epic monsters',
+      spec_desc: '+20% damage against non-epic monsters',
     },
     effects: {
       pass: {
@@ -1422,6 +1491,9 @@ export default {
         unique: true,
         description:
           'After your pet reaches its final evolution, consumes this item to grant you the [{bi|Gustwalker}] buff.',
+        descriptionHTML:
+          'After your pet reaches its final evolution, consumes this item to grant you the <span class="inline-image label-after buff-icon" style="display:inline;white-space:pre;" data-param="" data-buff="Gustwalker" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gustwalker" title="Gustwalker"><img alt="Gustwalker" src="https://static.wikia.nocookie.net/leagueoflegends/images/d/dd/Gustwalker_buff.png/revision/latest/scale-to-width-down/20?cb=20230208040417" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Gustwalker buff.png" data-image-key="Gustwalker_buff.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Gustwalker" class="mw-redirect" title="Gustwalker">Gustwalker</a></span></span> buff.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1451,7 +1523,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1103_jungle_t1_mosstomperseedling.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -144px; width:48px; height:48px;",
     image: {
       full: '1103.png',
       sprite: 'item0.png',
@@ -1463,7 +1535,10 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Jungle" title="Item group">Jungle</a> / Support</b></span> item.<br></p>',
+    requirementDescription:
+      'Can only be purchased if you have <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Smite" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Smite" title="Smite"><img alt="Smite" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/05/Smite.png/revision/latest/scale-to-width-down/20?cb=20180514003641" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Smite.png" data-image-key="Smite.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Smite" title="Smite">Smite</a></span></span>.',
     menu: {
       fighter: true,
       marksman: true,
@@ -1474,6 +1549,7 @@ export default {
     },
     stats: {
       spec: '+20% damage against non-epic monsters',
+      spec_desc: '+20% damage against non-epic monsters',
     },
     effects: {
       pass: {
@@ -1481,6 +1557,9 @@ export default {
         unique: true,
         description:
           'After your pet reaches its final evolution, consumes this item to grant you the [{bi|Mosstomper}] buff.',
+        descriptionHTML:
+          'After your pet reaches its final evolution, consumes this item to grant you the <span class="inline-image label-after buff-icon" style="display:inline;white-space:pre;" data-param="" data-buff="Mosstomper" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Mosstomper" title="Mosstomper"><img alt="Mosstomper" src="https://static.wikia.nocookie.net/leagueoflegends/images/3/39/Mosstomper_buff.png/revision/latest/scale-to-width-down/20?cb=20230208040425" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Mosstomper buff.png" data-image-key="Mosstomper_buff.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Mosstomper" class="mw-redirect" title="Mosstomper">Mosstomper</a></span></span> buff.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -1509,7 +1588,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/34.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -144px; width:48px; height:48px;",
     image: {
       full: '1501.png',
       sprite: 'item0.png',
@@ -1522,6 +1601,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1530,6 +1610,8 @@ export default {
         unique: true,
         description:
           'Reduces all incoming damage by 50%. This item disappears after 5 minutes.',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Turret', 'GeneratedTip'],
@@ -1559,7 +1641,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3042_netherrift_armor.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -144px; width:48px; height:48px;",
     image: {
       full: '1502.png',
       sprite: 'item0.png',
@@ -1572,6 +1654,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1580,6 +1663,8 @@ export default {
         unique: true,
         description:
           'While no enemy [{tip|minions}} or {{ui|Rift Herald|Summoned Rift Herald}} are within range, gain {{fd|66.67%}] damage reduction and immunity to true damage.',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Turret'],
@@ -1608,7 +1693,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/096_eye_of_the_observer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -144px; width:48px; height:48px;",
     image: {
       full: '1503.png',
       sprite: 'item0.png',
@@ -1621,6 +1706,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1629,6 +1715,8 @@ export default {
         unique: true,
         description:
           'Can see [{tip|camouflage|camouflaged}} and {{tip|invisible}] units within 1200 units.',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Turret', 'GeneratedTip'],
@@ -1658,7 +1746,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3042_netherrift_armor.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -144px; width:48px; height:48px;",
     image: {
       full: '1506.png',
       sprite: 'item0.png',
@@ -1671,6 +1759,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1679,12 +1768,16 @@ export default {
         unique: true,
         description:
           'While no enemy [{tip|minions}} or {{ui|Rift Herald|Summoned Rift Herald}} are within range, gain {{fd|66.67%}} damage reduction and immunity to {{as|true damage}].',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
       pass2: {
         name: '',
         unique: true,
         description:
           'Base turrets have health regeneration, but cannot regenerate past their current segment. They are segmented at [{as|33%|health}}, {{as|66%|health}} and {{as|100% health}].',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Turret'],
@@ -1713,7 +1806,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1507_tournament_suddendeath.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -144px; width:48px; height:48px;",
     image: {
       full: '1507.png',
       sprite: 'item0.png',
@@ -1726,6 +1819,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1734,6 +1828,8 @@ export default {
         unique: true,
         description:
           "At 55 minutes, this turret begins to malfunction, losing [{as|armor}} and {{as|magic resist}}. After 5 minutes, it will start breaking down, losing an increasing percentage of its {{as|{{sti|health|'''maximum''' health}}}] every 30 seconds.",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Turret', 'GeneratedTip'],
@@ -1762,7 +1858,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1508_antitowersocks.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -192px; width:48px; height:48px;",
     image: {
       full: '1508.png',
       sprite: 'item0.png',
@@ -1775,6 +1871,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1783,6 +1880,8 @@ export default {
         unique: true,
         description:
           "[{tip|Turret}} basic attacks are modified to deal {{as|{{pp|key:%|14;11;8|Outer;Inner;Inhibitor/Nexus|type:turret type}} of this minion's '''maximum''' health}} as {{tt|pre-mitigation damage|Damage calculated before modifiers}].",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Minion', 'GeneratedTip'],
@@ -1811,7 +1910,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1509_gusto.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -192px; width:48px; height:48px;",
     image: {
       full: '1509.png',
       sprite: 'item0.png',
@@ -1824,6 +1923,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1832,6 +1932,8 @@ export default {
         unique: true,
         description:
           "[{tip|Turret}} basic attacks are modified to deal {{as|45% of this minion's '''maximum''' health}} as {{tt|pre-mitigation damage|Damage calculated before modifiers}].",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Minion', 'GeneratedTip'],
@@ -1860,7 +1962,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1510_phreakishgusto.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -192px; width:48px; height:48px;",
     image: {
       full: '1510.png',
       sprite: 'item0.png',
@@ -1873,6 +1975,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1881,6 +1984,8 @@ export default {
         unique: true,
         description:
           "[{tip|Turret}} basic attacks are modified to deal {{as|70% of this minion's '''maximum''' health}} as {{tt|pre-mitigation damage|Damage calculated before modifiers}].",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Minion', 'GeneratedTip'],
@@ -1909,7 +2014,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1511_supermecharmor.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -192px; width:48px; height:48px;",
     image: {
       full: '1511.png',
       sprite: 'item0.png',
@@ -1922,6 +2027,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1930,6 +2036,8 @@ export default {
         unique: true,
         description:
           "[{tip|Turret}} basic attacks are modified to deal {{as|7% of this minion's '''maximum''' health}} as {{tt|pre-mitigation damage|Damage calculated before modifiers}].",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Minion', 'GeneratedTip'],
@@ -1958,7 +2066,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1512_supermechpowerfield.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -192px; width:48px; height:48px;",
     image: {
       full: '1512.png',
       sprite: 'item0.png',
@@ -1971,6 +2079,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -1979,6 +2088,8 @@ export default {
         unique: true,
         description:
           'Grants nearby minions (excluding super minions) [{as|35 armor}} and {{as|35 magic resistance}].',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Minion', 'GeneratedTip'],
@@ -2007,7 +2118,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/1504_turretshielder.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -192px; width:48px; height:48px;",
     image: {
       full: '1515.png',
       sprite: 'item0.png',
@@ -2020,6 +2131,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -2028,6 +2140,8 @@ export default {
         unique: true,
         description:
           'Provides extra defensive measures. Attackers are rewarded for destroying portions of the plating. This item disappears after 14 minutes.',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Turret', 'GeneratedTip'],
@@ -2057,7 +2171,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2003_class_t1_healthpotion.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -240px; width:48px; height:48px;",
     image: {
       full: '2003.png',
       sprite: 'item0.png',
@@ -2069,14 +2183,16 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: 'Limited to 5 at a time.',
+    limit:
+      '<p>Limited to 1 type of <span class="template_sbc"><b><a href="/wiki/Item_group#Potion" title="Item group">Potion</a></b></span>.<br> Limited to 5 at a time.</p>',
+    requirementDescription: '',
     menu: {
       'health and reg': true,
     },
     stats: {},
     effects: {
       consume:
-        '[[Health regeneration|Regenerates]] [{as|4 [[health]]}} every {{fd|0.5}} seconds over 15 seconds, restoring a total of {{as|120 health}].',
+        '<a href="/wiki/Health_regeneration" title="Health regeneration">Regenerates</a> <span style="color: #1F995C; white-space:normal">4 <a href="/wiki/Health" title="Health">health</a></span> every 0.<small>5</small> seconds over 15 seconds, restoring a total of <span style="color: #1F995C; white-space:normal">120 health</span>.',
     },
     type: ['Consumable', 'Potion'],
     category: 'consumables',
@@ -2104,7 +2220,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2010_class_t1_totalbiscuitofeverlastingwill.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -240px; width:48px; height:48px;",
     image: {
       full: '2010.png',
       sprite: 'item0.png',
@@ -2117,11 +2233,13 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription:
+      'Requires <span class="inline-image label-after rune-icon" style="display:inline;white-space:pre;" data-param="" data-rune="Biscuit Delivery" data-game="lol"><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Biscuit_Delivery_(Rune)" title="Biscuit Delivery"><img alt="Biscuit Delivery" src="https://static.wikia.nocookie.net/leagueoflegends/images/8/8f/Biscuit_Delivery_rune.png/revision/latest/scale-to-width-down/20?cb=20171004081028" decoding="async" loading="lazy" width="20" height="20" data-image-name="Biscuit Delivery rune.png" data-image-key="Biscuit_Delivery_rune.png"></a></span> <span style="word-break: keep-all;;"><a href="/wiki/Biscuit_Delivery_(Rune)" class="mw-redirect" title="Biscuit Delivery (Rune)">Biscuit Delivery</a></span></span>.',
     menu: {},
     stats: {},
     effects: {
       consume:
-        "Restores [{as|8% of your '''missing''' health}} and {{as|8% of your '''missing''' mana}} over 5 seconds. Manaless champions instead restore {{as|12% of '''missing''' health}].",
+        'Restores <span style="color: #1F995C; white-space:normal">8% of your <b>missing</b> health</span> and <span style="color: #0099CC; white-space:normal">8% of your <b>missing</b> mana</span> over 5 seconds. Manaless champions instead restore <span style="color: #1F995C; white-space:normal">12% of <b>missing</b> health</span>.',
     },
     type: ['Consumable', 'Distributed'],
     category: 'distributives',
@@ -2150,7 +2268,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2015_marksman_t2_kirkcheisshard.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -240px; width:48px; height:48px;",
     image: {
       full: '2015.png',
       sprite: 'item0.png',
@@ -2163,6 +2281,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'onhit effects': true,
@@ -2176,12 +2295,18 @@ export default {
         unique: true,
         description:
           "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+        descriptionHTML:
+          'Moving and basic attacking generates <i>Energize</i> stacks, up to 100.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Jolt',
         unique: true,
         description:
           "When fully [{tip|Energized}}, your next basic attack deals {{as|60 '''bonus''' magic damage}] [[on-hit]].",
+        descriptionHTML:
+          'When fully <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Energized"><a href="/wiki/Named_item_effect#Energized" title="Named item effect"><img alt="Kircheis Shard item" src="/wiki/images/Kircheis_Shard_item.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Named_item_effect#Energized" title="Named item effect">Energized</a></span>, your next basic attack deals <span style="color: #00B0F0; white-space:normal">60 <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -2211,7 +2336,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2031_class_t1_refillablepotion.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -240px; width:48px; height:48px;",
     image: {
       full: '2031.png',
       sprite: 'item0.png',
@@ -2223,18 +2348,23 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 type of <span class="template_sbc"><b><a href="/wiki/Item_group#Potion" title="Item group">Potion</a></b></span>.<br></p>',
+    requirementDescription: '',
     menu: {
       'health and reg': true,
     },
     stats: {},
     effects: {
       consume:
-        'Consumes a charge to [[Health regeneration|regenerate]] [{as|{{fd|4.166}} [[health]]}} every {{fd|0.5}} seconds over 12 seconds, restoring a total of {{as|100 health}].',
+        'Consumes a charge to <a href="/wiki/Health_regeneration" title="Health regeneration">regenerate</a> <span style="color: #1F995C; white-space:normal">4.<small>166</small> <a href="/wiki/Health" title="Health">health</a></span> every 0.<small>5</small> seconds over 12 seconds, restoring a total of <span style="color: #1F995C; white-space:normal">100 health</span>.',
       pass: {
         name: '',
         unique: true,
         description: 'Holds charges that refill upon visiting the [[shop]].',
+        descriptionHTML:
+          'Holds charges that refill upon visiting the <a href="/wiki/Shop" title="Shop">shop</a> (2 charges).',
+        descriptionRatios: [],
         charges: 2,
       },
     },
@@ -2265,7 +2395,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2033_class_t1_corruptingpotion.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -240px; width:48px; height:48px;",
     image: {
       full: '2033.png',
       sprite: 'item0.png',
@@ -2277,7 +2407,9 @@ export default {
     },
     maps: ['SR'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 type of <span class="template_sbc"><b><a href="/wiki/Item_group#Potion" title="Item group">Potion</a></b></span>.<br></p>',
+    requirementDescription: '',
     menu: {
       'mana and reg': true,
       'health and reg': true,
@@ -2285,11 +2417,14 @@ export default {
     stats: {},
     effects: {
       consume:
-        "Consumes a charge to [[Health regeneration|regenerate]] [{as|{{fd|4.166}} health}} and {{as|{{fd|3.125}} mana}} every {{fd|0.5}} seconds over 12 seconds, for a total of {{as|100 health}} and {{as|75 mana}}. During this time, damaging [[basic attack]]s and [[ability damage]] against enemy champions burn them, dealing {{as|15 '''bonus''' magic damage}} over 3 seconds, increased to {{as|20|magic damage}} while the user cannot regenerate {{as|mana}]. '''Bonus''' damage is halved if applied by [[area of effect]] or [[damage over time]].",
+        'Consumes a charge to <a href="/wiki/Health_regeneration" title="Health regeneration">regenerate</a> <span style="color: #1F995C; white-space:normal">4.<small>166</small> health</span> and <span style="color: #0099CC; white-space:normal">3.<small>125</small> mana</span> every 0.<small>5</small> seconds over 12 seconds, for a total of <span style="color: #1F995C; white-space:normal">100 health</span> and <span style="color: #0099CC; white-space:normal">75 mana</span>. During this time, damaging <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> and <a href="/wiki/Ability_damage" title="Ability damage">ability damage</a> against enemy champions burn them, dealing <span style="color: #00B0F0; white-space:normal">15 <b>bonus</b> magic damage</span> over 3 seconds, increased to <span style="color: #00B0F0; white-space:normal">20</span> while the user cannot regenerate <span style="color: #0099CC; white-space:normal">mana</span>. <b>Bonus</b> damage is halved if applied by <a href="/wiki/Area_of_effect" title="Area of effect">area of effect</a> or <a href="/wiki/Damage_over_time" title="Damage over time">damage over time</a>.',
       pass: {
         name: '',
         unique: false,
         description: 'Holds charges that refill upon visiting the [[shop]].',
+        descriptionHTML:
+          'Holds charges that refill upon visiting the <a href="/wiki/Shop" title="Shop">shop</a> (3 charges).',
+        descriptionRatios: [],
         charges: 3,
       },
     },
@@ -2321,7 +2456,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2051_aram_t1_guardianshorn.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -240px; width:48px; height:48px;",
     image: {
       full: '2051.png',
       sprite: 'item0.png',
@@ -2333,7 +2468,9 @@ export default {
     },
     maps: ['HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Guardian" title="Item group">Guardian</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       tank: true,
@@ -2349,11 +2486,16 @@ export default {
         unique: true,
         description:
           "Reduces all sources of incoming champion damage by 15 ''([{fd|3.75}] against [[damage over time]] abilities)''.",
+        descriptionHTML:
+          'Reduces all sources of incoming champion damage by 15 <i>(3.<small>75</small> against <a href="/wiki/Damage_over_time" title="Damage over time">damage over time</a> abilities)</i>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Legendary',
         unique: true,
         description: 'This item counts as a Legendary item.',
+        descriptionHTML: 'This item counts as a Legendary item.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -2382,7 +2524,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2052_poro_snack.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -288px; width:48px; height:48px;",
     image: {
       full: '2052.png',
       sprite: 'item0.png',
@@ -2395,11 +2537,12 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: 'Limited to 2 at a time.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
       consume:
-        'Serves a scrumptious scoop to a nearby [[Poro]], causing it to grow in [[size]].',
+        'Serves a scrumptious scoop to a nearby <a href="/wiki/Poro" title="Poro">Poro</a>, causing it to grow in <a href="/wiki/Size" title="Size">size</a>.',
     },
     type: ['Consumable', 'Distributed'],
     category: 'distributives',
@@ -2428,7 +2571,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2055_class_t1_controlward.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -288px; width:48px; height:48px;",
     image: {
       full: '2055.png',
       sprite: 'item0.png',
@@ -2442,11 +2585,12 @@ export default {
     depth: 1,
     limit:
       'Can only carry 2 Control Wards in inventory. Limited to 1 Control Ward on the map per player.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
       consume:
-        'Places a visible [{tip|Control Ward}} at the target location (600 range), which {{lcfirst:{{tip data/Control ward|pst2|description}}}]',
+        'Places a visible <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Control ward"><a href="/wiki/Ward#Control_Ward" title="Ward"><img alt="Control Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/95/Control_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100404" decoding="async" loading="lazy" width="20" height="20" data-image-name="Control Ward icon.png" data-image-key="Control_Ward_icon.png"></a> <a href="/wiki/Ward#Control_Ward" title="Ward">Control Ward</a></span> at the target location (600 range), which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> over the surrounding 900 units. Cannot have its sight <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Disabled ward"><a href="/wiki/Ward" title="Ward"><img alt="Disabled Ward icon" src="/wiki/images/Disabled_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward" title="Ward">disabled</a></span>. Its sight also:<ul><li>Reveals and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Disabled ward"><a href="/wiki/Ward" title="Ward"><img alt="Disabled Ward icon" src="/wiki/images/Disabled_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward" title="Ward">disables</a></span> enemy wards.</li><li>Reveals enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealthed trap"><a href="/wiki/Stealth#Stealthed_traps_and_wards" title="Stealth"><img alt="Noxious Trap" src="/wiki/images/Teemo_Noxious_Trap.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stealth#Stealthed_traps_and_wards" title="Stealth">stealthed traps</a></span>.</li><li>Reveals <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Camouflage"><a href="/wiki/Stealth#Camouflage" title="Stealth"><img alt="Ambush 2" src="/wiki/images/Twitch_Ambush_2.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stealth#Camouflage" title="Stealth">Camouflaged</a></span> champions.</li></ul><p>It is also <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Exposed"><a href="/wiki/Sight" title="Sight"><img alt="Exposed icon" src="/wiki/images/Exposed_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">exposed</a></span> to enemies while it is revealing one of the above stealthed units, or granting vision of a <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Illaoi" data-ability="Prophet of an Elder God" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Illaoi/LoL#Prophet_of_an_Elder_God" title="Tentacle"><img alt="Tentacle" src="/wiki/images/Illaoi_Prophet_of_an_Elder_God.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Illaoi/LoL#Prophet_of_an_Elder_God" title="Illaoi/LoL">Tentacle</a></span></span>.</p>',
     },
     type: ['Consumable'],
     category: 'consumables',
@@ -2483,7 +2627,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2065_tank_t4_shurelyasbattlesong.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -288px; width:48px; height:48px;",
     image: {
       full: '2065.png',
       sprite: 'item0.png',
@@ -2495,7 +2639,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -2513,17 +2659,22 @@ export default {
         unique: true,
         description:
           "[{tip|Heal|Healing}}, {{tip|shield|shielding}}, or [[buff]]ing allied champions (''excluding yourself'') grants you and them {{as|20% '''bonus''' movement speed}} for {{fd|1.5}] seconds.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span>, or <a href="/wiki/Buff" title="Buff">buffing</a> allied champions (<i>excluding yourself</i>) grants you and them <span style="color: #F5EE99; white-space:normal">20% <b>bonus</b> movement speed</span> for 1.<small>5</small> seconds (4 (per champion) second cooldown).',
+        descriptionRatios: [],
         cd: '4 (per champion)',
       },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
       act: {
         name: 'Inspire',
         unique: true,
         description:
           "Grants you and all allies within 1000 units [{as|30% '''bonus''' movement speed}] for 4 seconds.",
+        descriptionHTML:
+          'Grants you and all allies within 1000 units <span style="color: #F5EE99; white-space:normal">30% <b>bonus</b> movement speed</span> for 4 seconds (75 second cooldown).',
+        descriptionRatios: [],
         cd: 75,
-      },
-      mythic: {
-        ah: 5,
       },
     },
     type: ['Mythic'],
@@ -2553,7 +2704,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2138_class_elixirofiron.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -288px; width:48px; height:48px;",
     image: {
       full: '2138.png',
       sprite: 'item0.png',
@@ -2565,7 +2716,10 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Elixir" title="Item group">Elixir</a></b></span> effect at a time. Drinking a different Elixir will replace the existing one\'s effects.<br></p>',
+    requirementDescription:
+      '<a href="/wiki/Experience_(champion)" title="Experience (champion)">Level 9</a> required to purchase.',
     menu: {
       'health and reg': true,
       movement: true,
@@ -2573,7 +2727,7 @@ export default {
     stats: {},
     effects: {
       consume:
-        "Grants [{as|300 '''bonus''' health}}, 25% {{tip|Tenacity}}, and 15% increased [[size]] for 180 seconds. While active, moving leaves behind a ''path'' briefly that grants {{as|15% '''bonus''' movement speed}] to allied champions within. '''Can be used while [[death|dead]].'''",
+        'Grants <span style="color: #1F995C; white-space:normal">300 <b>bonus</b> health</span>, 25% <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/3/33/Tenacity_icon.png/revision/latest/scale-to-width-down/20?cb=20170515203541" decoding="async" loading="lazy" width="20" height="20" data-image-name="Tenacity icon.png" data-image-key="Tenacity_icon.png"></a> <a href="/wiki/Tenacity" title="Tenacity">Tenacity</a></span>, and 15% increased <a href="/wiki/Size" title="Size">size</a> for 180 seconds. While active, moving leaves behind a <i>path</i> briefly that grants <span style="color: #F5EE99; white-space:normal">15% <b>bonus</b> movement speed</span> to allied champions within. <b>Can be used while <a href="/wiki/Death" title="Death">dead</a>.</b>',
     },
     type: ['Consumable'],
     category: 'consumables',
@@ -2602,7 +2756,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2139_class_t1_elixirofsorcery.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -288px; width:48px; height:48px;",
     image: {
       full: '2139.png',
       sprite: 'item0.png',
@@ -2614,7 +2768,10 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Elixir" title="Item group">Elixir</a></b></span> effect at a time. Drinking a different Elixir will replace the existing one\'s effects.<br></p>',
+    requirementDescription:
+      '<a href="/wiki/Experience_(champion)" title="Experience (champion)">Level 9</a> required to purchase.',
     menu: {
       'ability power': true,
       'mana and reg': true,
@@ -2623,7 +2780,7 @@ export default {
     stats: {},
     effects: {
       consume:
-        "Grants [{as|50 ability power}} and {{as|15 '''bonus''' mana regeneration}} for 180 seconds. While active, going in combat by affecting enemy [[champion|champions]] or [[turrets]] deals {{as|25 '''bonus''' true damage}] (5 second cooldown on each champion, no cooldown against turrets). '''Can be used while [[death|dead]].'''",
+        'Grants <span style="color: #7A6DFF; white-space:normal">50 ability power</span> and <span style="color: #0099CC; white-space:normal">15 <b>bonus</b> mana regeneration</span> for 180 seconds. While active, going in combat by affecting enemy <a href="/wiki/Champion" title="Champion">champions</a> or <a href="/wiki/Turrets" class="mw-redirect" title="Turrets">turrets</a> deals <span style="color: #F9966B; white-space:normal">25 <b>bonus</b> true damage</span> (5 second cooldown on each champion, no cooldown against turrets). <b>Can be used while <a href="/wiki/Death" title="Death">dead</a>.</b>',
     },
     type: ['Consumable'],
     category: 'consumables',
@@ -2652,7 +2809,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2140_class_t0_elixirofwrath.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -288px; width:48px; height:48px;",
     image: {
       full: '2140.png',
       sprite: 'item0.png',
@@ -2664,7 +2821,10 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Elixir" title="Item group">Elixir</a></b></span> effect at a time. Drinking a different Elixir will replace the existing one\'s effects.<br></p>',
+    requirementDescription:
+      '<a href="/wiki/Experience_(champion)" title="Experience (champion)">Level 9</a> required to purchase.',
     menu: {
       'attack damage': true,
       'lifesteal vamp': true,
@@ -2672,7 +2832,7 @@ export default {
     stats: {},
     effects: {
       consume:
-        "Grants [{as|30 '''bonus''' attack damage}} and {{tip|heals}} for 12% of {{as|physical damage}] dealt to champions for 180 seconds. The heal is reduced to 33% effectiveness for [[damage|area damage]]. '''Can be used while [[death|dead]].'''",
+        'Grants <span style="color:orange; white-space:normal">30 <b>bonus</b> attack damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> for 12% of <span style="color: #FF8C34; white-space:normal">physical damage</span> dealt to champions for 180 seconds. The heal is reduced to 33% effectiveness for <a href="/wiki/Damage" title="Damage">area damage</a>. <b>Can be used while <a href="/wiki/Death" title="Death">dead</a>.</b>',
     },
     type: ['Consumable'],
     category: 'consumables',
@@ -2700,7 +2860,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2403_minion_dematerializer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -288px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -288px -288px; width:48px; height:48px;",
     image: {
       full: '2403.png',
       sprite: 'item0.png',
@@ -2713,11 +2873,12 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: 'Cannot be used for the first 180 seconds.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
       consume:
-        'After a 1 second delay, [{tip|execute|executes}} the target enemy {{tip|minion}} ({{tip|er|icononly:true}] 550 range).',
+        'After a 1 second delay, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Execute"><a href="/wiki/Kill#Execute" title="Kill"><img alt="Death from Below" src="/wiki/images/Pyke_Death_from_Below.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Kill#Execute" title="Kill">executes</a></span> the target enemy <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Minion"><a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)"><img alt="Minion icon" src="/wiki/images/Minion_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Minion_(League_of_Legends)" title="Minion (League of Legends)">minion</a></span> (<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Er"><a href="/wiki/Range" title="Range"><img alt="Range model" src="/wiki/images/Range_model.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 550 range).',
     },
     type: ['Consumable', 'Distributed'],
     category: 'distributives',
@@ -2746,7 +2907,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2419_mage_t1_stopwatch.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -288px; width:48px; height:48px;",
     image: {
       full: '2419.png',
       sprite: 'item0.png',
@@ -2758,7 +2919,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      'Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Broken Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Broken_Stopwatch" title="Broken Stopwatch"><img alt="Broken Stopwatch" src="/wiki/images/Broken_Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Broken_Stopwatch" class="mw-redirect" title="Broken Stopwatch">Broken Stopwatch</a></span></span> when activated, which cannot be activated again. Once broken, all future purchases are also broken. Upgrades cost <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> more than the <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Stopwatch" title="real deal"><img alt="real deal" src="/wiki/images/Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Stopwatch" title="Stopwatch">real deal</a></span></span>.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -2767,6 +2930,9 @@ export default {
         unique: false,
         description:
           "Transforms into a [{ii|Perfectly Timed Stopwatch}} after 14 minutes. Scoring a {{tip|takedown}} against an enemy champion reduces this timer by 2 minutes. That '''Stopwatch''' contributes {{g|250}] to the items it builds into.",
+        descriptionHTML:
+          'Transforms into a <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Perfectly Timed Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Perfectly_Timed_Stopwatch" title="Perfectly Timed Stopwatch"><img alt="Perfectly Timed Stopwatch" src="/wiki/images/Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Perfectly_Timed_Stopwatch" class="mw-redirect" title="Perfectly Timed Stopwatch">Perfectly Timed Stopwatch</a></span></span> after 14 minutes. Scoring a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Takedown"><a href="/wiki/Takedown" title="Takedown"><img alt="Damage rating" src="/wiki/images/Damage_rating.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Takedown" title="Takedown">takedown</a></span> against an enemy champion reduces this timer by 2 minutes. That <b>Stopwatch</b> contributes <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="250 Gold"><img alt="250 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">250</span></span> to the items it builds into.',
+        descriptionRatios: [],
       },
     },
     type: ['Distributed', 'Basic'],
@@ -2796,7 +2962,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2419_mage_t1_stopwatch.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -288px; width:48px; height:48px;",
     image: {
       full: '2420.png',
       sprite: 'item0.png',
@@ -2809,7 +2975,8 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit:
-      "Cannot be purchased while owning [{ii|Guardian Angel}} or {{ii|Zhonya's Hourglass}}. Transforms into {{ii|Broken Stopwatch}] when activated, which cannot be activated again. Once broken, all future purchases are also broken. Limited to 1 '''Stopwatch'''.",
+      'Cannot be purchased while owning <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Guardian Angel" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Guardian_Angel" title="Guardian Angel"><img alt="Guardian Angel" src="/wiki/images/Guardian_Angel_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Guardian_Angel" title="Guardian Angel">Guardian Angel</a></span></span> or <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Zhonya\'s Hourglass" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Zhonya%27s_Hourglass" title="Zhonya\'s Hourglass"><img alt="Zhonya\'s Hourglass" src="/wiki/images/Zhonya%27s_Hourglass_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Zhonya%27s_Hourglass" title="Zhonya\'s Hourglass">Zhonya\'s Hourglass</a></span></span>. Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Broken Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Broken_Stopwatch" title="Broken Stopwatch"><img alt="Broken Stopwatch" src="/wiki/images/Broken_Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Broken_Stopwatch" class="mw-redirect" title="Broken Stopwatch">Broken Stopwatch</a></span></span> when activated, which cannot be activated again. Once broken, all future purchases are also broken. Limited to 1 <b>Stopwatch</b>.',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -2823,6 +2990,9 @@ export default {
         unique: true,
         description:
           'Put yourself in [{tip|stasis (buff)|stasis}} for {{fd|2.5}} seconds, rendering you {{tip|untargetable}} and {{tip|invulnerable}] for the duration but also unable to move, declare [[basic attack]]s, cast [[champion ability|abilities]], use [[summoner spell]]s, or [[active ability items|activate items]].',
+        descriptionHTML:
+          'Put yourself in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stasis (buff)"><a href="/wiki/Invulnerability#Stasis" title="Invulnerability"><img alt="Stasis icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e2/Stasis_icon.png/revision/latest/scale-to-width-down/20?cb=20150225124408" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stasis icon.png" data-image-key="Stasis_icon.png"></a> <a href="/wiki/Invulnerability#Stasis" title="Invulnerability">stasis</a></span> for 2.<small>5</small> seconds, rendering you <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Untargetable_icon.png/revision/latest/scale-to-width-down/20?cb=20220206063243" decoding="async" loading="lazy" width="20" height="20" data-image-name="Untargetable icon.png" data-image-key="Untargetable_icon.png"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="/wiki/images/Taric_Cosmic_Radiance.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span> for the duration but also unable to move, declare <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a>, cast <a href="/wiki/Champion_ability" title="Champion ability">abilities</a>, use <a href="/wiki/Summoner_spell" title="Summoner spell">summoner spells</a>, or <a href="/wiki/Active_ability_items" title="Active ability items">activate items</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Basic'],
@@ -2851,7 +3021,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2424_mage_t1_brokenstopwatch.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -288px; width:48px; height:48px;",
     image: {
       full: '2421.png',
       sprite: 'item0.png',
@@ -2864,7 +3034,8 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit:
-      'After breaking one [{ii|Stopwatch}}, the shopkeeper will only sell you {{ii|Broken Stopwatch|Broken Stopwatches}].',
+      'Cannot be purchased while owning <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Guardian Angel" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Guardian_Angel" title="Guardian Angel"><img alt="Guardian Angel" src="/wiki/images/Guardian_Angel_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Guardian_Angel" title="Guardian Angel">Guardian Angel</a></span></span> or <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Zhonya\'s Hourglass" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Zhonya%27s_Hourglass" title="Zhonya\'s Hourglass"><img alt="Zhonya\'s Hourglass" src="/wiki/images/Zhonya%27s_Hourglass_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Zhonya%27s_Hourglass" title="Zhonya\'s Hourglass">Zhonya\'s Hourglass</a></span></span>. Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Broken Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Broken_Stopwatch" title="Broken Stopwatch"><img alt="Broken Stopwatch" src="/wiki/images/Broken_Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Broken_Stopwatch" class="mw-redirect" title="Broken Stopwatch">Broken Stopwatch</a></span></span> when activated, which cannot be activated again. Once broken, all future purchases are also broken. Limited to 1 <b>Stopwatch</b>.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -2872,6 +3043,9 @@ export default {
         name: 'Shattered Time',
         unique: true,
         description: 'Is broken, but can still be upgraded.',
+        descriptionHTML:
+          'Put yourself in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stasis (buff)"><a href="/wiki/Invulnerability#Stasis" title="Invulnerability"><img alt="Stasis icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e2/Stasis_icon.png/revision/latest/scale-to-width-down/20?cb=20150225124408" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stasis icon.png" data-image-key="Stasis_icon.png"></a> <a href="/wiki/Invulnerability#Stasis" title="Invulnerability">stasis</a></span> for 2.<small>5</small> seconds, rendering you <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Untargetable_icon.png/revision/latest/scale-to-width-down/20?cb=20220206063243" decoding="async" loading="lazy" width="20" height="20" data-image-name="Untargetable icon.png" data-image-key="Untargetable_icon.png"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="/wiki/images/Taric_Cosmic_Radiance.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span> for the duration but also unable to move, declare <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a>, cast <a href="/wiki/Champion_ability" title="Champion ability">abilities</a>, use <a href="/wiki/Summoner_spell" title="Summoner spell">summoner spells</a>, or <a href="/wiki/Active_ability_items" title="Active ability items">activate items</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Basic'],
@@ -2901,7 +3075,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2422_class_t1_slightlymagicalboots.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -336px; width:48px; height:48px;",
     image: {
       full: '2422.png',
       sprite: 'item0.png',
@@ -2913,8 +3087,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit:
-      'Only available with [{ri|Magical Footwear}}. Replaces {{ii|Boots}] and is gained automatically at no cost after some time. Cannot be purchased beforehand.',
+    limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {
       msflat: 25,
@@ -2924,6 +3098,8 @@ export default {
         name: 'Slightly Quicker',
         unique: true,
         description: "Gain [{as|10 '''bonus''' movement speed}].",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Distributed', 'Boots'],
@@ -2953,7 +3129,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2419_mage_t1_stopwatch.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -336px; width:48px; height:48px;",
     image: {
       full: '2423.png',
       sprite: 'item0.png',
@@ -2966,7 +3142,8 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit:
-      'Transforms into [{ii|Broken Stopwatch}} when activated, which cannot be activated again. Once broken, all future purchases are also broken. Upgrades cost {{g|500}} more than the {{ii|Stopwatch|real deal}].',
+      'Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Broken Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Broken_Stopwatch" title="Broken Stopwatch"><img alt="Broken Stopwatch" src="/wiki/images/Broken_Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Broken_Stopwatch" class="mw-redirect" title="Broken Stopwatch">Broken Stopwatch</a></span></span> when activated, which cannot be activated again. Once broken, all future purchases are also broken. Upgrades cost <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> more than the <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Stopwatch" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Stopwatch" title="real deal"><img alt="real deal" src="/wiki/images/Stopwatch_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Stopwatch" title="Stopwatch">real deal</a></span></span>.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -2975,6 +3152,9 @@ export default {
         unique: true,
         description:
           'Put yourself in [{tip|stasis (buff)|stasis}} for {{fd|2.5}} seconds, rendering you {{tip|untargetable}} and {{tip|invulnerable}] for the duration but also unable to move, declare [[basic attack]]s, cast [[champion ability|abilities]], use [[summoner spell]]s, or [[active ability items|activate items]].',
+        descriptionHTML:
+          'Put yourself in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stasis (buff)"><a href="/wiki/Invulnerability#Stasis" title="Invulnerability"><img alt="Stasis icon" src="/wiki/images/Stasis_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability#Stasis" title="Invulnerability">stasis</a></span> for 2.<small>5</small> seconds, rendering you <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="/wiki/images/Taric_Cosmic_Radiance.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span> for the duration but also unable to move, declare <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a>, cast <a href="/wiki/Champion_ability" title="Champion ability">abilities</a>, use <a href="/wiki/Summoner_spell" title="Summoner spell">summoner spells</a>, or <a href="/wiki/Active_ability_items" title="Active ability items">activate items</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Distributed', 'Basic'],
@@ -3004,7 +3184,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3001_support_lunari.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -336px; width:48px; height:48px;",
     image: {
       full: '3001.png',
       sprite: 'item0.png',
@@ -3016,7 +3196,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -3033,11 +3215,12 @@ export default {
         unique: true,
         description:
           "Becoming affected by or applying an [{tip|immobilize|immobilizing}} or {{tip|ground|grounding}} effect to or from an enemy champion affects them and all enemy champions within {{tip|cr|icononly : true}] 600 units of you with ''Repent'', increasing the damage they take by 10% for 5 seconds.",
+        descriptionHTML:
+          'Becoming affected by or applying an <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilizing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ground"><a href="/wiki/Ground" title="Ground"><img alt="Grounded icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/26/Grounded_icon.png/revision/latest/scale-to-width-down/20?cb=20160509000039" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grounded icon.png" data-image-key="Grounded_icon.png"></a> <a href="/wiki/Ground" class="mw-redirect" title="Ground">grounding</a></span> effect to or from an enemy champion affects them and all enemy champions within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 600 units of you with <i>Repent</i>, increasing the damage they take by 10% for 5 seconds.',
+        descriptionRatios: [],
       },
-      mythic: {
-        armor: 5,
-        mr: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">5 armor</span> and <span style="color: #00FFFF; white-space:normal">5 magic resistance</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -3066,7 +3249,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3003_mage_t3_archangelstaff.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -336px; width:48px; height:48px;",
     image: {
       full: '3003.png',
       sprite: 'item0.png',
@@ -3078,7 +3261,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Lifeline" title="Item group">Lifeline</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -3094,18 +3279,27 @@ export default {
         unique: true,
         description:
           "Grants [{as|ability power}} equal to {{as|1% '''bonus''' mana}].",
+        descriptionHTML:
+          'Grants <span style="color: #7A6DFF; white-space:normal">ability power</span> equal to <span style="color: #0099CC; white-space:normal">1% <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Mana Charge',
         unique: true,
         description:
           "Grants a charge every 8 seconds, up to 4 charges. Affecting an enemy or ally with an [[champion ability|ability]] consumes a charge to grant [{as|3 '''bonus''' mana}}, increased to {{as|6|mana}} if they are a champion, up to a '''maximum''' of {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Grants a charge every 8 seconds, up to 4 charges. Affecting an enemy or ally with an <a href="/wiki/Champion_ability" title="Champion ability">ability</a> consumes a charge to grant <span style="color: #0099CC; white-space:normal">3 <b>bonus</b> mana</span>, increased to <span style="color: #0099CC; white-space:normal">6</span> if they are a champion, up to a <b>maximum</b> of <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass3: {
         name: '',
         unique: false,
         description:
           "Transforms into [{ii|Seraph's Embrace}} at {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Seraph\'s Embrace" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Seraph%27s_Embrace" title="Seraph\'s Embrace"><img alt="Seraph\'s Embrace" src="/wiki/images/Seraph%27s_Embrace_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Seraph%27s_Embrace" title="Seraph\'s Embrace">Seraph\'s Embrace</a></span></span> at <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -3141,7 +3335,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3004_marksman_t3_manamune.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -336px; width:48px; height:48px;",
     image: {
       full: '3004.png',
       sprite: 'item0.png',
@@ -3153,7 +3347,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -3171,18 +3367,27 @@ export default {
         unique: true,
         description:
           "Grants [{as|'''bonus''' attack damage}} equal to {{as|{{fd|2.5}}% '''maximum''' mana}].",
+        descriptionHTML:
+          'Grants <span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span> equal to <span style="color: #0099CC; white-space:normal">2.<small>5</small>% <b>maximum</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Mana Charge',
         unique: true,
         description:
           "Grants a charge every 8 seconds, up to 4 charges. Consumes a charge [[on-hit]] and whenever affecting an enemy or ally with an [[champion ability|ability]] to grant [{as|3 '''bonus''' mana}}, increased to {{as|6|mana}} for champion targets, up to a '''maximum''' of {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Grants a charge every 8 seconds, up to 4 charges. Consumes a charge <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and whenever affecting an enemy or ally with an <a href="/wiki/Champion_ability" title="Champion ability">ability</a> to grant <span style="color: #0099CC; white-space:normal">3 <b>bonus</b> mana</span>, increased to <span style="color: #0099CC; white-space:normal">6</span> for champion targets, up to a <b>maximum</b> of <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass3: {
         name: '',
         unique: false,
         description:
           "Transforms into [{ii|Muramana}} at {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Muramana" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Muramana" title="Muramana"><img alt="Muramana" src="/wiki/images/Muramana_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Muramana" title="Muramana">Muramana</a></span></span> at <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -3212,7 +3417,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3006_class_t2_berserkersgreaves.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -288px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -288px -336px; width:48px; height:48px;",
     image: {
       full: '3006.png',
       sprite: 'item0.png',
@@ -3224,7 +3429,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       as: 35,
@@ -3258,7 +3465,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3009_class_t2_bootsofswiftness.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -336px; width:48px; height:48px;",
     image: {
       full: '3009.png',
       sprite: 'item0.png',
@@ -3270,11 +3477,14 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       msflat: 60,
       spec: '+25% slow resist',
+      spec_desc: '+25% slow resist',
     },
     effects: {},
     type: ['Boots'],
@@ -3304,7 +3514,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3011_enchanter_t3_chemtechfumigator.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -336px; width:48px; height:48px;",
     image: {
       full: '3011.png',
       sprite: 'item0.png',
@@ -3316,7 +3526,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Chemtech Putrifier</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -3332,6 +3543,9 @@ export default {
         unique: true,
         description:
           'Dealing damage to enemy champions inflicts them with [{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'Dealing damage to enemy champions inflicts them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -3361,7 +3575,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3012_blessed_chalice.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -336px; width:48px; height:48px;",
     image: {
       full: '3012.png',
       sprite: 'item0.png',
@@ -3374,6 +3588,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -3388,6 +3603,9 @@ export default {
         unique: true,
         description:
           "Gain [{as|25% '''base''' health regeneration}} for every additional {{as|25% '''base''' mana regeneration}].",
+        descriptionHTML:
+          'Gain <span style="color: #1F995C; white-space:normal">25% <b>base</b> health regeneration</span> for every additional <span style="color: #0099CC; white-space:normal">25% <b>base</b> mana regeneration</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -3417,7 +3635,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3020_class_t2_sorcerersshoes.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -384px; width:48px; height:48px;",
     image: {
       full: '3020.png',
       sprite: 'item0.png',
@@ -3429,7 +3647,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       mpenflat: 18,
@@ -3463,7 +3683,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3023_lifewell_pendant.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -384px; width:48px; height:48px;",
     image: {
       full: '3023.png',
       sprite: 'item0.png',
@@ -3476,6 +3696,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -3513,7 +3734,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3024_tank_t2_glacialshroud.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -384px; width:48px; height:48px;",
     image: {
       full: '3024.png',
       sprite: 'item0.png',
@@ -3526,6 +3747,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -3563,7 +3785,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3026_fighter_t3_guardianangel.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -384px; width:48px; height:48px;",
     image: {
       full: '3026.png',
       sprite: 'item0.png',
@@ -3575,7 +3797,8 @@ export default {
     },
     maps: ['SR'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Guardian Angel</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -3591,6 +3814,9 @@ export default {
         unique: true,
         description:
           "Upon taking [[death|lethal damage]], enter [{tip|resurrection}} for 4 seconds, during which you are {{tip|invulnerable}}, {{tip|untargetable}}, and unable to act, and afterwards {{tip|heal}} for {{as|50% of '''base''' health}} and restore {{as|30% of '''maximum''' mana}].",
+        descriptionHTML:
+          'Upon taking <a href="/wiki/Death" title="Death">lethal damage</a>, enter <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Resurrection"><a href="/wiki/Death#Ways_to_prevent_death_when_reaching_zero_health" title="Death"><img alt="Revival icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/7c/Revival_icon.png/revision/latest/scale-to-width-down/20?cb=20170714051127" decoding="async" loading="lazy" width="20" height="20" data-image-name="Revival icon.png" data-image-key="Revival_icon.png"></a> <a href="/wiki/Death#Ways_to_prevent_death_when_reaching_zero_health" title="Death">resurrection</a></span> for 4 seconds, during which you are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/49/Taric_Cosmic_Radiance.png/revision/latest/scale-to-width-down/20?cb=20160608034537" decoding="async" loading="lazy" width="20" height="20" data-image-name="Taric Cosmic Radiance.png" data-image-key="Taric_Cosmic_Radiance.png"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="/wiki/images/Untargetable_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span>, and unable to act, and afterwards <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for <span style="color: #1F995C; white-space:normal">50% of <b>base</b> health</span> and restore <span style="color: #0099CC; white-space:normal">30% of <b>maximum</b> mana</span> (300 (starts after resurrecting) second cooldown).',
+        descriptionRatios: [],
         cd: '300 (starts after resurrecting)',
       },
     },
@@ -3621,7 +3847,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3031_marksman_t3_infinityedge.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -384px; width:48px; height:48px;",
     image: {
       full: '3031.png',
       sprite: 'item0.png',
@@ -3633,19 +3859,20 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
     stats: {
       ad: 70,
       crit: 20,
-      spec: '+35% critical strike damage',
+      critdamage: 35,
     },
     effects: {
-      mythic: {
-        ad: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">5 <b>bonus</b> attack damage</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -3674,7 +3901,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3033_marksman_t3_mortalreminder.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -384px; width:48px; height:48px;",
     image: {
       full: '3033.png',
       sprite: 'item0.png',
@@ -3686,7 +3913,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Last_Whisper" title="Item group">Last Whisper</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
@@ -3701,6 +3930,9 @@ export default {
         unique: true,
         description:
           'Dealing [{as|physical damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemy champions inflicts them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -3730,7 +3962,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3035_marksman_t2_lastwhisper.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -288px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -288px -384px; width:48px; height:48px;",
     image: {
       full: '3035.png',
       sprite: 'item0.png',
@@ -3742,7 +3974,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Last_Whisper" title="Item group">Last Whisper</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -3780,7 +4014,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3036_marksman_t3_dominikregards.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -384px; width:48px; height:48px;",
     image: {
       full: '3036.png',
       sprite: 'item0.png',
@@ -3792,7 +4026,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Last_Whisper" title="Item group">Last Whisper</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
@@ -3807,6 +4043,9 @@ export default {
         unique: true,
         description:
           "Deal [{pp|type:'''maximum''' health difference|color:health|key:%|0 to 25 for 11|0 to 2500|formula:1% per 100 greater '''maximum''' health}} '''bonus''' damage against enemy champions with greater {{as|'''maximum''' health}] than you.",
+        descriptionHTML:
+          'Deal <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="maximum health difference" data-displayformula="1% per 100 greater \'\'\'maximum\'\'\' health" data-bot_values="0;2.5;5;7.5;10;12.5;15;17.5;20;22.5;25" data-top_values="0;250;500;750;1000;1250;1500;1750;2000;2250;2500" data-bot_key="%">0% − 25% (based on <b>maximum</b> health difference)</span> <b>bonus</b> damage against enemy champions with greater <span style="color: #1F995C; white-space:normal"><b>maximum</b> health</span> than you.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -3836,7 +4075,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3048_mage_t3_seraphsembrace.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -384px; width:48px; height:48px;",
     image: {
       full: '3040.png',
       sprite: 'item0.png',
@@ -3848,7 +4087,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Lifeline" title="Item group">Lifeline</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       ap: 70,
@@ -3862,12 +4103,18 @@ export default {
         unique: true,
         description:
           "Grants [{as|ability power}} equal to {{as|{{fd|2.5}}% '''bonus''' mana}].",
+        descriptionHTML:
+          'Grants <span style="color: #7A6DFF; white-space:normal">ability power</span> equal to <span style="color: #0099CC; white-space:normal">2.<small>5</small>% <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Lifeline',
         unique: true,
         description:
           "If you would take damage that would reduce you below [{as|30% of your '''maximum''' health}}, you first gain a {{tip|shield}} that absorbs 250 {{as|(+ 20% '''current''' mana)}] damage for 3 seconds.",
+        descriptionHTML:
+          'If you would take damage that would reduce you below <span style="color: #1F995C; white-space:normal">30% of your <b>maximum</b> health</span>, you first gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> that absorbs 250 <span style="color: #0099CC; white-space:normal">(+&nbsp;20% <b>current</b> mana)</span> damage for 3 seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -3898,7 +4145,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3041_mage_t2_mejaissoulstealer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -384px; width:48px; height:48px;",
     image: {
       full: '3041.png',
       sprite: 'item0.png',
@@ -3910,7 +4157,9 @@ export default {
     },
     maps: ['SR'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Glory" title="Item group">Glory</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -3925,12 +4174,18 @@ export default {
         unique: true,
         description:
           "Gain 4 stacks for each champion [[kill]] and 2 stacks for each [[assist]], up to a '''maximum''' of 25 stacks. Lose 10 stacks on [[death]]. Stacks are preserved from [{ii|Dark Seal}].",
+        descriptionHTML:
+          'Gain 4 stacks for each champion <a href="/wiki/Kill" title="Kill">kill</a> and 2 stacks for each <a href="/wiki/Assist" title="Assist">assist</a>, up to a <b>maximum</b> of 25 stacks. Lose 10 stacks on <a href="/wiki/Death" title="Death">death</a>. Stacks are preserved from <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Dark Seal" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Dark_Seal" title="Dark Seal"><img alt="Dark Seal" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/45/Dark_Seal_item.png/revision/latest/scale-to-width-down/20?cb=20201103214827" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Dark Seal item.png" data-image-key="Dark_Seal_item.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Dark_Seal" title="Dark Seal">Dark Seal</a></span></span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Dread',
         unique: true,
         description:
           "Gain [{as|5 ability power}} for each stack of ''Glory'', up to {{as|125|ap}} at '''maximum''' stacks, and {{as|10% '''bonus''' movement speed}] if you have at least 10 stacks.",
+        descriptionHTML:
+          'Gain <span style="color: #7A6DFF; white-space:normal">5 ability power</span> for each stack of <i>Glory</i>, up to <span style="color: #7A6DFF; white-space:normal">125</span> at <b>maximum</b> stacks, and <span style="color: #F5EE99; white-space:normal">10% <b>bonus</b> movement speed</span> if you have at least 10 stacks.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -3966,7 +4221,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3042_marksman_t3_muramana.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -0px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -0px -432px; width:48px; height:48px;",
     image: {
       full: '3042.png',
       sprite: 'item0.png',
@@ -3978,7 +4233,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -3996,12 +4253,18 @@ export default {
         unique: true,
         description:
           "Grants [{as|'''bonus''' attack damage}} equal to {{as|{{fd|2.5}}% '''maximum''' mana}].",
+        descriptionHTML:
+          'Grants <span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span> equal to <span style="color: #0099CC; white-space:normal">2.<small>5</small>% <b>maximum</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Shock',
         unique: true,
         description:
           "Basic attacks [[on-hit]] against champions deal [{as|{{as|{{fd|1.5}}% '''maximum''' mana}} '''bonus''' physical damage}}. Dealing {{tip|ability damage}} to champions deals {{as|{{as|{{rd|{{fd|3.5}}%|{{fd|2.7}}%}} '''maximum''' mana}} {{as|(+ 6% AD)}} '''bonus''' physical damage|physical damage}}. Can only be triggered on the same target once every {{fd|6.5}] seconds from the same attack or cast.",
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> against champions deal <span style="color: #FF8C34; white-space:normal"><span style="color: #0099CC; white-space:normal">1.<small>5</small>% <b>maximum</b> mana</span> <b>bonus</b> physical damage</span>. Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> to champions deals <span style="color: #FF8C34; white-space:normal"><span style="color: #0099CC; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 3.<small>5</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 2.<small>7</small>%</span>)</span> <b>maximum</b> mana</span> <span style="color:orange; white-space:normal">(+&nbsp;6% AD)</span> <b>bonus</b> physical damage</span>. Can only be triggered on the same target once every 6.<small>5</small> seconds from the same attack or cast.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4031,7 +4294,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3044_fighter_t2_phage.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -48px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -48px -432px; width:48px; height:48px;",
     image: {
       full: '3044.png',
       sprite: 'item0.png',
@@ -4044,6 +4307,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       tank: true,
@@ -4058,6 +4322,9 @@ export default {
         unique: true,
         description:
           "After dealing [{as|physical damage}} to an enemy champion, {{tip|heal}} for {{as|{{rd|{{fd|1.6}}%|{{fd|0.8}}%}} of '''maximum''' health}] over 6 seconds.",
+        descriptionHTML:
+          'After dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> to an enemy champion, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for <span style="color: #1F995C; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 1.<small>6</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 0.<small>8</small>%</span>)</span> of <b>maximum</b> health</span> over 6 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -4093,7 +4360,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3046_marksman_t3_phantomdancer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -96px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -96px -432px; width:48px; height:48px;",
     image: {
       full: '3046.png',
       sprite: 'item0.png',
@@ -4105,7 +4372,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Phantom Dancer</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       movement: true,
@@ -4122,6 +4390,9 @@ export default {
         unique: true,
         description:
           "Basic attacks [[on-attack]] grant [{tip|ghosting}}, {{as|7% '''bonus''' movement speed}}, and a stack of ''Spectral Waltz'' for 3 seconds, up to 4 stacks. While at 4 stacks, gain {{as|30% '''bonus''' attack speed}].",
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-attack" class="mw-redirect" title="On-attack">on-attack</a> grant <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosting"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/ab/Ghost.png/revision/latest/scale-to-width-down/20?cb=20180514003209" decoding="async" loading="lazy" width="20" height="20" data-image-name="Ghost.png" data-image-key="Ghost.png"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosting</a></span>, <span style="color: #F5EE99; white-space:normal">7% <b>bonus</b> movement speed</span>, and a stack of <i>Spectral Waltz</i> for 3 seconds, up to 4 stacks. While at 4 stacks, gain <span style="color:orangered; white-space:normal">30% <b>bonus</b> attack speed</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4151,7 +4422,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3047_class_t2_ninjatabi.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -144px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -144px -432px; width:48px; height:48px;",
     image: {
       full: '3047.png',
       sprite: 'item0.png',
@@ -4163,7 +4434,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       armor: 20,
@@ -4175,6 +4448,9 @@ export default {
         unique: true,
         description:
           "Reduces incoming [[damage]] from all [[basic attack]]s by 12% (''excluding [[turret]] attacks'').",
+        descriptionHTML:
+          'Reduces incoming <a href="/wiki/Damage" title="Damage">damage</a> from all <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> by 12% (<i>excluding <a href="/wiki/Turret" title="Turret">turret</a> attacks</i>).',
+        descriptionRatios: [],
       },
     },
     type: ['Boots'],
@@ -4211,7 +4487,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3050_enchanter_t3_zekesconvergence.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -192px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -192px -432px; width:48px; height:48px;",
     image: {
       full: '3050.png',
       sprite: 'item0.png',
@@ -4223,7 +4499,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Zeke's Convergence</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -4236,19 +4513,25 @@ export default {
       mana: 250,
     },
     effects: {
-      act: {
-        name: 'Conduit',
-        unique: true,
-        description:
-          "Designate the target allied champion as the ''Accomplice'', forming a [{tip|tether}] between you and them. Champions can only be designated as the ''Accomplice'' by one '''Zeke's Convergence''' at a time.",
-        cd: 60,
-        range: '[{tip|cr|icononly:true}] 1250',
-      },
       pass: {
         name: 'Convergence',
         unique: true,
         description:
           "[{tip|Immobilize|Immobilizing}} enemy champions marks them for 8 seconds. Your ''Accomplice's'' basic attacks [[on-hit]] and ability hits against marked enemies fire a missile at them that deals {{as|{{pp|30 to 70}} {{as|(+ {{fd|7.5}}% AP)}} {{as|(+ {{fd|1.5}}% '''maximum''' health)}} '''bonus''' magic damage|magic damage}] upon arrival.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">Immobilizing</a></span> enemy champions marks them for 8 seconds. Your <i>Accomplice\'s</i> basic attacks <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and ability hits against marked enemies fire a missile at them that deals <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="30;" data-finish="70;" data-bot_values="30;32.35;34.71;37.06;39.41;41.76;44.12;46.47;48.82;51.18;53.53;55.88;58.24;60.59;62.94;65.29;67.65;70" data-top_values="">30 − 70 (based on level)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;7.<small>5</small>% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;1.<small>5</small>% <b>maximum</b> health)</span> <b>bonus</b> magic damage</span> upon arrival.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Conduit',
+        unique: true,
+        description:
+          "Designate the target allied champion as the ''Accomplice'', forming a [{tip|tether}] between you and them. Champions can only be designated as the ''Accomplice'' by one '''Zeke's Convergence''' at a time.",
+        descriptionHTML:
+          'Designate the target allied champion as the <i>Accomplice</i>, forming a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tether"><a href="/wiki/Tether" title="Tether"><img alt="Focused Resolve" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/57/Karma_Focused_Resolve.png/revision/latest/scale-to-width-down/20?cb=20130929122918" decoding="async" loading="lazy" width="20" height="20" data-image-name="Karma Focused Resolve.png" data-image-key="Karma_Focused_Resolve.png"></a> <a href="/wiki/Tether" title="Tether">tether</a></span> between you and them. Champions can only be designated as the <i>Accomplice</i> by one <b>Zeke\'s Convergence</b> at a time (60 second cooldown; <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 1250 range).',
+        descriptionRatios: [],
+        cd: 60,
+        range: '[{tip|cr|icononly:true}] 1250',
       },
     },
     type: ['Legendary'],
@@ -4278,7 +4561,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3051_fighter_t2_axeofavarosa.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -240px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -240px -432px; width:48px; height:48px;",
     image: {
       full: '3051.png',
       sprite: 'item0.png',
@@ -4291,6 +4574,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       movement: true,
@@ -4306,6 +4590,9 @@ export default {
         unique: true,
         description:
           "Basic attacks grant [{as|{{rd|20|10}} '''bonus''' movement speed}] for 2 seconds.",
+        descriptionHTML:
+          'Basic attacks grant <span style="color: #F5EE99; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 20</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 10</span>)</span> <b>bonus</b> movement speed</span> for 2 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -4335,7 +4622,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3053_steraks_gage.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -288px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -288px -432px; width:48px; height:48px;",
     image: {
       full: '3053.png',
       sprite: 'item0.png',
@@ -4347,7 +4634,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Lifeline" title="Item group">Lifeline</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       tank: true,
@@ -4361,12 +4650,18 @@ export default {
         unique: true,
         description:
           "Gain [{as|'''bonus''' attack damage}} equal to {{as|50% '''base''' AD}].",
+        descriptionHTML:
+          'Gain <span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span> equal to <span style="color:orange; white-space:normal">50% <b>base</b> AD</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Lifeline',
         unique: true,
         description:
           "If you would take damage that would reduce you below [{as|30% of your '''maximum''' health}}, gain a {{tip|shield}} equal to {{as|80% of '''bonus''' health}} that decays over {{fd|4.5}} seconds as well as 25% increased [[size]] and 30% {{tip|tenacity}] for 8 seconds.",
+        descriptionHTML:
+          'If you would take damage that would reduce you below <span style="color: #1F995C; white-space:normal">30% of your <b>maximum</b> health</span>, gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> equal to <span style="color: #1F995C; white-space:normal">80% of <b>bonus</b> health</span> that decays over 4.<small>5</small> seconds as well as 25% increased <a href="/wiki/Size" title="Size">size</a> and 30% <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span> for 8 seconds (60 second cooldown).',
+        descriptionRatios: [],
         cd: 60,
       },
     },
@@ -4397,7 +4692,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3057_fighter_t2_sheen.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -336px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -336px -432px; width:48px; height:48px;",
     image: {
       full: '3057.png',
       sprite: 'item0.png',
@@ -4410,6 +4705,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -4423,6 +4719,9 @@ export default {
         unique: true,
         description:
           "After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals [{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}] [[on-hit]].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">100% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
     },
@@ -4459,7 +4758,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3065_tank_t3_spiritvisage.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -384px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -384px -432px; width:48px; height:48px;",
     image: {
       full: '3065.png',
       sprite: 'item0.png',
@@ -4471,7 +4770,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Spirit Visage</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -4487,6 +4787,9 @@ export default {
         unique: true,
         description:
           'Increases all [{tip|heal|healing}} and {{tip|shield|shielding}} received as well as {{stil|health regeneration}] by 25%.',
+        descriptionHTML:
+          'Increases all <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">healing</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> received as well as <span style="white-space:nowrap"><a href="/wiki/Health_regeneration" title="Health regeneration"><img alt="Health regeneration icon" src="/wiki/images/Health_regeneration_icon.png" decoding="async" loading="lazy" width="15" height="15" class="lazyload"></a>&nbsp;<a href="/wiki/Health_regeneration" title="Health regeneration">health regeneration</a></span> by 25%.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4516,7 +4819,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3066_tank_t3_wingedmoonplate.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item0.png') -432px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item0.png') -432px -432px; width:48px; height:48px;",
     image: {
       full: '3066.png',
       sprite: 'item0.png',
@@ -4529,6 +4832,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
       movement: true,
@@ -4541,6 +4845,9 @@ export default {
         name: 'Flight',
         unique: true,
         description: "Gain [{as|5% '''bonus''' movement speed}].",
+        descriptionHTML:
+          'Gain <span style="color: #F5EE99; white-space:normal">5% <b>bonus</b> movement speed</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -4573,7 +4880,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3067_tank_t1_kindlegem.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -0px; width:48px; height:48px;",
     image: {
       full: '3067.png',
       sprite: 'item1.png',
@@ -4586,6 +4893,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -4626,7 +4934,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3068_tank_t4_sunfireaegis.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -0px; width:48px; height:48px;",
     image: {
       full: '3068.png',
       sprite: 'item1.png',
@@ -4638,7 +4946,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Immolate" title="Item group">Immolate</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -4652,6 +4962,9 @@ export default {
         unique: true,
         description:
           "Taking or dealing damage activates this passive for 3 seconds. Deal [{as|15 {{as|(+ {{fd|1.75}}% '''bonus''' health)}} magic damage|magic damage}} every second to enemies within {{tip|cr|icononly : true}] 325 (+ 100% '''bonus''' [[size]]) units, with the damage being increased by 25% against minions. This executes minions that would be killed by one more tick of damage. Damaging enemy champions or epic monsters with this effect grants a stack for 5 seconds that increases subsequent ''Immolate'' damage by 10%, stacking up to 6 times for a 60% increase.",
+        descriptionHTML:
+          'Taking or dealing damage activates this passive for 3 seconds. Deal <span style="color: #00B0F0; white-space:normal">15 <span style="color: #1F995C; white-space:normal">(+&nbsp;1.<small>75</small>% <b>bonus</b> health)</span> magic damage</span> every second to enemies within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 325 (+ 100% <b>bonus</b> <a href="/wiki/Size" title="Size">size</a>) units, with the damage being increased by 25% against minions. This executes minions that would be killed by one more tick of damage. Damaging enemy champions or epic monsters with this effect grants a stack for 5 seconds that increases subsequent <i>Immolate</i> damage by 10%, stacking up to 6 times for a 60% increase.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4681,7 +4994,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3070_all_t1_tearofthegoddess.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -0px; width:48px; height:48px;",
     image: {
       full: '3070.png',
       sprite: 'item1.png',
@@ -4693,7 +5006,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       mage: true,
@@ -4707,12 +5022,18 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|5 '''bonus''' physical damage}] [[on-hit]] against minions.",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #FF8C34; white-space:normal">5 <b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> against minions.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Mana Charge',
         unique: true,
         description:
           "Grants a charge every 8 seconds, up to 4 charges. Affecting an enemy or ally with an [[champion ability|ability]] consumes a charge to grant [{as|3 '''bonus''' mana}}, increased to {{as|6|mana}} if they are a champion, up to '''maximum''' of {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Grants a charge every 8 seconds, up to 4 charges. Affecting an enemy or ally with an <a href="/wiki/Champion_ability" title="Champion ability">ability</a> consumes a charge to grant <span style="color: #0099CC; white-space:normal">3 <b>bonus</b> mana</span>, increased to <span style="color: #0099CC; white-space:normal">6</span> if they are a champion, up to <b>maximum</b> of <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -4750,7 +5071,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3071_fighter_t3_blackcleaver.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -0px; width:48px; height:48px;",
     image: {
       full: '3071.png',
       sprite: 'item1.png',
@@ -4762,7 +5083,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Black Cleaver</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -4780,12 +5102,18 @@ export default {
         unique: true,
         description:
           "Dealing [{as|physical damage}} to an enemy champion applies a stack of ''Carve'' for 6 seconds, stacking up to 6 times. Each stack inflicts {{as|5% armor reduction}}, up to {{as|30%|armor}] at 6 stacks.",
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> to an enemy champion applies a stack of <i>Carve</i> for 6 seconds, stacking up to 6 times. Each stack inflicts <span style="color:yellow; white-space:normal">5% armor reduction</span>, up to <span style="color:yellow; white-space:normal">30%</span> at 6 stacks.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Rage',
         unique: true,
         description:
           "Dealing [{as|physical damage}} to an enemy champion grants {{as|3 '''bonus''' movement speed}} per stack of ''Carve'' on them for 2 seconds, up to {{as|18|ms}].",
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> to an enemy champion grants <span style="color: #F5EE99; white-space:normal">3 <b>bonus</b> movement speed</span> per stack of <i>Carve</i> on them for 2 seconds, up to <span style="color: #F5EE99; white-space:normal">18</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4815,7 +5143,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3072_fighter_t3_bloodthirster.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -0px; width:48px; height:48px;",
     image: {
       full: '3072.png',
       sprite: 'item1.png',
@@ -4827,7 +5155,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Bloodthirster</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
@@ -4842,6 +5171,9 @@ export default {
         unique: true,
         description:
           "While above [{as|50% '''maximum''' health}}, gain {{as|{{pp|10;15 to 40 for 6|1;13 to 18}} '''bonus''' attack damage}].",
+        descriptionHTML:
+          'While above <span style="color: #1F995C; white-space:normal">50% <b>maximum</b> health</span>, gain <span style="color:orange; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="10;15;20;25;30;35;40" data-top_values="1;13;14;15;16;17;18">10 − 40 (based on level)</span> <b>bonus</b> attack damage</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4877,7 +5209,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3074_fighter_t3_ravenoushydra.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -0px; width:48px; height:48px;",
     image: {
       full: '3074.png',
       sprite: 'item1.png',
@@ -4889,7 +5221,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Hydra" title="Item group">Hydra</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -4905,12 +5239,18 @@ export default {
         unique: true,
         description:
           'Damaging basic attacks and [{tip|ability damage}} from [[champion ability|abilities]] deal {{rd|{{as|40% AD}}|{{as|20% AD}}}} {{as|physical damage}] to other enemies within 350 units of the target damaged. Can only hit each target once per attack or ability, and may only trigger once every 10 seconds from the same cast.',
+        descriptionHTML:
+          'Damaging basic attacks and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> from <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> deal <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> <span style="color:orange; white-space:normal">40% AD</span></span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> <span style="color:orange; white-space:normal">20% AD</span></span>)</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to other enemies within 350 units of the target damaged. Can only hit each target once per attack or ability, and may only trigger once every 10 seconds from the same cast.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Carnivorous',
         unique: true,
         description:
           "Gain [{as|{{fd|0.5}} '''bonus''' attack damage}} whenever you kill a minion, doubled for kills against champions, large monsters, and large minions. This effect stacks up to 40 times, for a total of {{as|20 '''bonus''' attack damage}]. Lose 60% of stacks upon death.",
+        descriptionHTML:
+          'Gain <span style="color:orange; white-space:normal">0.<small>5</small> <b>bonus</b> attack damage</span> whenever you kill a minion, doubled for kills against champions, large monsters, and large minions. This effect stacks up to 40 times, for a total of <span style="color:orange; white-space:normal">20 <b>bonus</b> attack damage</span>. Lose 60% of stacks upon death.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4940,7 +5280,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3075_tank_t3_thornmail.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -0px; width:48px; height:48px;",
     image: {
       full: '3075.png',
       sprite: 'item1.png',
@@ -4952,7 +5292,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Thornmail</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -4966,6 +5307,9 @@ export default {
         unique: true,
         description:
           "When struck by a basic attack [[on-hit]], deal [{as|10 {{as|(+ 25% '''bonus''' armor)}} magic damage|magic damage}} to the attacker and, if they are a champion, inflict them with {{tip|Grievous Wounds}] for 3 seconds.",
+        descriptionHTML:
+          'When struck by a basic attack <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>, deal <span style="color: #00B0F0; white-space:normal">10 <span style="color:yellow; white-space:normal">(+&nbsp;25% <b>bonus</b> armor)</span> magic damage</span> to the attacker and, if they are a champion, inflict them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -4995,7 +5339,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3076_tank_t2_bramblevest.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -0px; width:48px; height:48px;",
     image: {
       full: '3076.png',
       sprite: 'item1.png',
@@ -5008,6 +5352,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -5020,6 +5365,9 @@ export default {
         unique: true,
         description:
           'When struck by a basic attack [[on-hit]], deal [{as|6 magic damage}} to the attacker and, if they are a champion, inflict them with {{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'When struck by a basic attack <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>, deal <span style="color: #00B0F0; white-space:normal">6 magic damage</span> to the attacker and, if they are a champion, inflict them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -5049,7 +5397,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3077_fighter_t2_tiamat.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -0px; width:48px; height:48px;",
     image: {
       full: '3077.png',
       sprite: 'item1.png',
@@ -5061,7 +5409,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Hydra" title="Item group">Hydra</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       tank: true,
@@ -5076,6 +5426,9 @@ export default {
         unique: true,
         description:
           'Basic attacks [[on-hit]] deal [{rd|{{as|40% AD}}|{{as|20% AD}}}} {{as|physical damage}] to other enemies within 350 units of the target.',
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>&nbsp;deal&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> <span style="color:orange; white-space:normal">40% AD</span></span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> <span style="color:orange; white-space:normal">20% AD</span></span>)</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to other enemies within 350 units of the target.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -5113,7 +5466,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3078_fighter_t4_trinityforce.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -0px; width:48px; height:48px;",
     image: {
       full: '3078.png',
       sprite: 'item1.png',
@@ -5125,7 +5478,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -5143,19 +5498,22 @@ export default {
         unique: true,
         description:
           "Basic attacks grant [{as|20 '''bonus''' movement speed}} for 5 seconds and, if the target is a champion or a structure, increase {{as|'''base''' attack damage by 4%}} for the same duration, stacking up to 5 times for a {{as|20% increase|attack damage}}. Stacks expire by one every {{fd|0.5}] seconds when the duration ends.",
+        descriptionHTML:
+          'Basic attacks grant <span style="color: #F5EE99; white-space:normal">20 <b>bonus</b> movement speed</span> for 5 seconds and, if the target is a champion or a structure, increase <span style="color:orange; white-space:normal"><b>base</b> attack damage by 4%</span> for the same duration, stacking up to 5 times for a <span style="color:orange; white-space:normal">20% increase</span>. Stacks expire by one every 0.<small>5</small> seconds when the duration ends.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Spellblade',
         unique: true,
         description:
           "After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals [{as|200% '''base''' AD}} {{as|'''bonus''' physical damage}] [[on-hit]].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">200% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
-      mythic: {
-        ad: 3,
-        ah: 3,
-        msflat: 3,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">3 <b>bonus</b> attack damage</span>, <span style="color: #FFFDC9; white-space:normal">3 ability haste</span>, and <span style="color: #F5EE99; white-space:normal">3 <b>bonus</b> movement speed</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -5184,7 +5542,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3082_tank_t2_wardensmail.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -48px; width:48px; height:48px;",
     image: {
       full: '3082.png',
       sprite: 'item1.png',
@@ -5197,6 +5555,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -5209,6 +5568,9 @@ export default {
         unique: true,
         description:
           "Every first incoming instance of [{tt|post-mitigation|Damage calculated after modifiers}} {{tip|basic damage}} per {{tip|cast instance}} is [[Damage modifier|reduced]] by 5 {{as|(+ {{fd|3.5}} per 1000 '''maximum''' health)}], '''maximum''' 20% reduction each.",
+        descriptionHTML:
+          'Every first incoming instance of <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic damage"><a href="/wiki/Damage" title="Damage"><img alt="Basic Attack" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cd/Basic_Attack.png/revision/latest/scale-to-width-down/20?cb=20200517010633" decoding="async" loading="lazy" width="20" height="20" data-image-name="Basic Attack.png" data-image-key="Basic_Attack.png"></a> <a href="/wiki/Damage" title="Damage">basic damage</a></span> per <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cast instance"><a href="/wiki/Champion_ability" title="Champion ability">cast instance</a></span> is <a href="/wiki/Damage_modifier" title="Damage modifier">reduced</a> by 5 <span style="color: #1F995C; white-space:normal">(+&nbsp;3.<small>5</small> per 1000 <b>maximum</b> health)</span>, <b>maximum</b> 20% reduction each.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -5238,7 +5600,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3083_tank_t3_warmogs.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -48px; width:48px; height:48px;",
     image: {
       full: '3083.png',
       sprite: 'item1.png',
@@ -5250,7 +5612,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Warmog's Armor</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -5265,12 +5628,18 @@ export default {
         unique: true,
         description:
           "Grants ''Warmog's Heart'' if you have at least [{as|1100 '''bonus''' health}].",
+        descriptionHTML:
+          'Grants <i>Warmog\'s Heart</i> if you have at least <span style="color: #1F995C; white-space:normal">1100 <b>bonus</b> health</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: "Warmog's Heart",
         unique: true,
         description:
           "[[Health regeneration|Regenerate]][{ft|{{as|{{fd|2.5}}% '''maximum''' health}} every {{fd|0.5}} seconds|{{as|25% '''maximum''' health}} every 5 seconds}] if [[damage]] has not been taken in the last 6 seconds (3 seconds for damage from non-champions).",
+        descriptionHTML:
+          '<a href="/wiki/Health_regeneration" title="Health regeneration">Regenerate</a><span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #1F995C; white-space:normal">2.<small>5</small>% <b>maximum</b> health</span> every 0.<small>5</small> seconds&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #1F995C; white-space:normal">25% <b>maximum</b> health</span> every 5 seconds&nbsp;」</span></span> if <a href="/wiki/Damage" title="Damage">damage</a> has not been taken in the last 6 seconds (3 seconds for damage from non-champions).',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5300,7 +5669,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3084_tank_t4_heartsteel.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -48px; width:48px; height:48px;",
     image: {
       full: '3084.png',
       sprite: 'item1.png',
@@ -5312,7 +5681,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       'onhit effects': true,
@@ -5328,11 +5699,13 @@ export default {
         unique: true,
         description:
           "While within 700 units of an enemy champion, generate a stack on them each second, stacking up to 3 times. Your next basic attack against a target with 3 stacks is empowered to consume them all to deal [{as|125|physical damage}} {{as|(+ 6% '''maximum''' health)}} {{as|'''bonus''' physical damage}} [[on-hit]] and grant you permanent {{as|'''bonus''' health}} equal to{{ft|10% of that amount|{{as|{{ap|125*0.1}} (+ {{fd|0.6}}% '''maximum''' health)}}}]",
+        descriptionHTML:
+          'While within 700 units of an enemy champion, generate a stack on them each second, stacking up to 3 times. Your next basic attack against a target with 3 stacks is empowered to consume them all to deal <span style="color: #FF8C34; white-space:normal">125</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;6% <b>maximum</b> health)</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and grant you permanent <span style="color: #1F995C; white-space:normal"><b>bonus</b> health</span> equal to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;10% of that amount&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #1F995C; white-space:normal">12.<small>5</small> (+&nbsp;0.<small>6</small>% <b>maximum</b> health)</span>&nbsp;」</span></span> (30 (per target) second cooldown).',
+        descriptionRatios: [],
         cd: '30 (per target)',
       },
-      mythic: {
-        spec: "[{as|1% '''maximum''' health}] and 6% increased [[size]]",
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">1% <b>maximum</b> health</span> and 6% increased <a href="/wiki/Size" title="Size">size</a>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -5361,7 +5734,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3085_marksman_t3_runaans.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -48px; width:48px; height:48px;",
     image: {
       full: '3085.png',
       sprite: 'item1.png',
@@ -5373,7 +5746,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: 'Can only be purchased on [{tip|ranged}] champions.',
+    limit:
+      '<p>Limited to 1 <b>Runaan\'s Hurricane</b>.<br> Can only be purchased on <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/20?cb=20170624104039" decoding="async" loading="lazy" width="20" height="20" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> <a href="/wiki/Ranged" class="mw-redirect" title="Ranged">ranged</a></span> champions.</p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'onhit effects': true,
@@ -5390,6 +5765,9 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|15 '''bonus''' magic damage}] [[on-hit]].",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal">15 <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: "Wind's Fury",
@@ -5398,6 +5776,9 @@ export default {
           'Basic attacks [[on-attack]] fire additional bolts at up to 2 enemies [{tt|in front of you|180{{degree}}}}, each dealing {{as|50% AD}} {{as|physical damage}}. Bolts apply {{tip|on-hit}} effects at 100% effectiveness and are affected by {{tip|critical strike}] modifiers.',
         description2:
           "''The bolts will target the closest enemies to you that are not the main target.''",
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-attack" class="mw-redirect" title="On-attack">on-attack</a> fire additional bolts at up to 2 enemies <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="180°">in front of you</span>, each dealing <span style="color:orange; white-space:normal">50% AD</span> <span style="color: #FF8C34; white-space:normal">physical damage</span>. Bolts apply <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects"><img alt="On-hit icon" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> effects at 100% effectiveness and are affected by <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critical strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon" src="/wiki/images/Critical_strike_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Critical_strike" title="Critical strike">critical strike</a></span> modifiers.<br><i>The bolts will target the closest enemies to you that are not the main target.</i>',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5427,7 +5808,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3086_fighter_t2_zeal.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -48px; width:48px; height:48px;",
     image: {
       full: '3086.png',
       sprite: 'item1.png',
@@ -5440,6 +5821,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       marksman: true,
       movement: true,
@@ -5477,7 +5859,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3087_statikk_shiv.srt13_10.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -48px; width:48px; height:48px;",
     image: {
       full: '3087.png',
       sprite: 'item1.png',
@@ -5489,7 +5871,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Statikk Shiv</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'onhit effects': true,
@@ -5505,12 +5888,18 @@ export default {
         unique: true,
         description:
           "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+        descriptionHTML:
+          'Moving and basic attacking generates <i>Energize</i> stacks, up to 100.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Electroshock',
         unique: true,
         description:
-          "When fully [{tip|Energized}}, your next basic attack deals {{as|{{pp|100 to 180 for 14|1;6 to 18}}|magic damage}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}}, increased to{{ft|250%|{{as|{{pp|100*2.5 to 180*2.5 for 14|1;6 to 18}}|magic damage}} {{as|(+ {{ap|50*2.5}}% AP)}}}}against minions. ''Energized'' attacks bounce their additional effect to the closest target within 500 units, repeating from the new target to strike up to {{pp|6 to 12 for 3|1;11;16}] targets.",
+          "When fully [{tip|Energized}}, your next basic attack deals {{as|{{pp|100;110;120;130;140;145;150;155;160;165;170;175;180|1;7;8;9;10;11;12;13;14;15;16;17;18|formula:100 at level 1, then +10 per level starting at level 7, then +5 per level starting at level 11}}|magic damage}} {{as|(+ 30% AP)}} {{as|'''bonus''' magic damage}}, modified to {{as|{{pp|250;275;300;325;350;362.5;375;387.5;400;412.5;425;437.5;450|1;7;8;9;10;11;12;13;14;15;16;17;18|formula:250 at level 1, then +25 per level starting at level 7, then +12.5 per level starting at level 11}}|magic damage}} against minions. ''Energized'' attacks bounce their additional effect to the closest target within 500 units, repeating from the new target to strike up to {{pp|6 to 12 for 3|1;11;16}] targets.",
+        descriptionHTML:
+          'When fully <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Energized"><a href="/wiki/Named_item_effect#Energized" title="Named item effect"><img alt="Kircheis Shard item" src="/wiki/images/Kircheis_Shard_item.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Named_item_effect#Energized" title="Named item effect">Energized</a></span>, your next basic attack deals <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="100 at level 1, then +10 per level starting at level 7, then +5 per level starting at level 11" data-bot_values="100;110;120;130;140;145;150;155;160;165;170;175;180" data-top_values="1;7;8;9;10;11;12;13;14;15;16;17;18">100 − 180 (based on level)</span></span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;30% AP)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span>, modified to <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="250 at level 1, then +25 per level starting at level 7, then +12.5 per level starting at level 11" data-bot_values="250;275;300;325;350;362.5;375;387.5;400;412.5;425;437.5;450" data-top_values="1;7;8;9;10;11;12;13;14;15;16;17;18">250 − 450 (based on level)</span></span> against minions. <i>Energized</i> attacks bounce their additional effect to the closest target within 500 units, repeating from the new target to strike up to <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="6;9;12" data-top_values="1;11;16">6 / 9 / 12 (based on level)</span> targets.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5540,7 +5929,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3089_mage_t3_deathcap.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -48px; width:48px; height:48px;",
     image: {
       full: '3089.png',
       sprite: 'item1.png',
@@ -5552,7 +5941,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Rabadon's Deathcap</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -5564,6 +5954,9 @@ export default {
         name: 'Magical Opus',
         unique: true,
         description: 'Increase your [{as|ability power}] by 40%.',
+        descriptionHTML:
+          'Increase your <span style="color: #7A6DFF; white-space:normal">ability power</span> by 40%.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5599,7 +5992,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3091_fighter_t3_witsend.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -48px; width:48px; height:48px;",
     image: {
       full: '3091.png',
       sprite: 'item1.png',
@@ -5611,7 +6004,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Wit's End</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       fighter: true,
       'onhit effects': true,
@@ -5628,6 +6022,9 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|{{pp|15;25;35;45;55;65;75;76.25;77.5;78.75;80|1;9 to 18 for 10|formula:15, then +10 per level starting at level 9, then +1.25 per level starting at level 15}} '''bonus''' magic damage}} [[on-hit]] and grant you {{as|20 '''bonus''' movement speed}] for 2 seconds.",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="15, then +10 per level starting at level 9, then +1.25 per level starting at level 15" data-bot_values="15;25;35;45;55;65;75;76.25;77.5;78.75;80" data-top_values="1;9;10;11;12;13;14;15;16;17;18">15 − 80 (based on level)</span> <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and grant you <span style="color: #F5EE99; white-space:normal">20 <b>bonus</b> movement speed</span> for 2 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5657,7 +6054,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3094_marksman_t3_rapidfirehandcannon.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -48px; width:48px; height:48px;",
     image: {
       full: '3094.png',
       sprite: 'item1.png',
@@ -5669,7 +6066,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Rapid Firecannon</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       movement: true,
@@ -5687,12 +6085,18 @@ export default {
         unique: true,
         description:
           "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+        descriptionHTML:
+          'Moving and basic attacking generates <i>Energize</i> stacks, up to 100.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Sharpshooter',
         unique: true,
         description:
           "When fully [{tip|Energized}}, your next basic attack deals {{as|60 '''bonus''' magic damage}] [[on-hit]]. ''Energized'' attacks gain 35% '''bonus''' range, capped at 150.",
+        descriptionHTML:
+          'When fully <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Energized"><a href="/wiki/Named_item_effect#Energized" title="Named item effect"><img alt="Kircheis Shard item" src="/wiki/images/Kircheis_Shard_item.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Named_item_effect#Energized" title="Named item effect">Energized</a></span>, your next basic attack deals <span style="color: #00B0F0; white-space:normal">60 <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>. <i>Energized</i> attacks gain 35% <b>bonus</b> range, capped at 150.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5702,19 +6106,13 @@ export default {
     id: 3095,
     name: 'Stormrazor',
     description:
-      '<mainText><stats><attention> 50</attention> Attack Damage<br><attention> 15%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><li><passive>Energized:</passive> Moving and Attacking will generate an Energized Attack.<li><passive>Bolt:</passive> Your next Attack deals bonus damage.<br></mainText><br>',
+      '<mainText><stats><attention> 50</attention> Attack Damage<br><attention> 15%</attention> Attack Speed<br><attention> 20%</attention> Critical Strike Chance</stats><br><li><passive>Energized:</passive> Moving and Attacking will generate an Energized Attack.<li><passive>Bolt:</passive> Your Energized Attack applies bonus magic damage and grants Move Speed.</mainText><br>',
     colloq: ';Windblade',
     active: false,
     inStore: true,
     from: [1018, 2015, 6670],
     to: [],
-    categories: [
-      'AttackSpeed',
-      'CriticalStrike',
-      'Damage',
-      'NonbootsMovement',
-      'Slow',
-    ],
+    categories: ['AttackSpeed', 'CriticalStrike', 'Damage', 'NonbootsMovement'],
     maxStacks: 1,
     requiredChampion: '',
     requiredAlly: '',
@@ -5728,7 +6126,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3095_windblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -48px; width:48px; height:48px;",
     image: {
       full: '3095.png',
       sprite: 'item1.png',
@@ -5740,7 +6138,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Stormrazor</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'onhit effects': true,
@@ -5756,12 +6155,18 @@ export default {
         unique: true,
         description:
           "Moving and basic attacking generates ''Energize'' stacks, up to 100.",
+        descriptionHTML:
+          'Moving and basic attacking generates <i>Energize</i> stacks, up to 100.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Bolt',
         unique: true,
         description:
-          "When fully [{tip|Energized}}, your next basic attack deals {{as|15|magic damage}} {{as|(+ 60% AD)}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}} [[on-hit]] and grants {{as|45% '''bonus''' movement speed}] for 1 second.",
+          "When fully [{tip|Energized}}, your next basic attack deals {{as|90|magic damage}} {{as|(+ 25% AD)}} {{as|'''bonus''' magic damage}} [[on-hit]] and grants {{as|45% '''bonus''' movement speed}] for 1 second.",
+        descriptionHTML:
+          'When fully <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Energized"><a href="/wiki/Named_item_effect#Energized" title="Named item effect"><img alt="Kircheis Shard item" src="/wiki/images/Kircheis_Shard_item.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Named_item_effect#Energized" title="Named item effect">Energized</a></span>, your next basic attack deals <span style="color: #00B0F0; white-space:normal">90</span> <span style="color:orange; white-space:normal">(+&nbsp;25% AD)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and grants <span style="color: #F5EE99; white-space:normal">45% <b>bonus</b> movement speed</span> for 1 second.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -5791,7 +6196,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3100_mage_t3_lichbane.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -96px; width:48px; height:48px;",
     image: {
       full: '3100.png',
       sprite: 'item1.png',
@@ -5803,7 +6208,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Lich Bane</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'onhit effects': true,
@@ -5819,6 +6225,9 @@ export default {
         unique: true,
         description:
           "After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals [{as|75% '''base''' AD}} {{as|(+ 50% AP)}} {{as|'''bonus''' magic damage}] [[on-hit]].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">75% <b>base</b> AD</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;50% AP)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
     },
@@ -5854,7 +6263,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3102_mage_t3_bansheesveil.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -96px; width:48px; height:48px;",
     image: {
       full: '3102.png',
       sprite: 'item1.png',
@@ -5866,7 +6275,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Banshee's Veil</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -5881,6 +6291,9 @@ export default {
         unique: true,
         description:
           'Grants a [{tip|spell shield}] that blocks the next hostile ability.',
+        descriptionHTML:
+          'Grants a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell shield"><a href="/wiki/Spell_shield" title="Spell shield"><img alt="Spell Shield" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/a0/Sivir_Spell_Shield.png/revision/latest/scale-to-width-down/20?cb=20170818194532" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sivir Spell Shield.png" data-image-key="Sivir_Spell_Shield.png"></a> <a href="/wiki/Spell_shield" title="Spell shield">spell shield</a></span> that blocks the next hostile ability (40 (restarts upon taking damage from champions) second cooldown).',
+        descriptionRatios: [],
         cd: '40 (restarts upon taking damage from champions)',
       },
     },
@@ -5911,7 +6324,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3105_tank_t2_aegisofthelegion.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -96px; width:48px; height:48px;",
     image: {
       full: '3105.png',
       sprite: 'item1.png',
@@ -5924,6 +6337,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -5961,7 +6375,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3107_enchanter_t3_redemption.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -96px; width:48px; height:48px;",
     image: {
       full: '3107.png',
       sprite: 'item1.png',
@@ -5974,7 +6388,8 @@ export default {
     maps: ['SR', 'HA'],
     depth: 3,
     limit:
-      "''Intervention's'' heal is reduced by 50% if the target was affected by another ''Intervention'' in the last 12 seconds.",
+      "<p>Limited to 1 <b>Redemption</b>.<br> <i>Intervention's</i> heal is reduced by 50% if the target was affected by another <i>Intervention</i> in the last 12 seconds.</p>",
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -5984,19 +6399,25 @@ export default {
       mp5: 100,
     },
     effects: {
-      act: {
-        name: 'Intervention',
-        unique: true,
-        description:
-          "Call upon a beam of light to strike upon the target location after [{fd|2.5}} seconds, granting {{tip|sight}} of the area for the duration. Allies within the area are {{tip|heal|healed}} for {{pp|200 to 400|type:target's level}}, while enemy champions within take {{as|10% of target's '''maximum''' health}} as {{as|true damage}]. '''Can be used while [[death|dead]].'''",
-        cd: 90,
-        range: 5500,
-      },
       pass: {
         name: 'Harmony',
         unique: false,
         description:
           "Gain [{as|25% '''base''' health regeneration}} for every additional {{as|25% '''base''' mana regeneration}].",
+        descriptionHTML:
+          'Gain <span style="color: #1F995C; white-space:normal">25% <b>base</b> health regeneration</span> for every additional <span style="color: #0099CC; white-space:normal">25% <b>base</b> mana regeneration</span>.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Intervention',
+        unique: true,
+        description:
+          "Call upon a beam of light to strike upon the target location after [{fd|2.5}} seconds, granting {{tip|sight}} of the area for the duration. Allies within the area are {{tip|heal|healed}} for {{pp|200 to 400|type:target's level}}, while enemy champions within take {{as|10% of target's '''maximum''' health}} as {{as|true damage}]. '''Can be used while [[death|dead]].'''",
+        descriptionHTML:
+          'Call upon a beam of light to strike upon the target location after 2.<small>5</small> seconds, granting <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the area for the duration. Allies within the area are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">healed</a></span> for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="target\'s level" data-start="200;" data-finish="400;" data-bot_values="200;211.76;223.53;235.29;247.06;258.82;270.59;282.35;294.12;305.88;317.65;329.41;341.18;352.94;364.71;376.47;388.24;400" data-top_values="">200 − 400 (based on target\'s level)</span>, while enemy champions within take <span style="color: #1F995C; white-space:normal">10% of target\'s <b>maximum</b> health</span> as <span style="color: #F9966B; white-space:normal">true damage</span>. <b>Can be used while <a href="/wiki/Death" title="Death">dead</a>.</b> (90 second cooldown; 5500 range).',
+        descriptionRatios: [],
+        cd: 90,
+        range: 5500,
       },
     },
     type: ['Legendary'],
@@ -6026,7 +6447,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3108_mage_t2_fiendishcodex.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -96px; width:48px; height:48px;",
     image: {
       full: '3108.png',
       sprite: 'item1.png',
@@ -6039,6 +6460,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -6082,7 +6504,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3109_tank_t3_knightsvow.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -96px; width:48px; height:48px;",
     image: {
       full: '3109.png',
       sprite: 'item1.png',
@@ -6094,7 +6516,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Knight's Vow</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -6107,19 +6530,25 @@ export default {
       hp5: 125,
     },
     effects: {
-      act: {
-        name: 'Pledge',
-        unique: true,
-        description:
-          "Designate the target allied champion as being ''Worthy'', forming a [{tip|tether}] between you and them. Champions can only be designated as ''Worthy'' by one '''Knight's Vow''' at a time.",
-        cd: 60,
-        range: '[{tip|cr|icononly:true}] 1250',
-      },
       pass: {
         name: 'Sacrifice',
         unique: true,
         description:
           "While your ''Worthy'' ally is [{tt|tethered to you|1250 units, center to edge}} and you are above {{as|30% of your '''maximum''' health}}, redirect 10% of the {{tt|pre-mitigation|Damage calculated before modifiers}} {{as|physical|physical damage}} and {{as|magic|magic damage}} damage they take to you as {{as|true damage}} and {{tip|heal}} for 10% of the damage dealt by your ''Worthy'' ally to champions. If they are below {{as|30% '''maximum''' health}], the damage redirection is increased to 20%.",
+        descriptionHTML:
+          'While your <i>Worthy</i> ally is <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="1250 units, center to edge">tethered to you</span> and you are above <span style="color: #1F995C; white-space:normal">30% of your <b>maximum</b> health</span>, redirect 10% of the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated before modifiers">pre-mitigation</span> <span style="color: #FF8C34; white-space:normal">physical</span> and <span style="color: #00B0F0; white-space:normal">magic</span> damage they take to you as <span style="color: #F9966B; white-space:normal">true damage</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for 10% of the damage dealt by your <i>Worthy</i> ally to champions. If they are below <span style="color: #1F995C; white-space:normal">30% <b>maximum</b> health</span>, the damage redirection is increased to 20%.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Pledge',
+        unique: true,
+        description:
+          "Designate the target allied champion as being ''Worthy'', forming a [{tip|tether}] between you and them. Champions can only be designated as ''Worthy'' by one '''Knight's Vow''' at a time.",
+        descriptionHTML:
+          'Designate the target allied champion as being <i>Worthy</i>, forming a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tether"><a href="/wiki/Tether" title="Tether"><img alt="Focused Resolve" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/57/Karma_Focused_Resolve.png/revision/latest/scale-to-width-down/20?cb=20130929122918" decoding="async" loading="lazy" width="20" height="20" data-image-name="Karma Focused Resolve.png" data-image-key="Karma_Focused_Resolve.png"></a> <a href="/wiki/Tether" title="Tether">tether</a></span> between you and them. Champions can only be designated as <i>Worthy</i> by one <b>Knight\'s Vow</b> at a time (60 second cooldown; <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 1250 range).',
+        descriptionRatios: [],
+        cd: 60,
+        range: '[{tip|cr|icononly:true}] 1250',
       },
     },
     type: ['Legendary'],
@@ -6149,7 +6578,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3110_tank_t3_frozenheart.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -96px; width:48px; height:48px;",
     image: {
       full: '3110.png',
       sprite: 'item1.png',
@@ -6161,7 +6590,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Frozen Heart</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -6176,12 +6606,18 @@ export default {
         unique: true,
         description:
           "Every first incoming instance of [{tt|post-mitigation|Damage calculated after modifiers}} {{tip|basic damage}} per {{tip|cast instance}} is [[Damage modifier|reduced]] by 5 {{as|(+ {{fd|3.5}} per 1000 '''maximum''' health)}], '''maximum''' 20% reduction each.",
+        descriptionHTML:
+          'Every first incoming instance of <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic damage"><a href="/wiki/Damage" title="Damage"><img alt="Basic Attack" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cd/Basic_Attack.png/revision/latest/scale-to-width-down/20?cb=20200517010633" decoding="async" loading="lazy" width="20" height="20" data-image-name="Basic Attack.png" data-image-key="Basic_Attack.png"></a> <a href="/wiki/Damage" title="Damage">basic damage</a></span> per <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cast instance"><a href="/wiki/Champion_ability" title="Champion ability">cast instance</a></span> is <a href="/wiki/Damage_modifier" title="Damage modifier">reduced</a> by 5 <span style="color: #1F995C; white-space:normal">(+&nbsp;3.<small>5</small> per 1000 <b>maximum</b> health)</span>, <b>maximum</b> 20% reduction each.',
+        descriptionRatios: [],
       },
       pass2: {
         name: "Winter's Caress",
         unique: true,
         description:
           '[{tip|Cripple|Cripples}} the [[attack speed]] of enemies within {{tt|700 units|center to edge}] by 20%.',
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cripple"><a href="/wiki/Cripple" title="Cripple"><img alt="Cripple icon" src="/wiki/images/Cripple_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Cripple" class="mw-redirect" title="Cripple">Cripples</a></span> the <a href="/wiki/Attack_speed" title="Attack speed">attack speed</a> of enemies within <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="center to edge">700 units</span> by 20%.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -6211,7 +6647,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3111_class_t2_mercurystreads.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -96px; width:48px; height:48px;",
     image: {
       full: '3111.png',
       sprite: 'item1.png',
@@ -6223,12 +6659,15 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       mr: 25,
       msflat: 45,
       spec: '+30% tenacity',
+      spec_desc: '+30% tenacity',
     },
     effects: {},
     type: ['Boots'],
@@ -6258,7 +6697,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3112_aram_t1_guardiansorb.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -96px; width:48px; height:48px;",
     image: {
       full: '3112.png',
       sprite: 'item1.png',
@@ -6270,7 +6709,9 @@ export default {
     },
     maps: ['HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Guardian" title="Item group">Guardian</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       tank: true,
@@ -6287,11 +6728,16 @@ export default {
         unique: true,
         description:
           'Restore [{as|10 mana}} every 5 seconds. Manaless champions restore {{as|15 health}] instead.',
+        descriptionHTML:
+          'Restore <span style="color: #0099CC; white-space:normal">10 mana</span> every 5 seconds. Manaless champions restore <span style="color: #1F995C; white-space:normal">15 health</span> instead.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Legendary',
         unique: true,
         description: 'This item counts as a Legendary item.',
+        descriptionHTML: 'This item counts as a Legendary item.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -6321,7 +6767,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3113_mage_t2_aetherwisp.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -96px; width:48px; height:48px;",
     image: {
       full: '3113.png',
       sprite: 'item1.png',
@@ -6334,6 +6780,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -6346,6 +6793,9 @@ export default {
         name: 'Glide',
         unique: true,
         description: "Gain [{as|5% '''bonus''' movement speed}].",
+        descriptionHTML:
+          'Gain <span style="color: #F5EE99; white-space:normal">5% <b>bonus</b> movement speed</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -6375,7 +6825,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3114_mage_t2_forbiddenidol.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -144px; width:48px; height:48px;",
     image: {
       full: '3114.png',
       sprite: 'item1.png',
@@ -6388,6 +6838,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -6423,7 +6874,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3115_mage_t3_nashorstooth.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -144px; width:48px; height:48px;",
     image: {
       full: '3115.png',
       sprite: 'item1.png',
@@ -6435,7 +6886,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Nashor's Tooth</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       mage: true,
       'onhit effects': true,
@@ -6451,6 +6903,9 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|15 {{as|(+ 20% AP)}} '''bonus''' magic damage|magic damage}] [[on-hit]].",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal">15 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;20% AP)</span> <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -6480,7 +6935,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3116_mage_t3_rylajscrystalscepter.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -144px; width:48px; height:48px;",
     image: {
       full: '3116.png',
       sprite: 'item1.png',
@@ -6492,7 +6947,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Rylai's Crystal Scepter</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -6506,6 +6962,9 @@ export default {
         unique: true,
         description:
           'Dealing [{tip|ability damage}} {{tip|slow|slows}] affected [[unit]]s by 30% for 1 second.',
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> affected <a href="/wiki/Unit" class="mw-disambig" title="Unit">units</a> by 30% for 1 second.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -6535,7 +6994,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3117_class_t2_bootsofmobility.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -144px; width:48px; height:48px;",
     image: {
       full: '3117.png',
       sprite: 'item1.png',
@@ -6547,7 +7006,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       msflat: 115,
@@ -6558,6 +7019,9 @@ export default {
         unique: false,
         description:
           'Reduces [{as|movement speed}} by {{as|90}] for 5 seconds while you are in [[combat status|in-combat]]. This duration can refresh while staying in-combat.',
+        descriptionHTML:
+          'Reduces <span style="color: #F5EE99; white-space:normal">movement speed</span> by <span style="color:inherit; white-space:normal">90</span> for 5 seconds while you are in <a href="/wiki/Combat_status" title="Combat status">in-combat</a>. This duration can refresh while staying in-combat.',
+        descriptionRatios: [],
       },
     },
     type: ['Boots'],
@@ -6587,7 +7051,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3119_wintersapproach.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -144px; width:48px; height:48px;",
     image: {
       full: '3119.png',
       sprite: 'item1.png',
@@ -6599,7 +7063,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -6615,18 +7081,27 @@ export default {
         unique: true,
         description:
           "Grants [{as|'''bonus''' health}} equal to {{as|8% '''maximum''' mana}].",
+        descriptionHTML:
+          'Grants <span style="color: #1F995C; white-space:normal"><b>bonus</b> health</span> equal to <span style="color: #0099CC; white-space:normal">8% <b>maximum</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Mana Charge',
         unique: true,
         description:
           "Grants a charge every 8 seconds, up to 4 charges. Consumes a charge [[on-hit]] and whenever affecting an enemy or ally with an [[champion ability|ability]] to grant [{as|3 '''bonus''' mana}}, increased to {{as|6|mana}} for champion targets, up to a '''maximum''' of {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Grants a charge every 8 seconds, up to 4 charges. Consumes a charge <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and whenever affecting an enemy or ally with an <a href="/wiki/Champion_ability" title="Champion ability">ability</a> to grant <span style="color: #0099CC; white-space:normal">3 <b>bonus</b> mana</span>, increased to <span style="color: #0099CC; white-space:normal">6</span> for champion targets, up to a <b>maximum</b> of <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass3: {
         name: '',
         unique: false,
         description:
           "Transforms into [{ii|Fimbulwinter}} at {{as|360 '''bonus''' mana}].",
+        descriptionHTML:
+          'Transforms into <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Fimbulwinter" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Fimbulwinter" title="Fimbulwinter"><img alt="Fimbulwinter" src="/wiki/images/Fimbulwinter_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Fimbulwinter" title="Fimbulwinter">Fimbulwinter</a></span></span> at <span style="color: #0099CC; white-space:normal">360 <b>bonus</b> mana</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -6656,7 +7131,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3121_fimbulwinter.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -144px; width:48px; height:48px;",
     image: {
       full: '3121.png',
       sprite: 'item1.png',
@@ -6668,7 +7143,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mana_Charge" title="Item group">Mana Charge</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -6684,12 +7161,18 @@ export default {
         unique: true,
         description:
           "Grants [{as|'''bonus''' health}} equal to {{as|8% '''maximum''' mana}].",
+        descriptionHTML:
+          'Grants <span style="color: #1F995C; white-space:normal"><b>bonus</b> health</span> equal to <span style="color: #0099CC; white-space:normal">8% <b>maximum</b> mana</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Everlasting',
         unique: true,
         description:
           "[{tip|immobilize|Immobilizing}}, or {{tip|slow|slowing}} if you are {{tip|melee}}, an enemy champion grants a {{pp|100 to 180}} {{as|(+ {{fd|4.5}}% '''current''' mana)}} {{tip|shield}} for 3 seconds (8 second cooldown). The shield's strength is increased{{ft|by 80%|to {{pp|100*1.8 to 200*1.8}} {{as|(+ {{ap|5*1.8}}% '''current''' mana)}}}}if there is more than one enemy champion within {{tip|cr|icononly:true}] 1200 units.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">Immobilizing</a></span>, or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowing</a></span> if you are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Melee" class="mw-redirect" title="Melee">melee</a></span>, an enemy champion grants a <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="100;" data-finish="180;" data-bot_values="100;104.71;109.41;114.12;118.82;123.53;128.24;132.94;137.65;142.35;147.06;151.76;156.47;161.18;165.88;170.59;175.29;180" data-top_values="">100 − 180 (based on level)</span> <span style="color: #0099CC; white-space:normal">(+&nbsp;4.<small>5</small>% <b>current</b> mana)</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for 3 seconds (8 second cooldown). The shield\'s strength is increased<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;by 80%&nbsp;」</span><span class="flipText2">「&nbsp;to <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="180;" data-finish="360;" data-bot_values="180;190.59;201.18;211.76;222.35;232.94;243.53;254.12;264.71;275.29;285.88;296.47;307.06;317.65;328.24;338.82;349.41;360" data-top_values="">180 − 360 (based on level)</span> <span style="color: #0099CC; white-space:normal">(+&nbsp;9% <b>current</b> mana)</span>&nbsp;」</span></span>if there is more than one enemy champion within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 1200 units.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -6719,7 +7202,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3123_fighter_t2_executionerscalling.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -144px; width:48px; height:48px;",
     image: {
       full: '3123.png',
       sprite: 'item1.png',
@@ -6732,6 +7215,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -6746,6 +7230,9 @@ export default {
         unique: true,
         description:
           'Dealing [{as|physical damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemy champions inflicts them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -6781,7 +7268,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3124_marksman_t3_guinsoosrageblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -144px; width:48px; height:48px;",
     image: {
       full: '3124.png',
       sprite: 'item1.png',
@@ -6793,7 +7280,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -6810,17 +7299,21 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|30 '''bonus''' magic damage}} on-hit. Additionally, convert every {{as|1% critical strike chance}} into {{as|{{fd|1.5}} '''additional bonus''' magic damage|magic damage}} on-hit, capped at {{as|100% critical strike chance}}, for a '''maximum''' of {{as|180 '''bonus''' magic damage}} on-hit. This damage is affected by {{tip|critical strike}] modifiers.",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal">30 <b>bonus</b> magic damage</span> on-hit. Additionally, convert every <span style="color: #E56013; white-space:normal">1% critical strike chance</span> into <span style="color: #00B0F0; white-space:normal">1.<small>5</small> <b>additional bonus</b> magic damage</span> on-hit, capped at <span style="color: #E56013; white-space:normal">100% critical strike chance</span>, for a <b>maximum</b> of <span style="color: #00B0F0; white-space:normal">180 <b>bonus</b> magic damage</span> on-hit. This damage is affected by <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critical strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Critical_strike_icon.png/revision/latest/scale-to-width-down/20?cb=20191126102550" decoding="async" loading="lazy" width="20" height="20" data-image-name="Critical strike icon.png" data-image-key="Critical_strike_icon.png"></a> <a href="/wiki/Critical_strike" title="Critical strike">critical strike</a></span> modifiers.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Seething Strike',
         unique: true,
         description:
           "Basic attacks grant [{as|8% '''bonus''' attack speed}} for 3 seconds, stacking up to 4 times for a total of {{as|32% '''bonus''' attack speed}}. At maximum stacks, basic attacks on-attack grant a ''Phantom'' stack for 6 seconds, up to 2 stacks. At 2 ''Phantom'' stacks, the next basic attack consumes all stacks on-attack to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target at 100% effectiveness after a {{fd|0.15}] second delay.",
+        descriptionHTML:
+          'Basic attacks grant <span style="color:orangered; white-space:normal">8% <b>bonus</b> attack speed</span> for 3 seconds, stacking up to 4 times for a total of <span style="color:orangered; white-space:normal">32% <b>bonus</b> attack speed</span>. At maximum stacks, basic attacks on-attack grant a <i>Phantom</i> stack for 6 seconds, up to 2 stacks. At 2 <i>Phantom</i> stacks, the next basic attack consumes all stacks on-attack to trigger a <i>Phantom Hit</i> that applies <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects"><img alt="On-hit icon" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> effects to the target at 100% effectiveness after a 0.<small>15</small> second delay.',
+        descriptionRatios: [],
       },
-      mythic: {
-        armpen: 5,
-        mpen: 6,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">5% armor penetration</span> and <span style="color:turquoise; white-space:normal">6% magic penetration</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -6852,7 +7345,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3133_fighter_t2_caulfieldswarhammer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -144px; width:48px; height:48px;",
     image: {
       full: '3133.png',
       sprite: 'item1.png',
@@ -6865,6 +7358,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -6902,7 +7396,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3134_assassin_t2_serrateddirk.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -144px; width:48px; height:48px;",
     image: {
       full: '3134.png',
       sprite: 'item1.png',
@@ -6915,6 +7409,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       assassin: true,
       'armor pen': true,
@@ -6927,6 +7422,9 @@ export default {
         name: 'Gouge',
         unique: true,
         description: 'Gain [{Lethality|10}].',
+        descriptionHTML:
+          'Gain <span style="color:tomato; white-space:normal">10 <a href="/wiki/Lethality" class="mw-redirect" title="Lethality">Lethality</a></span> (<i><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_label="Armor penetration" data-displayformula="Armor penetration = Lethality * (0.6 + 0.4 * Level / 18)" data-bot_values="6.22;6.44;6.67;6.89;7.11;7.33;7.56;7.78;8;8.22;8.44;8.67;8.89;9.11;9.33;9.56;9.78;10" data-top_values="">6.<small>22</small> − 10 (based on level)</span> <a href="/wiki/Armor_penetration" title="Armor penetration">armor penetration</a></i>).',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -6956,7 +7454,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3135_mage_t3_voidstaff.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -192px; width:48px; height:48px;",
     image: {
       full: '3135.png',
       sprite: 'item1.png',
@@ -6968,7 +7466,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Void_Pen" title="Item group">Void Pen</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -7011,7 +7511,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3139_marksman_t3_mercurialscimitar.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -192px; width:48px; height:48px;",
     image: {
       full: '3139.png',
       sprite: 'item1.png',
@@ -7023,7 +7523,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Quicksilver" title="Item group">Quicksilver</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       movement: true,
@@ -7039,6 +7541,9 @@ export default {
         unique: true,
         description:
           "Removes all [{tip|crowd control}} debuffs (except {{tip|Airborne}}) from your champion and grants {{as|50% '''bonus total''' movement speed}} and {{tip|ghosted|ghosting}} for {{fd|1.5}] seconds.",
+        descriptionHTML:
+          'Removes all <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Crowd control"><a href="/wiki/Crowd_control" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control" title="Crowd control">crowd control</a></span> debuffs (except <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/d/d6/Airborne_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223933" decoding="async" loading="lazy" width="20" height="20" data-image-name="Airborne icon.png" data-image-key="Airborne_icon.png"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">Airborne</a></span>) from your champion and grants <span style="color: #F5EE99; white-space:normal">50% <b>bonus total</b> movement speed</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosted"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost" src="/wiki/images/Ghost.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosting</a></span> for 1.<small>5</small> seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -7069,7 +7574,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3140_marksman_t2_quicksilversash.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -192px; width:48px; height:48px;",
     image: {
       full: '3140.png',
       sprite: 'item1.png',
@@ -7081,7 +7586,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Quicksilver" title="Item group">Quicksilver</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -7096,6 +7603,9 @@ export default {
         unique: true,
         description:
           'Removes all [{tip|crowd control}} debuffs (except {{tip|Airborne}]) from your champion.',
+        descriptionHTML:
+          'Removes all <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Crowd control"><a href="/wiki/Crowd_control" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control" title="Crowd control">crowd control</a></span> debuffs (except <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/d/d6/Airborne_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223933" decoding="async" loading="lazy" width="20" height="20" data-image-name="Airborne icon.png" data-image-key="Airborne_icon.png"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">Airborne</a></span>) from your champion (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -7132,7 +7642,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3142_assassin_t3_youmuusghostblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -192px; width:48px; height:48px;",
     image: {
       full: '3142.png',
       sprite: 'item1.png',
@@ -7144,7 +7654,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
       movement: true,
@@ -7155,21 +7667,26 @@ export default {
       lethality: 18,
     },
     effects: {
+      pass: {
+        name: 'Haunt',
+        unique: true,
+        description:
+          "While moving, generate 1 ''Spectral Shard'' for every 55 units travelled. Gain [{as|{{fd|0.4}} '''bonus''' movement speed}} while out-of-combat for every ''Spectral Shard'', up to {{as|40 '''bonus''' movement speed}} with 100 ''Spectral Shards''. At maximum shards, also gain {{as|{{pp|3;4 to 12|1;8;10;12 to 18 for 7}} lethality}]. Dealing damage to an enemy champion causes ''Spectral Shards'' to reset after 3 seconds.",
+        descriptionHTML:
+          'While moving, generate 1 <i>Spectral Shard</i> for every 55 units travelled. Gain <span style="color: #F5EE99; white-space:normal">0.<small>4</small> <b>bonus</b> movement speed</span> while out-of-combat for every <i>Spectral Shard</i>, up to <span style="color: #F5EE99; white-space:normal">40 <b>bonus</b> movement speed</span> with 100 <i>Spectral Shards</i>. At maximum shards, also gain <span style="color:tomato; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="3;4;5;6;7;8;9;10;11;12" data-top_values="1;8;10;12;13;14;15;16;17;18">3 − 12 (based on level)</span> lethality</span>. Dealing damage to an enemy champion causes <i>Spectral Shards</i> to reset after 3 seconds.',
+        descriptionRatios: [],
+      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">7 <b>bonus</b> attack damage</span>.',
       act: {
         name: 'Wraith Step',
         unique: true,
         description:
           "Gain [{as|25% '''bonus''' movement speed}} and {{tip|ghosted|ghosting}] for 6 seconds.",
+        descriptionHTML:
+          'Gain <span style="color: #F5EE99; white-space:normal">25% <b>bonus</b> movement speed</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosted"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/ab/Ghost.png/revision/latest/scale-to-width-down/20?cb=20180514003209" decoding="async" loading="lazy" width="20" height="20" data-image-name="Ghost.png" data-image-key="Ghost.png"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosting</a></span> for 6 seconds (45 second cooldown).',
+        descriptionRatios: [],
         cd: 45,
-      },
-      pass: {
-        name: 'Haunt',
-        unique: true,
-        description:
-          "While moving, generate 1 ''Spectral Shard'' for every 55 units travelled. Gain [{as|0.4 '''bonus''' movement speed}} while out-of-combat for every ''Spectral Shard'', up to {{as|40 '''bonus''' movement speed}} with 100 ''Spectral Shards''. At maximum shards, also gain {{as|{{pp|3;4 to 12|1;8;10;12 to 18 for 7}} lethality}]. Dealing damage to an enemy champion causes ''Spectral Shards'' to reset after 3 seconds.",
-      },
-      mythic: {
-        ad: 7,
       },
     },
     type: ['Mythic'],
@@ -7199,7 +7716,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3143_tank_t3_randuinsomen.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -192px; width:48px; height:48px;",
     image: {
       full: '3143.png',
       sprite: 'item1.png',
@@ -7211,7 +7728,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Randuin's Omen</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -7220,25 +7738,34 @@ export default {
       hp: 400,
     },
     effects: {
-      act: {
-        name: 'Humility',
-        unique: true,
-        description:
-          'Unleash a shockwave around you that [{tip|slow|slows}] nearby enemies by 55% for 2 seconds.',
-        cd: 60,
-        range: '[{tip|cr|icononly:true}] 500',
-      },
       pass: {
         name: 'Rock Solid',
         unique: true,
         description:
           "Every first incoming instance of [{tt|post-mitigation|Damage calculated after modifiers}} {{tip|basic damage}} per {{tip|cast instance}} is [[Damage modifier|reduced]] by 5 {{as|(+ {{fd|3.5}} per 1000 '''maximum''' health)}], '''maximum''' 20% reduction each.",
+        descriptionHTML:
+          'Every first incoming instance of <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation</span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic damage"><a href="/wiki/Damage" title="Damage"><img alt="Basic Attack" src="/wiki/images/Basic_Attack.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">basic damage</a></span> per <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cast instance"><a href="/wiki/Champion_ability" title="Champion ability">cast instance</a></span> is <a href="/wiki/Damage_modifier" title="Damage modifier">reduced</a> by 5 <span style="color: #1F995C; white-space:normal">(+&nbsp;3.<small>5</small> per 1000 <b>maximum</b> health)</span>, <b>maximum</b> 20% reduction each.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Critical Resilience',
         unique: true,
         description:
-          'Reduces incoming [{tip|critical strike|critical strike}] damage from basic attacks by 20%.',
+          'Reduces incoming [{tip|critical strike|critical strike}] damage by 20%.',
+        descriptionHTML:
+          'Reduces incoming <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critical strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon" src="/wiki/images/Critical_strike_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Critical_strike" title="Critical strike">critical strike</a></span> damage by 20%.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Humility',
+        unique: true,
+        description:
+          'Unleash a shockwave around you that [{tip|slow|slows}] nearby enemies by 55% for 2 seconds.',
+        descriptionHTML:
+          'Unleash a shockwave around you that <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> nearby enemies by 55% for 2 seconds (60 second cooldown; <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 500 range).',
+        descriptionRatios: [],
+        cd: 60,
+        range: '[{tip|cr|icononly:true}] 500',
       },
     },
     type: ['Legendary'],
@@ -7268,7 +7795,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3145_mage_t2_hextechalternator.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -192px; width:48px; height:48px;",
     image: {
       full: '3145.png',
       sprite: 'item1.png',
@@ -7281,6 +7808,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -7294,6 +7822,9 @@ export default {
         unique: true,
         description:
           "Damaging an enemy champion deals [{as|{{pp|50 to 125}} '''bonus''' magic damage}].",
+        descriptionHTML:
+          'Damaging an enemy champion deals <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="50;" data-finish="125;" data-bot_values="50;54.41;58.82;63.24;67.65;72.06;76.47;80.88;85.29;89.71;94.12;98.53;102.94;107.35;111.76;116.18;120.59;125" data-top_values="">50 − 125 (based on level)</span> <b>bonus</b> magic damage</span> (40 second cooldown).',
+        descriptionRatios: [],
         cd: 40,
       },
     },
@@ -7332,7 +7863,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3152_mage_t4_hextechrocketbelt.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -192px; width:48px; height:48px;",
     image: {
       full: '3152.png',
       sprite: 'item1.png',
@@ -7344,7 +7875,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'magic pen': true,
@@ -7357,6 +7890,8 @@ export default {
       mpenflat: 6,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:turquoise; white-space:normal">5 magic penetration</span>.',
       act: {
         name: 'Supersonic',
         unique: true,
@@ -7364,10 +7899,10 @@ export default {
           "[{tip|Dash}} 125 to 275 units in the target direction, though not through terrain, unleashing an arc of 7 rockets in the same direction that deal {{as|125 {{as|(+ 15% AP)}} magic damage|magic damage}} to enemies hit. Afterwards, gain {{as|30% '''bonus''' movement speed}} while facing {{tt|nearby|2000 units}} enemy champions for {{fd|1.5}] seconds.",
         description2:
           "''Supersonic'' [[Basic attack#Resets|resets]] the user's [[basic attack]] timer.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Dash.png/revision/latest/scale-to-width-down/20?cb=20180514002826" decoding="async" loading="lazy" width="20" height="20" data-image-name="Dash.png" data-image-key="Dash.png"></a> <a href="/wiki/Dash" title="Dash">Dash</a></span> 125 to 275 units in the target direction, though not through terrain, unleashing an arc of 7 rockets in the same direction that deal <span style="color: #00B0F0; white-space:normal">125 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;15% AP)</span> magic damage</span> to enemies hit. Afterwards, gain <span style="color: #F5EE99; white-space:normal">30% <b>bonus</b> movement speed</span> while facing <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="2000 units">nearby</span> enemy champions for 1.<small>5</small> seconds (40 second cooldown).<br><i>Supersonic</i> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a> the user\'s <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> timer.',
+        descriptionRatios: [],
         cd: 40,
-      },
-      mythic: {
-        mpenflat: 5,
       },
     },
     type: ['Mythic'],
@@ -7404,7 +7939,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3153_fighter_t3_bladeoftheruinedking.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -192px; width:48px; height:48px;",
     image: {
       full: '3153.png',
       sprite: 'item1.png',
@@ -7417,6 +7952,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 3,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -7434,12 +7970,16 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|'''bonus''' physical damage}} [[on-hit]] equal to {{as|{{rd|12%|9%}} of the target's '''current''' health}], with a '''minimum''' of 15 against all units and a '''maximum''' of 60 against minions and monsters.",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Siphon',
         unique: true,
         description:
           "Basic attacks [[on-hit]] against enemy champions apply a stack for 6 seconds, stacking up to 3 times. The third stack consumes them all to deal [{as|{{pp|40 to 103 for 10|1;10 to 18}} '''bonus''' magic damage}} [[on-hit]] and {{tip|slow}} the target by 25% for 2 seconds, while also granting you {{as|25% '''bonus''' movement speed}] for the same duration.",
+        descriptionHTML: '',
+        descriptionRatios: [],
         cd: 30,
       },
     },
@@ -7470,7 +8010,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3155_fighter_t2_hexdrinker.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -192px; width:48px; height:48px;",
     image: {
       full: '3155.png',
       sprite: 'item1.png',
@@ -7482,7 +8022,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Lifeline" title="Item group">Lifeline</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -7498,6 +8040,9 @@ export default {
         unique: true,
         description:
           "If you would take [{as|magic damage}} that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain a {{tip|shield}} that absorbs {{as|{{rd|110 to 280|82.5 to 210|pp:true}} magic damage}} for {{fd|2.5}] seconds.",
+        descriptionHTML:
+          'If you would take <span style="color: #00B0F0; white-space:normal">magic damage</span> that would reduce you below <span style="color: #1F995C; white-space:normal">30% of your <b>maximum</b> health</span>, you first gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> that absorbs <span style="color: #00B0F0; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a></span> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:inherit;" data-top_label="level" data-displayformula="" data-bot_values="110;120;130;140;150;160;170;180;190;200;210;220;230;240;250;260;270;280" data-top_values="">110 − 280</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a></span> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:inherit;" data-top_label="level" data-displayformula="" data-bot_values="82.5;90;97.5;105;112.5;120;127.5;135;142.5;150;157.5;165;172.5;180;187.5;195;202.5;210" data-top_values="">82.<small>5</small> − 210</span>)</span> (based on level) magic damage</span> for 2.<small>5</small> seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -7528,7 +8073,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3156_fighter_t3_mawofmalmortius.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -192px; width:48px; height:48px;",
     image: {
       full: '3156.png',
       sprite: 'item1.png',
@@ -7540,7 +8085,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Lifeline" title="Item group">Lifeline</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -7556,6 +8103,9 @@ export default {
         unique: true,
         description:
           "If you would take [{as|magic damage}} that would reduce you below {{as|30% of your '''maximum''' health}}, you first gain a {{tip|shield}} that absorbs {{rd|200|150}} {{as|(+ {{rd|225%|{{fd|168.75}}%}} '''bonus''' AD)}} {{as|magic damage}} for {{fd|2.5}] seconds.",
+        descriptionHTML:
+          'If you would take <span style="color: #00B0F0; white-space:normal">magic damage</span> that would reduce you below <span style="color: #1F995C; white-space:normal">30% of your <b>maximum</b> health</span>, you first gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> that absorbs <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 200</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 150</span>)</span> <span style="color:orange; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 225%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 168.<small>75</small>%</span>)</span> <b>bonus</b> AD)</span> <span style="color: #00B0F0; white-space:normal">magic damage</span> for 2.<small>5</small> seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
       pass2: {
@@ -7563,6 +8113,9 @@ export default {
         unique: true,
         description:
           "Triggering ''Lifeline'' also grants 12% life steal while in [[combat status|in-combat]]. This effect is lost after leaving combat.",
+        descriptionHTML:
+          'Triggering <i>Lifeline</i> also grants 12% life steal while in <a href="/wiki/Combat_status" title="Combat status">in-combat</a>. This effect is lost after leaving combat.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -7598,7 +8151,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3157_mage_t3_zhonyashourglass.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -240px; width:48px; height:48px;",
     image: {
       full: '3157.png',
       sprite: 'item1.png',
@@ -7610,7 +8163,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Zhonya's Hourglass</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -7625,6 +8179,9 @@ export default {
         unique: true,
         description:
           'Put yourself in [{tip|stasis (buff)|stasis}} for {{fd|2.5}} seconds, rendering you {{tip|untargetable}} and {{tip|invulnerable}] for the duration but also unable to move, declare [[basic attack]]s, cast [[champion ability|abilities]], use [[summoner spell]]s, or [[active ability items|activate items]].',
+        descriptionHTML:
+          'Put yourself in <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stasis (buff)"><a href="/wiki/Invulnerability#Stasis" title="Invulnerability"><img alt="Stasis icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e2/Stasis_icon.png/revision/latest/scale-to-width-down/20?cb=20150225124408" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stasis icon.png" data-image-key="Stasis_icon.png"></a> <a href="/wiki/Invulnerability#Stasis" title="Invulnerability">stasis</a></span> for 2.<small>5</small> seconds, rendering you <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Untargetable_icon.png/revision/latest/scale-to-width-down/20?cb=20220206063243" decoding="async" loading="lazy" width="20" height="20" data-image-name="Untargetable icon.png" data-image-key="Untargetable_icon.png"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="/wiki/images/Taric_Cosmic_Radiance.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span> for the duration but also unable to move, declare <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a>, cast <a href="/wiki/Champion_ability" title="Champion ability">abilities</a>, use <a href="/wiki/Summoner_spell" title="Summoner spell">summoner spells</a>, or <a href="/wiki/Active_ability_items" title="Active ability items">activate items</a> (120 second cooldown).',
+        descriptionRatios: [],
         cd: 120,
       },
     },
@@ -7655,7 +8212,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3158_class_t2_ionianbootsoflucidity.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -240px; width:48px; height:48px;",
     image: {
       full: '3158.png',
       sprite: 'item1.png',
@@ -7667,12 +8224,15 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Boots" title="Item group">Boots</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {},
     stats: {
       ah: 20,
       msflat: 45,
       spec: '+12 summoner spell haste',
+      spec_desc: '+12 summoner spell haste',
     },
     effects: {},
     type: ['Boots'],
@@ -7702,7 +8262,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3161_fighter_t3_spearofshojin.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -240px; width:48px; height:48px;",
     image: {
       full: '3161.png',
       sprite: 'item1.png',
@@ -7715,6 +8275,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 3,
     limit: '',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -7731,12 +8292,16 @@ export default {
         unique: true,
         description:
           "Gain [{rd|8 {{as|(+ 8% '''bonus''' AD)}}|6 {{as|(+ 6% '''bonus''' AD)}}}} basic ability haste, reduced{{ft|by 50%|to {{rd|4 {{as|(+ 4% '''bonus''' AD)}}|3 {{as|(+ 3% '''bonus''' AD)}}}}}}for {{tip|immobilize|immobilizing}] spells.",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Exigency',
         unique: true,
         description:
           "Gain up to [{rd|{{as|15%|ms}}|{{as|10%|ms}}}} {{as|'''bonus''' movement speed}} based on {{as|'''missing''' health}}, capped at {{as|67% '''missing''' health}].",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -7766,7 +8331,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3165_mage_t3_morellonomicon.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -240px; width:48px; height:48px;",
     image: {
       full: '3165.png',
       sprite: 'item1.png',
@@ -7778,7 +8343,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Morellonomicon</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -7793,6 +8359,9 @@ export default {
         unique: true,
         description:
           'Dealing [{as|magic damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'Dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemy champions inflicts them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -7822,7 +8391,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3177_aram_t1_guardiansblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -240px; width:48px; height:48px;",
     image: {
       full: '3177.png',
       sprite: 'item1.png',
@@ -7834,7 +8403,9 @@ export default {
     },
     maps: ['HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Guardian" title="Item group">Guardian</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -7851,6 +8422,8 @@ export default {
         name: 'Legendary',
         unique: true,
         description: 'This item counts as a Legendary item.',
+        descriptionHTML: 'This item counts as a Legendary item.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -7886,7 +8459,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3179_assassin_t3_umbralglaive.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -240px; width:48px; height:48px;",
     image: {
       full: '3179.png',
       sprite: 'item1.png',
@@ -7898,7 +8471,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Umbral Glaive</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
       'onhit effects': true,
@@ -7916,6 +8490,9 @@ export default {
           "When near an enemy [[Stealth#Stealthed_traps_and_wards|stealthed]] [{tip|ward}} or {{tip|stealthed trap|trap}], gain ''Blackout'' for 8 seconds.",
         description2:
           "You [{tip|disabled ward|disable}} surrounding stealthed wards, as well as {{tip|expose}} and {{tip|true sight|reveal}] nearby stealthed wards and traps while ''Blackout'' is active.",
+        descriptionHTML:
+          'When near an enemy <a href="/wiki/Stealth#Stealthed_traps_and_wards" title="Stealth">stealthed</a> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ward"><a href="/wiki/Ward" title="Ward"><img alt="Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/f/f1/Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20180828001331" decoding="async" loading="lazy" width="20" height="20" data-image-name="Ward icon.png" data-image-key="Ward_icon.png"></a> <a href="/wiki/Ward" title="Ward">ward</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealthed trap"><a href="/wiki/Stealth#Stealthed_traps_and_wards" title="Stealth"><img alt="Noxious Trap" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/5e/Teemo_Noxious_Trap.png/revision/latest/scale-to-width-down/20?cb=20171221034223" decoding="async" loading="lazy" width="20" height="20" data-image-name="Teemo Noxious Trap.png" data-image-key="Teemo_Noxious_Trap.png"></a> <a href="/wiki/Stealth#Stealthed_traps_and_wards" title="Stealth">trap</a></span>, gain <i>Blackout</i> for 8 seconds (50 second cooldown; 400 range).<br>You <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Disabled ward"><a href="/wiki/Ward" title="Ward"><img alt="Disabled Ward icon" src="/wiki/images/Disabled_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward" title="Ward">disable</a></span> surrounding stealthed wards, as well as <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Expose"><a href="/wiki/Sight" title="Sight"><img alt="Exposed icon" src="/wiki/images/Exposed_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">expose</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="True sight"><a href="/wiki/Sight#True_sight" title="Sight"><img alt="True Sight icon" src="/wiki/images/True_Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight#True_sight" title="Sight">reveal</a></span> nearby stealthed wards and traps while <i>Blackout</i> is active.',
+        descriptionRatios: [],
         cd: 50,
         range: 400,
       },
@@ -7924,6 +8501,9 @@ export default {
         unique: true,
         description:
           "Your [[basic attack]]s deal [{as|{{rd|2|1}} '''bonus''' true damage}] to wards.",
+        descriptionHTML:
+          'Your <a href="/wiki/Basic_attack" title="Basic attack">basic attacks</a> deal <span style="color: #F9966B; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 2</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1</span>)</span> <b>bonus</b> true damage</span> to wards.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -7953,7 +8533,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3181_hullbreaker.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -240px; width:48px; height:48px;",
     image: {
       full: '3181.png',
       sprite: 'item1.png',
@@ -7965,7 +8545,8 @@ export default {
     },
     maps: ['SR'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Hullbreaker</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
     },
@@ -7981,6 +8562,9 @@ export default {
         unique: true,
         description:
           "While no allied champions are within [{tip|cr|icononly : true}} 1400 units, gain {{rd|10;20;35;43;51;59;67;75|5;10;17.5;21.5;25.5;29.5;33.5;37.5|levels:1;12 to 18 by 1|pp:true}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} and 20% '''bonus''' {{tip|basic damage}} against [[structures]]. Allied {{ui|Blue Siege Minion|link:Siege minion|siege minions}} and {{ui|Blue Super Minion|link:Super minion|super minions}} within {{tip|er|icononly:true}} {{tt|1050 units|Estimated}} gain {{rd|10*3;20*3;35*3;43*3;51*3;59*3;67*3;75*3|5*3;10*3;17.5*3;21.5*3;25.5*3;29.5*3;33.5*3;37.5*3|levels:1;12 to 18 by 1|pp:true}} {{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}], 10% '''bonus''' [[size]] and deal 200% '''bonus''' damage against [[structures]]. '''Bonus''' resistances are lost instantly when an allied champion is nearby.",
+        descriptionHTML:
+          'While no allied champions are within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 1400 units, gain <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a></span> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:inherit;" data-top_label="level" data-displayformula="" data-bot_values="10;20;35;43;51;59;67;75" data-top_values="1;12;13;14;15;16;17;18">10 − 75</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a></span> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:inherit;" data-top_label="level" data-displayformula="" data-bot_values="5;10;17.5;21.5;25.5;29.5;33.5;37.5" data-top_values="1;12;13;14;15;16;17;18">5 − 37.<small>5</small></span>)</span> (based on level) <span style="color:yellow; white-space:normal"><b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span> and 20% <b>bonus</b> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Basic damage"><a href="/wiki/Damage" title="Damage"><img alt="Basic Attack" src="/wiki/images/Basic_Attack.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Damage" title="Damage">basic damage</a></span> against <a href="/wiki/Structures" class="mw-redirect" title="Structures">structures</a>. Allied <span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Siege_minion" title="siege minions"><img alt="siege minions" src="/wiki/images/Blue_Siege_MinionSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Siege_minion" title="Siege minion">siege minions</a></span></span> and <span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Super_minion" title="super minions"><img alt="super minions" src="/wiki/images/Blue_Super_MinionSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Super_minion" title="Super minion">super minions</a></span></span> within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Er"><a href="/wiki/Range" title="Range"><img alt="Range model" src="/wiki/images/Range_model.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Estimated">1050 units</span> gain <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a></span> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:inherit;" data-top_label="level" data-displayformula="" data-bot_values="30;60;105;129;153;177;201;225" data-top_values="1;12;13;14;15;16;17;18">30 − 225</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a></span> <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:inherit;" data-top_label="level" data-displayformula="" data-bot_values="15;30;52.5;64.5;76.5;88.5;100.5;112.5" data-top_values="1;12;13;14;15;16;17;18">15 − 112.<small>5</small></span>)</span> (based on level) <span style="color:yellow; white-space:normal"><b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span>, 10% <b>bonus</b> <a href="/wiki/Size" title="Size">size</a> and deal 200% <b>bonus</b> damage against <a href="/wiki/Structures" class="mw-redirect" title="Structures">structures</a>. <b>Bonus</b> resistances are lost instantly when an allied champion is nearby.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -8010,7 +8594,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3177_aram_t1_guardianshammer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -240px; width:48px; height:48px;",
     image: {
       full: '3184.png',
       sprite: 'item1.png',
@@ -8022,7 +8606,9 @@ export default {
     },
     maps: ['HA'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Guardian" title="Item group">Guardian</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -8038,6 +8624,8 @@ export default {
         name: 'Legendary',
         unique: true,
         description: 'This item counts as a Legendary item.',
+        descriptionHTML: 'This item counts as a Legendary item.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -8075,7 +8663,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3190_enchanter_t4_locketofironsolari.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -240px; width:48px; height:48px;",
     image: {
       full: '3190.png',
       sprite: 'item1.png',
@@ -8088,7 +8676,8 @@ export default {
     maps: ['SR', 'HA'],
     depth: 3,
     limit:
-      "''Devotion's'' shield is reduced by 75% if the target was affected by another ''Devotion'' in the last 20 seconds.",
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br> <i>Devotion\'s</i> shield is reduced by 75% if the target was affected by another <i>Devotion</i> in the last 20 seconds.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -8100,21 +8689,27 @@ export default {
       mr: 30,
     },
     effects: {
-      act: {
-        name: 'Devotion',
-        unique: true,
-        description:
-          "Grant you and allied champions within [{tip|cr|icononly:true}} 850 units a {{tip|shield}} for {{pp|200 to 360|type:target's level}} that decays over {{fd|2.5}] seconds.",
-        cd: 90,
-      },
       pass: {
         name: 'Consecrate',
         unique: true,
         description:
           "Grant allied champions (''excluding yourself'') within [{tt|850 units|center to edge}} {{as|3 '''bonus''' armor}} and {{as|3 '''bonus''' magic resistance}].",
+        descriptionHTML:
+          'Grant allied champions (<i>excluding yourself</i>) within <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="center to edge">850 units</span> <span style="color:yellow; white-space:normal">3 <b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal">3 <b>bonus</b> magic resistance</span>.',
+        descriptionRatios: [],
       },
       mythic:
-        "2 '''bonus''' resistances for this item's passive effect, ''Consecrate''",
+        "Empowers each of your other Legendary items with 2 <b>bonus</b> resistances for this item's passive effect, <i>Consecrate</i>.",
+      act: {
+        name: 'Devotion',
+        unique: true,
+        description:
+          "Grant you and allied champions within [{tip|cr|icononly:true}} 850 units a {{tip|shield}} for {{pp|200 to 360|type:target's level}} that decays over {{fd|2.5}] seconds.",
+        descriptionHTML:
+          'Grant you and allied champions within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 850 units a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="target\'s level" data-start="200;" data-finish="360;" data-bot_values="200;209.41;218.82;228.24;237.65;247.06;256.47;265.88;275.29;284.71;294.12;303.53;312.94;322.35;331.76;341.18;350.59;360" data-top_values="">200 − 360 (based on target\'s level)</span> that decays over 2.<small>5</small> seconds (90 second cooldown).',
+        descriptionRatios: [],
+        cd: 90,
+      },
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -8143,7 +8738,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3191_battlemage_t2_seekersarmguard.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -240px; width:48px; height:48px;",
     image: {
       full: '3191.png',
       sprite: 'item1.png',
@@ -8156,6 +8751,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -8169,6 +8765,9 @@ export default {
         unique: true,
         description:
           "Killing a unit grants [{as|{{fd|0.5}} '''bonus''' armor}}, up to a '''maximum''' of {{as|15|armor}] at 30 unit kills.",
+        descriptionHTML:
+          'Killing a unit grants <span style="color:yellow; white-space:normal">0.<small>5</small> <b>bonus</b> armor</span>, up to a <b>maximum</b> of <span style="color:yellow; white-space:normal">15</span> at 30 unit kills.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -8204,7 +8803,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3193_tank_t3_gargoylestoneplate.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -288px; width:48px; height:48px;",
     image: {
       full: '3193.png',
       sprite: 'item1.png',
@@ -8216,7 +8815,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Gargoyle Stoneplate</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -8226,18 +8826,24 @@ export default {
       mr: 60,
     },
     effects: {
-      act: {
-        name: 'Monolith',
-        unique: true,
-        description:
-          "Gain a [{tip|shield}} for 100 {{as|(+ 90% '''bonus''' health)}}, decaying over {{fd|2.5}] seconds, and 25% increased [[size]] while active.",
-        cd: 90,
-      },
       pass: {
         name: 'Fortify',
         unique: true,
         description:
           "Increase your [{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}] by 5% for 6 seconds when a champion deals damage to you, stacks up to 5 times for a '''maximum''' of 25%. This stacks once per unique champion.",
+        descriptionHTML:
+          'Increase your <span style="color:yellow; white-space:normal"><b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span> by 5% for 6 seconds when a champion deals damage to you, stacks up to 5 times for a <b>maximum</b> of 25%. This stacks once per unique champion.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Monolith',
+        unique: true,
+        description:
+          "Gain a [{tip|shield}} for 100 {{as|(+ 90% '''bonus''' health)}}, decaying over {{fd|2.5}] seconds, and 25% increased [[size]] while active.",
+        descriptionHTML:
+          'Gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for 100 <span style="color: #1F995C; white-space:normal">(+&nbsp;90% <b>bonus</b> health)</span>, decaying over 2.<small>5</small> seconds, and 25% increased <a href="/wiki/Size" title="Size">size</a> while active (90 second cooldown).',
+        descriptionRatios: [],
+        cd: 90,
       },
     },
     type: ['Legendary'],
@@ -8267,7 +8873,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3211_tank_t2_spectrescowl.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -288px; width:48px; height:48px;",
     image: {
       full: '3211.png',
       sprite: 'item1.png',
@@ -8280,6 +8886,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -8293,6 +8900,9 @@ export default {
         unique: true,
         description:
           "Gain [{as|150% '''base''' health regeneration}} after taking damage from a champion, with the duration equal to {{fd|33.{{recurring|3}}}]% of the damage taken, up to a maximum of 10 seconds.",
+        descriptionHTML:
+          'Gain <span style="color: #1F995C; white-space:normal">150% <b>base</b> health regeneration</span> after taking damage from a champion, with the duration equal to 33.<small><span style="text-decoration: overline;">3</span></small>% of the damage taken, up to a maximum of 10 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -8322,7 +8932,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3222_enchanter_t3_mikaelsblessing.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -288px; width:48px; height:48px;",
     image: {
       full: '3222.png',
       sprite: 'item1.png',
@@ -8334,7 +8944,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Mikael's Blessing</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -8344,19 +8955,25 @@ export default {
       mp5: 100,
     },
     effects: {
-      act: {
-        name: 'Purify',
-        unique: true,
-        description:
-          "Remove all [{tip|crowd control}} debuffs (except {{tip|Airborne}}, {{tip|Blind}}, {{tip|Disarm}}, {{tip|Ground}}, {{tip|Nearsight}}, and {{tip|Suppression}}) from yourself or the target allied champion and {{tip|heal}} the target for {{pp|100 to 250|type:target's level}].",
-        cd: 120,
-        range: '[{tip|cr|icononly:true}] 650',
-      },
       pass: {
         name: 'Harmony',
         unique: false,
         description:
           "Gain [{as|25% '''base''' health regeneration}} for every additional {{as|25% '''base''' mana regeneration}].",
+        descriptionHTML:
+          'Gain <span style="color: #1F995C; white-space:normal">25% <b>base</b> health regeneration</span> for every additional <span style="color: #0099CC; white-space:normal">25% <b>base</b> mana regeneration</span>.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Purify',
+        unique: true,
+        description:
+          "Remove all [{tip|crowd control}} debuffs (except {{tip|Airborne}}, {{tip|Ground}}, {{tip|Nearsight}}, and {{tip|Suppression}}) from yourself or the target allied champion and {{tip|heal}} the target for {{pp|100 to 250|type:target's level}].",
+        descriptionHTML:
+          'Remove all <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Crowd control"><a href="/wiki/Crowd_control" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control" title="Crowd control">crowd control</a></span> debuffs (except <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/d/d6/Airborne_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223933" decoding="async" loading="lazy" width="20" height="20" data-image-name="Airborne icon.png" data-image-key="Airborne_icon.png"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">Airborne</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ground"><a href="/wiki/Ground" title="Ground"><img alt="Grounded icon" src="/wiki/images/Grounded_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ground" class="mw-redirect" title="Ground">Ground</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Nearsight"><a href="/wiki/Nearsight" title="Nearsight"><img alt="Nearsight icon" src="/wiki/images/Nearsight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Nearsight" class="mw-redirect" title="Nearsight">Nearsight</a></span>, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Suppression"><a href="/wiki/Types_of_Crowd_Control#Suppression" title="Types of Crowd Control"><img alt="Suppression icon" src="/wiki/images/Suppression_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Types_of_Crowd_Control#Suppression" title="Types of Crowd Control">Suppression</a></span>) from yourself or the target allied champion and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> the target for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="target\'s level" data-start="100;" data-finish="250;" data-bot_values="100;108.82;117.65;126.47;135.29;144.12;152.94;161.76;170.59;179.41;188.24;197.06;205.88;214.71;223.53;232.35;241.18;250" data-top_values="">100 − 250 (based on target\'s level)</span> (120 second cooldown; <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 650 range).',
+        descriptionRatios: [],
+        cd: 120,
+        range: '[{tip|cr|icononly:true}] 650',
       },
     },
     type: ['Legendary'],
@@ -8386,7 +9003,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/fiddlestickstrinket1.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -288px; width:48px; height:48px;",
     image: {
       full: '3330.png',
       sprite: 'item1.png',
@@ -8398,7 +9015,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: '',
+    limit:
+      'Only available to <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Fiddlesticks" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Fiddlesticks/LoL" title="Fiddlesticks"><img alt="Fiddlesticks" src="/wiki/images/Fiddlesticks_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Fiddlesticks/LoL" title="Fiddlesticks/LoL">Fiddlesticks</a></span></span>.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -8407,6 +9026,9 @@ export default {
         unique: true,
         description:
           'Consume a charge to place a visible [{tip|Effigy}} at the target location, which grants {{tip|sight}} of the surrounding area for {{pp|130 to 300}} seconds. The effigy visually appears exactly as {{ci|Fiddlesticks}} does to enemies while idle. Enemy champions that approach an effigy while having {{tip|sight}] of it will activate it, causing the effigy to fake a random action, after which the effigy will deal 1 damage to itself.',
+        descriptionHTML:
+          'Consume a charge to place a visible <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Effigy"><a href="/wiki/Ward" title="Ward"><img alt="Totem Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Totem_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100406" decoding="async" loading="lazy" width="20" height="20" data-image-name="Totem Ward icon.png" data-image-key="Totem_Ward_icon.png"></a> <a href="/wiki/Ward" title="Ward">Effigy</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="130;" data-finish="300;" data-bot_values="130;140;150;160;170;180;190;200;210;220;230;240;250;260;270;280;290;300" data-top_values="">130 − 300 (based on level)</span> seconds. The effigy visually appears exactly as <span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Fiddlesticks" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Fiddlesticks/LoL" title="Fiddlesticks"><img alt="Fiddlesticks" src="/wiki/images/Fiddlesticks_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Fiddlesticks/LoL" title="Fiddlesticks/LoL">Fiddlesticks</a></span></span> does to enemies while idle. Enemy champions that approach an effigy while having <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of it will activate it, causing the effigy to fake a random action, after which the effigy will deal 1 damage to itself (<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-start="115;" data-finish="30;" data-bot_values="115;110;105;100;95;90;85;80;75;70;65;60;55;50;45;40;35;30" data-top_values="">115 − 30 (based on level)</span> seconds recharge time; 2 charges; 625 range).',
+        descriptionRatios: [],
         recharge: '[{pp|115 to 30}]',
         charges: 2,
         range: 625,
@@ -8439,7 +9061,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3340_class_t1_wardingtotem.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -288px; width:48px; height:48px;",
     image: {
       full: '3340.png',
       sprite: 'item1.png',
@@ -8451,7 +9073,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'trinket,warding',
+    limit:
+      'Switching to another trinket keeps the current cooldown, if there is any. A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -8460,6 +9084,9 @@ export default {
         unique: true,
         description:
           'Consume a charge to place an invisible [{tip|Totem Ward}} at the target location, which grants {{tip|sight}} of the surrounding area for {{pp|90 to 120|type:average champion level}] seconds.',
+        descriptionHTML:
+          'Consume a charge to place an invisible <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Totem_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100406" decoding="async" loading="lazy" width="20" height="20" data-image-name="Totem Ward icon.png" data-image-key="Totem_Ward_icon.png"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="average champion level" data-start="90;" data-finish="120;" data-bot_values="90;91.76;93.53;95.29;97.06;98.82;100.59;102.35;104.12;105.88;107.65;109.41;111.18;112.94;114.71;116.47;118.24;120" data-top_values="">90 − 120 (based on average champion level)</span> seconds (<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="average champion level" data-start="210;" data-finish="120;" data-bot_values="210;204.71;199.41;194.12;188.82;183.53;178.24;172.94;167.65;162.35;157.06;151.76;146.47;141.18;135.88;130.59;125.29;120" data-top_values="">210 − 120 (based on average champion level)</span> seconds recharge time; 2 charges; 600 range).',
+        descriptionRatios: [],
         recharge: '[{pp|210 to 120|type:average champion level}]',
         charges: 2,
         range: 600,
@@ -8492,7 +9119,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3363_class_t1_farsightalteration.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -288px; width:48px; height:48px;",
     image: {
       full: '3363.png',
       sprite: 'item1.png',
@@ -8504,7 +9131,10 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: 'trinket',
+    limit:
+      'Switching to another trinket keeps the current cooldown, if there is any.',
+    requirementDescription:
+      'Cannot be purchased until <a href="/wiki/Experience_(champion)" title="Experience (champion)">level 9</a>.',
     menu: {},
     stats: {},
     effects: {
@@ -8513,6 +9143,9 @@ export default {
         unique: true,
         description:
           'Places a visible [{tip|Farsight Ward}} at the target location that grants {{tip|sight}] of the surrounding area, including over [[terrain]] and through [[brush]] and lasting indefinitely. Also grants sight of the area in a 800 radius for 2 seconds. Upon detecting an enemy champion, the ward will increase its sight radius to 800 units and destroy itself after 3 seconds.',
+        descriptionHTML:
+          'Places a visible <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Farsight ward"><a href="/wiki/Ward#Farsight_Ward" title="Ward"><img alt="Farsight Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/29/Farsight_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Farsight Ward icon.png" data-image-key="Farsight_Ward_icon.png"></a> <a href="/wiki/Ward#Farsight_Ward" title="Ward">Farsight Ward</a></span> at the target location that grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area, including over <a href="/wiki/Terrain" title="Terrain">terrain</a> and through <a href="/wiki/Brush" title="Brush">brush</a> and lasting indefinitely. Also grants sight of the area in a 800 radius for 2 seconds. Upon detecting an enemy champion, the ward will increase its sight radius to 800 units and destroy itself after 3 seconds (<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="average champion level" data-start="198;" data-finish="99;" data-bot_values="198;192.18;186.35;180.53;174.71;168.88;163.06;157.24;151.41;145.59;139.76;133.94;128.12;122.29;116.47;110.65;104.82;99" data-top_values="">198 − 99 (based on average champion level)</span> second cooldown; 4000 range).',
+        descriptionRatios: [],
         cd: '[{pp|198 to 99|type:average champion level}]',
         range: 4000,
       },
@@ -8544,7 +9177,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3364_class_t1_oracleslens.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -288px; width:48px; height:48px;",
     image: {
       full: '3364.png',
       sprite: 'item1.png',
@@ -8556,7 +9189,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'trinket',
+    limit:
+      'Switching to another trinket keeps the current cooldown, if there is any.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -8565,6 +9200,9 @@ export default {
         unique: false,
         description:
           'Consume one charge to summon a [{tip|Sweeper Drone}} that escorts you for the next 6 seconds, detecting nearby enemies that are not {{tip|sight|visible}].',
+        descriptionHTML:
+          'Consume one charge to summon a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sweeper drone"><a href="/wiki/Oracle_Lens" title="Oracle Lens"><img alt="Sweeper Drone icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/d/db/Sweeper_Drone_icon.png/revision/latest/scale-to-width-down/20?cb=20171031123433" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sweeper Drone icon.png" data-image-key="Sweeper_Drone_icon.png"></a> <strong class="mw-selflink selflink">Sweeper Drone</strong></span> that escorts you for the next 6 seconds, detecting nearby enemies that are not <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> (<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="average champion level" data-start="160;" data-finish="100;" data-bot_values="160;156.47;152.94;149.41;145.88;142.35;138.82;135.29;131.76;128.24;124.71;121.18;117.65;114.12;110.59;107.06;103.53;100" data-top_values="">160 − 100 (based on average champion level)</span> seconds recharge time; 2 charges; <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="600;630;660;690;720;750" data-top_values="1;5;8;11;14;17">600 − 750 (based on level)</span> range).',
+        descriptionRatios: [],
         recharge: '[{pp|160 to 100|type:average champion level}]',
         charges: 2,
         range: '[{pp|600;630 to 750 for 5|1;5 to 17}]',
@@ -8597,7 +9235,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/pykegold.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -288px; width:48px; height:48px;",
     image: {
       full: '3400.png',
       sprite: 'item1.png',
@@ -8609,12 +9247,14 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: 'Only granted by [{cai|Death from Below|Pyke}].',
+    limit:
+      'Only granted by <span class="champion-ability-icon"><span class="inline-image label-after champion-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Pyke" data-skin="Original" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Pyke/LoL" title="Pyke\'s"><img alt="Pyke\'s" src="/wiki/images/Pyke_OriginalSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Pyke/LoL" title="Pyke/LoL">Pyke\'s</a></span></span> <span class="inline-image label-after ability-icon" style="display:inline;white-space:pre;" data-param="" data-champion="Pyke" data-ability="Death from Below" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Pyke/LoL#Death_from_Below" title="Death from Below"><img alt="Death from Below" src="/wiki/images/Pyke_Death_from_Below.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Pyke/LoL#Death_from_Below" title="Pyke/LoL">Death from Below</a></span></span></span>.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
       consume:
-        "Grants [{g|text:*none*}}{{pp|100;112;140;176;220;274;300|-7+x;0+|type:target's kill bounty|color:gold}}, increased by {{g|100}] for [[First Blood]]. '''Can be used while [[death|dead]].'''",
+        'Grants <span class="inline-image" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="Gold"><img alt="Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span></span><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#FFD700;" data-top_label="target\'s kill bounty" data-bot_values="100;112;140;176;220;274;300" data-top_values="-6;-5;-4;-3;-2;-1;0+">100 − 300 (based on target\'s kill bounty)</span>, increased by <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="100 Gold"><img alt="100 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">100</span></span> for <a href="/wiki/First_Blood" class="mw-redirect" title="First Blood">First Blood</a>. <b>Can be used while <a href="/wiki/Death" title="Death">dead</a>.</b>',
     },
     type: ['Consumable', 'Distributed'],
     category: 'distributives',
@@ -8649,7 +9289,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3504_enchanter_t3_ardentcenser.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -288px; width:48px; height:48px;",
     image: {
       full: '3504.png',
       sprite: 'item1.png',
@@ -8661,7 +9301,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Ardent Censer</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
       'attack speed': true,
@@ -8679,6 +9320,9 @@ export default {
         unique: true,
         description:
           "[{tip|Heal|Healing}} or {{tip|shield|shielding}} allied champions (''excluding yourself'') enhances you and them for 6 seconds, granting {{as|20% '''bonus''' attack speed|attack speed}} and {{as|15 '''bonus''' magic damage}] [[on-hit]] on basic attacks.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> allied champions (<i>excluding yourself</i>) enhances you and them for 6 seconds, granting <span style="color:orangered; white-space:normal">20% <b>bonus</b> attack speed</span> and <span style="color: #00B0F0; white-space:normal">15 <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> on basic attacks.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -8715,7 +9359,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3508_marksman_t3_essencereaver.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -288px; width:48px; height:48px;",
     image: {
       full: '3508.png',
       sprite: 'item1.png',
@@ -8727,7 +9371,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Essence Reaver</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'mana and reg': true,
@@ -8743,7 +9388,10 @@ export default {
         name: 'Spellblade',
         unique: true,
         description:
-          "After using an [[champion ability|ability]], your next basic attack [[on-hit]] within 10 seconds deals [{as|100% '''base''' AD (+ 40% '''bonus''' AD)}} {{as|'''bonus''' physical damage}} and restores {{as|mana}} equal to {{as|40% '''base''' AD (+ 16% '''bonus''' AD)}].",
+          "After using an [[champion ability|ability]], your next basic attack [[on-hit]] within 10 seconds deals [{as|130% '''base''' AD (+ 20% '''bonus''' AD)}} {{as|'''bonus''' physical damage}} and restores {{as|mana}} equal to{{ft|40% of pre-mitigation damage dealt|{{as|52% '''base''' AD (+ 8% '''bonus''' AD)}}}].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> within 10 seconds deals <span style="color:orange; white-space:normal">130% <b>base</b> AD (+&nbsp;20% <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> and restores <span style="color: #0099CC; white-space:normal">mana</span> equal to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;40% of pre-mitigation damage dealt&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color:orange; white-space:normal">52% <b>base</b> AD (+&nbsp;8% <b>bonus</b> AD)</span>&nbsp;」</span></span> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
     },
@@ -8774,7 +9422,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3513_voideye.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -336px; width:48px; height:48px;",
     image: {
       full: '3513.png',
       sprite: 'item1.png',
@@ -8787,16 +9435,20 @@ export default {
     maps: [],
     depth: 1,
     limit:
-      "The '''Eye of the Herald''' will be removed from the inventory if not used within 240 seconds.",
+      'The <b>Eye of the Herald</b> will be removed from the inventory if not used within 240 seconds.',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
       consume:
-        "[{Unique|Herald's Call|{{tip|Channel}} for 1 second and summon the '''Eye of the Herald''' 350 units in front of you, which is crushed over 5 seconds to summon an allied {{ui|Rift Herald}} that sieges enemy [[structures]]. This effect is placed on a 3-second cooldown while in [[combat status|combat]] with non-[[minion]]s.}]",
+        '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Channel"><a href="/wiki/Channel" title="Channel"><img alt="Channeling icon" src="/wiki/images/Channeling_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Channel" title="Channel">Channel</a></span> for 1 second and summon the <b>Eye of the Herald</b> 350 units in front of you, which is crushed over 5 seconds to summon an allied <span class="inline-image unit-icon label-after" style="display:inline;white-space:pre;" data-param=""><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Rift_Herald" title="Rift Herald"><img alt="Rift Herald" src="/wiki/images/Rift_HeraldSquare.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Rift_Herald" class="mw-redirect" title="Rift Herald">Rift Herald</a></span></span> that sieges enemy <a href="/wiki/Structures" class="mw-redirect" title="Structures">structures</a>. This effect is placed on a 3-second cooldown while in <a href="/wiki/Combat_status" title="Combat status">combat</a> with non-<a href="/wiki/Minion" class="mw-redirect" title="Minion">minions</a>.',
       pass: {
         name: 'Glimpse of the Void',
         unique: true,
         description: 'Gain [{si|Empowered Recall}].',
+        descriptionHTML:
+          'Gain <span class="inline-image label-after spell-icon" style="display:inline;white-space:pre;" data-param="" data-spell="Empowered Recall" data-game="lol"><span class="border icon-20" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Recall#Empowered_Recall" title="Empowered Recall"><img alt="Empowered Recall" src="/wiki/images/Empowered_Recall.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Recall#Empowered_Recall" title="Recall">Empowered Recall</a></span></span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Consumable', 'Distributed'],
@@ -8826,7 +9478,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3599_kalistapassiveitem.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -336px; width:48px; height:48px;",
     image: {
       full: '3599.png',
       sprite: 'item1.png',
@@ -8838,7 +9490,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 1,
-    limit: 'Unavailable after 3 minutes elapse.',
+    limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -8847,6 +9500,8 @@ export default {
         unique: true,
         description:
           "After a [{fd|3.5}}-second [[Channel#Casting Times|cast time]] and a 3-second {{tip|channel}] afterwards from the user and the target allied champion, both become bound allies. The target is unable to act for 6 seconds after the channel's duration. Afterwards, the target becomes an ''Oathsworn''.",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -8876,7 +9531,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3742_tank_t3_deadmansplate.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -336px; width:48px; height:48px;",
     image: {
       full: '3742.png',
       sprite: 'item1.png',
@@ -8888,7 +9543,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '[{tip|Ranged}] champions do not apply the slow.',
+    limit:
+      '<p>Limited to 1 <b>Dead Man\'s Plate</b>.<br> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ranged" class="mw-redirect" title="Ranged">Ranged</a></span> champions do not apply the slow.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       'onhit effects': true,
@@ -8904,6 +9561,9 @@ export default {
         unique: true,
         description:
           "While moving, generates 7 stacks of ''Momentum'' every [{fd|0.25}} seconds, granting up to {{as|40 '''bonus''' movement speed}} at 100 stacks after {{fd|3.75}} seconds of moving. ''Momentum'' decays by 15 every {{fd|0.25}} seconds while {{tip|immobilize|immobilized}}. Basic attacks consume all stacks to deal {{as|{{pp|0 to 40 for 11|0 to 100|type:Momentum|label1:stacks of Momentum|formula:1 for every 1 stack of Momentum, capped at 40}}|physical damage}} {{as|(+ {{pp|0 to 100 for 11|0 to 100|key:%|type:Momentum|label1:stacks of Momentum|formula:1% for every 1 stack of Momentum, capped at 100}} '''base''' AD)}} {{as|'''bonus''' physical damage}} [[on-hit]]. At '''maximum''' stacks, the target is also {{tip|slow|slowed}] by 50% for 1 second.",
+        descriptionHTML:
+          'While moving, generates 7 stacks of <i>Momentum</i> every 0.<small>25</small> seconds, granting up to <span style="color: #F5EE99; white-space:normal">40 <b>bonus</b> movement speed</span> at 100 stacks after 3.<small>75</small> seconds of moving. <i>Momentum</i> decays by 15 every 0.<small>25</small> seconds while <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilized</a></span>. Basic attacks consume all stacks to deal <span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="stacks of Momentum" data-displayformula="1 for every 1 stack of Momentum, capped at 40" data-bot_values="0;4;8;12;16;20;24;28;32;36;40" data-top_values="0;10;20;30;40;50;60;70;80;90;100">0 − 40 (based on Momentum)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;<span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="stacks of Momentum" data-displayformula="1% for every 1 stack of Momentum, capped at 100" data-bot_values="0;10;20;30;40;50;60;70;80;90;100" data-top_values="0;10;20;30;40;50;60;70;80;90;100" data-bot_key="%">0% − 100% (based on Momentum)</span> <b>base</b> AD)</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>. At <b>maximum</b> stacks, the target is also <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowed</a></span> by 50% for 1 second.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -8933,7 +9593,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3748_fighter_t3_titanichydra.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -336px; width:48px; height:48px;",
     image: {
       full: '3748.png',
       sprite: 'item1.png',
@@ -8945,7 +9605,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Hydra" title="Item group">Hydra</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       tank: true,
@@ -8961,12 +9623,18 @@ export default {
         unique: true,
         description:
           "Gain [{as|'''bonus''' attack damage}} equal to {{as|2% of '''bonus''' health}].",
+        descriptionHTML:
+          'Gain <span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span> equal to <span style="color: #1F995C; white-space:normal">2% of <b>bonus</b> health</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Cleave',
         unique: true,
         description:
           "Basic attacks [[on-hit]] deal [{as|{{rd|4|3}} {{as|(+ {{rd|{{fd|1.5}}%|{{fd|1.125}}%}} '''maximum''' health)}} '''bonus''' physical damage|physical damage}} to the target and {{as|{{rd|40|30}} {{as|(+ {{rd|3%|{{fd|2.25}}%}} '''maximum''' health)}} physical damage|physical damage}] to other enemies in a cone in the direction of the target.",
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> deal <span style="color: #FF8C34; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 4</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 3</span>)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1.<small>5</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1.<small>125</small>%</span>)</span> <b>maximum</b> health)</span> <b>bonus</b> physical damage</span> to the target and <span style="color: #FF8C34; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 40</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 30</span>)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 3%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 2.<small>25</small>%</span>)</span> <b>maximum</b> health)</span> physical damage</span> to other enemies in a cone in the direction of the target.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -8996,7 +9664,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3801_tank_t2_crystallinebracer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -336px; width:48px; height:48px;",
     image: {
       full: '3801.png',
       sprite: 'item1.png',
@@ -9009,6 +9677,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9051,7 +9720,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3802_mage_tier2_lostchapter.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -336px; width:48px; height:48px;",
     image: {
       full: '3802.png',
       sprite: 'item1.png',
@@ -9063,7 +9732,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic_Component" title="Item group">Mythic Component</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -9078,6 +9749,9 @@ export default {
         unique: true,
         description:
           "Upon leveling up, restores [{as|20% of '''maximum''' mana}] over 3 seconds.",
+        descriptionHTML:
+          'Upon leveling up, restores <span style="color: #0099CC; white-space:normal">20% of <b>maximum</b> mana</span> over 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -9107,7 +9781,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3803_mage_t2_catalystofaeons.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -336px; width:48px; height:48px;",
     image: {
       full: '3803.png',
       sprite: 'item1.png',
@@ -9119,7 +9793,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Eternity" title="Item group">Eternity</a></b></span> item.<br>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic_Component" title="Item group">Mythic Component</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -9133,6 +9809,9 @@ export default {
         unique: true,
         description:
           'Restore [{as|mana}} equal to 7% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{tip|heal}} for an amount equal to {{as|25% of mana spent}], up to 20 per cast. Toggled abilities can only heal for up to 20 per second.',
+        descriptionHTML:
+          'Restore <span style="color: #0099CC; white-space:normal">mana</span> equal to 7% of <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated before modifiers">pre-mitigation damage</span> taken from champions, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for an amount equal to <span style="color: #0099CC; white-space:normal">25% of mana spent</span>, up to 20 per cast. Toggled abilities can only heal for up to 20 per second.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -9162,7 +9841,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3814_assassin_t3_edgeofnight.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -336px; width:48px; height:48px;",
     image: {
       full: '3814.png',
       sprite: 'item1.png',
@@ -9174,7 +9853,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Edge of Night</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
     },
@@ -9189,6 +9869,9 @@ export default {
         unique: true,
         description:
           'Grants a [{tip|spell shield}] that blocks the next hostile ability.',
+        descriptionHTML:
+          'Grants a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Spell shield"><a href="/wiki/Spell_shield" title="Spell shield"><img alt="Spell Shield" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/a0/Sivir_Spell_Shield.png/revision/latest/scale-to-width-down/20?cb=20170818194532" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sivir Spell Shield.png" data-image-key="Sivir_Spell_Shield.png"></a> <a href="/wiki/Spell_shield" title="Spell shield">spell shield</a></span> that blocks the next hostile ability (40 (restarts upon taking damage from champions) second cooldown).',
+        descriptionRatios: [],
         cd: '40 (restarts upon taking damage from champions)',
       },
     },
@@ -9226,7 +9909,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3850_mage_t1_spellthiefsedge.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -336px; width:48px; height:48px;",
     image: {
       full: '3850.png',
       sprite: 'item1.png',
@@ -9238,7 +9921,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -9255,12 +9940,18 @@ export default {
         unique: true,
         description:
           "Grants a charge every 12 seconds, up to 3 charges. If an allied champion is [{tt|nearby|2000 range}}, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants {{g|20}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 12 seconds, up to 3 charges. If an allied champion is <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="2000 range">nearby</span>, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="20 Gold"><img alt="20 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">20</span></span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Frostfang}], gaining the ''Warding'' active with 3 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Frostfang" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Frostfang" title="Frostfang"><img alt="Frostfang" src="/wiki/images/Frostfang_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Frostfang" title="Frostfang">Frostfang</a></span></span>, gaining the <i>Warding</i> active with 3 wards in stock.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -9290,7 +9981,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3851_mage_t2_frostfang.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -384px; width:48px; height:48px;",
     image: {
       full: '3851.png',
       sprite: 'item1.png',
@@ -9302,7 +9993,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -9314,25 +10007,34 @@ export default {
       mp5: 50,
     },
     effects: {
-      act: {
-        name: 'Warding',
-        unique: true,
-        description:
-          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
-        charges: 3,
-        range: 600,
-      },
       pass: {
         name: 'Tribute',
         unique: true,
         description:
           "Grants a charge every 12 seconds, up to 3 charges. If an allied champion is [{tt|nearby|2000 range}}, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants {{g|20}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 12 seconds, up to 3 charges. If an allied champion is <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="2000 range">nearby</span>, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="20 Gold"><img alt="20 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">20</span></span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Shard of True Ice}], increasing the ''Warding'' active to instead have 4 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Shard of True Ice" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Shard_of_True_Ice" title="Shard of True Ice"><img alt="Shard of True Ice" src="/wiki/images/Shard_of_True_Ice_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Shard_of_True_Ice" title="Shard of True Ice">Shard of True Ice</a></span></span>, increasing the <i>Warding</i> active to instead have 4 wards in stock.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Warding',
+        unique: true,
+        description:
+          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (3 charges; 600 range).',
+        descriptionRatios: [],
+        charges: 3,
+        range: 600,
       },
     },
     type: ['Epic'],
@@ -9362,7 +10064,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3853_mage_t3_shardoftrueice.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -384px; width:48px; height:48px;",
     image: {
       full: '3853.png',
       sprite: 'item1.png',
@@ -9374,7 +10076,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -9386,18 +10090,24 @@ export default {
       mp5: 100,
     },
     effects: {
+      pass: {
+        name: '',
+        unique: true,
+        description: 'Receives diminishing gold from excessive minion kills.',
+        descriptionHTML:
+          'Receives diminishing gold from excessive minion kills.',
+        descriptionRatios: [],
+      },
       act: {
         name: 'Warding',
         unique: true,
         description:
           'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (4 charges; 600 range).',
+        descriptionRatios: [],
         charges: 4,
         range: 600,
-      },
-      pass: {
-        name: '',
-        unique: true,
-        description: 'Receives diminishing gold from excessive minion kills.',
       },
     },
     type: ['Legendary'],
@@ -9434,7 +10144,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3854_tank_t1_petriciteshoulderguard.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -384px; width:48px; height:48px;",
     image: {
       full: '3854.png',
       sprite: 'item1.png',
@@ -9446,7 +10156,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9463,12 +10175,18 @@ export default {
         unique: true,
         description:
           "Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to [{tip|execute}} minions {{as|'''below''' {{rd|50%|30%}} of their '''maximum''' health}}. Killing a minion by any means with a charge grants you and the nearest allied champion kill {{g|gold}}. These effects require an allied champion to be {{tt|nearby|1050 range}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Execute"><a href="/wiki/Kill#Execute" title="Kill"><img alt="Death from Below" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/19/Pyke_Death_from_Below.png/revision/latest/scale-to-width-down/20?cb=20180516185259" decoding="async" loading="lazy" width="20" height="20" data-image-name="Pyke Death from Below.png" data-image-key="Pyke_Death_from_Below.png"></a> <a href="/wiki/Kill#Execute" title="Kill">execute</a></span> minions <span style="color: #1F995C; white-space:normal"><b>below</b> <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 50%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 30%</span>)</span> of their <b>maximum</b> health</span>. Killing a minion by any means with a charge grants you and the nearest allied champion kill <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="gold Gold"><img alt="gold Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">gold</span></span>. These effects require an allied champion to be <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="1050 range">nearby</span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Runesteel Spaulders}], gaining the ''Warding'' active with 3 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Runesteel Spaulders" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Runesteel_Spaulders" title="Runesteel Spaulders"><img alt="Runesteel Spaulders" src="/wiki/images/Runesteel_Spaulders_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Runesteel_Spaulders" title="Runesteel Spaulders">Runesteel Spaulders</a></span></span>, gaining the <i>Warding</i> active with 3 wards in stock.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -9498,7 +10216,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3855_tank_t2_runesteelspaulders.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -384px; width:48px; height:48px;",
     image: {
       full: '3855.png',
       sprite: 'item1.png',
@@ -9510,7 +10228,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9522,25 +10242,34 @@ export default {
       hp5: 75,
     },
     effects: {
-      act: {
-        name: 'Warding',
-        unique: true,
-        description:
-          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
-        charges: 3,
-        range: 600,
-      },
       pass: {
         name: 'Spoils of War',
         unique: true,
         description:
           "Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to [{tip|execute}} minions {{as|'''below''' 50% of their '''maximum''' health}}. Killing a minion by any means with a charge grants you and the nearest allied champion kill {{g|gold}}. These effects require an allied champion to be {{tt|nearby|1050 range}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Execute"><a href="/wiki/Kill#Execute" title="Kill"><img alt="Death from Below" src="/wiki/images/Pyke_Death_from_Below.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Kill#Execute" title="Kill">execute</a></span> minions <span style="color: #1F995C; white-space:normal"><b>below</b> 50% of their <b>maximum</b> health</span>. Killing a minion by any means with a charge grants you and the nearest allied champion kill <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="gold Gold"><img alt="gold Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">gold</span></span>. These effects require an allied champion to be <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="1050 range">nearby</span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Pauldrons of Whiterock}], increasing the ''Warding'' active to instead have 4 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Pauldrons of Whiterock" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Pauldrons_of_Whiterock" title="Pauldrons of Whiterock"><img alt="Pauldrons of Whiterock" src="/wiki/images/Pauldrons_of_Whiterock_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Pauldrons_of_Whiterock" title="Pauldrons of Whiterock">Pauldrons of Whiterock</a></span></span>, increasing the <i>Warding</i> active to instead have 4 wards in stock.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Warding',
+        unique: true,
+        description:
+          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (3 charges; 600 range).',
+        descriptionRatios: [],
+        charges: 3,
+        range: 600,
       },
     },
     type: ['Epic'],
@@ -9570,7 +10299,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3857_tank_t3_pauldronsofwhiterock.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -384px; width:48px; height:48px;",
     image: {
       full: '3857.png',
       sprite: 'item1.png',
@@ -9582,7 +10311,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9594,18 +10325,24 @@ export default {
       hp5: 100,
     },
     effects: {
+      pass: {
+        name: '',
+        unique: true,
+        description: 'Receives diminishing gold from excessive minion kills.',
+        descriptionHTML:
+          'Receives diminishing gold from excessive minion kills.',
+        descriptionRatios: [],
+      },
       act: {
         name: 'Warding',
         unique: true,
         description:
           'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (4 charges; 600 range).',
+        descriptionRatios: [],
         charges: 4,
         range: 600,
-      },
-      pass: {
-        name: '',
-        unique: true,
-        description: 'Receives diminishing gold from excessive minion kills.',
       },
     },
     type: ['Legendary'],
@@ -9642,7 +10379,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3858_tank_t1_relicshield.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -384px; width:48px; height:48px;",
     image: {
       full: '3858.png',
       sprite: 'item1.png',
@@ -9654,7 +10391,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9671,12 +10410,18 @@ export default {
         unique: true,
         description:
           "Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to [{tip|execute}} minions {{as|'''below''' {{rd|50%|30%}} of their '''maximum''' health}}. Killing a minion by any means with a charge grants you and the nearest allied champion kill {{g|gold}}. These effects require an allied champion to be {{tt|nearby|1050 range}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Execute"><a href="/wiki/Kill#Execute" title="Kill"><img alt="Death from Below" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/19/Pyke_Death_from_Below.png/revision/latest/scale-to-width-down/20?cb=20180516185259" decoding="async" loading="lazy" width="20" height="20" data-image-name="Pyke Death from Below.png" data-image-key="Pyke_Death_from_Below.png"></a> <a href="/wiki/Kill#Execute" title="Kill">execute</a></span> minions <span style="color: #1F995C; white-space:normal"><b>below</b> <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 50%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 30%</span>)</span> of their <b>maximum</b> health</span>. Killing a minion by any means with a charge grants you and the nearest allied champion kill <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="gold Gold"><img alt="gold Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">gold</span></span>. These effects require an allied champion to be <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="1050 range">nearby</span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Targon's Buckler}], gaining the ''Warding'' active with 3 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Targon\'s Buckler" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Targon%27s_Buckler" title="Targon\'s Buckler"><img alt="Targon\'s Buckler" src="/wiki/images/Targon%27s_Buckler_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Targon%27s_Buckler" title="Targon\'s Buckler">Targon\'s Buckler</a></span></span>, gaining the <i>Warding</i> active with 3 wards in stock.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -9706,7 +10451,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3859_tank_t2_targonsbucker.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -384px; width:48px; height:48px;",
     image: {
       full: '3859.png',
       sprite: 'item1.png',
@@ -9718,7 +10463,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9730,25 +10477,34 @@ export default {
       hp5: 75,
     },
     effects: {
-      act: {
-        name: 'Warding',
-        unique: true,
-        description:
-          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
-        charges: 3,
-        range: 600,
-      },
       pass: {
         name: 'Spoils of War',
         unique: true,
         description:
           "Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to [{tip|execute}} minions {{as|'''below''' 50% of their '''maximum''' health}}. Killing a minion by any means with a charge grants you and the nearest allied champion kill {{g|gold}}. These effects require an allied champion to be {{tt|nearby|1050 range}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 35 seconds, up to 3 charges. Basic attacks can consume a charge to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Execute"><a href="/wiki/Kill#Execute" title="Kill"><img alt="Death from Below" src="/wiki/images/Pyke_Death_from_Below.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Kill#Execute" title="Kill">execute</a></span> minions <span style="color: #1F995C; white-space:normal"><b>below</b> 50% of their <b>maximum</b> health</span>. Killing a minion by any means with a charge grants you and the nearest allied champion kill <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="gold Gold"><img alt="gold Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">gold</span></span>. These effects require an allied champion to be <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="1050 range">nearby</span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Bulwark of the Mountain}], increasing the ''Warding'' active to instead have 4 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Bulwark of the Mountain" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Bulwark_of_the_Mountain" title="Bulwark of the Mountain"><img alt="Bulwark of the Mountain" src="/wiki/images/Bulwark_of_the_Mountain_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Bulwark_of_the_Mountain" title="Bulwark of the Mountain">Bulwark of the Mountain</a></span></span>, increasing the <i>Warding</i> active to instead have 4 wards in stock.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Warding',
+        unique: true,
+        description:
+          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (3 charges; 600 range).',
+        descriptionRatios: [],
+        charges: 3,
+        range: 600,
       },
     },
     type: ['Epic'],
@@ -9778,7 +10534,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3860_tank_t3_bulwarkofthemountain.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -336px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -336px -384px; width:48px; height:48px;",
     image: {
       full: '3860.png',
       sprite: 'item1.png',
@@ -9790,7 +10546,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -9802,18 +10560,24 @@ export default {
       hp5: 100,
     },
     effects: {
+      pass: {
+        name: '',
+        unique: true,
+        description: 'Receives diminishing gold from excessive minion kills.',
+        descriptionHTML:
+          'Receives diminishing gold from excessive minion kills.',
+        descriptionRatios: [],
+      },
       act: {
         name: 'Warding',
         unique: true,
         description:
           'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (4 charges; 600 range).',
+        descriptionRatios: [],
         charges: 4,
         range: 600,
-      },
-      pass: {
-        name: '',
-        unique: true,
-        description: 'Receives diminishing gold from excessive minion kills.',
       },
     },
     type: ['Legendary'],
@@ -9843,7 +10607,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3862_marksman_t1_spectralsickle.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -384px; width:48px; height:48px;",
     image: {
       full: '3862.png',
       sprite: 'item1.png',
@@ -9855,7 +10619,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -9871,12 +10637,18 @@ export default {
         unique: true,
         description:
           "Grants a charge every 12 seconds, up to 3 charges. If an allied champion is [{tt|nearby|2000 range}}, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants {{g|20}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 12 seconds, up to 3 charges. If an allied champion is <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="2000 range">nearby</span>, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="20 Gold"><img alt="20 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">20</span></span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Harrowing Crescent}], gaining the ''Warding'' active with 3 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Harrowing Crescent" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Harrowing_Crescent" title="Harrowing Crescent"><img alt="Harrowing Crescent" src="/wiki/images/Harrowing_Crescent_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Harrowing_Crescent" title="Harrowing Crescent">Harrowing Crescent</a></span></span>, gaining the <i>Warding</i> active with 3 wards in stock.',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -9906,7 +10678,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3863_marksman_t2_harrowingcrescent.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -384px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -384px; width:48px; height:48px;",
     image: {
       full: '3863.png',
       sprite: 'item1.png',
@@ -9918,7 +10690,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -9929,25 +10703,34 @@ export default {
       mp5: 50,
     },
     effects: {
-      act: {
-        name: 'Warding',
-        unique: true,
-        description:
-          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
-        charges: 3,
-        range: 600,
-      },
       pass: {
         name: 'Tribute',
         unique: true,
         description:
           "Grants a charge every 12 seconds, up to 3 charges. If an allied champion is [{tt|nearby|2000 range}}, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants {{g|20}]. ''Receive diminishing gold from excessive minion kills.''",
+        descriptionHTML:
+          'Grants a charge every 12 seconds, up to 3 charges. If an allied champion is <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="2000 range">nearby</span>, damaging basic attacks and abilities against champions and structures consume a charge, up to one per attack or cast. Consuming a charge grants <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="20 Gold"><img alt="20 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">20</span></span>. <i>Receive diminishing gold from excessive minion kills.</i>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Quest',
         unique: true,
         description:
           "Earn [{g|500}} using this item to upgrade to {{ii|Black Mist Scythe}], increasing the ''Warding'' active to instead have 4 wards in stock.",
+        descriptionHTML:
+          'Earn <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="500 Gold"><img alt="500 Gold" src="/wiki/images/Gold.png" decoding="async" loading="lazy" width="20" height="15" class="lazyload"></a></span> <span style="white-space:normal;">500</span></span> using this item to upgrade to <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Black Mist Scythe" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Black_Mist_Scythe" title="Black Mist Scythe"><img alt="Black Mist Scythe" src="/wiki/images/Black_Mist_Scythe_item.png" decoding="async" loading="lazy" width="20" height="20" class="thumbborder lazyload"></a></span> <span style="white-space:normal;"><a href="/wiki/Black_Mist_Scythe" title="Black Mist Scythe">Black Mist Scythe</a></span></span>, increasing the <i>Warding</i> active to instead have 4 wards in stock.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Warding',
+        unique: true,
+        description:
+          'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (3 charges; 600 range).',
+        descriptionRatios: [],
+        charges: 3,
+        range: 600,
       },
     },
     type: ['Epic'],
@@ -9977,7 +10760,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3864_marksman_t3_blackmistscythe.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -0px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -0px -432px; width:48px; height:48px;",
     image: {
       full: '3864.png',
       sprite: 'item1.png',
@@ -9989,7 +10772,9 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: 'warding',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Support" title="Item group">Support</a> / Jungle</b></span> item.<br> A player may only have 3 <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Wards</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Wards</a></span> on the map at one time.</p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -10000,18 +10785,24 @@ export default {
       mp5: 100,
     },
     effects: {
+      pass: {
+        name: '',
+        unique: true,
+        description: 'Receives diminishing gold from excessive minion kills.',
+        descriptionHTML:
+          'Receives diminishing gold from excessive minion kills.',
+        descriptionRatios: [],
+      },
       act: {
         name: 'Warding',
         unique: true,
         description:
           'Consumes a charge to place a [{tip|Stealth Ward}} at the target location, which grants {{tip|sight}] of the surrounding area. Charges refill upon visiting the shop.',
+        descriptionHTML:
+          'Consumes a charge to place a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/b5/Stealth_Ward_icon.png/revision/latest/scale-to-width-down/20?cb=20171031100405" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stealth Ward icon.png" data-image-key="Stealth_Ward_icon.png"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span> at the target location, which grants <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/0e/Sight_icon.png/revision/latest/scale-to-width-down/20?cb=20130928145820" decoding="async" loading="lazy" width="20" height="20" data-image-name="Sight icon.png" data-image-key="Sight_icon.png"></a> <a href="/wiki/Sight" title="Sight">sight</a></span> of the surrounding area. Charges refill upon visiting the shop (4 charges; 600 range).',
+        descriptionRatios: [],
         charges: 4,
         range: 600,
-      },
-      pass: {
-        name: '',
-        unique: true,
-        description: 'Receives diminishing gold from excessive minion kills.',
       },
     },
     type: ['Legendary'],
@@ -10039,7 +10830,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3901_champ_t0_fireatwillcircle.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -48px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -48px -432px; width:48px; height:48px;",
     image: {
       full: '3901.png',
       sprite: 'item1.png',
@@ -10052,6 +10843,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -10060,6 +10852,8 @@ export default {
         unique: true,
         description:
           '[{ai|Cannon Barrage|Gangplank}} fires 2 additional clusters of 3 waves over the duration at an increased rate of fire (1 cluster per {{fd|1.33}] seconds), for a total of 18 waves over the 8 seconds.',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['GeneratedTip'],
@@ -10088,7 +10882,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3902_champ_t0_deathsdaughtercircle.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -96px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -96px -432px; width:48px; height:48px;",
     image: {
       full: '3902.png',
       sprite: 'item1.png',
@@ -10101,6 +10895,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -10109,6 +10904,8 @@ export default {
         unique: true,
         description:
           'A massive cannonball lands after [{ais|Cannon Barrage|Gangplank}} first cluster of waves, dealing {{sti|true damage|{{as|{{ap|120 to 300 3}}|true damage}}}} {{as|(+ 30% AP)}} {{as|true damage}} to enemies struck and {{tip|slow|slowing}} them by 60% for {{fd|1.5}] seconds.',
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -10137,7 +10934,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3903_champ_t0_raisemoralecircle.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -144px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -144px -432px; width:48px; height:48px;",
     image: {
       full: '3903.png',
       sprite: 'item1.png',
@@ -10150,6 +10947,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 1,
     limit: '',
+    requirementDescription: '',
     menu: {},
     stats: {},
     effects: {
@@ -10158,6 +10956,8 @@ export default {
         unique: true,
         description:
           "[{ci|Gangplank}} and his allies within {{ai|Cannon Barrage|Gangplank}} gain {{as|30% '''bonus''' movement speed}], which persists for 2 seconds after leaving the area.",
+        descriptionHTML: '',
+        descriptionRatios: [],
       },
     },
     type: ['Starter'],
@@ -10187,7 +10987,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3916_mage_t2_oblivionorb.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -192px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -192px -432px; width:48px; height:48px;",
     image: {
       full: '3916.png',
       sprite: 'item1.png',
@@ -10200,6 +11000,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
       support: true,
@@ -10213,6 +11014,9 @@ export default {
         unique: true,
         description:
           'Dealing [{as|magic damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'Dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemy champions inflicts them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -10246,7 +11050,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4005_enchanter_t4_imperialmandate.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -240px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -240px -432px; width:48px; height:48px;",
     image: {
       full: '4005.png',
       sprite: 'item1.png',
@@ -10258,7 +11062,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Imperial Mandate</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
       movement: true,
@@ -10274,6 +11079,9 @@ export default {
         unique: true,
         description:
           "Abilities that [{tip|slow}} or {{tip|immobilize}} enemy champions deal {{as|{{pp|40 to 60 for 11|1;9 to 18}} '''bonus''' magic damage}} and mark them for 4 seconds. Allied champions that damage marked enemies consume the mark to deal {{as|{{pp|80 to 120 for 11|1;9 to 18|type:ally's level}} '''bonus''' magic damage}} and grant you and the triggering ally {{as|25% '''bonus''' movement speed}] for 2 seconds.",
+        descriptionHTML:
+          'Abilities that <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slow</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilize</a></span> enemy champions deal <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="40;42;44;46;48;50;52;54;56;58;60" data-top_values="1;9;10;11;12;13;14;15;16;17;18">40 − 60 (based on level)</span> <b>bonus</b> magic damage</span> and mark them for 4 seconds. Allied champions that damage marked enemies consume the mark to deal <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="ally\'s level" data-bot_values="80;84;88;92;96;100;104;108;112;116;120" data-top_values="1;9;10;11;12;13;14;15;16;17;18">80 − 120 (based on ally\'s level)</span> <b>bonus</b> magic damage</span> and grant you and the triggering ally <span style="color: #F5EE99; white-space:normal">25% <b>bonus</b> movement speed</span> for 2 seconds (6 (per champion, starts upon mark application) second cooldown).',
+        descriptionRatios: [],
         cd: '6 (per champion, starts upon mark application)',
       },
     },
@@ -10304,7 +11112,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4401_tank_t3_forceofnature.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -288px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -288px -432px; width:48px; height:48px;",
     image: {
       full: '4401.png',
       sprite: 'item1.png',
@@ -10316,7 +11124,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Force of Nature</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -10331,12 +11140,18 @@ export default {
         unique: true,
         description:
           "Taking [{as|magic damage}} from champions grants a stack of ''Steadfast'' for 7 seconds, stacking up to 10 times with the duration refreshing on subsequent {{as|magic damage}} from them and whenever dealing damage to them. Becoming {{tip|immobilize|immobilized}} by an enemy champion grants 2 stacks and also refreshes the duration. Damaging basic attacks and spells per {{tip|cast instance}] can only grant 1 stack of ''Steadfast'' every 1 second.",
+        descriptionHTML:
+          'Taking <span style="color: #00B0F0; white-space:normal">magic damage</span> from champions grants a stack of <i>Steadfast</i> for 7 seconds, stacking up to 10 times with the duration refreshing on subsequent <span style="color: #00B0F0; white-space:normal">magic damage</span> from them and whenever dealing damage to them. Becoming <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilized</a></span> by an enemy champion grants 2 stacks and also refreshes the duration. Damaging basic attacks and spells per <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cast instance"><a href="/wiki/Champion_ability" title="Champion ability">cast instance</a></span> can only grant 1 stack of <i>Steadfast</i> every 1 second.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Dissipate',
         unique: true,
         description:
           "While at 10 stacks of ''Steadfast'', gain [{as|10% '''bonus''' movement speed}} and {{as|30 '''bonus''' magic resistance}].",
+        descriptionHTML:
+          'While at 10 stacks of <i>Steadfast</i>, gain <span style="color: #F5EE99; white-space:normal">10% <b>bonus</b> movement speed</span> and <span style="color: #00FFFF; white-space:normal">30 <b>bonus</b> magic resistance</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -10366,7 +11181,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4628_mage_t3_horizonfocus.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -384px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -384px -432px; width:48px; height:48px;",
     image: {
       full: '4628.png',
       sprite: 'item1.png',
@@ -10378,7 +11193,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Horizon Focus</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -10393,6 +11209,9 @@ export default {
         unique: true,
         description:
           'Dealing [{tip|ability damage}} to a champion with an [[champion ability|ability]] that is neither [[unit-targeted]] nor [[auto-targeted]] at more than {{tip|cr|icononly : true}} 700 units away or {{tip|slow|slowing}}, {{tip|immobilize|immobilizing}} or {{tip|polymorph|polymorphing}} them {{tip|standard sight|reveals}] them and increases your damage dealt to them by 10% for 6 seconds.',
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> to a champion with an <a href="/wiki/Champion_ability" title="Champion ability">ability</a> that is neither <a href="/wiki/Unit-targeted" class="mw-redirect" title="Unit-targeted">unit-targeted</a> nor <a href="/wiki/Auto-targeted" class="mw-redirect" title="Auto-targeted">auto-targeted</a> at more than <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 700 units away or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowing</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="/wiki/images/Stun_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilizing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Polymorph"><a href="/wiki/Types_of_Crowd_Control#Polymorph" title="Types of Crowd Control"><img alt="Silence icon" src="/wiki/images/Silence_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Types_of_Crowd_Control#Polymorph" title="Types of Crowd Control">polymorphing</a></span> them <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Standard sight"><a href="/wiki/Sight#Standard_sight" title="Sight"><img alt="Reveal icon" src="/wiki/images/Reveal_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight#Standard_sight" title="Sight">reveals</a></span> them and increases your damage dealt to them by 10% for 6 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -10427,7 +11246,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4629_mage_t3_cosmicdrive.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item1.png') -432px -432px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item1.png') -432px -432px; width:48px; height:48px;",
     image: {
       full: '4629.png',
       sprite: 'item1.png',
@@ -10439,7 +11258,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Cosmic Drive</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -10455,6 +11275,9 @@ export default {
         unique: true,
         description:
           "Damaging an enemy champion with a [[basic attack]] or [[ability damage]] grants [{as|{{fd|2.5}}% '''bonus''' movement speed}} every {{fd|1.5}} seconds over the next 5 seconds, stacking up to 4 times for a maximum of {{as|10%|ms}}. At maximum stacks, gain an additional {{as|10% '''bonus''' movement speed}]. Dealing damage refreshes the effect.",
+        descriptionHTML:
+          'Damaging an enemy champion with a <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> or <a href="/wiki/Ability_damage" title="Ability damage">ability damage</a> grants <span style="color: #F5EE99; white-space:normal">2.<small>5</small>% <b>bonus</b> movement speed</span> every 1.<small>5</small> seconds over the next 5 seconds, stacking up to 4 times for a maximum of <span style="color: #F5EE99; white-space:normal">10%</span>. At maximum stacks, gain an additional <span style="color: #F5EE99; white-space:normal">10% <b>bonus</b> movement speed</span>. Dealing damage refreshes the effect.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -10484,7 +11307,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4630_mage_t2_voidcrystal.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -0px; width:48px; height:48px;",
     image: {
       full: '4630.png',
       sprite: 'item2.png',
@@ -10496,7 +11319,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Void_Pen" title="Item group">Void Pen</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -10532,7 +11357,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4632_tank_t2_verdantbarrier.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -0px; width:48px; height:48px;",
     image: {
       full: '4632.png',
       sprite: 'item2.png',
@@ -10545,6 +11370,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -10558,6 +11384,9 @@ export default {
         unique: true,
         description:
           "Killing a unit grants [{as|{{fd|0.3}} '''bonus''' magic resistance}}, up to a '''maximum''' of {{as|9|magic resistance}] at 30 unit kills.",
+        descriptionHTML:
+          'Killing a unit grants <span style="color: #00FFFF; white-space:normal">0.<small>3</small> <b>bonus</b> magic resistance</span>, up to a <b>maximum</b> of <span style="color: #00FFFF; white-space:normal">9</span> at 30 unit kills.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -10594,7 +11423,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4633_mage_t4_riftmaker.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -0px; width:48px; height:48px;",
     image: {
       full: '4633.png',
       sprite: 'item2.png',
@@ -10606,7 +11435,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'magic pen': true,
@@ -10623,11 +11454,12 @@ export default {
         unique: true,
         description:
           "For each second [[combat status|in combat]] with champions, deal 3% increased damage, stacking up to 3 times for a '''maximum''' of 9%. While this effect is fully stacked, convert 100% of the increased damage into [{as|true damage}].",
+        descriptionHTML:
+          'For each second <a href="/wiki/Combat_status" title="Combat status">in combat</a> with champions, deal 3% increased damage, stacking up to 3 times for a <b>maximum</b> of 9%. While this effect is fully stacked, convert 100% of the increased damage into <span style="color: #F9966B; white-space:normal">true damage</span>.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ap: 8,
-        omnivamp: 2,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #CE1C42; white-space:normal">2% omnivamp</span> and <span style="color: #7A6DFF; white-space:normal">8 ability power</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -10656,7 +11488,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4635_mage_t2_leechingleer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -0px; width:48px; height:48px;",
     image: {
       full: '4635.png',
       sprite: 'item2.png',
@@ -10668,7 +11500,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic_Component" title="Item group">Mythic Component</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -10711,7 +11545,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4636_mage_t4_nightharvester.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -192px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -192px -0px; width:48px; height:48px;",
     image: {
       full: '4636.png',
       sprite: 'item2.png',
@@ -10723,7 +11557,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -10739,11 +11575,13 @@ export default {
         unique: true,
         description:
           "Damaging an enemy champion deals [{as|125 {{as|(+ 15% AP)}} '''bonus''' magic damage|magic damage}} and grants you {{as|25% '''bonus''' movement speed}} for {{fd|1.5}] seconds, with the duration extending on subsequent triggers.",
+        descriptionHTML:
+          'Damaging an enemy champion deals <span style="color: #00B0F0; white-space:normal">125 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;15% AP)</span> <b>bonus</b> magic damage</span> and grants you <span style="color: #F5EE99; white-space:normal">25% <b>bonus</b> movement speed</span> for 1.<small>5</small> seconds, with the duration extending on subsequent triggers (30 (per champion) second cooldown).',
+        descriptionRatios: [],
         cd: '30 (per champion)',
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -10772,7 +11610,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4637_mage_t3_demonicembrace.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -0px; width:48px; height:48px;",
     image: {
       full: '4637.png',
       sprite: 'item2.png',
@@ -10784,7 +11622,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Demonic Embrace</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -10798,12 +11637,18 @@ export default {
         unique: true,
         description:
           "Gain [{as|ability power}} equal to {{as|2% '''bonus''' health}].",
+        descriptionHTML:
+          'Gain <span style="color: #7A6DFF; white-space:normal">ability power</span> equal to <span style="color: #1F995C; white-space:normal">2% <b>bonus</b> health</span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Azakana Gaze',
         unique: true,
         description:
           "Dealing [{tip|ability damage}} curses enemies, causing them to take{{ft|{{as|{{rd|{{fd|6.4}}%|4%}} of their '''maximum''' health}} as {{as|'''total''' magic damage}} over 4 seconds, capped at 400 against monsters.|{{as|{{rd|{{fd|1.6}}%|1%}} of their '''maximum''' health}} as {{as|magic damage}} every second over 4 seconds, capped at 40 against monsters.}]",
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> curses enemies, causing them to take<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #1F995C; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 6.<small>4</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 4%</span>)</span> of their <b>maximum</b> health</span> as <span style="color: #00B0F0; white-space:normal"><b>total</b> magic damage</span> over 4 seconds, capped at 400 against monsters.&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #1F995C; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1.<small>6</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1%</span>)</span> of their <b>maximum</b> health</span> as <span style="color: #00B0F0; white-space:normal">magic damage</span> every second over 4 seconds, capped at 40 against monsters.&nbsp;」</span></span>',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -10842,7 +11687,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4638_enchanter_t3_watchfulsightstone.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -0px; width:48px; height:48px;",
     image: {
       full: '4638.png',
       sprite: 'item2.png',
@@ -10854,7 +11699,10 @@ export default {
     },
     maps: ['SR'],
     depth: 1,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Sightstone" title="Item group">Sightstone</a></b></span> item.<br></p>',
+    requirementDescription:
+      'Can only be purchased after completing a support quest (<span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="1000 Gold"><img alt="1000 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">1000</span></span> generated gold).',
     menu: {
       support: true,
     },
@@ -10869,12 +11717,18 @@ export default {
         unique: true,
         description:
           'This item can store up to 3 purchased [{ii|Control Ward|Control Wards}].',
+        descriptionHTML:
+          'This item can store up to 3 purchased <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Control Ward" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Control_Ward" title="Control Wards"><img alt="Control Wards" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Control_Ward_item.png/revision/latest/scale-to-width-down/20?cb=20201027193925" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Control Ward item.png" data-image-key="Control_Ward_item.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Control_Ward" title="Control Ward">Control Wards</a></span></span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Blessing of Ixtal',
         unique: true,
         description:
           "Increases [{as|'''bonus''' attack damage}}, {{as|'''bonus''' health}}, {{as|ability power}} and {{as|ability haste}] by 8%.",
+        descriptionHTML:
+          'Increases <span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span>, <span style="color: #1F995C; white-space:normal"><b>bonus</b> health</span>, <span style="color: #7A6DFF; white-space:normal">ability power</span> and <span style="color: #FFFDC9; white-space:normal">ability haste</span> by 8%.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -10909,7 +11763,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4642_enchanter_t2_bandleglassmirror.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -0px; width:48px; height:48px;",
     image: {
       full: '4642.png',
       sprite: 'item2.png',
@@ -10922,6 +11776,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -10965,7 +11820,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4643_enchanter_t3_vigilantsightstone.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -432px -0px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -432px -0px; width:48px; height:48px;",
     image: {
       full: '4643.png',
       sprite: 'item2.png',
@@ -10977,7 +11832,10 @@ export default {
     },
     maps: ['SR'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Sightstone" title="Item group">Sightstone</a></b></span> item.<br></p>',
+    requirementDescription:
+      'Can only be purchased after completing a support quest (<span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="1000 Gold"><img alt="1000 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">1000</span></span> generated gold).',
     menu: {
       support: true,
     },
@@ -10992,18 +11850,27 @@ export default {
         unique: true,
         description:
           'This item can store up to 3 purchased [{ii|Control Ward|Control Wards}].',
+        descriptionHTML:
+          'This item can store up to 3 purchased <span class="inline-image label-after item-icon" style="display:inline;white-space:pre;" data-param="" data-item="Control Ward" data-game="lol"><span class="border" style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Control_Ward" title="Control Wards"><img alt="Control Wards" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/1b/Control_Ward_item.png/revision/latest/scale-to-width-down/20?cb=20201027193925" decoding="async" loading="lazy" width="20" height="20" class="thumbborder" data-image-name="Control Ward item.png" data-image-key="Control_Ward_item.png"></a></span> <span style="white-space:normal;"><a href="/wiki/Control_Ward" title="Control Ward">Control Wards</a></span></span>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Behold',
         unique: true,
         description:
           'Increase your [{tip|Stealth Ward}}, {{tip|Totem Ward}}, and {{tip|Control Ward}] caps by 1.',
+        descriptionHTML:
+          'Increase your <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth ward"><a href="/wiki/Ward#Stealth_Ward" title="Ward"><img alt="Stealth Ward icon" src="/wiki/images/Stealth_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Stealth_Ward" title="Ward">Stealth Ward</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Totem ward"><a href="/wiki/Ward#Totem_Ward" title="Ward"><img alt="Totem Ward icon" src="/wiki/images/Totem_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Totem_Ward" title="Ward">Totem Ward</a></span>, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Control ward"><a href="/wiki/Ward#Control_Ward" title="Ward"><img alt="Control Ward icon" src="/wiki/images/Control_Ward_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ward#Control_Ward" title="Ward">Control Ward</a></span> caps by 1.',
+        descriptionRatios: [],
       },
       pass3: {
         name: 'Chosen of Ixtal',
         unique: true,
         description:
           "Increases [{as|'''bonus''' attack damage}}, {{as|'''bonus''' health}}, {{as|ability power}} and {{as|ability haste}] by 20%.",
+        descriptionHTML:
+          'Increases <span style="color:orange; white-space:normal"><b>bonus</b> attack damage</span>, <span style="color: #1F995C; white-space:normal"><b>bonus</b> health</span>, <span style="color: #7A6DFF; white-space:normal">ability power</span> and <span style="color: #FFFDC9; white-space:normal">ability haste</span> by 20%.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -11039,7 +11906,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4644_crown.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -48px; width:48px; height:48px;",
     image: {
       full: '4644.png',
       sprite: 'item2.png',
@@ -11051,7 +11918,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -11068,6 +11937,9 @@ export default {
         unique: true,
         description:
           "Become ''Safeguarded'' to reduce incoming champion damage by 75%, lingering for [{fd|1.5}] seconds after taking damage from a champion.",
+        descriptionHTML:
+          'Become <i>Safeguarded</i> to reduce incoming champion damage by 75%, lingering for 1.<small>5</small> seconds after taking damage from a champion (40 (restarts upon taking damage from champions) second cooldown).',
+        descriptionRatios: [],
         cd: '40 (restarts upon taking damage from champions)',
       },
       pass2: {
@@ -11075,11 +11947,12 @@ export default {
         unique: true,
         description:
           "While ''Safeguarded'', gain [{as|{{pp|10 to 40|1;9 to 18 by 1|formula:10, then +3 per level starting at level 9}} ability power}], lingering for 3 seconds after ''Safeguard'' is deactivated.",
+        descriptionHTML:
+          'While <i>Safeguarded</i>, gain <span style="color: #7A6DFF; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="10, then +3 per level starting at level 9" data-bot_values="10;13;16;19;22;25;28;31;34;37;40" data-top_values="1;9;10;11;12;13;14;15;16;17;18">10 − 40 (based on level)</span> ability power</span>, lingering for 3 seconds after <i>Safeguard</i> is deactivated.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ap: 8,
-        ms: 1,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #F5EE99; white-space:normal">1% <b>bonus</b> movement speed</span> and <span style="color: #7A6DFF; white-space:normal">8 ability power</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -11108,7 +11981,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4645_shadowflame.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -48px; width:48px; height:48px;",
     image: {
       full: '4645.png',
       sprite: 'item2.png',
@@ -11120,7 +11993,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Shadowflame</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -11133,7 +12007,10 @@ export default {
         name: 'Cinderbloom',
         unique: true,
         description:
-          "Dealing [{as|magic damage}} to champions ignores {{pp|type:target's '''current''' health|10 to 20 for 11|2500 to 1000}} of their {{as|magic resistance}}, increased to '''maximum''' value if the they were affected by a {{tip|shield}] within the last 5 seconds.",
+          "Dealing [{as|magic damage}} to champions ignores {{pp|type:target's '''current''' health|10 to 20 for 11|2500 to 1000}} of their {{as|magic resistance}}, increased to '''maximum''' value if they were affected by a {{tip|shield}] within the last 5 seconds.",
+        descriptionHTML:
+          'Dealing <span style="color: #00B0F0; white-space:normal">magic damage</span> to champions ignores <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="target\'s current health" data-start="10;2500" data-finish="20;1000" data-bot_values="10;11;12;13;14;15;16;17;18;19;20" data-top_values="2500;2350;2200;2050;1900;1750;1600;1450;1300;1150;1000">10 − 20 (based on target\'s <b>current</b> health)</span> of their <span style="color: #00FFFF; white-space:normal">magic resistance</span>, increased to <b>maximum</b> value if they were affected by a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> within the last 5 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -11163,7 +12040,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6029_fighter_t2_ironspikewhip.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -48px; width:48px; height:48px;",
     image: {
       full: '6029.png',
       sprite: 'item2.png',
@@ -11175,7 +12052,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic_Component" title="Item group">Mythic Component</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
     },
@@ -11188,6 +12067,9 @@ export default {
         unique: true,
         description:
           "Deal [{as|100% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}] 450 radius centered around you.",
+        descriptionHTML:
+          'Deal <span style="color:orange; white-space:normal">100% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemies in a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 450 radius centered around you (20 (affected by ability haste) second cooldown).',
+        descriptionRatios: [],
         cd: '20 (affected by ability haste)',
       },
     },
@@ -11218,7 +12100,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6035_fighter_t3_silvermeredawn.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -48px; width:48px; height:48px;",
     image: {
       full: '6035.png',
       sprite: 'item2.png',
@@ -11230,7 +12112,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Quicksilver" title="Item group">Quicksilver</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -11246,6 +12130,9 @@ export default {
         unique: true,
         description:
           'Removes all [{tip|crowd control}} debuffs (except {{tip|Airborne}}) from your champion and grants 50% {{tip|tenacity}}, 50% {{tip|slow resist}}, and {{tip|ghosting}] for 3 seconds.',
+        descriptionHTML:
+          'Removes all <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Crowd control"><a href="/wiki/Crowd_control" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control" title="Crowd control">crowd control</a></span> debuffs (except <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Airborne"><a href="/wiki/Airborne" title="Airborne"><img alt="Airborne icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/d/d6/Airborne_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223933" decoding="async" loading="lazy" width="20" height="20" data-image-name="Airborne icon.png" data-image-key="Airborne_icon.png"></a> <a href="/wiki/Airborne" class="mw-redirect" title="Airborne">Airborne</a></span>) from your champion and grants 50% <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span>, 50% <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow resist"><a href="/wiki/Slow_resist" title="Slow resist"><img alt="Slow immune icon" src="/wiki/images/Slow_immune_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist" title="Slow resist">slow resist</a></span>, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosting"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost" src="/wiki/images/Ghost.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosting</a></span> for 3 seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -11276,7 +12163,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6333_fighter_t3_deathsdance.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -192px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -192px -48px; width:48px; height:48px;",
     image: {
       full: '6333.png',
       sprite: 'item2.png',
@@ -11288,7 +12175,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Death's Dance</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       fighter: true,
     },
@@ -11303,12 +12191,18 @@ export default {
         unique: true,
         description:
           'Stores [{rd|30%|10%}} of all {{tt|post-mitigation|Damage calculated after modifiers}} {{as|physical|physical damage}} and {{as|magic|magic damage}} damage received, including on {{tip|shield|shields}}, which is successively taken as {{as|true damage}] over 3 seconds instead, dealing a third of the stored damage each second.',
+        descriptionHTML:
+          'Stores <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 30%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 10%</span>)</span> of all <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation</span> <span style="color: #FF8C34; white-space:normal">physical</span> and <span style="color: #00B0F0; white-space:normal">magic</span> damage received, including on <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shields</a></span>, which is successively taken as <span style="color: #F9966B; white-space:normal">true damage</span> over 3 seconds instead, dealing a third of the stored damage each second.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Defy',
         unique: true,
         description:
           "If an enemy champion dies within 3 seconds of you damaging them, removes ''Ignore Pain's'' remaining stored damage and [{tip|heals}} you for {{as|50% '''bonus''' AD}] over 2 seconds.",
+        descriptionHTML:
+          'If an enemy champion dies within 3 seconds of you damaging them, removes <i>Ignore Pain\'s</i> remaining stored damage and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heals"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heals</a></span> you for <span style="color:orange; white-space:normal">50% <b>bonus</b> AD</span> over 2 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -11338,7 +12232,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6609_fighter_t3_chempunkchainsword.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -48px; width:48px; height:48px;",
     image: {
       full: '6609.png',
       sprite: 'item2.png',
@@ -11350,7 +12244,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Chempunk Chainsword</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -11366,6 +12261,9 @@ export default {
         unique: true,
         description:
           'Dealing [{as|physical damage}} to enemy champions inflicts them with {{tip|Grievous Wounds}] for 3 seconds.',
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemy champions inflicts them with <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Grievous wounds"><a href="/wiki/Grievous_Wounds" title="Grievous Wounds"><img alt="Grievous Wounds icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/b/bf/Grievous_Wounds_icon.png/revision/latest/scale-to-width-down/20?cb=20210214111420" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grievous Wounds icon.png" data-image-key="Grievous_Wounds_icon.png"></a> <a href="/wiki/Grievous_Wounds" title="Grievous Wounds">Grievous Wounds</a></span> for 3 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -11395,7 +12293,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3744_enchanter_t3_staffofflowingwater.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -48px; width:48px; height:48px;",
     image: {
       full: '6616.png',
       sprite: 'item2.png',
@@ -11407,7 +12305,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Staff of Flowing Water</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -11423,6 +12322,9 @@ export default {
         unique: true,
         description:
           "[{tip|Heal|Healing}} or {{tip|shield|shielding}} allied champions (''excluding yourself'') grants you and them {{as|{{pp|30 to 45|type:target's level}} ability power}} and {{as|20 ability haste}] for 4 seconds.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> allied champions (<i>excluding yourself</i>) grants you and them <span style="color: #7A6DFF; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="target\'s level" data-start="30;" data-finish="45;" data-bot_values="30;30.88;31.76;32.65;33.53;34.41;35.29;36.18;37.06;37.94;38.82;39.71;40.59;41.47;42.35;43.24;44.12;45" data-top_values="">30 − 45 (based on target\'s level)</span> ability power</span> and <span style="color: #FFFDC9; white-space:normal">20 ability haste</span> for 4 seconds.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -11458,7 +12360,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6617_enchanter_t4_moonstonerenewer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -48px; width:48px; height:48px;",
     image: {
       full: '6617.png',
       sprite: 'item2.png',
@@ -11470,7 +12372,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -11486,10 +12390,12 @@ export default {
         unique: true,
         description:
           "[{tip|Heal|Healing}} or {{tip|shield|shielding}} an allied champion chains the effect to the other nearest allied champion within {{tip|cr|icononly : true}] 800 units of them (''excluding yourself''), granting them 35% of the heal or 40% of the shield. If no other allied champions are in the radius, grant the same target an additional 25% of the heal or 30% of the shield.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> an allied champion chains the effect to the other nearest allied champion within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 800 units of them (<i>excluding yourself</i>), granting them 35% of the heal or 40% of the shield. If no other allied champions are in the radius, grant the same target an additional 25% of the heal or 30% of the shield.',
+        descriptionRatios: [],
       },
-      mythic: {
-        hsp: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #60E08F; white-space:normal">5% heal and shield power</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -11518,7 +12424,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6620_echoes_of_helia.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -48px; width:48px; height:48px;",
     image: {
       full: '6620.png',
       sprite: 'item2.png',
@@ -11530,7 +12436,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -11546,16 +12454,21 @@ export default {
         unique: true,
         description:
           "Damaging an enemy champion with a basic attack or [[ability damage]] grants a ''Soul Shard'', up to 2. [{tip|Heal|Healing}} or {{tip|shield|shielding}} an allied champion (''excluding yourself'') consumes all ''Soul Shards'' to launch a missile at them and the nearest enemy champion within 1100 units of them, healing the ally for {{pp|20 to 80 for 13|1;7 to 18|type:ally's level}} per shard and dealing {{as|{{pp|30 to 180 for 13|1;7 to 18|type:ally's level}} magic damage}] per shard to the enemy.",
+        descriptionHTML:
+          'Damaging an enemy champion with a basic attack or <a href="/wiki/Ability_damage" title="Ability damage">ability damage</a> grants a <i>Soul Shard</i>, up to 2. <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> an allied champion (<i>excluding yourself</i>) consumes all <i>Soul Shards</i> to launch a missile at them and the nearest enemy champion within 1100 units of them, healing the ally for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="ally\'s level" data-bot_values="20;25;30;35;40;45;50;55;60;65;70;75;80" data-top_values="1;7;8;9;10;11;12;13;14;15;16;17;18">20 − 80 (based on ally\'s level)</span> per shard and dealing <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="ally\'s level" data-bot_values="30;42.5;55;67.5;80;92.5;105;117.5;130;142.5;155;167.5;180" data-top_values="1;7;8;9;10;11;12;13;14;15;16;17;18">30 − 180 (based on ally\'s level)</span> magic damage</span> per shard to the enemy.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Dissonance',
         unique: true,
         description:
           "Gain [{as|3 ability power}} for every additional {{as|25% '''base''' mana regeneration}}. Disables {{sbc|{{nie|Harmony}}}] on your other items.",
+        descriptionHTML:
+          'Gain <span style="color: #7A6DFF; white-space:normal">3 ability power</span> for every additional <span style="color: #0099CC; white-space:normal">25% <b>base</b> mana regeneration</span>. Disables <span class="template_sbc"><b><a href="/wiki/Named_item_effect#Harmony" title="Named item effect">Harmony</a></b></span> on your other items.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -11592,7 +12505,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6630_fighter_t4_goredrinker.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -432px -48px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -432px -48px; width:48px; height:48px;",
     image: {
       full: '6630.png',
       sprite: 'item2.png',
@@ -11604,7 +12517,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
     },
@@ -11615,16 +12530,17 @@ export default {
       omnivamp: 8,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">75 <b>bonus</b> health</span> and <span style="color: #FFFDC9; white-space:normal">3 ability haste</span>.',
       act: {
         name: 'Thirsting Slash',
         unique: true,
         description:
           "Deal [{as|175% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}} 450 radius centered around you. {{tip|Heal}} for {{as|20% AD}} {{as|(+ 8% of your '''missing''' health)}] for each enemy champion hit.",
+        descriptionHTML:
+          'Deal <span style="color:orange; white-space:normal">175% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemies in a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 450 radius centered around you. <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Heal</a></span> for <span style="color:orange; white-space:normal">20% AD</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;8% of your <b>missing</b> health)</span> for each enemy champion hit (15 (reduced by ability haste) second cooldown).',
+        descriptionRatios: [],
         cd: '15 (reduced by ability haste)',
-      },
-      mythic: {
-        ah: 3,
-        hp: 75,
       },
     },
     type: ['Mythic'],
@@ -11663,7 +12579,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6631_fighter_t4_stridebreaker.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -96px; width:48px; height:48px;",
     image: {
       full: '6631.png',
       sprite: 'item2.png',
@@ -11675,7 +12591,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       movement: true,
@@ -11687,21 +12605,26 @@ export default {
       hp: 300,
     },
     effects: {
-      act: {
-        name: 'Halting Slash',
-        unique: true,
-        description:
-          "Deal [{as|175% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}} 450 radius centered around you and {{tip|slow}] them by 40% for 3 seconds. Can move while casting.",
-        cd: '15 (reduced by ability haste)',
-      },
       pass: {
         name: 'Heroic Gait',
         unique: true,
         description:
           "Dealing [{as|physical damage}} grants you {{as|20 '''bonus''' movement speed}] for 2 seconds.",
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> grants you <span style="color: #F5EE99; white-space:normal">20 <b>bonus</b> movement speed</span> for 2 seconds.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ms: 2,
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #F5EE99; white-space:normal">2% <b>bonus</b> movement speed</span>.',
+      act: {
+        name: 'Halting Slash',
+        unique: true,
+        description:
+          "Deal [{as|175% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}} 450 radius centered around you and {{tip|slow}] them by 40% for 3 seconds. Can move while casting.",
+        descriptionHTML:
+          'Deal <span style="color:orange; white-space:normal">175% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemies in a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 450 radius centered around you and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slow</a></span> them by 40% for 3 seconds. Can move while casting (15 (reduced by ability haste) second cooldown).',
+        descriptionRatios: [],
+        cd: '15 (reduced by ability haste)',
       },
     },
     type: ['Mythic'],
@@ -11739,7 +12662,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6632_fighter_t4_divinedevourer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -96px; width:48px; height:48px;",
     image: {
       full: '6632.png',
       sprite: 'item2.png',
@@ -11751,7 +12674,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       'armor pen': true,
@@ -11769,12 +12694,13 @@ export default {
         unique: true,
         description:
           "After using an [[champion ability|ability]], your next basic attack within 10 seconds deals [{as|160% '''base''' AD}} {{as|(+ {{rd|4%|2%}} of target's '''maximum''' health)}} as {{as|'''bonus''' physical damage}} [[on-hit]], for a '''minimum''' of {{as|150% '''base''' AD}} and a '''maximum''' of {{as|250% '''base''' AD}} against monsters. If the target is a champion, {{tip|heal}} for {{as|88% '''base''' AD}} {{as|(+ {{rd|{{fd|2.2}}%|{{fd|1.1}}%}} of target's '''maximum''' health)|health}].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">160% <b>base</b> AD</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 4%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 2%</span>)</span> of target\'s <b>maximum</b> health)</span> as <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>, for a <b>minimum</b> of <span style="color:orange; white-space:normal">150% <b>base</b> AD</span> and a <b>maximum</b> of <span style="color:orange; white-space:normal">250% <b>base</b> AD</span> against monsters. If the target is a champion, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for <span style="color:orange; white-space:normal">88% <b>base</b> AD</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 2.<small>2</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1.<small>1</small>%</span>)</span> of target\'s <b>maximum</b> health)</span> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
-      mythic: {
-        armpen: 3,
-        mpen: 3,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">3% armor penetration</span> and <span style="color:turquoise; white-space:normal">3% magic penetration</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -11803,7 +12729,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6653_mage_t4_liandrysanguish.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -96px; width:48px; height:48px;",
     image: {
       full: '6653.png',
       sprite: 'item2.png',
@@ -11815,7 +12741,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'magic pen': true,
@@ -11831,16 +12759,21 @@ export default {
         unique: true,
         description:
           "Dealing [{tip|ability damage}} burns enemies, causing them to take{{ft|{{as|50 {{as|(+ 6% AP)}} {{as|(+ 4% target's '''maximum''' health)}} '''total''' magic damage|magic damage}} over 4 seconds, capped at 400 against monsters.|{{as|{{ap|50*0.125}} {{as|(+ {{ap|6*0.125}}% AP)}} {{as|(+ {{ap|4*0.125}}% target's '''maximum''' health)}} magic damage|magic damage}} every {{fd|0.5}} seconds over 4 seconds, capped at 50 against monsters.}]",
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> burns enemies, causing them to take<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #00B0F0; white-space:normal">50 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;6% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;4% target\'s <b>maximum</b> health)</span> <b>total</b> magic damage</span> over 4 seconds, capped at 400 against monsters.&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #00B0F0; white-space:normal">6.<small>25</small> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;0.<small>75</small>% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;0.<small>5</small>% target\'s <b>maximum</b> health)</span> magic damage</span> every 0.<small>5</small> seconds over 4 seconds, capped at 50 against monsters.&nbsp;」</span></span>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Agony',
         unique: true,
         description:
           "Deal [{pp|type:target's '''bonus''' health|color:health|key:%|0 to 12 for 11|0 to 1250|formula:1.2% per 125 '''bonus''' health}} {{as|'''bonus''' magic damage}] against enemy champions.",
+        descriptionHTML:
+          'Deal <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="target\'s bonus health" data-displayformula="1.2% per 125 \'\'\'bonus\'\'\' health" data-bot_values="0;1.2;2.4;3.6;4.8;6;7.2;8.4;9.6;10.8;12" data-top_values="0;125;250;375;500;625;750;875;1000;1125;1250" data-bot_key="%">0% − 12% (based on target\'s <b>bonus</b> health)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> against enemy champions.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -11876,7 +12809,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6655_mage_t4_ludenstempest.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -96px; width:48px; height:48px;",
     image: {
       full: '6655.png',
       sprite: 'item2.png',
@@ -11888,7 +12821,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -11905,11 +12840,13 @@ export default {
         unique: true,
         description:
           "Dealing [{tip|ability damage}} to an enemy deals {{as|100 {{as|(+ 10% AP)}} '''additional''' magic damage|magic damage}} to them and launches orbs at up to 3 other enemies within {{tip|cr|icononly : true}} 600 units around them, impacting after {{rutngt|0.5}} to deal the same damage to each, and grants you {{as|15% '''bonus''' movement speed}} for 2 seconds. Dealing ability damage against champions reduces the cooldown of ''Echo'' by {{fd|0.5}] seconds per champion, up to a '''maximum''' of 3 seconds per cast.",
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> to an enemy deals <span style="color: #00B0F0; white-space:normal">100 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;10% AP)</span> <b>additional</b> magic damage</span> to them and launches orbs at up to 3 other enemies within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 600 units around them, impacting after <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="0.5 seconds, but rounded up to the next game tick.">0.<small>528</small> seconds</span> to deal the same damage to each, and grants you <span style="color: #F5EE99; white-space:normal">15% <b>bonus</b> movement speed</span> for 2 seconds. Dealing ability damage against champions reduces the cooldown of <i>Echo</i> by 0.<small>5</small> seconds per champion, up to a <b>maximum</b> of 3 seconds per cast (10 second cooldown).',
+        descriptionRatios: [],
         cd: 10,
       },
-      mythic: {
-        mpenflat: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:turquoise; white-space:normal">5 magic penetration</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -11946,7 +12883,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6656_mage_t4_everfrost.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -192px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -192px -96px; width:48px; height:48px;",
     image: {
       full: '6656.png',
       sprite: 'item2.png',
@@ -11958,7 +12895,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -11969,15 +12908,17 @@ export default {
       mana: 600,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #7A6DFF; white-space:normal">10 ability power</span>.',
       act: {
         name: 'Glaciate',
         unique: true,
         description:
           'Unleash a fan of icy shards in a cone in the target direction, dealing [{as|100 {{as|(+ 30% AP)}} magic damage|magic damage}} to enemies struck within and {{tip|slow|slowing}} them by 65% for 1 second. Enemies hit in the center of the cone are {{tip|root|rooted}] for the same duration instead.',
+        descriptionHTML:
+          'Unleash a fan of icy shards in a cone in the target direction, dealing <span style="color: #00B0F0; white-space:normal">100 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;30% AP)</span> magic damage</span> to enemies struck within and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowing</a></span> them by 65% for 1 second. Enemies hit in the center of the cone are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Root"><a href="/wiki/Root" title="Root"><img alt="Root icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/6/6b/Root_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224302" decoding="async" loading="lazy" width="20" height="20" data-image-name="Root icon.png" data-image-key="Root_icon.png"></a> <a href="/wiki/Root" class="mw-redirect" title="Root">rooted</a></span> for the same duration instead (30 second cooldown).',
+        descriptionRatios: [],
         cd: 30,
-      },
-      mythic: {
-        ap: 10,
       },
     },
     type: ['Mythic'],
@@ -12015,7 +12956,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6657_mage_t4_rodofages.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -96px; width:48px; height:48px;",
     image: {
       full: '6657.png',
       sprite: 'item2.png',
@@ -12027,7 +12968,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Eternity" title="Item group">Eternity</a></b></span> item.<br>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -12043,16 +12986,21 @@ export default {
         unique: true,
         description:
           "This item gains [{as|20 '''bonus''' health}}, {{as|20 '''bonus''' mana}}, and {{as|4 ability power}} every minute, up to 10 times, for a maximum of {{as|200 '''bonus''' health}}, {{as|200 '''bonus''' mana}}, and {{as|40 ability power}]. Upon reaching maximum stacks, gain a level that preserves your current experience (cap remains at level 18) and increase all effects of ''Eternity'' by 50%.",
+        descriptionHTML:
+          'This item gains <span style="color: #1F995C; white-space:normal">20 <b>bonus</b> health</span>, <span style="color: #0099CC; white-space:normal">20 <b>bonus</b> mana</span>, and <span style="color: #7A6DFF; white-space:normal">4 ability power</span> every minute, up to 10 times, for a maximum of <span style="color: #1F995C; white-space:normal">200 <b>bonus</b> health</span>, <span style="color: #0099CC; white-space:normal">200 <b>bonus</b> mana</span>, and <span style="color: #7A6DFF; white-space:normal">40 ability power</span>. Upon reaching maximum stacks, gain a level that preserves your current experience (cap remains at level 18) and increase all effects of <i>Eternity</i> by 50%.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Eternity',
         unique: true,
         description:
           "Restore [{as|mana}} equal to 7% of {{tt|pre-mitigation damage|Damage calculated before modifiers}} taken from champions, and {{tip|heal}} for an amount equal to {{as|25% of mana spent}}, up to 20 per cast. Toggled abilities can only heal for up to 20 per second. For every 200 healing or {{as|mana}} restored this way, gain {{as|35% '''bonus''' movement speed}] that decays over 3 seconds.",
+        descriptionHTML:
+          'Restore <span style="color: #0099CC; white-space:normal">mana</span> equal to 7% of <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated before modifiers">pre-mitigation damage</span> taken from champions, and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for an amount equal to <span style="color: #0099CC; white-space:normal">25% of mana spent</span>, up to 20 per cast. Toggled abilities can only heal for up to 20 per second. For every 200 healing or <span style="color: #0099CC; white-space:normal">mana</span> restored this way, gain <span style="color: #F5EE99; white-space:normal">35% <b>bonus</b> movement speed</span> that decays over 3 seconds.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12081,7 +13029,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6660_tank_t2_bamiscinder.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -96px; width:48px; height:48px;",
     image: {
       full: '6660.png',
       sprite: 'item2.png',
@@ -12093,7 +13041,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Immolate" title="Item group">Immolate</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -12106,6 +13056,9 @@ export default {
         unique: true,
         description:
           "Taking or dealing damage activates this passive for 3 seconds. Deal [{as|12 {{as|(+ 1% '''bonus''' health)}} magic damage|magic damage}} every second to enemies within {{tip|cr|icononly : true}] 325 (+ 100% '''bonus''' [[size]]) units, with the damage being increased by 25% against minions and monsters. This executes minions that would be killed by one more tick of damage.",
+        descriptionHTML:
+          'Taking or dealing damage activates this passive for 3 seconds. Deal <span style="color: #00B0F0; white-space:normal">12 <span style="color: #1F995C; white-space:normal">(+&nbsp;1% <b>bonus</b> health)</span> magic damage</span> every second to enemies within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 325 (+ 100% <b>bonus</b> <a href="/wiki/Size" title="Size">size</a>) units, with the damage being increased by 25% against minions and monsters. This executes minions that would be killed by one more tick of damage.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -12142,7 +13095,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6662_tank_t3_iceborngauntlet.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -96px; width:48px; height:48px;",
     image: {
       full: '6662.png',
       sprite: 'item2.png',
@@ -12154,7 +13107,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       'onhit effects': true,
@@ -12170,12 +13125,13 @@ export default {
         unique: true,
         description:
           "After using an [[champion ability|ability]], your next basic attack within 10 seconds deals [{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}} [[on-hit]] and creates a 300 radius frost field for {{fd|2.5}} seconds. Enemies within the field are slowed by {{rd|15%|{{fd|7.5}}%}} {{as|(+ {{rd|{{fd|0.4}}%|{{fd|0.2}}%}} per 100 '''maximum''' health)}}. Your primary target is slowed for double the amount and has their damage against you reduced by 10% for {{fd|2.5}] seconds.",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">100% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and creates a 300 radius frost field for 2.<small>5</small> seconds. Enemies within the field are slowed by <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 15%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 7.<small>5</small>%</span>)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 0.<small>4</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 0.<small>2</small>%</span>)</span> per 100 <b>maximum</b> health)</span>. Your primary target is slowed for double the amount and has their damage against you reduced by 10% for 2.<small>5</small> seconds (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
-      mythic: {
-        hp: 50,
-        spec: '5% [{tip|tenacity}} and {{tip|slow resist|slow resistance}]',
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">50 <b>bonus</b> health</span> and 5% <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow resist"><a href="/wiki/Slow_resist" title="Slow resist"><img alt="Slow immune icon" src="/wiki/images/Slow_immune_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist" title="Slow resist">slow resistance</a></span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12213,7 +13169,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6664_tank_t4_acceleratedchemtank.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -96px; width:48px; height:48px;",
     image: {
       full: '6664.png',
       sprite: 'item2.png',
@@ -12225,7 +13181,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Turbo Chemtank</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       movement: true,
@@ -12241,6 +13198,9 @@ export default {
         unique: true,
         description:
           "For 4 seconds, grants [{as|40% '''bonus''' movement speed}} and {{tip|ghosted|ghosting}} while facing a {{tip|turret}} or {{tip|sight|visible}} enemy champion within 2000 units. After the duration or when an enemy champion is within {{tt|225 units|center to edge}}, you emit a shockwave, {{tip|slow|slowing}} enemy champions within {{tip|cr|icononly:true}} 450 units by 50% for {{fd|1.5}] seconds.",
+        descriptionHTML:
+          'For 4 seconds, grants <span style="color: #F5EE99; white-space:normal">40% <b>bonus</b> movement speed</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosted"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/ab/Ghost.png/revision/latest/scale-to-width-down/20?cb=20180514003209" decoding="async" loading="lazy" width="20" height="20" data-image-name="Ghost.png" data-image-key="Ghost.png"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosting</a></span> while facing a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Turret"><a href="/wiki/Turret" title="Turret"><img alt="Turret icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/8/82/Turret_icon.png/revision/latest/scale-to-width-down/20?cb=20180701054101" decoding="async" loading="lazy" width="20" height="20" data-image-name="Turret icon.png" data-image-key="Turret_icon.png"></a> <a href="/wiki/Turret" title="Turret">turret</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Sight"><a href="/wiki/Sight" title="Sight"><img alt="Sight icon" src="/wiki/images/Sight_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Sight" title="Sight">visible</a></span> enemy champion within 2000 units. After the duration or when an enemy champion is within <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="center to edge">225 units</span>, you emit a shockwave, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowing</a></span> enemy champions within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 450 units by 50% for 1.<small>5</small> seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -12278,7 +13238,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6665_tank_t4_jakshotheprotean.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -432px -96px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -432px -96px; width:48px; height:48px;",
     image: {
       full: '6665.png',
       sprite: 'item2.png',
@@ -12290,7 +13250,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -12306,11 +13268,12 @@ export default {
         unique: true,
         description:
           "For each second in combat with champions, gain 2 [{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} for 6 seconds, stacking up to 8 times for a maximum of 16 '''bonus''' resistances. At maximum stacks, instantly deal {{as|80|magic damage}} {{as|(+ 7% '''bonus''' health)}} {{as|magic damage}} to enemy champions within 700 units, {{tip|heal}] for the same amount for each target damaged, and increase your '''bonus''' resistances by 20% until the end of combat.",
+        descriptionHTML:
+          'For each second in combat with champions, gain 2 <span style="color:yellow; white-space:normal"><b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span> for 6 seconds, stacking up to 8 times for a maximum of 16 <b>bonus</b> resistances. At maximum stacks, instantly deal <span style="color: #00B0F0; white-space:normal">80</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;7% <b>bonus</b> health)</span> <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemy champions within 700 units, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for the same amount for each target damaged, and increase your <b>bonus</b> resistances by 20% until the end of combat.',
+        descriptionRatios: [],
       },
-      mythic: {
-        armor: 5,
-        mr: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">5 armor</span> and <span style="color: #00FFFF; white-space:normal">5 magic resistance</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12346,7 +13309,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6667_tank_t4_radiantvirtue.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -144px; width:48px; height:48px;",
     image: {
       full: '6667.png',
       sprite: 'item2.png',
@@ -12358,7 +13321,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -12374,11 +13339,13 @@ export default {
         unique: true,
         description:
           "Upon casting your [[champion ability|ultimate]], you ''Transcend'' for 9 seconds. While ''Transcended'', increase your [{as|'''maximum''' health by {{fd|12.5}}%}} and cause you and all allies within {{tip|cr|icononly:true}} 1200 units to {{tip|heal}} for {{as|{{fd|2.5}}% of your '''maximum''' health}] upon you ''Transcending'' and every 3 seconds thereafter.",
+        descriptionHTML:
+          'Upon casting your <a href="/wiki/Champion_ability" title="Champion ability">ultimate</a>, you <i>Transcend</i> for 9 seconds. While <i>Transcended</i>, increase your <span style="color: #1F995C; white-space:normal"><b>maximum</b> health by 12.<small>5</small>%</span> and cause you and all allies within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 1200 units to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for <span style="color: #1F995C; white-space:normal">2.<small>5</small>% of your <b>maximum</b> health</span> upon you <i>Transcending</i> and every 3 seconds thereafter (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
-      mythic: {
-        hp: 75,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">75 <b>bonus</b> health</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12407,7 +13374,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6670_marksman_t2_noonquiver.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -144px; width:48px; height:48px;",
     image: {
       full: '6670.png',
       sprite: 'item2.png',
@@ -12420,6 +13387,7 @@ export default {
     maps: ['SR', 'HA'],
     depth: 2,
     limit: '',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'onhit effects': true,
@@ -12434,6 +13402,9 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|20 '''bonus''' physical damage}] [[on-hit]] against minions and monsters.",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #FF8C34; white-space:normal">20 <b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> against minions and monsters.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -12469,7 +13440,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6671_marksman_t4_galeforce.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -144px; width:48px; height:48px;",
     image: {
       full: '6671.png',
       sprite: 'item2.png',
@@ -12481,7 +13452,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       movement: true,
@@ -12493,16 +13466,18 @@ export default {
       ms: 7,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">5 <b>bonus</b> attack damage</span>.',
       act: {
         name: 'Cloudburst',
         unique: true,
         description:
           "[{tip|Dash}} to the target location, though not through terrain, and fire three homing missiles at the {{tt|most wounded|Lowest health percent}} enemy within {{tip|cr|icononly:true}} 750 units of you at the end of the dash, prioritizing enemy champions. Each missile deals {{as|{{pp|150/3 to 350/3|1;8 to 18 by 1}} {{as|(+ 15% '''bonus''' AD)}} physical damage|physical damage}}, for a total of {{as|{{pp|150 to 350|1;8 to 18 by 1}} {{as|(+ 45% '''bonus''' AD)}}|physical damage}}, increased by {{pp|type: target's '''missing''' health|color:health|key:%|0 to 50|key1:%|0 to 75 for 11|formula:5% per 7.5% of enemies' '''missing''' health}].",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Dash.png/revision/latest/scale-to-width-down/20?cb=20180514002826" decoding="async" loading="lazy" width="20" height="20" data-image-name="Dash.png" data-image-key="Dash.png"></a> <a href="/wiki/Dash" title="Dash">Dash</a></span> to the target location, though not through terrain, and fire three homing missiles at the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Lowest health percent">most wounded</span> enemy within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 750 units of you at the end of the dash, prioritizing enemy champions. Each missile deals <span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="50;56.06;62.12;68.18;74.24;80.3;86.36;92.42;98.48;104.55;110.61;116.67" data-top_values="1;8;9;10;11;12;13;14;15;16;17;18">50 − 116.<small>67</small> (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;15% <b>bonus</b> AD)</span> physical damage</span>, for a total of <span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="150;168.18;186.36;204.55;222.73;240.91;259.09;277.27;295.45;313.64;331.82;350" data-top_values="1;8;9;10;11;12;13;14;15;16;17;18">150 − 350 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;45% <b>bonus</b> AD)</span></span>, increased by <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="target\'s missing health" data-displayformula="5% per 7.5% of enemies\' \'\'\'missing\'\'\' health" data-bot_values="0;5;10;15;20;25;30;35;40;45;50" data-top_values="0;7.5;15;22.5;30;37.5;45;52.5;60;67.5;75" data-bot_key="%" data-top_key="%">0% − 50% (based on target\'s <b>missing</b> health)</span> (90 second cooldown; 200 - 425 range).',
+        descriptionRatios: [],
         cd: 90,
         range: '200 - 425',
-      },
-      mythic: {
-        ad: 5,
       },
     },
     type: ['Mythic'],
@@ -12532,7 +13507,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6672_marksman_t4_behemothslayer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -144px; width:48px; height:48px;",
     image: {
       full: '6672.png',
       sprite: 'item2.png',
@@ -12544,7 +13519,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Kraken Slayer</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'armor pen': true,
@@ -12560,6 +13536,9 @@ export default {
         unique: true,
         description:
           "Basic attacks [{rd|on-hit|on-attack}} grant a stack for 3 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal {{as|{{pp|35 to 85 for 11|1;9 to 18}} {{as|(+ 65% AD)}} {{as|(+ 60% AP)}} '''bonus''' physical damage|physical damage}] [[on-hit]]. Consuming stacks on the same target within 6 seconds increases the damage by 50%, up to 100%.",
+        descriptionHTML:
+          'Basic attacks <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> on-hit</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> on-attack</span>)</span> grant a stack for 3 seconds, up to 2 stacks. At 2 stacks, the next basic attack consumes all stacks to deal <span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="35;40;45;50;55;60;65;70;75;80;85" data-top_values="1;9;10;11;12;13;14;15;16;17;18">35 − 85 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;65% AD)</span> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;60% AP)</span> <b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>. Consuming stacks on the same target within 6 seconds increases the damage by 50%, up to 100%.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -12595,7 +13574,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6673_marksman_t4_crimsonshieldbow.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -192px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -192px -144px; width:48px; height:48px;",
     image: {
       full: '6673.png',
       sprite: 'item2.png',
@@ -12607,7 +13586,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Lifeline" title="Item group">Lifeline</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       'health and reg': true,
@@ -12623,6 +13604,9 @@ export default {
         unique: true,
         description:
           "If you would take damage that would reduce you below [{as|30% of your '''maximum''' health}}, you first gain a {{tip|shield}} that absorbs {{pp|215;260;305;350;395;440;470;500|1;12;13;14;15;16;17;18|formula:215 at level 1, then +45 per level starting at level 12, then +30 per level starting at level 17}} damage for 3 seconds and {{as|30% '''bonus''' attack speed}] for 8 seconds.",
+        descriptionHTML:
+          'If you would take damage that would reduce you below <span style="color: #1F995C; white-space:normal">30% of your <b>maximum</b> health</span>, you first gain a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> that absorbs <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="215 at level 1, then +45 per level starting at level 12, then +30 per level starting at level 17" data-bot_values="215;260;305;350;395;440;470;500" data-top_values="1;12;13;14;15;16;17;18">215 − 500 (based on level)</span> damage for 3 seconds and <span style="color:orangered; white-space:normal">30% <b>bonus</b> attack speed</span> for 8 seconds (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
     },
@@ -12659,7 +13643,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6675_marksman_t3_navoriquickblades.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -144px; width:48px; height:48px;",
     image: {
       full: '6675.png',
       sprite: 'item2.png',
@@ -12671,7 +13655,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
@@ -12686,16 +13672,21 @@ export default {
         unique: true,
         description:
           "Basic attacks [[on-attack]] reduce your basic abilities' '''current''' cooldowns by 15% of their remaining cooldowns.",
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-attack" class="mw-redirect" title="On-attack">on-attack</a> reduce your basic abilities\' <b>current</b> cooldowns by 15% of their remaining cooldowns.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Impermanence',
         unique: true,
         description:
           'Your [[ability damage]] and [[damage|proc damage]] dealt by [[champion ability|abilities]] is increased by [{pp|type:critical strike chance|0 to 20 for 6|key:%|0 to 100|key1:%|color:critical strike chance}].',
+        descriptionHTML:
+          'Your <a href="/wiki/Ability_damage" title="Ability damage">ability damage</a> and <a href="/wiki/Damage" title="Damage">proc damage</a> dealt by <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> is increased by <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#E56013;" data-top_label="critical strike chance" data-start="0;0" data-finish="20;100" data-bot_values="0;4;8;12;16;20" data-top_values="0;20;40;60;80;100" data-bot_key="%" data-top_key="%">0% − 20% (based on critical strike chance)</span>.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ad: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">5 <b>bonus</b> attack damage</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12724,7 +13715,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6676_marksman_t3_thecollector.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -144px; width:48px; height:48px;",
     image: {
       full: '6676.png',
       sprite: 'item2.png',
@@ -12736,7 +13727,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>The Collector</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       assassin: true,
@@ -12752,6 +13744,9 @@ export default {
         unique: true,
         description:
           "If you deal [{tt|post-mitigation|Damage calculated after modifiers}} damage that would leave a champion below {{as|5% of their '''maximum''' health}}, {{tip|execute}} them. Champion kills grant you an additional {{g|25}].",
+        descriptionHTML:
+          'If you deal <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Damage calculated after modifiers">post-mitigation</span> damage that would leave a champion below <span style="color: #1F995C; white-space:normal">5% of their <b>maximum</b> health</span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Execute"><a href="/wiki/Kill#Execute" title="Kill"><img alt="Death from Below" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/19/Pyke_Death_from_Below.png/revision/latest/scale-to-width-down/20?cb=20180516185259" decoding="async" loading="lazy" width="20" height="20" data-image-name="Pyke Death from Below.png" data-image-key="Pyke_Death_from_Below.png"></a> <a href="/wiki/Kill#Execute" title="Kill">execute</a></span> them. Champion kills grant you an additional <span class="inline-image label-after" style="display:inline;color:gold;white-space:pre;text-shadow:-1px 0 black,0 1px black,1px 0 black,0 -1px black;" data-param=""><span style="display:inline-block;position:relative;" data-width="20"><a href="/wiki/Gold" title="25 Gold"><img alt="25 Gold" src="https://static.wikia.nocookie.net/leagueoflegends/images/1/10/Gold.png/revision/latest/scale-to-width-down/20?cb=20181122055358" decoding="async" loading="lazy" width="20" height="15" data-image-name="Gold.png" data-image-key="Gold.png"></a></span> <span style="white-space:normal;">25</span></span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -12781,7 +13776,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6677_marksman_t2_rageknife.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -144px; width:48px; height:48px;",
     image: {
       full: '6677.png',
       sprite: 'item2.png',
@@ -12793,7 +13788,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 2,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic_Component" title="Item group">Mythic Component</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -12808,12 +13805,18 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|20 '''bonus''' magic damage}] [[on-hit]].",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal">20 <b>bonus</b> magic damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Seething Strike',
         unique: true,
         description:
           "Basic attacks grant [{as|5% '''bonus''' attack speed}} for 3 seconds, stacking up to 3 times for a total of {{as|15% '''bonus''' attack speed}].",
+        descriptionHTML:
+          'Basic attacks grant <span style="color:orangered; white-space:normal">5% <b>bonus</b> attack speed</span> for 3 seconds, stacking up to 3 times for a total of <span style="color:orangered; white-space:normal">15% <b>bonus</b> attack speed</span>.',
+        descriptionRatios: [],
       },
     },
     type: ['Epic'],
@@ -12851,7 +13854,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6691_assassin_t4_duskbladeofdraktharr.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -144px; width:48px; height:48px;",
     image: {
       full: '6691.png',
       sprite: 'item2.png',
@@ -12863,11 +13866,12 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
       movement: true,
-      'onhit effects': true,
     },
     stats: {
       ad: 60,
@@ -12880,12 +13884,13 @@ export default {
         unique: true,
         description:
           "Your abilities deal [{pp|0 to 20 for 11|0 to 70|key:%|key1:%|type:target's '''missing''' health|color:health}} increased damage against enemy champions. Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them renders you {{tip|untargetable}} and {{tip|invulnerable}} to non-structures for {{fd|1.5}} seconds, which ends prematurely if you perform an action that {{tip|break stealth|breaks stealth}].",
+        descriptionHTML:
+          'Your abilities deal <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="target\'s missing health" data-start="0;0" data-finish="20;70" data-bot_values="0;2;4;6;8;10;12;14;16;18;20" data-top_values="0;7;14;21;28;35;42;49;56;63;70" data-bot_key="%" data-top_key="%">0% − 20% (based on target\'s <b>missing</b> health)</span> increased damage against enemy champions. Scoring a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Takedown"><a href="/wiki/Takedown" title="Takedown"><img alt="Damage rating" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/07/Damage_rating.png/revision/latest/scale-to-width-down/20?cb=20170514053710" decoding="async" loading="lazy" width="20" height="20" data-image-name="Damage rating.png" data-image-key="Damage_rating.png"></a> <a href="/wiki/Takedown" title="Takedown">takedown</a></span> against an enemy champion within 3 seconds of damaging them renders you <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Untargetable_icon.png/revision/latest/scale-to-width-down/20?cb=20220206063243" decoding="async" loading="lazy" width="20" height="20" data-image-name="Untargetable icon.png" data-image-key="Untargetable_icon.png"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="/wiki/images/Taric_Cosmic_Radiance.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span> to non-structures for 1.<small>5</small> seconds, which ends prematurely if you perform an action that <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Break stealth"><a href="/wiki/Stealth#Breaking_stealth" title="Stealth"><img alt="Breaking stealth icon" src="/wiki/images/Breaking_stealth_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stealth#Breaking_stealth" title="Stealth">breaks stealth</a></span> (10 second cooldown).',
+        descriptionRatios: [],
         cd: 10,
       },
-      mythic: {
-        ah: 5,
-        msflat: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #F5EE99; white-space:normal">5 <b>bonus</b> movement speed</span> and <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12920,7 +13925,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6692_assassin_t4_eclipse.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -432px -144px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -432px -144px; width:48px; height:48px;",
     image: {
       full: '6692.png',
       sprite: 'item2.png',
@@ -12932,7 +13937,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -12949,12 +13956,13 @@ export default {
         unique: true,
         description:
           "Hitting an enemy champion with 2 separate attacks or abilities within [{fd|1.5}} seconds deals {{as|'''bonus''' physical damage}} equal to {{as|{{rd|6%|3%}} of target's '''maximum''' health}} and grants you {{as|15% '''bonus''' movement speed}} and a {{tip|shield}} for {{rd|160|80}} {{as|(+ {{rd|35%|{{fd|17.5}}%}} '''bonus''' AD)}] for 2 seconds.",
+        descriptionHTML:
+          'Hitting an enemy champion with 2 separate attacks or abilities within 1.<small>5</small> seconds deals <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> equal to <span style="color: #1F995C; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 6%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 3%</span>)</span> of target\'s <b>maximum</b> health</span> and grants you <span style="color: #F5EE99; white-space:normal">15% <b>bonus</b> movement speed</span> and a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 160</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 80</span>)</span> <span style="color:orange; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 35%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 17.<small>5</small>%</span>)</span> <b>bonus</b> AD)</span> for 2 seconds (<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 6</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 12</span>)</span> second cooldown).',
+        descriptionRatios: [],
         cd: '[{rd|6|12}]',
       },
-      mythic: {
-        armpen: 4,
-        msflat: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">4% armor penetration</span> and <span style="color: #F5EE99; white-space:normal">5 <b>bonus</b> movement speed</span>.',
     },
     type: ['Mythic'],
     category: 'mythics',
@@ -12989,7 +13997,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6693_assassin_t4_prowlersclaw.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -192px; width:48px; height:48px;",
     image: {
       full: '6693.png',
       sprite: 'item2.png',
@@ -13001,7 +14009,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '[{tip|Ranged}] champions do not apply the slow.',
+    limit:
+      '<p>Limited to 1 <b>Prowler\'s Claw</b>.<br> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Ranged" class="mw-redirect" title="Ranged">Ranged</a></span> champions do not apply the slow.</p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
       movement: true,
@@ -13017,6 +14027,9 @@ export default {
         unique: true,
         description:
           "Using a [{tip|dash}}, {{tip|lunge}} or {{tip|blink}}, or exiting from {{tip|stealth}}, causes your next basic attack against a champion within 3 seconds to deal {{as|{{rd|85|65}}|physical damage}} {{as|(+ {{rd|45%|30%}} '''bonus''' AD)}} {{as|'''bonus''' physical damage}} [[on-hit]] and {{tip|slow}} the target by 99% for {{fd|0.5}] seconds.",
+        descriptionHTML:
+          'Using a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Dash.png/revision/latest/scale-to-width-down/20?cb=20180514002826" decoding="async" loading="lazy" width="20" height="20" data-image-name="Dash.png" data-image-key="Dash.png"></a> <a href="/wiki/Dash" title="Dash">dash</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Lunge"><a href="/wiki/Dash#Lunge" title="Dash"><img alt="Bear Stance" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/ec/Udyr_Bear_Stance.png/revision/latest/scale-to-width-down/20?cb=20171223035155" decoding="async" loading="lazy" width="20" height="20" data-image-name="Udyr Bear Stance.png" data-image-key="Udyr_Bear_Stance.png"></a> <a href="/wiki/Dash#Lunge" title="Dash">lunge</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Blink"><a href="/wiki/Blink" title="Blink"><img alt="Flash" src="/wiki/images/Flash.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Blink" title="Blink">blink</a></span>, or exiting from <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Stealth"><a href="/wiki/Stealth" title="Stealth"><img alt="Guerrilla Warfare" src="/wiki/images/Teemo_Guerrilla_Warfare.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stealth" title="Stealth">stealth</a></span>, causes your next basic attack against a champion within 3 seconds to deal <span style="color: #FF8C34; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 85</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 65</span>)</span></span> <span style="color:orange; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 45%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 30%</span>)</span> <b>bonus</b> AD)</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="/wiki/images/Slow_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slow</a></span> the target by 99% for 0.<small>5</small> seconds (10 second cooldown).',
+        descriptionRatios: [],
         cd: 10,
       },
     },
@@ -13052,7 +14065,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6694_assasin_t3_seryldasgrudge.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -192px; width:48px; height:48px;",
     image: {
       full: '6694.png',
       sprite: 'item2.png',
@@ -13064,7 +14077,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Last_Whisper" title="Item group">Last Whisper</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -13081,6 +14096,9 @@ export default {
         unique: true,
         description:
           'Dealing [{tip|ability damage}} {{tip|slow|slows}] affected [[unit]]s by 30% for 1 second.',
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slows</a></span> affected <a href="/wiki/Unit" class="mw-disambig" title="Unit">units</a> by 30% for 1 second.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -13110,7 +14128,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6695_assassin_t3_serpentsfang.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -192px; width:48px; height:48px;",
     image: {
       full: '6695.png',
       sprite: 'item2.png',
@@ -13122,7 +14140,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Serpent's Fang</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       assassin: true,
     },
@@ -13136,6 +14155,9 @@ export default {
         unique: true,
         description:
           'Dealing damage to an enemy champion inflicts them with venom for 3 seconds, reducing any [{tip|shield|shields}} they gain within the duration by {{rd|50%|35%}], and if the target was not already afflicted by the venom, reducing all of their active shields by the same amount.',
+        descriptionHTML:
+          'Dealing damage to an enemy champion inflicts them with venom for 3 seconds, reducing any <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shields</a></span> they gain within the duration by <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 50%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 35%</span>)</span>, and if the target was not already afflicted by the venom, reducing all of their active shields by the same amount.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -13165,7 +14187,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6696_axiomarc.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -192px; width:48px; height:48px;",
     image: {
       full: '6696.png',
       sprite: 'item2.png',
@@ -13177,7 +14199,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Axiom Arc</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
     },
@@ -13192,6 +14215,9 @@ export default {
         unique: true,
         description:
           "Scoring a [{tip|takedown}] against an enemy champion within 3 seconds of damaging them refunds 20% of your ultimate ability's '''total''' cooldown.",
+        descriptionHTML:
+          'Scoring a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Takedown"><a href="/wiki/Takedown" title="Takedown"><img alt="Damage rating" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/07/Damage_rating.png/revision/latest/scale-to-width-down/20?cb=20170514053710" decoding="async" loading="lazy" width="20" height="20" data-image-name="Damage rating.png" data-image-key="Damage_rating.png"></a> <a href="/wiki/Takedown" title="Takedown">takedown</a></span> against an enemy champion within 3 seconds of damaging them refunds 20% of your ultimate ability\'s <b>total</b> cooldown.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -13227,7 +14253,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6692_assassin_t4_eclipse.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -192px; width:48px; height:48px;",
     image: {
       full: '7001.png',
       sprite: 'item2.png',
@@ -13239,7 +14265,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       assassin: true,
@@ -13256,12 +14284,13 @@ export default {
         unique: true,
         description:
           "Hitting an enemy champion with 2 separate attacks or abilities within [{fd|1.5}} seconds deals {{as|'''bonus''' physical damage}} equal to {{as|{{rd|6%|3%}} of target's '''maximum''' health}} and grants you {{as|15% '''bonus''' movement speed}} and a {{tip|shield}} for {{rd|160|80}} {{as|(+ {{rd|35%|{{fd|17.5}}%}} '''bonus''' AD)}] for 2 seconds.",
+        descriptionHTML:
+          'Hitting an enemy champion with 2 separate attacks or abilities within 1.<small>5</small> seconds deals <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> equal to <span style="color: #1F995C; white-space:normal"><span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 6%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 3%</span>)</span> of target\'s <b>maximum</b> health</span> and grants you <span style="color: #F5EE99; white-space:normal">15% <b>bonus</b> movement speed</span> and a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="/wiki/images/Hybrid_resistances_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 160</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 80</span>)</span> <span style="color:orange; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 35%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 17.<small>5</small>%</span>)</span> <b>bonus</b> AD)</span> for 2 seconds (<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 6</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 12</span>)</span> second cooldown).',
+        descriptionRatios: [],
         cd: '[{rd|6|12}]',
       },
-      mythic: {
-        armpen: 4,
-        msflat: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">4% armor penetration</span> and <span style="color: #F5EE99; white-space:normal">5 <b>bonus</b> movement speed</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13298,7 +14327,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6691_assassin_t4_duskbladeofdraktharr.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -192px; width:48px; height:48px;",
     image: {
       full: '7002.png',
       sprite: 'item2.png',
@@ -13310,11 +14339,12 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
       movement: true,
-      'onhit effects': true,
     },
     stats: {
       ad: 75,
@@ -13327,12 +14357,13 @@ export default {
         unique: true,
         description:
           "Your abilities deal [{pp|0 to 20 for 11|0 to 70|key:%|key1:%|type:target's '''missing''' health|color:health}} increased damage against enemy champions. Scoring a {{tip|takedown}} against an enemy champion within 3 seconds of damaging them renders you {{tip|untargetable}} and {{tip|invulnerable}} to non-structures for {{fd|1.5}} seconds, which ends prematurely if you perform an action that {{tip|break stealth|breaks stealth}].",
+        descriptionHTML:
+          'Your abilities deal <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="target\'s missing health" data-start="0;0" data-finish="20;70" data-bot_values="0;2;4;6;8;10;12;14;16;18;20" data-top_values="0;7;14;21;28;35;42;49;56;63;70" data-bot_key="%" data-top_key="%">0% − 20% (based on target\'s <b>missing</b> health)</span> increased damage against enemy champions. Scoring a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Takedown"><a href="/wiki/Takedown" title="Takedown"><img alt="Damage rating" src="https://static.wikia.nocookie.net/leagueoflegends/images/0/07/Damage_rating.png/revision/latest/scale-to-width-down/20?cb=20170514053710" decoding="async" loading="lazy" width="20" height="20" data-image-name="Damage rating.png" data-image-key="Damage_rating.png"></a> <a href="/wiki/Takedown" title="Takedown">takedown</a></span> against an enemy champion within 3 seconds of damaging them renders you <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Untargetable"><a href="/wiki/Untargetable" title="Untargetable"><img alt="Untargetable icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Untargetable_icon.png/revision/latest/scale-to-width-down/20?cb=20220206063243" decoding="async" loading="lazy" width="20" height="20" data-image-name="Untargetable icon.png" data-image-key="Untargetable_icon.png"></a> <a href="/wiki/Untargetable" class="mw-redirect" title="Untargetable">untargetable</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Invulnerable"><a href="/wiki/Invulnerability" title="Invulnerability"><img alt="Cosmic Radiance" src="/wiki/images/Taric_Cosmic_Radiance.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Invulnerability" title="Invulnerability">invulnerable</a></span> to non-structures for 1.<small>5</small> seconds, which ends prematurely if you perform an action that <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Break stealth"><a href="/wiki/Stealth#Breaking_stealth" title="Stealth"><img alt="Breaking stealth icon" src="/wiki/images/Breaking_stealth_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Stealth#Breaking_stealth" title="Stealth">breaks stealth</a></span> (10 second cooldown).',
+        descriptionRatios: [],
         cd: 10,
       },
-      mythic: {
-        ah: 5,
-        msflat: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #F5EE99; white-space:normal">5 <b>bonus</b> movement speed</span> and <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13368,7 +14399,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6662_tank_t3_iceborngauntlet.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -192px; width:48px; height:48px;",
     image: {
       full: '7005.png',
       sprite: 'item2.png',
@@ -13380,7 +14411,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       'onhit effects': true,
@@ -13396,12 +14429,13 @@ export default {
         unique: true,
         description:
           "After using an [[champion ability|ability]], your next basic attack within 10 seconds deals [{as|100% '''base''' AD}} {{as|'''bonus''' physical damage}} [[on-hit]] and creates a 300 radius frost field for {{fd|2.5}} seconds. Enemies within the field are slowed by {{rd|15%|{{fd|7.5}}%}} {{as|(+ {{rd|{{fd|0.4}}%|{{fd|0.2}}%}} per 100 '''maximum''' health)}}. Your primary target is slowed for double the amount and has their damage against you reduced by 10% for {{fd|2.5}] seconds.",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">100% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and creates a 300 radius frost field for 2.<small>5</small> seconds. Enemies within the field are slowed by <span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 15%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 7.<small>5</small>%</span>)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 0.<small>4</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 0.<small>2</small>%</span>)</span> per 100 <b>maximum</b> health)</span>. Your primary target is slowed for double the amount and has their damage against you reduced by 10% for 2.<small>5</small> seconds (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
-      mythic: {
-        hp: 50,
-        spec: '5% [{tip|tenacity}} and {{tip|slow resist|slow resistance}]',
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">50 <b>bonus</b> health</span> and 5% <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow resist"><a href="/wiki/Slow_resist" title="Slow resist"><img alt="Slow immune icon" src="/wiki/images/Slow_immune_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Slow_resist" title="Slow resist">slow resistance</a></span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13436,7 +14470,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6671_marksman_t4_galeforce.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -192px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -192px; width:48px; height:48px;",
     image: {
       full: '7006.png',
       sprite: 'item2.png',
@@ -13448,7 +14482,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
       movement: true,
@@ -13460,16 +14496,18 @@ export default {
       ms: 10,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">5 <b>bonus</b> attack damage</span>.',
       act: {
         name: 'Cloudburst',
         unique: true,
         description:
           "[{tip|Dash}} to the target location, though not through terrain, and fire three homing missiles at the {{tt|most wounded|Lowest health percent}} enemy within {{tip|cr|icononly:true}} 750 units of you at the end of the dash, prioritizing enemy champions. Each missile deals {{as|{{pp|150/3 to 350/3|1;8 to 18 by 1}} {{as|(+ 15% '''bonus''' AD)}} physical damage|physical damage}}, for a total of {{as|{{pp|150 to 350|1;8 to 18 by 1}} {{as|(+ 45% '''bonus''' AD)}}|physical damage}}, increased by {{pp|type: target's '''missing''' health|color:health|key:%|0 to 50|key1:%|0 to 75 for 11|formula:5% per 7.5% of enemies' '''missing''' health}].",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Dash.png/revision/latest/scale-to-width-down/20?cb=20180514002826" decoding="async" loading="lazy" width="20" height="20" data-image-name="Dash.png" data-image-key="Dash.png"></a> <a href="/wiki/Dash" title="Dash">Dash</a></span> to the target location, though not through terrain, and fire three homing missiles at the <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="Lowest health percent">most wounded</span> enemy within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 750 units of you at the end of the dash, prioritizing enemy champions. Each missile deals <span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="50;56.06;62.12;68.18;74.24;80.3;86.36;92.42;98.48;104.55;110.61;116.67" data-top_values="1;8;9;10;11;12;13;14;15;16;17;18">50 − 116.<small>67</small> (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;15% <b>bonus</b> AD)</span> physical damage</span>, for a total of <span style="color: #FF8C34; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="150;168.18;186.36;204.55;222.73;240.91;259.09;277.27;295.45;313.64;331.82;350" data-top_values="1;8;9;10;11;12;13;14;15;16;17;18">150 − 350 (based on level)</span> <span style="color:orange; white-space:normal">(+&nbsp;45% <b>bonus</b> AD)</span></span>, increased by <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="target\'s missing health" data-displayformula="5% per 7.5% of enemies\' \'\'\'missing\'\'\' health" data-bot_values="0;5;10;15;20;25;30;35;40;45;50" data-top_values="0;7.5;15;22.5;30;37.5;45;52.5;60;67.5;75" data-bot_key="%" data-top_key="%">0% − 50% (based on target\'s <b>missing</b> health)</span> (90 second cooldown; 200 - 425 range).',
+        descriptionRatios: [],
         cd: 90,
         range: '200 - 425',
-      },
-      mythic: {
-        ad: 5,
       },
     },
     type: ['Mythic'],
@@ -13506,7 +14544,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4633_mage_t4_riftmaker.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -240px; width:48px; height:48px;",
     image: {
       full: '7009.png',
       sprite: 'item2.png',
@@ -13518,7 +14556,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'magic pen': true,
@@ -13535,11 +14575,12 @@ export default {
         unique: true,
         description:
           "For each second [[combat status|in combat]] with champions, deal 3% increased damage, stacking up to 3 times for a '''maximum''' of 9%. While this effect is fully stacked, convert 100% of the increased damage into [{as|true damage}].",
+        descriptionHTML:
+          'For each second <a href="/wiki/Combat_status" title="Combat status">in combat</a> with champions, deal 3% increased damage, stacking up to 3 times for a <b>maximum</b> of 9%. While this effect is fully stacked, convert 100% of the increased damage into <span style="color: #F9966B; white-space:normal">true damage</span>.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ap: 8,
-        omnivamp: 2,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #CE1C42; white-space:normal">2% omnivamp</span> and <span style="color: #7A6DFF; white-space:normal">8 ability power</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13574,7 +14615,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4636_mage_t4_nightharvester.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -240px; width:48px; height:48px;",
     image: {
       full: '7010.png',
       sprite: 'item2.png',
@@ -13586,7 +14627,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -13602,11 +14645,13 @@ export default {
         unique: true,
         description:
           "Damaging an enemy champion deals [{as|125 {{as|(+ 15% AP)}} '''bonus''' magic damage|magic damage}} and grants you {{as|25% '''bonus''' movement speed}} for {{fd|1.5}] seconds, with the duration extending on subsequent triggers.",
+        descriptionHTML:
+          'Damaging an enemy champion deals <span style="color: #00B0F0; white-space:normal">125 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;15% AP)</span> <b>bonus</b> magic damage</span> and grants you <span style="color: #F5EE99; white-space:normal">25% <b>bonus</b> movement speed</span> for 1.<small>5</small> seconds, with the duration extending on subsequent triggers (30 (per champion) second cooldown).',
+        descriptionRatios: [],
         cd: '30 (per champion)',
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13643,7 +14688,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3152_mage_t4_hextechrocketbelt.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -240px; width:48px; height:48px;",
     image: {
       full: '7011.png',
       sprite: 'item2.png',
@@ -13655,7 +14700,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'magic pen': true,
@@ -13668,6 +14715,8 @@ export default {
       mpenflat: 10,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:turquoise; white-space:normal">5 magic penetration</span>.',
       act: {
         name: 'Supersonic',
         unique: true,
@@ -13675,10 +14724,10 @@ export default {
           "[{tip|Dash}} 125 to 275 units in the target direction, though not through terrain, unleashing an arc of 7 rockets in the same direction that deal {{as|125 {{as|(+ 15% AP)}} magic damage|magic damage}} to enemies hit. Afterwards, gain {{as|30% '''bonus''' movement speed}} while facing {{tt|nearby|2000 units}} enemy champions for {{fd|1.5}] seconds.",
         description2:
           "''Supersonic'' [[Basic attack#Resets|resets]] the user's [[basic attack]] timer.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Dash"><a href="/wiki/Dash" title="Dash"><img alt="Dash" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Dash.png/revision/latest/scale-to-width-down/20?cb=20180514002826" decoding="async" loading="lazy" width="20" height="20" data-image-name="Dash.png" data-image-key="Dash.png"></a> <a href="/wiki/Dash" title="Dash">Dash</a></span> 125 to 275 units in the target direction, though not through terrain, unleashing an arc of 7 rockets in the same direction that deal <span style="color: #00B0F0; white-space:normal">125 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;15% AP)</span> magic damage</span> to enemies hit. Afterwards, gain <span style="color: #F5EE99; white-space:normal">30% <b>bonus</b> movement speed</span> while facing <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="2000 units">nearby</span> enemy champions for 1.<small>5</small> seconds (40 second cooldown).<br><i>Supersonic</i> <a href="/wiki/Basic_attack#Resets" title="Basic attack">resets</a> the user\'s <a href="/wiki/Basic_attack" title="Basic attack">basic attack</a> timer.',
+        descriptionRatios: [],
         cd: 40,
-      },
-      mythic: {
-        mpenflat: 5,
       },
     },
     type: ['Mythic'],
@@ -13708,7 +14757,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6653_mage_t4_liandrysanguish.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -192px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -192px -240px; width:48px; height:48px;",
     image: {
       full: '7012.png',
       sprite: 'item2.png',
@@ -13720,7 +14769,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       'magic pen': true,
@@ -13736,16 +14787,21 @@ export default {
         unique: true,
         description:
           "Dealing [{tip|ability damage}} burns enemies, causing them to take{{ft|{{as|50 {{as|(+ 6% AP)}} {{as|(+ 4% target's '''maximum''' health)}} '''total''' magic damage|magic damage}} over 4 seconds, capped at 400 against monsters.|{{as|{{ap|50*0.125}} {{as|(+ {{ap|6*0.125}}% AP)}} {{as|(+ {{ap|4*0.125}}% target's '''maximum''' health)}} magic damage|magic damage}} every {{fd|0.5}} seconds over 4 seconds, capped at 50 against monsters.}]",
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> burns enemies, causing them to take<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;<span style="color: #00B0F0; white-space:normal">50 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;6% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;4% target\'s <b>maximum</b> health)</span> <b>total</b> magic damage</span> over 4 seconds, capped at 400 against monsters.&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #00B0F0; white-space:normal">6.<small>25</small> <span style="color: #7A6DFF; white-space:normal">(+&nbsp;0.<small>75</small>% AP)</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;0.<small>5</small>% target\'s <b>maximum</b> health)</span> magic damage</span> every 0.<small>5</small> seconds over 4 seconds, capped at 50 against monsters.&nbsp;」</span></span>',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Agony',
         unique: true,
         description:
           "Deal [{pp|type:target's '''bonus''' health|color:health|key:%|0 to 12 for 11|0 to 1250|formula:1.2% per 125 '''bonus''' health}} {{as|'''bonus''' magic damage}] against enemy champions.",
+        descriptionHTML:
+          'Deal <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#1F995C;" data-top_label="target\'s bonus health" data-displayformula="1.2% per 125 \'\'\'bonus\'\'\' health" data-bot_values="0;1.2;2.4;3.6;4.8;6;7.2;8.4;9.6;10.8;12" data-top_values="0;125;250;375;500;625;750;875;1000;1125;1250" data-bot_key="%">0% − 12% (based on target\'s <b>bonus</b> health)</span> <span style="color: #00B0F0; white-space:normal"><b>bonus</b> magic damage</span> against enemy champions.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13781,7 +14837,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6655_mage_t4_ludenstempest.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -240px; width:48px; height:48px;",
     image: {
       full: '7013.png',
       sprite: 'item2.png',
@@ -13793,7 +14849,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -13810,11 +14868,13 @@ export default {
         unique: true,
         description:
           "Dealing [{tip|ability damage}} to an enemy deals {{as|100 {{as|(+ 10% AP)}} '''additional''' magic damage|magic damage}} to them and launches orbs at up to 3 other enemies within {{tip|cr|icononly : true}} 600 units around them, impacting after {{rutngt|0.5}} to deal the same damage to each, and grants you {{as|15% '''bonus''' movement speed}} for 2 seconds. Dealing ability damage against champions reduces the cooldown of ''Echo'' by {{fd|0.5}] seconds per champion, up to a '''maximum''' of 3 seconds per cast.",
+        descriptionHTML:
+          'Dealing <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ability damage"><a href="/wiki/Ability_damage" title="Ability damage">ability damage</a></span> to an enemy deals <span style="color: #00B0F0; white-space:normal">100 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;10% AP)</span> <b>additional</b> magic damage</span> to them and launches orbs at up to 3 other enemies within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 600 units around them, impacting after <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="0.5 seconds, but rounded up to the next game tick.">0.<small>528</small> seconds</span> to deal the same damage to each, and grants you <span style="color: #F5EE99; white-space:normal">15% <b>bonus</b> movement speed</span> for 2 seconds. Dealing ability damage against champions reduces the cooldown of <i>Echo</i> by 0.<small>5</small> seconds per champion, up to a <b>maximum</b> of 3 seconds per cast (10 second cooldown).',
+        descriptionRatios: [],
         cd: 10,
       },
-      mythic: {
-        mpenflat: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:turquoise; white-space:normal">5 magic penetration</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -13851,7 +14911,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6656_mage_t4_everfrost.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -240px; width:48px; height:48px;",
     image: {
       full: '7014.png',
       sprite: 'item2.png',
@@ -13863,7 +14923,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
     },
@@ -13874,15 +14936,17 @@ export default {
       mana: 800,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #7A6DFF; white-space:normal">10 ability power</span>.',
       act: {
         name: 'Glaciate',
         unique: true,
         description:
           'Unleash a fan of icy shards in a cone in the target direction, dealing [{as|100 {{as|(+ 30% AP)}} magic damage|magic damage}} to enemies struck within and {{tip|slow|slowing}} them by 65% for 1 second. Enemies hit in the center of the cone are {{tip|root|rooted}] for the same duration instead.',
+        descriptionHTML:
+          'Unleash a fan of icy shards in a cone in the target direction, dealing <span style="color: #00B0F0; white-space:normal">100 <span style="color: #7A6DFF; white-space:normal">(+&nbsp;30% AP)</span> magic damage</span> to enemies struck within and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slowing</a></span> them by 65% for 1 second. Enemies hit in the center of the cone are <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Root"><a href="/wiki/Root" title="Root"><img alt="Root icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/6/6b/Root_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224302" decoding="async" loading="lazy" width="20" height="20" data-image-name="Root icon.png" data-image-key="Root_icon.png"></a> <a href="/wiki/Root" class="mw-redirect" title="Root">rooted</a></span> for the same duration instead (30 second cooldown).',
+        descriptionRatios: [],
         cd: 30,
-      },
-      mythic: {
-        ap: 10,
       },
     },
     type: ['Mythic'],
@@ -13920,7 +14984,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6630_fighter_t4_goredrinker.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -240px; width:48px; height:48px;",
     image: {
       full: '7015.png',
       sprite: 'item2.png',
@@ -13932,7 +14996,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
     },
@@ -13943,16 +15009,17 @@ export default {
       omnivamp: 12,
     },
     effects: {
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">75 <b>bonus</b> health</span> and <span style="color: #FFFDC9; white-space:normal">3 ability haste</span>.',
       act: {
         name: 'Thirsting Slash',
         unique: true,
         description:
           "Deal [{as|175% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}} 450 radius centered around you. {{tip|Heal}} for {{as|20% AD}} {{as|(+ 8% of your '''missing''' health)}] for each enemy champion hit.",
+        descriptionHTML:
+          'Deal <span style="color:orange; white-space:normal">175% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemies in a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 450 radius centered around you. <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Heal</a></span> for <span style="color:orange; white-space:normal">20% AD</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;8% of your <b>missing</b> health)</span> for each enemy champion hit (15 (reduced by ability haste) second cooldown).',
+        descriptionRatios: [],
         cd: '15 (reduced by ability haste)',
-      },
-      mythic: {
-        ah: 3,
-        hp: 75,
       },
     },
     type: ['Mythic'],
@@ -13991,7 +15058,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6631_fighter_t4_stridebreaker.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -240px; width:48px; height:48px;",
     image: {
       full: '7016.png',
       sprite: 'item2.png',
@@ -14003,7 +15070,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       movement: true,
@@ -14015,21 +15084,26 @@ export default {
       hp: 400,
     },
     effects: {
-      act: {
-        name: 'Halting Slash',
-        unique: true,
-        description:
-          "Deal [{as|175% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}} 450 radius centered around you and {{tip|slow}] them by 40% for 3 seconds. Can move while casting.",
-        cd: '15 (reduced by ability haste)',
-      },
       pass: {
         name: 'Heroic Gait',
         unique: true,
         description:
           "Dealing [{as|physical damage}} grants you {{as|20 '''bonus''' movement speed}] for 2 seconds.",
+        descriptionHTML:
+          'Dealing <span style="color: #FF8C34; white-space:normal">physical damage</span> grants you <span style="color: #F5EE99; white-space:normal">20 <b>bonus</b> movement speed</span> for 2 seconds.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ms: 2,
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #F5EE99; white-space:normal">2% <b>bonus</b> movement speed</span>.',
+      act: {
+        name: 'Halting Slash',
+        unique: true,
+        description:
+          "Deal [{as|175% '''base''' AD}} {{as|physical damage}} to enemies in a {{tip|cr|icononly : true}} 450 radius centered around you and {{tip|slow}] them by 40% for 3 seconds. Can move while casting.",
+        descriptionHTML:
+          'Deal <span style="color:orange; white-space:normal">175% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal">physical damage</span> to enemies in a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 450 radius centered around you and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Slow"><a href="/wiki/Slow" title="Slow"><img alt="Slow icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/7/78/Slow_icon.png/revision/latest/scale-to-width-down/20?cb=20171201224744" decoding="async" loading="lazy" width="20" height="20" data-image-name="Slow icon.png" data-image-key="Slow_icon.png"></a> <a href="/wiki/Slow" class="mw-redirect" title="Slow">slow</a></span> them by 40% for 3 seconds. Can move while casting (15 (reduced by ability haste) second cooldown).',
+        descriptionRatios: [],
+        cd: '15 (reduced by ability haste)',
       },
     },
     type: ['Mythic'],
@@ -14067,7 +15141,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6632_fighter_t4_divinedevourer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -432px -240px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -432px -240px; width:48px; height:48px;",
     image: {
       full: '7017.png',
       sprite: 'item2.png',
@@ -14079,7 +15153,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       'armor pen': true,
@@ -14097,12 +15173,13 @@ export default {
         unique: true,
         description:
           "After using an [[champion ability|ability]], your next basic attack within 10 seconds deals [{as|160% '''base''' AD}} {{as|(+ {{rd|4%|2%}} of target's '''maximum''' health)}} as {{as|'''bonus''' physical damage}} [[on-hit]], for a '''minimum''' of {{as|150% '''base''' AD}} and a '''maximum''' of {{as|250% '''base''' AD}} against monsters. If the target is a champion, {{tip|heal}} for {{as|88% '''base''' AD}} {{as|(+ {{rd|{{fd|2.2}}%|{{fd|1.1}}%}} of target's '''maximum''' health)|health}].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">160% <b>base</b> AD</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/2d/Melee_role.png/revision/latest/scale-to-width-down/16?cb=20170624104045" decoding="async" loading="lazy" width="16" height="16" data-image-name="Melee role.png" data-image-key="Melee_role.png"></a> 4%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/4a/Ranged_role.png/revision/latest/scale-to-width-down/16?cb=20170624104039" decoding="async" loading="lazy" width="16" height="16" data-image-name="Ranged role.png" data-image-key="Ranged_role.png"></a> 2%</span>)</span> of target\'s <b>maximum</b> health)</span> as <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a>, for a <b>minimum</b> of <span style="color:orange; white-space:normal">150% <b>base</b> AD</span> and a <b>maximum</b> of <span style="color:orange; white-space:normal">250% <b>base</b> AD</span> against monsters. If the target is a champion, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="/wiki/images/Heal_power_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for <span style="color:orange; white-space:normal">88% <b>base</b> AD</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;<span style="white-space:pre;">(<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Melee"><a href="/wiki/Melee" title="Melee"><img alt="Melee role" src="/wiki/images/Melee_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 2.<small>2</small>%</span> / <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ranged"><a href="/wiki/Ranged" title="Ranged"><img alt="Ranged role" src="/wiki/images/Ranged_role.png" decoding="async" loading="lazy" width="16" height="16" class="lazyload"></a> 1.<small>1</small>%</span>)</span> of target\'s <b>maximum</b> health)</span> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
-      mythic: {
-        armpen: 3,
-        mpen: 3,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">3% armor penetration</span> and <span style="color:turquoise; white-space:normal">3% magic penetration</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14139,7 +15216,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3078_fighter_t4_trinityforce.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -288px; width:48px; height:48px;",
     image: {
       full: '7018.png',
       sprite: 'item2.png',
@@ -14151,7 +15228,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -14169,19 +15248,22 @@ export default {
         unique: true,
         description:
           "Basic attacks grant [{as|20 '''bonus''' movement speed}} for 5 seconds and, if the target is a champion or a structure, increase {{as|'''base''' attack damage by 4%}} for the same duration, stacking up to 5 times for a {{as|20% increase|attack damage}}. Stacks expire by one every {{fd|0.5}] seconds when the duration ends.",
+        descriptionHTML:
+          'Basic attacks grant <span style="color: #F5EE99; white-space:normal">20 <b>bonus</b> movement speed</span> for 5 seconds and, if the target is a champion or a structure, increase <span style="color:orange; white-space:normal"><b>base</b> attack damage by 4%</span> for the same duration, stacking up to 5 times for a <span style="color:orange; white-space:normal">20% increase</span>. Stacks expire by one every 0.<small>5</small> seconds when the duration ends.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Spellblade',
         unique: true,
         description:
           "After using an [[Champion ability|ability]], your next basic attack within 10 seconds deals [{as|200% '''base''' AD}} {{as|'''bonus''' physical damage}] [[on-hit]].",
+        descriptionHTML:
+          'After using an <a href="/wiki/Champion_ability" title="Champion ability">ability</a>, your next basic attack within 10 seconds deals <span style="color:orange; white-space:normal">200% <b>base</b> AD</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> (1.<small>5</small> (begins after using the empowered attack) second cooldown).',
+        descriptionRatios: [],
         cd: '[{fd|1.5}] (begins after using the empowered attack)',
       },
-      mythic: {
-        ad: 3,
-        ah: 3,
-        msflat: 3,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">3 <b>bonus</b> attack damage</span>, <span style="color: #FFFDC9; white-space:normal">3 ability haste</span>, and <span style="color: #F5EE99; white-space:normal">3 <b>bonus</b> movement speed</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14217,7 +15299,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3190_enchanter_t4_locketofironsolari.pie_c_12_23.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -288px; width:48px; height:48px;",
     image: {
       full: '7019.png',
       sprite: 'item2.png',
@@ -14230,7 +15312,8 @@ export default {
     maps: ['SR', 'HA'],
     depth: 4,
     limit:
-      "''Devotion's'' shield is reduced by 75% if the target was affected by another ''Devotion'' in the last 20 seconds.",
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br> <i>Devotion\'s</i> shield is reduced by 75% if the target was affected by another <i>Devotion</i> in the last 20 seconds.</p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -14242,21 +15325,27 @@ export default {
       mr: 40,
     },
     effects: {
-      act: {
-        name: 'Devotion',
-        unique: true,
-        description:
-          "Grant you and allied champions within [{tip|cr|icononly:true}} 850 units a {{tip|shield}} for {{pp|200 to 360|type:target's level}} that decays over {{fd|2.5}] seconds.",
-        cd: 90,
-      },
       pass: {
         name: 'Consecrate',
         unique: true,
         description:
           "Grant allied champions (''excluding yourself'') within [{tt|850 units|center to edge}} {{as|3 '''bonus''' armor}} and {{as|3 '''bonus''' magic resistance}].",
+        descriptionHTML:
+          'Grant allied champions (<i>excluding yourself</i>) within <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="center to edge">850 units</span> <span style="color:yellow; white-space:normal">3 <b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal">3 <b>bonus</b> magic resistance</span>.',
+        descriptionRatios: [],
       },
       mythic:
-        "2 '''bonus''' resistances for this item's passive effect, ''Consecrate''",
+        "Empowers each of your other Legendary items with 2 <b>bonus</b> resistances for this item's passive effect, <i>Consecrate</i>.",
+      act: {
+        name: 'Devotion',
+        unique: true,
+        description:
+          "Grant you and allied champions within [{tip|cr|icononly:true}} 850 units a {{tip|shield}} for {{pp|200 to 360|type:target's level}} that decays over {{fd|2.5}] seconds.",
+        descriptionHTML:
+          'Grant you and allied champions within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 850 units a <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shield</a></span> for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="target\'s level" data-start="200;" data-finish="360;" data-bot_values="200;209.41;218.82;228.24;237.65;247.06;256.47;265.88;275.29;284.71;294.12;303.53;312.94;322.35;331.76;341.18;350.59;360" data-top_values="">200 − 360 (based on target\'s level)</span> that decays over 2.<small>5</small> seconds (90 second cooldown).',
+        descriptionRatios: [],
+        cd: 90,
+      },
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14293,7 +15382,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/2065_tank_t4_shurelyasbattlesong.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -288px; width:48px; height:48px;",
     image: {
       full: '7020.png',
       sprite: 'item2.png',
@@ -14305,7 +15394,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -14323,17 +15414,22 @@ export default {
         unique: true,
         description:
           "[{tip|Heal|Healing}}, {{tip|shield|shielding}}, or [[buff]]ing allied champions (''excluding yourself'') grants you and them {{as|20% '''bonus''' movement speed}} for {{fd|1.5}] seconds.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span>, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span>, or <a href="/wiki/Buff" title="Buff">buffing</a> allied champions (<i>excluding yourself</i>) grants you and them <span style="color: #F5EE99; white-space:normal">20% <b>bonus</b> movement speed</span> for 1.<small>5</small> seconds (4 (per champion) second cooldown).',
+        descriptionRatios: [],
         cd: '4 (per champion)',
       },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
       act: {
         name: 'Inspire',
         unique: true,
         description:
           "Grants you and all allies within 1000 units [{as|30% '''bonus''' movement speed}] for 4 seconds.",
+        descriptionHTML:
+          'Grants you and all allies within 1000 units <span style="color: #F5EE99; white-space:normal">30% <b>bonus</b> movement speed</span> for 4 seconds (75 second cooldown).',
+        descriptionRatios: [],
         cd: 75,
-      },
-      mythic: {
-        ah: 5,
       },
     },
     type: ['Mythic'],
@@ -14369,7 +15465,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6617_enchanter_t4_moonstonerenewer.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -288px; width:48px; height:48px;",
     image: {
       full: '7021.png',
       sprite: 'item2.png',
@@ -14381,7 +15477,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -14397,10 +15495,12 @@ export default {
         unique: true,
         description:
           "[{tip|Heal|Healing}} or {{tip|shield|shielding}} an allied champion chains the effect to the other nearest allied champion within {{tip|cr|icononly : true}] 800 units of them (''excluding yourself''), granting them 35% of the heal or 40% of the shield. If no other allied champions are in the radius, grant the same target an additional 25% of the heal or 30% of the shield.",
+        descriptionHTML:
+          '<span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> an allied champion chains the effect to the other nearest allied champion within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 800 units of them (<i>excluding yourself</i>), granting them 35% of the heal or 40% of the shield. If no other allied champions are in the radius, grant the same target an additional 25% of the heal or 30% of the shield.',
+        descriptionRatios: [],
       },
-      mythic: {
-        hsp: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #60E08F; white-space:normal">5% heal and shield power</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14429,7 +15529,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3001_support_lunari.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -288px; width:48px; height:48px;",
     image: {
       full: '7023.png',
       sprite: 'item2.png',
@@ -14441,7 +15541,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -14458,11 +15560,12 @@ export default {
         unique: true,
         description:
           "Becoming affected by or applying an [{tip|immobilize|immobilizing}} or {{tip|ground|grounding}} effect to or from an enemy champion affects them and all enemy champions within {{tip|cr|icononly : true}] 600 units of you with ''Repent'', increasing the damage they take by 10% for 5 seconds.",
+        descriptionHTML:
+          'Becoming affected by or applying an <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Immobilize"><a href="/wiki/Crowd_control#Immobilizing" title="Crowd control"><img alt="Stun icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/9/9d/Stun_icon.png/revision/latest/scale-to-width-down/20?cb=20171201223940" decoding="async" loading="lazy" width="20" height="20" data-image-name="Stun icon.png" data-image-key="Stun_icon.png"></a> <a href="/wiki/Crowd_control#Immobilizing" title="Crowd control">immobilizing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ground"><a href="/wiki/Ground" title="Ground"><img alt="Grounded icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/26/Grounded_icon.png/revision/latest/scale-to-width-down/20?cb=20160509000039" decoding="async" loading="lazy" width="20" height="20" data-image-name="Grounded icon.png" data-image-key="Grounded_icon.png"></a> <a href="/wiki/Ground" class="mw-redirect" title="Ground">grounding</a></span> effect to or from an enemy champion affects them and all enemy champions within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 600 units of you with <i>Repent</i>, increasing the damage they take by 10% for 5 seconds.',
+        descriptionRatios: [],
       },
-      mythic: {
-        armor: 5,
-        mr: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">5 armor</span> and <span style="color: #00FFFF; white-space:normal">5 magic resistance</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14497,7 +15600,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/4644_crown.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -288px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -288px -288px; width:48px; height:48px;",
     image: {
       full: '7024.png',
       sprite: 'item2.png',
@@ -14509,7 +15612,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -14526,6 +15631,9 @@ export default {
         unique: true,
         description:
           "Become ''Safeguarded'' to reduce incoming champion damage by 75%, lingering for [{fd|1.5}] seconds after taking damage from a champion.",
+        descriptionHTML:
+          'Become <i>Safeguarded</i> to reduce incoming champion damage by 75%, lingering for 1.<small>5</small> seconds after taking damage from a champion (40 (restarts upon taking damage from champions) second cooldown).',
+        descriptionRatios: [],
         cd: '40 (restarts upon taking damage from champions)',
       },
       pass2: {
@@ -14533,11 +15641,12 @@ export default {
         unique: true,
         description:
           "While ''Safeguarded'', gain [{as|{{pp|10 to 40|1;9 to 18 by 1|formula:10, then +3 per level starting at level 9}} ability power}], lingering for 3 seconds after ''Safeguard'' is deactivated.",
+        descriptionHTML:
+          'While <i>Safeguarded</i>, gain <span style="color: #7A6DFF; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-displayformula="10, then +3 per level starting at level 9" data-bot_values="10;13;16;19;22;25;28;31;34;37;40" data-top_values="1;9;10;11;12;13;14;15;16;17;18">10 − 40 (based on level)</span> ability power</span>, lingering for 3 seconds after <i>Safeguard</i> is deactivated.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ap: 8,
-        ms: 1,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #F5EE99; white-space:normal">1% <b>bonus</b> movement speed</span> and <span style="color: #7A6DFF; white-space:normal">8 ability power</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14566,7 +15675,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3084_tank_t4_heartsteel.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -288px; width:48px; height:48px;",
     image: {
       full: '7025.png',
       sprite: 'item2.png',
@@ -14578,7 +15687,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
       'onhit effects': true,
@@ -14594,11 +15705,13 @@ export default {
         unique: true,
         description:
           "While within 700 units of an enemy champion, generate a stack on them each second, stacking up to 3 times. Your next basic attack against a target with 3 stacks is empowered to consume them all to deal [{as|125|physical damage}} {{as|(+ 6% '''maximum''' health)}} {{as|'''bonus''' physical damage}} [[on-hit]] and grant you permanent {{as|'''bonus''' health}} equal to{{ft|10% of that amount|{{as|{{ap|125*0.1}} (+ {{fd|0.6}}% '''maximum''' health)}}}]",
+        descriptionHTML:
+          'While within 700 units of an enemy champion, generate a stack on them each second, stacking up to 3 times. Your next basic attack against a target with 3 stacks is empowered to consume them all to deal <span style="color: #FF8C34; white-space:normal">125</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;6% <b>maximum</b> health)</span> <span style="color: #FF8C34; white-space:normal"><b>bonus</b> physical damage</span> <a href="/wiki/On-hit" class="mw-redirect" title="On-hit">on-hit</a> and grant you permanent <span style="color: #1F995C; white-space:normal"><b>bonus</b> health</span> equal to<span id="container" class="container" style="cursor:help;"><span class="flipText1 active">「&nbsp;10% of that amount&nbsp;」</span><span class="flipText2">「&nbsp;<span style="color: #1F995C; white-space:normal">12.<small>5</small> (+&nbsp;0.<small>6</small>% <b>maximum</b> health)</span>&nbsp;」</span></span> (30 (per target) second cooldown).',
+        descriptionRatios: [],
         cd: '30 (per target)',
       },
-      mythic: {
-        spec: "[{as|1% '''maximum''' health}] and 6% increased [[size]]",
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">1% <b>maximum</b> health</span> and 6% increased <a href="/wiki/Size" title="Size">size</a>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14634,7 +15747,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6665_tank_t4_jakshotheprotean.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -288px; width:48px; height:48px;",
     image: {
       full: '7026.png',
       sprite: 'item2.png',
@@ -14646,7 +15759,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -14662,11 +15777,12 @@ export default {
         unique: true,
         description:
           "For each second in combat with champions, gain 2 [{as|'''bonus''' armor}} and {{as|'''bonus''' magic resistance}} for 6 seconds, stacking up to 8 times for a maximum of 16 '''bonus''' resistances. At maximum stacks, instantly deal {{as|80|magic damage}} {{as|(+ 7% '''bonus''' health)}} {{as|magic damage}} to enemy champions within 700 units, {{tip|heal}] for the same amount for each target damaged, and increase your '''bonus''' resistances by 20% until the end of combat.",
+        descriptionHTML:
+          'For each second in combat with champions, gain 2 <span style="color:yellow; white-space:normal"><b>bonus</b> armor</span> and <span style="color: #00FFFF; white-space:normal"><b>bonus</b> magic resistance</span> for 6 seconds, stacking up to 8 times for a maximum of 16 <b>bonus</b> resistances. At maximum stacks, instantly deal <span style="color: #00B0F0; white-space:normal">80</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;7% <b>bonus</b> health)</span> <span style="color: #00B0F0; white-space:normal">magic damage</span> to enemy champions within 700 units, <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for the same amount for each target damaged, and increase your <b>bonus</b> resistances by 20% until the end of combat.',
+        descriptionRatios: [],
       },
-      mythic: {
-        armor: 5,
-        mr: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">5 armor</span> and <span style="color: #00FFFF; white-space:normal">5 magic resistance</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14702,7 +15818,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6667_tank_t4_radiantvirtue.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -432px -288px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -432px -288px; width:48px; height:48px;",
     image: {
       full: '7027.png',
       sprite: 'item2.png',
@@ -14714,7 +15830,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -14730,11 +15848,13 @@ export default {
         unique: true,
         description:
           "Upon casting your [[champion ability|ultimate]], you ''Transcend'' for 9 seconds. While ''Transcended'', increase your [{as|'''maximum''' health by {{fd|12.5}}%}} and cause you and all allies within {{tip|cr|icononly:true}} 1200 units to {{tip|heal}} for {{as|{{fd|2.5}}% of your '''maximum''' health}] upon you ''Transcending'' and every 3 seconds thereafter.",
+        descriptionHTML:
+          'Upon casting your <a href="/wiki/Champion_ability" title="Champion ability">ultimate</a>, you <i>Transcend</i> for 9 seconds. While <i>Transcended</i>, increase your <span style="color: #1F995C; white-space:normal"><b>maximum</b> health by 12.<small>5</small>%</span> and cause you and all allies within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="https://static.wikia.nocookie.net/leagueoflegends/images/c/cf/Range_center.png/revision/latest/scale-to-width-down/20?cb=20150616134211" decoding="async" loading="lazy" width="20" height="20" data-image-name="Range center.png" data-image-key="Range_center.png"></a></span> 1200 units to <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">heal</a></span> for <span style="color: #1F995C; white-space:normal">2.<small>5</small>% of your <b>maximum</b> health</span> upon you <i>Transcending</i> and every 3 seconds thereafter (90 second cooldown).',
+        descriptionRatios: [],
         cd: 90,
       },
-      mythic: {
-        hp: 75,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #1F995C; white-space:normal">75 <b>bonus</b> health</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14771,7 +15891,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6657_mage_t4_rodofages.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -0px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -0px -336px; width:48px; height:48px;",
     image: {
       full: '7028.png',
       sprite: 'item2.png',
@@ -14783,7 +15903,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Eternity" title="Item group">Eternity</a></b></span> item.<br>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       mage: true,
       movement: true,
@@ -14799,10 +15921,12 @@ export default {
         unique: true,
         description:
           "This item gains [{as|20 '''bonus''' health}}, {{as|20 '''bonus''' mana}}, and {{as|4 ability power}} every minute, up to 10 times, for a maximum of {{as|200 '''bonus''' health}}, {{as|200 '''bonus''' mana}}, and {{as|40 ability power}]. Upon reaching maximum stacks, gain a level that preserves your current experience (cap remains at level 18) and increase all effects of ''Eternity'' by 50%.",
+        descriptionHTML:
+          'This item gains <span style="color: #1F995C; white-space:normal">20 <b>bonus</b> health</span>, <span style="color: #0099CC; white-space:normal">20 <b>bonus</b> mana</span>, and <span style="color: #7A6DFF; white-space:normal">4 ability power</span> every minute, up to 10 times, for a maximum of <span style="color: #1F995C; white-space:normal">200 <b>bonus</b> health</span>, <span style="color: #0099CC; white-space:normal">200 <b>bonus</b> mana</span>, and <span style="color: #7A6DFF; white-space:normal">40 ability power</span>. Upon reaching maximum stacks, gain a level that preserves your current experience (cap remains at level 18) and increase all effects of <i>Eternity</i> by 50%.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14837,7 +15961,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3142_assassin_t3_youmuusghostblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -48px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -48px -336px; width:48px; height:48px;",
     image: {
       full: '7029.png',
       sprite: 'item2.png',
@@ -14849,7 +15973,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       assassin: true,
       movement: true,
@@ -14860,21 +15986,26 @@ export default {
       lethality: 26,
     },
     effects: {
+      pass: {
+        name: 'Haunt',
+        unique: true,
+        description:
+          "While moving, generate 1 ''Spectral Shard'' for every 55 units travelled. Gain [{as|{{fd|0.4}} '''bonus''' movement speed}} while out-of-combat for every ''Spectral Shard'', up to {{as|40 '''bonus''' movement speed}} with 100 ''Spectral Shards''. At maximum shards, also gain {{as|{{pp|3;4 to 12|1;8;10;12 to 18 for 7}} lethality}]. Dealing damage to an enemy champion causes ''Spectral Shards'' to reset after 3 seconds.",
+        descriptionHTML:
+          'While moving, generate 1 <i>Spectral Shard</i> for every 55 units travelled. Gain <span style="color: #F5EE99; white-space:normal">0.<small>4</small> <b>bonus</b> movement speed</span> while out-of-combat for every <i>Spectral Shard</i>, up to <span style="color: #F5EE99; white-space:normal">40 <b>bonus</b> movement speed</span> with 100 <i>Spectral Shards</i>. At maximum shards, also gain <span style="color:tomato; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-bot_values="3;4;5;6;7;8;9;10;11;12" data-top_values="1;8;10;12;13;14;15;16;17;18">3 − 12 (based on level)</span> lethality</span>. Dealing damage to an enemy champion causes <i>Spectral Shards</i> to reset after 3 seconds.',
+        descriptionRatios: [],
+      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">7 <b>bonus</b> attack damage</span>.',
       act: {
         name: 'Wraith Step',
         unique: true,
         description:
           "Gain [{as|25% '''bonus''' movement speed}} and {{tip|ghosted|ghosting}] for 6 seconds.",
+        descriptionHTML:
+          'Gain <span style="color: #F5EE99; white-space:normal">25% <b>bonus</b> movement speed</span> and <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Ghosted"><a href="/wiki/Unit_collision" title="Unit collision"><img alt="Ghost" src="https://static.wikia.nocookie.net/leagueoflegends/images/a/ab/Ghost.png/revision/latest/scale-to-width-down/20?cb=20180514003209" decoding="async" loading="lazy" width="20" height="20" data-image-name="Ghost.png" data-image-key="Ghost.png"></a> <a href="/wiki/Unit_collision" title="Unit collision">ghosting</a></span> for 6 seconds (45 second cooldown).',
+        descriptionRatios: [],
         cd: 45,
-      },
-      pass: {
-        name: 'Haunt',
-        unique: true,
-        description:
-          "While moving, generate 1 ''Spectral Shard'' for every 55 units travelled. Gain [{as|0.4 '''bonus''' movement speed}} while out-of-combat for every ''Spectral Shard'', up to {{as|40 '''bonus''' movement speed}} with 100 ''Spectral Shards''. At maximum shards, also gain {{as|{{pp|3;4 to 12|1;8;10;12 to 18 for 7}} lethality}]. Dealing damage to an enemy champion causes ''Spectral Shards'' to reset after 3 seconds.",
-      },
-      mythic: {
-        ad: 7,
       },
     },
     type: ['Mythic'],
@@ -14910,7 +16041,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3124_marksman_t3_guinsoosrageblade.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -96px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -96px -336px; width:48px; height:48px;",
     image: {
       full: '7030.png',
       sprite: 'item2.png',
@@ -14922,7 +16053,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       fighter: true,
       marksman: true,
@@ -14939,17 +16072,21 @@ export default {
         unique: true,
         description:
           "Basic attacks deal [{as|30 '''bonus''' magic damage}} on-hit. Additionally, convert every {{as|1% critical strike chance}} into {{as|{{fd|1.5}} '''additional bonus''' magic damage|magic damage}} on-hit, capped at {{as|100% critical strike chance}}, for a '''maximum''' of {{as|180 '''bonus''' magic damage}} on-hit. This damage is affected by {{tip|critical strike}] modifiers.",
+        descriptionHTML:
+          'Basic attacks deal <span style="color: #00B0F0; white-space:normal">30 <b>bonus</b> magic damage</span> on-hit. Additionally, convert every <span style="color: #E56013; white-space:normal">1% critical strike chance</span> into <span style="color: #00B0F0; white-space:normal">1.<small>5</small> <b>additional bonus</b> magic damage</span> on-hit, capped at <span style="color: #E56013; white-space:normal">100% critical strike chance</span>, for a <b>maximum</b> of <span style="color: #00B0F0; white-space:normal">180 <b>bonus</b> magic damage</span> on-hit. This damage is affected by <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Critical strike"><a href="/wiki/Critical_strike" title="Critical strike"><img alt="Critical strike icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/4/41/Critical_strike_icon.png/revision/latest/scale-to-width-down/20?cb=20191126102550" decoding="async" loading="lazy" width="20" height="20" data-image-name="Critical strike icon.png" data-image-key="Critical_strike_icon.png"></a> <a href="/wiki/Critical_strike" title="Critical strike">critical strike</a></span> modifiers.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Seething Strike',
         unique: true,
         description:
           "Basic attacks grant [{as|8% '''bonus''' attack speed}} for 3 seconds, stacking up to 4 times for a total of {{as|32% '''bonus''' attack speed}}. At maximum stacks, basic attacks on-attack grant a ''Phantom'' stack for 6 seconds, up to 2 stacks. At 2 ''Phantom'' stacks, the next basic attack consumes all stacks on-attack to trigger a ''Phantom Hit'' that applies {{tip|on-hit}} effects to the target at 100% effectiveness after a {{fd|0.15}] second delay.",
+        descriptionHTML:
+          'Basic attacks grant <span style="color:orangered; white-space:normal">8% <b>bonus</b> attack speed</span> for 3 seconds, stacking up to 4 times for a total of <span style="color:orangered; white-space:normal">32% <b>bonus</b> attack speed</span>. At maximum stacks, basic attacks on-attack grant a <i>Phantom</i> stack for 6 seconds, up to 2 stacks. At 2 <i>Phantom</i> stacks, the next basic attack consumes all stacks on-attack to trigger a <i>Phantom Hit</i> that applies <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="On-hit"><a href="/wiki/Attack_effects#On_Hitting" title="Attack effects"><img alt="On-hit icon" src="/wiki/images/On-hit_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Attack_effects#On_Hitting" title="Attack effects">on-hit</a></span> effects to the target at 100% effectiveness after a 0.<small>15</small> second delay.',
+        descriptionRatios: [],
       },
-      mythic: {
-        armpen: 5,
-        mpen: 6,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:yellow; white-space:normal">5% armor penetration</span> and <span style="color:turquoise; white-space:normal">6% magic penetration</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -14978,7 +16115,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/3031_marksman_t3_infinityedge.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -144px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -144px -336px; width:48px; height:48px;",
     image: {
       full: '7031.png',
       sprite: 'item2.png',
@@ -14990,19 +16127,20 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
     stats: {
       ad: 100,
       crit: 20,
-      spec: '+35% critical strike damage',
+      critdamage: 35,
     },
     effects: {
-      mythic: {
-        ad: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">5 <b>bonus</b> attack damage</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -15037,7 +16175,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6675_marksman_t3_navoriquickblades.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -192px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -192px -336px; width:48px; height:48px;",
     image: {
       full: '7032.png',
       sprite: 'item2.png',
@@ -15049,7 +16187,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       marksman: true,
     },
@@ -15064,16 +16204,21 @@ export default {
         unique: true,
         description:
           "Basic attacks [[on-attack]] reduce your basic abilities' '''current''' cooldowns by 15% of their remaining cooldowns.",
+        descriptionHTML:
+          'Basic attacks <a href="/wiki/On-attack" class="mw-redirect" title="On-attack">on-attack</a> reduce your basic abilities\' <b>current</b> cooldowns by 15% of their remaining cooldowns.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Impermanence',
         unique: true,
         description:
           'Your [[ability damage]] and [[damage|proc damage]] dealt by [[champion ability|abilities]] is increased by [{pp|type:critical strike chance|0 to 20 for 6|key:%|0 to 100|key1:%|color:critical strike chance}].',
+        descriptionHTML:
+          'Your <a href="/wiki/Ability_damage" title="Ability damage">ability damage</a> and <a href="/wiki/Damage" title="Damage">proc damage</a> dealt by <a href="/wiki/Champion_ability" title="Champion ability">abilities</a> is increased by <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help; color:#E56013;" data-top_label="critical strike chance" data-start="0;0" data-finish="20;100" data-bot_values="0;4;8;12;16;20" data-top_values="0;20;40;60;80;100" data-bot_key="%" data-top_key="%">0% − 20% (based on critical strike chance)</span>.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ad: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color:orange; white-space:normal">5 <b>bonus</b> attack damage</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -15102,7 +16247,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/6620_echoes_of_helia.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -240px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -240px -336px; width:48px; height:48px;",
     image: {
       full: '7033.png',
       sprite: 'item2.png',
@@ -15114,7 +16259,9 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 4,
-    limit: '',
+    limit:
+      '<p>Limited to 1 <span class="template_sbc"><b><a href="/wiki/Item_group#Mythic" title="Item group">Mythic</a></b></span> item.<br></p>',
+    requirementDescription: '',
     menu: {
       support: true,
     },
@@ -15130,16 +16277,21 @@ export default {
         unique: true,
         description:
           "Damaging an enemy champion with a basic attack or [[ability damage]] grants a ''Soul Shard'', up to 2. [{tip|Heal|Healing}} or {{tip|shield|shielding}} an allied champion (''excluding yourself'') consumes all ''Soul Shards'' to launch a missile at them and the nearest enemy champion within 1100 units of them, healing the ally for {{pp|20 to 80 for 13|1;7 to 18|type:ally's level}} per shard and dealing {{as|{{pp|30 to 180 for 13|1;7 to 18|type:ally's level}} magic damage}] per shard to the enemy.",
+        descriptionHTML:
+          'Damaging an enemy champion with a basic attack or <a href="/wiki/Ability_damage" title="Ability damage">ability damage</a> grants a <i>Soul Shard</i>, up to 2. <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Heal"><a href="/wiki/Healing" title="Healing"><img alt="Heal power icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/e/e7/Heal_power_icon.png/revision/latest/scale-to-width-down/20?cb=20170909150244" decoding="async" loading="lazy" width="20" height="20" data-image-name="Heal power icon.png" data-image-key="Heal_power_icon.png"></a> <a href="/wiki/Healing" title="Healing">Healing</a></span> or <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Shield"><a href="/wiki/Shield" title="Shield"><img alt="Hybrid resistances icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/5/55/Hybrid_resistances_icon.png/revision/latest/scale-to-width-down/20?cb=20170516021237" decoding="async" loading="lazy" width="20" height="20" data-image-name="Hybrid resistances icon.png" data-image-key="Hybrid_resistances_icon.png"></a> <a href="/wiki/Shield" title="Shield">shielding</a></span> an allied champion (<i>excluding yourself</i>) consumes all <i>Soul Shards</i> to launch a missile at them and the nearest enemy champion within 1100 units of them, healing the ally for <span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="ally\'s level" data-bot_values="20;25;30;35;40;45;50;55;60;65;70;75;80" data-top_values="1;7;8;9;10;11;12;13;14;15;16;17;18">20 − 80 (based on ally\'s level)</span> per shard and dealing <span style="color: #00B0F0; white-space:normal"><span class="pp-tooltip" style="position:relative; border-bottom:1px dotted; cursor:help;" data-top_label="ally\'s level" data-bot_values="30;42.5;55;67.5;80;92.5;105;117.5;130;142.5;155;167.5;180" data-top_values="1;7;8;9;10;11;12;13;14;15;16;17;18">30 − 180 (based on ally\'s level)</span> magic damage</span> per shard to the enemy.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Dissonance',
         unique: true,
         description:
           "Gain [{as|3 ability power}} for every additional {{as|25% '''base''' mana regeneration}}. Disables {{sbc|{{nie|Harmony}}}] on your other items.",
+        descriptionHTML:
+          'Gain <span style="color: #7A6DFF; white-space:normal">3 ability power</span> for every additional <span style="color: #0099CC; white-space:normal">25% <b>base</b> mana regeneration</span>. Disables <span class="template_sbc"><b><a href="/wiki/Named_item_effect#Harmony" title="Named item effect">Harmony</a></b></span> on your other items.',
+        descriptionRatios: [],
       },
-      mythic: {
-        ah: 5,
-      },
+      mythic:
+        'Empowers each of your other Legendary items with <span style="color: #FFFDC9; white-space:normal">5 ability haste</span>.',
     },
     type: ['Mythic'],
     category: 'ornnitems',
@@ -15168,7 +16320,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/8001_tank_t3_anathemaschains.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -336px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -336px -336px; width:48px; height:48px;",
     image: {
       full: '8001.png',
       sprite: 'item2.png',
@@ -15180,7 +16332,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: "<p>Limited to 1 <b>Anathema's Chains</b>.<br></p>",
+    requirementDescription: '',
     menu: {
       tank: true,
       support: true,
@@ -15190,25 +16343,34 @@ export default {
       ah: 20,
     },
     effects: {
-      act: {
-        name: 'Vow',
-        unique: true,
-        description:
-          "Curse the target enemy champion, designating them as your ''Nemesis'' and granting you 1 stack of ''Vendetta'' every 2 seconds over 60 seconds, stacking up to 30 times. These stacks are lost upon selecting a new ''Nemesis''. Cannot be cast for 15 seconds while in combat with enemy champions.",
-        cd: 90,
-        range: 'Global',
-      },
       pass: {
         name: 'Vendetta',
         unique: true,
         description:
           "Take 1% reduced damage per stack of ''Vendetta'' from your ''Nemesis'', up to 30% damage reduction against them.",
+        descriptionHTML:
+          'Take 1% reduced damage per stack of <i>Vendetta</i> from your <i>Nemesis</i>, up to 30% damage reduction against them.',
+        descriptionRatios: [],
       },
       pass2: {
         name: 'Vengeance',
         unique: true,
         description:
           "At '''maximum''' stacks, your ''Nemesis'' has 20% reduced [{tip|tenacity}} while they are within {{tip|cr|icononly : true}] 700 units of you.",
+        descriptionHTML:
+          'At <b>maximum</b> stacks, your <i>Nemesis</i> has 20% reduced <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Tenacity"><a href="/wiki/Tenacity" title="Tenacity"><img alt="Tenacity icon" src="/wiki/images/Tenacity_icon.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a> <a href="/wiki/Tenacity" title="Tenacity">tenacity</a></span> while they are within <span class="glossary" style="white-space:pre; position:relative;" data-game="lol" data-tip="Cr"><a href="/wiki/Range" title="Range"><img alt="Range center" src="/wiki/images/Range_center.png" decoding="async" loading="lazy" width="20" height="20" class="lazyload"></a></span> 700 units of you.',
+        descriptionRatios: [],
+      },
+      act: {
+        name: 'Vow',
+        unique: true,
+        description:
+          "Curse the target enemy champion, designating them as your ''Nemesis'' and granting you 1 stack of ''Vendetta'' every 2 seconds over 60 seconds, stacking up to 30 times. These stacks are lost upon selecting a new ''Nemesis''. Cannot be cast for 15 seconds while in combat with enemy champions.",
+        descriptionHTML:
+          'Curse the target enemy champion, designating them as your <i>Nemesis</i> and granting you 1 stack of <i>Vendetta</i> every 2 seconds over 60 seconds, stacking up to 30 times. These stacks are lost upon selecting a new <i>Nemesis</i>. Cannot be cast for 15 seconds while in combat with enemy champions (90 second cooldown; Global range).',
+        descriptionRatios: [],
+        cd: 90,
+        range: 'Global',
       },
     },
     type: ['Legendary'],
@@ -15245,7 +16407,7 @@ export default {
     iconPath:
       'https://raw.communitydragon.org/latest/game/assets/items/icons2d/8020_tank_t3_abyssalmask.png',
     spriteStyle:
-      "background: url('https://ddragon.leagueoflegends.com/cdn/13.12.1/img/sprite/item2.png') -384px -336px; width:48px; height:48px;",
+      "background: url('https://ddragon.leagueoflegends.com/cdn/13.13.1/img/sprite/item2.png') -384px -336px; width:48px; height:48px;",
     image: {
       full: '8020.png',
       sprite: 'item2.png',
@@ -15257,7 +16419,8 @@ export default {
     },
     maps: ['SR', 'HA'],
     depth: 3,
-    limit: '',
+    limit: '<p>Limited to 1 <b>Abyssal Mask</b>.<br></p>',
+    requirementDescription: '',
     menu: {
       tank: true,
     },
@@ -15272,6 +16435,9 @@ export default {
         unique: true,
         description:
           "Enemy champions within [{tt|550 units|center to edge}} of you become cursed, reducing their {{as|magic resistance by 5}} {{as|(+ {{fd|1.2}}% '''bonus''' health)}}, capped at a reduction of {{as|25|magic resistance}}. Gain {{as|9 '''bonus''' magic resistance}] per cursed enemy.",
+        descriptionHTML:
+          'Enemy champions within <span class="basic-tooltip" style="border-bottom:1px dotted gray;cursor:help;" title="center to edge">550 units</span> of you become cursed, reducing their <span style="color: #00FFFF; white-space:normal">magic resistance by 5</span> <span style="color: #1F995C; white-space:normal">(+&nbsp;1.<small>2</small>% <b>bonus</b> health)</span>, capped at a reduction of <span style="color: #00FFFF; white-space:normal">25</span>. Gain <span style="color: #00FFFF; white-space:normal">9 <b>bonus</b> magic resistance</span> per cursed enemy.',
+        descriptionRatios: [],
       },
     },
     type: ['Legendary'],
@@ -15298,8 +16464,8 @@ export interface ItemGenData {
     | 'GangplankBilgewaterToken'
     | 'S11Support_Quest_Completion_Buff';
   requiredBuffCurrencyCost: 0 | 500;
+  requirementDescription: string,
   specialRecipe: number;
-  // "isEnchantment": check("isEnchantment"),
   price: number;
   priceTotal: number;
   sellPrice: number;
@@ -15323,7 +16489,7 @@ export interface ItemGenData {
   };
   stats: Stats;
   // effects: import("../../dev/WikiItem").Effects;
-  effects: Effects;
+  effects: Partial<Effects>;
   type: string[];
   category:
     | 'championitems'
@@ -15341,33 +16507,35 @@ export interface ItemGenData {
     | 'unsorted';
 }
 
-export interface Effects {
-  act?: Act;
-  act2?: Act;
-  aura?: Act;
-  pass?: Act;
-  pass2?: Act;
-  pass3?: Act;
-  pass4?: Act;
-  pass5?: Act;
-  pass6?: Act;
-  consume?: string;
-  mythic?: Stats | string;
-}
+export type Effects = {
+  act: Act;
+  // act2: Act;
+  // aura: Act;
+  pass: Act;
+  pass2: Act;
+  pass3: Act;
+  pass4: Act;
+  pass5: Act;
+  pass6: Act;
+  consume: string;
+  mythic: string;
+};
 
-export interface Act {
+export type Act = {
   name: string;
   unique: boolean;
   description: string;
   description2?: string;
+  descriptionHTML: string;
+  descriptionRatios: RootRatio[];
   cd?: number | string;
   recharge?: number | string;
   charges?: number | string;
   range?: number | string;
   radius?: number | string;
-}
+};
 
-export interface Stats {
+export type Stats = {
   ad?: number;
   ah?: number;
   ap?: number;
@@ -15390,5 +16558,7 @@ export interface Stats {
   ms?: number;
   msflat?: number;
   omnivamp?: number;
+  critdamage?: number;
   spec?: string;
-}
+  spec_desc?: string;
+};

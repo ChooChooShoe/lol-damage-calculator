@@ -11,7 +11,6 @@ export function fromNumber(id: number): ItemGenData | undefined {
   return itemsGen[id as ItemNumber];
 }
 
-
 export function modelForPassive(passiveName: string): ItemGenData | undefined {
-  return itemsGen[passiveName as ItemNumber];
+  return itemsGen[passiveName as unknown as ItemNumber];
 }

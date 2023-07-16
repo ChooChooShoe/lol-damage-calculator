@@ -1,10 +1,13 @@
 import type { Dictionary } from 'lodash';
 import { CDragonItem } from './communitydragon.js';
-import { WikiItem } from './WikiItem.js';
+import { WikiItem, type Act } from './WikiItem.js';
 import { Item as RiotItemEntry } from './datadragon.js';
-import type { ItemGenData } from '../src/api/DataTypes.js';
-import { valid_knockdown } from './mutate_untils';
+// import type { ItemGenData } from '../src/api/DataTypes.js';
+import { valid_knockdown } from './mutate_untils.js';
 import { fetchLiveItem } from './item/FandomItemPage.js';
+import { parse } from 'path';
+import { spellEffectFromDescription } from './skill_ratios_parse.js';
+import type { RootRatio } from '@/api/DataTypes';
 
 let spriteBaseUri = 'null';
 
@@ -15,6 +18,8 @@ export type Options = Partial<{
   ITEMS_TO_ITEM_ARRAYS: boolean;
   ITEMS_MISSMATCH_TEST: boolean;
 }>;
+
+export const allNamedStatsKeysSet: Set<string> = new Set();
 
 export async function ModelFromJson(
   riotItems: Record<string, RiotItemEntry>,
@@ -105,15 +110,28 @@ async function takeRiftItem(
   a: CDragonItem,
   b: RiotItemEntry,
   c: WikiItem
-): ItemGenData {
-  function check(key: string, key2?: string): number | any[] | undefined {
+): Promise<any> {
+  const liveData = await fetchLiveItem(a.name);
+
+  const name = a.name.trim();
+  if (name !== b.name.trim()) {
+    console.log(`Item ${a.name}:${a.id} - Name mismatch on "${b.name}"`);
+  }
+  if (name !== c.name.trim()) {
+    console.log(`Item ${a.name}:${a.id} - Name mismatch on "${c.name}"`);
+  }
+
+  function check(
+    key: string,
+    key2?: string
+  ): number | any[] | boolean | undefined {
     if (key2) return check_val(`${key}" and "${key2}`, a[key], b[key2]);
     return check_val(key, a[key], b[key]);
   }
   function check_val(
     key: string,
-    val_a: number | any[] | undefined,
-    val_b: number | any[] | undefined
+    val_a: number | any[] | boolean | undefined,
+    val_b: number | any[] | boolean | undefined
   ) {
     if (Array.isArray(val_a)) {
       val_a.sort();
@@ -237,42 +255,64 @@ async function takeRiftItem(
       return 'minionturretitems';
     return 'unsorted';
   }
-  function make_stats() {
-    const ret: Dictionary<any> = c.stats || {};
-    for (const key of ['spec', 'spec2']) {
-      if (ret[key])
-        // Matches [[ thing ]] captures thing
-        ret[key] = ret[key].replace(
-          /\[\[([^[]*)\]\]/g,
-          function (_: any, capture: string) {
-            const parms = capture.split('|');
-            return `${parms[parms.length - 1]}`;
-          }
-        );
-    }
-    return ret;
+  const stats = c.stats || {};
+  delete stats['spec'];
+  delete stats['spec2'];
+  for (const [key, value] of Object.entries(stats)) {
+    allNamedStatsKeysSet.add(key);
+    if (typeof value !== 'number')
+      console.warn(
+        `Item ${a.name}:${a.id} - Stat "${key}" has non-number typed value "${value}"`
+      );
   }
 
-  function get_effects() {
-    const ret = {};
-    for (const [key, val] of Object.entries(c.effects || {})) {
-      if (key === 'consume' || key === 'mythic') ret[key] = val;
-      else
-        ret[key] = {
-          name: val.name || '',
-          unique: val.unique || false,
-          description: val.description,
-          description2: val.description2,
-          cd: Number(val.cd) || val.cd,
-          recharge: Number(val.recharge) || val.recharge,
-          charges: Number(val.charges) || val.charges,
-          range: Number(val.range) || val.range,
-          radius: Number(val.radius) || val.radius,
-        };
+  function parse_effect(val: Act | undefined | string, live: string) {
+    if (typeof val === 'string') {
+      console.log('Effect Type can not be string');
+      return undefined;
     }
-    return ret;
-  } // if (b.description) b.description = b.description.replace(/<attention>/g, "<attention> ").replace(/  /g, " ").replace(/<br> /g, "<br>");
-  // if (a.description) a.description = a.description.replace(/<attention>/g, "<attention> ").replace(/  /g, " ").replace(/<br> /g, "<br>");
+    // Try to make RootRatios out of every Effect.
+    const descriptionRatios: RootRatio[] = [];
+    for (const [idx, line] of Object.entries(live.split('<br>'))) {
+      const x = spellEffectFromDescription(`Line ${idx + 1}:`, line);
+
+      // Number 0 or number with no sub_ratios
+      if (typeof x.values === 'number') {
+        if (x.values === 0 || !x.children) continue;
+      }
+      descriptionRatios.push(x);
+    }
+
+    return {
+      name: val?.name || '',
+      unique: val?.unique || false,
+      description: val?.description || '',
+      // description2: val.description2,
+      descriptionHTML: live,
+      descriptionRatios,
+      cd: Number(val?.cd) || val?.cd,
+      recharge: Number(val?.recharge) || val?.recharge,
+      charges: Number(val?.charges) || val?.charges,
+      range: Number(val?.range) || val?.range,
+      radius: Number(val?.radius) || val?.radius,
+    };
+  }
+  const effects = {
+    consume: parse_effect(
+      { name: 'Consume', description: '' },
+      liveData.consume
+    ),
+    pass: parse_effect(c.effects?.pass, liveData.pass),
+    pass2: parse_effect(c.effects?.pass2, liveData.pass2),
+    pass3: parse_effect(c.effects?.pass3, liveData.pass3),
+    pass4: parse_effect(c.effects?.pass4, liveData.pass4),
+    pass5: parse_effect(c.effects?.pass5, liveData.pass5),
+    mythic: parse_effect(
+      { name: 'Mythic Passive', description: '' },
+      liveData.mythic
+    ),
+    act: parse_effect(c.effects?.act, liveData.act),
+  };
 
   // if (!a.iconPath.startsWith('/lol-game-data/assets/DATA/Items/Icons2D/')) {
   //     console.log("Unknown Item PAth", a.iconPath);
@@ -300,17 +340,12 @@ async function takeRiftItem(
       a.iconPath.slice(a.iconPath.lastIndexOf('/')).toLowerCase()
     : '';
 
-  const liveData = await fetchLiveItem(c.name);
-  console.log(liveData);
-
   return {
     id: a.id,
-    name: check('name'),
-    liveDate: liveData,
+    name,
     description: a.description,
     colloq: colloq,
     active: a.active,
-    inStore: check('inStore'),
     from: check('from') || [],
     to: check('to', 'into') || [],
     categories: check('categories', 'tags'),
@@ -324,7 +359,7 @@ async function takeRiftItem(
     price: check_val('price', a.price, b.gold.base),
     priceTotal: check_val('priceTotal', a.priceTotal, b.gold.total),
     sellPrice: b.gold.sell || 0,
-    purchasable: b.gold.purchasable || false,
+    inStore: check_val('inStore', a.inStore, b.gold.purchasable),
     iconPath: iconPath,
     spriteStyle: b.image
       ? `background: url('${spriteBaseUri}${b?.image?.sprite}') -${b?.image?.x}px -${b?.image?.y}px; width:${b?.image?.w}px; height:${b?.image?.h}px;`
@@ -332,10 +367,13 @@ async function takeRiftItem(
     image: b.image || null,
     maps: map_number_to_names(b.maps),
     depth: b.depth !== undefined ? b.depth : 1,
-    limit: c.limit || '',
+    limit: liveData.limit,
+    requirementDescription: liveData.req,
     menu: c.menu || {},
-    stats: make_stats(),
-    effects: get_effects(),
+    stats,
+    specialStat: liveData.spec || undefined,
+    specialStat2: liveData.spec2 || undefined,
+    effects,
     type: get_type(),
     category: get_category(),
   };

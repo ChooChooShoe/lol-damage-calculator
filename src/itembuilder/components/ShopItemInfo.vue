@@ -32,13 +32,48 @@
           <span class="inline gold">{{ value.gold.sell }}</span>
           <span>)</span>
         </div> -->
-      <div class="inline" v-if="!value.purchasable">
-        <span>&nbsp;-&nbsp;</span>
-        <span class="red">Not for Sale</span>
-      </div>
       <div class="inline" v-if="!value.inStore">
         <span>&nbsp;-&nbsp;</span>
         <span class="red">Not In Store</span>
+      </div>
+
+      <div>
+        <StatsDiv :stats="value.stats"> </StatsDiv>
+      </div>
+
+      <div>
+        <ItemEffects pkey="act" :itemEffect="value.effects.act"></ItemEffects>
+        <ItemEffects pkey="p1" :itemEffect="value.effects.pass"></ItemEffects>
+        <ItemEffects pkey="p2" :itemEffect="value.effects.pass2"></ItemEffects>
+        <ItemEffects pkey="p3" :itemEffect="value.effects.pass3"></ItemEffects>
+        <ItemEffects pkey="p4" :itemEffect="value.effects.pass4"></ItemEffects>
+        <ItemEffects pkey="p5" :itemEffect="value.effects.pass5"></ItemEffects>
+
+        <div v-if="value.effects.consume">
+          <span class="item__name">Consume</span>
+          <div v-html="value.effects.consume"></div>
+          <!-- <SpellEffects
+            v-for="(ratio, index) in itemEffect.descriptionRatios"
+            :key="index"
+            :pkey="`${itemEffect.name} - ${pkey} #${index + 1})`"
+            :details="{ name: ratio.name, values: ratio.pre!, valuesHTML: ratio.pre! }"
+            :effect="ratio"
+            :effectindex="index"
+          ></SpellEffects> -->
+        </div>
+
+        <div v-if="value.effects.mythic">
+          <span class="item__mythicpassive">Mythic Passive:&nbsp;</span>
+          <span v-html="value.effects.mythic"></span>
+          <!-- <SpellEffects
+            v-for="(ratio, index) in itemEffect.descriptionRatios"
+            :key="index"
+            :pkey="`${itemEffect.name} - ${pkey} #${index + 1})`"
+            :details="{ name: ratio.name, values: ratio.pre!, valuesHTML: ratio.pre! }"
+            :effect="ratio"
+            :effectindex="index"
+          ></SpellEffects> -->
+        </div>
       </div>
 
       <div class="shopinfo__underline"></div>
@@ -76,7 +111,11 @@
 import { reactive, ref, computed } from 'vue';
 import SimpleTooltip from '../../components/SimpleTooltip.vue';
 import Item from './Item.vue';
-import items, { fromNumber } from '@/model/items/items';
+import items, { fromNumber, type Stats } from '@/model/items/items';
+import SpellEffects from '@/components/spells/SpellEffects.vue';
+// import type { ItemEffects } from '@/model/items/ItemEffectScripts';
+import ItemEffects from './ItemEffects.vue';
+import StatsDiv from './StatsDiv.vue';
 
 const props = defineProps<{ itemId: number }>();
 defineEmits(['showInfo', 'buyItem']);
@@ -90,6 +129,16 @@ const displayCost = computed(() =>
 </script>
 
 <style>
+.item__statkey {
+  color: red;
+}
+.item__statvalue {
+  color: #e93bc3;
+}
+.item__mythicpassive {
+  font-weight: bold;
+  color: #e93bc3;
+}
 .buy {
   float: right;
   border: 2px solid #aaa;

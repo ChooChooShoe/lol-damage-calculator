@@ -3,7 +3,10 @@
     <ChampionDiv value="player" mode="player" class="hidden"></ChampionDiv>
     <span class="itembuilder__title">Inventory</span>
     <span class="itembuilder__title">ShopItemInfo</span>
-    <ItemInventory :inv="player.itemInventory" @sellItem="sellItem"></ItemInventory>
+    <ItemInventory
+      :inv="player.itemInventory"
+      @sellItem="sellItem"
+    ></ItemInventory>
 
     <ShopItemInfo
       :itemId="selectedItem"

@@ -1,7 +1,7 @@
 import type { RootRatio } from '@/api/DataTypes';
 import itemsGen, { type Act, type ItemGenData } from './items.gen';
 
-export const ItemEffects = {
+export const ItemEffectsScripts = {
   'Thirsting Slash': {
     itemData: itemsGen['6630'],
     effectData: itemsGen['6630'].effects.act,

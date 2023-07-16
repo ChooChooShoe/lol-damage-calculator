@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import { CommunityDragon } from './communitydragon.js';
 import { fetchAllWikiItems } from './WikiItem.js';
 import { DataDragon } from './datadragon.js';
-import { ModelFromJson } from './ItemModelBuilder.js';
+import { ModelFromJson, allNamedStatsKeysSet } from './ItemModelBuilder.js';
 
 const args = process.argv.slice(2);
 const DEBUG = true;
@@ -47,7 +47,13 @@ async function main(args: string[]) {
 function template(model: {}): string {
   const keys = Object.keys(model).join(' | ');
   const body = JSON.stringify(model, null, 2);
-  return `// This file is auto-generated
+
+  const statKeyValues: string[] = [];
+  for (const statKey of allNamedStatsKeysSet) {
+    statKeyValues.push(`    ${statKey}: number;`);
+  }
+
+  return `// This file was auto-generated on ${new Date().toDateString()}
 // prettier-ignore
 export type ItemNumber = ${keys};
 
@@ -73,11 +79,10 @@ export interface ItemGenData {
     | 'S11Support_Quest_Completion_Buff';
   requiredBuffCurrencyCost: 0 | 500;
   specialRecipe: number;
-  // "isEnchantment": check("isEnchantment"),
   price: number;
   priceTotal: number;
   sellPrice: number;
-  purchasable: boolean;
+  // purchasable: boolean;
   iconPath: string;
   spriteStyle: string;
   image: {
@@ -96,7 +101,8 @@ export interface ItemGenData {
     [key: string]: boolean;
   };
   stats: Stats;
-  // effects: import("../../dev/WikiItem").Effects;
+  specialStat: string;
+  specialStat2: string;
   effects: Effects;
   type: string[];
   category:
@@ -115,7 +121,7 @@ export interface ItemGenData {
     | 'unsorted';
 }
 
-export interface Effects {
+export type Effects = {
   act?: Act;
   act2?: Act;
   aura?: Act;
@@ -125,11 +131,11 @@ export interface Effects {
   pass4?: Act;
   pass5?: Act;
   pass6?: Act;
-  consume?: string;
-  mythic?: Stats | string;
+  consume?: Act;
+  mythic?: Act;
 }
 
-export interface Act {
+export type Act = {
   name: string;
   unique: boolean;
   description: string;
@@ -141,30 +147,8 @@ export interface Act {
   radius?: number | string;
 }
 
-export interface Stats {
-  ad?: number;
-  ah?: number;
-  ap?: number;
-  armor?: number;
-  armpen?: number;
-  as?: number;
-  crit?: number;
-  gp10?: number;
-  hp?: number;
-  hp5?: number;
-  hp5flat?: number;
-  hsp?: number;
-  lethality?: number;
-  lifesteal?: number;
-  mana?: number;
-  mp5?: number;
-  mpen?: number;
-  mpenflat?: number;
-  mr?: number;
-  ms?: number;
-  msflat?: number;
-  omnivamp?: number;
-  spec?: string;
+export type Stats = {
+  ${statKeyValues}
 }
 
 `;

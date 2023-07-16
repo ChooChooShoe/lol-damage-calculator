@@ -36,12 +36,14 @@ export interface WikiItem {
 
 export interface Effects {
   consume?: string;
-  pass?: Act | string;
-  pass2?: Aura;
+  pass?: Act;
+  pass2?: Act;
+  pass3?: Act;
+  pass4?: Act;
+  pass5?: Act;
   act?: Act;
-  pass3?: Aura;
   mythic?: MythicClass | string;
-  aura?: Aura;
+  aura?: Act;
 }
 
 export interface Act {
@@ -53,15 +55,8 @@ export interface Act {
   charges?: string;
   description2?: string;
   recharge?: string;
+  radius?: string;
 }
-
-export interface Aura {
-  name?: string;
-  unique?: boolean;
-  description: string;
-  cd?: string;
-}
-
 export interface MythicClass {
   ad?: number;
   hp?: number;
@@ -118,47 +113,4 @@ export enum Tag {
   HasOnAttack = 'HasOnAttack',
   HasOnHit = 'HasOnHit',
   OnHitAppliesLifeSteal = 'OnHitAppliesLifeSteal',
-}
-
-export async function fetchTemplateItem(
-  item_name: string
-): Promise<Partial<LiveItemData>> {
-  item_name = cleanName(item_name);
-  console.log(`Fetching: Live ${item_name}`);
-  const url = `https://leagueoflegends.fandom.com/wiki/${item_name}`;
-  const response = await fetch(url);
-  const dom = new JSDOM(await response.text());
-  const inputs =
-    dom.window.document.querySelectorAll<HTMLElement>('[data-source]');
-
-  if (!inputs) {
-    console.log(`[ERROR] Item ${item_name} has no Wiki data`);
-    return {};
-  }
-
-  // This way flattens all the values.
-  // source might be duplicated and will silently overwrite the older values.
-  const map: Partial<LiveItemData> = {};
-  for (const htmlElement of inputs) {
-    const source = htmlElement.dataset.source!;
-    fix_wiki_img(htmlElement);
-    const key = source.replaceAll(/ /g, '_');
-    map[key] = htmlElement;
-  }
-  // Does not test for type just assumes that all the values there.
-  return map;
-}
-
-export interface LiveItemData {
-  disp_name: HTMLElement;
-  image: HTMLElement;
-  limit: HTMLElement;
-  range: HTMLElement;
-  recipe: HTMLElement;
-  buy: HTMLElement;
-  sell: HTMLElement;
-  id: HTMLElement;
-  menu: HTMLElement;
-  nickname: HTMLElement;
-  [key: string]: HTMLElement;
 }
