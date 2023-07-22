@@ -3,7 +3,7 @@ import itemsGen, { type Act, type ItemGenData } from './items.gen';
 
 export const ItemEffectsScripts = {
   'Thirsting Slash': {
-    itemData: itemsGen['6630'],
+    itemData: itemsGen['6630'] as unknown as ItemGenData,
     effectData: itemsGen['6630'].effects.act,
     icon: itemsGen['6630'].iconPath,
     description: 'aa',

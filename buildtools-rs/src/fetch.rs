@@ -1,39 +1,48 @@
-use std::sync::Mutex;
 use std::time::Instant;
+use std::{sync::Mutex, time::Duration};
 
 use lazy_static::lazy_static;
-use reqwest::blocking::{Client,Response};
+use reqwest::blocking::{Client, Response};
 
 pub fn get_element_text(cell: &scraper::ElementRef) -> String {
     // The DOM allows multiple text nodes of an element, so join them all together.
     cell.text().collect::<Vec<_>>().join("").trim().to_string()
 }
 
-lazy_static! {
-    static ref LAST_REQUEST_MUTEX: Mutex<Option<Instant>> = Mutex::new(None);
-    static ref REQUEST_DELAY: std::time::Duration = std::time::Duration::from_millis(500);
+pub struct FetchClient {
+    last_request: Option<Instant>,
+    request_delay: std::time::Duration,
+    client: Client,
 }
 
-// Do a request for the given URL, with a minimum time between requests
-// to avoid overloading the server.
-pub fn fetch<T>(url: T) -> reqwest::Result<Response>
-where
-    T: reqwest::IntoUrl + std::fmt::Debug,
-{
-    println!("fetch url: {url:?}");
-    // GitHub Copilot wrote this whole method! (except for the REQUEST_DELAY variable)
-    let mut last_request_mutex = LAST_REQUEST_MUTEX.lock().unwrap();
-    let last_request = last_request_mutex.take();
-    let now = Instant::now();
-    if let Some(last_request) = last_request {
-        let duration = now.duration_since(last_request);
-        if duration < *REQUEST_DELAY {
-            std::thread::sleep(*REQUEST_DELAY - duration);
-        }
+impl FetchClient {
+    pub fn new() -> reqwest::Result<FetchClient> {
+        let client = Client::builder().build()?;
+        Ok(FetchClient {
+            last_request: None,
+            request_delay: Duration::from_millis(100),
+            client,
+        })
     }
+    // Do a request for the given URL, with a minimum time between requests to avoid overloading the server.
+    pub fn fetch<T>(&mut self, url: T) -> reqwest::Result<Response>
+    where
+        T: reqwest::IntoUrl + std::fmt::Debug,
+    {
+        println!("fetch url: {url:?}");
+        let now = Instant::now();
+        if let Some(last_request) = self.last_request {
+            let duration = now.duration_since(last_request);
+            if duration < self.request_delay {
+                let delay = self.request_delay - duration;
+                println!("Wating a delay of {}ms", delay.as_millis());
+                std::thread::sleep(delay);
+            }
+        }
 
-    // let client = Client::new();
-    let response = reqwest::blocking::get(url)?;
-    last_request_mutex.replace(now);
-    Ok(response)
+        // let client = Client::new();
+        let response = self.client.get(url).send()?;
+        self.last_request = Some(now);
+        Ok(response)
+    }
 }

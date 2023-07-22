@@ -42,38 +42,14 @@
       </div>
 
       <div>
+        <ItemEffects pkey="c" :itemEffect="value.effects.consume"></ItemEffects>
         <ItemEffects pkey="act" :itemEffect="value.effects.act"></ItemEffects>
         <ItemEffects pkey="p1" :itemEffect="value.effects.pass"></ItemEffects>
         <ItemEffects pkey="p2" :itemEffect="value.effects.pass2"></ItemEffects>
         <ItemEffects pkey="p3" :itemEffect="value.effects.pass3"></ItemEffects>
         <ItemEffects pkey="p4" :itemEffect="value.effects.pass4"></ItemEffects>
         <ItemEffects pkey="p5" :itemEffect="value.effects.pass5"></ItemEffects>
-
-        <div v-if="value.effects.consume">
-          <span class="item__name">Consume</span>
-          <div v-html="value.effects.consume"></div>
-          <!-- <SpellEffects
-            v-for="(ratio, index) in itemEffect.descriptionRatios"
-            :key="index"
-            :pkey="`${itemEffect.name} - ${pkey} #${index + 1})`"
-            :details="{ name: ratio.name, values: ratio.pre!, valuesHTML: ratio.pre! }"
-            :effect="ratio"
-            :effectindex="index"
-          ></SpellEffects> -->
-        </div>
-
-        <div v-if="value.effects.mythic">
-          <span class="item__mythicpassive">Mythic Passive:&nbsp;</span>
-          <span v-html="value.effects.mythic"></span>
-          <!-- <SpellEffects
-            v-for="(ratio, index) in itemEffect.descriptionRatios"
-            :key="index"
-            :pkey="`${itemEffect.name} - ${pkey} #${index + 1})`"
-            :details="{ name: ratio.name, values: ratio.pre!, valuesHTML: ratio.pre! }"
-            :effect="ratio"
-            :effectindex="index"
-          ></SpellEffects> -->
-        </div>
+        <ItemEffects pkey="m" :itemEffect="value.effects.mythic"></ItemEffects>
       </div>
 
       <div class="shopinfo__underline"></div>

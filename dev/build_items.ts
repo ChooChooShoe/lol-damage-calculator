@@ -54,18 +54,24 @@ function template(model: {}): string {
   }
 
   return `// This file was auto-generated on ${new Date().toDateString()}
+
+import type { RootRatio } from "@/api/DataTypes";
+export type OptionElement = {
+  textContent: string;
+  innerHTML: string;
+} | null;
+
 // prettier-ignore
 export type ItemNumber = ${keys};
 
 export default ${body} satisfies { [n in ItemNumber]: ItemGenData };
 
-export interface ItemGenData {
+export type ItemGenData = {
   id: ItemNumber;
   name: string;
   description: Readonly<string>;
   colloq: string;
   active: boolean;
-  inStore: boolean;
   // Some items have invalied ItemNumbers
   from: (ItemNumber | number)[];
   to: (ItemNumber | number)[];
@@ -82,7 +88,7 @@ export interface ItemGenData {
   price: number;
   priceTotal: number;
   sellPrice: number;
-  // purchasable: boolean;
+  inStore: boolean;
   iconPath: string;
   spriteStyle: string;
   image: {
@@ -96,14 +102,15 @@ export interface ItemGenData {
   };
   maps: ['SR'] | ['SR', 'HA'] | ['HA'] | [];
   depth: 1 | 2 | 3 | 4;
-  limit: '' | string;
+  limit: OptionElement;
+  requirementDescription: OptionElement;
   menu: {
     [key: string]: boolean;
   };
-  stats: Stats;
-  specialStat: string;
-  specialStat2: string;
-  effects: Effects;
+  stats: Partial<Stats>;
+  specialStat?: string;
+  specialStat2?: string;
+  effects: Partial<Effects>;
   type: string[];
   category:
     | 'championitems'
@@ -119,37 +126,35 @@ export interface ItemGenData {
     | 'mythics'
     | 'minionturretitems'
     | 'unsorted';
-}
+};
 
 export type Effects = {
-  act?: Act;
-  act2?: Act;
-  aura?: Act;
-  pass?: Act;
-  pass2?: Act;
-  pass3?: Act;
-  pass4?: Act;
-  pass5?: Act;
-  pass6?: Act;
-  consume?: Act;
-  mythic?: Act;
-}
+  consume: Act;
+  act: Act;
+  pass: Act;
+  pass2: Act;
+  pass3: Act;
+  pass4: Act;
+  pass5: Act;
+  mythic: Act;
+};
 
 export type Act = {
   name: string;
   unique: boolean;
   description: string;
-  description2?: string;
+  descriptionHTML: string;
+  descriptionRatios: RootRatio[];
   cd?: number | string;
   recharge?: number | string;
   charges?: number | string;
   range?: number | string;
   radius?: number | string;
-}
+};
 
 export type Stats = {
-  ${statKeyValues}
-}
+${statKeyValues.join('\n')}
+};
 
 `;
 }

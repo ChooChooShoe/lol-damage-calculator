@@ -3,22 +3,26 @@ import { JSDOM } from 'jsdom';
 import JSON5 from 'json5';
 import { fix_wiki_img } from '../live_wiki_fetch.js';
 
+export type OptionElement = {
+  textContent: string;
+  innerHTML: string;
+} | null;
 export async function fetchLiveItem(item_name: string): Promise<{
   spec: string;
   spec2: string;
-  consume: string;
-  pass: string;
-  pass2: string;
-  pass3: string;
-  pass4: string;
-  pass5: string;
-  mythic: string;
-  act: string;
-  limit: string;
-  req: string;
+  consume: OptionElement;
+  pass: OptionElement;
+  pass2: OptionElement;
+  pass3: OptionElement;
+  pass4: OptionElement;
+  pass5: OptionElement;
+  mythic: OptionElement;
+  act: OptionElement;
+  limit: OptionElement;
+  req: OptionElement;
   buy: number;
   sell: number;
-}> {
+}> { 
   item_name = cleanName(item_name);
   console.log(`Fetching: Live ${item_name}`);
   const url = `https://leagueoflegends.fandom.com/wiki/${item_name}`;
@@ -55,8 +59,8 @@ export async function fetchLiveItem(item_name: string): Promise<{
   function decompile_effect(
     text: HTMLElement | null,
     removeHead: boolean
-  ): string {
-    if (!text) return '';
+  ): OptionElement {
+    if (!text) return null;
     // See: compile_effect in https://leagueoflegends.fandom.com/wiki/Module:ItemData/getter
     // Get from raw data
     //name = effect.name
@@ -67,10 +71,14 @@ export async function fetchLiveItem(item_name: string): Promise<{
     //range = effect.range
     //radius = effect.radius
     //Remove The "UNIQUE - Effect Name :" from html.
-    text.querySelector('.template_sbc')?.remove();
-    return (
-      text.firstElementChild?.innerHTML?.trim() || text?.innerHTML?.trim() || ''
-    );
+    if (removeHead) text.querySelector('.template_sbc')?.remove();
+    return {
+      textContent: text?.textContent?.trim() || '',
+      innerHTML:
+        text.firstElementChild?.innerHTML?.trim() ||
+        text?.innerHTML?.trim() ||
+        '',
+    };
   }
   return {
     // disp_name: qs_required('disp_name')?.textContent || '',
@@ -120,8 +128,8 @@ export async function fetchLiveItem(item_name: string): Promise<{
     pass5: decompile_effect(qs('pass5'), true),
     mythic: decompile_effect(qs('mythic'), false),
     act: decompile_effect(qs('act'), true),
-    limit: qs('limit')?.firstElementChild?.innerHTML?.trim() || '',
-    req: qs('req')?.firstElementChild?.innerHTML?.trim() || '',
+    limit: decompile_effect(qs('limit'), false),
+    req: decompile_effect(qs('req'), false),
     // recipe: qs('recipe')?.textContent || '',
     // builds: qs('builds')?.textContent || '',
     buy,

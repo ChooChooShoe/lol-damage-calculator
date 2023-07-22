@@ -1,5 +1,5 @@
-import type { ChampionName } from '@/model/ChampionListData';
-// type ChampionName = string;
+// import type { ChampionName } from '@/model/ChampionListData';
+type ChampionName = string;
 
 import type { BaseStatsObj, Stat } from './ChampObjStats';
 

@@ -1,5 +1,8 @@
 import type { ChampObjModel } from './ChampObj';
-import { ItemEffectsScripts, type ItemEffectsScript } from './items/ItemEffectScripts';
+import {
+  ItemEffectsScripts,
+  type ItemEffectsScript,
+} from './items/ItemEffectScripts';
 import { fromNumber, type ItemGenData, type ItemNumber } from './items/items';
 
 export class ItemInventory {

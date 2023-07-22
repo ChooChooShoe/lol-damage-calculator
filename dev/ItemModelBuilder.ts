@@ -4,7 +4,7 @@ import { WikiItem, type Act } from './WikiItem.js';
 import { Item as RiotItemEntry } from './datadragon.js';
 // import type { ItemGenData } from '../src/api/DataTypes.js';
 import { valid_knockdown } from './mutate_untils.js';
-import { fetchLiveItem } from './item/FandomItemPage.js';
+import { OptionElement, fetchLiveItem } from './item/FandomItemPage.js';
 import { parse } from 'path';
 import { spellEffectFromDescription } from './skill_ratios_parse.js';
 import type { RootRatio } from '@/api/DataTypes';
@@ -113,13 +113,13 @@ async function takeRiftItem(
 ): Promise<any> {
   const liveData = await fetchLiveItem(a.name);
 
-  const name = a.name.trim();
-  if (name !== b.name.trim()) {
-    console.log(`Item ${a.name}:${a.id} - Name mismatch on "${b.name}"`);
+  const name = a.name?.trim() || '';
+  if (name !== b.name?.trim()) {
+    console.log(`Item ${a.name}:${a.id} - Name mismatch on riot's "${b.name}"`);
   }
-  if (name !== c.name.trim()) {
-    console.log(`Item ${a.name}:${a.id} - Name mismatch on "${c.name}"`);
-  }
+  // if (name !== c.name?.trim()) {
+  //   console.log(`Item ${a.name}:${a.id} - Name mismatch on wiki's "${c.name}"`);
+  // }
 
   function check(
     key: string,
@@ -266,14 +266,15 @@ async function takeRiftItem(
       );
   }
 
-  function parse_effect(val: Act | undefined | string, live: string) {
+  function parse_effect(val: Act | undefined | string, live: OptionElement) {
+    if (!val || !live) return undefined;
     if (typeof val === 'string') {
       console.log('Effect Type can not be string');
       return undefined;
     }
     // Try to make RootRatios out of every Effect.
     const descriptionRatios: RootRatio[] = [];
-    for (const [idx, line] of Object.entries(live.split('<br>'))) {
+    for (const [idx, line] of Object.entries(live.textContent.split('. '))) {
       const x = spellEffectFromDescription(`Line ${idx + 1}:`, line);
 
       // Number 0 or number with no sub_ratios
@@ -286,9 +287,9 @@ async function takeRiftItem(
     return {
       name: val?.name || '',
       unique: val?.unique || false,
-      description: val?.description || '',
+      description: live.textContent,
       // description2: val.description2,
-      descriptionHTML: live,
+      descriptionHTML: live.innerHTML,
       descriptionRatios,
       cd: Number(val?.cd) || val?.cd,
       recharge: Number(val?.recharge) || val?.recharge,
