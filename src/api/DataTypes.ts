@@ -193,7 +193,7 @@ export interface GainEffect extends RootEffect {
 
 export type DamageType = 'Physical' | 'Magic' | 'True' | 'None' | 'Adaptive';
 export interface DamageEffect extends RootEffect {
-  effectType: 'Damage';
+  effectType: 'Damage' | 'damage';
   damagetype: DamageType;
 }
 
@@ -242,19 +242,19 @@ export function usesSerpentsFang(shieldOrHeal: HealType | ShieldType) {
   return shieldOrHeal == 'SelfShield' || shieldOrHeal !== 'IncomingShields';
 }
 export interface HealEffect extends RootEffect {
-  effectType: 'Heal';
+  effectType: 'Heal' | 'heal';
   healType: HealType;
 }
 export interface ShieldEffect extends RootEffect {
-  effectType: 'Shield';
+  effectType: 'Shield'| 'shield';
   damagetype?: DamageType;
   shieldType: ShieldType;
 }
 export interface UniqueEffect extends RootEffect {
-  effectType: 'Unique';
+  effectType: 'Unique'| 'utacks';
 }
 export interface StacksEffect extends RootEffect {
-  effectType: 'Stacks';
+  effectType: 'Stacks' | 'stacks';
   min: number;
   max: number;
   user?: 'none' | 'player' | 'target';
@@ -293,9 +293,10 @@ export interface CrowdControlEffect extends RootEffect {
   crowdControl: CrowdControlType;
   crowdControlDuration: number;
 }
-export interface RootEffect extends SubRatio {
-  name: string;
+export interface RootEffect {
+  name?: string;
   raw?: string;
+  children: SubRatio[];
   // [x: string | number | symbol]: unknown;
 }
 export type RootRatio =

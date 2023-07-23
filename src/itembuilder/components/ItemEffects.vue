@@ -1,10 +1,10 @@
 <template>
   <div v-if="itemEffect">
-    <span class="item__name" v-html="itemEffect.name"></span>
-    <span class="item__id">&nbsp;({{ itemEffect.unique }})</span>
-    <div v-html="itemEffect.descriptionHTML"></div>
+    <span v-if="itemEffect.unique">Unique – </span>
+    <span class="" v-html="itemEffect.name"></span>
+    <div v-html="itemEffect.descriptionHtml"></div>
     <SpellEffects
-      v-for="(ratio, index) in itemEffect.descriptionRatios"
+      v-for="(ratio, index) in itemEffect.models"
       :key="index"
       :pkey="`${itemEffect.name} - ${pkey} #${index + 1})`"
       :details="{ name: ratio.name, values: ratio.pre!, valuesHTML: ratio.pre! }"

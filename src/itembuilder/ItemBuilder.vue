@@ -22,7 +22,7 @@
           v-model="itemFilter"
           type="radio"
           name="filter"
-          value="SR,HA"
+          value="SR,HA,AR"
           checked
       /></label>
       <label
@@ -30,6 +30,9 @@
       /></label>
       <label
         >ARAM<input v-model="itemFilter" type="radio" name="filter" value="HA"
+      /></label>
+      <label
+        >Arena<input v-model="itemFilter" type="radio" name="filter" value="AR"
       /></label>
       <!-- <label>RGM<input type="radio" name="filter" value="" /></label> -->
     </div>

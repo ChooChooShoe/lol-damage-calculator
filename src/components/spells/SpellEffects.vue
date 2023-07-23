@@ -20,7 +20,7 @@
     :effect="effect"
   />
   <DamageSpellEffectsVue
-    v-else-if="effect.effectType === 'Damage'"
+    v-else-if="effect.effectType.toLocaleLowerCase() === 'damage'"
     :details="details"
     :effect="effect"
     :pkey="pkey"

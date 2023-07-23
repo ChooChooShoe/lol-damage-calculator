@@ -4,6 +4,7 @@ mod fetch;
 mod items;
 mod leaguewiki;
 mod runes;
+mod effect_models;
 
 use crate::{cdragon::CommunityDragon, datadragon::DataDragon, leaguewiki::LeagueWiki};
 
@@ -20,6 +21,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "runes" => {
             runes::generate_runes(&mut ddragon, &mut cdragon, &mut leaguewiki)?;
         }
+        
         "test " => {
             let x = leaguewiki.get_rune_data("First Strike");
 

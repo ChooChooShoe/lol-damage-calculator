@@ -90,6 +90,9 @@ export function spellEffectFromDescription(
   lineNumber: string,
   descTextLine: string
 ): RootRatio {
+  console.log(
+    `[TRACE] spellEffectFromDescription(lineNumber="${lineNumber}", descTextLine="${descTextLine}")`
+  );
   const nameSplit = descTextLine.split(/: (.*)/s);
   const betterName = nameSplit[1] ? nameSplit[0] + ':' : lineNumber;
   descTextLine = nameSplit[1] || nameSplit[0];
@@ -101,6 +104,9 @@ export function spellEffectFromStrings(
   keywords: string,
   raw: string
 ): RootRatio {
+  console.log(
+    `[TRACE] spellEffectFromStrings(name="${name}", keywords="${keywords}", raw="${raw}")`
+  );
   const target: Partial<RootRatio> = {
     effectType: matchKeyword(keywords, validEffectTypes, 'Unique'),
     name,

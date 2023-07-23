@@ -1,7 +1,6 @@
-use std::{collections::HashMap, default};
+use std::collections::HashMap;
 
 use crate::fetch::FetchClient;
-use json::JsonValue;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -80,6 +79,7 @@ pub struct DataDragon {
     version: String,
     lang: String,
     base_data_uri: String,
+    sprite_base_uri: String,
 }
 impl DataDragon {
     pub fn latest() -> Result<DataDragon> {
@@ -87,14 +87,19 @@ impl DataDragon {
         let version = relms.v;
         let lang = relms.l;
         let base_data_uri = format!("http://ddragon.leagueoflegends.com/cdn/{version}/data/{lang}");
+        let sb = format!("http://ddragon.leagueoflegends.com/cdn/{version}/img/sprite");
         Ok(DataDragon {
             client: FetchClient::new()?,
             version,
             lang,
             base_data_uri,
+            sprite_base_uri: sb,
         })
     }
 
+    pub fn sprite_base_uri(&self) -> &str {
+        self.sprite_base_uri.as_str()
+    }
     // The Raw Json File
     pub fn get_items_json(&mut self) -> Result<ItemJson> {
         let url = format!("{0}/item.json", self.base_data_uri);
@@ -130,7 +135,6 @@ pub struct ItemJson {
 #[serde(rename_all = "camelCase", default)]
 pub struct BasicItem {
     pub name: String,
-
 }
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(rename_all = "camelCase", default)]
@@ -160,7 +164,7 @@ pub struct Item {
     // maps: { '11': boolean, '12': boolean, '21': boolean, '22': boolean },
     pub stats: HashMap<String, f64>,
     #[serde(default = "default_1")]
-    depth: i64, // undefined defaults to 1
+    pub depth: i64, // undefined defaults to 1
     pub effect: Value,
 }
 fn default_colloq() -> String {
@@ -187,11 +191,19 @@ pub struct Gold {
 #[serde(rename_all = "camelCase", default)]
 #[serde(deny_unknown_fields)]
 pub struct Image {
-   pub full: String,
-   pub sprite: String,
-   pub group: String,
-   pub x: i64,
-   pub y: i64,
-   pub w: i64,
-   pub h: i64,
-  }
+    pub full: String,
+    pub sprite: String,
+    pub group: String,
+    pub x: i64,
+    pub y: i64,
+    pub w: i64,
+    pub h: i64,
+}
+impl Image {
+    pub fn get_sprite_style(&self, sprite_base_uri: &str) -> String {
+        format!(
+            "background: url('{sprite_base_uri}/{}') -{}px -{}px; width:{}px; height:{}px;",
+            self.sprite, self.x, self.y, self.w, self.h
+        )
+    }
+}
