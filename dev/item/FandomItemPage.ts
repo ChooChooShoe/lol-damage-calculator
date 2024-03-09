@@ -22,7 +22,7 @@ export async function fetchLiveItem(item_name: string): Promise<{
   req: OptionElement;
   buy: number;
   sell: number;
-}> { 
+}> {
   item_name = cleanName(item_name);
   console.log(`Fetching: Live ${item_name}`);
   const url = `https://leagueoflegends.fandom.com/wiki/${item_name}`;

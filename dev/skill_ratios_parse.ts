@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { numberExpandOnLevel } from './leveling.js';
 import type { Dictionary } from 'lodash';
 import parenthesis, { type ArrayTree } from 'parenthesis';

@@ -246,12 +246,12 @@ export interface HealEffect extends RootEffect {
   healType: HealType;
 }
 export interface ShieldEffect extends RootEffect {
-  effectType: 'Shield'| 'shield';
+  effectType: 'Shield' | 'shield';
   damagetype?: DamageType;
   shieldType: ShieldType;
 }
 export interface UniqueEffect extends RootEffect {
-  effectType: 'Unique'| 'utacks';
+  effectType: 'Unique' | 'utacks';
 }
 export interface StacksEffect extends RootEffect {
   effectType: 'Stacks' | 'stacks';

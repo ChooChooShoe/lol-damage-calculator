@@ -1,17 +1,17 @@
 import JSON5 from 'json5';
-import { SkillData, WikiChampionData } from '../src/api/DataTypes';
-import { DataDragon } from './datadragon';
-import { fetchAndSaveRealms, mkdir, saveStringFile } from './fetch_utils';
+import { SkillData, WikiChampionData } from '../src/api/DataTypes.js';
+import { DataDragon } from './datadragon.js';
+import { fetchAndSaveRealms, mkdir, saveStringFile } from './fetch_utils.js';
 import {
   fetch_Module_ChampionData,
   getSkillModelsForChamp,
-} from './LeagueWiki';
-import { fetch_live_wiki_skills } from './live_wiki_fetch';
-import { mutateWikiChampionData } from './WikiChampListFetch';
+} from './LeagueWiki.js';
+import { fetch_live_wiki_skills } from './live_wiki_fetch.js';
+import { mutateWikiChampionData } from './WikiChampListFetch.js';
 
 console.log('Live Wiki Fetching for all data. VERSION 1.0');
 
-const champWhitelist = ['Annie'];
+const champWhitelist: null | string[] = null;
 
 main();
 async function main() {

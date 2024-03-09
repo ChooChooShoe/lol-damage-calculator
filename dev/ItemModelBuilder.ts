@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import type { Dictionary } from 'lodash';
 import { CDragonItem } from './communitydragon.js';
 import { WikiItem, type Act } from './WikiItem.js';

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import fetch from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import parenthesis, { type ArrayTree } from 'parenthesis';

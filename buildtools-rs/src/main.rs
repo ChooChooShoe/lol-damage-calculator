@@ -5,6 +5,8 @@ mod items;
 mod leaguewiki;
 mod runes;
 mod effect_models;
+mod ItemEffectModels;
+
 
 use crate::{cdragon::CommunityDragon, datadragon::DataDragon, leaguewiki::LeagueWiki};
 
@@ -13,7 +15,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut cdragon = CommunityDragon::latest()?;
     let mut leaguewiki = LeagueWiki::latest()?;
 
-    let action = "items";
+    let action = "nammed_spell_effects";
     match action {
         "items" => {
             items::generate_items(&mut ddragon, &mut cdragon, &mut leaguewiki)?;
@@ -21,6 +23,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "runes" => {
             runes::generate_runes(&mut ddragon, &mut cdragon, &mut leaguewiki)?;
         }
+        "nammed_spell_effects" => {
+            effect_models::generate_item_effects(&mut leaguewiki)?;
+        },
         
         "test " => {
             let x = leaguewiki.get_rune_data("First Strike");

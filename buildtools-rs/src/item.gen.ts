@@ -1,4 +1,3 @@
-
 export type ItemGenData = {
   id: ItemNumber;
   name: string;
@@ -83,7 +82,7 @@ export type Act = {
   name: string;
   unique: boolean;
   description: string;
-  descriptionHTML: string;
+  descriptionHtml: string;
   descriptionRatios: RootRatio[];
   cd?: number | string;
   recharge?: number | string;
@@ -104,7 +103,7 @@ export type Stats = {
   ms: number;
   ad: number;
   lethality: number;
-  as: number;
+  attack_speed: number;
   msflat: number;
   gp10: number;
   lifesteal: number;

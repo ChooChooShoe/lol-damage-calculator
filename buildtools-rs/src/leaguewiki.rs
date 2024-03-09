@@ -1,4 +1,11 @@
-use std::{fmt::Display, num::ParseFloatError};
+use std::{
+    collections::{HashMap, VecDeque},
+    fmt::Display,
+    fs::{File, OpenOptions},
+    io::Write,
+    num::ParseFloatError,
+    ops::DerefMut,
+};
 
 use crate::{effect_models::EffectModel, fetch::FetchClient};
 use lazy_static::lazy_static;
@@ -86,11 +93,15 @@ fn as_map(el: ElementRef<'_>, yes_selector: &Selector) -> bool {
 
 pub struct LeagueWiki {
     client: FetchClient,
+    live_item_cache: HashMap<String, LiveItemData>,
 }
 impl LeagueWiki {
     pub fn latest() -> Result<LeagueWiki> {
+        let _ = File::create("../src/generated/itemeffects.ts");
+
         Ok(LeagueWiki {
             client: FetchClient::new()?,
+            live_item_cache: HashMap::new(),
         })
     }
     pub fn get_rune_data(&mut self, rune_name: &str) -> Result<RuneData> {
@@ -137,6 +148,11 @@ impl LeagueWiki {
     }
     pub fn get_item_data(&mut self, item_name: &str, is_ornn_item: bool) -> Result<LiveItemData> {
         let name = item_name.trim().replace(" ", "_");
+
+        if let Some(page) = self.live_item_cache.get(&name) {
+            println!("Using cache page for item {name}");
+            return Ok(page.clone());
+        }
         let url = format!("https://leagueoflegends.fandom.com/wiki/{}", name);
         let body = self.client.fetch(url)?.text()?;
 
@@ -159,7 +175,7 @@ impl LeagueWiki {
 
         let mut item = LiveItemData::default();
 
-        for el in infobox.select(&SELECT_DATA_SOURCE) {
+        for (index, el) in infobox.select(&SELECT_DATA_SOURCE).enumerate() {
             let data_name = el.value().attr("data-source");
 
             match data_name {
@@ -198,10 +214,12 @@ impl LeagueWiki {
                 Some("spec") => item.spec = Some(el.inner_html().trim().to_owned()),
                 Some("spec2") => item.spec2 = Some(el.inner_html().trim().to_owned()),
 
-                Some("consume") => item.effects.consume = Some(el.into()),
+                Some("consume") => {
+                    item.effects.consume = Effect::try_make(name.as_ref(), index, el)
+                }
 
-                Some("act") => item.effects.act = Some(el.into()),
-                Some("act2") => item.effects.act = Some(el.into()),
+                Some("act") => item.effects.act = Effect::try_make(name.as_ref(), index, el),
+                Some("act2") => item.effects.act = Effect::try_make(name.as_ref(), index, el),
 
                 Some("apunique") => item.apunique = as_stat(el),
                 Some("cdrunique") => item.cdrunique = as_stat(el),
@@ -209,13 +227,13 @@ impl LeagueWiki {
                 Some("msunique") => item.msunique = as_stat(el),
                 Some("hspunique") => item.hspunique = as_stat(el),
                 Some("lethalityunique") => item.lethalityunique = as_stat(el),
-                Some("pass") => item.effects.pass = Some(el.into()),
-                Some("pass2") => item.effects.pass2 = Some(el.into()),
-                Some("pass3") => item.effects.pass3 = Some(el.into()),
-                Some("pass4") => item.effects.pass4 = Some(el.into()),
-                Some("pass5") => item.effects.pass5 = Some(el.into()),
+                Some("pass") => item.effects.pass = Effect::try_make(name.as_ref(), index, el),
+                Some("pass2") => item.effects.pass2 = Effect::try_make(name.as_ref(), index, el),
+                Some("pass3") => item.effects.pass3 = Effect::try_make(name.as_ref(), index, el),
+                Some("pass4") => item.effects.pass4 = Effect::try_make(name.as_ref(), index, el),
+                Some("pass5") => item.effects.pass5 = Effect::try_make(name.as_ref(), index, el),
 
-                Some("mythic") => item.effects.mythic = Some(el.into()),
+                Some("mythic") => item.effects.mythic = Effect::try_make(name.as_ref(), index, el),
                 // Some("aura ") => item.aura = Some(el.inner_html().trim().to_owned()),
                 Some("limit") => item.limit = as_html(el),
                 Some("req") => item.req = as_html(el),
@@ -227,12 +245,26 @@ impl LeagueWiki {
                 Some("sr") => item.sr = as_map(el, &SELECT_IMG_YES),
                 Some("ha") => item.ha = as_map(el, &SELECT_IMG_YES),
                 Some("ar") => item.ar = as_map(el, &SELECT_IMG_YES),
-                Some("menu") => item.menu = as_text(el),
-                Some("nickname") => item.nickname = as_text(el),
+                Some("menu") => {
+                    item.menu = el
+                        .text()
+                        .filter(|t| !t.is_empty())
+                        .map(|t| t.trim().to_owned())
+                        .collect()
+                }
+                Some("nickname") => {
+                    item.keywords = el
+                        .text()
+                        .filter(|t| !t.is_empty())
+                        .map(|t| t.trim().to_owned())
+                        .collect()
+                }
                 None => println!("Match Failed: None is not possible"),
                 Some(s) => println!("Match Failed: '{s}' is not a known data-source type"),
             }
         }
+        // let res = &mut item;
+        self.live_item_cache.insert(name, item.clone());
 
         Ok(item)
     }
@@ -378,11 +410,11 @@ pub struct LiveItemData {
     pub sell: String,           //get.sell(item),
     /// Riot's ID number
     pub id: usize,
-    pub sr: bool,         //get.SR(item) == true and 'yes' or 'no',
-    pub ha: bool,         //get.HA(item) == true and 'yes' or 'no',
-    pub ar: bool,         //get.AR(item) == true and 'yes' or 'no',
-    pub menu: String,     //menu,
-    pub nickname: String, //nickname,
+    pub sr: bool,              //get.SR(item) == true and 'yes' or 'no',
+    pub ha: bool,              //get.HA(item) == true and 'yes' or 'no',
+    pub ar: bool,              //get.AR(item) == true and 'yes' or 'no',
+    pub menu: Vec<String>,     //menu,
+    pub keywords: Vec<String>, //nickname,
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
@@ -413,7 +445,9 @@ pub struct Effect {
     pub unique: bool,
     pub description: String,
     pub description_html: String,
-    pub model: Vec<EffectModel>,
+    pub description_parts: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub model: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cd: Option<f64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -425,43 +459,120 @@ pub struct Effect {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub radius: Option<f64>,
 }
-
-impl From<ElementRef<'_>> for Effect {
-    fn from(value: ElementRef<'_>) -> Self {
+impl Effect {
+    pub fn try_make(item_name: &str, index: usize, el: ElementRef<'_>) -> Option<Self> {
         let mut unique = false;
-        let mut name = String::from("");
-        if let Some(el) = value.select(&SELECT_TEMPLATE_SBC).next() {
-            let name_parts = el.text().collect::<Vec<_>>();
-            if name_parts.len() >= 1 {
-                unique = name_parts[0].contains("Unique");
-            }
-            if name_parts.len() >= 2 {
-                name = name_parts[1].to_owned();
+        let mut name = String::default();
+
+        let mut line_parts: Vec<String> = el
+            .text()
+            // filter if empty or all whitespace.
+            .filter(|s| !s.trim().is_empty())
+            .map(|f| f.to_owned())
+            .collect();
+
+        let full_line = line_parts.join("");
+        // Need at least 3 to find the unque and name.
+        if line_parts.len() > 3 {
+            match line_parts.remove(0).as_str() {
+                // Unique + No Name
+                "Unique:" => {
+                    unique = true;
+                }
+                // Unique + Name
+                "Unique – " => {
+                    unique = true;
+                    // Next line is the name.
+                    name = line_parts.remove(0).trim().to_owned();
+                    line_parts.remove(0); //Should be ":"
+                }
+                line => {
+                    unique = false;
+                    // Not-Unique + Name
+                    if line.ends_with(":") {
+                        name = line[0..line.len() - 1].trim().to_owned()
+                    }
+                    // Not-Unique + No Name
+                    else {
+                        // Put the part back in.
+                        line_parts.insert(0, line.to_owned());
+                    }
+                }
             }
         }
-        let full_line = value.text().collect::<Vec<_>>().join("");
-        let desc = match full_line.find(':') {
-            Some(x) => full_line.split_at(x + 1).1,
-            None => &full_line,
-        };
+        let model_name;
+        if name.is_empty() {
+            model_name = format!("{item_name}_{index}").to_ascii_lowercase();
+        } else {
+            model_name = format!("{item_name}_{name}").to_ascii_lowercase();
+        }
+        let mut model_name = Some(model_name.replace(|c: char| !c.is_ascii_alphanumeric(), "_"));
+        println!("Added missing model: {model_name:?}");
+        let description = full_line.trim().to_owned();
+        let html = as_html(el).unwrap();
+        //Removes the sba <span></span> but is not the best solution.
+        let description_html = html
+            .split_once("</span>")
+            .unwrap_or_default()
+            .1
+            .trim()
+            .to_owned();
 
-        let mut models = Vec::new();
-        models.push(EffectModel::Damage {
-            damagetype: String::from("Magic"),
-            children: vec![],
-        });
+        let cd = None;
+        let recharge = None;
+        let charges = None;
+        let range = None;
+        let radius = None;
 
-        Effect {
+
+        // For "Unique – Legendary: This item counts as a Legendary item."
+        if name == "Legendary" {
+            model_name = None;
+        }
+        if name == "Mythic Passive" {
+            
+        }
+
+        let model = EffectModel::from_html_fragment(&description_html);
+
+        // If the model is named save it to server files.
+        if let Some(model_name) = model_name.as_ref() {
+            let file_name = format!("../src/generated/itemeffects/{}.ts", model_name);
+            if let Ok(mut file) = File::create(file_name) {
+                let json = serde_json::to_string_pretty(&model).unwrap_or_default();
+                if let Err(me) = file.write_all(json.as_bytes()) {
+                    println!("{}", me);
+                }
+            }
+
+            let models_file = "../src/generated/itemeffects.tsx";
+            if let Ok(mut file) = OpenOptions::new()
+                .write(true)
+                .append(true)
+                .open(models_file)
+            {
+                // let json = serde_json::to_string_pretty(&model).unwrap();
+                let line = format!(
+                    r#"<div class="template"> <span style="color:blue">{model_name}</span><div>{description_html}</div></div>\n"#
+                );
+                if let Err(me) = file.write_all(line.as_bytes()) {
+                    println!("File write Error: {}", me);
+                }
+            }
+        }
+
+        Some(Effect {
             name,
             unique,
-            description: desc.trim().to_owned(),
-            description_html: as_html(value).unwrap(),
-            model: models,
-            cd: None,
-            recharge: None,
-            charges: None,
-            range: None,
-            radius: None,
-        }
+            description,
+            description_html,
+            description_parts: line_parts,
+            model: model_name,
+            cd,
+            recharge,
+            charges,
+            range,
+            radius,
+        })
     }
 }

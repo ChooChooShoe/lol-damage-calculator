@@ -30,13 +30,12 @@ pub fn generate_items(
             continue;
         };
         if let Some(ditem) = ditem {
-            if let Some(ful) = FullItem::merge_from(ditem, c_item, item, ddragon.sprite_base_uri())
+            if let Some(ful) = FullItem::merge_from(ditem, c_item, item.clone(), ddragon.sprite_base_uri())
             {
                 res.push((ful.id.to_string(), ful));
             }
         }
     }
-
     save_to_file("../src/model/items/items.gen.ts", &mut res)?;
     Ok(())
 }
@@ -50,7 +49,7 @@ pub struct FullItem {
     /// Name of the item. Only necessary if the value differs from name.
     #[serde(skip)]
     pub disp_name: String,
-    pub nickname: String, //nickname,
+    pub keywords: Vec<String>, //nickname,
     pub description: String,
     pub colloq: String,
     pub active: bool,
@@ -83,7 +82,7 @@ pub struct FullItem {
     pub depth: i64,
     pub limit: Option<String>,                   //get.infoboxlimit(item),
     pub requirement_description: Option<String>, //get.req(item),
-    pub menu: String,                            //menu,
+    pub menu: Vec<String>,                            //menu,
 
     pub stats: FullItemStats,
     /// Specal Stat 1
@@ -237,11 +236,11 @@ impl FullItem {
         let category = "unsorted".to_owned();
 
         Some(FullItem {
-            colloq: d_item.colloq,
+            colloq: d_item.colloq.clone(),
             sprite_style: d_item.image.get_sprite_style(sprite_base_uri),
             image: d_item.image,
 
-            stats: Into::into(&live_item),
+            stats: Into::into(&live_item.clone()),
 
             id: item.id,
             name: item.name,
@@ -276,13 +275,20 @@ impl FullItem {
             ha: live_item.ha,
             ar: live_item.ar,
             menu: live_item.menu,
-            nickname: live_item.nickname,
+            keywords: live_item.keywords,
             maps: maps_from(live_item.sr, live_item.ha, live_item.ar),
             depth: d_item.depth,
             r#type: item_type,
             category,
         })
     }
+}
+
+#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
+#[serde(default, rename_all = "camelCase")]
+pub struct ItemScript {
+    pub models: Effects
+
 }
 
 fn maps_from(sr: bool, hr: bool, ar: bool) -> Vec<String> {
@@ -308,7 +314,7 @@ fn save_to_file(
     output.sort_unstable_by(|a, b| a.0.cmp(&b.0));
     // let j = serde_json::to_string_pretty(output)?;
     
-    file.write_all(b"//This file is auto-generated.\n\nimport type { RootRatio } from '@/api/DataTypes';\n\n// prettier-ignore\nexport type ItemNumber =")?;
+    file.write_all(b"//This file is auto-generated.\n\nimport type { RootRatio } from '@/api/DataTypes';\n\n// prettier-ignore\nexport type ItemNumber = ")?;
     let keys = output.iter().map(|f| f.0.clone()).collect::<Vec<_>>();
 
     file.write_all(keys.join(" | ").as_bytes())?;
@@ -320,7 +326,7 @@ fn save_to_file(
 
         file.write_all(format!("'{}': ", x.0).as_bytes())?;
         file.write_all(j.as_bytes())?;
-        file.write_all(",\n".as_bytes())?;
+        file.write_all(",".as_bytes())?;
     }
     file.write_all("} satisfies { [n in ItemNumber]: ItemGenData };\n\n".as_bytes())?;
     file.write_all(include_bytes!("item.gen.ts"))?;

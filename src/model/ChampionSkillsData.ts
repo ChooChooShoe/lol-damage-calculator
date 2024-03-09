@@ -1,2 +1,1 @@
-export const ChampionSkillsData = {};
-export type ChampionSkillsDataType = any;
+export const ChampionSkillsData = {};export type ChampionSkillsDataType = any;  
