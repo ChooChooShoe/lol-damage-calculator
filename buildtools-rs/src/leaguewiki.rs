@@ -146,6 +146,11 @@ impl LeagueWiki {
 
         Ok(rune_data)
     }
+    /// 
+    /// item_name is the localized item name.
+    /// # Errors
+    ///
+    /// This function will return an error if .
     pub fn get_item_data(&mut self, item_name: &str, is_ornn_item: bool) -> Result<LiveItemData> {
         let name = item_name.trim().replace(" ", "_");
 

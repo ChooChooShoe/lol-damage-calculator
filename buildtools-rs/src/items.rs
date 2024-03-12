@@ -19,7 +19,7 @@ pub fn generate_items(
     let mut d_items = ddragon.get_items()?;
     let mut c_items = cdragon.get_items()?;
 
-    let mut res = Vec::new();
+    let mut res: Vec<(String, FullItem)> = Vec::new();
 
     for c_item in c_items.drain(..) {
         let ditem: Option<DItem> = d_items.remove(&c_item.id.to_string());
@@ -30,9 +30,9 @@ pub fn generate_items(
             continue;
         };
         if let Some(ditem) = ditem {
-            if let Some(ful) = FullItem::merge_from(ditem, c_item, item.clone(), ddragon.sprite_base_uri())
+            if let Some(full_item) = FullItem::merge_from(ditem, c_item, item, ddragon.sprite_base_uri())
             {
-                res.push((ful.id.to_string(), ful));
+                res.push((full_item.id.to_string(), full_item));
             }
         }
     }
