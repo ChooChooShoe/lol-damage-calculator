@@ -1,7 +1,6 @@
 use std::time::Instant;
 use std::{sync::Mutex, time::Duration};
 
-use lazy_static::lazy_static;
 use reqwest::blocking::{Client, Response};
 
 pub fn get_element_text(cell: &scraper::ElementRef) -> String {
@@ -20,7 +19,7 @@ impl FetchClient {
         let client = Client::builder().build()?;
         Ok(FetchClient {
             last_request: None,
-            request_delay: Duration::from_millis(100),
+            request_delay: Duration::from_millis(50),
             client,
         })
     }

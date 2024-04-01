@@ -2,18 +2,18 @@ use std::{fs::File, io::Write};
 
 use serde::{Serialize, Deserialize};
 
-use crate::{
+use crate::remote::{
     cdragon::{CommunityDragon, Perk, PerkId},
     datadragon::DataDragon,
     leaguewiki::{LeagueWiki, PassiveProgression, RuneData},
 };
 
 pub fn generate_runes(
-    ddragon: &mut DataDragon,
+    _ddragon: &mut DataDragon,
     cdragon: &mut CommunityDragon,
     leageuwiki: &mut LeagueWiki,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    // let drunes = ddragon.get_runes()
+    // let drunes = ddragon.get_runes()?;
     let perks = cdragon.get_perks()?;
 
     let mut res = Vec::with_capacity(perks.len());
@@ -32,7 +32,7 @@ pub fn generate_runes(
         }
     }
 
-    save_to_file("../src/runes/Perks.Gen.ts", &res)?;
+    save_to_file("./Perks.Gen.ts", &res)?;
     Ok(())
 }
 

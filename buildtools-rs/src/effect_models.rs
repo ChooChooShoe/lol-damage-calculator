@@ -450,7 +450,7 @@ impl Display for Token {
 }
 
 pub fn generate_item_effects(
-    leaguewiki: &mut crate::leaguewiki::LeagueWiki,
+    leaguewiki: &mut crate::remote::leaguewiki::LeagueWiki,
 ) -> Result<(), Box<dyn std::error::Error>> {
     // let text = crate::ItemEffectModels::youmuu_s_wake_wraith_step;
 
@@ -462,7 +462,7 @@ pub fn generate_item_effects(
     writeln!(w, "//prettier-ignore")?;
     writeln!(w, "export type ItemNumber = []")?;
 
-    for (name, text) in crate::ItemEffectModels::ALL {
+    for (name, text) in crate::item_effect_models::ALL {
         let frag = Html::parse_fragment(text);
         let q = parse_children(frag.root_element());
 
@@ -502,6 +502,6 @@ fn parse_children(root: ElementRef) -> Vec<Token> {
     res
 }
 use regex::Regex;
-lazy_static::lazy_static! {
-    static ref RE_RATIOS_SYTLE: Regex = Regex::new(r"^color: (#[0-9A-Fa-f]{6}); white-space:normal$").unwrap();
-}
+
+use once_cell::sync::Lazy;
+static RE_RATIOS_SYTLE: Lazy<Regex> = Lazy::new(|| Regex::new(r"^color: (#[0-9A-Fa-f]{6}); white-space:normal$").unwrap());

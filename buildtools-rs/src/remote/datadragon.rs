@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::fetch::FetchClient;
+use crate::remote::fetch::FetchClient;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -118,6 +118,35 @@ impl DataDragon {
     pub fn get_items(&mut self) -> Result<HashMap<String, Item>> {
         Ok(self.get_items_json()?.data)
     }
+
+    // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/MonkeyKing.json
+    pub fn find_champion(&mut self, champion: &str) -> Result<ChampionComplex> {
+        let key = Self::fix_champion_key(champion);
+        
+        let url = format!("{0}/champion/{key}.json", self.base_data_uri);
+        let body = self.client.fetch(url)?.text()?;
+        let mut response: ChampionStandAloneComplexResponse = serde_json::from_str(&body)?;
+        debug_assert_eq!(response.r#type, "champion");
+        debug_assert_eq!(response.format, "standAloneComplex");
+        response.data.remove(champion).ok_or("JSON is not in the right format".into())
+    }
+  
+    fn fix_champion_key(apiname: &str) -> String {
+      if apiname == "Wukong" {return "MonkeyKing".to_owned()};
+      if apiname == "GnarBig" {return "Gnar".to_owned()};
+      return apiname.replace(" ", "").replace(".", "");
+    }
+    // pub fn get_all_champions() -> Result<ChampionBasicJson> {
+    //   return fetch("{this.baseDataUri}/champion.json").then(
+    //     (res) => res.json() as Promise<ChampionBasicJson>,
+    //   );
+    // }
+    // pub fn get_all_champions_full() -> Result<ChampionFullJson> {
+    //   return fetch("{this.baseDataUri}/championFull.json").then(
+    //     (res) => res.json() as Promise<ChampionFullJson>,
+    //   );
+    // }
+
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
@@ -206,4 +235,33 @@ impl Image {
             self.sprite, self.x, self.y, self.w, self.h
         )
     }
+}
+
+
+#[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
+#[serde(rename_all = "camelCase", default)]
+pub struct ChampionStandAloneComplexResponse {
+    r#type: String,
+    format: String,
+    version: String,
+    data: HashMap<String, ChampionComplex>,
+}
+impl Default for ChampionStandAloneComplexResponse {
+    fn default() -> Self {
+        ChampionStandAloneComplexResponse {
+            r#type: "champion".to_owned(),
+            format: "standAloneComplex".to_owned(),
+            version: "1.0.0".to_owned(),
+            data: Default::default(),
+        }
+    }
+}
+#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq, Eq)]
+#[serde(rename_all = "camelCase", default)]
+pub struct ChampionComplex {
+    pub id: String,
+    pub key: String,
+    pub name: String,
+    pub image: Image,
+    // resource: String
 }
