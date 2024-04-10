@@ -395,7 +395,7 @@ export default {
     this.champ =
       window.localStorage.getItem('last_used_champ_' + 'target') || '';
     this.load(
-      window.localStorage.getItem('last_used_data_' + 'target') || '{}'
+      window.localStorage.getItem('last_used_data_' + 'target') || '{}',
     );
   },
   methods: {

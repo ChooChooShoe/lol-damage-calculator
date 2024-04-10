@@ -1,16 +1,16 @@
 export function list_check<T extends string>(
   search: string | T,
   valid_values: Iterable<string | T>,
-  fallback_value: T
+  fallback_value: T,
 ): T;
 export function list_check<T extends string>(
   search: string | T,
-  valid_values: Iterable<string | T>
+  valid_values: Iterable<string | T>,
 ): T | undefined;
 export function list_check<T extends string>(
   search: string | T,
   valid_values: Iterable<string | T>,
-  fallback_value?: T
+  fallback_value?: T,
 ): T | undefined {
   for (const i of valid_values) if (search.includes(i)) return i as T;
   return fallback_value;
@@ -18,16 +18,16 @@ export function list_check<T extends string>(
 export function table_check<T>(
   search: string,
   valid_table: { [key: string]: string | T },
-  fallback_value: T
+  fallback_value: T,
 ): T;
 export function table_check<T>(
   search: string,
-  valid_table: { [key: string]: string | T }
+  valid_table: { [key: string]: string | T },
 ): T | undefined;
 export function table_check<T>(
   search: string,
   valid_table: { [key: string]: string | T },
-  fallback_value?: T
+  fallback_value?: T,
 ): T | undefined {
   search = search.toLowerCase();
   for (const key in valid_table)
@@ -37,19 +37,19 @@ export function table_check<T>(
 export function matchKeyword<T>(
   search: string,
   validation_table: { [key: string]: T },
-  defaultVal: T
+  defaultVal: T,
 ): T;
 export function matchKeyword<T>(
   search: string,
   validation_table: { [key: string]: T },
-  defaultVal: T | null
+  defaultVal: T | null,
 ): T | null {
   search = search.toLowerCase();
   for (const key in validation_table)
     if (search.includes(key)) return validation_table[key];
 
   console.log(
-    `[WARN] matchKeyword no results: default="${defaultVal}" for search "${search}"`
+    `[WARN] matchKeyword no results: default="${defaultVal}" for search "${search}"`,
   );
   return defaultVal;
 }

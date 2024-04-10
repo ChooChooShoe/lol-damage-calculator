@@ -421,3 +421,67 @@ export interface WikiChampionData {
   nickname?: string;
   secondary_attributes?: string;
 }
+
+export type ChampionGenData = {
+  name: string;
+  image: Image;
+  id: number;
+};
+
+export type Scaling = number[];
+export type LevelingGroup = Leveling[];
+export type Leveling = {
+  name: string;
+  values: Scaling;
+  values_html: string;
+};
+export type SkillDetails = {
+  icon: string;
+  blurb: string;
+  description: string;
+  leveling: LevelingGroup[];
+};
+export type SkillGenData = {
+  name: string;
+  displayName: string;
+  champion: string;
+  skill: string; //Q : string; //skill
+  range: string; //range
+  targetRange: string; //Range center 1200 : string; //target range
+  attackRange: string; //attack range
+  collisionRadius: string; //collision radius
+  effectRadius: string; //Sight icon 400 : string; //effect radius
+  width: string; //Range model 120 : string; //width
+  angle: string; //angle
+  innerRadius: string; //inner radius
+  tetherRadius: string; //tether radius
+  speed: Scaling; //1800 : string; //speed
+  castTime: string; //0.25 : string; //cast time
+  cost: Scaling; //50 : string; //cost
+  costtype: string; //Energy : string; //costtype
+  static: string; //static
+  cooldown: Scaling; //10 / 9 / 8 / 7 / 6 : string; //cooldown
+  cdstart: string; //on-cast
+  ontargetcd: string; //ontargetcd
+  ontargetcdstatic: string; //ontargetcdstatic
+  recharge: string; //recharge
+  customlabel: string; //customlabel
+  custominfo: string; //custominfo
+
+  details: SkillDetails[];
+
+  targeting: string; //Direction targeting
+  affects: string; //Enemies affects
+  damagetype: string; //Physical damagetype
+  spelleffects: string; //Spell spelleffects
+  spellshield: string; //True spellshield
+  projectile: string; //True projectile
+  callforhelp: string; //callforhelp
+  grounded: string; //grounded
+  knockdown: string; //knockdown
+  silence: string; //silence
+  additional: string; //Displays additional information in a smaller window below the template.
+  notes: string; //* This ability will cast from wherever the caster is at the start of the cast time. Displays additional information with effect table to the right.
+  flavortext: string; //flavortext
+  flavorsound: string; //flavorsound
+};

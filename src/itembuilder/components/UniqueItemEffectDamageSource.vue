@@ -18,7 +18,11 @@
           v-for="(value, index) in script.descriptionRatios"
           :key="index"
           :pkey="`${script.effectData.name}: ${index + 1})`"
-          :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+          :details="{
+            name: value.name,
+            values: value.pre!,
+            valuesHTML: value.pre!,
+          }"
           :effect="value"
           :effectindex="index"
         ></SpellEffects>
@@ -65,7 +69,7 @@ const nonLeveling = computed(() => props.script.descriptionRatios.length === 0);
 const active = ref(
   props.script &&
     props.script.descriptionRatios &&
-    props.script.descriptionRatios.length > 0
+    props.script.descriptionRatios.length > 0,
 );
 
 const activeTab = ref(0);

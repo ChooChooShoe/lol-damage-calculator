@@ -7,7 +7,7 @@ export type Id = string;
 export class CommunityDragon {
   static async getAllItems(): Promise<Array<CDragonItem>> {
     return fetch(
-      `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json`
+      `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json`,
     ).then((res) => res.json() as Promise<Array<CDragonItem>>);
   }
 }

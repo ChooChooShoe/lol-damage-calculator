@@ -94,8 +94,8 @@ export function mutateStats(o: Partial<BaseStatsObj>): BaseStatsObj {
 export function invalidValue(val: string | any[], type: any): null {
   console.log(
     `Invalid value: Expected type '${JSON.stringify(
-      val
-    )}' but got ${JSON.stringify(type)}`
+      val,
+    )}' but got ${JSON.stringify(type)}`,
   );
   return null;
 }
@@ -103,7 +103,7 @@ export function invalidValue(val: string | any[], type: any): null {
 export function mutateWikiChampionData(
   name: string,
   o: ModuleChampionData,
-  riot: ChampionComplex
+  riot: ChampionComplex,
 ): WikiChampionData {
   return {
     name,

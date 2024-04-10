@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/',
       redirect: `/c/${localStorage.getItem(
-        'sv_champ_player'
+        'sv_champ_player',
       )}/vs/${localStorage.getItem('sv_champ_target')}`,
     },
     { path: '/c/:player?/vs/:target?', component: CalcApp },
@@ -28,7 +28,7 @@ const router = createRouter({
       beforeEnter(to, from) {
         // Put the full page URL including the protocol http(s) below
         window.location.replace(
-          'https://leagueoflegends.fandom.com' + to.fullPath
+          'https://leagueoflegends.fandom.com' + to.fullPath,
         );
         return true;
       },

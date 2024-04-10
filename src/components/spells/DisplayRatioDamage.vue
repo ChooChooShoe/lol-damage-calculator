@@ -18,7 +18,7 @@ const props = defineProps({
   index: Number,
 });
 const data = computed(
-  () => spell_ratios[props.ratioKey] || default_spell_ratios
+  () => spell_ratios[props.ratioKey] || default_spell_ratios,
 );
 const displayValueArray = function (v) {
   if (data.value.flat) return `${+v.toFixed(3)}`;

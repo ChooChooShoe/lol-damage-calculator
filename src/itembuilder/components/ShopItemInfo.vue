@@ -100,7 +100,7 @@ const clientX = ref(0);
 const clientY = ref(0);
 const value = computed(() => fromNumber(props.itemId));
 const displayCost = computed(() =>
-  value.value?.priceTotal === 0 ? 'Free' : value.value?.priceTotal
+  value.value?.priceTotal === 0 ? 'Free' : value.value?.priceTotal,
 );
 </script>
 

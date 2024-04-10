@@ -203,7 +203,7 @@ import { player, target } from '@/global/state';
 export function makeRootRatio(
   ratio: Exclude<RootRatio, StacksEffect>,
   spellRankIndex: Ref<number> | undefined,
-  obj: ChampObjModel
+  obj: ChampObjModel,
 ): RootRatioComputed {
   const reactiveRatio = reactive(ratio);
 
@@ -236,7 +236,7 @@ export function makeRootRatio(
 export function makeSubRatio(
   ratio: SubRatio,
   spellRankIndex: Ref<number> | undefined,
-  obj: ChampObjModel | undefined
+  obj: ChampObjModel | undefined,
 ): SubRatioComputed {
   const baseValue = computed((): number => {
     console.log('baseValue');
@@ -262,7 +262,7 @@ export function makeSubRatio(
     const statValue = obj[units];
     if (isNaN(statValue)) {
       console.warn(
-        `StatMissing '${units}' for ${obj.champ} with value of ${base}`
+        `StatMissing '${units}' for ${obj.champ} with value of ${base}`,
       );
       return base;
     }

@@ -47,7 +47,7 @@ const obj = inject<ChampObjModel>('obj')!;
 const computedRatioValues: RootRatioComputed = makeRootRatio(
   props.effect,
   rankindex!,
-  obj
+  obj,
 );
 
 const repeat = ref(1);

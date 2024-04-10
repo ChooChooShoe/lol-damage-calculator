@@ -8,7 +8,7 @@ type RecursiveDataTree = {
 function textToTree(
   text: string,
   start = 0,
-  end = text.length
+  end = text.length,
 ): RecursiveDataTree {
   const stack: number[] = [];
   const preStart = start;

@@ -4,7 +4,7 @@ import { fix_wiki_img } from './live_wiki_fetch.js';
 
 export async function fetchAllWikiItems(): Promise<{ [s: string]: WikiItem }> {
   return fetchWiki(
-    `https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`
+    `https://leagueoflegends.fandom.com/wiki/Module:ItemData/data`,
   ).then((x) => moduleToJSON<{ [s: string]: WikiItem }>(x));
 }
 

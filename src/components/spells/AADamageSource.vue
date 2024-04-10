@@ -77,7 +77,7 @@
             attack_damage +
               ds_ph.dmg_premitigation +
               ds_mg.dmg_premitigation +
-              ds_tr.dmg_premitigation
+              ds_tr.dmg_premitigation,
           )
         }}
         damage</span
@@ -108,7 +108,7 @@
             ds_ad.dmg_postmitigation +
               ds_ph.dmg_postmitigation +
               ds_mg.dmg_postmitigation +
-              ds_tr.dmg_postmitigation
+              ds_tr.dmg_postmitigation,
           )
         }}
         health lost</span
@@ -142,7 +142,7 @@
               ds_ph.dmg_premitigation +
               ds_ph.dmg_premitigation +
               ds_tr.dmg_premitigation) *
-              repeat
+              repeat,
           )
         }}
         damage</span
@@ -158,7 +158,7 @@
               ds_ph.dmg_postmitigation +
               ds_ph.dmg_postmitigation +
               ds_tr.dmg_postmitigation) *
-              repeat
+              repeat,
           )
         }}
         health</span

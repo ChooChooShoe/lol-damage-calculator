@@ -50,17 +50,17 @@ async function main() {
           const liveData = await getSkillModelsForChamp(
             name,
             raw_data,
-            riot_model
+            riot_model,
           );
           SkillList[name] = liveData;
 
           ChampionList[name] = mutateWikiChampionData(
             name,
             raw_data,
-            riot_model
+            riot_model,
           );
         })
-        .catch((e) => console.log(e))
+        .catch((e) => console.log(e)),
     );
   }
   console.log('Awaiting all Promises');
@@ -76,7 +76,7 @@ export const ChampionListData =
 ${JSON5.stringify(ChampionList, {
   space: 2,
 })} satisfies Record<ChampionName, ChampListEntry>;\n
-export default ChampionListData;\n`
+export default ChampionListData;\n`,
   );
   //Save ChampionSkillsData.ts
   saveGenModels(SkillList);
@@ -94,7 +94,7 @@ function saveGenModels(SkillList: Record<string, Record<string, SkillData>>) {
       skillText.push(
         `"${k}": ${JSON5.stringify(v, {
           space: 2,
-        })}`
+        })}`,
       );
     }
 
@@ -106,8 +106,8 @@ import type { ChampionName } from '../ChampionListData';
 export const name: ChampionName = "${champKey}";
 
 export default {${skillText.join(
-        ',\n'
-      )}} satisfies { [skillName in string]: SkillData };`
+        ',\n',
+      )}} satisfies { [skillName in string]: SkillData };`,
     );
     index.push(`import ${jsKey} from "./champion/${champKey}"`);
     indexExport.push(`"${champKey}": ${jsKey},`);
@@ -123,7 +123,7 @@ export type ChampionSkillsModelType = {
   index.push(
     `export const ChampionSkillsModel = {
 ${indexExport.join('\n')}
-} satisfies ChampionSkillsModelType;`
+} satisfies ChampionSkillsModelType;`,
   );
   //Save champion/index.ts
   saveStringFile(`./src/model/ChampionSkillsModel.gen.ts`, index.join('\n'));

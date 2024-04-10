@@ -173,7 +173,7 @@ export default {
         }
       }
       return first.concat(
-        ret.sort((a, b) => itemData[a].priceTotal - itemData[b].priceTotal)
+        ret.sort((a, b) => itemData[a].priceTotal - itemData[b].priceTotal),
       );
     },
   },

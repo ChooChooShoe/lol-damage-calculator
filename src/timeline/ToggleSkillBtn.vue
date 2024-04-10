@@ -40,6 +40,10 @@ console.log('SpellImage', JSON.stringify(props, null, 4));
   text-align: center;
   width: 48px;
   font-weight: bold;
-  text-shadow: 0 0 8px black, 0 0 8px black, 0 0 8px black, 0 0 8px black;
+  text-shadow:
+    0 0 8px black,
+    0 0 8px black,
+    0 0 8px black,
+    0 0 8px black;
 }
 </style>

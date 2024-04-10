@@ -8,7 +8,11 @@
         :custom="false"
         :key="leveling_idx"
         :pkey="`${idx}:static-desc:${leveling_idx + 1})`"
-        :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+        :details="{
+          name: value.name,
+          values: value.pre!,
+          valuesHTML: value.pre!,
+        }"
         :effect="value"
         :effectindex="leveling_idx"
       ></SpellEffects>
@@ -38,7 +42,11 @@
         :custom="false"
         :key="leveling_idx"
         :pkey="`${idx}:dyn-desc-A-${leveling_idx + 1})`"
-        :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+        :details="{
+          name: value.name,
+          values: value.pre!,
+          valuesHTML: value.pre!,
+        }"
         :effect="value"
         :effectindex="leveling_idx"
       ></SpellEffects>
@@ -68,7 +76,11 @@
         :custom="false"
         :key="index"
         :pkey="`${idx}:dyn-desc-B-${index + 1})`"
-        :details="{ name: value.name, values: value.pre!, valuesHTML: value.pre! }"
+        :details="{
+          name: value.name,
+          values: value.pre!,
+          valuesHTML: value.pre!,
+        }"
         :effect="value"
         :effectindex="index"
       ></SpellEffects>
@@ -96,7 +108,7 @@ const props = defineProps<{
 
 const nonLeveling = computed(() => props.skill.leveling.length === 0);
 const active = ref(
-  props.skill && props.skill.leveling && props.skill.leveling.length > 0
+  props.skill && props.skill.leveling && props.skill.leveling.length > 0,
 );
 </script>
 <style>

@@ -24,7 +24,7 @@ async function fetch_wiki(url) {
 
       console.assert(ast.body[0]?.type === 'ReturnStatement');
       console.assert(
-        ast.body[0].arguments[0]?.type === 'TableConstructorExpression'
+        ast.body[0].arguments[0]?.type === 'TableConstructorExpression',
       );
 
       const x = {};
@@ -78,7 +78,7 @@ function saveFile(path, data) {
         return console.log(err);
       }
       console.log(`The file '${path}' was saved!`);
-    }
+    },
   );
 }
 
@@ -176,7 +176,7 @@ function takeRiftItem(a, b, c) {
       console.log(`Item ${a.id}: Key "${key}" has no riot value (${val_a})`);
     if (val_a && val_b && val_a.toString() !== val_b.toString())
       console.log(
-        `Item ${a.id}: Key "${key}" not match. (${val_a} !== ${val_b})`
+        `Item ${a.id}: Key "${key}" not match. (${val_a} !== ${val_b})`,
       );
     return val_a;
   }
@@ -357,7 +357,7 @@ function onItemsJsonResponse(riotJson, cdragonItems, wikiItems) {
     ' vs ',
     cdragonItems.length,
     ' vs ',
-    Object.keys(wikiItems).length
+    Object.keys(wikiItems).length,
   );
 
   saveFile('./src/api/items/riotJson.json', riotJson);
@@ -448,15 +448,15 @@ async function onVersionsJsonResponse(body) {
     'https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json';
   console.log('Fetching (CDragon): %s', cdragonItemsUrl);
   const bodyCDragon = fetch(cdragonItemsUrl).then((response) =>
-    response.json()
+    response.json(),
   );
   const wikiBody = fetch_wiki(
-    `https://leagueoflegends.fandom.com/wiki/Module:ItemData/data?action=edit`
+    `https://leagueoflegends.fandom.com/wiki/Module:ItemData/data?action=edit`,
   );
 
   return onItemsJsonResponse(
     await bodyDDragon,
     await bodyCDragon,
-    await wikiBody
+    await wikiBody,
   );
 }

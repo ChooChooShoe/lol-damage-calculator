@@ -229,7 +229,7 @@ function addRatio(x: OptionalStat) {
       units: x,
     },
     rankindex,
-    obj
+    obj,
   );
   computedRatioValues?.children.push(made);
 }

@@ -270,7 +270,7 @@ export function matchReplaceSpellEffects(text, extra_data = {}, config = {}) {
 
         if (!conditional_fn) {
           console.log(
-            `Unknown conditional_fn ${conditional_tag} for ${capture}`
+            `Unknown conditional_fn ${conditional_tag} for ${capture}`,
           );
           return `<${conditional_tag}>${conditional_split
             .slice(1)
@@ -292,7 +292,7 @@ export function matchReplaceSpellEffects(text, extra_data = {}, config = {}) {
           capture,
           conditional_split,
           'res',
-          res
+          res,
         );
         return res;
       }
@@ -317,7 +317,7 @@ export function matchReplaceSpellEffects(text, extra_data = {}, config = {}) {
         positional_argument,
         vars,
         named_parameters,
-        extra_data
+        extra_data,
       );
 
       console.log(
@@ -328,7 +328,7 @@ export function matchReplaceSpellEffects(text, extra_data = {}, config = {}) {
         positional_argument,
         named_parameters,
         'res',
-        res
+        res,
       );
 
       if (config.notext) return '';
@@ -374,7 +374,7 @@ export function numberExpand(slices, maxrank, round) {
         console.log(
           "[ERROR] Invoke numberExpand because of 'for' or 'then' keyword",
           slices,
-          p
+          p,
         );
         break;
       }
@@ -405,7 +405,7 @@ export function numberExpand(slices, maxrank, round) {
       slices,
       maxrank,
       round,
-      msg
+      msg,
     );
     // list.push(69900);
   }
@@ -415,7 +415,7 @@ export function numberExpand(slices, maxrank, round) {
     maxrank,
     round,
     'res',
-    list
+    list,
   );
   return list;
 }
@@ -535,7 +535,7 @@ const match_lookup = {
     // return `<span data-tippy-content="${define_keyword(effect)}" class="blue"><i class="icon i-${effect}"></i>${name}</span>`;
     // return `<span data-tippy-content="${define_keyword(effect)}" class="blue">${name}</span>`;
     return `<HtmlTooltip class="blue link">${name}<template #content>${define_keyword(
-      effect
+      effect,
     )}</template></HtmlTooltip>`;
   },
 
@@ -580,7 +580,7 @@ const match_lookup = {
       return `<HtmlTooltip class="blue link">${display[0]} − ${
         display[1]
       } (based on level)<template #content>Values: ${top.join(
-        ', '
+        ', ',
       )}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
     } else if (slices.length === 3) {
       const range = Number(slices[0]);
@@ -595,7 +595,7 @@ const match_lookup = {
       return `<HtmlTooltip class="blue link">${display[0]} − ${
         display[1]
       } (based on level)<template #content>Values: ${top.join(
-        ', '
+        ', ',
       )}<br>At levels: ${bot.join(', ')}</template></HtmlTooltip>`;
     } else {
       const range = Number(slices[0]);
@@ -684,7 +684,7 @@ const match_lookup = {
   // format number
   fd: function (capture, _parms, _vars) {
     return `<span style="font-variant-numeric: tabular-nums;">${capture.slice(
-      3
+      3,
     )}</span>`;
   },
 
@@ -694,7 +694,7 @@ const match_lookup = {
       rets.push(
         `<li><span class="blue">${slices[i]}</span>: <span>${
           slices[i + 1]
-        }</span></li>`
+        }</span></li>`,
       );
     }
     if (vars) vars.st_slices.push(slices);
@@ -792,7 +792,7 @@ function matchRatioKey(text) {
   const ratioValue = table_check(
     keyword_to_ratio_value,
     text,
-    text.toLowerCase()
+    text.toLowerCase(),
   );
   return `${user}_${ratioType}_${ratioValue}`;
 }
@@ -874,7 +874,7 @@ function transformText(capture) {
           'MatchReplace: for tag',
           tag,
           'options were found',
-          options
+          options,
         );
       } else {
         slices.push(par);

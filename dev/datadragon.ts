@@ -64,7 +64,7 @@ export class DataDragon {
    */
   static async getVersions(): Promise<Version[]> {
     return fetch(`https://ddragon.leagueoflegends.com/api/versions.json`).then(
-      (res) => res.json() as Promise<Version[]>
+      (res) => res.json() as Promise<Version[]>,
     );
   }
   static async getLatestVersion(): Promise<Version> {
@@ -73,7 +73,7 @@ export class DataDragon {
 
   static async getRealms(): Promise<Realms> {
     return fetch(`https://ddragon.leagueoflegends.com/realms/na.json`).then(
-      (res) => res.json() as Promise<Realms>
+      (res) => res.json() as Promise<Realms>,
     );
   }
 
@@ -98,23 +98,23 @@ export class DataDragon {
   }
   async getAllChampions(): Promise<ChampionBasicJson> {
     return fetch(`${this.baseDataUri}/champion.json`).then(
-      (res) => res.json() as Promise<ChampionBasicJson>
+      (res) => res.json() as Promise<ChampionBasicJson>,
     );
   }
   async getAllChampionsFull(): Promise<ChampionFullJson> {
     return fetch(`${this.baseDataUri}/championFull.json`).then(
-      (res) => res.json() as Promise<ChampionFullJson>
+      (res) => res.json() as Promise<ChampionFullJson>,
     );
   }
   async getChallenges(): Promise<Record<string, any>[]> {
     return fetch(`${this.baseDataUri}/challenges.json`).then(
-      (res) => res.json() as Promise<Record<string, any>[]>
+      (res) => res.json() as Promise<Record<string, any>[]>,
     );
   }
   // The Raw Json File
   async getItemsJson(): Promise<ItemJson> {
     return fetch(`${this.baseDataUri}/item.json`).then(
-      (res) => res.json() as Promise<ItemJson>
+      (res) => res.json() as Promise<ItemJson>,
     );
   }
   // Mergeed with basic data to have all fields filled.
@@ -333,7 +333,7 @@ export interface ChampionComplexSpell {
     [number, number, number, number, number],
     [number, number, number, number, number],
     [number, number, number, number, number],
-    [number, number, number, number, number]
+    [number, number, number, number, number],
   ];
   effectBurn: [
     null,
@@ -346,7 +346,7 @@ export interface ChampionComplexSpell {
     string,
     string,
     string,
-    string
+    string,
   ];
   vars: never[];
   costType: string; // " {{ abilityresourcename }}",

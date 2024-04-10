@@ -19,10 +19,10 @@ console.log('Runes from CommunityDragon');
 main();
 async function main() {
   const perks_json: Promise<CDragonPerk[]> = fetch(CDRAGON_PERKS_JSON).then(
-    (x) => x.json() as unknown as CDragonPerk[]
+    (x) => x.json() as unknown as CDragonPerk[],
   );
   const perkstyles_json: Promise<CDragonPerkStyles> = fetch(
-    CDRAGON_PERKSTYLES_JSON
+    CDRAGON_PERKSTYLES_JSON,
   ).then((x) => x.json() as unknown as CDragonPerkStyles);
 
   const perks: Map<number, Perk> = new Map();
@@ -119,7 +119,7 @@ function mutate_statmods(perks: Map<number, any>) {
     [5001, 5002, 5003, 5005, 5007, 5008].map((perkId) => [
       perkId,
       perks.get(perkId),
-    ])
+    ]),
   );
 }
 
@@ -166,7 +166,7 @@ async function fetchWikiRune(name: string): Promise<TemplateRuneData | null> {
 
 const AUTO_MAKE_LEVEING = true;
 function mutateDescriptionLine(
-  p: HTMLElement | undefined
+  p: HTMLElement | undefined,
 ): SubSkill | undefined {
   const text = p?.textContent?.trim();
   if (!text || !p) return undefined;
@@ -179,7 +179,7 @@ function mutateDescriptionLine(
     for (const i in textLines) {
       const ratio = spellEffectFromDescription(
         `Name ${Number(i) + 1}:`,
-        textLines[i]
+        textLines[i],
       );
       leveling.push(ratio);
     }

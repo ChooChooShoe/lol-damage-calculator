@@ -195,7 +195,10 @@ const activeTotal = computed(() => {
   margin: 34px 0 0 -3px;
   font-size: 17px;
   text-decoration-color: #121a1b;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
     1px 1px 0 #000;
 }
 .inv__buttons {

@@ -99,7 +99,7 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
       wikiaChamp.skill_q,
       wikiaChamp.skill_w,
       wikiaChamp.skill_e,
-      wikiaChamp.skill_r
+      wikiaChamp.skill_r,
     );
   }
   for (const key of ['i', 'q', 'w', 'e', 'r']) {
@@ -119,7 +119,7 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
           wikiaChamp.skill_q,
           wikiaChamp.skill_w,
           wikiaChamp.skill_e,
-          wikiaChamp.skill_r
+          wikiaChamp.skill_r,
         );
       }
       // Add all anyway.
@@ -137,14 +137,14 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
   await fetchSkills('I', merged_skills.I, riotChamp.passive, true, model).catch(
     (err) => {
       console.error(err);
-    }
+    },
   );
   await fetchSkills(
     'Q',
     merged_skills.Q,
     riotChamp.spells[0],
     false,
-    model
+    model,
   ).catch((err) => {
     console.error(err);
   });
@@ -153,7 +153,7 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     merged_skills.W,
     riotChamp.spells[1],
     false,
-    model
+    model,
   ).catch((err) => {
     console.error(err);
   });
@@ -162,7 +162,7 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     merged_skills.E,
     riotChamp.spells[2],
     false,
-    model
+    model,
   ).catch((err) => {
     console.error(err);
   });
@@ -171,7 +171,7 @@ async function doMergeData(riotChampPromise, wikiaChamp, ChampionListEntry) {
     merged_skills.R,
     riotChamp.spells[3],
     false,
-    model
+    model,
   ).catch((err) => {
     console.error(err);
   });
@@ -183,12 +183,12 @@ async function fetchSkills(letter, skills, riotData, isPassive, champModel) {
   for (const skill_name of skills) {
     const { url, model } = await make_wiki_skill_model(
       champModel.name,
-      skill_name
+      skill_name,
     );
     // Use the fist model for each url.
     if (url in final_skills) {
       console.log(
-        `[WARN] Skill ${skill_name} had it's url redirected to another skill ${url}`
+        `[WARN] Skill ${skill_name} had it's url redirected to another skill ${url}`,
       );
       continue;
     }
@@ -206,7 +206,7 @@ async function fetchSkills(letter, skills, riotData, isPassive, champModel) {
       model,
       riotData,
       isPassive,
-      champModel
+      champModel,
     );
   }
 }
@@ -342,7 +342,7 @@ function buildSkill(model, riotData, is_passive, champModel) {
       if (damage_type === 'unknown') {
         console.log(
           '[WARN] Using adaptivetype as damage_type for skill',
-          title
+          title,
         );
         damage_type = champModel.adaptivetype;
       }
@@ -501,8 +501,8 @@ async function makeChampionList(ModuleChampionData) {
       doMergeData(fullDataPromise, data, ChampionList[champ]).then(
         (merged_data) => {
           return saveFile(`./public/api/champion/${champ}.json`, merged_data);
-        }
-      )
+        },
+      ),
     );
   }
   console.log('Awaiting all Promises');
@@ -510,7 +510,7 @@ async function makeChampionList(ModuleChampionData) {
   // console.log("freeze data");
   // Object.freeze(returnData);
   const sorted = Object.entries(ChampionList).sort((a, b) =>
-    a[1].name > b[1].name ? 1 : -1
+    a[1].name > b[1].name ? 1 : -1,
   );
 
   saveFile('./src/api/ChampionList.json', Object.fromEntries(sorted));

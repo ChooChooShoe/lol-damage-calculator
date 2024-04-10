@@ -46,7 +46,7 @@ const DEBUG = true;
 export type ModuleChampionDataFile = Record<string, ModuleChampionData>;
 export async function fetch_Module_ChampionData(): Promise<ModuleChampionDataFile> {
   const raw = await fetchWiki(
-    `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`
+    `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data`,
   );
 
   const x = moduleToJSON<ModuleChampionDataFile>(raw);
@@ -81,7 +81,7 @@ export function moduleToJSON<T>(text: string): T {
         //replaces [12] : with "12" :
         .replace(/\[(\d+)] : /g, `"$1" : `)
         //replaces -- with //
-        .replace(/--/g, '//')
+        .replace(/--/g, '//'),
     );
   }
   // return parsed JSON as a javascript object.
@@ -130,7 +130,7 @@ export interface ModuleChampionData {
 
 export async function fetchTemplateChampionSkillData(
   champ_name: string,
-  skill_name: string
+  skill_name: string,
 ): Promise<Partial<TemplateChampionSkillData>> {
   champ_name = cleanName(champ_name);
   skill_name = cleanName(skill_name);
@@ -230,7 +230,7 @@ export function cleanName(string: string): string {
 export async function getSkillModelsForChamp(
   champ_name: string,
   o: ModuleChampionData,
-  riot: ChampionComplex
+  riot: ChampionComplex,
 ): Promise<Record<string, SkillData>> {
   console.log(`Making SkillModels for ${champ_name}`);
   // Flatten all arrays for all skills.
@@ -274,7 +274,7 @@ function htmlOrNone(el: HTMLElement | null | undefined): string | undefined {
 export function toSkillData(
   skill_name: string,
   skill: Partial<TemplateChampionSkillData>,
-  riot_data: any
+  riot_data: any,
 ): SkillData {
   const descriptions = stackData(skill, 'description');
   const levelings = stackData(skill, 'leveling');
@@ -308,7 +308,7 @@ export function toSkillData(
       for (const [index, descTextLine] of Object.entries(descriptionText)) {
         const root_ratio = spellEffectFromDescription(
           `Line ${Number(index) + 1}:`,
-          descTextLine
+          descTextLine,
         );
         // Filter the empty ones. values is 0 and has no children.
         if (root_ratio.values === 0) if (!root_ratio.children) continue;
@@ -320,7 +320,7 @@ export function toSkillData(
         const root_ratio = spellEffectFromStrings(
           l.name,
           l.name + l.values,
-          l.values
+          l.values,
         );
         levelingArr.push(root_ratio);
       }
@@ -347,12 +347,12 @@ export function toSkillData(
     ss === 'true'
       ? true
       : ss === 'false'
-      ? false
-      : ss === 'special'
-      ? 'Special'
-      : ss === 'unknown'
-      ? 'Unknown'
-      : undefined;
+        ? false
+        : ss === 'special'
+          ? 'Special'
+          : ss === 'unknown'
+            ? 'Unknown'
+            : undefined;
 
   const inner_name = textOrNone(skill[1]) || skill_name;
   return {

@@ -52,7 +52,7 @@ const dispPost = computed(() => {
   // return props.val.units.slice(1).replace('bonus', '<i>bonus</i>');
 });
 const data = computed(
-  () => stat_to_display[props.val.units || 'base'] || default_spell_ratios
+  () => stat_to_display[props.val.units || 'base'] || default_spell_ratios,
 );
 
 const values = computed(() => {

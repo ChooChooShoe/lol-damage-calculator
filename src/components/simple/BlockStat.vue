@@ -107,14 +107,14 @@ const totalClass = computed(() => {
     return props.bonus < -0.005
       ? 'total-lowerd'
       : props.total > props.base + 0.005
-      ? 'total-bonus'
-      : '';
+        ? 'total-bonus'
+        : '';
   else
     return props.total < -0.005
       ? 'total-lowerd'
       : props.total > 0.005
-      ? 'total-bonus'
-      : '';
+        ? 'total-bonus'
+        : '';
 });
 const bonusClass = computed(() => {
   return hasBase && props.bonus < -0.5 ? 'bonus-lowerd' : '';

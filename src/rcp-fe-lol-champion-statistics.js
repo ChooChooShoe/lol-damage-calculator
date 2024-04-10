@@ -51,7 +51,7 @@
     c(3);
     const f = document.currentScript.ownerDocument;
     const g = window.getPluginAnnounceEventName(
-      'rcp-fe-lol-champion-statistics'
+      'rcp-fe-lol-champion-statistics',
     );
     f.addEventListener(
       g,
@@ -63,7 +63,7 @@
       },
       {
         once: !0,
-      }
+      },
     );
   },
   function (a, b, c) {

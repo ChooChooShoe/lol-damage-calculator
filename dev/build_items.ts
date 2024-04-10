@@ -31,7 +31,7 @@ async function main(args: string[]) {
     await bodyDDragon,
     await bodyCDragon,
     await wikiBody,
-    { DEBUG, spriteBaseUri }
+    { DEBUG, spriteBaseUri },
   );
 
   // await fs.mkdir('./src/api/items/', { recursive: true });

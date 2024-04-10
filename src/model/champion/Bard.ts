@@ -13,6 +13,6 @@ clearDescRatios(
   Bard,
   "Caretaker's Shrine",
   'Magical Journey',
-  "Traveler's Call"
+  "Traveler's Call",
 );
 export { Bard };

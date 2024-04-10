@@ -27,7 +27,7 @@ export async function ModelFromJson(
   riotItems: Record<string, RiotItemEntry>,
   cdragonItems: Array<CDragonItem>,
   wikiItems: Record<string, WikiItem>,
-  options: Options
+  options: Options,
 ): Promise<Dictionary<any>> {
   spriteBaseUri = options.spriteBaseUri || '';
 
@@ -37,7 +37,7 @@ export async function ModelFromJson(
     ' vs ',
     cdragonItems.length,
     ' vs ',
-    Object.keys(wikiItems).length
+    Object.keys(wikiItems).length,
   );
 
   // const defaultRiotItem = {
@@ -58,7 +58,7 @@ export async function ModelFromJson(
   function lookup_crawl(
     entry: { [x: string]: any },
     root: { [x: string]: any },
-    tree: string[]
+    tree: string[],
   ): void {
     for (const [key, val] of Object.entries(entry)) {
       if (
@@ -76,7 +76,7 @@ export async function ModelFromJson(
             '[ERROR] Itemlookup failed for kv',
             key,
             val,
-            ' from is null or undefined'
+            ' from is null or undefined',
           );
         }
       }
@@ -111,7 +111,7 @@ export async function ModelFromJson(
 async function takeRiftItem(
   a: CDragonItem,
   b: RiotItemEntry,
-  c: WikiItem
+  c: WikiItem,
 ): Promise<any> {
   const liveData = await fetchLiveItem(a.name);
 
@@ -125,7 +125,7 @@ async function takeRiftItem(
 
   function check(
     key: string,
-    key2?: string
+    key2?: string,
   ): number | any[] | boolean | undefined {
     if (key2) return check_val(`${key}" and "${key2}`, a[key], b[key2]);
     return check_val(key, a[key], b[key]);
@@ -133,7 +133,7 @@ async function takeRiftItem(
   function check_val(
     key: string,
     val_a: number | any[] | boolean | undefined,
-    val_b: number | any[] | boolean | undefined
+    val_b: number | any[] | boolean | undefined,
   ) {
     if (Array.isArray(val_a)) {
       val_a.sort();
@@ -145,18 +145,18 @@ async function takeRiftItem(
     }
     if (val_a && !val_b && key !== 'inStore')
       console.log(
-        `Item ${a.name}:${a.id} - Key "${key}" is null in riot (${val_a})`
+        `Item ${a.name}:${a.id} - Key "${key}" is null in riot (${val_a})`,
       );
     if (val_a && val_b && val_a.toString() !== val_b.toString())
       console.log(
-        `Item ${a.name}:${a.id} - Key "${key}" not match. (${val_a} !== ${val_b})`
+        `Item ${a.name}:${a.id} - Key "${key}" not match. (${val_a} !== ${val_b})`,
       );
     return val_a;
   }
   function unique(key: string) {
     if (a[key])
       console.log(
-        `Item ${a.name}:${a.id} - Key "${key}" hade unique value. "${a[key]}"`
+        `Item ${a.name}:${a.id} - Key "${key}" hade unique value. "${a[key]}"`,
       );
     return a[key];
   }
@@ -264,7 +264,7 @@ async function takeRiftItem(
     allNamedStatsKeysSet.add(key);
     if (typeof value !== 'number')
       console.warn(
-        `Item ${a.name}:${a.id} - Stat "${key}" has non-number typed value "${value}"`
+        `Item ${a.name}:${a.id} - Stat "${key}" has non-number typed value "${value}"`,
       );
   }
 
@@ -303,7 +303,7 @@ async function takeRiftItem(
   const effects = {
     consume: parse_effect(
       { name: 'Consume', description: '' },
-      liveData.consume
+      liveData.consume,
     ),
     pass: parse_effect(c.effects?.pass, liveData.pass),
     pass2: parse_effect(c.effects?.pass2, liveData.pass2),
@@ -312,7 +312,7 @@ async function takeRiftItem(
     pass5: parse_effect(c.effects?.pass5, liveData.pass5),
     mythic: parse_effect(
       { name: 'Mythic Passive', description: '' },
-      liveData.mythic
+      liveData.mythic,
     ),
     act: parse_effect(c.effects?.act, liveData.act),
   };

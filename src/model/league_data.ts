@@ -21,7 +21,7 @@ export function calcDamageWithRedection(
   percent_reduction: number,
   percent_pen: number,
   percent_bonus_pen: number,
-  flat_pen: number
+  flat_pen: number,
 ): number {
   // Flat Reduction is distuputed between base and bonus armor.
   const base_ratio = base / (base + bonus);
@@ -58,7 +58,7 @@ export function calc_dmg_onhit(
   player: ChampObjModel,
   target: ChampObjModel,
   dmg_premitigation: number,
-  damage_type: DamageType
+  damage_type: DamageType,
 ): number {
   switch (damage_type) {
     case 'None':
@@ -72,7 +72,7 @@ export function calc_dmg_onhit(
         player.percent_armor_reduction,
         player.percent_armorpen,
         player.percent_bonus_armorpen,
-        player.flat_armorpen
+        player.flat_armorpen,
       );
     case 'Magic':
       return calcDamageWithRedection(
@@ -83,7 +83,7 @@ export function calc_dmg_onhit(
         player.percent_mr_reduction,
         player.percent_magicpen,
         0,
-        player.flat_magicpen
+        player.flat_magicpen,
       );
     case 'True':
       return dmg_premitigation;

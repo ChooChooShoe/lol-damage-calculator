@@ -17,7 +17,7 @@ const statsTotal = computed(() => {
   for (const statMod of props.statmods) {
     for (const [stat, val] of Object.entries(statMod.stats) as [
       keyof StatBlock,
-      number | string | number[]
+      number | string | number[],
     ][]) {
       if (typeof val === 'string') {
         // spec and spec2 are unique.

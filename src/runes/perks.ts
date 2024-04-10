@@ -63,7 +63,7 @@ export function perk(perk: number | undefined | null): Perk | undefined {
   if (perk && isPerkKey(perk)) return perks[perk] as Perk;
 }
 export function perkStyle(
-  style: number | undefined | null
+  style: number | undefined | null,
 ): PerkStyle | undefined {
   if (style && isStyleKey(style)) return styles[style];
 }

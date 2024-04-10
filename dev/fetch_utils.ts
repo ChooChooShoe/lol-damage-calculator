@@ -35,7 +35,7 @@ export function mkdir(folder: fs.PathLike) {
 }
 export function saveFile(
   path: fs.PathLike | fs.promises.FileHandle,
-  data: any
+  data: any,
 ): Promise<void> {
   console.log(`Saving file '${path}'...`);
   return fs.promises.writeFile(path, JSON.stringify(data || {}, null, 2));
@@ -44,19 +44,19 @@ export function saveTSFile(
   path: fs.PathLike | fs.promises.FileHandle,
   data: any,
   preText: string,
-  postText: string
+  postText: string,
 ): Promise<void> {
   console.log(`Saving file '${path}' as typescript...`);
   return fs.promises.writeFile(
     path,
     `${preText}\n${JSON5.stringify(data || {}, {
       space: 2,
-    })}\n${postText}`
+    })}\n${postText}`,
   );
 }
 export function saveStringFile(
   path: fs.PathLike | fs.promises.FileHandle,
-  data: string
+  data: string,
 ): Promise<void> {
   console.log(`Saving file '${path}' as string...`);
   return fs.promises.writeFile(path, data);
@@ -64,7 +64,7 @@ export function saveStringFile(
 
 export async function saveFileBlob(
   path: fs.PathLike | fs.promises.FileHandle,
-  blob: Blob
+  blob: Blob,
 ): Promise<void> {
   console.log(`Saving file (BLOB) '${path}'...`);
   const x = await blob.arrayBuffer();
@@ -76,7 +76,7 @@ export function fileExists(path: fs.PathLike): boolean {
 
 export async function make_wiki_skill_model(
   champ_name: string,
-  skill_name: string
+  skill_name: string,
 ) {
   const skillDataUrl = `https://leagueoflegends.fandom.com/wiki/Template:Data_${champ_name
     .trim()
@@ -107,7 +107,7 @@ export async function make_wiki_skill_model(
       `./.debug/${champ_name}/${skill_name
         .replace(':', '_')
         .replace('/', '_')}.json`,
-      obj
+      obj,
     );
   }
   return { url: skillDataUrl, model: obj };
@@ -115,7 +115,7 @@ export async function make_wiki_skill_model(
 function autoCast(s: string): string | number | boolean;
 function autoCast(s: null | undefined): null;
 function autoCast(
-  s: string | null | undefined
+  s: string | null | undefined,
 ): string | number | boolean | null {
   if (s === null || s === undefined) return null;
   s = s.toString().trim();
@@ -129,7 +129,7 @@ function autoCast(
 
 export function stackData<T>(
   obj: Record<string, T>,
-  toStack: string
+  toStack: string,
 ): [T | undefined, T | undefined, T | undefined, T | undefined, T | undefined] {
   return [
     obj[`${toStack}`],

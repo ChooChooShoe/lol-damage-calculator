@@ -144,7 +144,7 @@ async function makeChampionList(ModuleChampionData) {
           const riot = await fetch_ddragon(data.apiname);
           Object.assign(ChampionList[champ], mergeModels(skills_model, riot));
         })
-        .catch((e) => console.log(e))
+        .catch((e) => console.log(e)),
     );
   }
   console.log('Awaiting all Promises');
@@ -198,7 +198,7 @@ async function fetch_ddragon(champ_id) {
       return null;
     })
     .then((json) =>
-      json && json.data ? json.data[Object.keys(json.data)[0]] : null
+      json && json.data ? json.data[Object.keys(json.data)[0]] : null,
     );
 }
 
@@ -246,7 +246,7 @@ export async function fetch_live_wiki_skills(champ_name) {
           div,
           'has uneven divs and infoboxes lengths',
           subs.length,
-          infoTabs.length
+          infoTabs.length,
         );
 
       return Object.entries(subs).map(([idx, subspell]) => {
@@ -265,7 +265,7 @@ export async function fetch_live_wiki_skills(champ_name) {
           infobox: infoTabs[idx].querySelector('aside'),
         };
       });
-    }
+    },
   );
   const skills = {};
   for (const {
@@ -297,25 +297,25 @@ export async function fetch_live_wiki_skills(champ_name) {
       ?.querySelector(`div[data-source="targeting"]`)
       ?.querySelector(`a`)?.textContent;
     skills[name].affects = infobox?.querySelector(
-      `div[data-source="affects"]`
+      `div[data-source="affects"]`,
     )?.textContent;
     skills[name].damagetype = infobox?.querySelector(
-      `div[data-source="damagetype"]`
+      `div[data-source="damagetype"]`,
     )?.textContent;
     skills[name].spelleffects = infobox?.querySelector(
-      `div[data-source="spelleffects"]`
+      `div[data-source="spelleffects"]`,
     )?.textContent;
     skills[name].spellshield = infobox?.querySelector(
-      `div[data-source="spellshield"]`
+      `div[data-source="spellshield"]`,
     )?.textContent;
     skills[name].projectile = infobox?.querySelector(
-      `div[data-source="projectile"]`
+      `div[data-source="projectile"]`,
     )?.textContent;
     skills[name].grounded = infobox?.querySelector(
-      `div[data-source="grounded"]`
+      `div[data-source="grounded"]`,
     )?.textContent;
     skills[name].knockdown = infobox?.querySelector(
-      `div[data-source="knockdown"]`
+      `div[data-source="knockdown"]`,
     )?.textContent;
     // model.skill[name].notes = null;
 
@@ -326,7 +326,7 @@ export async function fetch_live_wiki_skills(champ_name) {
         return s;
       });
     skills[name].description = [...div.querySelectorAll('p')].map(
-      (x) => x.innerHTML
+      (x) => x.innerHTML,
     );
 
     skills[name].leveling = [...div.querySelectorAll('.skill_leveling')]
@@ -378,18 +378,18 @@ function makeRatioObj(root) {
   const apply = is_text
     ? 'text'
     : per && per_100
-    ? 'per100'
-    : per
-    ? 'per'
-    : ispercent
-    ? 'percent'
-    : 'flat';
+      ? 'per100'
+      : per
+        ? 'per'
+        : ispercent
+          ? 'percent'
+          : 'flat';
   const user =
     apply === 'flat'
       ? undefined
       : stat_raw.indexOf('target') > -1
-      ? 'target'
-      : 'player';
+        ? 'target'
+        : 'player';
 
   const stat = ratio_to_player_stat(stat_raw);
   return {

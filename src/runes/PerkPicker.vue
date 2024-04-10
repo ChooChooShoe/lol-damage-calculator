@@ -15,8 +15,8 @@
       <SinglePerk
         :perk="x"
         :is-path="true"
-        v-for="x in primaryPath?.allowedSubStyles.map((pid) =>
-          perkStyle(pid)!
+        v-for="x in primaryPath?.allowedSubStyles.map(
+          (pid) => perkStyle(pid)!,
         ) || []"
         :key="x.id"
         :selection="runes.subStyle"
@@ -29,7 +29,7 @@
     <div v-if="primaryPath">
       <div class="rune_row__keystone">
         <SinglePerk
-          v-for="p in primaryPath.slots.KeyStone.perks.map(pid => perk(pid)!)"
+          v-for="p in primaryPath.slots.KeyStone.perks.map((pid) => perk(pid)!)"
           :key="p.id"
           :perk="p"
           :isKeyStone="true"
@@ -41,7 +41,7 @@
       <hr />
       <div class="rune_row">
         <SinglePerk
-          v-for="p in primaryPath.slots.Mixed1.perks.map(pid => perk(pid)!)"
+          v-for="p in primaryPath.slots.Mixed1.perks.map((pid) => perk(pid)!)"
           :key="p.id"
           :perk="p"
           :selection="runes.primarySelections[1]"
@@ -51,7 +51,7 @@
       </div>
       <div class="rune_row">
         <SinglePerk
-          v-for="p in primaryPath.slots.Mixed2.perks.map(pid => perk(pid)!)"
+          v-for="p in primaryPath.slots.Mixed2.perks.map((pid) => perk(pid)!)"
           :key="p.id"
           :perk="p"
           :selection="runes.primarySelections[2]"
@@ -61,7 +61,7 @@
       </div>
       <div class="rune_row">
         <SinglePerk
-          v-for="p in primaryPath.slots.Mixed3.perks.map(pid => perk(pid)!)"
+          v-for="p in primaryPath.slots.Mixed3.perks.map((pid) => perk(pid)!)"
           :key="p.id"
           :perk="p"
           :selection="runes.primarySelections[3]"
@@ -75,7 +75,9 @@
       <template v-if="secondaryPath">
         <div class="rune_row">
           <SinglePerk
-            v-for="p in secondaryPath.slots.Mixed1.perks.map(pid => perk(pid)!)"
+            v-for="p in secondaryPath.slots.Mixed1.perks.map(
+              (pid) => perk(pid)!,
+            )"
             :key="p.id"
             :perk="p"
             :selection="subStyleSelectionsDisplay[0]"
@@ -85,7 +87,9 @@
         </div>
         <div class="rune_row">
           <SinglePerk
-            v-for="p in secondaryPath.slots.Mixed2.perks.map(pid => perk(pid)!)"
+            v-for="p in secondaryPath.slots.Mixed2.perks.map(
+              (pid) => perk(pid)!,
+            )"
             :key="p!.id"
             :perk="p"
             :selection="subStyleSelectionsDisplay[1]"
@@ -95,7 +99,9 @@
         </div>
         <div class="rune_row">
           <SinglePerk
-            v-for="p in secondaryPath.slots.Mixed3.perks.map(pid => perk(pid)!)"
+            v-for="p in secondaryPath.slots.Mixed3.perks.map(
+              (pid) => perk(pid)!,
+            )"
             :key="p!.id"
             :perk="p"
             :selection="subStyleSelectionsDisplay[2]"
@@ -109,7 +115,7 @@
       <div class="rune_row_stats">
         <SinglePerk
           class="StatsModBox"
-          v-for="p in [5008, 5005, 5007].map(pid => perk(pid)!)"
+          v-for="p in [5008, 5005, 5007].map((pid) => perk(pid)!)"
           :key="p!.id"
           :perk="p"
           :selection="runes.statPerks.offense"
@@ -120,7 +126,7 @@
       <div class="rune_row_stats">
         <SinglePerk
           class="StatsModBox"
-          v-for="p in [5008, 5002, 5003].map(pid => perk(pid)!)"
+          v-for="p in [5008, 5002, 5003].map((pid) => perk(pid)!)"
           :key="p!.id"
           :perk="p"
           :selection="runes.statPerks.flex"
@@ -131,7 +137,7 @@
       <div class="rune_row_stats">
         <SinglePerk
           class="StatsModBox"
-          v-for="p in [5001, 5002, 5003].map(pid => perk(pid)!)"
+          v-for="p in [5001, 5002, 5003].map((pid) => perk(pid)!)"
           :key="p!.id"
           :perk="p"
           :selection="runes.statPerks.defense"

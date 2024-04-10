@@ -110,7 +110,10 @@ export default {
   text-anchor: middle;
   font-size: 17px;
   text-decoration-color: #121a1b;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
     1px 1px 0 #000;
   width: 20px;
   height: 20px;

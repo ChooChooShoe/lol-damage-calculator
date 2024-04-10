@@ -51,8 +51,8 @@ const statmods = computed(() => {
       new StatMod(
         'perks[String(p.statPerks.defense) as keyof typeof perks].name',
         'Runes::Stats::defense',
-        perk(obj.runes.statPerks.defense)!.stats!
-      )
+        perk(obj.runes.statPerks.defense)!.stats!,
+      ),
     );
 
   if (obj.runes.statPerks.flex)
@@ -60,8 +60,8 @@ const statmods = computed(() => {
       new StatMod(
         'perks[String(p.statPerks.flex) as keyof typeof perks].name',
         'Runes::Stats::flex',
-        perk(obj.runes.statPerks.flex)!.stats!
-      )
+        perk(obj.runes.statPerks.flex)!.stats!,
+      ),
     );
 
   if (obj.runes.statPerks.offense)
@@ -69,8 +69,8 @@ const statmods = computed(() => {
       new StatMod(
         'perks[String(p.statPerks.flex) as keyof typeof perks].name',
         'Runes::Stats::offense',
-        perk(obj.runes.statPerks.offense)!.stats!
-      )
+        perk(obj.runes.statPerks.offense)!.stats!,
+      ),
     );
 
   return r;

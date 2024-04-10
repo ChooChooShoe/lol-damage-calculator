@@ -2,10 +2,13 @@ import { reactive } from 'vue';
 import { ChampObjModel } from '../model/ChampObj';
 import type { DamageSource } from '../model/league_data';
 
+const lastChampPlayer = localStorage.getItem('sv_champ_player');
+const lastChampTarget = localStorage.getItem('sv_champ_target');
+
 export const player = reactive(new ChampObjModel('player', 'Ashe'));
 export const target = reactive(new ChampObjModel('target', 'Zoe'));
 export const playerStatusEffects = reactive<{ [key: string]: StatusEffect }>(
-  {}
+  {},
 );
 export const damageSources: { [key: string]: DamageSource[] } = reactive({});
 

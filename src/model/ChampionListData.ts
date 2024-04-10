@@ -1,1 +1,1 @@
-export type ChampionName = string;  
+export type ChampionName = string;

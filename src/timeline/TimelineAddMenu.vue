@@ -59,6 +59,10 @@ defineProps<{ models: { [key: string]: SkillData } }>();
   text-align: center;
   width: 48px;
   font-weight: bold;
-  text-shadow: 0 0 8px black, 0 0 8px black, 0 0 8px black, 0 0 8px black;
+  text-shadow:
+    0 0 8px black,
+    0 0 8px black,
+    0 0 8px black,
+    0 0 8px black;
 }
 </style>

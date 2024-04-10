@@ -3,7 +3,7 @@ import type { ScaleValue, DamageType } from '@/api/DataTypes';
 export function levelingToVal(leveling: string): ScaleValue;
 export function levelingToVal(leveling?: string | null): ScaleValue | undefined;
 export function levelingToVal(
-  leveling?: string | null
+  leveling?: string | null,
 ): ScaleValue | undefined {
   if (!leveling) return undefined;
   const arr = leveling

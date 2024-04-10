@@ -90,10 +90,10 @@ export function ratios_from_text(full_text: string): SubRatio {
 
 export function spellEffectFromDescription(
   lineNumber: string,
-  descTextLine: string
+  descTextLine: string,
 ): RootRatio {
   console.log(
-    `[TRACE] spellEffectFromDescription(lineNumber="${lineNumber}", descTextLine="${descTextLine}")`
+    `[TRACE] spellEffectFromDescription(lineNumber="${lineNumber}", descTextLine="${descTextLine}")`,
   );
   const nameSplit = descTextLine.split(/: (.*)/s);
   const betterName = nameSplit[1] ? nameSplit[0] + ':' : lineNumber;
@@ -104,10 +104,10 @@ export function spellEffectFromDescription(
 export function spellEffectFromStrings(
   name: string,
   keywords: string,
-  raw: string
+  raw: string,
 ): RootRatio {
   console.log(
-    `[TRACE] spellEffectFromStrings(name="${name}", keywords="${keywords}", raw="${raw}")`
+    `[TRACE] spellEffectFromStrings(name="${name}", keywords="${keywords}", raw="${raw}")`,
   );
   const target: Partial<RootRatio> = {
     effectType: matchKeyword(keywords, validEffectTypes, 'Unique'),
@@ -177,7 +177,7 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
       'Effect has more then 1 post script',
       post_arr,
       'for ratio',
-      root
+      root,
     );
   const pre_vals = level_to_ratio(pre);
 
@@ -193,7 +193,7 @@ export function makeRatioObj(root: ArrayTree, strictMode: boolean): SubRatio {
       "[WARN] Replacing units '",
       unitsText,
       "' because of post ",
-      post
+      post,
     );
     unitsText = post;
   }
@@ -245,7 +245,7 @@ function level_to_ratio(fullText: string): {
     if (Number.isFinite(n)) {
       units = units + split[1] || '';
       console.log(
-        `[INFO] Stat leveling split '${leveling}' needed to split value: '${x}' into: [${split}] n=${n} units="${units}"`
+        `[INFO] Stat leveling split '${leveling}' needed to split value: '${x}' into: [${split}] n=${n} units="${units}"`,
       );
 
       return n;
@@ -256,14 +256,14 @@ function level_to_ratio(fullText: string): {
       if (Number.isFinite(n)) {
         units = units + split[1] || '';
         console.log(
-          `[INFO] Stat leveling  '${leveling}' needed to justNumber value: '${x}' into: [${split}] n=${n} units="${units}"`
+          `[INFO] Stat leveling  '${leveling}' needed to justNumber value: '${x}' into: [${split}] n=${n} units="${units}"`,
         );
 
         return n;
       }
     }
     console.log(
-      `[WARN] Stat leveling '${leveling}' has failed (${fail_count})`
+      `[WARN] Stat leveling '${leveling}' has failed (${fail_count})`,
     );
 
     return fail_count++;

@@ -58,7 +58,7 @@ export async function fetchLiveItem(item_name: string): Promise<{
 
   function decompile_effect(
     text: HTMLElement | null,
-    removeHead: boolean
+    removeHead: boolean,
   ): OptionElement {
     if (!text) return null;
     // See: compile_effect in https://leagueoflegends.fandom.com/wiki/Module:ItemData/getter

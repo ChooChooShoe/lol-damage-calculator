@@ -141,7 +141,7 @@ export default {
               continue;
             default:
               console.log(
-                `Unknown Damage Type "${source.damage_type}" Caculations may be incorrect.`
+                `Unknown Damage Type "${source.damage_type}" Caculations may be incorrect.`,
               );
               continue;
           }

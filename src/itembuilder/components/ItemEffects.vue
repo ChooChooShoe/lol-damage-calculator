@@ -7,7 +7,11 @@
       v-for="(ratio, index) in itemEffect.models"
       :key="index"
       :pkey="`${itemEffect.name} - ${pkey} #${index + 1})`"
-      :details="{ name: ratio.name, values: ratio.pre!, valuesHTML: ratio.pre! }"
+      :details="{
+        name: ratio.name,
+        values: ratio.pre!,
+        valuesHTML: ratio.pre!,
+      }"
       :effect="ratio"
       :effectindex="index"
     ></SpellEffects>

@@ -23,7 +23,7 @@ export async function fetch_wiki(url) {
   if (response.redirected)
     console.info('[WARN] Page redirected', url, 'to', response.url);
   const text = (await response.text()).match(
-    /<textarea[^>]*>([^]*)<\/textarea>/m
+    /<textarea[^>]*>([^]*)<\/textarea>/m,
   );
   if (text) {
     const decoded = he.decode(text[1]);
@@ -35,7 +35,7 @@ export async function fetch_wiki(url) {
 
 export async function fetch_mod_data() {
   const raw = await fetch_wiki(
-    `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`
+    `https://leagueoflegends.fandom.com/wiki/Module:ChampionData/data?action=edit`,
   );
 
   // Converts Lua data to json data.
@@ -61,7 +61,7 @@ export async function fetch_mod_data() {
         // replaces [12] : with "12" :
         .replace(/\[(\d+)] : /g, `"$1" : `)
         // replaces -- with //
-        .replace(/--/g, '//')
+        .replace(/--/g, '//'),
     );
   }
   // return parsed JSON as a javascript object.
@@ -80,7 +80,7 @@ export function saveFile(path, data) {
         return console.log(err);
       }
       console.log(`The file '${path}' was saved!`);
-    }
+    },
   );
 }
 
@@ -128,7 +128,7 @@ export async function make_wiki_skill_model(champ_name, skill_name) {
       `./.debug/${champ_name}/${skill_name
         .replace(':', '_')
         .replace('/', '_')}.json`,
-      obj
+      obj,
     );
   }
   return { url: decodeURI(raw.response.url), model: obj };

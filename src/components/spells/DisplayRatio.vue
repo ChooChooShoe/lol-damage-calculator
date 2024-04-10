@@ -25,7 +25,7 @@ export default {
   setup(props) {
     const { index, ratioKey, list } = toRefs(props);
     const data = computed(
-      () => spell_ratios[ratioKey.value] || default_spell_ratios
+      () => spell_ratios[ratioKey.value] || default_spell_ratios,
     );
     const displayValueArray = function (v) {
       if (data.value.flat) return `${+v.toFixed(3)}`;

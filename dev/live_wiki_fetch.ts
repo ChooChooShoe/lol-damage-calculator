@@ -42,7 +42,7 @@ const known_skill_names = {
 export async function fetch_live_wiki_skills(
   champ_name: string,
   o: ModuleChampionData,
-  riot: ChampionComplex
+  riot: ChampionComplex,
 ): Promise<{ skills: { [key: string]: SkillModel } }> {
   const cleanedName = champ_name.trim().replace(/ /g, '_');
   const url = `https://leagueoflegends.fandom.com/wiki/${cleanedName}/LoL`;
@@ -62,7 +62,7 @@ export async function fetch_live_wiki_skills(
       ] || 'X';
     //Finds main body for all sub skills.
     const abilityInfoContainers = skill_div.querySelectorAll<HTMLElement>(
-      '.ability-info-container'
+      '.ability-info-container',
     );
     //Finds Details tab for all sub skills.
     let maybe_tabbertab = skill_div?.nextElementSibling?.nextElementSibling;
@@ -85,7 +85,7 @@ export async function fetch_live_wiki_skills(
         'has uneven divs lengths',
         abilityInfoContainers.length,
         infoTabs.length,
-        header_aside.length
+        header_aside.length,
       );
 
     return Array.from(abilityInfoContainers, (main_div, idx) => {
@@ -142,7 +142,7 @@ export async function fetch_live_wiki_skills(
       main_div,
       header_aside,
       infobox,
-      riot_data
+      riot_data,
     ) as any;
   }
   return { skills };
@@ -203,13 +203,13 @@ class SkillObj implements SkillModelOld {
         e: number;
         r: number;
       };
-    }
+    },
   ) {
     function mutate_val<T>(src: string, table: any, fallback: T): T {
       return mutate(
         infobox?.querySelector(`div[data-source="${src}"]`)?.textContent || '',
         table,
-        fallback
+        fallback,
       );
     }
     function mutate<T>(text: string, table: any, fallback: T): T {
@@ -246,19 +246,20 @@ class SkillObj implements SkillModelOld {
       infobox?.querySelector(`div[data-source="targeting"]`)?.querySelector(`a`)
         ?.textContent || '',
       valid_targeting,
-      undefined
+      undefined,
     );
     this.affects =
       infobox?.querySelector(`div[data-source="affects"]`)?.textContent ||
       undefined;
     this.damagetype = mutate_damagetype(
-      infobox?.querySelector(`div[data-source="damagetype"]`)?.textContent || ''
+      infobox?.querySelector(`div[data-source="damagetype"]`)?.textContent ||
+        '',
     ) as any;
 
     this.spelleffects = mutate_val(
       'spelleffects',
       valid_spelleffects,
-      undefined
+      undefined,
     );
     this.spellshield = mutate_val('spellshield', valid_spellshield, undefined);
     this.projectile = mutate_val('projectile', valid_projectile, undefined);
@@ -292,21 +293,21 @@ class SkillObj implements SkillModelOld {
             if (x.values === 0 || !x.children) return false;
           }
           return true;
-        })
+        }),
       );
 
       const dt_list = [...div_2.querySelectorAll('dt')].map(
-        (x) => x.textContent || ''
+        (x) => x.textContent || '',
       );
       const dd_list = [...div_2.querySelectorAll('dd')].map(
-        (x) => x.textContent || ''
+        (x) => x.textContent || '',
       );
 
       for (const idx in dt_list) {
         const root_ratio = spellEffectFromStrings(
           dt_list[idx],
           dd_list[idx],
-          dd_list[idx]
+          dd_list[idx],
         );
         leveling.push(root_ratio);
       }
@@ -339,19 +340,19 @@ class SkillObj implements SkillModelOld {
 const lazyimg_cache: { [key: string]: string } = {};
 export function fix_wiki_img(document: ParentNode) {
   for (const img of document.querySelectorAll<HTMLImageElement>(
-    'img.lazyload'
+    'img.lazyload',
   )) {
     if (img.dataset.src && img.dataset.imageKey) {
       img.loading = 'lazy';
       img.src = '/wiki/images/' + img.dataset.imageKey;
       const file_path = decodeURI(
-        './public/wiki/images/' + img.dataset.imageKey
+        './public/wiki/images/' + img.dataset.imageKey,
       );
       if (!(img.dataset.imageKey in lazyimg_cache)) {
         lazyimg_cache[img.dataset.imageKey] = img.dataset.src;
         if (!fileExists(file_path)) {
           console.log(
-            `Found Image: { imageName: '${img.dataset.imageName}', imageKey: '${img.dataset.imageKey}', src: '${img.dataset.src}' }`
+            `Found Image: { imageName: '${img.dataset.imageName}', imageKey: '${img.dataset.imageKey}', src: '${img.dataset.src}' }`,
           );
           fetch(img.dataset.src)
             .then((res) => res.blob())
