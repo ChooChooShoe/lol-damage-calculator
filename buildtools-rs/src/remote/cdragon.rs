@@ -286,15 +286,15 @@ impl ChampionData {
     fn fix_asset_paths(&mut self) {
         // "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/"
 
-        self.square_portrait_path = self.square_portrait_path[22..].to_lowercase();
-        self.stinger_sfx_path = self.stinger_sfx_path[22..].to_lowercase();
-        self.choose_vo_path = self.choose_vo_path[22..].to_lowercase();
-        self.ban_vo_path = self.ban_vo_path[22..].to_lowercase();
-        self.passive.ability_icon_path = self.passive.ability_icon_path[22..].to_lowercase();
-        self.spells[0].ability_icon_path = self.spells[0].ability_icon_path[22..].to_lowercase();
-        self.spells[1].ability_icon_path = self.spells[1].ability_icon_path[22..].to_lowercase();
-        self.spells[2].ability_icon_path = self.spells[2].ability_icon_path[22..].to_lowercase();
-        self.spells[3].ability_icon_path = self.spells[3].ability_icon_path[22..].to_lowercase();
+        self.square_portrait_path = self.square_portrait_path[21..].to_lowercase();
+        self.stinger_sfx_path = self.stinger_sfx_path[21..].to_lowercase();
+        self.choose_vo_path = self.choose_vo_path[21..].to_lowercase();
+        self.ban_vo_path = self.ban_vo_path[21..].to_lowercase();
+        self.passive.ability_icon_path = self.passive.ability_icon_path[21..].to_lowercase();
+        self.spells[0].ability_icon_path = self.spells[0].ability_icon_path[21..].to_lowercase();
+        self.spells[1].ability_icon_path = self.spells[1].ability_icon_path[21..].to_lowercase();
+        self.spells[2].ability_icon_path = self.spells[2].ability_icon_path[21..].to_lowercase();
+        self.spells[3].ability_icon_path = self.spells[3].ability_icon_path[21..].to_lowercase();
     }
 }
 
