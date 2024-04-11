@@ -372,13 +372,18 @@ pub struct SkillDetails(Vec<Details>);
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(default, rename_all = "camelCase")]
 pub struct Details {
-    pub icon: String,        //Sonic Wave.png : String, //icon
+    pub icon: String,                 //Sonic Wave.png : String, //icon
     pub blurb: String, //Active: Lee Sin Lee Sin fires a sonic blast in the target direction that deals physical damage to the first enemy hit and marks them for a short time, during which they are True Sight icon revealed. : String, //blurb
     pub description: String, //Active: Lee Sin fires a sonic blast in the target direction that deals physical damage to the first enemy hit and marks them for 3 seconds, during which they are True Sight icon revealed. : String, //description
     pub leveling: Vec<LevelingGroup>, //Physical Damage:    55 / 80 / 105 / 130 / 155 (+ 115% bonus AD) leveling
 }
 impl Details {
-    fn new(blurb: &str, icon: &str, description: &str, leveling: &Vec<LevelingGroup>) -> Option<Details> {
+    fn new(
+        blurb: &str,
+        icon: &str,
+        description: &str,
+        leveling: &Vec<LevelingGroup>,
+    ) -> Option<Details> {
         if blurb == "" && icon == "" && description == "" {
             return Option::None;
         }

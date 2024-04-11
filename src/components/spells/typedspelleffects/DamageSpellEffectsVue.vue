@@ -3,12 +3,12 @@
     <EditBtn class="spelleffect__editbtn" v-model="editMode"></EditBtn>
     <span
       class="spelleffect__title"
-      :title="effect.raw"
-      v-html="effect.name"
+      :title="current.raw"
+      v-html="current.name"
     ></span>
     <span>
       <RecursiveRatioDisplay
-        :val="effect"
+        :val="current"
         :computed-vals="computedRatioValues"
         display="value"
       >
@@ -26,7 +26,7 @@
       <span class="ad spelleffect__title">Pre-Mitigation: </span>
       <div>
         <RecursiveRatioDisplay
-          :val="effect"
+          :val="current"
           :computed-vals="computedRatioValues"
           display="scaledValue"
           :index="index"
@@ -46,9 +46,9 @@
       <span class="ap spelleffect__title">Post-Mitigation: </span>
       <div>
         <RecursiveRatioDisplay
-          :val="effect"
+          :val="current"
           :computed-vals="computedRatioValues"
-          display="dmg_postmitigation"
+          display="value"
         >
         </RecursiveRatioDisplay>
         <span class="spelleffect__total">{{
@@ -156,7 +156,8 @@ import type {
   DamageEffect,
   DamageType,
   EffectType,
-  SkillData,
+  SkillModel,
+  LevelingGroup,
 } from '@/api/DataTypes';
 import EffectTypeField from '@/components/effects/EffectTypeField.vue';
 import EditBtn from '@/components/simple/EditBtn.vue';
@@ -171,16 +172,17 @@ import {
   watchEffect,
   onMounted,
   onUnmounted,
+  computed,
 } from 'vue';
 import AddRatioDropDown from '../AddRatioDropDown.vue';
 import DamageTypeField from '../DamageTypeField.vue';
 import { makeRootRatio, makeSubRatio } from '../ratios_info';
 import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
 import SpellField from '../SpellField.vue';
-import { damage_type_user } from '../SpellHelper';
 
 const props = defineProps<{
-  effect: DamageEffect;
+  // effect: DamageEffect;
+  effect: LevelingGroup;
   pkey: string;
 }>();
 
@@ -190,7 +192,10 @@ const damage_type = ref<DamageType>('Magic');
 const effectType = ref<EffectType>('Damage');
 const damageSource = new DamageSource('Magic', 8);
 
-const skillbase = inject<SkillData>('skillbase');
+const skillbase = inject<SkillModel>('skillbase');
+
+const index = ref(0);
+const current = computed(() => props.effect[index.value]);
 
 watchEffect(() => {
   // let newRatios = reactive({});
@@ -202,7 +207,7 @@ watchEffect(() => {
   // console.log("computed() ratios", ratios, effect.ratio_obj);
 });
 
-const computedRatioValues = makeRootRatio(props.effect, rankindex!, obj!);
+const computedRatioValues = makeRootRatio(props.effect[0], rankindex!, obj!);
 
 defineExpose({
   ratios: computedRatioValues,
@@ -247,11 +252,31 @@ const editMode = ref(false);
 
 // const dmg_premitigation = computedRatioValues.damagePreTotal;
 // const dmg_postmitigation = computedRatioValues.damagePostValue;
+const dmg_premitigation = 250;
+const dmg_postmitigation = 350;
 
 // damageSource.repeat = repeat;
 // damageSource.postIsManual = false;
 // damageSource.damage_type = damage_type;
 // damageSource.dmg_premitigation = dmg_premitigation;
 // damageSource.dmg_postmitigation = dmg_postmitigation;
-const index = 0;
+
+function damage_type_user(damage_type: string): string {
+  switch (damage_type) {
+    case 'physical':
+      return `<span class="ad">physical damage</span>`;
+    case 'magic':
+      return `<span class="ap">magic damage</span>`;
+    case 'true':
+      return `<span class="true">true damage</span>`;
+    case 'heal':
+      return `<span class="shield">healing</span>`;
+    case 'shield':
+      return `<span class="shield">shielding</span>`;
+    case 'unknown':
+      return `<span class="true">unknown damage</span>`;
+    default:
+      return `<span class="true">non-damaging ability</span>`;
+  }
+}
 </script>

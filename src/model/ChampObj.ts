@@ -1,50 +1,69 @@
-import type { BaseStatsObj, ChampObjStats } from '@/api/ChampObjStats';
-import type { SkillData } from '@/api/DataTypes';
+import type { ChampObjStats } from '@/api/ChampObjStats';
+import type {
+  RootRatio,
+  SkillDetails,
+  SkillDetailsModel,
+  SkillGenData,
+  SkillLevelingData,
+  SkillModel,
+} from '@/api/DataTypes';
 import { PerkSelections } from '../runes/perks';
 
-function getBaseStatsObj(champ: ChampionName | null | undefined): BaseStatsObj {
-  if (isChampionName(champ)) return ChampionListData[champ].stats;
-  return {
-    hp_base: 100,
-    hp_lvl: 10,
-    mp_base: 400,
-    mp_lvl: 50,
-    arm_base: 40,
-    arm_lvl: 5,
-    mr_base: 30,
-    mr_lvl: 2,
-    hp5_base: 3,
-    hp5_lvl: 0.6,
-    mp5_base: 11.5,
-    mp5_lvl: 0.7,
-    dam_base: 50,
-    dam_lvl: 2,
-    as_base: 0.625,
-    as_ratio: 0.625,
-    as_lvl: 1.75,
-    missile_speed: 0,
-    attack_cast_time: 0,
-    attack_total_time: 0,
-    attack_delay_offset: 0,
-    windup_modifier: 0,
-    crit_base: 175,
-    crit_mod: 0,
-    range: 125,
-    ms: 330,
-    gameplay_radius: 65,
-    acquisition_radius: 800,
-    selection_radius: 100,
-    pathing_radius: 35,
-  };
+import { ItemInventory } from './ItemInventory';
+
+import ChampionsGen from '@/generated/Champions.gen';
+import type { ChampionName } from '@/generated/Champions.gen';
+export type { ChampionName };
+
+export async function getSkillsModel(
+  champ: ChampionName,
+): Promise<ChampionModel | undefined> {
+  return import(`@/generated/champion/${champ}.gen.ts`).then((mod) =>
+    toChampModel(mod),
+  );
 }
-export function isChampionName(name?: string | null): name is ChampionName {
-  return !!name && name in ChampionListData;
+export type ChampionModel = { Skills: { [key: string]: SkillModel } };
+function toChampModel(imported: any): ChampionModel {
+  const ret: ChampionModel = { Skills: {} };
+  if (imported && imported.Skills) {
+    for (const [key, value] of Object.entries(imported.Skills)) {
+      ret.Skills[key] = toSkillModel(value as SkillGenData);
+    }
+  }
+  return ret;
 }
 
-export function validateName(value?: string | null): ChampionName | undefined {
+function toSkillModel(base: SkillGenData): SkillModel {
+  const maxrank = 5;
+  const details = base.details.map((x) => toSkillDetailsModel(x));
+  return {
+    ...base,
+    image: undefined,
+    maxrank,
+    details,
+  };
+}
+
+function toSkillDetailsModel(base: SkillDetails): SkillDetailsModel {
+  const descriptionRatios: RootRatio[] = [];
+  const leveling2: SkillLevelingData[] = [];
+  const levelingRatios: RootRatio[] = [];
+  return {
+    ...base,
+    descriptionRatios,
+    leveling2,
+    levelingRatios,
+  };
+}
+
+export function isChampionName(name?: string | null): name is ChampionName {
+  return !!name && name in ChampionsGen;
+}
+
+export function validateName(value: any): ChampionName | undefined {
   if (isChampionName(value)) return value;
   if (!value) return undefined;
-  for (const el of Object.keys(ChampionListData)) {
+  for (const el of Object.keys(ChampionsGen)) {
     if (el.toLowerCase().includes(value.toLowerCase())) {
       return el as ChampionName;
     }
@@ -62,7 +81,8 @@ export class ChampObjModel implements ChampObjStats {
   }
 
   updateBaseStats() {
-    const bs = getBaseStatsObj(this.champ);
+    //TODO some stats are missing range_lvl and as_level1
+    const bs = ChampionsGen[this.champ].stats;
     this.base_ad = bs.dam_base + this.growth(bs.dam_lvl);
     this.base_hp = bs.hp_base + this.growth(bs.hp_lvl);
     this.base_mana = bs.mp_base + this.growth(bs.mp_lvl);
@@ -393,137 +413,3 @@ class Rune {
 // export interface ChampionSkills {
 //     [key: string]: SkillJson,
 // }
-
-export interface Image {
-  full: string;
-  sprite: string;
-  group: string;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-}
-
-// export interface Leveling {
-//     name: string;
-//     raw: string;
-//     values: number | number[];
-//     stat: string;
-//     apply: string;
-//     stat_raw: string;
-//     sub_ratios: SubRatio[];
-// }
-
-// export interface SkillJson {
-//     name: string;
-//     display_name: string;
-//     header_name: string;
-//     targeting: string;
-//     damagetype: string;
-//     spelleffects?: string;
-//     projectile?: string;
-//     img: string[];
-//     description: string[];
-//     leveling: Leveling[];
-//     image: Image;
-//     maxrank: number;
-//     [key: string]: any,
-// }
-// export interface SkillJsonExt extends SkillJson {
-//     effect_radius: number | number[];
-//     range: number[] | number | string;
-//     width: number;
-//     cast_time: number;
-//     cost: string;
-//     cooldown: number[];
-//     spellshield: string;
-//     target_range: number;
-//     collision_radius: number;
-//     speed: number;
-//     static_cooldown: any[];
-//     recharge: number;
-//     grounded: string;
-//     knockdown: string;
-//     angle: string;
-//     outer_limit: number;
-//     pillar_radius: number;
-//     inner_radius: number;
-//     target_immunity: number;
-//     sight_reduction: number;
-//     tether_radius: string;
-//     detection_radius: number;
-//     barrage_cooldown: number;
-//     // "static_ball's sight": number[];
-//     impassable_perimeter: string;
-//     // on-terrain_cooldown: number[];
-//     leash_range: number[];
-//     // per-leg_cooldown: any[];
-//     disable_time: number;
-//     side_length: number;
-//     // on-target_cooldown: string;
-//     size_radius: string;
-//     // per-direction_cooldown: number[];
-// }
-
-import { ChampionListData, type ChampionName } from './ChampionListData';
-import { ItemInventory } from './ItemInventory';
-
-export function getChampListEntry(champ: ChampionName): ChampListEntry {
-  return ChampionListData[champ];
-}
-export { ChampionListData, type ChampionName };
-
-// prettier-ignore
-export type Resource = 'Blood Well' | 'Mana' | 'Energy' | 'None' | 'Health' | 'Rage' | 'Fury' | 'Grit' | 'Courage' | 'Shield' | 'Ferocity' | 'Heat' | 'Bloodthirst' | 'Flow' | 'Soul Unbound';
-export type Position = 'Top' | 'Middle' | 'Bottom' | 'Jungle' | 'Support';
-// prettier-ignore
-export type HeroType = 'Support' | 'Mage' | 'Fighter' | 'Assassin' | 'Marksman' | 'Tank';
-
-export type ChampListEntry = {
-  name: ChampionName;
-  image: {
-    full: `${string}.png`;
-    sprite: `champion${number}.png`;
-    group: 'champion';
-    x: number;
-    y: number;
-    w: 48;
-    h: 48;
-  };
-  id: number;
-  apiname: string;
-  title: string;
-  attack: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-  defense: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-  magic: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
-  difficulty: 1 | 2 | 3;
-  herotype: HeroType;
-  alttype?: HeroType | '';
-  resource: Resource;
-  stats: BaseStatsObj;
-  rangetype: 'Melee' | 'Ranged';
-  date: string;
-  patch: string;
-  changes: string;
-  role: string[];
-  positions: Position[];
-  op_positions: Position[];
-  damage: 1 | 2 | 3;
-  toughness: 1 | 2 | 3;
-  control: 1 | 2 | 3;
-  mobility: 1 | 2 | 3;
-  utility: 0 | 1 | 2 | 3;
-  style: number;
-  adaptivetype: 'Physical' | 'Magic';
-  be: number;
-  rp: number;
-  skill_i: string[];
-  skill_q: string[];
-  skill_w: string[];
-  skill_e: string[];
-  skill_r: string[];
-  skills: string[];
-  fullname: string;
-  nickname: string;
-  secondary_attributes: '';
-};

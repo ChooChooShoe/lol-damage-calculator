@@ -11,7 +11,7 @@
       </div>
       <div class="ttam__toggle" v-for="spell of models" :key="spell.name">
         <SpellImage :image="spell.image"></SpellImage>
-        <label class="ttam__toggletitle" :title="spell.display_name">
+        <label class="ttam__toggletitle" :title="spell.displayName">
           {{ spell.skill }}
           <input class="hidden" type="checkbox" :value="true" />
         </label>
@@ -27,9 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import type { SkillData } from '@/api/DataTypes';
+import type { SkillModel } from '@/api/DataTypes';
 import SpellImage from './SpellImage.vue';
-defineProps<{ models: { [key: string]: SkillData } }>();
+defineProps<{ models: { [key: string]: SkillModel } }>();
 </script>
 
 <style>

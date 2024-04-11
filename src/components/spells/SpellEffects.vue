@@ -1,5 +1,31 @@
 <template>
-  <div v-if="!effect">
+  <div class="float-clear spelleffect__div">
+    <EditBtn class="spelleffect__editbtn" v-model="editMode"></EditBtn>
+    <span
+      class="spelleffect__title"
+      :title="current.values.toString()"
+      v-html="current.name"
+    ></span>
+    <span>{{ current.values }}</span>
+    <span v-html="current.values_html"></span>
+
+    <span>
+      <!-- <RecursiveRatioDisplay
+        :val="current"
+        :computed-vals="computedRatioValues"
+        display="value"
+      >
+      </RecursiveRatioDisplay> -->
+
+      <!-- <EffectTypeField v-model="effectType"></EffectTypeField> -->
+      <!-- <DamageTypeField
+        v-model="damage_type"
+        v-if="effectType === 'Damage' || effectType === 'Shield'"
+      >
+      </DamageTypeField> -->
+    </span>
+  </div>
+  <!-- <div v-if="!effect">
     <span class="spelleffect__title" v-html="details.name"></span>&nbsp;
     <span
       class="spelleffect__title"
@@ -38,44 +64,56 @@
     :effect="effect"
   />
 
-  <div v-else>Unique Effect {{ details.name }}</div>
+  <div v-else>Unique Effect {{ details.name }}</div> -->
 </template>
 
 <script setup lang="ts">
 import { DamageSource } from '@/model/league_data';
-import { onMounted, onUnmounted } from 'vue';
-import type { RootRatio, SkillLevelingData } from '@/api/DataTypes';
-import { damageSources, useDamageSources } from '@/global/state';
-import StacksEffectsVue from './typedspelleffects/StacksEffectsVue.vue';
-import GainEffectsVue from './typedspelleffects/GainEffectsVue.vue';
-import DamageSpellEffectsVue from './typedspelleffects/DamageSpellEffectsVue.vue';
-import HealShieldSpellEffectsVue from './typedspelleffects/HealShieldSpellEffectsVue.vue';
-import CrowdControlEffectsVue from './typedspelleffects/CrowdControlEffectsVue.vue';
+import type { LevelingGroup } from '@/api/DataTypes';
+import { useDamageSources } from '@/global/state';
+import EditBtn from '@/components/simple/EditBtn.vue';
+import {
+  inject,
+  type Ref,
+  ref,
+  watchEffect,
+  onMounted,
+  onUnmounted,
+  computed,
+} from 'vue';
+
+// import StacksEffectsVue from './typedspelleffects/StacksEffectsVue.vue';
+// import GainEffectsVue from './typedspelleffects/GainEffectsVue.vue';
+// import DamageSpellEffectsVue from './typedspelleffects/DamageSpellEffectsVue.vue';
+// import HealShieldSpellEffectsVue from './typedspelleffects/HealShieldSpellEffectsVue.vue';
+// import CrowdControlEffectsVue from './typedspelleffects/CrowdControlEffectsVue.vue';
 
 const props = defineProps<{
-  details: SkillLevelingData;
-  effect: RootRatio | undefined;
+  group: LevelingGroup;
+  // details: SkillLevelingData;
+  // effect: RootRatio | undefined;
   pkey: string;
 }>();
 
+const rankindex = inject<Ref<number>>('rankindex');
+const obj = inject<ChampObjModel>('obj');
+const damage_type = ref<DamageType>('Magic');
+const effectType = ref<EffectType>('Damage');
 const damageSource = new DamageSource('Magic', 8);
+
+const index = ref(0);
+const current = computed(() => props.group[index.value]);
 
 const store = useDamageSources();
 onMounted(() => {
-  if (damageSources) store.addSource(props.pkey, damageSource);
+  store.addSource(props.pkey, damageSource);
 });
 onUnmounted(() => {
   store.removeSource(props.pkey);
 });
 
-// const dmg_premitigation = computedRatioValues.damagePreTotal;
-// const dmg_postmitigation = computedRatioValues.damagePostValue;
-
-// damageSource.repeat = repeat;
-// damageSource.postIsManual = false;
-// damageSource.damage_type = damage_type;
-// damageSource.dmg_premitigation = dmg_premitigation;
-// damageSource.dmg_postmitigation = dmg_postmitigation;
+const repeat = ref(1);
+const editMode = ref(false);
 </script>
 
 <style>

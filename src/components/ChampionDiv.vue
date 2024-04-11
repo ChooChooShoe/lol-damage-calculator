@@ -61,7 +61,7 @@ import Button from 'primevue/button';
 import ChampSearch from './simple/ChampSearch.vue';
 import ChampLevelSelect from './simple/ChampLevelSelect.vue';
 import { ref, provide } from 'vue';
-import { validateName, type ChampObjModel } from '../model/ChampObj';
+import { type ChampObjModel } from '../model/ChampObj';
 import ChampionStats from '../itembuilder/components/ChampionStats.vue';
 import ChampionStackingBuffs from '../itembuilder/components/ChampionStackingBuffs.vue';
 import PerkPicker from '../runes/PerkPicker.vue';
@@ -78,12 +78,6 @@ if (props.mode === 'target') {
   console.log('Providing obj (target) as', target);
 } else {
   obj = player;
-}
-
-if (!obj.champ) {
-  console.log('Loading Champ from storage', props.mode);
-  const readName = window.localStorage.getItem(`sv_champ_${props.mode}`);
-  obj.champ = validateName(readName) || 'Leona';
 }
 
 const showDamage = ref(true);

@@ -1,10 +1,10 @@
 <template>
   <TabView class="data_holder col-12" v-model:activeIndex="activeTab">
-    <TabPanel :header="spell.display_name || spell.name">
+    <TabPanel :header="spell.displayName || spell.name">
       <SpellImage class="ds__spellimage" :image="spell.image"></SpellImage>
 
       <span class="ds__title" :title="spell.name">
-        {{ spell.display_name || spell.name }} ({{ spell.skill }})
+        {{ spell.displayName || spell.name }} ({{ spell.skill }})
       </span>
       <DropdownSelect
         class="spellrank2"
@@ -39,14 +39,14 @@
 
       <hr style="clear: both" />
 
-      <SubSkillList :subskills="spell.description" :idx="idx" />
+      <SubSkillList :subskills="spell.details" :idx="idx" />
       <div class="subskills__grid">
         <SubSkillVue
           v-for="(sub_skill, index) in customEffects"
           :key="`${idx}_${index}`"
           :skill="sub_skill"
           :sub-skills="undefined"
-          :idx="`Custom: ${idx}_${index}`"
+          :pkey="`custom_${idx}_${index}`"
         ></SubSkillVue>
       </div>
 
@@ -61,13 +61,13 @@
       <!-- <spell-notes :spell="spell" :id="id"></spell-notes> -->
     </TabPanel>
     <TabPanel header="Simple">
-      <p v-for="x in spell.blurb" v-html="x" :key="x"></p>
+      <p v-for="(x, idx) in spell.details" v-html="x.blurb" :key="idx"></p>
     </TabPanel>
     <TabPanel header="Details">
       <p
-        v-for="(x, i) in spell.description"
-        v-html="x.descriptionHTML"
-        :key="i"
+        v-for="(x, idx) in spell.details"
+        v-html="x.description"
+        :key="idx"
       ></p>
     </TabPanel>
     <TabPanel header="Settings">
@@ -94,20 +94,12 @@
 import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 import Button from 'primevue/button';
-import {
-  ref,
-  computed,
-  toRefs,
-  watchEffect,
-  provide,
-  reactive,
-  type Ref,
-} from 'vue';
+import { ref, computed, watchEffect, provide, type Ref } from 'vue';
 import SpellImage from '@/timeline/SpellImage.vue';
-import SpellEffects from './SpellEffects.vue';
+// import SpellEffects from './SpellEffects.vue';
 // import SimpleTooltip from ".././SimpleTooltip.vue";
-import SpellNotes from '.././SpellNotes.vue';
-import SpellSpan from '.././SpellSpan.vue';
+// import SpellNotes from '.././SpellNotes.vue';
+// import SpellSpan from '.././SpellSpan.vue';
 import { spriteBaseUri } from '@/model/league_data';
 import DropdownSelect from '../simple/DropdownSelect.vue';
 import type { SkillModel } from '@/api/DataTypes';
@@ -116,9 +108,6 @@ import type { ChampionName } from '@/model/ChampObj';
 import AbilityInfo from '@/wiki/AbilityInfo.vue';
 import SubSkillVue from './SubSkillVue.vue';
 
-interface ReactSkill {
-  rankindex: Ref<number>;
-}
 const props = defineProps<{
   spell: SkillModel;
   champion: ChampionName;

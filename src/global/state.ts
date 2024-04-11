@@ -1,12 +1,14 @@
 import { reactive } from 'vue';
-import { ChampObjModel } from '../model/ChampObj';
+import { ChampObjModel, validateName } from '../model/ChampObj';
 import type { DamageSource } from '../model/league_data';
 
-const lastChampPlayer = localStorage.getItem('sv_champ_player');
-const lastChampTarget = localStorage.getItem('sv_champ_target');
+export const lastChampPlayer =
+  validateName(localStorage.getItem('sv_champ_player')) || 'Annie';
+export const lastChampTarget =
+  validateName(localStorage.getItem('sv_champ_target')) || 'Ashe';
 
-export const player = reactive(new ChampObjModel('player', 'Ashe'));
-export const target = reactive(new ChampObjModel('target', 'Zoe'));
+export const player = reactive(new ChampObjModel('player', lastChampPlayer));
+export const target = reactive(new ChampObjModel('target', lastChampTarget));
 export const playerStatusEffects = reactive<{ [key: string]: StatusEffect }>(
   {},
 );

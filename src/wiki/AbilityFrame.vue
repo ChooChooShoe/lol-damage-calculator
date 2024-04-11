@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import type { SkillData } from '@/api/DataTypes';
+import type { SkillModel } from '@/api/DataTypes';
 
-defineProps<{ d: SkillData }>();
+defineProps<{ d: SkillModel }>();
 </script>
 
 <template>
   <div class="skill" :class="`skill_${d.skill}`">
-    <div
-      :id="d.name || d.display_name"
-      class="skill_header skill_wrapper"
-    ></div>
+    <div :id="d.name || d.displayName" class="skill_header skill_wrapper"></div>
   </div>
   <slot></slot>
 </template>

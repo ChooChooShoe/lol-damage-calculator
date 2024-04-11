@@ -7,14 +7,14 @@
       <template v-slot:value>
         <SpellImage
           size="tiny"
-          :image="ChampionListData[champ]?.image"
+          :image="ChampionsGen[champ]?.image"
         ></SpellImage>
         <span class="champsearch__name">{{ champ }}</span>
       </template>
       <ul class="dd__champlist">
         <li
           :data-name="c.name"
-          v-for="c in ChampionListData"
+          v-for="c in ChampionsGen"
           :class="{ hidden: c.name.toLowerCase().indexOf(searchLower) === -1 }"
           :key="c.id"
         >
@@ -42,7 +42,8 @@ import SpellImage from '../../timeline/SpellImage.vue';
 import { ref } from 'vue';
 import { computed } from 'vue';
 import DropdownSelect from './DropdownSelect.vue';
-import { ChampionListData, type ChampionName } from '@/model/ChampionListData';
+import ChampionsGen from '@/generated/Champions.gen';
+import type { ChampionName } from '@/generated/Champions.gen';
 
 const props = defineProps<{
   champ: ChampionName;

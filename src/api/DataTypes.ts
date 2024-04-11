@@ -1,5 +1,5 @@
-// import type { ChampionName } from '@/model/ChampionListData';
-type ChampionName = string;
+import type { ChampionName } from '@/generated/Champions.gen';
+// type ChampionName = string;
 
 import type { BaseStatsObj, Stat } from './ChampObjStats';
 
@@ -32,45 +32,6 @@ export interface JsonObj {
 export interface DataDragonChamp {
   [s: string]: string | Image | JsonObj;
 }
-export interface SkillModelOld {
-  name: string;
-  display_name: string;
-  maxrank?: number;
-  image?: Image;
-  targeting?: 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector';
-  // affects?: string;
-  damagetype: ('Physical' | 'Magic' | 'True')[];
-  spelleffects?:
-    | 'Proc'
-    | 'Area'
-    | 'Spell'
-    | 'See Notes'
-    | 'Basic'
-    | 'Default'
-    | 'AOE DOT'
-    | 'DOT'
-    | 'Pet'
-    | 'Non-Damaging';
-  spellshield?: 'Blocked' | 'Not Blocked' | 'See Notes' | 'Missing';
-  projectile?: 'Blocked' | 'See Notes';
-  grounded?: 'Disabled' | 'See Notes' | 'Not Disabled';
-  knockdown?: 'Interrupted' | 'See Notes' | 'Not Interrupted';
-  subskills?: SubSkill[];
-  static?: ScaleValue;
-  cost?: ScaleValue;
-  cast_time?: ScaleValue;
-  cooldown?: ScaleValue;
-  target_range?: ScaleValue;
-  ontargetcdstatic?: ScaleValue;
-  effect_radius?: ScaleValue;
-  speed?: ScaleValue;
-  custominfo?: ScaleValue;
-  attack_range?: ScaleValue;
-  width?: ScaleValue;
-  range?: ScaleValue;
-  // [otherOptions: string]: unknown;
-}
-
 type DeepReadonly<T> = {
   readonly [P in keyof T]: T[P] extends Record<string, unknown>
     ? DeepReadonly<T[P]>
@@ -88,75 +49,19 @@ export interface SubSkill {
   locked?: boolean;
 }
 
-export type Spellshield = true | false | 'Special' | 'Unknown';
-export const SpellshieldText = [
-  'Blocked',
-  'Not Blocked',
-  'See Notes',
-  'Missing',
-];
-export interface SkillModel extends SkillData {}
-export interface SkillData {
-  name: string; // Necessary: Used for identification.
-  display_name?: string; // Name of the ability Only necessary if the value differs from Edge of Ixtal.
-  champion: ChampionName | 'Nunu'; // champion TODO fix Nunu
-  skill: SkillKey; // skill
-  // from riot
-  maxrank?: number;
-  image?: Image;
-  // from wiki
-  range?: string; // range
-  target_range?: string; // target range
-  attack_range?: string; // attack range
-  travel_distance?: string; // travel distance
-  collision_radius?: string; // collision radius
-  effect_radius?: string; // effect radius
-  width?: string; // width
-  angle?: string; // angle
-  inner_radius?: string; // inner radius
-  tether_radius?: string; // tether radius
-  speed?: string; // speed
-  cast_time?: string; // cast time
-  cost?: string; // cost
-  costtype?: 'Mana' | 'mana' | 'energy' | 'mana per second' | string; // costtype
-  static?: string; // static
-  cooldown?: string; // cooldown
-  ontargetcd?: string; // ontargetcd
-  ontargetcdstatic?: string; // ontargetcdstatic
-  recharge?: string; // recharge
-  rechargestatic?: string; // rechargestatic
-  customlabel?: string; // customlabel
-  custominfo?: string; // custominfo
-  blurb: string[];
-  description: SkillDesciptionData[];
-  targeting: string; // Permafrost is a single target ability.
-  affects: string; // Permafrost affects enemy champions and large monsters
-  damagetype?: string; // Permafrost deals magic damage.
-  spelleffects?: string; // spelleffects
-  onhiteffects?: string; // onhiteffects can be set to 'true', for abilities that apply on-hit effects (from items or other abilities)
-  occurrence?: string; // occurrence can either be set to 'hit' or 'attack', and refers to on-hit effects
-  spellshield?: Spellshield; // spellshield can either be set to true, or written with a custom description.
-  projectile?: string; // true
-  callforhelp?: string; // callforhelp determines whether minion aggro will transfer to the caster
-  additional?: string; // Displays additional information in a smaller window below the template.
-  notes: string; // notes
-  flavorsound?: string; // For abilities where the SFX/quote is an important part of the gameplay - e.g. Kled or Sion ulting.
-  video?: string; // video
-  video2?: string; // video 2
-  yvideo?: string; // YouTube video
-  yvideo2?: string; // YouTube video 2
+export interface SkillModel extends SkillGenData {
+  maxrank: number;
+  image?: Image | undefined;
+  details: SkillDetailsModel[];
 }
-
-export type SkillDesciptionData = {
-  icon?: string;
-  description: string;
-  descriptionHTML: string;
+export interface SkillDetailsModel extends SkillDetails {
+  // descriptionHTML: string;
   descriptionRatios: RootRatio[];
-  leveling: SkillLevelingData[];
+  leveling2: SkillLevelingData[];
   levelingRatios: RootRatio[];
-  hidden?: boolean;
-  locked?: boolean;
-};
+  // hidden: boolean;
+  // locked: boolean;
+}
 export type SkillLevelingData = {
   name: string;
   values: string;
@@ -423,10 +328,59 @@ export interface WikiChampionData {
 }
 
 export type ChampionGenData = {
-  name: string;
-  image: Image;
   id: number;
+  wikiname: string;
+  apiname: string;
+  name: string;
+  alias: string;
+  fullname: string;
+  nickname: string;
+  title: string;
+  image: Image;
+  spriteStyle: string;
+  resource: Resource;
+  date: string;
+  patch: string;
+  changes: string;
+  role: string[];
+  adaptivetype: string;
+  rangetype: 'Melee' | 'Ranged';
+  // positions: string[];
+  // op_positions: string[];
+  be: number;
+  rp: number;
+  shortBio: string;
+  tacticalInfo: {
+    style: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
+    difficulty: 0 | 1 | 2 | 3;
+    damageType: 'Magic' | 'Physical' | 'Mixed';
+  };
+  playstyleInfo: {
+    damage: 1 | 2 | 3;
+    durability: 1 | 2 | 3;
+    crowdControl: 1 | 2 | 3;
+    mobility: 1 | 2 | 3;
+    utility: 1 | 2 | 3;
+  };
+  squarePortraitPath: `/v1/champion-icons/${number}.png`;
+  stingerSfxPath: `/v1/champion-sfx-audios/${number}.ogg`;
+  chooseVoPath: `/v1/champion-choose-vo/${number}.ogg`;
+  banVoPath: `/v1/champion-ban-vo/${number}.ogg`;
+  roles: string[];
+  skillI: string[];
+  skillQ: string[];
+  skillW: string[];
+  skillE: string[];
+  skillR: string[];
+  // skills: string[];
+  stats: BaseStatsObj;
+  // secondary_attributes?: string;
 };
+// prettier-ignore
+export type Resource = 'Blood Well' | 'Mana' | 'Energy' | 'None' | 'Health' | 'Rage' | 'Fury' | 'Grit' | 'Courage' | 'Shield' | 'Ferocity' | 'Heat' | 'Bloodthirst' | 'Flow' | 'Soul Unbound';
+export type Position = 'Top' | 'Middle' | 'Bottom' | 'Jungle' | 'Support';
+// prettier-ignore
+export type HeroType = 'Support' | 'Mage' | 'Fighter' | 'Assassin' | 'Marksman' | 'Tank';
 
 export type Scaling = number[];
 export type LevelingGroup = Leveling[];
@@ -470,18 +424,27 @@ export type SkillGenData = {
 
   details: SkillDetails[];
 
-  targeting: string; //Direction targeting
+  targeting: Targeting; //Direction targeting
   affects: string; //Enemies affects
   damagetype: string; //Physical damagetype
-  spelleffects: string; //Spell spelleffects
-  spellshield: string; //True spellshield
-  projectile: string; //True projectile
+  spelleffects: Spelleffects; //Spell spelleffects
+  spellshield: Spellshield; //True spellshield
+  projectile: Projectile; //True projectile
   callforhelp: string; //callforhelp
-  grounded: string; //grounded
-  knockdown: string; //knockdown
+  grounded: Grounded; //grounded
+  knockdown: Knockdown; //knockdown
   silence: string; //silence
   additional: string; //Displays additional information in a smaller window below the template.
   notes: string; //* This ability will cast from wherever the caster is at the start of the cast time. Displays additional information with effect table to the right.
   flavortext: string; //flavortext
   flavorsound: string; //flavorsound
 };
+
+// prettier-ignore
+export type Targeting = 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector';
+// prettier-ignore
+export type Spelleffects = 'Proc' | 'Area' | 'Spell' | 'See Notes' | 'Basic' | 'Default' | 'AOE DOT' | 'DOT' | 'Pet' | 'Non-Damaging';
+export type Spellshield = 'Blocked' | 'Not Blocked' | 'See Notes' | 'Missing';
+export type Projectile = 'Blocked' | 'See Notes';
+export type Grounded = 'Disabled' | 'See Notes' | 'Not Disabled';
+export type Knockdown = 'Interrupted' | 'See Notes' | 'Not Interrupted';

@@ -43,7 +43,7 @@ import type {
   EffectType,
   HealEffect,
   ShieldEffect,
-  SkillData,
+  SkillModel,
 } from '@/api/DataTypes';
 import RecursiveRatioDisplay from '../RecursiveRatioDisplay.vue';
 import { makeRootRatio } from '../ratios_info';
@@ -57,7 +57,7 @@ const damage_type = ref<DamageType>('Magic');
 const effectType = ref<EffectType>('Damage');
 const damageSource = new DamageSource('Magic', 65);
 
-const skillbase = inject<SkillData>('skillbase');
+const skillbase = inject<SkillModel>('skillbase');
 
 const props = defineProps<{
   effect: HealEffect | ShieldEffect;

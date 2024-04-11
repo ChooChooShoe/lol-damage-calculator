@@ -4,17 +4,17 @@
       v-for="(sub_skill, index) in subskills"
       :key="`${idx}_${index}`"
       :skill="sub_skill"
-      :idx="`${idx} (${index}`"
+      :pkey="`${idx} (${index}`"
     ></SubSkillVue>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { SkillDesciptionData } from '@/api/DataTypes';
+import type { SkillDetailsModel } from '@/api/DataTypes';
 import SubSkillVue from './SubSkillVue.vue';
 
 defineProps<{
-  subskills: SkillDesciptionData[];
+  subskills: SkillDetailsModel[];
   idx: string;
 }>();
 </script>

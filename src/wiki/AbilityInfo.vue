@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { SkillData } from '@/api/DataTypes';
+import type { SkillModel } from '@/api/DataTypes';
 import TextTip from './TextTip.vue';
-defineProps<{ skill: SkillData }>();
+defineProps<{ skill: SkillModel }>();
 </script>
 
 <template>
   <div class="ability-info-container">
     <div class="champion-ability__header">
-      <!-- <h3>{{ skill.display_name || skill.name }} ({{ skill.skill }})</h3> -->
+      <!-- <h3>{{ skill.displayName || skill.name }} ({{ skill.skill }})</h3> -->
 
       <div class="champion-ability infobox">
         <!-- <image source="skill.primary_icon" /> -->
@@ -36,12 +36,12 @@ defineProps<{ skill: SkillData }>();
             <span class="format" v-html="skill.cooldown"></span>
           </data>
 
-          <data v-if="skill.cast_time">
+          <data v-if="skill.castTime">
             <span class="data-label">CAST TIME: </span>
 
             <span
               class="format"
-              v-html="skill.cast_time === 'false' ? 'None' : skill.cast_time"
+              v-html="skill.castTime === 'false' ? 'None' : skill.castTime"
             ></span>
           </data>
 
@@ -82,7 +82,7 @@ defineProps<{ skill: SkillData }>();
             <span class="format" v-html="skill.recharge"></span>
           </data>
 
-          <data v-if="skill.rechargestatic">
+          <!-- <data v-if="skill.rechargestatic">
             <span class="data-label">
               <TextTip tooltip="Unaffected by ability haste"
                 >STATIC RECHARGE</TextTip
@@ -90,12 +90,12 @@ defineProps<{ skill: SkillData }>();
             </span>
 
             <span class="format" v-html="skill.rechargestatic"></span>
-          </data>
+          </data> -->
 
-          <data v-if="skill.target_range">
+          <data v-if="skill.targetRange">
             <span class="data-label">TARGET RANGE: </span>
 
-            <span class="format" v-html="skill.target_range"></span>
+            <span class="format" v-html="skill.targetRange"></span>
           </data>
 
           <data v-if="skill.range">
@@ -104,10 +104,10 @@ defineProps<{ skill: SkillData }>();
             <span class="format" v-html="skill.range"> </span>
           </data>
 
-          <data v-if="skill.attack_range">
+          <data v-if="skill.attackRange">
             <span class="data-label">ATTACK RANGE: </span>
 
-            <span class="format" v-html="skill.attack_range"></span>
+            <span class="format" v-html="skill.attackRange"></span>
           </data>
 
           <!-- <data v-if="skill.ai_range">
@@ -122,22 +122,22 @@ defineProps<{ skill: SkillData }>();
             <span class="format">{{ skill.windup }}%</span>
           </data> -->
 
-          <data v-if="skill.travel_distance">
+          <!-- <data v-if="skill.travelDistance">
             <span class="data-label">TRAVEL DISTANCE: </span>
 
-            <span class="format" v-html="skill.travel_distance"></span>
-          </data>
+            <span class="format" v-html="skill.travelDistance"></span>
+          </data> -->
 
-          <data v-if="skill.collision_radius">
+          <data v-if="skill.collisionRadius">
             <span class="data-label">COLLISION RADIUS: </span>
 
-            <span class="format" v-html="skill.collision_radius"></span>
+            <span class="format" v-html="skill.collisionRadius"></span>
           </data>
 
-          <data v-if="skill.effect_radius">
+          <data v-if="skill.effectRadius">
             <span class="data-label">EFFECT RADIUS: </span>
 
-            <span class="format" v-html="skill.effect_radius"></span>
+            <span class="format" v-html="skill.effectRadius"></span>
           </data>
 
           <data v-if="skill.width">
@@ -152,16 +152,16 @@ defineProps<{ skill: SkillData }>();
             <span class="format" v-html="skill.angle"></span>
           </data>
 
-          <data v-if="skill.inner_radius">
+          <data v-if="skill.innerRadius">
             <span class="data-label">INNER RADIUS: </span>
 
-            <span class="format" v-html="skill.inner_radius"></span>
+            <span class="format" v-html="skill.innerRadius"></span>
           </data>
 
-          <data v-if="skill.tether_radius">
+          <data v-if="skill.tetherRadius">
             <span class="data-label">TETHER RADIUS: </span>
 
-            <span class="format" v-html="skill.tether_radius"> </span>
+            <span class="format" v-html="skill.tetherRadius"> </span>
           </data>
 
           <data v-if="skill.speed">

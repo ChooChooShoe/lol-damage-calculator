@@ -145,25 +145,39 @@ export type BaseStatsObj = {
   as_base: number; // champion's base attack speed as decimal
   as_ratio: number; // champion's attack speed ratio as decimal
   as_lvl: number; // champion's bonus_as growth as whole number
+  as_lvl1: number;
+  as_lvl1_bonus: number;
   missile_speed: number; // missile speed for ranged basic attacks (0 = Non-Projectile)
   attack_cast_time: number; // only used to calculated 'windup_percent'
   attack_total_time: number; // only used to calculated 'windup_percent'
   attack_delay_offset: number; // only used to calculated 'windup_percent'
   // windup_percent: undefined; // N/A           // Not stored in data, but is retrievable (default is 0.3)
+  windup: number;
   windup_modifier: number; // champion's modifier to windup growth
+  attack_delay: number;
   crit_base: number; // champion's base critical strike damage (defaults to 175%)
   crit_mod: number; // champion's total critical strike damage modifier
   range: number; // champion's range
+  range_lvl: number;
   ms: number; // champion's movement speed
+  ms_lvl: number;
   gameplay_radius: number; // champion's hitbox for most purposes (defaults to 65)
   acquisition_radius: number; // champion's auto-attack range (defaults to 800)
   selection_radius: number; // champion's mouse-over selection radius (defaults to 100)
   pathing_radius: number; // champion's pathing radius (defaults to 35)
-  aram?: Partial<AramBalanceChanges>; // aram balance changes
-  nb?: Partial<AramBalanceChanges>; // nexus blitz-specific balance changes (see aram for parameters)
-  ofa?: Partial<AramBalanceChanges>; // one for all-specific balance changes (see aram for parameters)
-  urf?: Partial<AramBalanceChanges>; // ultimate rapid fire-specific balance changes (see aram for parameters)
-  usb?: Partial<AramBalanceChanges>; // ultimate spell book-specific balance changes (see aram for parameters)
+  aram_dmg_dealt: number;
+  aram_dmg_taken: number;
+  aram_healing: number;
+  aram_shielding: number;
+  urf_dmg_dealt: number;
+  urf_dmg_taken: number;
+  urf_healing: number;
+  urf_shielding: number;
+  // aram?: Partial<AramBalanceChanges>; // aram balance changes
+  // nb?: Partial<AramBalanceChanges>; // nexus blitz-specific balance changes (see aram for parameters)
+  // ofa?: Partial<AramBalanceChanges>; // one for all-specific balance changes (see aram for parameters)
+  // urf?: Partial<AramBalanceChanges>; // ultimate rapid fire-specific balance changes (see aram for parameters)
+  // usb?: Partial<AramBalanceChanges>; // ultimate spell book-specific balance changes (see aram for parameters)
 };
 export type AramBalanceChanges = {
   dmg_dealt: number; // damage dealt modifier in aram as decimal (defaults to 1.0)

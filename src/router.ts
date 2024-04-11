@@ -8,14 +8,14 @@ const DataView = () => import('./dataview/DataView.vue');
 const RunesView = () => import('./runes/RunesView.vue');
 const TestView = () => import('./wiki/TestView.vue');
 
+import { lastChampPlayer, lastChampTarget } from '@/global/state';
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
       path: '/',
-      redirect: `/c/${localStorage.getItem(
-        'sv_champ_player',
-      )}/vs/${localStorage.getItem('sv_champ_target')}`,
+      redirect: `/c/${lastChampPlayer}/vs/${lastChampTarget}`,
     },
     { path: '/c/:player?/vs/:target?', component: CalcApp },
     { path: '/itembuilder', component: ItemBuilder },
@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: '/wiki/:pathMatch(.*)*',
       name: 'WikiRedirect',
-      beforeEnter(to, from) {
+      beforeEnter(to, _from) {
         // Put the full page URL including the protocol http(s) below
         window.location.replace(
           'https://leagueoflegends.fandom.com' + to.fullPath,
