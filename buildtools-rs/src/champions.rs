@@ -3,16 +3,10 @@ use std::{collections::HashMap, fs::File, io::Write, iter::Map};
 use serde::{Deserialize, Serialize};
 
 use crate::remote::{
-    cdragon::{
-        ChampionData, ChampionNumberId, CommunityDragon, Item as CItem, ItemId, Passive,
-        PlaystyleInfo, RequiredAlly, RequiredBuffCurrencyName, RequiredChampion, SpellInfo,
-        TacticalInfo,
-    },
-    datadragon::{ChampionComplex, DataDragon, Image, Item as DItem},
-    leaguewiki::{
-        AdaptiveType, Effects, LeagueWiki, LevelingGroup, LiveAbility, LiveChampData, LiveItemData,
-        PassiveProgression, RangeType, Scaling, Stats,
-    },
+    cdragon::{ChampionData, ChampionNumberId, CommunityDragon, PlaystyleInfo, TacticalInfo},
+    datadragon::{ChampionComplex, DataDragon, Image},
+    leaguewiki::{AdaptiveType, LeagueWiki, LevelingGroup, RangeType, Scaling},
+    live_champion::{LiveAbility, LiveChampData, Stats},
 };
 
 pub fn gen(
@@ -24,7 +18,7 @@ pub fn gen(
 
     let mut res: Vec<(String, FullChamp)> = Vec::new();
 
-    for summary in summaries.drain(0..30) {
+    for summary in summaries.drain(0..15) {
         let c_champ = match cdragon.get_champion(summary.id) {
             Ok(x) => x,
             Err(e) => {
@@ -47,7 +41,7 @@ pub fn gen(
             }
         };
 
-        let w_champ = match leageuwiki.get_champ_data(&summary.name) {
+        let mut w_champ = match leageuwiki.get_champ_data(&summary.name) {
             Ok(x) => x,
             Err(e) => {
                 println!(
@@ -57,28 +51,27 @@ pub fn gen(
                 continue;
             }
         };
-        if let Ok(skills) = leageuwiki.get_champ_skills(&w_champ) {
-            let full_skills = skills
-                .into_iter()
-                .map(|skill| FullSkill::new(&w_champ, skill))
-                .collect();
+        let full_skills = w_champ
+            .abilities.drain(..)
+            .map(|skill| FullSkill::new(skill))
+            .collect();
 
-            match save_skills_to_file(
-                format!("./champion/{}.gen.ts", w_champ.wikiname),
-                full_skills,
-            ) {
-                Ok(()) => (),
-                Err(e) => {
-                    println!(
-                        "[ERROR] Skills from champ {}({}) could not save to disk because of {e}",
-                        summary.name, summary.id
-                    );
-                }
+        match save_skills_to_file(
+            format!("./champion/{}.gen.ts", w_champ.wikiname),
+            full_skills,
+        ) {
+            Ok(()) => (),
+            Err(e) => {
+                println!(
+                    "[ERROR] Skills from champ {}({}) could not save to disk because of {e}",
+                    summary.name, summary.id
+                );
             }
         }
 
         let full = FullChamp::merge_from(d_champ, c_champ, w_champ, ddragon.sprite_base_uri());
         res.push((full.name.to_string(), full));
+
     }
     save_to_file("./Champions.gen.ts", &mut res)?;
     Ok(())
@@ -105,8 +98,9 @@ pub struct FullChamp {
     pub role: Vec<String>,          // table of strings
     pub adaptivetype: AdaptiveType, // champion's adaptive force type
     pub rangetype: RangeType,       // Melee or Ranged
-    pub be: u32,                    // champion's Blue Essence cost
-    pub rp: u32,                    // champion's RP cost
+    pub store_cost: String,                    // champion's Blue Essence cost
+    pub crafting: String,                    // champion's RP cost
+    pub position: Vec<String>,
     pub short_bio: String,
     pub tactical_info: TacticalInfo,
     pub playstyle_info: PlaystyleInfo,
@@ -119,11 +113,6 @@ pub struct FullChamp {
     // pub skins: Vec<SkinInfo>,
     // pub passive: Passive,
     // pub spells: [SpellInfo; 4],
-    pub skill_i: Vec<String>, // table of strings
-    pub skill_q: Vec<String>, // table of strings
-    pub skill_w: Vec<String>, // table of strings
-    pub skill_e: Vec<String>, // table of strings
-    pub skill_r: Vec<String>, // table of strings
     pub stats: Stats,
 }
 impl FullChamp {
@@ -139,7 +128,7 @@ impl FullChamp {
         FullChamp {
             id: c.id,
             wikiname: w.wikiname,
-            apiname: w.apiname,
+            apiname: c.alias.clone(),
             name: c.name,
             alias: c.alias,
             title: c.title,
@@ -157,44 +146,20 @@ impl FullChamp {
             // passive: c.passive,
             // spells: c.spells,
             resource: w.resource,
-            fullname: w.fullname,
-            nickname: w.nickname,
-            date: w.date,
-            patch: w.patch,
-            changes: w.changes,
+            fullname: "".into(),
+            nickname: "".into(),
+            date: w.release_date,
+            patch: "".into(),
+            changes: w.last_changed,
             role: w.role,
-            adaptivetype: w.adaptivetype,
-            rangetype: w.rangetype,
-            be: w.be,
-            rp: w.rp,
-            skill_i: w.skill_i.split(',').map(|x| x.trim().to_owned()).collect(),
-            skill_q: w.skill_q.split(',').map(|x| x.trim().to_owned()).collect(),
-            skill_w: w.skill_w.split(',').map(|x| x.trim().to_owned()).collect(),
-            skill_e: w.skill_e.split(',').map(|x| x.trim().to_owned()).collect(),
-            skill_r: w.skill_r.split(',').map(|x| x.trim().to_owned()).collect(),
+            position: w.position,
+            adaptivetype: AdaptiveType::Magic, //w.adaptivetype,
+            rangetype: RangeType::Melee,       //w.rangetype,
+            store_cost: w.cost_store,
+            crafting: w.cost_crafting,
             stats: w.stats,
         }
     }
-}
-
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-#[serde(default, rename_all = "camelCase")]
-pub struct ItemScript {
-    pub models: Effects,
-}
-
-fn maps_from(sr: bool, hr: bool, ar: bool) -> Vec<String> {
-    let mut res = Vec::with_capacity(3);
-    if sr {
-        res.push("SR".to_owned())
-    }
-    if hr {
-        res.push("HA".to_owned())
-    }
-    if ar {
-        res.push("AR".to_owned())
-    }
-    res
 }
 
 fn save_skills_to_file(
@@ -271,17 +236,17 @@ pub struct FullSkill {
     pub display_name: String, //Name of the ability Only necessary if the value differs from Sonic Wave.
     pub champion: String,     //Lee Sin : String, //champion
     pub skill: String,        //Q : String, //skill
-    pub range: String,        //range
-    pub target_range: String, //Range center 1200 : String, //target range
-    pub attack_range: String, //attack range
-    pub collision_radius: String, //collision radius
-    pub effect_radius: String, //Sight icon 400 : String, //effect radius
-    pub width: String,        //Range model 120 : String, //width
-    pub angle: String,        //angle
-    pub inner_radius: String, //inner radius
-    pub tether_radius: String, //tether radius
+    pub range: Scaling,        //range
+    pub target_range: Scaling, //Range center 1200 : String, //target range
+    pub attack_range: Scaling, //attack range
+    pub collision_radius: Scaling, //collision radius
+    pub effect_radius: Scaling, //Sight icon 400 : String, //effect radius
+    pub width: Scaling,        //Range model 120 : String, //width
+    pub angle: Scaling,        //angle
+    pub inner_radius: Scaling, //inner radius
+    pub tether_radius: Scaling, //tether radius
     pub speed: Scaling,       //1800 : String, //speed
-    pub cast_time: String,    //0.25 : String, //cast time
+    pub cast_time: Scaling,    //0.25 : String, //cast time
     pub cost: Scaling,        //50 : String, //cost
     pub costtype: String,     //Energy : String, //costtype
     pub r#static: String,     //static
@@ -315,8 +280,8 @@ pub struct FullSkill {
                        // pub yvideo2: String, //YouTube video 2
 }
 impl FullSkill {
-    pub fn new(w_champ: &LiveChampData, skill: LiveAbility) -> FullSkill {
-        let details = SkillDetails::new(w_champ, &skill);
+    pub fn new(skill: LiveAbility) -> FullSkill {
+        let details = SkillDetails::new(&skill);
         FullSkill {
             name: skill.name,
             display_name: skill.disp_name,
@@ -397,7 +362,7 @@ impl Details {
 }
 
 impl SkillDetails {
-    fn new(_w_champ: &LiveChampData, value: &LiveAbility) -> SkillDetails {
+    fn new(value: &LiveAbility) -> SkillDetails {
         let mut vec = Vec::with_capacity(5);
 
         if let Some(details1) = Details::new(

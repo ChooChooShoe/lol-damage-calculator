@@ -424,27 +424,34 @@ export type SkillGenData = {
 
   details: SkillDetails[];
 
-  targeting: Targeting; //Direction targeting
-  affects: string; //Enemies affects
-  damagetype: string; //Physical damagetype
-  spelleffects: Spelleffects; //Spell spelleffects
-  spellshield: Spellshield; //True spellshield
-  projectile: Projectile; //True projectile
+  targeting: Targeting | ''; //Direction targeting
+  affects: Affects | ''; //Enemies affects
+  damagetype: Damagetype | ''; //Physical damagetype
+  spelleffects: Spelleffects | ''; //Spell spelleffects
+  spellshield: Spellshield | ''; //True spellshield
+  projectile: Projectile | ''; //True projectile
   callforhelp: string; //callforhelp
-  grounded: Grounded; //grounded
-  knockdown: Knockdown; //knockdown
-  silence: string; //silence
-  additional: string; //Displays additional information in a smaller window below the template.
+  grounded: Grounded | ''; //grounded
+  knockdown: Knockdown | ''; //knockdown
+  silence: Silence | ''; //silence
+  additional: ''; //Displays additional information in a smaller window below the template.
   notes: string; //* This ability will cast from wherever the caster is at the start of the cast time. Displays additional information with effect table to the right.
-  flavortext: string; //flavortext
-  flavorsound: string; //flavorsound
+  flavortext: ''; //flavortext
+  flavorsound: ''; //flavorsound
 };
 
-// prettier-ignore
-export type Targeting = 'Passice' | 'Direction' | 'Location' | 'Auto' | 'Unit' | 'Vector';
-// prettier-ignore
-export type Spelleffects = 'Proc' | 'Area' | 'Spell' | 'See Notes' | 'Basic' | 'Default' | 'AOE DOT' | 'DOT' | 'Pet' | 'Non-Damaging';
-export type Spellshield = 'Blocked' | 'Not Blocked' | 'See Notes' | 'Missing';
-export type Projectile = 'Blocked' | 'See Notes';
+export type Targeting =
+  | 'Passive'
+  | 'Direction'
+  | 'Location'
+  | 'Auto'
+  | 'Unit'
+  | 'Vector';
+export type Affects = string;
+export type Damagetype = 'Magic';
+export type Spelleffects = 'spell' | 'spellaoe';
+export type Spellshield = 'True';
+export type Projectile = 'True' | 'False';
 export type Grounded = 'Disabled' | 'See Notes' | 'Not Disabled';
 export type Knockdown = 'Interrupted' | 'See Notes' | 'Not Interrupted';
+export type Silence = 'True';

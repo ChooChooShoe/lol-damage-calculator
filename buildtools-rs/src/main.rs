@@ -51,6 +51,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "champions" | "champs" => {
             champions::gen(&mut ddragon, &mut cdragon, &mut leaguewiki)?;
         }
+        "testchamps" => {
+            let x = leaguewiki.get_champ_data("Diana");
+
+            println!("Champ: {x:?}");
+        }
         "test" => {
             let x = leaguewiki.get_rune_data("First Strike");
 
