@@ -1,19 +1,19 @@
 <template>
   <div class="item-section">
     <div class="inv__itemgrid">
-      <Item :data-number="1" display="icon" :value="item(0)"> </Item>
-      <Item :data-number="2" display="icon" :value="item(1)"> </Item>
-      <Item :data-number="3" display="icon" :value="item(2)"> </Item>
-      <Item
+      <ItemDiv :data-number="1" display="icon" :value="item(0)"> </ItemDiv>
+      <ItemDiv :data-number="2" display="icon" :value="item(1)"> </ItemDiv>
+      <ItemDiv :data-number="3" display="icon" :value="item(2)"> </ItemDiv>
+      <ItemDiv
         class="inv__trinket"
         :data-number="4"
         display="icon"
         :value="item(3)"
       >
-      </Item>
-      <Item :data-number="5" display="icon" :value="item(4)"> </Item>
-      <Item :data-number="6" display="icon" :value="item(5)"> </Item>
-      <Item :data-number="7" display="icon" :value="item(6)"> </Item>
+      </ItemDiv>
+      <ItemDiv :data-number="5" display="icon" :value="item(4)"> </ItemDiv>
+      <ItemDiv :data-number="6" display="icon" :value="item(5)"> </ItemDiv>
+      <ItemDiv :data-number="7" display="icon" :value="item(6)"> </ItemDiv>
     </div>
     <div class="inv__buttons">
       <input type="button" value="Clear Items" @click="inv.sellAll" />
@@ -62,7 +62,7 @@
 import { computed } from 'vue';
 import items from '@/model/items/items';
 import StatsDiv from './StatsDiv.vue';
-import Item from './Item.vue';
+import ItemDiv from './ItemDiv.vue';
 import type { ItemInventory } from '@/model/ItemInventory';
 import SpellImage from '@/timeline/SpellImage.vue';
 import SpellEffects from '@/components/spells/SpellEffects.vue';

@@ -1,6 +1,6 @@
 use core::fmt;
 
-use crate::remote::fetch::FetchClient;
+use crate::{item_models::CDragonItem, remote::fetch::FetchClient};
 use serde::{Deserialize, Serialize};
 
 pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -40,10 +40,10 @@ impl CommunityDragon {
         Ok(v)
     }
 
-    pub fn get_items(&mut self) -> Result<Vec<Item>> {
+    pub fn get_items(&mut self) -> Result<Vec<CDragonItem>> {
         let url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/items.json";
         let body = self.client.fetch(url)?.text()?;
-        let v: Vec<Item> = serde_json::from_str(&body)?;
+        let v: Vec<CDragonItem> = serde_json::from_str(&body)?;
 
         Ok(v)
     }
@@ -65,68 +65,7 @@ impl CommunityDragon {
     }
 }
 pub type ItemId = usize;
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-#[serde(rename_all = "camelCase", default)]
-pub struct Item {
-    pub id: ItemId,
-    pub name: String,
-    pub description: String,
-    pub active: bool,
-    #[serde(default = "default_true")]
-    pub in_store: bool, // defaults to true
-    pub from: Vec<ItemId>,
-    pub to: Vec<ItemId>,
-    pub categories: Vec<String>,
-    #[serde(default = "default_1")]
-    pub max_stacks: i64, // defaults to 1
-    pub required_champion: RequiredChampion, //'FiddleSticks' | 'Kalista' | 'Sylas' | 'Gangplank', //defaults to ""
-    pub required_ally: RequiredAlly,         // : 'Ornn', //defaults to ""
-    pub required_buff_currency_name: RequiredBuffCurrencyName,
-    pub required_buff_currency_cost: i64,
-    pub special_recipe: usize, // defaults to 0
-    pub is_enchantment: bool,  // always false
-    pub price: i64,
-    pub price_total: i64,
-    pub icon_path: String,
-}
-impl Item {
-    pub fn is_ornn_item(&self) -> bool {
-        self.required_ally == RequiredAlly::Ornn
-    }
-}
 
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-pub enum RequiredAlly {
-    Ornn,
-    #[default]
-    #[serde(rename = "")]
-    None,
-}
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-pub enum RequiredChampion {
-    FiddleSticks,
-    Kalista,
-    Sylas,
-    Gangplank,
-    #[default]
-    #[serde(rename = "")]
-    None,
-}
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-pub enum RequiredBuffCurrencyName {
-    GangplankBilgewaterToken,
-    #[serde(rename = "S11Support_Quest_Completion_Buff")]
-    S11SupportQuestCompletionBuff,
-    #[default]
-    #[serde(rename = "")]
-    None,
-}
-fn default_1() -> i64 {
-    1
-}
-fn default_true() -> bool {
-    true
-}
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(rename_all = "camelCase", default)]

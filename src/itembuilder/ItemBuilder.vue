@@ -1,6 +1,6 @@
 <template>
   <div class="main-full itembuilder">
-    <ChampionDiv value="player" mode="player" class="hidden"></ChampionDiv>
+    <ChampionDiv value="player" mode="player"></ChampionDiv>
     <span class="itembuilder__title">Inventory</span>
     <span class="itembuilder__title">ShopItemInfo</span>
     <ItemInventory
@@ -15,26 +15,44 @@
       @sellItem="sellItem"
     ></ShopItemInfo>
     <h1>Items</h1>
-    <div>
+    <div class="button-group">
       <span>Filter Items: </span>
-      <label
-        >All<input
+      <label class="button">
+        All
+        <input
           v-model="itemFilter"
           type="radio"
           name="filter"
-          value="SR,HA,AR"
+          value=""
           checked
-      /></label>
-      <label
-        >5v5<input v-model="itemFilter" type="radio" name="filter" value="SR"
-      /></label>
-      <label
-        >ARAM<input v-model="itemFilter" type="radio" name="filter" value="HA"
-      /></label>
-      <label
-        >Arena<input v-model="itemFilter" type="radio" name="filter" value="AR"
-      /></label>
-      <!-- <label>RGM<input type="radio" name="filter" value="" /></label> -->
+        />
+      </label>
+      <label class="button">
+        5v5
+        <input
+          v-model="itemFilter"
+          type="radio"
+          name="filter"
+          value="classic"
+        />
+      </label>
+      <label class="button">
+        ARAM
+        <input v-model="itemFilter" type="radio" name="filter" value="aram" />
+      </label>
+      <label class="button">
+        Arena
+        <input v-model="itemFilter" type="radio" name="filter" value="arena" />
+      </label>
+      <label class="button">
+        Nexus Blitz
+        <input
+          v-model="itemFilter"
+          type="radio"
+          name="filter"
+          value="nexus-blitz"
+        />
+      </label>
     </div>
     <div class="itembox" :data-filter="itemFilter">
       <div
@@ -46,16 +64,19 @@
         {{ x }}
       </div>
 
-      <Item
-        :data-maps="x.maps"
+      <ItemDiv
+        :data-maps-aram="item.availability.aram"
+        :data-maps-arena="item.availability.arena"
+        :data-maps-classic="item.availability.classic"
+        :data-maps-nexus-blitz="item.availability.nexusBlitz"
         display="icon"
         @buyItem="buyItem"
         @showInfo="showInfo"
-        v-for="x in items"
-        :key="x.id"
-        :value="x"
+        v-for="item in items"
+        :key="item.id"
+        :value="item"
       >
-      </Item>
+      </ItemDiv>
     </div>
   </div>
 </template>
@@ -67,10 +88,10 @@ import items, { fromNumber } from '@/model/items/items';
 import ChampionDiv from '@/components/ChampionDiv.vue';
 import ItemInventory from './components/ItemInventory.vue';
 import ShopItemInfo from './components/ShopItemInfo.vue';
-import Item from './components/Item.vue';
+import ItemDiv from './components/ItemDiv.vue';
 import { player } from '@/global/state';
 
-const itemFilter = ref('SR,HA');
+const itemFilter = ref('');
 const selectedItem = ref(1001);
 
 console.log('ItemBuilder setup');
@@ -114,11 +135,11 @@ const buyItem = (itemId) => {
   console.log('Buying item:', itemId, 'for index', openIndex);
   inventory1[openIndex] = itemId;
 };
-const showInfo = (itemId) => {
+const showInfo = (itemId: number) => {
   console.log('showItemInfo', itemId);
   selectedItem.value = itemId;
 };
-const sellItem = (index) => {
+const sellItem = (index: number) => {
   inventory1[index] = undefined;
 };
 </script>
@@ -188,14 +209,24 @@ const sellItem = (index) => {
 .itembox > .item[data-category='minionturretitems'] {
   order: 120;
 }
-.itembox[data-filter='HA'] > .item[data-maps='SR'] {
+
+.itembox[data-filter='aram'] > .item[data-maps-aram='false'] {
   opacity: 0.1;
   pointer-events: none;
 }
-.itembox[data-filter='SR'] > .item[data-maps='HA'] {
+.itembox[data-filter='arena'] > .item[data-maps-arena='false'] {
   opacity: 0.1;
   pointer-events: none;
 }
+.itembox[data-filter='classic'] > .item[data-maps-classic='false'] {
+  opacity: 0.1;
+  pointer-events: none;
+}
+.itembox[data-filter='nexus-blitz'] > .item[data-maps-nexus-blitz='false'] {
+  opacity: 0.1;
+  pointer-events: none;
+}
+
 .itembox__header {
   flex: 2 0 100%;
   margin: 0.3em 0;

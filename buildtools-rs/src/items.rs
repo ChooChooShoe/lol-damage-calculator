@@ -1,14 +1,22 @@
-use std::{collections::HashMap, fs::File, io::Write};
+use std::{
+    collections::HashMap,
+    fmt::{Debug, Display},
+    fs::File,
+    io::Write,
+};
 
 use serde::{Deserialize, Serialize};
 
-use crate::remote::{
-    cdragon::{
-        CommunityDragon, Item as CItem, ItemId, RequiredAlly, RequiredBuffCurrencyName,
+use crate::{
+    item_models::{
+        CDragonItem, Category, DDragonItem, RequiredAlly, RequiredBuffCurrencyName,
         RequiredChampion,
     },
-    datadragon::{DataDragon, Image, Item as DItem},
-    leaguewiki::{Effects, LeagueWiki, LiveItemData, PassiveProgression},
+    remote::{
+        cdragon::{CommunityDragon, ItemId},
+        datadragon::{DataDragon, Image},
+        leaguewiki::{Effects, LeagueWiki, LiveItemData, PassiveProgression},
+    },
 };
 
 pub fn generate_items(
@@ -19,18 +27,12 @@ pub fn generate_items(
     let mut d_items = ddragon.get_items()?;
     let mut c_items = cdragon.get_items()?;
 
-    let mut res: Vec<(String, FullItem)> = Vec::new();
+    let mut res: Vec<FullItem> = Vec::new();
 
-    for c_item in c_items.drain(0..50) {
-        let d_item = match d_items.remove(&c_item.id.to_string()) {
-            None => {
-                println!(
-                    "Item {}({}) from cdragon was not found in datadragon",
-                    c_item.name, c_item.id
-                );
-                continue;
-            }
-            Some(x) => x,
+    for c_item in c_items.drain(..) {
+        let Some(d_item) = d_items.remove(&c_item.id.to_string()) else {
+            println!("Item {c_item} from cdragon was not found in datadragon");
+            continue;
         };
 
         let w_item = match leageuwiki.get_item_data(&c_item.name, c_item.is_ornn_item()) {
@@ -40,11 +42,12 @@ pub fn generate_items(
             }
             Ok(x) => x,
         };
-        if let Some(full_item) =
-            FullItem::merge_from(d_item, c_item, w_item, ddragon.sprite_base_uri())
-        {
-            res.push((full_item.id.to_string(), full_item));
-        }
+        res.push(FullItem::merge_from(
+            d_item,
+            c_item,
+            w_item,
+            ddragon.sprite_base_uri(),
+        ));
     }
     save_to_file("./items.gen.ts", &mut res)?;
     Ok(())
@@ -57,33 +60,31 @@ pub struct FullItem {
     /// Translated name
     pub name: String,
     /// Name of the item. Only necessary if the value differs from name.
-    #[serde(skip)]
+    // #[serde(skip)]
     pub disp_name: String,
     pub keywords: Vec<String>, //nickname,
     pub description: String,
     pub colloq: String,
     pub active: bool,
+    pub consumed: bool,
+    pub consume_on_full: bool,
     pub from: Vec<ItemId>,
     pub to: Vec<ItemId>,
-    pub categories: Vec<String>,
+    pub categories: Vec<Category>,
     pub max_stacks: i64,                     // defaults to 1
     pub required_champion: RequiredChampion, //'FiddleSticks' | 'Kalista' | 'Sylas' | 'Gangplank', //defaults to ""
     pub required_ally: RequiredAlly,         // : 'Ornn', //defaults to ""
     pub required_buff_currency_name: RequiredBuffCurrencyName,
     pub required_buff_currency_cost: i64,
-    pub special_recipe: usize, // defaults to 0
+    pub special_recipe: i64, // defaults to 0
     #[serde(skip)]
     pub is_enchantment: bool, // always false
     pub price: i64,
     pub price_total: i64,
+    // Not in CDragon
     pub sell_price: i64,
-    /// Wiki buy field
-    // #[serde(skip)]
-    pub buy: String,
-    /// Wiki sell field
-    // #[serde(skip)]
-    pub sell: String,
-    pub in_store: bool, // defaults to true
+    pub in_store: bool,      // defaults to true
+    pub hide_from_all: bool, // defaults to false
 
     pub icon_path: String,
     pub sprite_style: String,
@@ -233,49 +234,72 @@ impl From<&LiveItemData> for FullItemStats {
 
 impl FullItem {
     pub fn merge_from(
-        d_item: DItem,
-        c_item: CItem,
+        d_item: DDragonItem,
+        c_item: CDragonItem,
         w_item: LiveItemData,
         sprite_base_uri: &str,
-    ) -> Option<Self> {
-        let icon_path = c_item.icon_path[22..].to_lowercase();
-        let icon_url = format!("https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{icon_path}");
+    ) -> Self {
 
-        if d_item.name.trim() != c_item.name.trim() {
-            println!("Names are not the same {} and {}", d_item.name, c_item.name)
-        }
         let item_type = "Unknown".to_owned();
         let category = "unsorted".to_owned();
+        // let name = c_item.name;
 
-        Some(FullItem {
-            colloq: d_item.colloq.clone(),
+        fn warn_ne<T: PartialEq + Debug>(left: T, right: T) -> T {
+            if left != right {
+                println!("[WARN] Item missmatch prop '{left:?}' != '{right:?}'. Using '{right:?}'");
+            }
+            right
+        }
+        fn warn_ne3<T: PartialEq + Debug>(left: T, right: T, wiki: T) -> T {
+            if left != right || right != wiki {
+                println!("[WARN] Item missmatch prop '{left:?}' != '{right:?}' != '{wiki:?}'. Using '{wiki:?}'");
+            }
+            wiki
+        }
+        //Unused props
+        let _ = d_item.description;
+        let _ = d_item.plaintext;
+        let _ = d_item.from;
+        let _ = d_item.into;
+        let _ = d_item.tags;
+        let _ = d_item.maps;
+        let _ = d_item.stats;
+        let _ = d_item.effect;
+
+        FullItem {
+            colloq: d_item.colloq,
             sprite_style: d_item.image.get_sprite_style(sprite_base_uri),
             image: d_item.image,
 
             stats: Into::into(&w_item.clone()),
 
             id: c_item.id,
-            name: c_item.name,
+            name: warn_ne3(d_item.name, c_item.name, w_item.disp_name.clone()),
             disp_name: w_item.disp_name,
             description: c_item.description,
             active: c_item.active,
-            in_store: c_item.in_store,
+            in_store: warn_ne3(d_item.in_store, d_item.gold.purchasable, c_item.in_store),
             from: c_item.from,
             to: c_item.to,
             categories: c_item.categories,
-            max_stacks: c_item.max_stacks,
-            required_champion: c_item.required_champion,
-            required_ally: c_item.required_ally,
+            max_stacks: warn_ne(d_item.stacks, c_item.max_stacks),
+            required_champion: warn_ne(d_item.required_champion, c_item.required_champion),
+            required_ally: warn_ne(d_item.required_ally, c_item.required_ally),
             required_buff_currency_name: c_item.required_buff_currency_name,
             required_buff_currency_cost: c_item.required_buff_currency_cost,
-            special_recipe: c_item.special_recipe,
+            special_recipe: warn_ne(d_item.special_recipe, c_item.special_recipe),
             is_enchantment: c_item.is_enchantment,
-            price: c_item.price,
-            price_total: c_item.price_total,
-            sell_price: d_item.gold.sell,
-            buy: w_item.buy,
-            sell: w_item.sell,
-            icon_path: icon_url,
+            price: warn_ne(d_item.gold.base, c_item.price),
+            price_total: warn_ne3(
+                d_item.gold.total,
+                c_item.price_total,
+                w_item.buy.parse().unwrap_or(0),
+            ),
+            sell_price: warn_ne(d_item.gold.sell, w_item.sell.parse().unwrap_or(0)),
+            consumed: d_item.consumed,
+            consume_on_full: d_item.consume_on_full.unwrap_or(false),
+            hide_from_all: d_item.hide_from_all,
+            icon_path: c_item.icon_path.as_full_url(),
             special_stat: w_item.spec,
             special_stat2: w_item.spec2,
             effects: w_item.effects,
@@ -295,7 +319,7 @@ impl FullItem {
             depth: d_item.depth,
             r#type: item_type,
             category,
-        })
+        }
     }
 }
 
@@ -321,29 +345,34 @@ fn maps_from(sr: bool, hr: bool, ar: bool) -> Vec<String> {
 
 fn save_to_file(
     file: &str,
-    output: &mut Vec<(String, FullItem)>,
+    full_items: &mut Vec<FullItem>,
 ) -> Result<(), Box<dyn std::error::Error>> {
+    println!("Writing to file {file} for FullItems");
     let mut file = File::create(file)?;
 
-    output.sort_unstable_by(|a, b| a.0.cmp(&b.0));
+    full_items.sort_unstable_by(|a, b| a.id.cmp(&b.id));
     // let j = serde_json::to_string_pretty(output)?;
 
-    file.write_all(b"//This file is auto-generated.\n\nimport type { RootRatio } from '@/api/DataTypes';\n\n// prettier-ignore\nexport type ItemNumber = ")?;
-    let keys = output.iter().map(|f| f.0.clone()).collect::<Vec<_>>();
+    file.write_all(b"//This file is auto-generated.\n\nimport type { ItemGenData } from '@/model/items/items';\n\n// prettier-ignore\nexport type ItemNumber = ")?;
+    let keys = full_items
+        .iter()
+        .map(|f| f.id.to_string())
+        .collect::<Vec<_>>();
 
     file.write_all(keys.join(" | ").as_bytes())?;
 
     file.write_all(b";\n\nexport default {")?;
-    for x in output {
-        let j = serde_json::to_string(&x.1)?;
+    for item in full_items {
+        let id = &item.id.to_string();
+        let j = serde_json::to_string_pretty(&item)?;
         // let j = j.replace("from", "to");
 
-        file.write_all(format!("'{}': ", x.0).as_bytes())?;
+        write!(file, "'{id}': ")?;
         file.write_all(j.as_bytes())?;
         file.write_all(",".as_bytes())?;
     }
     file.write_all("} satisfies { [n in ItemNumber]: ItemGenData };\n\n".as_bytes())?;
-    file.write_all(include_bytes!("item.gen.ts"))?;
+    // file.write_all(include_bytes!("item.gen.ts"))?;
 
     Ok(())
 }

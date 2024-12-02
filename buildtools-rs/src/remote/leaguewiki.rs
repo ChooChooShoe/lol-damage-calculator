@@ -225,7 +225,7 @@ impl LeagueWiki {
 
             match data_name {
                 Some("image") => {}
-                Some("disp_name") => item.disp_name = as_text(el),
+                Some("disp_name") => item.disp_name = as_text(el).replace(" edit", ""),
                 Some("caption") => item.caption = as_text(el),
 
                 Some("ap") => item.ap = as_stat(el),

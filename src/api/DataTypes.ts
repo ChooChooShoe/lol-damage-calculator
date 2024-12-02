@@ -1,4 +1,5 @@
 import type { ChampionName } from '@/generated/Champions.gen';
+import type { ItemNumber } from '@/generated/items.gen';
 // type ChampionName = string;
 
 import type { BaseStatsObj, Stat } from './ChampObjStats';

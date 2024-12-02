@@ -39,7 +39,7 @@ export class ItemInventory {
   }
 
   public getUniqueItemEffects(): ItemEffectsScript[] {
-    return [ItemEffectsScripts['Thirsting Slash']];
+    return [];
   }
 }
 

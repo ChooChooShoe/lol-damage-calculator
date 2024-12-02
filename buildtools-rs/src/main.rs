@@ -4,6 +4,7 @@ pub mod remote;
 pub mod items;
 pub mod runes;
 pub mod champions;
+pub mod item_models;
 
 use crate::{remote::cdragon::CommunityDragon, remote::datadragon::DataDragon, remote::leaguewiki::LeagueWiki};
 
@@ -32,7 +33,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("Hello {}!", args.gen)
     }
 
-    let _ = std::env::set_current_dir(args.path);
+    let x = std::env::set_current_dir(args.path);
+    let _ = x.inspect_err(|f| println!("Err: {}", f));
 
     let mut ddragon = DataDragon::latest()?;
     let mut cdragon = CommunityDragon::latest()?;
@@ -78,14 +80,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             println!("CommunityDragon Perk Count: {:?}", perks.len());
             println!("CommunityDragon Perk [0] is {:?}", perks[0]);
 
-            println!(
-                "sizeof <Option<Ally> {}",
-                std::mem::size_of::<Option<remote::cdragon::RequiredAlly>>()
-            );
-            println!(
-                "sizeof Ally {}",
-                std::mem::size_of::<remote::cdragon::RequiredAlly>()
-            );
         }
         _ => {}
     }

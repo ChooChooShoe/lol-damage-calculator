@@ -2,7 +2,7 @@
   <div v-if="value" class="item shopinfo" :data-category="value.category">
     <div class="shopinfo__block">
       <span class="shopinfo__title">Builds Into:</span>
-      <Item
+      <ItemDiv
         display="icon"
         @buyItem="$emit('buyItem', $event)"
         @showInfo="$emit('showInfo', $event)"
@@ -10,7 +10,7 @@
         :key="x"
         :value="fromNumber(x)"
       >
-      </Item>
+      </ItemDiv>
     </div>
     <div class="shopinfo__underline"></div>
 
@@ -62,21 +62,49 @@
       <div class="shopinfo__block">
         <span class="shopinfo__title">Recipe:</span>
         <template v-for="(x, i) in value.from" :key="i">
-          <Item
+          <ItemDiv
             display="icon"
             @buyItem="$emit('buyItem', $event)"
             @showInfo="$emit('showInfo', $event)"
             :value="fromNumber(x)"
           >
-          </Item>
+          </ItemDiv>
           <span>+</span>
         </template>
         <img src="../../assets/Gold.png" />
         <span class="gold">{{ value.price }}</span>
       </div>
+      <div class="shopinfo__block">
+        <span
+          >Consumed: {{ value.consumed }} consumeOnFull
+          {{ value.consumeOnFull }}</span
+        >
+      </div>
+      <div class="shopinfo__block" v-if="value.limit">
+        <span>Limit: {{ value.limit }}</span>
+      </div>
+      <div class="shopinfo__block">
+        <span>recipe:&nbsp;</span>
+        <div v-html="value.recipe"></div>
+      </div>
+      <div class="shopinfo__block">
+        <span>builds:&nbsp;</span>
+        <div v-html="value.builds"></div>
+      </div>
+      <div class="shopinfo__block">
+        <span>availability:&nbsp;</span>
+        <div>{{ value.availability }}</div>
+      </div>
+      <div class="shopinfo__block">
+        <span>menu:&nbsp;</span>
+        <div>{{ value.menu }}</div>
+      </div>
+      <div class="shopinfo__block">
+        <span>keywords:&nbsp;</span>
+        <div>{{ value.keywords }}</div>
+      </div>
       <div class="item-tags">
-        <span>Tags:&nbsp;</span>
-        <template v-for="key in value.type">{{ key }}&nbsp;</template>
+        <span>Tags: {{ value.type }}</span>
       </div>
     </div>
   </div>
@@ -86,7 +114,7 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from 'vue';
 import SimpleTooltip from '../../components/SimpleTooltip.vue';
-import Item from './Item.vue';
+import ItemDiv from './ItemDiv.vue';
 import items, { fromNumber, type Stats } from '@/model/items/items';
 import SpellEffects from '@/components/spells/SpellEffects.vue';
 // import type { ItemEffects } from '@/model/items/ItemEffectScripts';

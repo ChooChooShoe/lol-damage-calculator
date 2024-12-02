@@ -1,6 +1,6 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, default};
 
-use crate::remote::fetch::FetchClient;
+use crate::{item_models::{DDragonItem, Gold, RequiredAlly, RequiredChampion}, remote::fetch::FetchClient};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -101,6 +101,7 @@ impl DataDragon {
         self.sprite_base_uri.as_str()
     }
     // The Raw Json File
+    // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/item.json
     pub fn get_items_json(&mut self) -> Result<ItemJson> {
         let url = format!("{0}/item.json", self.base_data_uri);
         let body = self.client.fetch(url)?.text()?;
@@ -111,30 +112,36 @@ impl DataDragon {
 
         let v: ItemJson = serde_json::from_str(&body)?;
 
-        assert!(v.r#type == "item");
         assert!(v.version == self.version);
         Ok(v)
     }
-    pub fn get_items(&mut self) -> Result<HashMap<String, Item>> {
+    pub fn get_items(&mut self) -> Result<HashMap<String, DDragonItem>> {
         Ok(self.get_items_json()?.data)
     }
 
     // Ex. https://ddragon.leagueoflegends.com/cdn/10.12.1/data/en_US/champion/MonkeyKing.json
     pub fn find_champion(&mut self, champion: &str) -> Result<ChampionComplex> {
         let key = Self::fix_champion_key(champion);
-        
+
         let url = format!("{0}/champion/{key}.json", self.base_data_uri);
         let body = self.client.fetch(url)?.text()?;
         let mut response: ChampionStandAloneComplexResponse = serde_json::from_str(&body)?;
         debug_assert_eq!(response.r#type, "champion");
         debug_assert_eq!(response.format, "standAloneComplex");
-        response.data.remove(champion).ok_or("JSON is not in the right format".into())
+        response
+            .data
+            .remove(champion)
+            .ok_or("JSON is not in the right format".into())
     }
-  
+
     fn fix_champion_key(apiname: &str) -> String {
-      if apiname == "Wukong" {return "MonkeyKing".to_owned()};
-      if apiname == "GnarBig" {return "Gnar".to_owned()};
-      return apiname.replace(" ", "").replace(".", "");
+        if apiname == "Wukong" {
+            return "MonkeyKing".to_owned();
+        };
+        if apiname == "GnarBig" {
+            return "Gnar".to_owned();
+        };
+        return apiname.replace(" ", "").replace(".", "");
     }
     // pub fn get_all_champions() -> Result<ChampionBasicJson> {
     //   return fetch("{this.baseDataUri}/champion.json").then(
@@ -146,83 +153,73 @@ impl DataDragon {
     //     (res) => res.json() as Promise<ChampionFullJson>,
     //   );
     // }
-
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-// #[serde(deny_unknown_fields)]
+#[serde(deny_unknown_fields)]
 pub struct ItemJson {
-    pub r#type: String, // always 'item';
+    #[serde(rename = "type")]
+    pub file_type: ItemFileType, // always 'item';
     pub version: Version,
-    // pub basic: BasicItem,
-    pub data: HashMap<String, Item>,
-    // groups: HashMap<String, any>[],
-    // tree: HashMap<String, any>[],
+    pub basic: BasicItem,
+    pub data: HashMap<String, DDragonItem>,
+    pub groups: Vec<Group>,
+    pub tree: Vec<TreeNode>,
 }
 
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-#[serde(rename_all = "camelCase", default)]
+#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq, Eq)]
+#[serde(rename_all = "camelCase")]
+pub enum ItemFileType {
+    #[default]
+    Item,
+}
+
+#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq, Eq)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
 pub struct BasicItem {
     pub name: String,
-}
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
-#[serde(rename_all = "camelCase", default)]
-#[serde(deny_unknown_fields)]
-pub struct Item {
-    pub name: String,
+    pub rune: serde_json::Value,
+    //pub rune: Rune,
+    pub gold: Gold,
+    pub group: String,
     pub description: String,
-    #[serde(default = "default_colloq")]
     pub colloq: String,
     pub plaintext: String,
-    pub special_recipe: i64,           // undefined defaults to 0
-    pub consumed: bool,                // undefined defaults to false
-    pub consume_on_full: Option<bool>, // undefined defaults to false
-    #[serde(default = "default_1")]
-    pub stacks: i64, // undefined defaults to 1
-    #[serde(default = "default_true")]
-    pub in_store: bool, // defaults to true
-    pub hide_from_all: bool,           // defaults to false
-    pub required_champion: String, //'FiddleSticks' | 'Kalista' | 'Sylas' | 'Gangplank', //defaults to ""
-    pub required_ally: String,     // : 'Ornn', //defaults to ""
-    pub from: Vec<String>,
-    pub into: Vec<String>,
-    pub image: Image,
-    pub gold: Gold,
+    pub consumed: bool,
+    pub stacks: i64,
+    pub depth: i64,
+    pub consume_on_full: bool,
+    pub from: Vec<Option<serde_json::Value>>,
+    pub into: Vec<Option<serde_json::Value>>,
+    pub special_recipe: i64,
+    pub in_store: bool,
+    pub hide_from_all: bool,
+    pub required_champion: String,
+    pub required_ally: String,
+    pub stats: HashMap<String, i64>,
+    pub tags: Vec<Option<serde_json::Value>>,
+    pub maps: HashMap<String, bool>,
+}
+
+
+#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
+pub struct Group {
+    pub id: String,
+    #[serde(rename = "MaxGroupOwnable")]
+    pub max_group_ownable: String,
+}
+#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
+pub struct TreeNode {
+    pub header: String,
     pub tags: Vec<String>,
-    pub maps: Value,
-    // maps: { '11': boolean, '12': boolean, '21': boolean, '22': boolean },
-    pub stats: HashMap<String, f64>,
-    #[serde(default = "default_1")]
-    pub depth: i64, // undefined defaults to 1
-    pub effect: Value,
-}
-fn default_colloq() -> String {
-    String::from(";")
-}
-fn default_1() -> i64 {
-    1
-}
-fn default_true() -> bool {
-    true
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq, Eq)]
-#[serde(rename_all = "camelCase", default)]
-#[serde(deny_unknown_fields)]
-pub struct Gold {
-    pub base: i64,
-    pub purchasable: bool,
-    pub total: i64,
-    pub sell: i64,
-}
-
-#[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq, Eq)]
-#[serde(rename_all = "camelCase", default)]
 #[serde(deny_unknown_fields)]
 pub struct Image {
     pub full: String,
     pub sprite: String,
-    pub group: String,
+    pub group: ItemFileType,
     pub x: i64,
     pub y: i64,
     pub w: i64,
@@ -236,7 +233,6 @@ impl Image {
         )
     }
 }
-
 
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(rename_all = "camelCase", default)]
