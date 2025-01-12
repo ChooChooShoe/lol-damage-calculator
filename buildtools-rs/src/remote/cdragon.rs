@@ -81,47 +81,47 @@ pub type SubStyleId = usize;
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(rename_all = "camelCase", default)]
 pub struct PerkStyle {
-    id: StyleId,
+    pub id: StyleId,
     /// Translated name `Resolve`, `Domination`, `Precision`, `Sorcery`, or `Inspiration`
-    name: String,
+    pub name: String,
     /// A berif description of the name. Used for tooltips in rune selector.
-    tooltip: String,
+    pub tooltip: String,
     /// Starts with `/lol-game-data/assets/v1/`
-    icon_path: String,
-    asset_map: serde_json::Value,
-    is_advanced: bool,
+    pub icon_path: String,
+    pub asset_map: serde_json::Value,
+    pub is_advanced: bool,
     /// The other 4 sub styles (excluding this style).
-    allowed_sub_styles: [SubStyleId; 4],
+    pub allowed_sub_styles: [SubStyleId; 4],
     /// Unused in current league.
-    sub_style_bonus: [SubStyleBonus; 4],
-    slots: [Slot; 7],
-    default_page_name: String,
-    default_sub_style: i64,
-    default_perks: [PerkId; 9],
-    default_perks_when_splashed: [PerkId; 2],
-    default_stat_mods_per_sub_style: [DefaultStatModsPerSubStyle; 4],
+    pub sub_style_bonus: [SubStyleBonus; 4],
+    pub slots: [Slot; 7],
+    pub default_page_name: String,
+    pub default_sub_style: i64,
+    pub default_perks: [PerkId; 9],
+    pub default_perks_when_splashed: [PerkId; 2],
+    pub default_stat_mods_per_sub_style: [DefaultStatModsPerSubStyle; 4],
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(rename_all = "camelCase", default)]
 pub struct SubStyleBonus {
-    style_id: StyleId,
-    perk_id: PerkId,
+    pub style_id: StyleId,
+    pub perk_id: PerkId,
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(rename_all = "camelCase", default)]
 pub struct Slot {
-    r#type: String,
-    slot_label: String,
-    perks: Vec<PerkId>,
+    pub r#type: String,
+    pub slot_label: String,
+    pub perks: Vec<PerkId>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Default, Clone, PartialEq)]
 #[serde(rename_all = "camelCase", default)]
 pub struct DefaultStatModsPerSubStyle {
-    id: String,
-    perks: [PerkId; 3],
+    pub id: String,
+    pub perks: [PerkId; 3],
 }
 
 pub type PerkId = usize;

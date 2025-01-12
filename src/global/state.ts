@@ -5,7 +5,7 @@ import type { DamageSource } from '../model/league_data';
 export const lastChampPlayer =
   validateName(localStorage.getItem('sv_champ_player')) || 'Annie';
 export const lastChampTarget =
-  validateName(localStorage.getItem('sv_champ_target')) || 'Ashe';
+  validateName(localStorage.getItem('sv_champ_target')) || 'Annie';
 
 export const player = reactive(new ChampObjModel('player', lastChampPlayer));
 export const target = reactive(new ChampObjModel('target', lastChampTarget));

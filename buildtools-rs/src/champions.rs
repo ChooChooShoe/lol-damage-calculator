@@ -208,7 +208,7 @@ fn save_to_file(
     writeln!(file, "// prettier-ignore")?;
     let keys = output
         .iter()
-        .map(|(name, _champ)| format!("'{name}'"))
+        .map(|(name, _champ)| format!("\"{name}\""))
         .collect::<Vec<_>>()
         .join(" | ");
     writeln!(file, "export type ChampionName = {keys};")?;

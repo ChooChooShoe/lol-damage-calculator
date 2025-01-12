@@ -6,7 +6,7 @@
     </h1>
     <h2 class="main__subtitle">
       With Data from
-      <a href="https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki">
+      <a href="https://wiki.leagueoflegends.com/en-us/">
         League of Legends Wiki
       </a>
       – Made by <a href="https://github.com/ChooChooShoe">ChooChooShoe</a> –
@@ -21,10 +21,12 @@
   </main>
   <footer>
     <p>
-      <router-link class="link" to="/">Home</router-link>
-      <router-link class="link" to="/c/p/vs/t">Exmaple</router-link>
-      <router-link class="link" to="/runes">Runes</router-link>
-      <router-link class="link" to="/itembuilder">Item Builder</router-link>
+      <router-link class="link" to="/">Home</router-link> –
+      <router-link class="link" to="/c/Lulu/vs/Annie">Exmaple</router-link> –
+      <router-link class="link" to="/runes">Runes</router-link> –
+      <router-link class="link" to="/itembuilder">Item Builder</router-link> –
+      <router-link class="link" to="/dataview">DataView</router-link> –
+      <router-link class="link" to="/testview">TestView</router-link>
     </p>
   </footer>
 </template>

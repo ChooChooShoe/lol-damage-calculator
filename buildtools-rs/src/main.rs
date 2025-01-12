@@ -20,18 +20,10 @@ struct Args {
     
     #[arg(short, long, default_value = "./src/generated/")]
     path: std::path::PathBuf,
-
-    /// Number of times to greet
-    #[arg(short, long, default_value_t = 1)]
-    count: u8,
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
-
-    for _ in 0..args.count {
-        println!("Hello {}!", args.gen)
-    }
 
     let x = std::env::set_current_dir(args.path);
     let _ = x.inspect_err(|f| println!("Err: {}", f));

@@ -1,32 +1,41 @@
-import type { RootRatio, SubRatio, SubSkill } from '../api/DataTypes';
-import { styles, perks } from './PerksData';
+import {
+  Styles,
+  Perks,
+  type StyleId,
+  type PerkId,
+} from '@/generated/perks.gen';
+export { Styles as perkstyles, Perks as perks };
 
-export { styles as perkstyles } from './PerksData';
-export { perks } from './PerksData';
-
-export type StyleId = keyof typeof styles;
-export type PerkId = keyof typeof perks;
+export type { StyleId, PerkId };
 export type StyleIdOrNone = StyleId | 0;
 export type PerkIdOrNone = PerkId | 0;
 
 export interface Perk {
   id: PerkId;
   name: string;
+  dispName: string;
+  released: string;
+  path: '' | 'Precision' | 'Domination' | 'Sorcery' | 'Resolve' | 'Inspiration';
+  shardSlots: '';
+  slot: '' | 'Keystone' | 1 | 2 | 3;
   majorChangePatchVersion: string;
+  recommendationDescriptor: string;
+  iconPath: string;
+  endOfGameStatDescs: string[];
+  recommendationDescriptorAttributes: {};
+  cooldown: Object;
+  range: string | number;
   tooltip: string;
   shortDesc: string;
   longDesc: string;
-  recommendationDescriptor: string;
-  iconPath: string;
-  endOfGameStatDescs?: string[];
-  recommendationDescriptorAttributes: {};
-  released?: string;
-  path?: 'Precision' | 'Domination' | 'Sorcery' | 'Resolve' | 'Inspiration';
-  slot?: 'Keystone' | 1 | 2 | 3;
-  cooldown?: string | number;
-  range?: string | number;
-  subskills?: SubSkill[];
-  stats?: { [key: string]: number | number[] };
+  description: string;
+  description2: string;
+  description3: string;
+  description4: string;
+  effect: null;
+  effect2: null;
+  effect3: null;
+  effect4: null;
 }
 
 export interface PerkStyle {
@@ -34,55 +43,67 @@ export interface PerkStyle {
   name: string;
   tooltip: string;
   iconPath: string;
+  assetMap: Object;
   isAdvanced: boolean;
   allowedSubStyles: [StyleId, StyleId, StyleId, StyleId];
-  slots: {
-    KeyStone: { slotLabel: ''; perks: PerkId[] };
-    Mixed1: { slotLabel: string; perks: PerkId[] };
-    Mixed2: { slotLabel: string; perks: PerkId[] };
-    Mixed3: { slotLabel: string; perks: PerkId[] };
-  };
+  subStyleBonus: {
+    styleId: StyleId;
+    perkId: PerkId;
+  }[];
+  slots: [
+    { type: 'kKeyStone'; slotLabel: ''; perks: PerkIdsList },
+    { type: 'kMixedRegularSplashable'; slotLabel: string; perks: PerkIdsList },
+    { type: 'kMixedRegularSplashable'; slotLabel: string; perks: PerkIdsList },
+    { type: 'kMixedRegularSplashable'; slotLabel: string; perks: PerkIdsList },
+    { type: 'kStatMod'; slotLabel: 'Offense'; perks: [5008, 5005, 5007] },
+    { type: 'kStatMod'; slotLabel: 'Flex'; perks: [5008, 5010, 5001] },
+    { type: 'kStatMod'; slotLabel: 'Defense'; perks: [5011, 5013, 5001] },
+  ];
   defaultPageName: string;
   defaultSubStyle: StyleId;
   defaultPerks: PerkId[];
   defaultPerksWhenSplashed: PerkId[];
   defaultStatModsPerSubStyle: {
-    id: StyleId;
+    id: `${StyleId}`;
     perks: PerkId[];
   }[];
 }
 
-function isPerkKey(posibleId: number): posibleId is keyof typeof perks {
-  return posibleId in perks;
+export type PerkIdsList =
+  | [PerkId, PerkId, PerkId]
+  | [PerkId, PerkId, PerkId, PerkId];
+
+function isPerkKey(
+  posibleId: number | string,
+): posibleId is keyof typeof Perks {
+  return posibleId in Perks;
 }
-function isStyleKey(possibleId: number): possibleId is keyof typeof styles {
-  return possibleId in styles;
+function isStyleKey(
+  possibleId: number | string,
+): possibleId is keyof typeof Styles {
+  return possibleId in Styles;
 }
 
-export function perk(perk: number | undefined | null): Perk | undefined {
-  if (perk && isPerkKey(perk)) return perks[perk] as Perk;
+export function getPerk(perk: PerkId): Perk;
+export function getPerk(perk: number | undefined | null): Perk | undefined {
+  if (perk && isPerkKey(perk)) return Perks[perk] as Perk;
 }
-export function perkStyle(
+export function getPerkStyle(
   style: number | undefined | null,
 ): PerkStyle | undefined {
-  if (style && isStyleKey(style)) return styles[style];
+  if (style && isStyleKey(style)) return Styles[style];
 }
 
 export class PerkSelections {
-  statPerks: {
-    defense: PerkIdOrNone;
-    flex: PerkIdOrNone;
-    offense: PerkIdOrNone;
-  } = {
+  statPerks = {
     defense: 0,
     flex: 0,
     offense: 0,
   };
-  primaryStyle: StyleIdOrNone = 8000;
-  primarySelections: [PerkIdOrNone, PerkIdOrNone, PerkIdOrNone, PerkIdOrNone] =
-    [0, 0, 0, 0];
-  subStyle: StyleIdOrNone = 8100;
-  subSelections: [PerkIdOrNone, PerkIdOrNone] = [0, 0];
+  primaryStyle = 8000;
+  primarySelections: [number, number, number, number] = [0, 0, 0, 0];
+  subStyle = 8100;
+  subSelections: [number, number] = [0, 0];
 
   constructor() {
     console.log('New PerkSelections');

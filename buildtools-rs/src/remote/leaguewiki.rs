@@ -1,5 +1,9 @@
 use std::{
-    collections::HashMap, default, fmt::Display, fs::{File, OpenOptions}, io::Write
+    collections::HashMap,
+    default,
+    fmt::Display,
+    fs::{File, OpenOptions},
+    io::Write,
 };
 
 use crate::{effect_models::EffectModel, remote::fetch::FetchClient};
@@ -174,10 +178,10 @@ impl LeagueWiki {
         })
     }
     pub fn get_rune_data(&mut self, rune_name: &str) -> Result<RuneData> {
-        let name = rune_name.replace(" ", "_");
+        let name = rune_name.trim().replace(" ", "_");
         let url = format!(
-            "https://leagueoflegends.fandom.com/wiki/Template:Rune_data_{}",
-            name.trim()
+            "https://wiki.leagueoflegends.com/en-us/Template:Rune_data_{}",
+            name
         );
         let body = self.client.fetch(url)?.text()?;
 
@@ -350,14 +354,19 @@ pub struct RuneData {
     pub slot: String,
     /// Description (line 1) HTML
     pub description: String,
+    pub effect: Option<Effect>,
     /// Description (line 1) HTML
     pub description2: String,
+    pub effect2: Option<Effect>,
     /// Description (line 1) HTML
     pub description3: String,
+    pub effect3: Option<Effect>,
     /// Description (line 1) HTML
     pub description4: String,
+    pub effect4: Option<Effect>,
     /// Cooldown HTML
     pub cooldown: PassiveProgression,
+    /// Effect
     /// range HTML
     pub range: String,
 }
@@ -375,7 +384,7 @@ impl RuneData {
 
             let data_name = el.value().attr("data-name");
 
-            // println!("data-name='{:?}' text: {:?}", data_name, text);
+            println!("data-name='{:?}' text: {:?}", data_name, text);
 
             match data_name {
                 Some("1") => rune.name = text,
@@ -384,10 +393,22 @@ impl RuneData {
                 Some("path") => rune.path = text,
                 Some("shard slots") => rune.shard_slots = text,
                 Some("slot") => rune.slot = text,
-                Some("description") => rune.description = el.inner_html(),
-                Some("description2") => rune.description2 = el.inner_html(),
-                Some("description3") => rune.description3 = el.inner_html(),
-                Some("description4") => rune.description4 = el.inner_html(),
+                Some("description") => {
+                    rune.description = el.inner_html();
+                    rune.effect = Effect::try_make(&text, 1, el);
+                }
+                Some("description2") => {
+                    rune.description2 = el.inner_html();
+                    rune.effect2 = Effect::try_make(&text, 1, el)
+                }
+                Some("description3") => {
+                    rune.description3 = el.inner_html();
+                    rune.effect3 = Effect::try_make(&text, 1, el);
+                }
+                Some("description4") => {
+                    rune.description4 = el.inner_html();
+                    rune.effect4 = Effect::try_make(&text, 1, el);
+                }
                 Some("cooldown") => rune.cooldown = PassiveProgression::from(el),
                 Some("range") => rune.range = text,
                 Some("removed") => (),

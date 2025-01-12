@@ -1,22 +1,22 @@
 <template>
   <div>
-    <CommonRune v-if="primaryStyle[0]" :p="perk(primaryStyle[0])!"></CommonRune>
-    <CommonRune v-if="primaryStyle[1]" :p="perk(primaryStyle[1])!"></CommonRune>
-    <CommonRune v-if="primaryStyle[2]" :p="perk(primaryStyle[2])!"></CommonRune>
-    <CommonRune v-if="primaryStyle[3]" :p="perk(primaryStyle[3])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[0]" :p="getPerk(primaryStyle[0])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[1]" :p="getPerk(primaryStyle[1])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[2]" :p="getPerk(primaryStyle[2])!"></CommonRune>
+    <CommonRune v-if="primaryStyle[3]" :p="getPerk(primaryStyle[3])!"></CommonRune>
     <CommonRune
       v-if="secondaryStyle[0]"
-      :p="perk(secondaryStyle[0])!"
+      :p="getPerk(secondaryStyle[0])!"
     ></CommonRune>
     <CommonRune
       v-if="secondaryStyle[1]"
-      :p="perk(secondaryStyle[1])!"
+      :p="getPerk(secondaryStyle[1])!"
     ></CommonRune>
   </div>
 </template>
 
 <script setup lang="ts">
-import { perk } from './perks';
+import { getPerk } from './perks';
 import CommonRune from './perks/CommonRune.vue';
 
 // const perkComponents = { Precision: { keyStone: [PresstheAttack, LethalTempo, FleetFootwork, Conqueror], mixed1: [Overheal, Triumph, PresenceofMind], mixed2: [LegendAlacrity, LegendTenacity, LegendBloodline], mixed3: [CoupdeGrace, CutDown, LastStand] }, Domination: { keyStone: [Electrocute, Predator, DarkHarvest, HailofBlades], mixed1: [CheapShot, TasteofBlood, SuddenImpact], mixed2: [ZombieWard, GhostPoro, EyeballCollection], mixed3: [TreasureHunter, IngeniousHunter, RelentlessHunter, UltimateHunter] }, Sorcery: { keyStone: [SummonAery, ArcaneComet, PhaseRush], mixed1: [NullifyingOrb, ManaflowBand, NimbusCloak], mixed2: [Transcendence, Celerity, AbsoluteFocus], mixed3: [Scorch, Waterwalking, GatheringStorm] }, Inspiration: { keyStone: [GlacialAugment, UnsealedSpellbook, FirstStrike], mixed1: [HextechFlashtraption, MagicalFootwear, PerfectTiming], mixed2: [FuturesMarket, MinionDematerializer, BiscuitDelivery], mixed3: [CosmicInsight, ApproachVelocity, TimeWarpTonic] }, Resolve: { keyStone: [GraspoftheUndying, Aftershock, Guardian], mixed1: [Demolish, FontofLife, ShieldBash], mixed2: [Conditioning, SecondWind, BonePlating], mixed3: [Overgrowth, Revitalize, Unflinching] } };

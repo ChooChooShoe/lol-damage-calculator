@@ -1,10 +1,13 @@
 <template>
   <div>
     <div class="runespage">
-      <span>obj.runes = {{ obj.runes }}</span>
+      <span>Runes: {{ JSON.stringify(obj.runes, null, 2) }}</span>
     </div>
+    PerkPicker:
     <PerkPicker v-model:runes="obj.runes"></PerkPicker>
 
+
+    PerkStyle: 
     <PerkStyle
       :primaryStyle="obj.runes.primarySelections"
       :secondaryStyle="obj.runes.subSelections"
@@ -31,10 +34,10 @@ import PerkStyle from './PerkStyle.vue';
 import PlayerStats from './PlayerStats.vue';
 import { StatMod } from './Stats';
 import { computed } from 'vue';
-import { perkStyle, perk, perks, PerkSelections } from './perks';
-import SpellEffects from '../components/spells/SpellEffects.vue';
-import { ChampObjModel } from '../model/ChampObj';
-import { DamageSource } from '../model/league_data';
+import { getPerk, perks } from './perks';
+// import SpellEffects from '../components/spells/SpellEffects.vue';
+// import { ChampObjModel } from '../model/ChampObj';
+// import { DamageSource } from '../model/league_data';
 import PerkPicker from './PerkPicker.vue';
 import CommonRune from './perks/CommonRune.vue';
 import { player as obj } from '@/global/state';
@@ -51,7 +54,7 @@ const statmods = computed(() => {
       new StatMod(
         'perks[String(p.statPerks.defense) as keyof typeof perks].name',
         'Runes::Stats::defense',
-        perk(obj.runes.statPerks.defense)!.stats!,
+        getPerk(obj.runes.statPerks.defense)!.stats!,
       ),
     );
 
@@ -60,7 +63,7 @@ const statmods = computed(() => {
       new StatMod(
         'perks[String(p.statPerks.flex) as keyof typeof perks].name',
         'Runes::Stats::flex',
-        perk(obj.runes.statPerks.flex)!.stats!,
+        getPerk(obj.runes.statPerks.flex)!.stats!,
       ),
     );
 
@@ -69,7 +72,7 @@ const statmods = computed(() => {
       new StatMod(
         'perks[String(p.statPerks.flex) as keyof typeof perks].name',
         'Runes::Stats::offense',
-        perk(obj.runes.statPerks.offense)!.stats!,
+        getPerk(obj.runes.statPerks.offense)!.stats!,
       ),
     );
 

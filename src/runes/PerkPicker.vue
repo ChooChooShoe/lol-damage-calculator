@@ -1,72 +1,38 @@
 <template>
   <div class="perk_picker">
     <div class="perk_picker__flex">
-      <SinglePerk
-        :perk="x"
-        :is-path="true"
-        v-for="x in perkstyles"
-        :key="x.id"
-        :selection="runes.primaryStyle"
-        @click="setPrimary(x.id)"
-      >
+      <SinglePerk :perk="x" :is-path="true" v-for="x in perkstyles" :key="x.id" :selection="runes.primaryStyle"
+        @click="setPrimary(x.id)">
       </SinglePerk>
     </div>
     <div class="perk_picker__flex">
-      <SinglePerk
-        :perk="x"
-        :is-path="true"
-        v-for="x in primaryPath?.allowedSubStyles.map(
-          (pid) => perkStyle(pid)!,
-        ) || []"
-        :key="x.id"
-        :selection="runes.subStyle"
-        @click="setSecondary(x.id)"
-      >
+      <SinglePerk :perk="x" :is-path="true" v-for="x in primaryPath?.allowedSubStyles.map(
+        (pid) => getPerkStyle(pid)!,
+      ) || []" :key="x.id" :selection="runes.subStyle" @click="setSecondaryStyle(x.id)">
       </SinglePerk>
     </div>
     <hr />
     <hr />
     <div v-if="primaryPath">
       <div class="rune_row__keystone">
-        <SinglePerk
-          v-for="p in primaryPath.slots.KeyStone.perks.map((pid) => perk(pid)!)"
-          :key="p.id"
-          :perk="p"
-          :isKeyStone="true"
-          :selection="runes.primarySelections[0]"
-          @click="runes.primarySelections[0] = p!.id"
-        >
+        <SinglePerk class="KeyStone" v-for="p in primaryPath.slots[0].perks.map((pid) => getPerk(pid))" :key="p.id"
+          :perk="p" :selection="runes.primarySelections[0]" @click="runes.primarySelections[0] = p.id">
         </SinglePerk>
       </div>
       <hr />
       <div class="rune_row">
-        <SinglePerk
-          v-for="p in primaryPath.slots.Mixed1.perks.map((pid) => perk(pid)!)"
-          :key="p.id"
-          :perk="p"
-          :selection="runes.primarySelections[1]"
-          @click="runes.primarySelections[1] = p.id"
-        >
+        <SinglePerk v-for="p in primaryPath.slots[1].perks.map((pid) => getPerk(pid))" :key="p.id" :perk="p"
+          :selection="runes.primarySelections[1]" @click="runes.primarySelections[1] = p.id">
         </SinglePerk>
       </div>
       <div class="rune_row">
-        <SinglePerk
-          v-for="p in primaryPath.slots.Mixed2.perks.map((pid) => perk(pid)!)"
-          :key="p.id"
-          :perk="p"
-          :selection="runes.primarySelections[2]"
-          @click="runes.primarySelections[2] = p.id"
-        >
+        <SinglePerk v-for="p in primaryPath.slots[2].perks.map((pid) => getPerk(pid))" :key="p.id" :perk="p"
+          :selection="runes.primarySelections[2]" @click="runes.primarySelections[2] = p.id">
         </SinglePerk>
       </div>
       <div class="rune_row">
-        <SinglePerk
-          v-for="p in primaryPath.slots.Mixed3.perks.map((pid) => perk(pid)!)"
-          :key="p.id"
-          :perk="p"
-          :selection="runes.primarySelections[3]"
-          @click="runes.primarySelections[3] = p.id"
-        >
+        <SinglePerk v-for="p in primaryPath.slots[3].perks.map((pid) => getPerk(pid))" :key="p.id" :perk="p"
+          :selection="runes.primarySelections[3]" @click="runes.primarySelections[3] = p.id">
         </SinglePerk>
       </div>
     </div>
@@ -74,77 +40,38 @@
     <div>
       <template v-if="secondaryPath">
         <div class="rune_row">
-          <SinglePerk
-            v-for="p in secondaryPath.slots.Mixed1.perks.map(
-              (pid) => perk(pid)!,
-            )"
-            :key="p.id"
-            :perk="p"
-            :selection="subStyleSelectionsDisplay[0]"
-            @click="updateSecondary(p.id, 0)"
-          >
+          <SinglePerk v-for="p in secondaryPath.slots[1].perks.map(pid => getPerk(pid))" :key="p.id" :perk="p"
+            :selection="subStyleSelectionsDisplay[0]" @click="updateSecondary(p.id, 0)">
           </SinglePerk>
         </div>
         <div class="rune_row">
-          <SinglePerk
-            v-for="p in secondaryPath.slots.Mixed2.perks.map(
-              (pid) => perk(pid)!,
-            )"
-            :key="p!.id"
-            :perk="p"
-            :selection="subStyleSelectionsDisplay[1]"
-            @click="updateSecondary(p.id, 1)"
-          >
+          <SinglePerk v-for="p in secondaryPath.slots[2].perks.map(pid => getPerk(pid))" :key="p.id" :perk="p"
+            :selection="subStyleSelectionsDisplay[1]" @click="updateSecondary(p.id, 1)">
           </SinglePerk>
         </div>
         <div class="rune_row">
-          <SinglePerk
-            v-for="p in secondaryPath.slots.Mixed3.perks.map(
-              (pid) => perk(pid)!,
-            )"
-            :key="p!.id"
-            :perk="p"
-            :selection="subStyleSelectionsDisplay[2]"
-            @click="updateSecondary(p.id, 2)"
-          >
+          <SinglePerk v-for="p in secondaryPath.slots[3].perks.map(pid => getPerk(pid))" :key="p.id" :perk="p"
+            :selection="subStyleSelectionsDisplay[2]" @click="updateSecondary(p.id, 2)">
+          </SinglePerk>
+        </div>
+        <hr />
+        <div class="rune_row_stats">
+          <SinglePerk class="StatsModBox" v-for="p in secondaryPath.slots[4].perks.map((pid) => getPerk(pid))"
+            :key="p!.id" :perk="p" :selection="runes.statPerks.offense" @click="runes.statPerks.offense = p.id">
+          </SinglePerk>
+        </div>
+        <div class="rune_row_stats">
+          <SinglePerk class="StatsModBox" v-for="p in secondaryPath.slots[4].perks.map((pid) => getPerk(pid))"
+            :key="p.id" :perk="p" :selection="runes.statPerks.flex" @click="runes.statPerks.flex = p.id">
+          </SinglePerk>
+        </div>
+        <div class="rune_row_stats">
+          <SinglePerk class="StatsModBox" v-for="p in secondaryPath.slots[5].perks.map((pid) => getPerk(pid))"
+            :key="p.id" :perk="p" :selection="runes.statPerks.defense" @click="runes.statPerks.defense = p.id">
           </SinglePerk>
         </div>
       </template>
       <template v-else> Select Secondary Rune Path </template>
-      <hr />
-      <div class="rune_row_stats">
-        <SinglePerk
-          class="StatsModBox"
-          v-for="p in [5008, 5005, 5007].map((pid) => perk(pid)!)"
-          :key="p!.id"
-          :perk="p"
-          :selection="runes.statPerks.offense"
-          @click="runes.statPerks.offense = p.id"
-        >
-        </SinglePerk>
-      </div>
-      <div class="rune_row_stats">
-        <SinglePerk
-          class="StatsModBox"
-          v-for="p in [5008, 5002, 5003].map((pid) => perk(pid)!)"
-          :key="p!.id"
-          :perk="p"
-          :selection="runes.statPerks.flex"
-          @click="runes.statPerks.flex = p.id"
-        >
-        </SinglePerk>
-      </div>
-      <div class="rune_row_stats">
-        <SinglePerk
-          class="StatsModBox"
-          v-for="p in [5001, 5002, 5003].map((pid) => perk(pid)!)"
-          :key="p!.id"
-          :perk="p"
-          :selection="runes.statPerks.defense"
-          @click="runes.statPerks.defense = p.id"
-        >
-        </SinglePerk>
-      </div>
     </div>
   </div>
 </template>
@@ -153,24 +80,25 @@
 import { inject, reactive, type Ref } from 'vue';
 import SinglePerk from './SinglePerk.vue';
 import { computed } from 'vue';
-import { perkStyle, perkstyles, perk } from './perks';
-import type { StyleIdOrNone, PerkIdOrNone } from './perks';
+import { getPerkStyle, perkstyles, getPerk } from './perks';
+import type { StyleIdOrNone, PerkIdOrNone, PerkStyleSlot, Perk } from './perks';
 import type { ChampObjModel } from '@/model/ChampObj';
 
 const runes = inject<ChampObjModel>('obj')!.runes;
 
-const primaryPath = computed(() => perkStyle(runes.primaryStyle));
-const secondaryPath = computed(() => perkStyle(runes.subStyle));
+const primaryPath = computed(() => getPerkStyle(runes.primaryStyle));
+const secondaryPath = computed(() => getPerkStyle(runes.subStyle));
 
 function setPrimary(id: StyleIdOrNone): void {
   if (id === runes.primaryStyle) return;
   runes.primarySelections = [0, 0, 0, 0];
   runes.primaryStyle = id;
   if (runes.subStyle === id) {
-    setSecondary(0);
+    setSecondaryStyle(0);
   }
 }
-function setSecondary(id: StyleIdOrNone): void {
+
+function setSecondaryStyle(id: StyleIdOrNone): void {
   if (id === runes.subStyle) return;
   runes.subSelections = [0, 0];
   subStyleSelectionsDisplay[0] = 0;
@@ -219,12 +147,14 @@ function updateSecondary(id: PerkIdOrNone, idx: number) {
   flex-direction: row;
   justify-content: space-around;
 }
+
 .rune_row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin: 3px 28px;
 }
+
 .rune_row_stats {
   display: flex;
   flex-direction: row;

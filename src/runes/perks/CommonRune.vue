@@ -1,36 +1,31 @@
 <template>
   <div class="data_holder col fill commonrune">
-    <span class="ds__title">{{ p.name }}</span>
+    <span class="ds__title">{{ p.name }} ({{ p.id }})</span>
 
-    <span v-if="p.cooldown" class="ds__cooldown">
-      Cooldown: <span v-html="p.cooldown"></span> seconds</span
-    >
+
+    {{ p.description }}
+    {{ p.description2 }}
+    {{ p.description3 }}
+    {{ p.description4 }}
+
+    <SinglePerk :perk="p" :selection="-1"></SinglePerk>
+
+    <span v-if="p.cooldown" class="ds__cooldown"> Cooldown: <span v-html="p.cooldown"></span> seconds</span>
+    <span v-if="p.range" class="ds__range"> Range: <span v-html="p.range"></span></span>
     <hr />
-    <SubSkillList
-      v-if="unique.showSubSkills"
-      :subskills="p.subskills || []"
-      :idx="p.name"
-    />
-    <component :is="unique.component" :p="p"></component>
+    <SubSkillList :subskills="[p.effect, p.effect2, p.effect3, p.effect4]" :idx="p.name" />
+
+
+
+    {{ p.endOfGameStatDescs }}
   </div>
 </template>
-
-<script lang="ts">
-// Table with extra rune vue objects. ouside of the normal CommonRune.vue scope.
-const uniqueRuneTable: {
-  [key: string]: { showSubSkills: boolean; component: any } | undefined;
-} = {};
-</script>
-
 <script setup lang="ts">
 import SubSkillList from '@/components/spells/SubSkillList.vue';
 import type { Perk } from '../perks';
-const props = defineProps<{ p: Perk }>();
+import SinglePerk from '../SinglePerk.vue';
+defineProps<{ p: Perk }>();
 
-const unique = uniqueRuneTable[props.p.name] || {
-  showSubSkills: true,
-  component: undefined,
-};
 </script>
 
 <style>

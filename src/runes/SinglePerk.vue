@@ -1,27 +1,15 @@
 <template>
-  <div
-    v-if="perk"
-    class="Perk"
-    :class="{ KeyStone: isKeyStone }"
-    :data-selected="selection ? selection === perk!.id : 'none'"
-  >
-    <img
-      class="Perk__image"
-      v-tooltip.top="tooltipContent"
-      :src="`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/${perk.iconPath
-        .slice(22)
-        .toLowerCase()}`"
-      loading="lazy"
-    />
+  <div class="Perk" :title="perk.name" :data-selected="selection ? selection === perk.id : 'none'"
+    v-tooltip.top="tooltipContent">
+    <img class="Perk__image" :src="perk.iconPath" loading="lazy" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { Perk, PerkStyle } from './perks';
+import type { Perk, PerkStyle } from './perks';
 const props = defineProps<{
-  perk: Perk | PerkStyle | undefined;
-  isKeyStone?: boolean;
-  selection?: number;
+  perk: Perk | PerkStyle;
+  selection: number;
 }>();
 
 const tooltipContent = {
@@ -42,6 +30,7 @@ const tooltipContent = {
   width: 48px;
   height: 48px;
 }
+
 .Perk.StatsModBox .Perk__image {
   width: 22px;
   height: 22px;
@@ -85,10 +74,12 @@ const tooltipContent = {
 
 .Perk[data-selected='none'] {
   border-color: gray;
+  filter: grayscale(100%);
+    opacity: 0.58;
 }
 
 .Perk__tooltip .p-tooltip-text {
-  background-color: var(--surface-b);
+  background-color: #1a1a1a;
   /* color: rgb(255, 255, 255); */
   width: 490px;
   /* height: 32px; */
@@ -99,7 +90,8 @@ const tooltipContent = {
   /* position: absolute; */
   /* z-index: 100; */
 }
+
 .Perk__tooltip .p-tooltip-text b {
-  color: var(--blue-500);
+  color: blue;
 }
 </style>

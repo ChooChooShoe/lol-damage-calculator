@@ -15,7 +15,8 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: `/c/${lastChampPlayer}/vs/${lastChampTarget}`,
+      redirect: '/testview',
+      // redirect: `/c/${lastChampPlayer}/vs/${lastChampTarget}`,
     },
     { path: '/c/:player?/vs/:target?', component: CalcApp },
     { path: '/itembuilder', component: ItemBuilder },
@@ -28,7 +29,7 @@ const router = createRouter({
       beforeEnter(to, _from) {
         // Put the full page URL including the protocol http(s) below
         window.location.replace(
-          'https://leagueoflegends.fandom.com' + to.fullPath,
+          'https://wiki.leagueoflegends.com/' + to.fullPath,
         );
         return true;
       },

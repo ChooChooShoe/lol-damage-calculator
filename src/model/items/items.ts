@@ -1,5 +1,5 @@
-import { RootRatio } from '@/api/DataTypes';
-import itemsGen, { ItemNumber } from '@/generated/items.gen';
+import type { RootRatio } from '@/api/DataTypes';
+import itemsGen, { type ItemNumber } from '@/generated/items.gen';
 
 console.log(Object.keys(itemsGen));
 
