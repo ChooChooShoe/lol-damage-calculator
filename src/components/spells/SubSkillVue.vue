@@ -54,7 +54,7 @@ const props = defineProps<{
 
 const locked = ref(true);
 
-const nonLeveling = computed(() => props.skill.leveling.length === 0);
+const nonLeveling = computed(() => props.skill?.leveling?.length === 0);
 const active = ref(
   props.skill && props.skill.leveling && props.skill.leveling.length > 0,
 );

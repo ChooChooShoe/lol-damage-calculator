@@ -185,7 +185,9 @@ impl LeagueWiki {
         );
         let body = self.client.fetch(url)?.text()?;
 
-        let document = Html::parse_fragment(&body);
+        let document = Html::parse_document(&body);
+
+        document.errors.iter().for_each(|e| println!("Document Error: {}", e));
 
         Ok(RuneData::new(document))
     }

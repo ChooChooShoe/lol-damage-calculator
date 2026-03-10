@@ -3,17 +3,17 @@
     <span class="ds__title">{{ p.name }} ({{ p.id }})</span>
 
 
-    {{ p.description }}
-    {{ p.description2 }}
-    {{ p.description3 }}
-    {{ p.description4 }}
+    <p v-html="p.description"></p>
+    <p v-html="p.description2"></p>
+    <p v-html="p.description3"></p>
+    <p v-html="p.description4"></p>
 
     <SinglePerk :perk="p" :selection="-1"></SinglePerk>
 
     <span v-if="p.cooldown" class="ds__cooldown"> Cooldown: <span v-html="p.cooldown"></span> seconds</span>
     <span v-if="p.range" class="ds__range"> Range: <span v-html="p.range"></span></span>
     <hr />
-    <SubSkillList :subskills="[p.effect, p.effect2, p.effect3, p.effect4]" :idx="p.name" />
+    <SubSkillList :subskills="[]" :idx="p.name" />
 
 
 

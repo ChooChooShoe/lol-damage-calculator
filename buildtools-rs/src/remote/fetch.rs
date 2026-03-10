@@ -16,7 +16,7 @@ pub struct FetchClient {
 
 impl FetchClient {
     pub fn new() -> reqwest::Result<FetchClient> {
-        let client = Client::builder().build()?;
+        let client = Client::builder().user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:134.0) Gecko/20100101 Firefox/134.0").build()?;
         Ok(FetchClient {
             last_request: None,
             request_delay: Duration::from_millis(50),
